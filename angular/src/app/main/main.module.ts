@@ -6,7 +6,10 @@ import { UtilsModule } from '@shared/utils/utils.module';
 import { CountoModule } from 'angular2-counto';
 import { EasyPieChartModule } from 'ng2modules-easypiechart';
 import { ModalModule, TabsModule, TooltipModule } from 'ngx-bootstrap';
+
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { PurchasingComponent } from './purchasing/purchasing.component';
+ 
 import { MainRoutingModule } from './main-routing.module';
 
 @NgModule({
@@ -23,7 +26,8 @@ import { MainRoutingModule } from './main-routing.module';
         EasyPieChartModule
     ],
     declarations: [
-        DashboardComponent
+        DashboardComponent,
+        PurchasingComponent
     ]
 })
 export class MainModule { }

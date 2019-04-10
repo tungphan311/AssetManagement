@@ -788,5 +788,6 @@
         <text name="UiCustomization_HeaderSkin">Skin</text>
         <text name="TenantsCannotCreateLanguage">Tenants cannot create language.</text>
         <text name="Alias">Aliass</text>
+      <text name="Purchasing">Purchasing</text>
     </texts>
 </localizationDictionary>

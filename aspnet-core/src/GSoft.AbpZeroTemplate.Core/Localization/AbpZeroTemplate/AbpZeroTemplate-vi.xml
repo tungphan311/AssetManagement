@@ -786,5 +786,6 @@
     <text name="Green">Màu lục</text>
     <text name="Pink">Màu hồng</text>
     <text name="Yellow">Màu vàng</text>
+    <text name="Purchasing">Quản lý mua sắm</text>
   </texts>
 </localizationDictionary>
