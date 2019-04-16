@@ -1,0 +1,38 @@
+<div [@routerTransition]>
+    <div class="m-subheader ">
+        <div class="d-flex align-items-center">
+            <div class="mr-auto col-sm-6">
+                <h3 class="m-subheader__title m-subheader__title--separator">
+                    <span>{{l("PhoneBook")}}</span>
+                </h3>
+            </div>
+            <div class="col-sm-6 text-right">
+                <button class="btn btn-primary" (click)="createPersonModal.show()"><i class="fa fa-plus"></i> {{"CreateNewPerson"}}</button>
+            </div>
+        </div>
+    </div>
+    <div class="m-content">
+        <div class="m-portlet m-portlet--mobile">
+            <div class="m-portlet__body">
+
+                <h3>{{l("AllPeople")}}</h3>
+                <div class="m-widget1">
+                    <div class="m-widget1__item" *ngFor="let person of people">
+                        <div class="row m-row--no-padding align-items-center">
+                            <div class="col">
+                                <h3 class="m-widget1__title">{{person.name + ' ' + person.surname}}</h3>
+                                <span class="m-widget1__desc">{{person.emailAddress}}</span>
+                            </div>
+                            <div class="col m--align-right">
+                                <button id="deletePerson" (click)="deletePerson(person)" title="{{'Delete'}}" class="btn btn-outline-danger m-btn m-btn--icon m-btn--icon-only m-btn--pill" href="javascript:;">
+                                    <i class="fa fa-times"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <createPersonModal #createPersonModal (modalSave)="getPeople()"></createPersonModal>
+</div>

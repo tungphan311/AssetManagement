@@ -1,0 +1,11 @@
+.report_card
+{
+	border-style: solid; 
+	border-width: 1px 1px 1px 4px;
+	border-radius: 5px;
+}
+
+.progess
+{
+	margin: 0px;
+}

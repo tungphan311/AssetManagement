@@ -3,7 +3,7 @@ import { AppLocalizationService } from '@app/shared/common/localization/app-loca
 
 @Component({
     selector: '<validation-messages>',
-    template: `<div class="has-danger" *ngIf="formCtrl && formCtrl.invalid && formCtrl.dirty">
+    template: `<div class="has-danger" *ngIf="formCtrl.invalid && formCtrl.dirty">
                     <div *ngFor="let errorDef of errorDefs">
                         <div *ngIf="getErrorDefinitionIsInValid(errorDef)" class="form-control-feedback">
                             {{getErrorDefinitionMessage(errorDef)}}

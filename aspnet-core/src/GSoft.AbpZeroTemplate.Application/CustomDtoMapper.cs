@@ -32,6 +32,7 @@ using GSoft.AbpZeroTemplate.MultiTenancy.Payments;
 using GSoft.AbpZeroTemplate.MultiTenancy.Payments.Dto;
 using GSoft.AbpZeroTemplate.Notifications.Dto;
 using GSoft.AbpZeroTemplate.Organizations.Dto;
+using GSoft.AbpZeroTemplate.Persons;
 using GSoft.AbpZeroTemplate.Sessions.Dto;
 using System;
 
@@ -135,6 +136,9 @@ namespace GSoft.AbpZeroTemplate
             configuration.CreateMap<OrganizationUnit, OrganizationUnitDto>();
 
             /* ADD YOUR OWN CUSTOM AUTOMAPPER MAPPINGS HERE */
+
+            configuration.CreateMap<Person, PersonListDto>();
+            configuration.CreateMap<CreatePersonInput, Person>();
         }
     }
 }

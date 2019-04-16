@@ -1,0 +1,16 @@
+C:\Users\admin\Desktop\aspzero\aspnet-core\src\GWebsite.AbpZeroTemplate.Core\bin\Debug\netcoreapp2.1\GWebsite.AbpZeroTemplate.Core.dll.config
+C:\Users\admin\Desktop\aspzero\aspnet-core\src\GWebsite.AbpZeroTemplate.Core\bin\Debug\netcoreapp2.1\GWebsite.AbpZeroTemplate.Core.deps.json
+C:\Users\admin\Desktop\aspzero\aspnet-core\src\GWebsite.AbpZeroTemplate.Core\bin\Debug\netcoreapp2.1\GWebsite.AbpZeroTemplate.Core.runtimeconfig.json
+C:\Users\admin\Desktop\aspzero\aspnet-core\src\GWebsite.AbpZeroTemplate.Core\bin\Debug\netcoreapp2.1\GWebsite.AbpZeroTemplate.Core.runtimeconfig.dev.json
+C:\Users\admin\Desktop\aspzero\aspnet-core\src\GWebsite.AbpZeroTemplate.Core\bin\Debug\netcoreapp2.1\GWebsite.AbpZeroTemplate.Core.dll
+C:\Users\admin\Desktop\aspzero\aspnet-core\src\GWebsite.AbpZeroTemplate.Core\bin\Debug\netcoreapp2.1\GWebsite.AbpZeroTemplate.Core.pdb
+C:\Users\admin\Desktop\aspzero\aspnet-core\src\GWebsite.AbpZeroTemplate.Core\bin\Debug\netcoreapp2.1\GSoft.AbpZeroTemplate.Core.Shared.dll
+C:\Users\admin\Desktop\aspzero\aspnet-core\src\GWebsite.AbpZeroTemplate.Core\bin\Debug\netcoreapp2.1\GSoft.AbpZeroTemplate.Core.Shared.pdb
+C:\Users\admin\Desktop\aspzero\aspnet-core\src\GWebsite.AbpZeroTemplate.Core\obj\Debug\netcoreapp2.1\GWebsite.AbpZeroTemplate.Core.csprojAssemblyReference.cache
+C:\Users\admin\Desktop\aspzero\aspnet-core\src\GWebsite.AbpZeroTemplate.Core\obj\Debug\netcoreapp2.1\GWebsite.AbpZeroTemplate.Core.dll.config
+C:\Users\admin\Desktop\aspzero\aspnet-core\src\GWebsite.AbpZeroTemplate.Core\obj\Debug\netcoreapp2.1\GWebsite.AbpZeroTemplate.Core.csproj.CoreCompileInputs.cache
+C:\Users\admin\Desktop\aspzero\aspnet-core\src\GWebsite.AbpZeroTemplate.Core\obj\Debug\netcoreapp2.1\GWebsite.AbpZeroTemplate.Core.AssemblyInfoInputs.cache
+C:\Users\admin\Desktop\aspzero\aspnet-core\src\GWebsite.AbpZeroTemplate.Core\obj\Debug\netcoreapp2.1\GWebsite.AbpZeroTemplate.Core.AssemblyInfo.cs
+C:\Users\admin\Desktop\aspzero\aspnet-core\src\GWebsite.AbpZeroTemplate.Core\obj\Debug\netcoreapp2.1\GWebsite.AbpZeroTemplate.Core.csproj.CopyComplete
+C:\Users\admin\Desktop\aspzero\aspnet-core\src\GWebsite.AbpZeroTemplate.Core\obj\Debug\netcoreapp2.1\GWebsite.AbpZeroTemplate.Core.dll
+C:\Users\admin\Desktop\aspzero\aspnet-core\src\GWebsite.AbpZeroTemplate.Core\obj\Debug\netcoreapp2.1\GWebsite.AbpZeroTemplate.Core.pdb
