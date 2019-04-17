@@ -1,7 +1,7 @@
-import { Component, Injector } from '@angular/core';
+import { Component, Injector, OnInit } from '@angular/core';
 import { AppComponentBase } from '@shared/common/app-component-base';
 import { appModuleAnimation } from '@shared/animations/routerTransition';
-import { ChartType } from 'chart.js'
+import { DonViServiceProxy, DonViDto, ListResultDtoOfDonViDto } from '@shared/service-proxies/service-proxies';
 
 @Component({
     templateUrl: './asset_dashboard.component.html',
@@ -9,34 +9,43 @@ import { ChartType } from 'chart.js'
     animations: [appModuleAnimation()]
 })
 
-export class AssetDashboardComponent extends AppComponentBase 
+export class AssetDashboardComponent extends AppComponentBase implements OnInit
 {
+	userName = '';
 	header_stats: AssetHeaderStats;
 	assets_state_chart: ProfitSharePieChart;
 
-    constructor(injector: Injector) 
+    constructor(injector: Injector, private _DonViService: DonViServiceProxy) 
     {
         super(injector);
         this.header_stats = new AssetHeaderStats();
-        this.assets_state_chart = new ProfitSharePieChart('#m_chart_profit_share');
-    }  
+        this.assets_state_chart = new ProfitSharePieChart();
+        this.userName = this.appSession.user.userName;
+    }
+
+    ngOnInit(): void 
+    {
+        this._DonViService
+            .getDonVi()
+            .subscribe(result => {
+                this.header_stats.Assets_Count = result.items[0].soLuongTaiSan;
+                this.header_stats.Assets_Active = result.items[0].taiSanSuDung;
+                this.header_stats.Assets_Custody = result.items[0].taiSanTrongKho;
+                this.header_stats.Assets_Disposed = result.items[0].soLuongTaiSan;
+            });
+    }
 }
 
 class AssetHeaderStats
 {
-
     Assets_Count = 0; 
     Assets_Count_Counter = 0;
-    Assets_Value = 0; 
-    Assets_Value_Counter = 0;
-    Request_Count = 0; 
-    Request_Count_Counter = 0;
-    newUsers = 0; newUsersCounter = 0;
-
-    totalProfitChange = 76; totalProfitChangeCounter = 0;
-    newFeedbacksChange = 85; newFeedbacksChangeCounter = 0;
-    newOrdersChange = 45; newOrdersChangeCounter = 0;
-    newUsersChange = 57; newUsersChangeCounter = 0;
+    Assets_Active = 0; 
+    Assets_Active_Counter = 0;
+    Assets_Custody = 0;
+    Assets_Custody_Counter = 0;
+    Assets_Disposed = 0; 
+    Assets_Disposed_Counter = 0;
 
     /*init(totalProfit, newFeedbacks, newOrders, newUsers)
     {
@@ -48,6 +57,7 @@ class AssetHeaderStats
     }*/
 }
 
+
 class ProfitSharePieChart
 {
     //== Profit Share Chart.
@@ -57,9 +67,8 @@ class ProfitSharePieChart
     data: number[];
     chartData: {};
 
-    constructor(canvasId: string) 
+    constructor() 
     {
-        this._canvasId = canvasId;
         this.init([56, 28, 16]);
         this.chartData = {
     datasets: [{
@@ -78,17 +87,5 @@ class ProfitSharePieChart
     init(data: number[]) 
     {
         this.data = data;
-        if ($(this._canvasId).length === 0) 
-        {
-            return;
-        }
-
-        let chart = new Chart($(this._canvasId), {
-            type: 'doughnut',
-            data: this.chartData,
-            //options: Chart.defaults.doughnut,
-        });
-
-        //this.hideLoading();
     }
 }

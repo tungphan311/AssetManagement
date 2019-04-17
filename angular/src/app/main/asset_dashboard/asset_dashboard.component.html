@@ -28,8 +28,8 @@
                                 </div>
                             </div>
                             <div class="m--font-primary" style="font-weight: bold; font-size: 2rem">
-                                <span counto [step]="30" [duration]="1" [countFrom]="0" [countTo]="30">
-                                    33
+                                <span counto [step]="30" [duration]="1" [countFrom]="0" [countTo]="header_stats.Assets_Count" (countoChange)="header_stats.Assets_Count_Counter = $event">
+                                    {{header_stats.Assets_Count_Counter.toFixed(0)}}
                                 </span>
                             </div>
                         </div>
@@ -116,7 +116,7 @@
     <div class="m-content">
         <div class="m-portlet m-portlet--mobile">
             <div class="m-portlet__body">
-                <p>PHONE BOOK CONTENT COMES HERE!</p>
+                <p>PHONE BOOK CONTENT COMES HERE! {{userName}}</p>
             </div>
             
         </div>

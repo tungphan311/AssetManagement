@@ -19,6 +19,7 @@ using GSoft.AbpZeroTemplate.Authorization.Users.Dto;
 using GSoft.AbpZeroTemplate.Authorization.Users.Profile.Dto;
 using GSoft.AbpZeroTemplate.Chat;
 using GSoft.AbpZeroTemplate.Chat.Dto;
+using GSoft.AbpZeroTemplate.DonVi_s;
 using GSoft.AbpZeroTemplate.Editions;
 using GSoft.AbpZeroTemplate.Editions.Dto;
 using GSoft.AbpZeroTemplate.Friendships;
@@ -139,6 +140,8 @@ namespace GSoft.AbpZeroTemplate
 
             configuration.CreateMap<Person, PersonListDto>();
             configuration.CreateMap<CreatePersonInput, Person>();
+
+            configuration.CreateMap<DonVi, DonViDto>();
         }
     }
 }

@@ -40,6 +40,7 @@ import { WebApiServiceProxy } from './webapi.service';
         ApiServiceProxies.InstallServiceProxy,
         ApiServiceProxies.UiCustomizationSettingsServiceProxy,
         ApiServiceProxies.PersonServiceProxy,
+        ApiServiceProxies.DonViServiceProxy,
         WebApiServiceProxy,
         { provide: HTTP_INTERCEPTORS, useClass: AbpHttpInterceptor, multi: true }
     ]

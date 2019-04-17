@@ -16,6 +16,8 @@ namespace GSoft.AbpZeroTemplate.EntityFrameworkCore
     public class AbpZeroTemplateDbContext : GWebsiteDbContext<Tenant, Role, User, AbpZeroTemplateDbContext>, IAbpPersistedGrantDbContext
     {
         /* Define an IDbSet for each entity of the application */
+        public virtual DbSet<DonVi> DonVi { get; set; }
+
         public virtual DbSet<Person> Persons { get; set; }
 
         public virtual DbSet<BinaryObject> BinaryObjects { get; set; }
