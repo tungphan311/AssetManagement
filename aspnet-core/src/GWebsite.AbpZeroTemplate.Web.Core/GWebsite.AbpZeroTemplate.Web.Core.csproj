@@ -24,4 +24,8 @@
     <ProjectReference Include="..\GWebsite.AbpZeroTemplate.Application\GWebsite.AbpZeroTemplate.Application.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Reference Include="System.Windows.Forms" />
+  </ItemGroup>
+
 </Project>
