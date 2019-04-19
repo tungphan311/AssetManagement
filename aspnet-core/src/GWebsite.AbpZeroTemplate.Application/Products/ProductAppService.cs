@@ -7,6 +7,7 @@ using GWebsite.AbpZeroTemplate.Application.Share.Products;
 using GWebsite.AbpZeroTemplate.Application.Share.Products.Dto;
 using GWebsite.AbpZeroTemplate.Core.Authorization;
 using GWebsite.AbpZeroTemplate.Core.Models;
+using System;
 using System.Linq;
 using System.Linq.Dynamic.Core;
 
@@ -97,13 +98,23 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Products
 
         #region Private Method
 
-        [AbpAuthorize(GWebsitePermissions.Pages_Administration_Product_Create)]
+        // [AbpAuthorize(GWebsitePermissions.Pages_Administration_Product_Create)]
         private void Create(ProductInput productInput)
         {
-            var productEntity = ObjectMapper.Map<Product>(productInput);
-            SetAuditInsert(productEntity);
-            productRepository.Insert(productEntity);
-            CurrentUnitOfWork.SaveChanges();
+            System.Console.WriteLine("ProductInput: " + productInput.Name.ToString());
+            try
+            {
+                var productEntity = ObjectMapper.Map<Product>(productInput);
+                if (productEntity == null) System.Console.WriteLine("null: ");
+                SetAuditInsert(productEntity);
+                productRepository.Insert(productEntity);
+                CurrentUnitOfWork.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                System.Console.WriteLine("Exception: " + ex);
+            }
+
         }
 
         [AbpAuthorize(GWebsitePermissions.Pages_Administration_Product_Edit)]
