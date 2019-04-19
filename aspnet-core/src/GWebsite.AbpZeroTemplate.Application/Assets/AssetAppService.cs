@@ -16,11 +16,11 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Assets
     [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient)]
     public class AssetAppService : GWebsiteAppServiceBase, IAssetAppService
     {
-        private readonly IRepository<Customer> customerRepository;
+        private readonly IRepository<Asset> assetRepository;
 
-        public AssetAppService(IRepository<Customer> customerRepository)
+        public AssetAppService(IRepository<Asset> assetRepository)
         {
-            this.customerRepository = customerRepository;
+            this.assetRepository = assetRepository;
         }
           #region Public Method
 
@@ -40,48 +40,43 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Assets
 
         public void DeleteAsset(int id)
         {
-            var customerEntity = customerRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.Id == id);
-            if (customerEntity != null)
+            var assetEntity = assetRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.Id == id);
+            if (assetEntity != null)
             {
-                customerEntity.IsDelete = true;
-                customerRepository.Update(customerEntity);
+                assetEntity.IsDelete = true;
+                assetRepository.Update(assetEntity);
                 CurrentUnitOfWork.SaveChanges();
             }
         }
 
+        public AssetInput getAssetForEdit(int id)
+        {
+            var assetEntity = assetRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.Id == id);
+            if (assetEntity == null)
+            {
+                return null;
+            }
+            return ObjectMapper.Map<AssetInput>(assetEntity);
+        }
+
+        public AssetForView GetAssetForView(int id)
+        {
+            var assetEntity = assetRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.Id == id);
+            if (assetEntity == null)
+            {
+                return null;
+            }
+            return ObjectMapper.Map<AssetForView>(assetEntity);
+        }
+
         public PagedResultDto<AssetDto> GetAsset(AssetFilter input)
         {
-            throw new System.NotImplementedException();
-        }
-
-        public AssetInput GetCustomerForEdit(int id)
-        {
-            var customerEntity = customerRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.Id == id);
-            if (customerEntity == null)
-            {
-                return null;
-            }
-            return ObjectMapper.Map<AssetInput>(customerEntity);
-        }
-
-        public AssetForView GetCustomerForView(int id)
-        {
-            var customerEntity = customerRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.Id == id);
-            if (customerEntity == null)
-            {
-                return null;
-            }
-            return ObjectMapper.Map<AssetForView>(customerEntity);
-        }
-
-        public PagedResultDto<AssetDto> GetCustomers(AssetFilter input)
-        {
-            var query = customerRepository.GetAll().Where(x => !x.IsDelete);
+            var query = assetRepository.GetAll().Where(x => !x.IsDelete);
 
             // filter by value
             if (input.nameAsset != null)
             {
-                query = query.Where(x => x.Name.ToLower().Equals(input.nameAsset));
+                query = query.Where(x => x.nameAsset.ToLower().Equals(input.nameAsset));
             }
 
             var totalCount = query.Count();
@@ -106,34 +101,25 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Assets
          #region Private Method
 
         [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient_Create)]
-        private void Create(AssetInput customerInput)
+        private void Create(AssetInput assetInput)
         {
-            var customerEntity = ObjectMapper.Map<Customer>(customerInput);
-            SetAuditInsert(customerEntity);
-            customerRepository.Insert(customerEntity);
+            var assetEntity = ObjectMapper.Map<Asset>(assetInput);
+            SetAuditInsert(assetEntity);
+            assetRepository.Insert(assetEntity);
             CurrentUnitOfWork.SaveChanges();
         }
 
-        AssetInput IAssetAppService.getAssetForEdit(int id)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        AssetForView IAssetAppService.GetAssetForView(int id)
-        {
-            throw new System.NotImplementedException();
-        }
 
         [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient_Edit)]
-        private void Update(AssetInput customerInput)
+        private void Update(AssetInput assetInput)
         {
-            var customerEntity = customerRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.Id == customerInput.Id);
-            if (customerEntity == null)
+            var assetEntity = assetRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.Id == assetInput.Id);
+            if (assetEntity == null)
             {
             }
-            ObjectMapper.Map(customerInput, customerEntity);
-            SetAuditEdit(customerEntity);
-            customerRepository.Update(customerEntity);
+            ObjectMapper.Map(assetInput, assetEntity);
+            SetAuditEdit(assetEntity);
+            assetRepository.Update(assetEntity);
             CurrentUnitOfWork.SaveChanges();
         }
 

@@ -19,8 +19,8 @@ describe('abp-zero-template App', () => {
 
         await page.loginAsHostAdmin();
 
-        await page.waitForItemToBeVisible(by.css(".m-topbar__username"));
-        
+        await page.waitForItemToBeVisible(by.css('.m-topbar__username'));
+
         page.getUsername().then(value => {
             expect(value.toLocaleLowerCase()).toEqual('\\admin');
         });
@@ -35,8 +35,8 @@ describe('abp-zero-template App', () => {
         browser.driver.manage().window().setSize(1200, 1000);
 
         await page.loginAsTenantAdmin();
-        
-        await page.waitForItemToBeVisible(by.css(".m-topbar__username"));
+
+        await page.waitForItemToBeVisible(by.css('.m-topbar__username'));
 
         page.getUsername().then(value => {
             expect(value.toLocaleLowerCase()).toEqual('default\\admin');
