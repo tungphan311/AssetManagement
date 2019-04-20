@@ -1,0 +1,12 @@
+E:\Nam 3\HKII\CNPMCS\Zero\aspnet-core\src\GSoft.AbpZeroTemplate.Application.Shared\bin\Debug\netstandard2.0\GSoft.AbpZeroTemplate.Application.Shared.deps.json
+E:\Nam 3\HKII\CNPMCS\Zero\aspnet-core\src\GSoft.AbpZeroTemplate.Application.Shared\bin\Debug\netstandard2.0\GSoft.AbpZeroTemplate.Application.Shared.dll
+E:\Nam 3\HKII\CNPMCS\Zero\aspnet-core\src\GSoft.AbpZeroTemplate.Application.Shared\bin\Debug\netstandard2.0\GSoft.AbpZeroTemplate.Application.Shared.pdb
+E:\Nam 3\HKII\CNPMCS\Zero\aspnet-core\src\GSoft.AbpZeroTemplate.Application.Shared\bin\Debug\netstandard2.0\GSoft.AbpZeroTemplate.Core.Shared.dll
+E:\Nam 3\HKII\CNPMCS\Zero\aspnet-core\src\GSoft.AbpZeroTemplate.Application.Shared\bin\Debug\netstandard2.0\GSoft.AbpZeroTemplate.Core.Shared.pdb
+E:\Nam 3\HKII\CNPMCS\Zero\aspnet-core\src\GSoft.AbpZeroTemplate.Application.Shared\obj\Debug\netstandard2.0\GSoft.AbpZeroTemplate.Application.Shared.csprojAssemblyReference.cache
+E:\Nam 3\HKII\CNPMCS\Zero\aspnet-core\src\GSoft.AbpZeroTemplate.Application.Shared\obj\Debug\netstandard2.0\GSoft.AbpZeroTemplate.Application.Shared.csproj.CoreCompileInputs.cache
+E:\Nam 3\HKII\CNPMCS\Zero\aspnet-core\src\GSoft.AbpZeroTemplate.Application.Shared\obj\Debug\netstandard2.0\GSoft.AbpZeroTemplate.Application.Shared.AssemblyInfoInputs.cache
+E:\Nam 3\HKII\CNPMCS\Zero\aspnet-core\src\GSoft.AbpZeroTemplate.Application.Shared\obj\Debug\netstandard2.0\GSoft.AbpZeroTemplate.Application.Shared.AssemblyInfo.cs
+E:\Nam 3\HKII\CNPMCS\Zero\aspnet-core\src\GSoft.AbpZeroTemplate.Application.Shared\obj\Debug\netstandard2.0\GSoft.AbpZeroTemplate.Application.Shared.csproj.CopyComplete
+E:\Nam 3\HKII\CNPMCS\Zero\aspnet-core\src\GSoft.AbpZeroTemplate.Application.Shared\obj\Debug\netstandard2.0\GSoft.AbpZeroTemplate.Application.Shared.dll
+E:\Nam 3\HKII\CNPMCS\Zero\aspnet-core\src\GSoft.AbpZeroTemplate.Application.Shared\obj\Debug\netstandard2.0\GSoft.AbpZeroTemplate.Application.Shared.pdb

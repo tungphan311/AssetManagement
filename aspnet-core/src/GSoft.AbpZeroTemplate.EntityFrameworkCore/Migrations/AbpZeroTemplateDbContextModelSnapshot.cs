@@ -1693,31 +1693,6 @@ namespace GSoft.AbpZeroTemplate.Migrations
                     b.ToTable("MenuClients");
                 });
 
-            modelBuilder.Entity("GWebsite.AbpZeroTemplate.Core.Models.ModelDemo", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("CreatedBy");
-
-                    b.Property<DateTime?>("CreatedDate");
-
-                    b.Property<bool>("IsDelete");
-
-                    b.Property<string>("Name");
-
-                    b.Property<string>("UpdatedBy");
-
-                    b.Property<DateTime?>("UpdatedDate");
-
-                    b.Property<int>("Value");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("ModelDemos");
-                });
-
             modelBuilder.Entity("GWebsite.AbpZeroTemplate.Core.Models.Permission", b =>
                 {
                     b.Property<int>("Id")
@@ -1747,6 +1722,73 @@ namespace GSoft.AbpZeroTemplate.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("GPermissions");
+                });
+
+            modelBuilder.Entity("GWebsite.AbpZeroTemplate.Core.Models.Vehicle", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Color");
+
+                    b.Property<string>("CountryOfManufacture");
+
+                    b.Property<string>("CreatedBy");
+
+                    b.Property<DateTime?>("CreatedDate");
+
+                    b.Property<string>("EngineNumber");
+
+                    b.Property<string>("EngineType");
+
+                    b.Property<float>("EngineVolume");
+
+                    b.Property<float>("FuelNorms");
+
+                    b.Property<string>("FuelType");
+
+                    b.Property<string>("GearboxType");
+
+                    b.Property<float>("Height");
+
+                    b.Property<float>("HorizontalLength");
+
+                    b.Property<bool>("IsDelete");
+
+                    b.Property<float>("Length");
+
+                    b.Property<string>("Manufacturer");
+
+                    b.Property<string>("Model");
+
+                    b.Property<string>("OwnerName");
+
+                    b.Property<string>("PlateNumber");
+
+                    b.Property<DateTime>("RegistrationDate");
+
+                    b.Property<string>("RibNumber");
+
+                    b.Property<bool>("SpecialVehicle");
+
+                    b.Property<string>("TireSize");
+
+                    b.Property<string>("Type");
+
+                    b.Property<string>("UnitUsed");
+
+                    b.Property<string>("UpdatedBy");
+
+                    b.Property<DateTime?>("UpdatedDate");
+
+                    b.Property<string>("UsePurpose");
+
+                    b.Property<int>("YearOfManufacture");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Vehicles");
                 });
 
             modelBuilder.Entity("GSoft.AbpZeroTemplate.Editions.SubscribableEdition", b =>
