@@ -8,9 +8,11 @@ import { EasyPieChartModule } from 'ng2modules-easypiechart';
 import { ModalModule, TabsModule, TooltipModule } from 'ngx-bootstrap';
 
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { PurchasingComponent } from './purchasing/purchasing.component';
  
 import { MainRoutingModule } from './main-routing.module';
+import { MerchandiseComponent } from './merchandise/merchandise.component';
+import { VenderComponent } from './vender/vender.component';
+import { AssignmentTableComponent } from './assignment-table/assignment-table.component';
 
 @NgModule({
     imports: [
@@ -27,7 +29,9 @@ import { MainRoutingModule } from './main-routing.module';
     ],
     declarations: [
         DashboardComponent,
-        PurchasingComponent
+        MerchandiseComponent,
+        VenderComponent,
+        AssignmentTableComponent
     ]
 })
 export class MainModule { }

@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { PurchasingComponent } from './purchasing/purchasing.component';
+import { MerchandiseComponent } from './merchandise/merchandise.component';
+import { VenderComponent } from './vender/vender.component';
+import { AssignmentTableComponent } from './assignment-table/assignment-table.component';
 
 @NgModule({
     imports: [
@@ -10,7 +12,9 @@ import { PurchasingComponent } from './purchasing/purchasing.component';
                 path: '',
                 children: [
                     { path: 'dashboard', component: DashboardComponent, data: { permission: 'Pages.Tenant.Dashboard' } },
-                    { path: 'purchasing', component: PurchasingComponent }
+                    { path: 'merchandise', component: MerchandiseComponent },
+                    { path: 'vender', component: VenderComponent },
+                    { path: 'assignment-table', component: AssignmentTableComponent }
                 ]
             }
         ])

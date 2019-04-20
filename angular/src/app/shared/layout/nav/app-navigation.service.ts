@@ -34,7 +34,11 @@ export class AppNavigationService {
                 new AppMenuItem('Settings', 'Pages.Administration.Tenant.Settings', 'flaticon-settings', '/app/admin/tenantSettings')
             ]),
             new AppMenuItem('DemoUiComponents', 'Pages.DemoUiComponents', 'flaticon-shapes', '/app/admin/demo-ui-components'),
-            new AppMenuItem('Purchasing', null, 'flaticon-cart', '/app/main/purchasing')
+            new AppMenuItem('Purchasing', '', 'flaticon-cart', '', [
+                new AppMenuItem('Vender', null, 'flaticon-users', '/app/main/vender'),
+                new AppMenuItem('Merchandise', null, 'flaticon-business', '/app/main/merchandise'),
+                new AppMenuItem('AssignmentTable', null, 'flaticon2-document', '/app/main/assignment-table')
+            ])
         ]);
     }
 

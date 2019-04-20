@@ -787,5 +787,8 @@
     <text name="Pink">Màu hồng</text>
     <text name="Yellow">Màu vàng</text>
     <text name="Purchasing">Quản lý mua sắm</text>
+    <text name="Vender">Danh mục Nhà cung cấp</text>
+    <text name="Merchandise">Danh mục Hàng hoá</text>
+    <text name="AssignmentTable">Bảng gán</text>
   </texts>
 </localizationDictionary>
