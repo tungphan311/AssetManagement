@@ -3,6 +3,7 @@ import { RouterModule } from '@angular/router';
 import { MenuClientComponent } from '@app/gwebsite/menu-client/menu-client.component';
 import { DemoModelComponent } from './demo-model/demo-model.component';
 import { CustomerComponent } from './customer/customer.component';
+import { ProductComponent } from './product/product.component';
 
 @NgModule({
     imports: [
@@ -33,7 +34,16 @@ import { CustomerComponent } from './customer/customer.component';
                         data: { permission: 'Pages.Administration.Customer' }
                     },
                 ]
-            }
+            },
+            {
+                path: '',
+                children: [
+                    {
+                        path: 'product', component: ProductComponent,
+                        data: { permission: 'Pages.Administration.Product' }
+                    },
+                ]
+            }    
         ])
     ],
     exports: [
