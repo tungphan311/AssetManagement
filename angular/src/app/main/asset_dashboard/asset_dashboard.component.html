@@ -15,16 +15,9 @@
                 <div class="m-widget24 border-primary rounded m-2 pl-4 pr-4 pt-2 pb-2 shadow-sm report_card bg-white">
                     <div class="m-widget24__item">
                         <div class="0" style="display: flex; flex-direction: row; align-items: center; justify-content: center">
-                                <div class="0" style="flex: 1; display: flex; flex-direction: column">
+                            <div class="0" style="flex: 1; display: flex; flex-direction: column">
                                 <div class="0" style="flex: 1; font-weight: bold; font-size: 1.3rem">
                                     Assets Count
-                                </div>
-                                <div class="0" style="flex: 1;">
-                                    <div class="m--space-5"></div>
-                                    Change 
-                                    <span class="text-success">
-                                        <span class="counterup"> 33</span>%
-                                    </span>
                                 </div>
                             </div>
                             <div class="m--font-primary" style="font-weight: bold; font-size: 2rem">
@@ -43,19 +36,12 @@
                         <div class="0" style="display: flex; flex-direction: row; align-items: center; justify-content: center">
                                 <div class="0" style="flex: 1; display: flex; flex-direction: column">
                                 <div class="0" style="flex: 1; font-weight: bold; font-size: 1.3rem">
-                                    Assets Value
-                                </div>
-                                <div class="0" style="flex: 1;">
-                                    <div class="m--space-5"></div>
-                                    Change 
-                                    <span class="text-success">
-                                        <span class="counterup"> 33</span>%
-                                    </span>
+                                    Active
                                 </div>
                             </div>
                             <div class="m--font-success" style="font-weight: bold; font-size: 2rem">
-                                $<span counto [step]="30" [duration]="1" [countFrom]="0" [countTo]="30">
-                                    33
+                                <span counto [step]="30" [duration]="1" [countFrom]="0" [countTo]="header_stats.Assets_Active" (countoChange)="header_stats.Assets_Active_Counter = $event">
+                                    {{header_stats.Assets_Active_Counter.toFixed(0)}}
                                 </span>
                             </div>
                         </div>
@@ -69,24 +55,16 @@
                         <div class="0" style="display: flex; flex-direction: row; align-items: center; justify-content: center">
                             <div class="0" style="flex: 1; display: flex; flex-direction: column">
                                 <div class="0" style="flex: 1; font-weight: bold; font-size: 1.3rem">
-                                    Tasks
-                                </div>
-                                <div class="0" style="flex: 1;">
-                                    <div class="m--space-10"></div>
-                                    <div style="height: 3px"></div>
-                                    <div class="progress mr-4" style="margin: 0px">
-                                        <div class="progress-bar m--bg-info" role="progressbar" style="width: 76%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
-                                        </div>
-                                    </div>
+                                    Storage
                                 </div>
                             </div>
                             <div class="m--font-info" style="font-weight: bold; font-size: 2rem">
-                                <span counto [step]="30" [duration]="1" [countFrom]="0" [countTo]="30">
-                                    33
-                                </span>%
+                                <span counto [step]="30" [duration]="1" [countFrom]="0" [countTo]="header_stats.Assets_Storage" (countoChange)="header_stats.Assets_Storage_Counter = $event">
+                                    {{header_stats.Assets_Storage_Counter.toFixed(0)}}
+                                </span>
                             </div>
                         </div>
-                        <div class="m--space-10"></div>
+                        <div class="m--space-5"></div>
                     </div>
                 </div>
             </div>
@@ -94,17 +72,15 @@
                 <div class="m-widget24 border-warning rounded m-2 pl-4 pr-4 pt-2 pb-2 shadow-sm report_card bg-white">
                     <div class="m-widget24__item">
                         <div class="0" style="display: flex; flex-direction: row; align-items: center; justify-content: center">
-                                <div class="0" style="flex: 1; display: flex; flex-direction: column">
+                            <div class="0" style="flex: 1; display: flex; flex-direction: column">
                                 <div class="0" style="flex: 1; font-weight: bold; font-size: 1.3rem">
-                                    Requests Pending
-                                </div>
-                                <div class="0" style="flex: 1;">
-                                    <div class="m--space-5"></div>
-                                    +2 since last week
+                                    Disposed
                                 </div>
                             </div>
                             <div class="m--font-warning" style="font-weight: bold; font-size: 2rem">
-                                33
+                                <span counto [step]="30" [duration]="1" [countFrom]="0" [countTo]="header_stats.Assets_Disposed" (countoChange)="header_stats.Assets_Disposed_Counter = $event">
+                                    {{header_stats.Assets_Disposed_Counter.toFixed(0)}}
+                                </span>
                             </div>
                         </div>
                         <div class="m--space-5"></div>

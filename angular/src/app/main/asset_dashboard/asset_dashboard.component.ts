@@ -25,14 +25,26 @@ export class AssetDashboardComponent extends AppComponentBase implements OnInit
 
     ngOnInit(): void 
     {
-        this._DonViService
-            .getDonVi()
-            .subscribe(result => {
+    	if (this.userName == "admin")
+    	{
+        	this._DonViService.getDonVi("DonViChinh").subscribe( result => 
+        	{
                 this.header_stats.Assets_Count = result.items[0].soLuongTaiSan;
                 this.header_stats.Assets_Active = result.items[0].taiSanSuDung;
-                this.header_stats.Assets_Custody = result.items[0].taiSanTrongKho;
-                this.header_stats.Assets_Disposed = result.items[0].soLuongTaiSan;
+                this.header_stats.Assets_Storage = result.items[0].taiSanTrongKho;
+                this.header_stats.Assets_Disposed = result.items[0].taiSanHu;
             });
+        }
+        else
+        {
+        	this._DonViService.getDonVi(this.userName).subscribe( result => 
+        	{
+                this.header_stats.Assets_Count = result.items[0].soLuongTaiSan;
+                this.header_stats.Assets_Active = result.items[0].taiSanSuDung;
+                this.header_stats.Assets_Storage = result.items[0].taiSanTrongKho;
+                this.header_stats.Assets_Disposed = result.items[0].taiSanHu;
+            });
+        }
     }
 }
 
@@ -42,8 +54,8 @@ class AssetHeaderStats
     Assets_Count_Counter = 0;
     Assets_Active = 0; 
     Assets_Active_Counter = 0;
-    Assets_Custody = 0;
-    Assets_Custody_Counter = 0;
+    Assets_Storage = 0;
+    Assets_Storage_Counter = 0;
     Assets_Disposed = 0; 
     Assets_Disposed_Counter = 0;
 

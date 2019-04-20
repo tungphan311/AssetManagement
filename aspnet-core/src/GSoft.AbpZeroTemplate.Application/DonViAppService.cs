@@ -24,7 +24,7 @@ namespace GSoft.AbpZeroTemplate
         {
             var people = _DonViRepository
                 .GetAll()
-                .WhereIf(!input.Filter.IsNullOrEmpty(), p => p.TenDonVi.Contains(input.Filter))
+                .WhereIf(!input.Filter.IsNullOrEmpty(), p => p.TenDonVi.ToLower().Equals(input.Filter.ToLower()))
                 .ToList();
 
             return new ListResultDto<DonViDto>(ObjectMapper.Map<List<DonViDto>>(people));
