@@ -40,7 +40,7 @@ namespace GWebsite.AbpZeroTemplate.Application.Controllers
         }
 
         [HttpGet]
-        public ProductForViewDto GetCustomerForView(int id)
+        public ProductForViewDto GetProductForView(int id)
         {
             return productAppService.GetProductForView(id);
         }

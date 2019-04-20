@@ -7,10 +7,13 @@ using System.Threading.Tasks;
 
 namespace GWebsite.AbpZeroTemplate.Application.Share.Products.Dto
 {
+    /// <summary>
+    /// <model cref="GWebsite.AbpZeroTemplate.Core.Models.Product"></model>
+    /// </summary>
     public class ProductInput : Entity<int>
     {
         public string Name { get; set; }
-        public string Price { get; set; }
+        public decimal Price { get; set; }
         public string Description { get; set; }
         public string Image { get; set; }
     }

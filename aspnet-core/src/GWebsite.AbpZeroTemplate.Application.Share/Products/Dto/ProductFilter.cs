@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace GWebsite.AbpZeroTemplate.Application.Share.Products.Dto
 {
     /// <summary>
-    /// <model cref="Product"></model>
+    /// <model cref="GWebsite.AbpZeroTemplate.Core.Models.Product"></model>
     /// </summary>
     public class ProductFilter : PagedAndSortedInputDto
     {
