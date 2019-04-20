@@ -46,6 +46,20 @@ namespace GWebsite.AbpZeroTemplate.Core.Authorization
             customer.CreateChildPermission(GWebsitePermissions.Pages_Administration_Customer_Edit, L("EditingCustomer"));
             customer.CreateChildPermission(GWebsitePermissions.Pages_Administration_Customer_Delete, L("DeletingCustomer"));
 
+            var asset = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_Asset, L("Asset"));
+            asset.CreateChildPermission(GWebsitePermissions.Pages_Administration_Asset_Create, L("CreatingNewAsset"));
+            asset.CreateChildPermission(GWebsitePermissions.Pages_Administration_Asset_Edit, L("EditingAsset"));
+            asset.CreateChildPermission(GWebsitePermissions.Pages_Administration_Asset_Delete, L("DeletingAsset"));
+
+            var invoice = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_Invoice, L("Invoice"));
+            invoice.CreateChildPermission(GWebsitePermissions.Pages_Administration_Invoice_Create, L("CreatingNewInvoice"));
+            invoice.CreateChildPermission(GWebsitePermissions.Pages_Administration_Invoice_Edit, L("EditingInvoice"));
+            invoice.CreateChildPermission(GWebsitePermissions.Pages_Administration_Invoice_Delete, L("DeletingInvoice"));
+
+            var invoiceitem = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_InvoiceItem, L("InvoiceItem"));
+            invoiceitem.CreateChildPermission(GWebsitePermissions.Pages_Administration_InvoiceItem_Create, L("CreatingNewInvoiceItem"));
+            invoiceitem.CreateChildPermission(GWebsitePermissions.Pages_Administration_InvoiceItem_Edit, L("EditingInvoiceItem"));
+            invoiceitem.CreateChildPermission(GWebsitePermissions.Pages_Administration_InvoiceItem_Delete, L("DeletingInvoiceItem"));
         }
 
         private static ILocalizableString L(string name)

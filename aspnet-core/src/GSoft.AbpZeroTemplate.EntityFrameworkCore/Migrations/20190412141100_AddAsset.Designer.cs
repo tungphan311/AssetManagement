@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GSoft.AbpZeroTemplate.Migrations
 {
     [DbContext(typeof(AbpZeroTemplateDbContext))]
-    [Migration("20190410144431_Add_Invoices_Table")]
-    partial class Add_Invoices_Table
+    [Migration("20190412141100_AddAsset")]
+    partial class AddAsset
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -1551,6 +1551,35 @@ namespace GSoft.AbpZeroTemplate.Migrations
                     b.HasIndex("IdentityRoleId");
 
                     b.ToTable("AppUserRoles");
+                });
+
+            modelBuilder.Entity("GWebsite.AbpZeroTemplate.Core.Models.Asset", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<float>("Cost");
+
+                    b.Property<string>("CreatedBy");
+
+                    b.Property<DateTime?>("CreatedDate");
+
+                    b.Property<string>("Details");
+
+                    b.Property<bool>("IsDelete");
+
+                    b.Property<string>("Name");
+
+                    b.Property<string>("Type");
+
+                    b.Property<string>("UpdatedBy");
+
+                    b.Property<DateTime?>("UpdatedDate");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Assets");
                 });
 
             modelBuilder.Entity("GWebsite.AbpZeroTemplate.Core.Models.Customer", b =>
