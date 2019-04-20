@@ -19,6 +19,10 @@ import { CustomerComponent } from './customer/customer.component';
 import { ViewCustomerModalComponent } from './customer/view-customer-modal.component';
 import { CreateOrEditCustomerModalComponent } from './customer/create-or-edit-customer-modal.component';
 
+import { ProductServiceProxy } from '@shared/service-proxies/service-proxies';
+import { ProductComponent } from './product/product.component';
+import { ViewProductModalComponent } from './product/view-product-modal.component';
+import { CreateOrEditProductModalComponent } from './product/create-or-edit-product-modal.component';
 @NgModule({
     imports: [
         FormsModule,
@@ -42,10 +46,13 @@ import { CreateOrEditCustomerModalComponent } from './customer/create-or-edit-cu
         MenuClientComponent, CreateOrEditMenuClientModalComponent,
         DemoModelComponent, CreateOrEditDemoModelModalComponent, ViewDemoModelModalComponent,
         CustomerComponent, CreateOrEditCustomerModalComponent, ViewCustomerModalComponent,
+        ProductComponent, CreateOrEditProductModalComponent, ViewProductModalComponent
+
     ],
     providers: [
         DemoModelServiceProxy,
-        CustomerServiceProxy
+        CustomerServiceProxy,
+        ProductServiceProxy
     ]
 })
 export class GWebsiteModule { }
