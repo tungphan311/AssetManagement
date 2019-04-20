@@ -98,7 +98,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Products
 
         #region Private Method
 
-        // [AbpAuthorize(GWebsitePermissions.Pages_Administration_Product_Create)]
+        [AbpAuthorize(GWebsitePermissions.Pages_Administration_Product_Create)]
         private void Create(ProductInput productInput)
         {
             System.Console.WriteLine("ProductInput: " + productInput.Name.ToString());
