@@ -19,7 +19,7 @@ import {
 })
 export class CreateAssetRentModalComponent extends AppComponentBase {
     @ViewChild("createOrEditModal") modal: ModalDirective;
-    @ViewChild("assetrentCombobox") assetrentCombobox: ElementRef;
+    @ViewChild("assetRentCombobox") assetRentCombobox: ElementRef;
     @ViewChild("iconCombobox") iconCombobox: ElementRef;
     @ViewChild("dateInput") dateInput: ElementRef;
 
@@ -55,7 +55,7 @@ export class CreateAssetRentModalComponent extends AppComponentBase {
         this.saving = true;
         this._assetRentService
             .createOrEditAssetRent(input)
-            .subscribe(_result => {
+            .subscribe(result => {
                 this.notify.info(this.l("SavedSuccessfully"));
                 this.close();
             });

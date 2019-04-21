@@ -17727,7 +17727,6 @@ export class AssetForView implements IAssetForView {
         data = typeof data === "object" ? data : {};
         data["nameAsset"] = this.nameAsset;
         data["mountAsset"] = this.mountAsset;
-        data["valueAsset"] = this.valueAsset;
         data["id"] = this.id;
         return data;
     }

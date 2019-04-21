@@ -95,7 +95,7 @@ export class AssetComponent extends AppComponentBase
             });
     }
 
-    deleteCustomer(id): void {
+    deleteAsset(id): void {
         this._assetService.deleteAsset(id).subscribe(() => {
             this.reloadPage();
         });
@@ -124,7 +124,7 @@ export class AssetComponent extends AppComponentBase
     }
 
     //hàm show view create MenuClient
-    createCustomer() {
+    createAsset() {
         this.createOrEditModal.show();
     }
 

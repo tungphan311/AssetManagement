@@ -13,9 +13,10 @@
             <form #editForm="ngForm" novalidate (ngSubmit)="save()">
                 <div class="modal-header">
                     <h4 class="modal-title">
-                        <span *ngIf="!assetrent.id"
-                            >Tạo mới chi tiết tài sản
-                        </span>
+                        <span *ngIf="assetrent.id"
+                            >Cập nhật tài sản : {{ assetrent.nameAsset }}</span
+                        >
+                        <span *ngIf="!assetrent.id">Tạo mới tài sản </span>
                     </h4>
                     <button
                         type="button"
@@ -34,22 +35,22 @@
                             class="form-control"
                             type="text"
                             name="NameAsset"
-                            [(ngModel)]="asset.nameAsset"
+                            [(ngModel)]="assetrent.nameAsset"
                             required
                             maxlength="64"
                         />
                         <validation-messages
-                            [formCtrl]="nameAssetInput"
+                            [formCtrl]="nameAssetRentInput"
                         ></validation-messages>
                     </div>
                     <div class="form-group">
                         <label>Người Thuê *</label>
                         <input
-                            #addressInput="ngModel"
+                            #nameInput="ngModel"
                             class="form-control"
                             type="text"
                             name="RentBy"
-                            [(ngModel)]="assetrent.RentBy"
+                            [(ngModel)]="assetrent.rentBy"
                             required
                             maxlength="64"
                         />
@@ -58,26 +59,13 @@
                         ></validation-messages>
                     </div>
                     <div class="form-group">
-                        <label>Ngày/tháng/năm thuê *</label>
-                        <input
-                            #addressInput="ngModel"
-                            class="form-control"
-                            type="datetime-local"
-                            name="DateRent"
-                            [(ngModel)]="assetrent.DateRent"
-                        />
-                        <validation-messages
-                            [formCtrl]="dateRentInput"
-                        ></validation-messages>
-                    </div>
-                    <div class="form-group">
                         <label>Số lượng Thuê *</label>
                         <input
-                            #addressInput="ngModel"
+                            #nameInput="ngModel"
                             class="form-control"
-                            type="text"
+                            type="number"
                             name="NumberRent"
-                            [(ngModel)]="assetrent.NumberRent"
+                            [(ngModel)]="assetrent.numberRent"
                             required
                             maxlength="64"
                         />
@@ -86,18 +74,18 @@
                         ></validation-messages>
                     </div>
                     <div class="form-group">
-                        <label>Số lượng trả *</label>
+                        <label>Thời gian thuê *</label>
                         <input
-                            #addressInput="ngModel"
+                            #nameInput="ngModel"
                             class="form-control"
-                            type="text"
-                            name="NumberPay"
-                            [(ngModel)]="assetrent.NumberPay"
+                            type="datetime-local"
+                            name="NumberRent"
+                            [(ngModel)]="assetrent.dateRent"
                             required
                             maxlength="64"
                         />
                         <validation-messages
-                            [formCtrl]="numberPayInput"
+                            [formCtrl]="dateRentInput"
                         ></validation-messages>
                     </div>
                 </div>

@@ -8,7 +8,7 @@ using Abp.Domain.Entities;
 namespace GWebsite.AbpZeroTemplate.Application.Share.AssetRents.Dto
 {
     /// <summary>
-    /// <model cref="Asset"></model>
+    /// <model cref="AssetRent"></model>
     /// </summary>
     public class AssetRentInput : Entity<int>
     {
