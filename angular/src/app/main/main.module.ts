@@ -13,6 +13,7 @@ import { MainRoutingModule } from './main-routing.module';
 import { MerchandiseComponent } from './merchandise/merchandise.component';
 import { VenderComponent } from './vender/vender.component';
 import { AssignmentTableComponent } from './assignment-table/assignment-table.component';
+import { CreateMerchandiseModalComponent } from './merchandise/create-merchandise-modal.component'
 
 @NgModule({
     imports: [
@@ -31,7 +32,8 @@ import { AssignmentTableComponent } from './assignment-table/assignment-table.co
         DashboardComponent,
         MerchandiseComponent,
         VenderComponent,
-        AssignmentTableComponent
+        AssignmentTableComponent,
+        CreateMerchandiseModalComponent
     ]
 })
 export class MainModule { }

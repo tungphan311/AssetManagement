@@ -12,7 +12,7 @@ import { AssignmentTableComponent } from './assignment-table/assignment-table.co
                 path: '',
                 children: [
                     { path: 'dashboard', component: DashboardComponent, data: { permission: 'Pages.Tenant.Dashboard' } },
-                    { path: 'merchandise', component: MerchandiseComponent },
+                    { path: 'merchandise', component: MerchandiseComponent, data: { permission: 'Pages.Administration.Merchandise' } },
                     { path: 'vender', component: VenderComponent },
                     { path: 'assignment-table', component: AssignmentTableComponent }
                 ]

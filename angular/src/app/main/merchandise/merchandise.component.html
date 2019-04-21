@@ -3,16 +3,59 @@
         <div class="d-flex align-items-center">
             <div class="mr-auto col-sm-6">
                 <h3 class="m-subheader__title m-subheader__title--separator">
-                    <span>{{"Merchandise"}}</span>
+                    <span>{{l("Merchandise")}}</span>
                 </h3>
+                <span class="m-section__sub">
+                        {{l("Info")}}
+                    </span>
+            </div>
+            <div class="col-sm-6 text-right">
+                <button *ngIf=" 'Pages.Tenant.Merchandise.Create' " class="btn btn-primary" (click)="createMerchandiseModal.show()">
+                    <i class="fa fa-plus"></i>
+                    {{"CreateNewMerchandise"}}
+                </button>
             </div>
         </div>
     </div>
     <div class="m-content">
         <div class="m-portlet m-portlet--mobile">
             <div class="m-portlet__body">
-                <p>MERCHANDISE CONTENT COMES HERE!</p>
+                <form autocomplete="off">
+                    <div class="m-form m-form--label-align-right" id="TextsFilterForm">
+                        <div class="row align-items-center m--margin-bottom-10">
+                            <div class="col-sm-12">
+                                <div class="input-group">
+                                    <input [(ngModel)]="filterText" name="filterText" autoFocus class="form-control"
+                                        placeholder="{{l('SearchWithThreeDot')}}" type="text">
+                                    <span class="input-group-btn">
+                                        <button (click)="applyFilters()" class="btn btn-primary" type="submit"><i class="icon-refresh"></i>
+                                            {{l("Refresh")}}</button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <h3>{{"All Merchandise"}}</h3>
+            <div class="m-widget1">
+                <div class="m-widget1__item">
+                 <!-- <div class="m-widget1__item"  *ngFor="let merchandise of merchandises">   -->
+                    <div class="row m-row--no-padding align-items-center">
+                        <div class="col">
+                            <h3 class="m-widget1__title">{{mer}}</h3>
+                            <span class="m-widget1__desc">{{mer.price + 'd'}}</span>
+                        </div>
+                        <div class="col m--align-right">
+                            <button id="deletePerson" (click)="deleteMerchandise(merchandise)" title="{{'Delete'}}" 
+                                    class="btn btn-outline-danger m-btn m-btn--icon m-btn--icon-only m-btn--pill" href="javascript:;">
+                                <i class="fa fa-times"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+    <createMerchandiseModal #createMerchandiseModal (modalSave)="getMerchandise()"></createMerchandiseModal>
 </div>
