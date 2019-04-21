@@ -58,6 +58,21 @@
                             [formCtrl]="mountAssetInput"
                         ></validation-messages>
                     </div>
+                    <div class="form-group">
+                        <label>Trị giá *</label>
+                        <input
+                            #nameInput="ngModel"
+                            class="form-control"
+                            type="text"
+                            name="ValueAsset"
+                            [(ngModel)]="asset.valueAsset"
+                            required
+                            maxlength="64"
+                        />
+                        <validation-messages
+                            [formCtrl]="valueInput"
+                        ></validation-messages>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button
