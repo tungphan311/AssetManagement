@@ -24,7 +24,8 @@ namespace GSoft.AbpZeroTemplate.Migrations
                     IsDelete = table.Column<bool>(nullable: false),
                     nameAsset = table.Column<string>(nullable: true),
                     mountAsset = table.Column<int>(nullable: false),
-                    isRentOut = table.Column<bool>(nullable: false)
+                    isRentOut = table.Column<bool>(nullable: false),
+                    valueAsset = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {

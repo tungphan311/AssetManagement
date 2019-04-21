@@ -1569,6 +1569,8 @@ namespace GSoft.AbpZeroTemplate.Migrations
 
                     b.Property<bool>("isRentOut");
 
+                    b.Property<int>("valueAsset");
+
                     b.Property<int>("mountAsset");
 
                     b.Property<string>("nameAsset");

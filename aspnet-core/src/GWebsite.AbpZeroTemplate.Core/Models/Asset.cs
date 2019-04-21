@@ -11,5 +11,6 @@ namespace GWebsite.AbpZeroTemplate.Core.Models
         public string nameAsset { get; set; }
         public int mountAsset { get; set; }
         public bool isRentOut { get; set; }
+        public int valueAsset { get; set; }
     }
 }

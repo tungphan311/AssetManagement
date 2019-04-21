@@ -17,7 +17,7 @@ namespace GWebsite.AbpZeroTemplate.Application.Controllers
         }
 
         [HttpGet]
-        public PagedResultDto<AssetRentDto> GetCustomersByFilter(AssetRentFilter assetRentFilter)
+        public PagedResultDto<AssetRentDto> GetAssetRentByFilter(AssetRentFilter assetRentFilter)
         {
             return assetRentAppService.GetAssetRent(assetRentFilter);
         }
@@ -41,7 +41,7 @@ namespace GWebsite.AbpZeroTemplate.Application.Controllers
         }
 
         [HttpGet]
-        public AssetRentForView GetAsseRenttForView(int id)
+        public AssetRentForView GetAssetRenttForView(int id)
         {
             return assetRentAppService.GetAssetRentForView(id);
         }

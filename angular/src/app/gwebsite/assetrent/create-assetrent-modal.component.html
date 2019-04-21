@@ -13,10 +13,9 @@
             <form #editForm="ngForm" novalidate (ngSubmit)="save()">
                 <div class="modal-header">
                     <h4 class="modal-title">
-                        <span *ngIf="asset.id"
-                            >Cập nhật tài sản : {{ asset.nameAsset }}</span
-                        >
-                        <span *ngIf="!asset.id">Tạo mới tài sản </span>
+                        <span *ngIf="!assetrent.id"
+                            >Tạo mới chi tiết tài sản
+                        </span>
                     </h4>
                     <button
                         type="button"
@@ -40,37 +39,65 @@
                             maxlength="64"
                         />
                         <validation-messages
-                            [formCtrl]="nameInput"
+                            [formCtrl]="nameAssetInput"
                         ></validation-messages>
                     </div>
                     <div class="form-group">
-                        <label>Số lượng *</label>
+                        <label>Người Thuê *</label>
                         <input
                             #addressInput="ngModel"
                             class="form-control"
                             type="text"
-                            name="MountAsset"
-                            [(ngModel)]="asset.mountAsset"
+                            name="RentBy"
+                            [(ngModel)]="assetrent.RentBy"
                             required
                             maxlength="64"
                         />
                         <validation-messages
-                            [formCtrl]="mountAssetInput"
+                            [formCtrl]="rentByInput"
                         ></validation-messages>
                     </div>
                     <div class="form-group">
-                        <label>Giá Trị *</label>
+                        <label>Ngày/tháng/năm thuê *</label>
+                        <input
+                            #addressInput="ngModel"
+                            class="form-control"
+                            type="datetime-local"
+                            name="DateRent"
+                            [(ngModel)]="assetrent.DateRent"
+                        />
+                        <validation-messages
+                            [formCtrl]="dateRentInput"
+                        ></validation-messages>
+                    </div>
+                    <div class="form-group">
+                        <label>Số lượng Thuê *</label>
                         <input
                             #addressInput="ngModel"
                             class="form-control"
                             type="text"
-                            name="ValueAsset"
-                            [(ngModel)]="asset.valueAsset"
+                            name="NumberRent"
+                            [(ngModel)]="assetrent.NumberRent"
                             required
                             maxlength="64"
                         />
                         <validation-messages
-                            [formCtrl]="mountAssetInput"
+                            [formCtrl]="numberRentInput"
+                        ></validation-messages>
+                    </div>
+                    <div class="form-group">
+                        <label>Số lượng trả *</label>
+                        <input
+                            #addressInput="ngModel"
+                            class="form-control"
+                            type="text"
+                            name="NumberPay"
+                            [(ngModel)]="assetrent.NumberPay"
+                            required
+                            maxlength="64"
+                        />
+                        <validation-messages
+                            [formCtrl]="numberPayInput"
                         ></validation-messages>
                     </div>
                 </div>

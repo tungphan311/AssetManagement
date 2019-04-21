@@ -4,6 +4,7 @@ import { MenuClientComponent } from "@app/gwebsite/menu-client/menu-client.compo
 import { DemoModelComponent } from "./demo-model/demo-model.component";
 import { CustomerComponent } from "./customer/customer.component";
 import { AssetComponent } from "./asset/asset.component";
+import { AssetRentComponent } from "./assetrent/assetrent.component";
 
 @NgModule({
     imports: [
@@ -45,6 +46,16 @@ import { AssetComponent } from "./asset/asset.component";
                         path: "asset",
                         component: AssetComponent,
                         data: { permission: "Pages.Administration.Asset" }
+                    }
+                ]
+            },
+            {
+                path: "",
+                children: [
+                    {
+                        path: "assetrent",
+                        component: AssetRentComponent,
+                        data: { permission: "Pages.Administration.AssetRent" }
                     }
                 ]
             }

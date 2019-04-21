@@ -1,4 +1,4 @@
-import { ViewAssetModalComponent } from "./view-asset-modal.component";
+import { ViewAssetRentModalComponent } from "./view-assetrent-modal.component";
 import {
     AfterViewInit,
     Component,
@@ -13,13 +13,13 @@ import * as _ from "lodash";
 import { LazyLoadEvent } from "primeng/components/common/lazyloadevent";
 import { Paginator } from "primeng/components/paginator/paginator";
 import { Table } from "primeng/components/table/table";
-import { AssetServiceProxy } from "@shared/service-proxies/service-proxies";
-import { CreateOrEditAssetModalComponent } from "./creat-or-edit-asset-modal.component";
+import { AssetRentServiceProxy } from "@shared/service-proxies/service-proxies";
+import { CreateAssetRentModalComponent } from "./create-assetrent-modal.component";
 @Component({
-    templateUrl: "./asset.component.html",
+    templateUrl: "./assetrent.component.html",
     animations: [appModuleAnimation()]
 })
-export class AssetComponent extends AppComponentBase
+export class AssetRentComponent extends AppComponentBase
     implements AfterViewInit, OnInit {
     /**
      * @ViewChild là dùng get control và call thuộc tính, functions của control đó
@@ -27,18 +27,19 @@ export class AssetComponent extends AppComponentBase
     @ViewChild("dataTable") dataTable: Table;
     @ViewChild("paginator") paginator: Paginator;
     @ViewChild("createOrEditModal")
-    createOrEditModal: CreateOrEditAssetModalComponent;
-    @ViewChild("viewAssetModal")
-    viewAssetModal: ViewAssetModalComponent;
+    createOrEditModal: CreateAssetRentModalComponent;
+    @ViewChild("viewAssetRentModal")
+    viewAssetModal: ViewAssetRentModalComponent;
 
     /**
      * tạo các biến dể filters
      */
     assetName: string;
+    rentBy: string;
 
     constructor(
         injector: Injector,
-        private _assetService: AssetServiceProxy,
+        private _assetRentService: AssetRentServiceProxy,
         private _activatedRoute: ActivatedRoute
     ) {
         super(injector);
@@ -59,10 +60,10 @@ export class AssetComponent extends AppComponentBase
     }
 
     /**
-     * Hàm get danh sách Customer
+     * Hàm get danh sách AssetRent
      * @param event
      */
-    getAssets(event?: LazyLoadEvent) {
+    getAsssetsRent(event?: LazyLoadEvent) {
         if (!this.paginator || !this.dataTable) {
             return;
         }
@@ -77,10 +78,11 @@ export class AssetComponent extends AppComponentBase
         this.reloadList(null, event);
     }
 
-    reloadList(assetName, event?: LazyLoadEvent) {
-        this._assetService
-            .getAssetByFilter(
+    reloadList(assetName, rentBy, event?: LazyLoadEvent) {
+        this._assetRentService
+            .getAssetRentByFilter(
                 assetName,
+                rentBy,
                 this.primengTableHelper.getSorting(this.dataTable),
                 this.primengTableHelper.getMaxResultCount(
                     this.paginator,
@@ -95,8 +97,8 @@ export class AssetComponent extends AppComponentBase
             });
     }
 
-    deleteCustomer(id): void {
-        this._assetService.deleteAsset(id).subscribe(() => {
+    deleteAssetRent(id): void {
+        this._assetRentService.deleteAssetRent(id).subscribe(() => {
             this.reloadPage();
         });
     }
@@ -124,7 +126,7 @@ export class AssetComponent extends AppComponentBase
     }
 
     //hàm show view create MenuClient
-    createCustomer() {
+    createAssetRent() {
         this.createOrEditModal.show();
     }
 

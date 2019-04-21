@@ -57,6 +57,12 @@ export class AppNavigationService {
                     "Pages.Administration.Asset",
                     "flaticon-menu-1",
                     "/app/gwebsite/asset"
+                ),
+                new AppMenuItem(
+                    "AssetRent",
+                    "Pages.Administration.AssetRent",
+                    "flaticon-menu-1",
+                    "/app/gwebsite/assetrent"
                 )
             ]),
             new AppMenuItem("Systems", "", "flaticon-layers", "", [

@@ -11,7 +11,7 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.AssetRents.Dto
     {
         public string nameAsset { get; set; }
         public string rentBy { get; set; }
-        public DateTime? dateRent { get; set; }
+        public DateTime? DateRent { get; set; } 
         public DateTime? datePay { get; set; }
         public int numberRent { get; set; }
         public int numberPay { get; set; }
