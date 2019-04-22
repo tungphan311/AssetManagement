@@ -24,7 +24,6 @@ export class CreateOrEditVehicleModalComponent extends AppComponentBase {
     saving = false;
 
     vehicle: VehicleInput = new VehicleInput();
-    date: Date = new Date();
 
     constructor(
         injector: Injector,
