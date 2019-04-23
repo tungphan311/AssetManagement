@@ -26,5 +26,15 @@
 
         public const string Pages_Administration_Merchandise = "Pages.Administration.Merchandise";
         public const string Pages_Administration_Merchandise_Create = "Pages.Administration.Merchandise.Create";
+
+        public const string Pages_Administration_Vendor = "Pages.Administration.Vendor";
+        public const string Pages_Administration_Vendor_Create = "Pages.Administration.Vendor.Create";
+        public const string Pages_Administration_Vendor_Edit = "Pages.Administration.Vendor.Edit";
+        public const string Pages_Administration_Vendor_Delete = "Pages.Administration.Vendor.Delete";
+
+        public const string Pages_Administration_VendorType = "Pages.Administration.VendorType";
+        public const string Pages_Administration_VendorType_Create = "Pages.Administration.VendorType.Create";
+        public const string Pages_Administration_VendorType_Edit = "Pages.Administration.VendorType.Edit";
+        public const string Pages_Administration_VendorType_Delete = "Pages.Administration.VendorType.Delete";
     }
 }

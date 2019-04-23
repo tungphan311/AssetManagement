@@ -5,16 +5,27 @@ import { AppCommonModule } from '@app/shared/common/app-common.module';
 import { UtilsModule } from '@shared/utils/utils.module';
 import { CountoModule } from 'angular2-counto';
 import { EasyPieChartModule } from 'ng2modules-easypiechart';
-import { ModalModule, TabsModule, TooltipModule } from 'ngx-bootstrap';
-
-import { DashboardComponent } from './dashboard/dashboard.component';
- 
+import { ModalModule, PopoverModule, TabsModule, TooltipModule } from 'ngx-bootstrap';
+import { FileUploadModule } from 'ng2-file-upload';
+import { AutoCompleteModule, EditorModule, FileUploadModule as PrimeNgFileUploadModule, InputMaskModule, PaginatorModule } from 'primeng/primeng';
+import { TableModule } from 'primeng/table';
+import { DashboardComponent } from './dashboard/dashboard.component'; 
 import { MainRoutingModule } from './main-routing.module';
+
 import { MerchandiseComponent } from './merchandise/merchandise.component';
-import { VenderComponent } from './vender/vender.component';
+
 import { AssignmentTableComponent } from './assignment-table/assignment-table.component';
 import { CreateMerchandiseModalComponent } from './merchandise/create-merchandise-modal.component'
 
+import { VendorComponent } from './vendor/vendor.component';
+import { ViewVendorModalComponent } from './vendor/view-vendor-modal.component';
+import { CreateOrEditVendorModalComponent } from './vendor/create-or-edit-vendor-modal.component';
+import { VendorServiceProxy } from './../../shared/service-proxies/service-proxies';
+
+import { VendorTypeComponent } from './vendortype/vendortype.component';
+import { ViewVendorTypeModalComponent } from './vendortype/view-vendortype-modal.component';
+import { CreateOrEditVendorTypeModalComponent } from './vendortype/create-or-edit-vendortype-modal.component';
+import { VendorTypeServiceProxy } from './../../shared/service-proxies/service-proxies';
 @NgModule({
     imports: [
         CommonModule,
@@ -26,14 +37,30 @@ import { CreateMerchandiseModalComponent } from './merchandise/create-merchandis
         UtilsModule,
         MainRoutingModule,
         CountoModule,
-        EasyPieChartModule
+        EasyPieChartModule,
+        FileUploadModule,
+        ModalModule.forRoot(),
+        TabsModule.forRoot(),
+        TooltipModule.forRoot(),
+        PopoverModule.forRoot(),
+        TableModule,
+        PaginatorModule,
+        PrimeNgFileUploadModule,
+        AutoCompleteModule,
+        EditorModule,
+        InputMaskModule
     ],
     declarations: [
         DashboardComponent,
         MerchandiseComponent,
-        VenderComponent,
+        VendorComponent, CreateOrEditVendorModalComponent, ViewVendorModalComponent,
         AssignmentTableComponent,
-        CreateMerchandiseModalComponent
+        CreateMerchandiseModalComponent,
+        VendorTypeComponent, CreateOrEditVendorTypeModalComponent, ViewVendorTypeModalComponent,
+    ],
+    providers: [
+        VendorServiceProxy,
+        VendorTypeServiceProxy    
     ]
 })
 export class MainModule { }

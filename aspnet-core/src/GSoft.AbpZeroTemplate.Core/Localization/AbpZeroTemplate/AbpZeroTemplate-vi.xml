@@ -787,7 +787,18 @@
     <text name="Pink">Màu hồng</text>
     <text name="Yellow">Màu vàng</text>
     <text name="Purchasing">Quản lý mua sắm</text>
-    <text name="Vender">Danh mục Nhà cung cấp</text>
+    <text name="Vendor">Danh mục Nhà cung cấp</text>
+    <text name="VendorInfo">Thông tin nhà cung cấp</text>
+    <text name="VendorName">Tên nhà cung cấp</text>
+    <text name="VendorTypeID">Loại nhà cung cấp</text>
+    <text name="UpdateVendor">Cập nhật nhà cung cấp</text>
+    <text name="CreateNewVendor">Tạo mới nhà cung cấp</text>
+    <text name="Info">Thông tin</text>
+    <text name="VendorType">Danh mục Loại nhà cung cấp</text>
+    <text name="VendorTypeName">Tên gọi</text>
+    <text name="VendorTypeInfo">Thông tin loại nhà cung cấp</text>
+    <text name="UpdateVendorType">Cập nhật loại nhà cung cấp</text>
+    <text name="CreateNewVendorType">Tạo mới loại nhà cung cấp</text>
     <text name="Merchandise">Danh mục Hàng hoá</text>
     <text name="AssignmentTable">Bảng gán</text>
   </texts>

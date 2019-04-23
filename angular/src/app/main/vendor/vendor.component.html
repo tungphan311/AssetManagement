@@ -1,0 +1,130 @@
+<div [@routerTransition]>
+
+    <div class="m-subheader ">
+        <div class="d-flex align-items-center">
+            <div class="mr-auto col-xs-6">
+                <h3 class="m-subheader__title m-subheader__title--separator">
+                    <span>{{l("Vendor")}}</span>
+                </h3>
+                <span class="m-section__sub">
+                    {{l("VendorInfo")}}
+                </span>
+            </div>
+            <div class="col-xs-6 text-right">
+                <button (click)="createVendor()" *ngIf="isGranted('Pages.Administration.Vendor.Create')"
+                    class="btn btn-primary"><i class="fa fa-plus"></i> {{l("CreateNewVendor")}}</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="m-content">
+        <div class="m-portlet m-portlet--mobile">
+            <div class="m-portlet__body">
+                <form autocomplete="off">
+                    <div class="m-form m-form--label-align-right" id="TextsFilterForm">
+                        <div class="row align-items-center m--margin-bottom-10">
+                            <div class="col-sm-12">
+                                <div class="input-group">
+                                    <input [(ngModel)]="vendorName" name="vendorName" autoFocus class="form-control"
+                                        placeholder="Type Vendor Name" type="text">
+                                    <span class="input-group-btn">
+                                        <button (click)="applyFilters()" class="btn btn-primary" type="submit"><i
+                                                class="icon-refresh"></i>
+                                            {{l("Refresh")}}</button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <div class="row align-items-center">
+                    <!--<Primeng-TurboTable-Start>-->
+                    <div class="primeng-datatable-container" [busyIf]="primengTableHelper.isLoading">
+                        <p-table #dataTable (onLazyLoad)="getVendors($event)" [value]="primengTableHelper.records"
+                            rows="{{primengTableHelper.defaultRecordsCountPerPage}}" [paginator]="false" [lazy]="true"
+                            [responsive]="primengTableHelper.isResponsive">
+                            <ng-template pTemplate="header">
+                                <tr>
+                                    <th pSortableColumn="name">
+                                        {{l("VendorName")}}
+                                        <p-sortIcon field="name"></p-sortIcon>
+                                    </th>
+                                    <th pSortableColumn="typeid">
+                                        {{l("VendorTypeID")}}
+                                        <p-sortIcon field="typeid"></p-sortIcon>
+                                    </th>
+                                    <th pSortableColumn="emailaddress">
+                                        {{l("EmailAddress")}}
+                                    </th>
+                                    <th pSortableColumn="address">
+                                        {{l("Address")}}
+                                    </th>
+                                    <th pSortableColumn="phonenumber">
+                                        {{l("PhoneNumber")}}
+                                    </th>
+                                    <th>{{l('Edit')}}</th>
+                                </tr>
+                            </ng-template>
+                            <ng-template pTemplate="body" let-record="$implicit">
+                                <tr>
+                                    <td>
+                                        <span class="ui-column-title">{{l("VendorName")}}</span>
+                                        <span title="{{record.name}}">{{truncateString(record.name)}}</span>
+                                    </td>
+                                    <td>
+                                        <span class="ui-column-title">{{l("VendorTypeID")}}</span>
+                                        <span title="{{record.typeID}}">{{truncateString(record.typeID)}}</span>
+                                    </td>
+                                    <td>
+                                        <span class="ui-column-title">{{l("EmailAddress")}}</span>
+                                        <span title="{{record.emailAddress}}">{{truncateString(record.emailAddress)}}</span>
+                                    </td>
+                                    <td>
+                                        <span class="ui-column-title">{{l("Address")}}</span>
+                                        <span title="{{record.address}}">{{truncateString(record.address)}}</span>
+                                    </td>
+                                    <td>
+                                        <span class="ui-column-title">{{l("PhoneNumber")}}</span>
+                                        <span title="{{record.phoneNumber}}">{{truncateString(record.phoneNumber)}}</span>
+                                    </td>
+                                    <td>
+                                        <button class="btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill"
+                                                (click)="createOrEditModal.show(record.id)" title="{{l('Edit')}}">
+                                            <i class="fa fa-edit" [attr.aria-label]="l('Edit')"></i>
+                                        </button>
+
+                                        <button class="btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill"
+                                                (click)="deleteVendor(record.id)" title="{{l('Delete')}}">
+                                            <i class="fa fa-times" [attr.aria-label]="l('Delete')"></i>
+                                        </button>
+
+                                        <button class="btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill"
+                                                (click)="viewVendorModal.show(record.id)" title="{{l('View')}}">
+                                            <i class="fa fa-eye" [attr.aria-label]="l('View')"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </ng-template>
+                        </p-table>
+                        <div class="primeng-no-data" *ngIf="primengTableHelper.totalRecordsCount == 0">
+                            {{l('NoData')}}
+                        </div>
+                        <div class="primeng-paging-container">
+                            <p-paginator rows="{{primengTableHelper.defaultRecordsCountPerPage}}" #paginator
+                                (onPageChange)="getVendors($event)"
+                                [totalRecords]="primengTableHelper.totalRecordsCount"
+                                [rowsPerPageOptions]="primengTableHelper.predefinedRecordsCountPerPage">
+                            </p-paginator>
+                            <span class="total-records-count">
+                                {{l('TotalRecordsCount', primengTableHelper.totalRecordsCount)}}
+                            </span>
+                        </div>
+                    </div>
+                    <!--<Primeng-TurboTable-End>-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <createOrEditVendorModal #createOrEditModal (modalSave)="reloadPage()"></createOrEditVendorModal>
+    <viewVendorModal #viewVendorModal></viewVendorModal>
+</div>

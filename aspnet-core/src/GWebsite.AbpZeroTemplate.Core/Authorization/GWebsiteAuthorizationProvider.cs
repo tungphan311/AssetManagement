@@ -48,6 +48,16 @@ namespace GWebsite.AbpZeroTemplate.Core.Authorization
 
             var merchandise = pages.CreateChildPermission(GWebsitePermissions.Pages_Administration_Merchandise, L("Merchandise"));
             merchandise.CreateChildPermission(GWebsitePermissions.Pages_Administration_Merchandise_Create, L("CreateNewMerchandise"));
+
+            var vendor = pages.CreateChildPermission(GWebsitePermissions.Pages_Administration_Vendor, L("Vendor"));
+            vendor.CreateChildPermission(GWebsitePermissions.Pages_Administration_Vendor_Create, L("CreateNewVendor"));
+            vendor.CreateChildPermission(GWebsitePermissions.Pages_Administration_Vendor_Edit, L("EditingVendor"));
+            vendor.CreateChildPermission(GWebsitePermissions.Pages_Administration_Vendor_Delete, L("DeletingVendor"));
+
+            var vendortype = pages.CreateChildPermission(GWebsitePermissions.Pages_Administration_VendorType, L("VendorType"));
+            vendortype.CreateChildPermission(GWebsitePermissions.Pages_Administration_VendorType_Create, L("CreateNewVendorType"));
+            vendortype.CreateChildPermission(GWebsitePermissions.Pages_Administration_VendorType_Edit, L("EditingVendorType"));
+            vendortype.CreateChildPermission(GWebsitePermissions.Pages_Administration_VendorType_Delete, L("DeletingVendorType"));
         }
 
         private static ILocalizableString L(string name)
