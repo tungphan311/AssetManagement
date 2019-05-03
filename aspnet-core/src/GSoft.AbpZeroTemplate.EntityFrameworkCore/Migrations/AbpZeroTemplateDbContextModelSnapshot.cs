@@ -1703,15 +1703,11 @@ namespace GSoft.AbpZeroTemplate.Migrations
 
                     b.Property<DateTime?>("CreatedDate");
 
-                    b.Property<string>("Info")
-                        .IsRequired()
-                        .HasMaxLength(256);
+                    b.Property<string>("Info");
 
                     b.Property<bool>("IsDelete");
 
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(64);
+                    b.Property<string>("Name");
 
                     b.Property<double>("Price");
 
@@ -1723,7 +1719,7 @@ namespace GSoft.AbpZeroTemplate.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Merchandise");
+                    b.ToTable("Merchandises");
                 });
 
             modelBuilder.Entity("GWebsite.AbpZeroTemplate.Core.Models.Permission", b =>

@@ -10,21 +10,14 @@ using GSoft.AbpZeroTemplate;
 
 namespace GWebsite.AbpZeroTemplate.Core.Models
 {
-    [Table("Merchandise")]
     public class Merchandise: FullAuditModel
     {  
-        [Required]
-        [MaxLength(MerchandiseConsts.MaxNameLength)]
-        public virtual string Name { get; set; }
+        public string Name { get; set; }
 
-        [Required]
-        public virtual int TypeID { get; set; }
+        public int TypeID { get; set; }
 
-        [Required]
-        [MaxLength(MerchandiseConsts.MaxInfoLength)]
-        public virtual string Info { get; set; }
+        public string Info { get; set; }
 
-        [Required]
-        public virtual double Price { get; set; }
+        public double Price { get; set; }
     }
 }

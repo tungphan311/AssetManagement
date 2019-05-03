@@ -26,6 +26,8 @@
 
         public const string Pages_Administration_Merchandise = "Pages.Administration.Merchandise";
         public const string Pages_Administration_Merchandise_Create = "Pages.Administration.Merchandise.Create";
+        public const string Pages_Administration_Merchandise_Edit = "Pages.Administration.Merchandise.Edit";
+        public const string Pages_Administration_Merchandise_Delete = "Pages.Administration.Merchandise.Delete";
 
         public const string Pages_Administration_Vendor = "Pages.Administration.Vendor";
         public const string Pages_Administration_Vendor_Create = "Pages.Administration.Vendor.Create";

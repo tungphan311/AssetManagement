@@ -15,17 +15,16 @@ import { MainRoutingModule } from './main-routing.module';
 import { MerchandiseComponent } from './merchandise/merchandise.component';
 
 import { AssignmentTableComponent } from './assignment-table/assignment-table.component';
-import { CreateMerchandiseModalComponent } from './merchandise/create-merchandise-modal.component'
 
 import { VendorComponent } from './vendor/vendor.component';
 import { ViewVendorModalComponent } from './vendor/view-vendor-modal.component';
 import { CreateOrEditVendorModalComponent } from './vendor/create-or-edit-vendor-modal.component';
-import { VendorServiceProxy } from './../../shared/service-proxies/service-proxies';
 
 import { VendorTypeComponent } from './vendortype/vendortype.component';
 import { ViewVendorTypeModalComponent } from './vendortype/view-vendortype-modal.component';
 import { CreateOrEditVendorTypeModalComponent } from './vendortype/create-or-edit-vendortype-modal.component';
-import { VendorTypeServiceProxy } from './../../shared/service-proxies/service-proxies';
+import { CreateOrEditMerchandiseModalComponent } from './merchandise/create-or-edit-merchandise-modal.component';
+import { ViewMerchandiseModalComponent } from './merchandise/view-merchandise-modal.component';
 @NgModule({
     imports: [
         CommonModule,
@@ -52,15 +51,14 @@ import { VendorTypeServiceProxy } from './../../shared/service-proxies/service-p
     ],
     declarations: [
         DashboardComponent,
-        MerchandiseComponent,
+        MerchandiseComponent, CreateOrEditMerchandiseModalComponent, ViewMerchandiseModalComponent,
         VendorComponent, CreateOrEditVendorModalComponent, ViewVendorModalComponent,
         AssignmentTableComponent,
-        CreateMerchandiseModalComponent,
+        
         VendorTypeComponent, CreateOrEditVendorTypeModalComponent, ViewVendorTypeModalComponent,
     ],
     providers: [
-        VendorServiceProxy,
-        VendorTypeServiceProxy    
+        
     ]
 })
 export class MainModule { }

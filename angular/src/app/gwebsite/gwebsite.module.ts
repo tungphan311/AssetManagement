@@ -44,8 +44,7 @@ import { CreateOrEditCustomerModalComponent } from './customer/create-or-edit-cu
         CustomerComponent, CreateOrEditCustomerModalComponent, ViewCustomerModalComponent,
     ],
     providers: [
-        DemoModelServiceProxy,
-        CustomerServiceProxy
+        DemoModelServiceProxy
     ]
 })
 export class GWebsiteModule { }

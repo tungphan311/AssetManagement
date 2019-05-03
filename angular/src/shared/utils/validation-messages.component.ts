@@ -29,6 +29,9 @@ export class ValidationMessagesComponent implements AfterViewInit {
 
     ngAfterViewInit(): void {
         setTimeout(() => {
+            if (!this.formCtrl.name) {
+                return;
+            }
             let targetElements = $(this._elementRef.nativeElement).parent().find('[name=\'' + this.formCtrl.name + '\']');
             if (!targetElements || targetElements.length > 1) {
                 return;

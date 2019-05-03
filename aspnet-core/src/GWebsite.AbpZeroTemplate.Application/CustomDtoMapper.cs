@@ -2,8 +2,8 @@ using AutoMapper;
 using GWebsite.AbpZeroTemplate.Application.Share.Customers.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.DemoModels.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.MenuClients.Dto;
-using GWebsite.AbpZeroTemplate.Application.Share.Merchandise;
-using GWebsite.AbpZeroTemplate.Application.Share.Merchandise.Dto;
+using GWebsite.AbpZeroTemplate.Application.Share.Merchandises;
+using GWebsite.AbpZeroTemplate.Application.Share.Merchandises.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.Vendors.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.VendorTypes.Dto;
 using GWebsite.AbpZeroTemplate.Core.Models;
@@ -32,8 +32,10 @@ namespace GWebsite.AbpZeroTemplate.Applications
             configuration.CreateMap<Customer, CustomerForViewDto>();
 
             // Merchandise
-            configuration.CreateMap<Merchandise, MerchandiseListDto>();
-            configuration.CreateMap<CreateMerchandiseInput, Merchandise>();
+            configuration.CreateMap<Merchandise, MerchandiseDto>();
+            configuration.CreateMap<MerchandiseInput, Merchandise>();
+            configuration.CreateMap<Merchandise, MerchandiseInput>();
+            configuration.CreateMap<Merchandise, MerchandiseForViewDto>();
 
             // Vendor            
             configuration.CreateMap<Vendor, VendorDto>();
