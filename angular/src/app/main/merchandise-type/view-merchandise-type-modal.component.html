@@ -1,0 +1,32 @@
+<div bsModal #viewModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="viewModal"
+    aria-hidden="true" [config]="{backdrop: 'static'}">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">
+                    <span *ngIf="merchandiseType.id">{{l("EditMerchandiseType")}}: {{merchandiseType.name}}</span>
+                    <span *ngIf="!merchandiseType.id">{{l("CreateNewMerchandiseType")}}</span>
+                </h4>
+                <button type="button" class="close" (click)="close()" [attr.aria-lable]="l('Close')">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <p>Tên loại hàng hoá: {{merchandiseType.name}}</p>
+                </div>
+                <div class="form-group">
+                    <label>Thông tin chi tiết:</label>
+                    <p>{{merchandiseType.info}}</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button [disabled]="saving" type="button" class="btn btn-default" (click)="close()">{{l("Cancel")}}</button>
+                <button type="submit" class="btn btn-primary" [buttonBusy]="saving" [busyText]="l('SavingWithThreeDot')">
+                    <i class="fa fa-save"></i>
+                    <span>{{l("Save")}}</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

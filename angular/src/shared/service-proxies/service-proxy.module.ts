@@ -41,6 +41,7 @@ import { WebApiServiceProxy } from './webapi.service';
         ApiServiceProxies.UiCustomizationSettingsServiceProxy,
         ApiServiceProxies.CustomerServiceProxy,
         ApiServiceProxies.MerchandiseServiceProxy,
+        ApiServiceProxies.MerchandiseTypeServiceProxy,
         ApiServiceProxies.VendorServiceProxy,
         ApiServiceProxies.VendorTypeServiceProxy,
         WebApiServiceProxy,

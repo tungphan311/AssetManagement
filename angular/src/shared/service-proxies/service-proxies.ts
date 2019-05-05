@@ -4833,6 +4833,295 @@ export class MerchandiseServiceProxy {
 }
 
 @Injectable()
+export class MerchandiseTypeServiceProxy {
+    private http: HttpClient;
+    private baseUrl: string;
+    protected jsonParseReviver: ((key: string, value: any) => any) | undefined = undefined;
+
+    constructor(@Inject(HttpClient) http: HttpClient, @Optional() @Inject(API_BASE_URL) baseUrl?: string) {
+        this.http = http;
+        this.baseUrl = baseUrl ? baseUrl : "";
+    }
+
+    /**
+     * @name (optional) 
+     * @sorting (optional) 
+     * @maxResultCount (optional) 
+     * @skipCount (optional) 
+     * @return Success
+     */
+    getMerchandiseByFilter(name: string | null | undefined, sorting: string | null | undefined, maxResultCount: number | null | undefined, skipCount: number | null | undefined): Observable<PagedResultDtoOfMerchandiseTypeDto> {
+        let url_ = this.baseUrl + "/api/MerchandiseType/GetMerchandiseByFilter?";
+        if (name !== undefined)
+            url_ += "Name=" + encodeURIComponent("" + name) + "&"; 
+        if (sorting !== undefined)
+            url_ += "Sorting=" + encodeURIComponent("" + sorting) + "&"; 
+        if (maxResultCount !== undefined)
+            url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&"; 
+        if (skipCount !== undefined)
+            url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetMerchandiseByFilter(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetMerchandiseByFilter(<any>response_);
+                } catch (e) {
+                    return <Observable<PagedResultDtoOfMerchandiseTypeDto>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<PagedResultDtoOfMerchandiseTypeDto>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetMerchandiseByFilter(response: HttpResponseBase): Observable<PagedResultDtoOfMerchandiseTypeDto> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 ? PagedResultDtoOfMerchandiseTypeDto.fromJS(resultData200) : new PagedResultDtoOfMerchandiseTypeDto();
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<PagedResultDtoOfMerchandiseTypeDto>(<any>null);
+    }
+
+    /**
+     * @id (optional) 
+     * @return Success
+     */
+    getMerchandiseTypeForEdit(id: number | null | undefined): Observable<MerchandiseTypeInput> {
+        let url_ = this.baseUrl + "/api/MerchandiseType/GetMerchandiseTypeForEdit?";
+        if (id !== undefined)
+            url_ += "id=" + encodeURIComponent("" + id) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetMerchandiseTypeForEdit(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetMerchandiseTypeForEdit(<any>response_);
+                } catch (e) {
+                    return <Observable<MerchandiseTypeInput>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<MerchandiseTypeInput>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetMerchandiseTypeForEdit(response: HttpResponseBase): Observable<MerchandiseTypeInput> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 ? MerchandiseTypeInput.fromJS(resultData200) : new MerchandiseTypeInput();
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<MerchandiseTypeInput>(<any>null);
+    }
+
+    /**
+     * @input (optional) 
+     * @return Success
+     */
+    createOrEditMerchandiseType(input: MerchandiseTypeInput | null | undefined): Observable<void> {
+        let url_ = this.baseUrl + "/api/MerchandiseType/CreateOrEditMerchandiseType";
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(input);
+
+        let options_ : any = {
+            body: content_,
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+            })
+        };
+
+        return this.http.request("post", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processCreateOrEditMerchandiseType(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processCreateOrEditMerchandiseType(<any>response_);
+                } catch (e) {
+                    return <Observable<void>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<void>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processCreateOrEditMerchandiseType(response: HttpResponseBase): Observable<void> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return _observableOf<void>(<any>null);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<void>(<any>null);
+    }
+
+    /**
+     * @id (optional) 
+     * @return Success
+     */
+    deleteMerchandiseType(id: number | null | undefined): Observable<void> {
+        let url_ = this.baseUrl + "/api/MerchandiseType/DeleteMerchandiseType?";
+        if (id !== undefined)
+            url_ += "id=" + encodeURIComponent("" + id) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+            })
+        };
+
+        return this.http.request("delete", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processDeleteMerchandiseType(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processDeleteMerchandiseType(<any>response_);
+                } catch (e) {
+                    return <Observable<void>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<void>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processDeleteMerchandiseType(response: HttpResponseBase): Observable<void> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return _observableOf<void>(<any>null);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<void>(<any>null);
+    }
+
+    /**
+     * @id (optional) 
+     * @return Success
+     */
+    getMerchandiseTypeForView(id: number | null | undefined): Observable<MerchandiseTypeForViewDto> {
+        let url_ = this.baseUrl + "/api/MerchandiseType/GetMerchandiseTypeForView?";
+        if (id !== undefined)
+            url_ += "id=" + encodeURIComponent("" + id) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetMerchandiseTypeForView(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetMerchandiseTypeForView(<any>response_);
+                } catch (e) {
+                    return <Observable<MerchandiseTypeForViewDto>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<MerchandiseTypeForViewDto>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetMerchandiseTypeForView(response: HttpResponseBase): Observable<MerchandiseTypeForViewDto> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 ? MerchandiseTypeForViewDto.fromJS(resultData200) : new MerchandiseTypeForViewDto();
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<MerchandiseTypeForViewDto>(<any>null);
+    }
+}
+
+@Injectable()
 export class NotificationServiceProxy {
     private http: HttpClient;
     private baseUrl: string;
@@ -15632,6 +15921,182 @@ export interface IMerchandiseForViewDto {
     typeID: number | undefined;
     info: string | undefined;
     price: number | undefined;
+}
+
+export class PagedResultDtoOfMerchandiseTypeDto implements IPagedResultDtoOfMerchandiseTypeDto {
+    totalCount!: number | undefined;
+    items!: MerchandiseTypeDto[] | undefined;
+
+    constructor(data?: IPagedResultDtoOfMerchandiseTypeDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.totalCount = data["totalCount"];
+            if (data["items"] && data["items"].constructor === Array) {
+                this.items = [];
+                for (let item of data["items"])
+                    this.items.push(MerchandiseTypeDto.fromJS(item));
+            }
+        }
+    }
+
+    static fromJS(data: any): PagedResultDtoOfMerchandiseTypeDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new PagedResultDtoOfMerchandiseTypeDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["totalCount"] = this.totalCount;
+        if (this.items && this.items.constructor === Array) {
+            data["items"] = [];
+            for (let item of this.items)
+                data["items"].push(item.toJSON());
+        }
+        return data; 
+    }
+}
+
+export interface IPagedResultDtoOfMerchandiseTypeDto {
+    totalCount: number | undefined;
+    items: MerchandiseTypeDto[] | undefined;
+}
+
+export class MerchandiseTypeDto implements IMerchandiseTypeDto {
+    name!: string | undefined;
+    info!: string | undefined;
+    id!: number | undefined;
+
+    constructor(data?: IMerchandiseTypeDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.name = data["name"];
+            this.info = data["info"];
+            this.id = data["id"];
+        }
+    }
+
+    static fromJS(data: any): MerchandiseTypeDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new MerchandiseTypeDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["name"] = this.name;
+        data["info"] = this.info;
+        data["id"] = this.id;
+        return data; 
+    }
+}
+
+export interface IMerchandiseTypeDto {
+    name: string | undefined;
+    info: string | undefined;
+    id: number | undefined;
+}
+
+export class MerchandiseTypeInput implements IMerchandiseTypeInput {
+    name!: string | undefined;
+    info!: string | undefined;
+    id!: number | undefined;
+
+    constructor(data?: IMerchandiseTypeInput) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.name = data["name"];
+            this.info = data["info"];
+            this.id = data["id"];
+        }
+    }
+
+    static fromJS(data: any): MerchandiseTypeInput {
+        data = typeof data === 'object' ? data : {};
+        let result = new MerchandiseTypeInput();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["name"] = this.name;
+        data["info"] = this.info;
+        data["id"] = this.id;
+        return data; 
+    }
+}
+
+export interface IMerchandiseTypeInput {
+    name: string | undefined;
+    info: string | undefined;
+    id: number | undefined;
+}
+
+export class MerchandiseTypeForViewDto implements IMerchandiseTypeForViewDto {
+    name!: string | undefined;
+    info!: string | undefined;
+
+    constructor(data?: IMerchandiseTypeForViewDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.name = data["name"];
+            this.info = data["info"];
+        }
+    }
+
+    static fromJS(data: any): MerchandiseTypeForViewDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new MerchandiseTypeForViewDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["name"] = this.name;
+        data["info"] = this.info;
+        return data; 
+    }
+}
+
+export interface IMerchandiseTypeForViewDto {
+    name: string | undefined;
+    info: string | undefined;
 }
 
 export class GetNotificationsOutput implements IGetNotificationsOutput {

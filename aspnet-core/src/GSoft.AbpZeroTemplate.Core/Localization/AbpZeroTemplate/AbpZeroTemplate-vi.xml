@@ -801,5 +801,11 @@
     <text name="CreateNewVendorType">Tạo mới loại nhà cung cấp</text>
     <text name="Merchandise">Danh mục Hàng hoá</text>
     <text name="AssignmentTable">Bảng gán</text>
+    <text name="CreateNewMerchandise">Thêm hàng hoá</text>
+    <text name="MerchandiseInfo">Thông tin hàng hoá</text>
+    <text name="MerchandiseName">Tên hàng hoá</text>
+    <text name="MerchandiseTypeID">Loại hàng hoá</text>
+    <text name="MerchandiseDetail">Thông tin chi tiết</text>
+    <text name="MerchandisePrice">Giá</text>
   </texts>
 </localizationDictionary>

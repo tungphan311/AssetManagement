@@ -4,6 +4,7 @@ using GWebsite.AbpZeroTemplate.Application.Share.DemoModels.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.MenuClients.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.Merchandises;
 using GWebsite.AbpZeroTemplate.Application.Share.Merchandises.Dto;
+using GWebsite.AbpZeroTemplate.Application.Share.MerchandiseTypes.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.Vendors.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.VendorTypes.Dto;
 using GWebsite.AbpZeroTemplate.Core.Models;
@@ -36,6 +37,12 @@ namespace GWebsite.AbpZeroTemplate.Applications
             configuration.CreateMap<MerchandiseInput, Merchandise>();
             configuration.CreateMap<Merchandise, MerchandiseInput>();
             configuration.CreateMap<Merchandise, MerchandiseForViewDto>();
+
+            // MerchandiseType
+            configuration.CreateMap<MerchandiseType, MerchandiseTypeDto>();
+            configuration.CreateMap<MerchandiseTypeInput, MerchandiseType>();
+            configuration.CreateMap<MerchandiseType, MerchandiseTypeInput>();
+            configuration.CreateMap<MerchandiseType, MerchandiseTypeForViewDto>();
 
             // Vendor            
             configuration.CreateMap<Vendor, VendorDto>();

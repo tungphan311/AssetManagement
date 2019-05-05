@@ -38,6 +38,7 @@ export class AppNavigationService {
                 new AppMenuItem('Vendor', null, 'flaticon-users', '/app/main/vendor'),
                 new AppMenuItem('VendorType', null, 'flaticon-users', '/app/main/vendortype'),
                 new AppMenuItem('Merchandise', 'Pages.Administration.Merchandise', 'flaticon-business', '/app/main/merchandise'),
+                new AppMenuItem('MerchandiseType', 'Pages.Administration.MerchandiseType', 'flaticon-business', '/app/main/merchandise-type'),
                 new AppMenuItem('AssignmentTable', null, 'flaticon2-document', '/app/main/assignment-table')
             ])
         ]);

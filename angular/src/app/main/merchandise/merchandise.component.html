@@ -45,18 +45,19 @@
                             <ng-template pTemplate="header">
                                 <tr>
                                     <th pSortableColumn="name">
-                                        Tên hàng hoá
+                                        {{l("MerchandiseName")}}
                                         <p-sortIcon field="name"></p-sortIcon>
                                     </th>
                                     <th pSortableColumn="typeID">
-                                        Loại hàng hoá
+                                        {{l("MerchandiseTypeID")}}
+                                        <p-sortIcon field="typeID"></p-sortIcon>
                                     </th>
                                     <th pSortableColumn="info">
-                                        Thông tin chi tiết
+                                        {{l("MerchandiseDetail")}}
                                         <p-sortIcon field="info"></p-sortIcon>
                                     </th>
                                     <th pSortableColumn="price">
-                                        Giá
+                                        {{l("MerchandisePrice")}}
                                         <p-sortIcon field="price"></p-sortIcon>
                                     </th>
                                     <th>{{l('Edit')}}</th>

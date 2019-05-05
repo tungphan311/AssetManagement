@@ -11,20 +11,19 @@ import { AutoCompleteModule, EditorModule, FileUploadModule as PrimeNgFileUpload
 import { TableModule } from 'primeng/table';
 import { DashboardComponent } from './dashboard/dashboard.component'; 
 import { MainRoutingModule } from './main-routing.module';
-
 import { MerchandiseComponent } from './merchandise/merchandise.component';
-
 import { AssignmentTableComponent } from './assignment-table/assignment-table.component';
-
 import { VendorComponent } from './vendor/vendor.component';
 import { ViewVendorModalComponent } from './vendor/view-vendor-modal.component';
 import { CreateOrEditVendorModalComponent } from './vendor/create-or-edit-vendor-modal.component';
-
 import { VendorTypeComponent } from './vendortype/vendortype.component';
 import { ViewVendorTypeModalComponent } from './vendortype/view-vendortype-modal.component';
 import { CreateOrEditVendorTypeModalComponent } from './vendortype/create-or-edit-vendortype-modal.component';
 import { CreateOrEditMerchandiseModalComponent } from './merchandise/create-or-edit-merchandise-modal.component';
 import { ViewMerchandiseModalComponent } from './merchandise/view-merchandise-modal.component';
+import { MerchandiseTypeComponent } from './merchandise-type/merchandise-type.component';
+import { CreateOrEditMerchandiseTypeModalComponent } from './merchandise-type/create-or-edit-merchandise-type-modal.component';
+import { ViewMerchandiseTypeModalComponent } from './merchandise-type/view-merchandise-type-modal.component';
 @NgModule({
     imports: [
         CommonModule,
@@ -52,9 +51,9 @@ import { ViewMerchandiseModalComponent } from './merchandise/view-merchandise-mo
     declarations: [
         DashboardComponent,
         MerchandiseComponent, CreateOrEditMerchandiseModalComponent, ViewMerchandiseModalComponent,
+        MerchandiseTypeComponent, CreateOrEditMerchandiseTypeModalComponent, ViewMerchandiseTypeModalComponent,
         VendorComponent, CreateOrEditVendorModalComponent, ViewVendorModalComponent,
         AssignmentTableComponent,
-        
         VendorTypeComponent, CreateOrEditVendorTypeModalComponent, ViewVendorTypeModalComponent,
     ],
     providers: [

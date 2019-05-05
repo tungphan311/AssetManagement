@@ -51,6 +51,11 @@ namespace GWebsite.AbpZeroTemplate.Core.Authorization
             merchandise.CreateChildPermission(GWebsitePermissions.Pages_Administration_Merchandise_Edit, L("EditMerchandise"));
             merchandise.CreateChildPermission(GWebsitePermissions.Pages_Administration_Merchandise_Delete, L("DeleteMerchandise"));
 
+            var merchandiseType = pages.CreateChildPermission(GWebsitePermissions.Pages_Administration_MerchandiseType, L("MerchandiseType"));
+            merchandiseType.CreateChildPermission(GWebsitePermissions.Pages_Administration_MerchandiseType_Create, L("CreateNewMerchandiseType"));
+            merchandiseType.CreateChildPermission(GWebsitePermissions.Pages_Administration_MerchandiseType_Edit, L("EditMerchandiseType"));
+            merchandiseType.CreateChildPermission(GWebsitePermissions.Pages_Administration_MerchandiseType_Delete, L("DeleteMerchandiseType"));
+
             var vendor = pages.CreateChildPermission(GWebsitePermissions.Pages_Administration_Vendor, L("Vendor"));
             vendor.CreateChildPermission(GWebsitePermissions.Pages_Administration_Vendor_Create, L("CreateNewVendor"));
             vendor.CreateChildPermission(GWebsitePermissions.Pages_Administration_Vendor_Edit, L("EditingVendor"));

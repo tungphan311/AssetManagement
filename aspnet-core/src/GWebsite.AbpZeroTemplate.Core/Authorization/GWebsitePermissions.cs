@@ -29,6 +29,11 @@
         public const string Pages_Administration_Merchandise_Edit = "Pages.Administration.Merchandise.Edit";
         public const string Pages_Administration_Merchandise_Delete = "Pages.Administration.Merchandise.Delete";
 
+        public const string Pages_Administration_MerchandiseType = "Pages.Administration.MerchandiseType";
+        public const string Pages_Administration_MerchandiseType_Create = "Pages.Administration.MerchandiseType.Create";
+        public const string Pages_Administration_MerchandiseType_Edit = "Pages.Administration.MerchandiseType.Edit";
+        public const string Pages_Administration_MerchandiseType_Delete = "Pages.Administration.MerchandiseType.Delete";
+
         public const string Pages_Administration_Vendor = "Pages.Administration.Vendor";
         public const string Pages_Administration_Vendor_Create = "Pages.Administration.Vendor.Create";
         public const string Pages_Administration_Vendor_Edit = "Pages.Administration.Vendor.Edit";
