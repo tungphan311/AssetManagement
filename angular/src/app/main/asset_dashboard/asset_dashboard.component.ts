@@ -29,20 +29,20 @@ export class AssetDashboardComponent extends AppComponentBase implements OnInit
     	{
         	this._DonViService.getDonVi("DonViChinh").subscribe( result => 
         	{
-                this.header_stats.Assets_Count = result.items[0].soLuongTaiSan;
-                this.header_stats.Assets_Active = result.items[0].taiSanSuDung;
-                this.header_stats.Assets_Storage = result.items[0].taiSanTrongKho;
-                this.header_stats.Assets_Disposed = result.items[0].taiSanHu;
+                this.header_stats.Assets_Count = result[0].soLuongTaiSan;
+                this.header_stats.Assets_Active = result[0].taiSanSuDung;
+                this.header_stats.Assets_Storage = result[0].taiSanTrongKho;
+                this.header_stats.Assets_Disposed = result[0].taiSanHu;
             });
         }
         else
         {
         	this._DonViService.getDonVi(this.userName).subscribe( result => 
         	{
-                this.header_stats.Assets_Count = result.items[0].soLuongTaiSan;
-                this.header_stats.Assets_Active = result.items[0].taiSanSuDung;
-                this.header_stats.Assets_Storage = result.items[0].taiSanTrongKho;
-                this.header_stats.Assets_Disposed = result.items[0].taiSanHu;
+                this.header_stats.Assets_Count = result[0].soLuongTaiSan;
+                this.header_stats.Assets_Active = result[0].taiSanSuDung;
+                this.header_stats.Assets_Storage = result[0].taiSanTrongKho;
+                this.header_stats.Assets_Disposed = result[0].taiSanHu;
             });
         }
     }

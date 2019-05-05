@@ -2,7 +2,7 @@
 
 namespace GSoft.AbpZeroTemplate.DonVi_s
 {
-    public class DonViDto : FullAuditedEntityDto
+    public class DonViDto
     {
         public string TenDonVi { get; set; }
 
@@ -15,5 +15,7 @@ namespace GSoft.AbpZeroTemplate.DonVi_s
         public int TaiSanTrongKho { get; set; }
 
         public int SoLuongTaiSan { get { return TaiSanSuDung + TaiSanHu + TaiSanTrongKho; } }
+
+        public bool IsDeleted { get; set; }
     }
 }
