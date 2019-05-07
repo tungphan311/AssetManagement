@@ -14,6 +14,7 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.MerchandiseTypes
         void CreateOrEditMerchandiseType(MerchandiseTypeInput input);
         MerchandiseTypeInput GetMerchandiseTypeForEdit(int id);
         void DeleteMerchandiseType(int id);
+        String GetNameById(int id);
         PagedResultDto<MerchandiseTypeDto> GetMerchandiseTypes(MerchandiseTypeFilter input);
         MerchandiseTypeForViewDto GetMerchandiseTypeForView(int id);
     }

@@ -99,6 +99,18 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.MerchandiseTypes
                 totalCount,
                 items.Select(item => ObjectMapper.Map<MerchandiseTypeDto>(item)).ToList());
         }
+
+        public string GetNameById(int id)
+        {
+            var merchandiseTypeEntity = merchandiseTypeRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.Id == id);
+
+            if (merchandiseTypeEntity == null)
+            {
+
+            }
+
+            return merchandiseTypeEntity.Name;
+        }
         #endregion
 
         #region private method 

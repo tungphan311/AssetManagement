@@ -7,7 +7,7 @@ import { CountoModule } from 'angular2-counto';
 import { EasyPieChartModule } from 'ng2modules-easypiechart';
 import { ModalModule, PopoverModule, TabsModule, TooltipModule } from 'ngx-bootstrap';
 import { FileUploadModule } from 'ng2-file-upload';
-import { AutoCompleteModule, EditorModule, FileUploadModule as PrimeNgFileUploadModule, InputMaskModule, PaginatorModule } from 'primeng/primeng';
+import { AutoCompleteModule, EditorModule, FileUploadModule as PrimeNgFileUploadModule, InputMaskModule, PaginatorModule, DataTableModule } from 'primeng/primeng';
 import { TableModule } from 'primeng/table';
 import { DashboardComponent } from './dashboard/dashboard.component'; 
 import { MainRoutingModule } from './main-routing.module';
@@ -46,7 +46,9 @@ import { ViewMerchandiseTypeModalComponent } from './merchandise-type/view-merch
         PrimeNgFileUploadModule,
         AutoCompleteModule,
         EditorModule,
-        InputMaskModule
+        InputMaskModule,
+        DataTableModule,
+        PaginatorModule
     ],
     declarations: [
         DashboardComponent,

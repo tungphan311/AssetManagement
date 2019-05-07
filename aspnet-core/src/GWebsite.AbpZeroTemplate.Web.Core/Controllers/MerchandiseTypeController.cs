@@ -32,6 +32,12 @@ namespace GWebsite.AbpZeroTemplate.Application.Controllers
             return merchandiseTypeAppService.GetMerchandiseTypeForEdit(id);
         }
 
+        [HttpGet]
+        public String GetNameById(int id)
+        {
+            return merchandiseTypeAppService.GetNameById(id);
+        }
+
         [HttpPost]
         public void CreateOrEditMerchandiseType([FromBody] MerchandiseTypeInput input)
         {

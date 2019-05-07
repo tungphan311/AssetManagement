@@ -3,11 +3,14 @@ import { appModuleAnimation } from "@shared/animations/routerTransition";
 import { AppComponentBase } from "@shared/common/app-component-base";
 import { Table } from "primeng/components/table/table";
 import { Paginator } from "primeng/components/paginator/paginator";
-import { MerchandiseServiceProxy } from "@shared/service-proxies/service-proxies";
+import { MerchandiseServiceProxy, MerchandiseTypeServiceProxy } from "@shared/service-proxies/service-proxies";
 import { ActivatedRoute, Params } from "@angular/router";
 import { LazyLoadEvent } from "primeng/components/common/lazyloadevent";
 import { CreateOrEditMerchandiseModalComponent } from "./create-or-edit-merchandise-modal.component";
 import { ViewMerchandiseModalComponent } from "./view-merchandise-modal.component";
+import { WebApiServiceProxy } from "@shared/service-proxies/webapi.service";
+import { MerchandiseTypeComponent } from "../merchandise-type/merchandise-type.component";
+import { retry } from "rxjs/operators";
 
 @Component({
     templateUrl: './merchandise.component.html',
@@ -22,15 +25,19 @@ export class MerchandiseComponent extends AppComponentBase implements AfterViewI
     @ViewChild('paginator') paginator: Paginator;
     @ViewChild('createOrEditModal') createOrEditModal: CreateOrEditMerchandiseModalComponent;
     @ViewChild('viewMerchandiseModal') viewMerchandiseModal: ViewMerchandiseModalComponent;
+    @ViewChild('merchandiseType') merchandiseType: MerchandiseTypeComponent;
 
     /**
      * tạo các biến dể filters
      */
-    merchandiseName: string;
+    merchandiseName: string
+
+    merType = []
     
     constructor(
         injector: Injector,
         private _merchandiseService: MerchandiseServiceProxy,
+        private _merTypeService: MerchandiseTypeServiceProxy,
         private _activatedRoute: ActivatedRoute,
     ) {
         super(injector);
@@ -65,6 +72,16 @@ export class MerchandiseComponent extends AppComponentBase implements AfterViewI
         this.reloadList(null, event);
     }
 
+    getTypeNames(id: number): string {
+        this.merType.forEach(element => {
+            if (element.id == id) {
+                return element.name;
+            }
+        });
+
+        return "";
+    }
+
     reloadList(merchandiseName, event?: LazyLoadEvent) {
         this._merchandiseService.getMerchandiseByFilter(merchandiseName, 
             this.primengTableHelper.getSorting(this.dataTable),
@@ -83,6 +100,10 @@ export class MerchandiseComponent extends AppComponentBase implements AfterViewI
             this.merchandiseName = params['name'] || '';
             this.reloadList(this.merchandiseName, null);
         });
+
+        this._merTypeService.getMerchandiseByFilter(null, null, 99, 0).subscribe(result => {
+            this.merType = result.items
+        })
     }
 
     reloadPage(): void {

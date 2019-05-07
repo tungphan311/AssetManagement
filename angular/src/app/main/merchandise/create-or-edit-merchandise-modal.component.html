@@ -20,9 +20,8 @@
                     </div>
                     <div class="form-group">
                         <label>Loại hàng hoá *</label>
-                        <select #nameInput="ngModel" class="form-control" type="text" name="TypeID" [(ngModel)]="merchandise.typeID">
-                            <option value="1">Bàn</option>
-                            <option value="2">Ghế</option>
+                        <select class="form-control" [(ngModel)]="merchandise.typeID" name="typeID" required>
+                            <option *ngFor="let item of merchandiseTypes" [value]="item.id">{{item.name}}</option>
                         </select>
                         <validation-messages [formCtrl]="typeIDInput"></validation-messages>
                     </div>

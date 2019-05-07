@@ -10,5 +10,6 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.MerchandiseTypes.Dto
     public class MerchandiseTypeFilter: PagedAndSortedInputDto
     {
         public string Name { get; set; }
+
     }
 }

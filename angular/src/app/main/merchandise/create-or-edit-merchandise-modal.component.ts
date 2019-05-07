@@ -1,7 +1,11 @@
 import { Component, ElementRef, EventEmitter, Injector, Output, ViewChild } from '@angular/core';
 import { AppComponentBase } from '@shared/common/app-component-base';
 import { ModalDirective } from 'ngx-bootstrap';
-import { MerchandiseInput, MerchandiseServiceProxy } from '@shared/service-proxies/service-proxies';
+import { MerchandiseInput, MerchandiseServiceProxy, ComboboxItemDto, MerchandiseTypeServiceProxy } from '@shared/service-proxies/service-proxies';
+import { Table } from 'primeng/components/table/table';
+import { Paginator } from 'primeng/components/paginator/paginator';
+import { LazyLoadEvent } from 'primeng/primeng';
+import { WebApiServiceProxy } from '@shared/service-proxies/webapi.service';
 
 @Component({
     selector: 'createOrEditMerchandiseModal',
@@ -13,6 +17,8 @@ export class CreateOrEditMerchandiseModalComponent extends AppComponentBase {
     @ViewChild('merchandiseCombobox') merchandiseCombobox: ElementRef;
     @ViewChild('iconCombobox') iconCombobox: ElementRef;
     @ViewChild('dateInput') dateInput: ElementRef;
+    @ViewChild('dataTable') dataTable: Table;
+    @ViewChild('paginator') paginator: Paginator;
 
     /**
     * @Output dùng để public event cho component khác xử lý
@@ -23,9 +29,12 @@ export class CreateOrEditMerchandiseModalComponent extends AppComponentBase {
 
     merchandise: MerchandiseInput = new MerchandiseInput();
 
+    merchandiseTypes = []
+
     constructor(
         injector: Injector,
-        private _merchandiseService: MerchandiseServiceProxy
+        private _merchandiseService: MerchandiseServiceProxy,
+        private _merTypeService: MerchandiseTypeServiceProxy
     ) {
         super(injector);
     }
@@ -36,6 +45,10 @@ export class CreateOrEditMerchandiseModalComponent extends AppComponentBase {
         this._merchandiseService.getMerchandiseForEdit(merchandiseId).subscribe(result => {
             this.merchandise = result;
             this.modal.show();
+        })
+
+        this._merTypeService.getMerchandiseByFilter(null, null, 99, 0).subscribe(result => {
+            this.merchandiseTypes = result.items
         })
     }
 
