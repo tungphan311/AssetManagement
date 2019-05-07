@@ -97,146 +97,139 @@
             
         </div>
     </div>
+
     <div class="row">
         <div class="donut-chart-block block"> 
-            <h2 class="titular">OS AUDIENCE STATS</h2>
-            <div class="donut-chart">
-                <div id="porcion1" class="recorte">
-                    <div class="quesito ios" data-rel="21"></div>
-                </div>
-                <div id="porcion2" class="recorte">
-                    <div class="quesito mac" data-rel="39"></div>
-                </div>
-                <div id="porcion3" class="recorte">
-                    <div class="quesito win" data-rel="31"></div>
-                </div>
-                <div id="porcionFin" class="recorte">
-                    <div class="quesito linux" data-rel="9"></div>
-                </div>
-                <p class="center-date">JUNE<br><span class="scnd-font-color">2013</span></p>        
-            </div>
+            <h2 class="titular">ASSET CHART</h2>
+            <svg x="0px" y="0px" width="300" height="300" viewbox="0 0 300 300">
+                <circle transform="rotate(-90 150 150)" cx="150" cy="150" r="100" fill="#5867dd"/>
+                <circle transform="rotate(-90 150 150)" cx="150" cy="150" r="100" fill="transparent" stroke-width="30" stroke="grey"/>
+                <circle transform="rotate(-90 150 150)" cx="150" cy="150" r="100" fill="transparent" stroke-width="30" stroke="#34bfa3" [attr.stroke-dasharray]="chart.Perimeter" [attr.stroke-dashoffset]="chart.Assets_Active_Span"/>
+                <circle transform="rotate(-90 150 150)" cx="150" cy="150" r="100" fill="transparent" stroke-width="30" stroke="#36a3f7" [attr.stroke-dasharray]="chart.Perimeter" [attr.stroke-dashoffset]="chart.Assets_Storage_Span"/>
+                <circle transform="rotate(-90 150 150)" cx="150" cy="150" r="100" fill="transparent" stroke-width="30" stroke="#ffb822" [attr.stroke-dasharray]="chart.Perimeter" [attr.stroke-dashoffset]="chart.Assets_Disposed_Span"/>
+                <text x="50%" y="50%" fill="white" font-family="fangsong" font-size="24" dominant-baseline="middle" text-anchor="middle">{{header_stats.Assets_Count}} ASSET(s)</text>
+            </svg>
             <ul class="os-percentages horizontal-list">
                 <li>
-                    <p class="ios os scnd-font-color">iOS</p>
-                    <p class="os-percentage">21<sup>%</sup></p>
+                    <p class="ios os scnd-font-color" style="border-color: #34bfa3">Active</p>
+                    <p class="os-percentage">{{header_stats.Assets_Active}}</p>
                 </li>
                 <li>
-                    <p class="mac os scnd-font-color">Mac</p>
-                    <p class="os-percentage">39<sup>%</sup></p>
+                    <p class="mac os scnd-font-color" style="border-color: #36a3f7">Storage</p>
+                    <p class="os-percentage">{{header_stats.Assets_Storage}}</p>
                 </li>
                 <li>
-                    <p class="linux os scnd-font-color">Linux</p>
-                    <p class="os-percentage">9<sup>%</sup></p>
+                    <p class="linux os scnd-font-color" style="border-color: #ffb822">Disposed</p>
+                    <p class="os-percentage">{{header_stats.Assets_Disposed}}</p>
                 </li>
             </ul>
         </div>
-
-            <div class="col-lg-6 col-xs-12 col-sm-12">
-                <div class="m-portlet m-portlet--full-height ">
-                    <div class="m-portlet__head">
-                        <div class="m-portlet__head-caption">
-                            <div class="m-portlet__head-title">
-                                <h3 class="m-portlet__head-text">
-                                    Profit Share
-                                    <small>
-                                        Profit Share between customers
-                                    </small>
-                                </h3>
-                            </div>
+        <div class="col-lg-6 col-xs-12 col-sm-12">
+            <div class="m-portlet m-portlet--full-height ">
+                <div class="m-portlet__head">
+                    <div class="m-portlet__head-caption">
+                        <div class="m-portlet__head-title">
+                            <h3 class="m-portlet__head-text">
+                                Profit Share
+                                <small>
+                                    Profit Share between customers
+                                </small>
+                            </h3>
                         </div>
-                        <div class="m-portlet__head-tools">
-                            <ul class="m-portlet__nav">
-                                <li class="m-portlet__nav-item m-dropdown m-dropdown--inline m-dropdown--arrow m-dropdown--align-right m-dropdown--align-push" data-dropdown-toggle="hover" aria-expanded="true">
-                                    <a href="javascript:;" class="m-portlet__nav-link m-dropdown__toggle dropdown-toggle btn btn--sm m-btn--pill btn-secondary m-btn m-btn--label-brand">
-                                        Actions
-                                    </a>
-                                    <div class="m-dropdown__wrapper">
-                                        <span class="m-dropdown__arrow m-dropdown__arrow--right m-dropdown__arrow--adjust" style="left: auto; right: 40.5px;"></span>
-                                        <div class="m-dropdown__inner">
-                                            <div class="m-dropdown__body">
-                                                <div class="m-dropdown__content">
-                                                    <ul class="m-nav">
-                                                        <li class="m-nav__item">
-                                                            <a href="javascript:;" class="m-nav__link">
-                                                                <i class="m-nav__link-icon flaticon-share"></i>
-                                                                <span class="m-nav__link-text">
-                                                                    Action 1
-                                                                </span>
-                                                            </a>
-                                                        </li>
-                                                        <li class="m-nav__item">
-                                                            <a href="javascript:;" class="m-nav__link">
-                                                                <i class="m-nav__link-icon flaticon-chat-1"></i>
-                                                                <span class="m-nav__link-text">
-                                                                    Action 2
-                                                                </span>
-                                                            </a>
-                                                        </li>
-                                                        <li class="m-nav__item">
-                                                            <a href="javascript:;" class="m-nav__link">
-                                                                <i class="m-nav__link-icon flaticon-info"></i>
-                                                                <span class="m-nav__link-text">
-                                                                    Action 3
-                                                                </span>
-                                                            </a>
-                                                        </li>
-                                                        <li class="m-nav__item">
-                                                            <a href="javascript:;" class="m-nav__link">
-                                                                <i class="m-nav__link-icon flaticon-lifebuoy"></i>
-                                                                <span class="m-nav__link-text">
-                                                                    Action 4
-                                                                </span>
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
+                    </div>
+                    <div class="m-portlet__head-tools">
+                        <ul class="m-portlet__nav">
+                            <li class="m-portlet__nav-item m-dropdown m-dropdown--inline m-dropdown--arrow m-dropdown--align-right m-dropdown--align-push" data-dropdown-toggle="hover" aria-expanded="true">
+                                <a href="javascript:;" class="m-portlet__nav-link m-dropdown__toggle dropdown-toggle btn btn--sm m-btn--pill btn-secondary m-btn m-btn--label-brand">
+                                    Actions
+                                </a>
+                                <div class="m-dropdown__wrapper">
+                                    <span class="m-dropdown__arrow m-dropdown__arrow--right m-dropdown__arrow--adjust" style="left: auto; right: 40.5px;"></span>
+                                    <div class="m-dropdown__inner">
+                                        <div class="m-dropdown__body">
+                                            <div class="m-dropdown__content">
+                                                <ul class="m-nav">
+                                                    <li class="m-nav__item">
+                                                        <a href="javascript:;" class="m-nav__link">
+                                                            <i class="m-nav__link-icon flaticon-share"></i>
+                                                            <span class="m-nav__link-text">
+                                                                Action 1
+                                                            </span>
+                                                        </a>
+                                                    </li>
+                                                    <li class="m-nav__item">
+                                                        <a href="javascript:;" class="m-nav__link">
+                                                            <i class="m-nav__link-icon flaticon-chat-1"></i>
+                                                            <span class="m-nav__link-text">
+                                                                Action 2
+                                                            </span>
+                                                        </a>
+                                                    </li>
+                                                    <li class="m-nav__item">
+                                                        <a href="javascript:;" class="m-nav__link">
+                                                            <i class="m-nav__link-icon flaticon-info"></i>
+                                                            <span class="m-nav__link-text">
+                                                                Action 3
+                                                            </span>
+                                                        </a>
+                                                    </li>
+                                                    <li class="m-nav__item">
+                                                        <a href="javascript:;" class="m-nav__link">
+                                                            <i class="m-nav__link-icon flaticon-lifebuoy"></i>
+                                                            <span class="m-nav__link-text">
+                                                                Action 4
+                                                            </span>
+                                                        </a>
+                                                    </li>
+                                                </ul>
                                             </div>
                                         </div>
                                     </div>
-                                </li>
-                            </ul>
-                        </div>
+                                </div>
+                            </li>
+                        </ul>
                     </div>
-                    <div class="m-portlet__body">
-                        <!--begin:: Widgets/Profit Share-->
-                        <div class="m-widget14">
-                            <div class="row  align-items-center">
-                                <div class="col">
-                                    <div id="m_chart_profit_share" class="m-widget14__chart" style="height: 160px">
-                                        <div class="m-widget14__stat">
-                                            45
-                                        </div>
+                </div>
+                <div class="m-portlet__body">
+                    <!--begin:: Widgets/Profit Share-->
+                    <div class="m-widget14">
+                        <div class="row  align-items-center">
+                            <div class="col">
+                                <div id="m_chart_profit_share" class="m-widget14__chart" style="height: 160px">
+                                    <div class="m-widget14__stat">
+                                        45
                                     </div>
                                 </div>
-                                <div class="col">
-                                    <div class="m-widget14__legends" *ngIf="assets_state_chart.data">
-                                        <div class="m-widget14__legend">
-                                            <span class="m-widget14__legend-bullet m--bg-accent"></span>
-                                            <span class="m-widget14__legend-text">
-                                                0% Product Sales
-                                            </span>
-                                        </div>
-                                        <div class="m-widget14__legend">
-                                            <span class="m-widget14__legend-bullet m--bg-warning"></span>
-                                            <span class="m-widget14__legend-text">
-                                                0% Online Courses
-                                            </span>
-                                        </div>
-                                        <div class="m-widget14__legend">
-                                            <span class="m-widget14__legend-bullet m--bg-brand"></span>
-                                            <span class="m-widget14__legend-text">
-                                                0% Custom Development
+                            </div>
+                            <div class="col">
+                                <div class="m-widget14__legends" *ngIf="assets_state_chart.data">
+                                    <div class="m-widget14__legend">
+                                        <span class="m-widget14__legend-bullet m--bg-accent"></span>
+                                        <span class="m-widget14__legend-text">
+                                            0% Product Sales
+                                        </span>
+                                    </div>
+                                    <div class="m-widget14__legend">
+                                        <span class="m-widget14__legend-bullet m--bg-warning"></span>
+                                        <span class="m-widget14__legend-text">
+                                            0% Online Courses
+                                        </span>
+                                    </div>
+                                    <div class="m-widget14__legend">
+                                        <span class="m-widget14__legend-bullet m--bg-brand"></span>
+                                        <span class="m-widget14__legend-text">
+                                            0% Custom Development
 
-                                            </span>
-                                        </div>
+                                        </span>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <!--end:: Widgets/Profit Share-->
                     </div>
+                    <!--end:: Widgets/Profit Share-->
                 </div>
             </div>
         </div>
 
+    </div>
 </div>

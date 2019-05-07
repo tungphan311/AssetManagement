@@ -6,3 +6,4 @@ C:\Users\admin\Desktop\aspzero\aspnet-core\src\GSoft.AbpZeroTemplate.Core.Shared
 C:\Users\admin\Desktop\aspzero\aspnet-core\src\GSoft.AbpZeroTemplate.Core.Shared\obj\Debug\netstandard2.0\GSoft.AbpZeroTemplate.Core.Shared.AssemblyInfo.cs
 C:\Users\admin\Desktop\aspzero\aspnet-core\src\GSoft.AbpZeroTemplate.Core.Shared\obj\Debug\netstandard2.0\GSoft.AbpZeroTemplate.Core.Shared.dll
 C:\Users\admin\Desktop\aspzero\aspnet-core\src\GSoft.AbpZeroTemplate.Core.Shared\obj\Debug\netstandard2.0\GSoft.AbpZeroTemplate.Core.Shared.pdb
+C:\Users\admin\Desktop\aspzero\aspnet-core\src\GSoft.AbpZeroTemplate.Core.Shared\obj\Debug\netstandard2.0\GSoft.AbpZeroTemplate.Core.Shared.csprojAssemblyReference.cache
