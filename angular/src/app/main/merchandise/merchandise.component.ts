@@ -72,14 +72,12 @@ export class MerchandiseComponent extends AppComponentBase implements AfterViewI
         this.reloadList(null, event);
     }
 
-    getTypeNames(id: number): string {
-        this.merType.forEach(element => {
-            if (element.id == id) {
-                return element.name;
+    getTypeNames(id: number): any {
+        for (const iterator of this.merType) {
+            if (iterator.id === id) {
+                return iterator.name;
             }
-        });
-
-        return "";
+        }
     }
 
     reloadList(merchandiseName, event?: LazyLoadEvent) {
@@ -92,6 +90,10 @@ export class MerchandiseComponent extends AppComponentBase implements AfterViewI
             this.primengTableHelper.records = result.items;
             this.primengTableHelper.hideLoadingIndicator();
         });
+
+        this._merTypeService.getMerchandiseByFilter(null, null, 99, 0).subscribe(result => {
+            this.merType = result.items
+        })
     }
 
     init(): void {
@@ -100,10 +102,6 @@ export class MerchandiseComponent extends AppComponentBase implements AfterViewI
             this.merchandiseName = params['name'] || '';
             this.reloadList(this.merchandiseName, null);
         });
-
-        this._merTypeService.getMerchandiseByFilter(null, null, 99, 0).subscribe(result => {
-            this.merType = result.items
-        })
     }
 
     reloadPage(): void {
