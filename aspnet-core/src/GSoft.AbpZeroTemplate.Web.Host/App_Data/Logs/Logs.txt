@@ -5721,3 +5721,927 @@ DEBUG 2019-05-08 01:45:02,319 [50   ] Abp.AspNetCore.SignalR.Hubs.AbpCommonHub -
 DEBUG 2019-05-08 01:45:02,319 [50   ] Abp.AspNetCore.SignalR.Hubs.AbpCommonHub - A client is registered: VcAv99Q5Axlcsf9CUfct2A
 INFO  2019-05-08 01:45:02,447 [50   ] .AspNetCore.SignalR.HubConnectionContext - Completed connection handshake. Using HubProtocol 'json'.
 DEBUG 2019-05-08 01:45:02,461 [50   ] AbpZeroTemplate.Web.Chat.SignalR.ChatHub - A client is connected: {"ConnectionId":"eBhpmL-ILjKOYhiCCVtSig","IpAddress":"::1","TenantId":1,"UserId":2,"ConnectTime":"2019-05-08T01:45:02.4511197+07:00","Properties":{}}
+DEBUG 2019-05-08 05:55:31,956 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2019-05-08 05:55:31,983 [1    ] Abp.Modules.AbpModuleManager             - Found 27 ABP modules in total.
+DEBUG 2019-05-08 05:55:32,009 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: GSoft.AbpZeroTemplate.Web.Startup.AbpZeroTemplateWebHostModule, GSoft.AbpZeroTemplate.Web.Host, Version=5.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-08 05:55:32,011 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: GSoft.AbpZeroTemplate.Web.AbpZeroTemplateWebCoreModule, GSoft.AbpZeroTemplate.Web.Core, Version=5.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-08 05:55:32,011 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: GSoft.AbpZeroTemplate.AbpZeroTemplateApplicationModule, GSoft.AbpZeroTemplate.Application, Version=5.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-08 05:55:32,012 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: GSoft.AbpZeroTemplate.AbpZeroTemplateCoreModule, GSoft.AbpZeroTemplate.Core, Version=5.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-08 05:55:32,012 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.ZeroCore, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-08 05:55:32,012 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCommonModule, Abp.Zero.Common, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-08 05:55:32,012 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-08 05:55:32,013 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.Ldap.AbpZeroLdapModule, Abp.Zero.Ldap, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-08 05:55:32,013 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-08 05:55:32,013 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetZeroCore.AbpAspNetZeroCoreModule, Abp.AspNetZeroCore, Version=1.1.3.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-08 05:55:32,014 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.MailKit.AbpMailKitModule, Abp.MailKit, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-08 05:55:32,014 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: GWebsite.AbpZeroTemplate.Application.GWebsiteApplicationModule, GWebsite.AbpZeroTemplate.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-08 05:55:32,014 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: GSoft.AbpZeroTemplate.EntityFrameworkCore.AbpZeroTemplateEntityFrameworkCoreModule, GSoft.AbpZeroTemplate.EntityFrameworkCore, Version=5.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-08 05:55:32,014 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: GWebsite.AbpZeroTemplate.EntityFrameworkCore.GWebsiteEntityFrameworkCoreModule, GWebsite.AbpZeroTemplate.EntityFrameworkCore, Version=5.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-08 05:55:32,015 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFrameworkCore.AbpZeroCoreEntityFrameworkCoreModule, Abp.ZeroCore.EntityFrameworkCore, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-08 05:55:32,015 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFrameworkCore.AbpEntityFrameworkCoreModule, Abp.EntityFrameworkCore, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-08 05:55:32,015 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-08 05:55:32,015 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.IdentityServer4.AbpZeroCoreIdentityServerEntityFrameworkCoreModule, Abp.ZeroCore.IdentityServer4.EntityFrameworkCore, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-08 05:55:32,015 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.IdentityServer4.AbpZeroCoreIdentityServerModule, Abp.ZeroCore.IdentityServer4, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-08 05:55:32,015 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: GWebsite.AbpZeroTemplate.Application.GWebsiteCoreModule, GWebsite.AbpZeroTemplate.Core, Version=5.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-08 05:55:32,016 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetZeroCore.Web.AbpAspNetZeroCoreWebModule, Abp.AspNetZeroCore.Web, Version=1.1.3.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-08 05:55:32,016 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.AbpAspNetCoreModule, Abp.AspNetCore, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-08 05:55:32,016 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebCommonModule, Abp.Web.Common, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-08 05:55:32,016 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.SignalR.AbpAspNetCoreSignalRModule, Abp.AspNetCore.SignalR, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-08 05:55:32,016 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Runtime.Caching.Redis.AbpRedisCacheModule, Abp.RedisCache, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-08 05:55:32,017 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Hangfire.AbpHangfireAspNetCoreModule, Abp.HangFire.AspNetCore, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-08 05:55:32,017 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: GWebsite.AbpZeroTemplate.Web.Core.GWebsiteWebCoreModule, GWebsite.AbpZeroTemplate.Web.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-08 05:55:32,020 [1    ] Abp.Modules.AbpModuleManager             - 27 modules loaded.
+DEBUG 2019-05-08 05:55:32,130 [1    ] o.Configuration.LanguageManagementConfig - Converted Abp (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-05-08 05:55:32,131 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpZero (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-05-08 05:55:32,131 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpZeroTemplate (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-05-08 05:55:32,131 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpWeb (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-05-08 05:55:32,573 [1    ] ameworkCore.AbpEntityFrameworkCoreModule - Registering DbContext: GSoft.AbpZeroTemplate.EntityFrameworkCore.AbpZeroTemplateDbContext, GSoft.AbpZeroTemplate.EntityFrameworkCore, Version=5.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-08 05:55:33,395 [1    ] Abp.Localization.LocalizationManager     - Initializing 4 localization sources.
+DEBUG 2019-05-08 05:55:33,423 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2019-05-08 05:55:33,468 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2019-05-08 05:55:33,559 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZeroTemplate
+DEBUG 2019-05-08 05:55:33,579 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2019-05-08 05:55:33,618 [1    ] Abp.BackgroundJobs.BackgroundJobManager  - Start background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2019-05-08 05:55:33,680 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 2 classes define auto mapping attributes
+DEBUG 2019-05-08 05:55:33,680 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - GSoft.AbpZeroTemplate.Web.Models.TokenAuth.ExternalLoginProviderInfoModel
+DEBUG 2019-05-08 05:55:33,684 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - GSoft.AbpZeroTemplate.Friendships.Cache.FriendCacheItem
+DEBUG 2019-05-08 05:56:04,347 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2019-05-08 05:56:04,374 [1    ] Abp.Modules.AbpModuleManager             - Found 27 ABP modules in total.
+DEBUG 2019-05-08 05:56:04,407 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: GSoft.AbpZeroTemplate.Web.Startup.AbpZeroTemplateWebHostModule, GSoft.AbpZeroTemplate.Web.Host, Version=5.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-08 05:56:04,410 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: GSoft.AbpZeroTemplate.Web.AbpZeroTemplateWebCoreModule, GSoft.AbpZeroTemplate.Web.Core, Version=5.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-08 05:56:04,410 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: GSoft.AbpZeroTemplate.AbpZeroTemplateApplicationModule, GSoft.AbpZeroTemplate.Application, Version=5.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-08 05:56:04,410 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: GSoft.AbpZeroTemplate.AbpZeroTemplateCoreModule, GSoft.AbpZeroTemplate.Core, Version=5.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-08 05:56:04,410 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.ZeroCore, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-08 05:56:04,411 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCommonModule, Abp.Zero.Common, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-08 05:56:04,411 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-08 05:56:04,411 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.Ldap.AbpZeroLdapModule, Abp.Zero.Ldap, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-08 05:56:04,411 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-08 05:56:04,412 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetZeroCore.AbpAspNetZeroCoreModule, Abp.AspNetZeroCore, Version=1.1.3.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-08 05:56:04,412 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.MailKit.AbpMailKitModule, Abp.MailKit, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-08 05:56:04,412 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: GWebsite.AbpZeroTemplate.Application.GWebsiteApplicationModule, GWebsite.AbpZeroTemplate.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-08 05:56:04,412 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: GSoft.AbpZeroTemplate.EntityFrameworkCore.AbpZeroTemplateEntityFrameworkCoreModule, GSoft.AbpZeroTemplate.EntityFrameworkCore, Version=5.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-08 05:56:04,412 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: GWebsite.AbpZeroTemplate.EntityFrameworkCore.GWebsiteEntityFrameworkCoreModule, GWebsite.AbpZeroTemplate.EntityFrameworkCore, Version=5.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-08 05:56:04,413 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFrameworkCore.AbpZeroCoreEntityFrameworkCoreModule, Abp.ZeroCore.EntityFrameworkCore, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-08 05:56:04,413 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFrameworkCore.AbpEntityFrameworkCoreModule, Abp.EntityFrameworkCore, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-08 05:56:04,413 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-08 05:56:04,413 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.IdentityServer4.AbpZeroCoreIdentityServerEntityFrameworkCoreModule, Abp.ZeroCore.IdentityServer4.EntityFrameworkCore, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-08 05:56:04,413 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.IdentityServer4.AbpZeroCoreIdentityServerModule, Abp.ZeroCore.IdentityServer4, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-08 05:56:04,413 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: GWebsite.AbpZeroTemplate.Application.GWebsiteCoreModule, GWebsite.AbpZeroTemplate.Core, Version=5.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-08 05:56:04,414 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetZeroCore.Web.AbpAspNetZeroCoreWebModule, Abp.AspNetZeroCore.Web, Version=1.1.3.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-08 05:56:04,414 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.AbpAspNetCoreModule, Abp.AspNetCore, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-08 05:56:04,414 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebCommonModule, Abp.Web.Common, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-08 05:56:04,414 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.SignalR.AbpAspNetCoreSignalRModule, Abp.AspNetCore.SignalR, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-08 05:56:04,414 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Runtime.Caching.Redis.AbpRedisCacheModule, Abp.RedisCache, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-08 05:56:04,415 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Hangfire.AbpHangfireAspNetCoreModule, Abp.HangFire.AspNetCore, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-08 05:56:04,415 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: GWebsite.AbpZeroTemplate.Web.Core.GWebsiteWebCoreModule, GWebsite.AbpZeroTemplate.Web.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-08 05:56:04,418 [1    ] Abp.Modules.AbpModuleManager             - 27 modules loaded.
+DEBUG 2019-05-08 05:56:04,539 [1    ] o.Configuration.LanguageManagementConfig - Converted Abp (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-05-08 05:56:04,539 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpZero (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-05-08 05:56:04,539 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpZeroTemplate (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-05-08 05:56:04,539 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpWeb (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-05-08 05:56:04,890 [1    ] ameworkCore.AbpEntityFrameworkCoreModule - Registering DbContext: GSoft.AbpZeroTemplate.EntityFrameworkCore.AbpZeroTemplateDbContext, GSoft.AbpZeroTemplate.EntityFrameworkCore, Version=5.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-08 05:56:05,562 [1    ] Abp.Localization.LocalizationManager     - Initializing 4 localization sources.
+DEBUG 2019-05-08 05:56:05,588 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2019-05-08 05:56:05,615 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2019-05-08 05:56:05,655 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZeroTemplate
+DEBUG 2019-05-08 05:56:05,668 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2019-05-08 05:56:05,701 [1    ] Abp.BackgroundJobs.BackgroundJobManager  - Start background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2019-05-08 05:56:05,748 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 2 classes define auto mapping attributes
+DEBUG 2019-05-08 05:56:05,748 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - GSoft.AbpZeroTemplate.Web.Models.TokenAuth.ExternalLoginProviderInfoModel
+DEBUG 2019-05-08 05:56:05,751 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - GSoft.AbpZeroTemplate.Friendships.Cache.FriendCacheItem
+DEBUG 2019-05-08 05:56:11,267 [1    ] enancy.SubscriptionExpirationCheckWorker - Start background worker: GSoft.AbpZeroTemplate.MultiTenancy.SubscriptionExpirationCheckWorker
+DEBUG 2019-05-08 05:56:11,268 [1    ] cy.SubscriptionExpireEmailNotifierWorker - Start background worker: GSoft.AbpZeroTemplate.MultiTenancy.SubscriptionExpireEmailNotifierWorker
+INFO  2019-05-08 05:56:14,522 [11   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/  
+INFO  2019-05-08 05:56:15,213 [11   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "Index", controller = "Home", area = ""}. Executing action GSoft.AbpZeroTemplate.Web.Controllers.HomeController.Index (GSoft.AbpZeroTemplate.Web.Host)
+INFO  2019-05-08 05:56:15,281 [11   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method GSoft.AbpZeroTemplate.Web.Controllers.HomeController.Index (GSoft.AbpZeroTemplate.Web.Host) - Validation state: Valid
+INFO  2019-05-08 05:56:15,323 [11   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method GSoft.AbpZeroTemplate.Web.Controllers.HomeController.Index (GSoft.AbpZeroTemplate.Web.Host), returned result Microsoft.AspNetCore.Mvc.RedirectResult in 1.6315ms.
+INFO  2019-05-08 05:56:15,339 [11   ] vc.Infrastructure.RedirectResultExecutor - Executing RedirectResult, redirecting to /swagger.
+INFO  2019-05-08 05:56:15,348 [11   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action GSoft.AbpZeroTemplate.Web.Controllers.HomeController.Index (GSoft.AbpZeroTemplate.Web.Host) in 131.7328ms
+INFO  2019-05-08 05:56:15,412 [11   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 900.4553ms 302 
+INFO  2019-05-08 05:56:15,499 [11   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/swagger/index.html  
+INFO  2019-05-08 05:56:15,580 [11   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 80.9732ms 200 text/html
+INFO  2019-05-08 05:56:15,735 [8    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/swagger/ui/abp.js  
+INFO  2019-05-08 05:56:15,735 [4    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/swagger/swagger-ui.css  
+INFO  2019-05-08 05:56:15,741 [11   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/swagger/ui/abp.swagger.js  
+INFO  2019-05-08 05:56:15,806 [9    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/swagger/swagger-ui-bundle.js  
+INFO  2019-05-08 05:56:15,812 [11   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/swagger/ui/abp.swagger.js'. Physical path: 'C:\Users\Pc\資料\Cong Nghe Phan mem chuyen sau\AM\AssetManagement\aspnet-core\src\GSoft.AbpZeroTemplate.Web.Host\wwwroot\swagger\ui\abp.swagger.js'
+INFO  2019-05-08 05:56:15,819 [8    ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/swagger/ui/abp.js'. Physical path: 'C:\Users\Pc\資料\Cong Nghe Phan mem chuyen sau\AM\AssetManagement\aspnet-core\src\GSoft.AbpZeroTemplate.Web.Host\wwwroot\swagger\ui\abp.js'
+INFO  2019-05-08 05:56:15,831 [11   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 89.8264ms 200 application/javascript
+INFO  2019-05-08 05:56:15,831 [8    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 96.6325ms 200 application/javascript
+INFO  2019-05-08 05:56:15,831 [8    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/swagger/swagger-ui-standalone-preset.js  
+INFO  2019-05-08 05:56:15,844 [5    ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+INFO  2019-05-08 05:56:15,853 [5    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 118.2925ms 200 text/css
+INFO  2019-05-08 05:56:15,858 [9    ] NetCore.StaticFiles.StaticFileMiddleware - The file /swagger-ui-bundle.js was not modified
+INFO  2019-05-08 05:56:15,859 [8    ] NetCore.StaticFiles.StaticFileMiddleware - The file /swagger-ui-standalone-preset.js was not modified
+INFO  2019-05-08 05:56:15,860 [8    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 28.3874ms 304 application/javascript
+INFO  2019-05-08 05:56:15,860 [9    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 54.1517ms 304 application/javascript
+INFO  2019-05-08 05:56:16,253 [9    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/swagger/favicon-32x32.png  
+INFO  2019-05-08 05:56:16,289 [9    ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+INFO  2019-05-08 05:56:16,290 [9    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 36.5242ms 0 image/png
+INFO  2019-05-08 05:56:16,342 [8    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/swagger/v1/swagger.json  
+INFO  2019-05-08 05:56:16,662 [8    ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-05-08 05:56:17,408 [4    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 1065.726ms 200 application/json;charset=utf-8
+INFO  2019-05-08 06:03:54,160 [33   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:5000/AbpUserConfiguration/GetAll  
+INFO  2019-05-08 06:03:54,175 [33   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:03:54,179 [33   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 18.6669ms 204 
+INFO  2019-05-08 06:03:54,181 [38   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/AbpUserConfiguration/GetAll application/json 
+INFO  2019-05-08 06:03:54,182 [38   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:03:54,183 [38   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-05-08 06:03:54,313 [38   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "GetAll", controller = "AbpUserConfiguration", area = ""}. Executing action Abp.AspNetCore.Mvc.Controllers.AbpUserConfigurationController.GetAll (Abp.AspNetCore)
+INFO  2019-05-08 06:03:54,313 [38   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:03:54,317 [38   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method Abp.AspNetCore.Mvc.Controllers.AbpUserConfigurationController.GetAll (Abp.AspNetCore) - Validation state: Valid
+INFO  2019-05-08 06:03:59,871 [40   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method Abp.AspNetCore.Mvc.Controllers.AbpUserConfigurationController.GetAll (Abp.AspNetCore), returned result Microsoft.AspNetCore.Mvc.JsonResult in 5554.2628ms.
+INFO  2019-05-08 06:04:00,481 [39   ] matters.Json.Internal.JsonResultExecutor - Executing JsonResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-05-08 06:04:00,541 [39   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action Abp.AspNetCore.Mvc.Controllers.AbpUserConfigurationController.GetAll (Abp.AspNetCore) in 6228.4778ms
+INFO  2019-05-08 06:04:00,542 [39   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 6360.7606ms 200 application/json; charset=utf-8
+INFO  2019-05-08 06:04:01,249 [39   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:5000/api/services/app/Session/GetCurrentLoginInformations  
+INFO  2019-05-08 06:04:01,249 [39   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:04:01,249 [39   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.3454ms 204 
+INFO  2019-05-08 06:04:01,254 [40   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/api/services/app/Session/GetCurrentLoginInformations application/json 
+INFO  2019-05-08 06:04:01,254 [40   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:04:01,254 [40   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-05-08 06:04:01,275 [40   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetCurrentLoginInformations", controller = "Session"}. Executing action GSoft.AbpZeroTemplate.Sessions.SessionAppService.GetCurrentLoginInformations (GSoft.AbpZeroTemplate.Application)
+INFO  2019-05-08 06:04:01,275 [40   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:04:01,316 [40   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method GSoft.AbpZeroTemplate.Sessions.SessionAppService.GetCurrentLoginInformations (GSoft.AbpZeroTemplate.Application) - Validation state: Valid
+INFO  2019-05-08 06:04:01,358 [40   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method GSoft.AbpZeroTemplate.Sessions.SessionAppService.GetCurrentLoginInformations (GSoft.AbpZeroTemplate.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 42.1191ms.
+INFO  2019-05-08 06:04:01,388 [40   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-05-08 06:04:01,418 [40   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action GSoft.AbpZeroTemplate.Sessions.SessionAppService.GetCurrentLoginInformations (GSoft.AbpZeroTemplate.Application) in 142.893ms
+INFO  2019-05-08 06:04:01,418 [40   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 164.7658ms 200 application/json; charset=utf-8
+INFO  2019-05-08 06:04:14,333 [40   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:5000/api/services/app/Session/GetCurrentLoginInformations  
+INFO  2019-05-08 06:04:14,333 [40   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:04:14,333 [40   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.4437ms 204 
+INFO  2019-05-08 06:04:14,336 [40   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/api/services/app/Session/GetCurrentLoginInformations application/json 
+INFO  2019-05-08 06:04:14,336 [40   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:04:14,337 [40   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-05-08 06:04:14,345 [40   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetCurrentLoginInformations", controller = "Session"}. Executing action GSoft.AbpZeroTemplate.Sessions.SessionAppService.GetCurrentLoginInformations (GSoft.AbpZeroTemplate.Application)
+INFO  2019-05-08 06:04:14,346 [40   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:04:14,356 [40   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method GSoft.AbpZeroTemplate.Sessions.SessionAppService.GetCurrentLoginInformations (GSoft.AbpZeroTemplate.Application) - Validation state: Valid
+INFO  2019-05-08 06:04:14,372 [40   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method GSoft.AbpZeroTemplate.Sessions.SessionAppService.GetCurrentLoginInformations (GSoft.AbpZeroTemplate.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 15.6592ms.
+INFO  2019-05-08 06:04:14,375 [38   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:5000/api/services/app/Profile/GetProfilePicture  
+INFO  2019-05-08 06:04:14,375 [38   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:04:14,376 [38   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.1969ms 204 
+INFO  2019-05-08 06:04:14,386 [41   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/api/services/app/Profile/GetProfilePicture application/json 
+INFO  2019-05-08 06:04:14,386 [41   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:04:14,386 [41   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-05-08 06:04:14,389 [38   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:5000/api/services/app/UserLink/GetRecentlyUsedLinkedUsers  
+INFO  2019-05-08 06:04:14,389 [38   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:04:14,389 [38   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.2017ms 204 
+INFO  2019-05-08 06:04:14,403 [40   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-05-08 06:04:14,403 [40   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action GSoft.AbpZeroTemplate.Sessions.SessionAppService.GetCurrentLoginInformations (GSoft.AbpZeroTemplate.Application) in 57.7571ms
+INFO  2019-05-08 06:04:14,403 [40   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 67.4306ms 200 application/json; charset=utf-8
+INFO  2019-05-08 06:04:14,404 [40   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/api/services/app/UserLink/GetRecentlyUsedLinkedUsers application/json 
+INFO  2019-05-08 06:04:14,404 [40   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:04:14,404 [40   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-05-08 06:04:14,414 [40   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetRecentlyUsedLinkedUsers", controller = "UserLink"}. Executing action GSoft.AbpZeroTemplate.Authorization.Users.UserLinkAppService.GetRecentlyUsedLinkedUsers (GSoft.AbpZeroTemplate.Application)
+INFO  2019-05-08 06:04:14,414 [40   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:04:14,432 [42   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:5000/api/services/app/Notification/GetUserNotifications?MaxResultCount=3&SkipCount=0  
+INFO  2019-05-08 06:04:14,432 [42   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:04:14,432 [42   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.1886ms 204 
+INFO  2019-05-08 06:04:14,435 [33   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/api/services/app/Notification/GetUserNotifications?MaxResultCount=3&SkipCount=0 application/json 
+INFO  2019-05-08 06:04:14,435 [33   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:04:14,435 [33   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-05-08 06:04:14,463 [41   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetProfilePicture", controller = "Profile"}. Executing action GSoft.AbpZeroTemplate.Authorization.Users.Profile.ProfileAppService.GetProfilePicture (GSoft.AbpZeroTemplate.Application)
+INFO  2019-05-08 06:04:14,463 [41   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:04:14,488 [39   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:5000/api/services/app/UserLink/GetLinkedUsers?MaxResultCount=10&SkipCount=0  
+INFO  2019-05-08 06:04:14,488 [39   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:04:14,488 [39   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.1721ms 204 
+INFO  2019-05-08 06:04:14,492 [38   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/api/services/app/UserLink/GetLinkedUsers?MaxResultCount=10&SkipCount=0 application/json 
+INFO  2019-05-08 06:04:14,492 [38   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:04:14,493 [38   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-05-08 06:04:14,507 [38   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetLinkedUsers", controller = "UserLink"}. Executing action GSoft.AbpZeroTemplate.Authorization.Users.UserLinkAppService.GetLinkedUsers (GSoft.AbpZeroTemplate.Application)
+INFO  2019-05-08 06:04:14,507 [33   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetUserNotifications", controller = "Notification"}. Executing action GSoft.AbpZeroTemplate.Notifications.NotificationAppService.GetUserNotifications (GSoft.AbpZeroTemplate.Application)
+INFO  2019-05-08 06:04:14,507 [38   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:04:14,507 [33   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:04:14,564 [41   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method GSoft.AbpZeroTemplate.Authorization.Users.Profile.ProfileAppService.GetProfilePicture (GSoft.AbpZeroTemplate.Application) - Validation state: Valid
+INFO  2019-05-08 06:04:14,676 [41   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method GSoft.AbpZeroTemplate.Authorization.Users.Profile.ProfileAppService.GetProfilePicture (GSoft.AbpZeroTemplate.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 112.7441ms.
+INFO  2019-05-08 06:04:14,681 [41   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-05-08 06:04:14,682 [41   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action GSoft.AbpZeroTemplate.Authorization.Users.Profile.ProfileAppService.GetProfilePicture (GSoft.AbpZeroTemplate.Application) in 219.3064ms
+INFO  2019-05-08 06:04:14,682 [41   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 296.681ms 200 application/json; charset=utf-8
+INFO  2019-05-08 06:04:14,765 [41   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:5000/api/services/app/Profile/GetProfilePicture  
+INFO  2019-05-08 06:04:14,765 [41   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:04:14,765 [41   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.1942ms 204 
+INFO  2019-05-08 06:04:14,767 [41   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/api/services/app/Profile/GetProfilePicture application/json 
+INFO  2019-05-08 06:04:14,767 [41   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:04:14,768 [41   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-05-08 06:04:14,773 [41   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetProfilePicture", controller = "Profile"}. Executing action GSoft.AbpZeroTemplate.Authorization.Users.Profile.ProfileAppService.GetProfilePicture (GSoft.AbpZeroTemplate.Application)
+INFO  2019-05-08 06:04:14,773 [41   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:04:14,785 [41   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method GSoft.AbpZeroTemplate.Authorization.Users.Profile.ProfileAppService.GetProfilePicture (GSoft.AbpZeroTemplate.Application) - Validation state: Valid
+INFO  2019-05-08 06:04:14,797 [33   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method GSoft.AbpZeroTemplate.Notifications.NotificationAppService.GetUserNotifications (GSoft.AbpZeroTemplate.Application) with arguments (GSoft.AbpZeroTemplate.Notifications.Dto.GetUserNotificationsInput) - Validation state: Valid
+INFO  2019-05-08 06:04:14,802 [41   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method GSoft.AbpZeroTemplate.Authorization.Users.Profile.ProfileAppService.GetProfilePicture (GSoft.AbpZeroTemplate.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 16.9544ms.
+INFO  2019-05-08 06:04:14,804 [41   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-05-08 06:04:14,804 [41   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action GSoft.AbpZeroTemplate.Authorization.Users.Profile.ProfileAppService.GetProfilePicture (GSoft.AbpZeroTemplate.Application) in 31.2814ms
+INFO  2019-05-08 06:04:14,805 [41   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 37.4898ms 200 application/json; charset=utf-8
+INFO  2019-05-08 06:04:14,831 [40   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method GSoft.AbpZeroTemplate.Authorization.Users.UserLinkAppService.GetRecentlyUsedLinkedUsers (GSoft.AbpZeroTemplate.Application) - Validation state: Valid
+INFO  2019-05-08 06:04:14,845 [38   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method GSoft.AbpZeroTemplate.Authorization.Users.UserLinkAppService.GetLinkedUsers (GSoft.AbpZeroTemplate.Application) with arguments (GSoft.AbpZeroTemplate.Authorization.Users.Dto.GetLinkedUsersInput) - Validation state: Valid
+INFO  2019-05-08 06:04:15,134 [33   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method GSoft.AbpZeroTemplate.Notifications.NotificationAppService.GetUserNotifications (GSoft.AbpZeroTemplate.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 336.9247ms.
+INFO  2019-05-08 06:04:15,135 [33   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-05-08 06:04:15,138 [33   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action GSoft.AbpZeroTemplate.Notifications.NotificationAppService.GetUserNotifications (GSoft.AbpZeroTemplate.Application) in 631.0789ms
+INFO  2019-05-08 06:04:15,139 [33   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 704.0894ms 200 application/json; charset=utf-8
+INFO  2019-05-08 06:04:15,936 [33   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:5000/signalr/negotiate?enc_auth_token=wNYmO41%2F48SHNstaLVXxHCCre29BZQl1NhC6NM3R3rzpXtPQxVzH6jEzA%2FQhXFN5tu6Fk7pO53uppm1mVXMZgxbyRVz26dnepi%2FFyB6axBY%2B6gq1GL%2BuRQgoiFUCjRN2p8w6LevViwKlHyWZZJZO1DGVSjAi1m2U%2Bog9pkHw9%2FQR4Nl%2FDPnoP9JYDMpZ1zxx09u6s0GZ9%2FQ5Sjk%2BL0UfcSCbl38X8he5w9UIn%2FHvxh7ysM1CiPLsoOwtbiieSRVmrmt0JjnipAn4%2FK283F8GrGwzwgehWsqefmUnM0ckMwP9ZAdwQxWDhxv0IqNw4tDhwUYs%2F1SYdYozdNzgByhgNOBPzQDObNLlWc4vV5VMOiYeyqPRFAsRBVNkF85rkCamv4TI5WEJvWZZ4SMNtf8l51nuM%2Fwy43OnocGnvMgUKB6ptEEyGPm2PfqhpNQSZfPkfbFiRbt6foAPBqSiEuE0pdDaAw%2FPcuHIcoP%2B4b9Gl7VNUkx3Z3eJmkiRJRqrgFvpozzkefG5QnMALFvO1nRYVL0P2FelJjpmFzc7yKfwZo57%2F61vP1B14Q%2BqFaFG2cnkF6eJalvt16rOjCQYHpgZQQeLZbY1OcwDclVyRXFZU1PFYIXmFz8TZeQ7FQRPiprX%2FukvYmb91RSTIapN9fIyyFuZjZVT%2F%2FAyny%2BO6UAEoxXzqtUYTsKAmbNMbUr0H5gWj7%2FmsqpSVpXAnxFvVJ8J3uoHHJcC5JZROu9bKfSzR7GBNsSbT6TSdxVESQMhVYhqO%2Bt6U%2B8tmqmnnzr7B64isU2t%2FVmo6dv9fyjXIGlYljbMt1P%2FG3Gwz3LF1u7gZvB6caMw%2Fwm%2Fsh3VUoQsrbD%2FIpyNoF4HLDMa28p02b2XXKf0BjakDv8pwNy2OpPfUqZo  
+INFO  2019-05-08 06:04:15,937 [33   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:04:15,937 [33   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.6229ms 204 
+INFO  2019-05-08 06:04:15,937 [33   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:5000/signalr-chat/negotiate?enc_auth_token=wNYmO41%2F48SHNstaLVXxHCCre29BZQl1NhC6NM3R3rzpXtPQxVzH6jEzA%2FQhXFN5tu6Fk7pO53uppm1mVXMZgxbyRVz26dnepi%2FFyB6axBY%2B6gq1GL%2BuRQgoiFUCjRN2p8w6LevViwKlHyWZZJZO1DGVSjAi1m2U%2Bog9pkHw9%2FQR4Nl%2FDPnoP9JYDMpZ1zxx09u6s0GZ9%2FQ5Sjk%2BL0UfcSCbl38X8he5w9UIn%2FHvxh7ysM1CiPLsoOwtbiieSRVmrmt0JjnipAn4%2FK283F8GrGwzwgehWsqefmUnM0ckMwP9ZAdwQxWDhxv0IqNw4tDhwUYs%2F1SYdYozdNzgByhgNOBPzQDObNLlWc4vV5VMOiYeyqPRFAsRBVNkF85rkCamv4TI5WEJvWZZ4SMNtf8l51nuM%2Fwy43OnocGnvMgUKB6ptEEyGPm2PfqhpNQSZfPkfbFiRbt6foAPBqSiEuE0pdDaAw%2FPcuHIcoP%2B4b9Gl7VNUkx3Z3eJmkiRJRqrgFvpozzkefG5QnMALFvO1nRYVL0P2FelJjpmFzc7yKfwZo57%2F61vP1B14Q%2BqFaFG2cnkF6eJalvt16rOjCQYHpgZQQeLZbY1OcwDclVyRXFZU1PFYIXmFz8TZeQ7FQRPiprX%2FukvYmb91RSTIapN9fIyyFuZjZVT%2F%2FAyny%2BO6UAEoxXzqtUYTsKAmbNMbUr0H5gWj7%2FmsqpSVpXAnxFvVJ8J3uoHHJcC5JZROu9bKfSzR7GBNsSbT6TSdxVESQMhVYhqO%2Bt6U%2B8tmqmnnzr7B64isU2t%2FVmo6dv9fyjXIGlYljbMt1P%2FG3Gwz3LF1u7gZvB6caMw%2Fwm%2Fsh3VUoQsrbD%2FIpyNoF4HLDMa28p02b2XXKf0BjakDv8pwNy2OpPfUqZo  
+INFO  2019-05-08 06:04:15,937 [33   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:04:15,937 [33   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.2415ms 204 
+INFO  2019-05-08 06:04:15,942 [41   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:5000/signalr-chat/negotiate?enc_auth_token=wNYmO41%2F48SHNstaLVXxHCCre29BZQl1NhC6NM3R3rzpXtPQxVzH6jEzA%2FQhXFN5tu6Fk7pO53uppm1mVXMZgxbyRVz26dnepi%2FFyB6axBY%2B6gq1GL%2BuRQgoiFUCjRN2p8w6LevViwKlHyWZZJZO1DGVSjAi1m2U%2Bog9pkHw9%2FQR4Nl%2FDPnoP9JYDMpZ1zxx09u6s0GZ9%2FQ5Sjk%2BL0UfcSCbl38X8he5w9UIn%2FHvxh7ysM1CiPLsoOwtbiieSRVmrmt0JjnipAn4%2FK283F8GrGwzwgehWsqefmUnM0ckMwP9ZAdwQxWDhxv0IqNw4tDhwUYs%2F1SYdYozdNzgByhgNOBPzQDObNLlWc4vV5VMOiYeyqPRFAsRBVNkF85rkCamv4TI5WEJvWZZ4SMNtf8l51nuM%2Fwy43OnocGnvMgUKB6ptEEyGPm2PfqhpNQSZfPkfbFiRbt6foAPBqSiEuE0pdDaAw%2FPcuHIcoP%2B4b9Gl7VNUkx3Z3eJmkiRJRqrgFvpozzkefG5QnMALFvO1nRYVL0P2FelJjpmFzc7yKfwZo57%2F61vP1B14Q%2BqFaFG2cnkF6eJalvt16rOjCQYHpgZQQeLZbY1OcwDclVyRXFZU1PFYIXmFz8TZeQ7FQRPiprX%2FukvYmb91RSTIapN9fIyyFuZjZVT%2F%2FAyny%2BO6UAEoxXzqtUYTsKAmbNMbUr0H5gWj7%2FmsqpSVpXAnxFvVJ8J3uoHHJcC5JZROu9bKfSzR7GBNsSbT6TSdxVESQMhVYhqO%2Bt6U%2B8tmqmnnzr7B64isU2t%2FVmo6dv9fyjXIGlYljbMt1P%2FG3Gwz3LF1u7gZvB6caMw%2Fwm%2Fsh3VUoQsrbD%2FIpyNoF4HLDMa28p02b2XXKf0BjakDv8pwNy2OpPfUqZo text/plain;charset=UTF-8 0
+INFO  2019-05-08 06:04:15,942 [33   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:5000/signalr/negotiate?enc_auth_token=wNYmO41%2F48SHNstaLVXxHCCre29BZQl1NhC6NM3R3rzpXtPQxVzH6jEzA%2FQhXFN5tu6Fk7pO53uppm1mVXMZgxbyRVz26dnepi%2FFyB6axBY%2B6gq1GL%2BuRQgoiFUCjRN2p8w6LevViwKlHyWZZJZO1DGVSjAi1m2U%2Bog9pkHw9%2FQR4Nl%2FDPnoP9JYDMpZ1zxx09u6s0GZ9%2FQ5Sjk%2BL0UfcSCbl38X8he5w9UIn%2FHvxh7ysM1CiPLsoOwtbiieSRVmrmt0JjnipAn4%2FK283F8GrGwzwgehWsqefmUnM0ckMwP9ZAdwQxWDhxv0IqNw4tDhwUYs%2F1SYdYozdNzgByhgNOBPzQDObNLlWc4vV5VMOiYeyqPRFAsRBVNkF85rkCamv4TI5WEJvWZZ4SMNtf8l51nuM%2Fwy43OnocGnvMgUKB6ptEEyGPm2PfqhpNQSZfPkfbFiRbt6foAPBqSiEuE0pdDaAw%2FPcuHIcoP%2B4b9Gl7VNUkx3Z3eJmkiRJRqrgFvpozzkefG5QnMALFvO1nRYVL0P2FelJjpmFzc7yKfwZo57%2F61vP1B14Q%2BqFaFG2cnkF6eJalvt16rOjCQYHpgZQQeLZbY1OcwDclVyRXFZU1PFYIXmFz8TZeQ7FQRPiprX%2FukvYmb91RSTIapN9fIyyFuZjZVT%2F%2FAyny%2BO6UAEoxXzqtUYTsKAmbNMbUr0H5gWj7%2FmsqpSVpXAnxFvVJ8J3uoHHJcC5JZROu9bKfSzR7GBNsSbT6TSdxVESQMhVYhqO%2Bt6U%2B8tmqmnnzr7B64isU2t%2FVmo6dv9fyjXIGlYljbMt1P%2FG3Gwz3LF1u7gZvB6caMw%2Fwm%2Fsh3VUoQsrbD%2FIpyNoF4HLDMa28p02b2XXKf0BjakDv8pwNy2OpPfUqZo text/plain;charset=UTF-8 0
+INFO  2019-05-08 06:04:15,942 [41   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:04:15,942 [33   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:04:16,191 [33   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-05-08 06:04:16,192 [41   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-05-08 06:04:16,258 [45   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:5000/api/services/app/Chat/GetUserChatFriendsWithSettings  
+INFO  2019-05-08 06:04:16,258 [45   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:04:16,258 [45   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.2013ms 204 
+INFO  2019-05-08 06:04:16,261 [37   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/api/services/app/Chat/GetUserChatFriendsWithSettings application/json 
+INFO  2019-05-08 06:04:16,261 [37   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:04:16,262 [37   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-05-08 06:04:16,275 [37   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetUserChatFriendsWithSettings", controller = "Chat"}. Executing action GSoft.AbpZeroTemplate.Chat.ChatAppService.GetUserChatFriendsWithSettings (GSoft.AbpZeroTemplate.Application)
+INFO  2019-05-08 06:04:16,275 [37   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:04:16,286 [33   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 344.4251ms 200 application/json
+INFO  2019-05-08 06:04:16,292 [41   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 350.2746ms 200 application/json
+INFO  2019-05-08 06:04:16,345 [37   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method GSoft.AbpZeroTemplate.Chat.ChatAppService.GetUserChatFriendsWithSettings (GSoft.AbpZeroTemplate.Application) - Validation state: Valid
+INFO  2019-05-08 06:04:17,129 [41   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/signalr?enc_auth_token=wNYmO41%2F48SHNstaLVXxHCCre29BZQl1NhC6NM3R3rzpXtPQxVzH6jEzA%2FQhXFN5tu6Fk7pO53uppm1mVXMZgxbyRVz26dnepi%2FFyB6axBY%2B6gq1GL%2BuRQgoiFUCjRN2p8w6LevViwKlHyWZZJZO1DGVSjAi1m2U%2Bog9pkHw9%2FQR4Nl%2FDPnoP9JYDMpZ1zxx09u6s0GZ9%2FQ5Sjk%2BL0UfcSCbl38X8he5w9UIn%2FHvxh7ysM1CiPLsoOwtbiieSRVmrmt0JjnipAn4%2FK283F8GrGwzwgehWsqefmUnM0ckMwP9ZAdwQxWDhxv0IqNw4tDhwUYs%2F1SYdYozdNzgByhgNOBPzQDObNLlWc4vV5VMOiYeyqPRFAsRBVNkF85rkCamv4TI5WEJvWZZ4SMNtf8l51nuM%2Fwy43OnocGnvMgUKB6ptEEyGPm2PfqhpNQSZfPkfbFiRbt6foAPBqSiEuE0pdDaAw%2FPcuHIcoP%2B4b9Gl7VNUkx3Z3eJmkiRJRqrgFvpozzkefG5QnMALFvO1nRYVL0P2FelJjpmFzc7yKfwZo57%2F61vP1B14Q%2BqFaFG2cnkF6eJalvt16rOjCQYHpgZQQeLZbY1OcwDclVyRXFZU1PFYIXmFz8TZeQ7FQRPiprX%2FukvYmb91RSTIapN9fIyyFuZjZVT%2F%2FAyny%2BO6UAEoxXzqtUYTsKAmbNMbUr0H5gWj7%2FmsqpSVpXAnxFvVJ8J3uoHHJcC5JZROu9bKfSzR7GBNsSbT6TSdxVESQMhVYhqO%2Bt6U%2B8tmqmnnzr7B64isU2t%2FVmo6dv9fyjXIGlYljbMt1P%2FG3Gwz3LF1u7gZvB6caMw%2Fwm%2Fsh3VUoQsrbD%2FIpyNoF4HLDMa28p02b2XXKf0BjakDv8pwNy2OpPfUqZo&id=rdg9OIq83jRkz0yH-joCkA  
+INFO  2019-05-08 06:04:17,129 [41   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:04:17,132 [41   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-05-08 06:04:17,246 [45   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/signalr-chat?enc_auth_token=wNYmO41%2F48SHNstaLVXxHCCre29BZQl1NhC6NM3R3rzpXtPQxVzH6jEzA%2FQhXFN5tu6Fk7pO53uppm1mVXMZgxbyRVz26dnepi%2FFyB6axBY%2B6gq1GL%2BuRQgoiFUCjRN2p8w6LevViwKlHyWZZJZO1DGVSjAi1m2U%2Bog9pkHw9%2FQR4Nl%2FDPnoP9JYDMpZ1zxx09u6s0GZ9%2FQ5Sjk%2BL0UfcSCbl38X8he5w9UIn%2FHvxh7ysM1CiPLsoOwtbiieSRVmrmt0JjnipAn4%2FK283F8GrGwzwgehWsqefmUnM0ckMwP9ZAdwQxWDhxv0IqNw4tDhwUYs%2F1SYdYozdNzgByhgNOBPzQDObNLlWc4vV5VMOiYeyqPRFAsRBVNkF85rkCamv4TI5WEJvWZZ4SMNtf8l51nuM%2Fwy43OnocGnvMgUKB6ptEEyGPm2PfqhpNQSZfPkfbFiRbt6foAPBqSiEuE0pdDaAw%2FPcuHIcoP%2B4b9Gl7VNUkx3Z3eJmkiRJRqrgFvpozzkefG5QnMALFvO1nRYVL0P2FelJjpmFzc7yKfwZo57%2F61vP1B14Q%2BqFaFG2cnkF6eJalvt16rOjCQYHpgZQQeLZbY1OcwDclVyRXFZU1PFYIXmFz8TZeQ7FQRPiprX%2FukvYmb91RSTIapN9fIyyFuZjZVT%2F%2FAyny%2BO6UAEoxXzqtUYTsKAmbNMbUr0H5gWj7%2FmsqpSVpXAnxFvVJ8J3uoHHJcC5JZROu9bKfSzR7GBNsSbT6TSdxVESQMhVYhqO%2Bt6U%2B8tmqmnnzr7B64isU2t%2FVmo6dv9fyjXIGlYljbMt1P%2FG3Gwz3LF1u7gZvB6caMw%2Fwm%2Fsh3VUoQsrbD%2FIpyNoF4HLDMa28p02b2XXKf0BjakDv8pwNy2OpPfUqZo&id=ZSiu2Nl09Kb2suzVcgdYBg  
+INFO  2019-05-08 06:04:17,247 [45   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:04:17,253 [45   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-05-08 06:04:17,904 [45   ] .AspNetCore.SignalR.HubConnectionContext - Completed connection handshake. Using HubProtocol 'json'.
+INFO  2019-05-08 06:04:17,904 [46   ] .AspNetCore.SignalR.HubConnectionContext - Completed connection handshake. Using HubProtocol 'json'.
+DEBUG 2019-05-08 06:04:17,944 [46   ] Abp.AspNetCore.SignalR.Hubs.AbpCommonHub - A client is connected: {"ConnectionId":"rdg9OIq83jRkz0yH-joCkA","IpAddress":"127.0.0.1","TenantId":null,"UserId":1,"ConnectTime":"2019-05-08T06:04:17.9358009+09:00","Properties":{}}
+DEBUG 2019-05-08 06:04:17,993 [45   ] AbpZeroTemplate.Web.Chat.SignalR.ChatHub - A client is connected: {"ConnectionId":"ZSiu2Nl09Kb2suzVcgdYBg","IpAddress":"127.0.0.1","TenantId":null,"UserId":1,"ConnectTime":"2019-05-08T06:04:17.9880879+09:00","Properties":{}}
+INFO  2019-05-08 06:04:18,126 [37   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method GSoft.AbpZeroTemplate.Chat.ChatAppService.GetUserChatFriendsWithSettings (GSoft.AbpZeroTemplate.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 1780.2735ms.
+DEBUG 2019-05-08 06:04:18,129 [46   ] Abp.AspNetCore.SignalR.Hubs.AbpCommonHub - A client is registered: rdg9OIq83jRkz0yH-joCkA
+INFO  2019-05-08 06:04:18,133 [37   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-05-08 06:04:18,134 [37   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action GSoft.AbpZeroTemplate.Chat.ChatAppService.GetUserChatFriendsWithSettings (GSoft.AbpZeroTemplate.Application) in 1858.9749ms
+INFO  2019-05-08 06:04:18,134 [37   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 1873.5158ms 200 application/json; charset=utf-8
+INFO  2019-05-08 06:04:18,202 [40   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method GSoft.AbpZeroTemplate.Authorization.Users.UserLinkAppService.GetRecentlyUsedLinkedUsers (GSoft.AbpZeroTemplate.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 3371.3097ms.
+INFO  2019-05-08 06:04:18,212 [46   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method GSoft.AbpZeroTemplate.Authorization.Users.UserLinkAppService.GetLinkedUsers (GSoft.AbpZeroTemplate.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 3367.0582ms.
+INFO  2019-05-08 06:04:18,216 [40   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-05-08 06:04:18,218 [40   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action GSoft.AbpZeroTemplate.Authorization.Users.UserLinkAppService.GetRecentlyUsedLinkedUsers (GSoft.AbpZeroTemplate.Application) in 3803.342ms
+INFO  2019-05-08 06:04:18,218 [40   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 3814.0762ms 200 application/json; charset=utf-8
+INFO  2019-05-08 06:04:18,308 [40   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-05-08 06:04:18,309 [40   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action GSoft.AbpZeroTemplate.Authorization.Users.UserLinkAppService.GetLinkedUsers (GSoft.AbpZeroTemplate.Application) in 3801.7061ms
+INFO  2019-05-08 06:04:18,309 [40   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 3817.2067ms 200 application/json; charset=utf-8
+INFO  2019-05-08 06:04:22,552 [47   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:5000/api/services/app/HostDashboard/GetDashboardStatisticsData?IncomeStatisticsDateInterval=1&StartDate=2019-04-30T15%3A00%3A00.000Z&EndDate=2019-05-08T14%3A59%3A59.999Z  
+INFO  2019-05-08 06:04:22,553 [47   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:04:22,553 [47   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.3355ms 204 
+INFO  2019-05-08 06:04:22,555 [47   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/api/services/app/HostDashboard/GetDashboardStatisticsData?IncomeStatisticsDateInterval=1&StartDate=2019-04-30T15%3A00%3A00.000Z&EndDate=2019-05-08T14%3A59%3A59.999Z application/json 
+INFO  2019-05-08 06:04:22,555 [47   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:04:22,556 [47   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-05-08 06:04:22,567 [47   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {area = "app", action = "GetDashboardStatisticsData", controller = "HostDashboard"}. Executing action GSoft.AbpZeroTemplate.MultiTenancy.HostDashboard.HostDashboardAppService.GetDashboardStatisticsData (GSoft.AbpZeroTemplate.Application)
+INFO  2019-05-08 06:04:22,567 [47   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:04:22,875 [47   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method GSoft.AbpZeroTemplate.MultiTenancy.HostDashboard.HostDashboardAppService.GetDashboardStatisticsData (GSoft.AbpZeroTemplate.Application) with arguments (GSoft.AbpZeroTemplate.MultiTenancy.HostDashboard.Dto.GetDashboardDataInput) - Validation state: Valid
+INFO  2019-05-08 06:04:23,140 [41   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:5000/api/VendorType/GetVendorTypesByFilter?Name=&Sorting=&MaxResultCount=99&SkipCount=0  
+INFO  2019-05-08 06:04:23,140 [41   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:04:23,140 [41   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.1796ms 204 
+INFO  2019-05-08 06:04:23,148 [39   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/api/VendorType/GetVendorTypesByFilter?Name=&Sorting=&MaxResultCount=99&SkipCount=0 application/json 
+INFO  2019-05-08 06:04:23,148 [39   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:04:23,149 [39   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-05-08 06:04:23,161 [39   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "GetVendorTypesByFilter", controller = "VendorType", area = ""}. Executing action GWebsite.AbpZeroTemplate.Application.Controllers.VendorTypeController.GetVendorTypesByFilter (GWebsite.AbpZeroTemplate.Web.Core)
+INFO  2019-05-08 06:04:23,161 [39   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:04:23,295 [47   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:5000/api/Vendor/GetVendorsByFilter?Name=&MaxResultCount=10&SkipCount=0  
+INFO  2019-05-08 06:04:23,295 [47   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:04:23,296 [47   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.1918ms 204 
+INFO  2019-05-08 06:04:23,305 [47   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/api/Vendor/GetVendorsByFilter?Name=&MaxResultCount=10&SkipCount=0 application/json 
+INFO  2019-05-08 06:04:23,305 [47   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:04:23,306 [47   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-05-08 06:04:23,320 [47   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "GetVendorsByFilter", controller = "Vendor", area = ""}. Executing action GWebsite.AbpZeroTemplate.Application.Controllers.VendorController.GetVendorsByFilter (GWebsite.AbpZeroTemplate.Web.Core)
+INFO  2019-05-08 06:04:23,320 [47   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:04:23,509 [39   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method GWebsite.AbpZeroTemplate.Application.Controllers.VendorTypeController.GetVendorTypesByFilter (GWebsite.AbpZeroTemplate.Web.Core) with arguments (GWebsite.AbpZeroTemplate.Application.Share.VendorTypes.Dto.VendorTypeFilter) - Validation state: Valid
+INFO  2019-05-08 06:04:23,528 [47   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method GWebsite.AbpZeroTemplate.Application.Controllers.VendorController.GetVendorsByFilter (GWebsite.AbpZeroTemplate.Web.Core) with arguments (GWebsite.AbpZeroTemplate.Application.Share.Vendors.Dto.VendorFilter) - Validation state: Valid
+INFO  2019-05-08 06:04:25,816 [41   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method GSoft.AbpZeroTemplate.MultiTenancy.HostDashboard.HostDashboardAppService.GetDashboardStatisticsData (GSoft.AbpZeroTemplate.Application), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 2941.2121ms.
+INFO  2019-05-08 06:04:25,817 [44   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:5000/api/Vendor/GetVendorsByFilter?Name=&MaxResultCount=10&SkipCount=0  
+INFO  2019-05-08 06:04:25,817 [44   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:04:25,817 [44   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.1602ms 204 
+INFO  2019-05-08 06:04:25,818 [41   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-05-08 06:04:25,820 [44   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/api/Vendor/GetVendorsByFilter?Name=&MaxResultCount=10&SkipCount=0 application/json 
+INFO  2019-05-08 06:04:25,820 [44   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:04:25,822 [44   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-05-08 06:04:25,828 [41   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action GSoft.AbpZeroTemplate.MultiTenancy.HostDashboard.HostDashboardAppService.GetDashboardStatisticsData (GSoft.AbpZeroTemplate.Application) in 3260.379ms
+INFO  2019-05-08 06:04:25,828 [41   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 3273.2497ms 200 application/json; charset=utf-8
+INFO  2019-05-08 06:04:25,828 [39   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method GWebsite.AbpZeroTemplate.Application.Controllers.VendorTypeController.GetVendorTypesByFilter (GWebsite.AbpZeroTemplate.Web.Core), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 2319.5703ms.
+INFO  2019-05-08 06:04:25,839 [44   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "GetVendorsByFilter", controller = "Vendor", area = ""}. Executing action GWebsite.AbpZeroTemplate.Application.Controllers.VendorController.GetVendorsByFilter (GWebsite.AbpZeroTemplate.Web.Core)
+INFO  2019-05-08 06:04:25,839 [44   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:04:25,854 [44   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method GWebsite.AbpZeroTemplate.Application.Controllers.VendorController.GetVendorsByFilter (GWebsite.AbpZeroTemplate.Web.Core) with arguments (GWebsite.AbpZeroTemplate.Application.Share.Vendors.Dto.VendorFilter) - Validation state: Valid
+INFO  2019-05-08 06:04:26,002 [33   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-05-08 06:04:26,004 [33   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action GWebsite.AbpZeroTemplate.Application.Controllers.VendorTypeController.GetVendorTypesByFilter (GWebsite.AbpZeroTemplate.Web.Core) in 2842.6583ms
+INFO  2019-05-08 06:04:26,004 [33   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 2856.1772ms 200 application/json; charset=utf-8
+INFO  2019-05-08 06:04:26,056 [44   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method GWebsite.AbpZeroTemplate.Application.Controllers.VendorController.GetVendorsByFilter (GWebsite.AbpZeroTemplate.Web.Core), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 201.817ms.
+INFO  2019-05-08 06:04:26,108 [47   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method GWebsite.AbpZeroTemplate.Application.Controllers.VendorController.GetVendorsByFilter (GWebsite.AbpZeroTemplate.Web.Core), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 2580.0086ms.
+INFO  2019-05-08 06:04:26,248 [47   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-05-08 06:04:26,253 [47   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action GWebsite.AbpZeroTemplate.Application.Controllers.VendorController.GetVendorsByFilter (GWebsite.AbpZeroTemplate.Web.Core) in 2932.7043ms
+INFO  2019-05-08 06:04:26,253 [47   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 2948.0379ms 200 application/json; charset=utf-8
+INFO  2019-05-08 06:04:26,403 [39   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-05-08 06:04:26,403 [39   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action GWebsite.AbpZeroTemplate.Application.Controllers.VendorController.GetVendorsByFilter (GWebsite.AbpZeroTemplate.Web.Core) in 563.572ms
+INFO  2019-05-08 06:04:26,403 [39   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 582.7178ms 200 application/json; charset=utf-8
+INFO  2019-05-08 06:04:31,261 [39   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:5000/api/VendorType/GetVendorTypesByFilter?Name=&Sorting=&MaxResultCount=99&SkipCount=0  
+INFO  2019-05-08 06:04:31,261 [39   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:04:31,261 [39   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.2167ms 204 
+INFO  2019-05-08 06:04:31,263 [33   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/api/VendorType/GetVendorTypesByFilter?Name=&Sorting=&MaxResultCount=99&SkipCount=0 application/json 
+INFO  2019-05-08 06:04:31,263 [33   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:04:31,264 [33   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-05-08 06:04:31,268 [33   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "GetVendorTypesByFilter", controller = "VendorType", area = ""}. Executing action GWebsite.AbpZeroTemplate.Application.Controllers.VendorTypeController.GetVendorTypesByFilter (GWebsite.AbpZeroTemplate.Web.Core)
+INFO  2019-05-08 06:04:31,268 [33   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:04:31,276 [33   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method GWebsite.AbpZeroTemplate.Application.Controllers.VendorTypeController.GetVendorTypesByFilter (GWebsite.AbpZeroTemplate.Web.Core) with arguments (GWebsite.AbpZeroTemplate.Application.Share.VendorTypes.Dto.VendorTypeFilter) - Validation state: Valid
+INFO  2019-05-08 06:04:31,349 [33   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method GWebsite.AbpZeroTemplate.Application.Controllers.VendorTypeController.GetVendorTypesByFilter (GWebsite.AbpZeroTemplate.Web.Core), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 72.3489ms.
+INFO  2019-05-08 06:04:31,700 [33   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-05-08 06:04:31,701 [33   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action GWebsite.AbpZeroTemplate.Application.Controllers.VendorTypeController.GetVendorTypesByFilter (GWebsite.AbpZeroTemplate.Web.Core) in 432.5955ms
+INFO  2019-05-08 06:04:31,701 [33   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 437.665ms 200 application/json; charset=utf-8
+INFO  2019-05-08 06:04:31,874 [41   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:5000/api/Vendor/GetVendorForEdit?id=5  
+INFO  2019-05-08 06:04:31,875 [41   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:04:31,875 [41   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.1819ms 204 
+INFO  2019-05-08 06:04:31,880 [41   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/api/Vendor/GetVendorForEdit?id=5 application/json 
+INFO  2019-05-08 06:04:31,880 [41   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:04:31,881 [41   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-05-08 06:04:31,887 [41   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "GetVendorForEdit", controller = "Vendor", area = ""}. Executing action GWebsite.AbpZeroTemplate.Application.Controllers.VendorController.GetVendorForEdit (GWebsite.AbpZeroTemplate.Web.Core)
+INFO  2019-05-08 06:04:31,887 [41   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:04:31,893 [41   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method GWebsite.AbpZeroTemplate.Application.Controllers.VendorController.GetVendorForEdit (GWebsite.AbpZeroTemplate.Web.Core) with arguments (5) - Validation state: Valid
+INFO  2019-05-08 06:04:32,060 [41   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method GWebsite.AbpZeroTemplate.Application.Controllers.VendorController.GetVendorForEdit (GWebsite.AbpZeroTemplate.Web.Core), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 166.4021ms.
+INFO  2019-05-08 06:04:32,196 [33   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-05-08 06:04:32,199 [33   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action GWebsite.AbpZeroTemplate.Application.Controllers.VendorController.GetVendorForEdit (GWebsite.AbpZeroTemplate.Web.Core) in 311.4549ms
+INFO  2019-05-08 06:04:32,199 [33   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 318.857ms 200 application/json; charset=utf-8
+INFO  2019-05-08 06:04:38,343 [45   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:5000/api/Vendor/CreateOrEditVendor  
+INFO  2019-05-08 06:04:38,343 [45   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:04:38,343 [45   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.3462ms 204 
+INFO  2019-05-08 06:04:38,346 [45   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:5000/api/Vendor/CreateOrEditVendor application/json 101
+INFO  2019-05-08 06:04:38,346 [45   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:04:38,347 [45   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-05-08 06:04:38,366 [45   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "CreateOrEditVendor", controller = "Vendor", area = ""}. Executing action GWebsite.AbpZeroTemplate.Application.Controllers.VendorController.CreateOrEditVendor (GWebsite.AbpZeroTemplate.Web.Core)
+INFO  2019-05-08 06:04:38,366 [45   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:04:38,501 [45   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method GWebsite.AbpZeroTemplate.Application.Controllers.VendorController.CreateOrEditVendor (GWebsite.AbpZeroTemplate.Web.Core) with arguments ([VendorInput 5]) - Validation state: Valid
+INFO  2019-05-08 06:04:40,724 [45   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method GWebsite.AbpZeroTemplate.Application.Controllers.VendorController.CreateOrEditVendor (GWebsite.AbpZeroTemplate.Web.Core), returned result Microsoft.AspNetCore.Mvc.EmptyResult in 2222.5825ms.
+INFO  2019-05-08 06:04:40,755 [47   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-05-08 06:04:40,755 [47   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action GWebsite.AbpZeroTemplate.Application.Controllers.VendorController.CreateOrEditVendor (GWebsite.AbpZeroTemplate.Web.Core) in 2388.5666ms
+INFO  2019-05-08 06:04:40,755 [47   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 2409.6123ms 200 application/json; charset=utf-8
+INFO  2019-05-08 06:04:40,852 [47   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:5000/api/Vendor/GetVendorsByFilter?Name=&MaxResultCount=10&SkipCount=0  
+INFO  2019-05-08 06:04:40,852 [47   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:04:40,852 [47   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.1768ms 204 
+INFO  2019-05-08 06:04:40,854 [47   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/api/Vendor/GetVendorsByFilter?Name=&MaxResultCount=10&SkipCount=0 application/json 
+INFO  2019-05-08 06:04:40,855 [47   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:04:40,855 [47   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-05-08 06:04:40,859 [47   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "GetVendorsByFilter", controller = "Vendor", area = ""}. Executing action GWebsite.AbpZeroTemplate.Application.Controllers.VendorController.GetVendorsByFilter (GWebsite.AbpZeroTemplate.Web.Core)
+INFO  2019-05-08 06:04:40,859 [47   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:04:40,873 [47   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method GWebsite.AbpZeroTemplate.Application.Controllers.VendorController.GetVendorsByFilter (GWebsite.AbpZeroTemplate.Web.Core) with arguments (GWebsite.AbpZeroTemplate.Application.Share.Vendors.Dto.VendorFilter) - Validation state: Valid
+INFO  2019-05-08 06:04:40,892 [47   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method GWebsite.AbpZeroTemplate.Application.Controllers.VendorController.GetVendorsByFilter (GWebsite.AbpZeroTemplate.Web.Core), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 19.7387ms.
+INFO  2019-05-08 06:04:40,913 [47   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-05-08 06:04:40,913 [47   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action GWebsite.AbpZeroTemplate.Application.Controllers.VendorController.GetVendorsByFilter (GWebsite.AbpZeroTemplate.Web.Core) in 53.5434ms
+INFO  2019-05-08 06:04:40,913 [47   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 58.6385ms 200 application/json; charset=utf-8
+INFO  2019-05-08 06:04:44,648 [47   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:5000/api/VendorType/GetVendorTypesByFilter?Name=&Sorting=&MaxResultCount=99&SkipCount=0  
+INFO  2019-05-08 06:04:44,648 [47   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:04:44,648 [45   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:5000/api/Vendor/GetVendorForEdit  
+INFO  2019-05-08 06:04:44,648 [47   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.3868ms 204 
+INFO  2019-05-08 06:04:44,648 [45   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:04:44,648 [45   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.1125ms 204 
+INFO  2019-05-08 06:04:44,650 [49   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/api/Vendor/GetVendorForEdit application/json 
+INFO  2019-05-08 06:04:44,650 [49   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:04:44,651 [49   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-05-08 06:04:44,652 [45   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/api/VendorType/GetVendorTypesByFilter?Name=&Sorting=&MaxResultCount=99&SkipCount=0 application/json 
+INFO  2019-05-08 06:04:44,652 [45   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:04:44,653 [45   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-05-08 06:04:44,656 [49   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "GetVendorForEdit", controller = "Vendor", area = ""}. Executing action GWebsite.AbpZeroTemplate.Application.Controllers.VendorController.GetVendorForEdit (GWebsite.AbpZeroTemplate.Web.Core)
+INFO  2019-05-08 06:04:44,656 [49   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:04:44,658 [45   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "GetVendorTypesByFilter", controller = "VendorType", area = ""}. Executing action GWebsite.AbpZeroTemplate.Application.Controllers.VendorTypeController.GetVendorTypesByFilter (GWebsite.AbpZeroTemplate.Web.Core)
+INFO  2019-05-08 06:04:44,658 [45   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:04:44,663 [49   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method GWebsite.AbpZeroTemplate.Application.Controllers.VendorController.GetVendorForEdit (GWebsite.AbpZeroTemplate.Web.Core) with arguments (0) - Validation state: Valid
+INFO  2019-05-08 06:04:44,665 [45   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method GWebsite.AbpZeroTemplate.Application.Controllers.VendorTypeController.GetVendorTypesByFilter (GWebsite.AbpZeroTemplate.Web.Core) with arguments (GWebsite.AbpZeroTemplate.Application.Share.VendorTypes.Dto.VendorTypeFilter) - Validation state: Valid
+INFO  2019-05-08 06:04:44,672 [49   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method GWebsite.AbpZeroTemplate.Application.Controllers.VendorController.GetVendorForEdit (GWebsite.AbpZeroTemplate.Web.Core), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 8.8145ms.
+INFO  2019-05-08 06:04:44,673 [45   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method GWebsite.AbpZeroTemplate.Application.Controllers.VendorTypeController.GetVendorTypesByFilter (GWebsite.AbpZeroTemplate.Web.Core), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 8.2674ms.
+INFO  2019-05-08 06:04:44,677 [49   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-05-08 06:04:44,678 [49   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action GWebsite.AbpZeroTemplate.Application.Controllers.VendorController.GetVendorForEdit (GWebsite.AbpZeroTemplate.Web.Core) in 21.6892ms
+INFO  2019-05-08 06:04:44,678 [49   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 27.4562ms 200 application/json; charset=utf-8
+INFO  2019-05-08 06:04:44,681 [45   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-05-08 06:04:44,682 [45   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action GWebsite.AbpZeroTemplate.Application.Controllers.VendorTypeController.GetVendorTypesByFilter (GWebsite.AbpZeroTemplate.Web.Core) in 23.6831ms
+INFO  2019-05-08 06:04:44,682 [45   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 29.7679ms 200 application/json; charset=utf-8
+INFO  2019-05-08 06:04:52,930 [39   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:5000/api/Vendor/CreateOrEditVendor  
+INFO  2019-05-08 06:04:52,930 [39   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:04:52,930 [39   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.2242ms 204 
+INFO  2019-05-08 06:04:52,932 [39   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:5000/api/Vendor/CreateOrEditVendor application/json 96
+INFO  2019-05-08 06:04:52,932 [39   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:04:52,933 [39   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-05-08 06:04:52,941 [39   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "CreateOrEditVendor", controller = "Vendor", area = ""}. Executing action GWebsite.AbpZeroTemplate.Application.Controllers.VendorController.CreateOrEditVendor (GWebsite.AbpZeroTemplate.Web.Core)
+INFO  2019-05-08 06:04:52,941 [39   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:04:52,947 [39   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method GWebsite.AbpZeroTemplate.Application.Controllers.VendorController.CreateOrEditVendor (GWebsite.AbpZeroTemplate.Web.Core) with arguments ([VendorInput 0]) - Validation state: Valid
+INFO  2019-05-08 06:04:52,982 [39   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method GWebsite.AbpZeroTemplate.Application.Controllers.VendorController.CreateOrEditVendor (GWebsite.AbpZeroTemplate.Web.Core), returned result Microsoft.AspNetCore.Mvc.EmptyResult in 34.5105ms.
+INFO  2019-05-08 06:04:52,988 [45   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-05-08 06:04:52,988 [45   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action GWebsite.AbpZeroTemplate.Application.Controllers.VendorController.CreateOrEditVendor (GWebsite.AbpZeroTemplate.Web.Core) in 47.4661ms
+INFO  2019-05-08 06:04:52,988 [45   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 56.1618ms 200 application/json; charset=utf-8
+INFO  2019-05-08 06:04:53,072 [39   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:5000/api/Vendor/GetVendorsByFilter?Name=&MaxResultCount=10&SkipCount=0  
+INFO  2019-05-08 06:04:53,072 [39   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:04:53,072 [39   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.1811ms 204 
+INFO  2019-05-08 06:04:53,074 [39   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/api/Vendor/GetVendorsByFilter?Name=&MaxResultCount=10&SkipCount=0 application/json 
+INFO  2019-05-08 06:04:53,074 [39   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:04:53,074 [39   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-05-08 06:04:53,078 [39   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "GetVendorsByFilter", controller = "Vendor", area = ""}. Executing action GWebsite.AbpZeroTemplate.Application.Controllers.VendorController.GetVendorsByFilter (GWebsite.AbpZeroTemplate.Web.Core)
+INFO  2019-05-08 06:04:53,078 [39   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:04:53,082 [39   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method GWebsite.AbpZeroTemplate.Application.Controllers.VendorController.GetVendorsByFilter (GWebsite.AbpZeroTemplate.Web.Core) with arguments (GWebsite.AbpZeroTemplate.Application.Share.Vendors.Dto.VendorFilter) - Validation state: Valid
+INFO  2019-05-08 06:04:53,092 [39   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method GWebsite.AbpZeroTemplate.Application.Controllers.VendorController.GetVendorsByFilter (GWebsite.AbpZeroTemplate.Web.Core), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 9.5034ms.
+INFO  2019-05-08 06:04:53,096 [39   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-05-08 06:04:53,096 [39   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action GWebsite.AbpZeroTemplate.Application.Controllers.VendorController.GetVendorsByFilter (GWebsite.AbpZeroTemplate.Web.Core) in 18.4881ms
+INFO  2019-05-08 06:04:53,096 [39   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 22.6662ms 200 application/json; charset=utf-8
+INFO  2019-05-08 06:04:55,994 [39   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:5000/api/VendorType/GetVendorTypesByFilter?Name=&MaxResultCount=10&SkipCount=0  
+INFO  2019-05-08 06:04:55,994 [39   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:04:55,994 [39   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.1322ms 204 
+INFO  2019-05-08 06:04:55,995 [39   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/api/VendorType/GetVendorTypesByFilter?Name=&MaxResultCount=10&SkipCount=0 application/json 
+INFO  2019-05-08 06:04:55,995 [39   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:04:55,995 [39   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-05-08 06:04:55,999 [39   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "GetVendorTypesByFilter", controller = "VendorType", area = ""}. Executing action GWebsite.AbpZeroTemplate.Application.Controllers.VendorTypeController.GetVendorTypesByFilter (GWebsite.AbpZeroTemplate.Web.Core)
+INFO  2019-05-08 06:04:55,999 [39   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:04:56,004 [39   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method GWebsite.AbpZeroTemplate.Application.Controllers.VendorTypeController.GetVendorTypesByFilter (GWebsite.AbpZeroTemplate.Web.Core) with arguments (GWebsite.AbpZeroTemplate.Application.Share.VendorTypes.Dto.VendorTypeFilter) - Validation state: Valid
+INFO  2019-05-08 06:04:56,012 [39   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method GWebsite.AbpZeroTemplate.Application.Controllers.VendorTypeController.GetVendorTypesByFilter (GWebsite.AbpZeroTemplate.Web.Core), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 8.3775ms.
+INFO  2019-05-08 06:04:56,016 [33   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-05-08 06:04:56,016 [33   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action GWebsite.AbpZeroTemplate.Application.Controllers.VendorTypeController.GetVendorTypesByFilter (GWebsite.AbpZeroTemplate.Web.Core) in 17.4783ms
+INFO  2019-05-08 06:04:56,017 [33   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 21.5692ms 200 application/json; charset=utf-8
+INFO  2019-05-08 06:04:56,961 [33   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:5000/api/VendorType/GetVendorTypesByFilter?Name=&MaxResultCount=10&SkipCount=0  
+INFO  2019-05-08 06:04:56,961 [33   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:04:56,962 [33   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.1859ms 204 
+INFO  2019-05-08 06:04:56,964 [33   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/api/VendorType/GetVendorTypesByFilter?Name=&MaxResultCount=10&SkipCount=0 application/json 
+INFO  2019-05-08 06:04:56,964 [33   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:04:56,966 [33   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-05-08 06:04:56,970 [33   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "GetVendorTypesByFilter", controller = "VendorType", area = ""}. Executing action GWebsite.AbpZeroTemplate.Application.Controllers.VendorTypeController.GetVendorTypesByFilter (GWebsite.AbpZeroTemplate.Web.Core)
+INFO  2019-05-08 06:04:56,971 [33   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:04:56,979 [33   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method GWebsite.AbpZeroTemplate.Application.Controllers.VendorTypeController.GetVendorTypesByFilter (GWebsite.AbpZeroTemplate.Web.Core) with arguments (GWebsite.AbpZeroTemplate.Application.Share.VendorTypes.Dto.VendorTypeFilter) - Validation state: Valid
+INFO  2019-05-08 06:04:56,990 [33   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method GWebsite.AbpZeroTemplate.Application.Controllers.VendorTypeController.GetVendorTypesByFilter (GWebsite.AbpZeroTemplate.Web.Core), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 11.1969ms.
+INFO  2019-05-08 06:04:56,995 [33   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-05-08 06:04:56,995 [33   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action GWebsite.AbpZeroTemplate.Application.Controllers.VendorTypeController.GetVendorTypesByFilter (GWebsite.AbpZeroTemplate.Web.Core) in 24.2057ms
+INFO  2019-05-08 06:04:56,995 [33   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 31.0331ms 200 application/json; charset=utf-8
+INFO  2019-05-08 06:04:58,541 [45   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:5000/api/MerchandiseType/GetMerchandiseByFilter?Name=&MaxResultCount=10&SkipCount=0  
+INFO  2019-05-08 06:04:58,542 [45   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:04:58,542 [45   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.1993ms 204 
+INFO  2019-05-08 06:04:58,544 [41   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/api/MerchandiseType/GetMerchandiseByFilter?Name=&MaxResultCount=10&SkipCount=0 application/json 
+INFO  2019-05-08 06:04:58,544 [41   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:04:58,545 [41   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-05-08 06:04:58,555 [41   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "GetMerchandiseByFilter", controller = "MerchandiseType", area = ""}. Executing action GWebsite.AbpZeroTemplate.Application.Controllers.MerchandiseTypeController.GetMerchandiseByFilter (GWebsite.AbpZeroTemplate.Web.Core)
+INFO  2019-05-08 06:04:58,555 [41   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:04:58,754 [41   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method GWebsite.AbpZeroTemplate.Application.Controllers.MerchandiseTypeController.GetMerchandiseByFilter (GWebsite.AbpZeroTemplate.Web.Core) with arguments (GWebsite.AbpZeroTemplate.Application.Share.MerchandiseTypes.Dto.MerchandiseTypeFilter) - Validation state: Valid
+INFO  2019-05-08 06:04:59,450 [45   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:5000/api/MerchandiseType/GetMerchandiseByFilter?Name=&MaxResultCount=10&SkipCount=0  
+INFO  2019-05-08 06:04:59,450 [45   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:04:59,450 [45   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.1796ms 204 
+INFO  2019-05-08 06:04:59,460 [44   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/api/MerchandiseType/GetMerchandiseByFilter?Name=&MaxResultCount=10&SkipCount=0 application/json 
+INFO  2019-05-08 06:04:59,460 [44   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:04:59,460 [44   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-05-08 06:04:59,467 [44   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "GetMerchandiseByFilter", controller = "MerchandiseType", area = ""}. Executing action GWebsite.AbpZeroTemplate.Application.Controllers.MerchandiseTypeController.GetMerchandiseByFilter (GWebsite.AbpZeroTemplate.Web.Core)
+INFO  2019-05-08 06:04:59,467 [44   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:04:59,475 [44   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method GWebsite.AbpZeroTemplate.Application.Controllers.MerchandiseTypeController.GetMerchandiseByFilter (GWebsite.AbpZeroTemplate.Web.Core) with arguments (GWebsite.AbpZeroTemplate.Application.Share.MerchandiseTypes.Dto.MerchandiseTypeFilter) - Validation state: Valid
+INFO  2019-05-08 06:05:00,628 [44   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method GWebsite.AbpZeroTemplate.Application.Controllers.MerchandiseTypeController.GetMerchandiseByFilter (GWebsite.AbpZeroTemplate.Web.Core), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 1153.0482ms.
+INFO  2019-05-08 06:05:00,630 [41   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method GWebsite.AbpZeroTemplate.Application.Controllers.MerchandiseTypeController.GetMerchandiseByFilter (GWebsite.AbpZeroTemplate.Web.Core), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 1876.1646ms.
+INFO  2019-05-08 06:05:00,646 [44   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-05-08 06:05:00,646 [41   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-05-08 06:05:00,648 [41   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action GWebsite.AbpZeroTemplate.Application.Controllers.MerchandiseTypeController.GetMerchandiseByFilter (GWebsite.AbpZeroTemplate.Web.Core) in 1181.0377ms
+INFO  2019-05-08 06:05:00,648 [44   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action GWebsite.AbpZeroTemplate.Application.Controllers.MerchandiseTypeController.GetMerchandiseByFilter (GWebsite.AbpZeroTemplate.Web.Core) in 2093.3556ms
+INFO  2019-05-08 06:05:00,648 [44   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 2104.5142ms 200 application/json; charset=utf-8
+INFO  2019-05-08 06:05:00,648 [41   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 1188.8701ms 200 application/json; charset=utf-8
+INFO  2019-05-08 06:05:02,747 [49   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:5000/api/MerchandiseType/GetMerchandiseTypeForEdit  
+INFO  2019-05-08 06:05:02,747 [49   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:05:02,747 [49   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.1835ms 204 
+INFO  2019-05-08 06:05:02,748 [49   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/api/MerchandiseType/GetMerchandiseTypeForEdit application/json 
+INFO  2019-05-08 06:05:02,748 [49   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:05:02,749 [49   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-05-08 06:05:02,753 [49   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "GetMerchandiseTypeForEdit", controller = "MerchandiseType", area = ""}. Executing action GWebsite.AbpZeroTemplate.Application.Controllers.MerchandiseTypeController.GetMerchandiseTypeForEdit (GWebsite.AbpZeroTemplate.Web.Core)
+INFO  2019-05-08 06:05:02,753 [49   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:05:02,757 [49   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method GWebsite.AbpZeroTemplate.Application.Controllers.MerchandiseTypeController.GetMerchandiseTypeForEdit (GWebsite.AbpZeroTemplate.Web.Core) with arguments (0) - Validation state: Valid
+INFO  2019-05-08 06:05:02,775 [49   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method GWebsite.AbpZeroTemplate.Application.Controllers.MerchandiseTypeController.GetMerchandiseTypeForEdit (GWebsite.AbpZeroTemplate.Web.Core), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 17.8537ms.
+INFO  2019-05-08 06:05:02,780 [41   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-05-08 06:05:02,780 [41   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action GWebsite.AbpZeroTemplate.Application.Controllers.MerchandiseTypeController.GetMerchandiseTypeForEdit (GWebsite.AbpZeroTemplate.Web.Core) in 27.3307ms
+INFO  2019-05-08 06:05:02,780 [41   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 31.9983ms 200 application/json; charset=utf-8
+INFO  2019-05-08 06:05:08,204 [49   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:5000/api/MerchandiseType/CreateOrEditMerchandiseType  
+INFO  2019-05-08 06:05:08,204 [49   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:05:08,204 [49   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.2246ms 204 
+INFO  2019-05-08 06:05:08,209 [39   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:5000/api/MerchandiseType/CreateOrEditMerchandiseType application/json 33
+INFO  2019-05-08 06:05:08,209 [39   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:05:08,211 [39   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-05-08 06:05:08,219 [39   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "CreateOrEditMerchandiseType", controller = "MerchandiseType", area = ""}. Executing action GWebsite.AbpZeroTemplate.Application.Controllers.MerchandiseTypeController.CreateOrEditMerchandiseType (GWebsite.AbpZeroTemplate.Web.Core)
+INFO  2019-05-08 06:05:08,219 [39   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:05:08,234 [39   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method GWebsite.AbpZeroTemplate.Application.Controllers.MerchandiseTypeController.CreateOrEditMerchandiseType (GWebsite.AbpZeroTemplate.Web.Core) with arguments ([MerchandiseTypeInput 0]) - Validation state: Valid
+INFO  2019-05-08 06:05:08,376 [39   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method GWebsite.AbpZeroTemplate.Application.Controllers.MerchandiseTypeController.CreateOrEditMerchandiseType (GWebsite.AbpZeroTemplate.Web.Core), returned result Microsoft.AspNetCore.Mvc.EmptyResult in 141.8193ms.
+INFO  2019-05-08 06:05:08,386 [39   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-05-08 06:05:08,386 [39   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action GWebsite.AbpZeroTemplate.Application.Controllers.MerchandiseTypeController.CreateOrEditMerchandiseType (GWebsite.AbpZeroTemplate.Web.Core) in 167.1596ms
+INFO  2019-05-08 06:05:08,386 [39   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 177.1995ms 200 application/json; charset=utf-8
+INFO  2019-05-08 06:05:08,800 [41   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:5000/api/MerchandiseType/GetMerchandiseByFilter?Name=&MaxResultCount=10&SkipCount=0  
+INFO  2019-05-08 06:05:08,800 [41   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:05:08,801 [41   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.583ms 204 
+INFO  2019-05-08 06:05:08,805 [41   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/api/MerchandiseType/GetMerchandiseByFilter?Name=&MaxResultCount=10&SkipCount=0 application/json 
+INFO  2019-05-08 06:05:08,805 [41   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:05:08,807 [41   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-05-08 06:05:08,812 [41   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "GetMerchandiseByFilter", controller = "MerchandiseType", area = ""}. Executing action GWebsite.AbpZeroTemplate.Application.Controllers.MerchandiseTypeController.GetMerchandiseByFilter (GWebsite.AbpZeroTemplate.Web.Core)
+INFO  2019-05-08 06:05:08,812 [41   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:05:08,824 [41   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method GWebsite.AbpZeroTemplate.Application.Controllers.MerchandiseTypeController.GetMerchandiseByFilter (GWebsite.AbpZeroTemplate.Web.Core) with arguments (GWebsite.AbpZeroTemplate.Application.Share.MerchandiseTypes.Dto.MerchandiseTypeFilter) - Validation state: Valid
+INFO  2019-05-08 06:05:09,566 [41   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method GWebsite.AbpZeroTemplate.Application.Controllers.MerchandiseTypeController.GetMerchandiseByFilter (GWebsite.AbpZeroTemplate.Web.Core), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 742.5713ms.
+INFO  2019-05-08 06:05:09,577 [39   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-05-08 06:05:09,578 [39   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action GWebsite.AbpZeroTemplate.Application.Controllers.MerchandiseTypeController.GetMerchandiseByFilter (GWebsite.AbpZeroTemplate.Web.Core) in 765.3867ms
+INFO  2019-05-08 06:05:09,578 [39   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 773.7189ms 200 application/json; charset=utf-8
+INFO  2019-05-08 06:05:10,597 [41   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:5000/api/MerchandiseType/GetMerchandiseByFilter?Name=&Sorting=&MaxResultCount=99&SkipCount=0  
+INFO  2019-05-08 06:05:10,597 [41   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:05:10,597 [41   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.2123ms 204 
+INFO  2019-05-08 06:05:10,598 [41   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/api/MerchandiseType/GetMerchandiseByFilter?Name=&Sorting=&MaxResultCount=99&SkipCount=0 application/json 
+INFO  2019-05-08 06:05:10,598 [41   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:05:10,599 [41   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-05-08 06:05:10,604 [41   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "GetMerchandiseByFilter", controller = "MerchandiseType", area = ""}. Executing action GWebsite.AbpZeroTemplate.Application.Controllers.MerchandiseTypeController.GetMerchandiseByFilter (GWebsite.AbpZeroTemplate.Web.Core)
+INFO  2019-05-08 06:05:10,604 [41   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:05:10,609 [41   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method GWebsite.AbpZeroTemplate.Application.Controllers.MerchandiseTypeController.GetMerchandiseByFilter (GWebsite.AbpZeroTemplate.Web.Core) with arguments (GWebsite.AbpZeroTemplate.Application.Share.MerchandiseTypes.Dto.MerchandiseTypeFilter) - Validation state: Valid
+INFO  2019-05-08 06:05:10,621 [41   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method GWebsite.AbpZeroTemplate.Application.Controllers.MerchandiseTypeController.GetMerchandiseByFilter (GWebsite.AbpZeroTemplate.Web.Core), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 11.8992ms.
+INFO  2019-05-08 06:05:10,626 [41   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-05-08 06:05:10,626 [41   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action GWebsite.AbpZeroTemplate.Application.Controllers.MerchandiseTypeController.GetMerchandiseByFilter (GWebsite.AbpZeroTemplate.Web.Core) in 22.0958ms
+INFO  2019-05-08 06:05:10,626 [41   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 27.5107ms 200 application/json; charset=utf-8
+INFO  2019-05-08 06:05:10,801 [45   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:5000/api/Merchandise/GetMerchandiseByFilter?Name=&MaxResultCount=10&SkipCount=0  
+INFO  2019-05-08 06:05:10,801 [45   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:05:10,801 [45   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.5005ms 204 
+INFO  2019-05-08 06:05:10,803 [45   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/api/Merchandise/GetMerchandiseByFilter?Name=&MaxResultCount=10&SkipCount=0 application/json 
+INFO  2019-05-08 06:05:10,803 [45   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:05:10,804 [45   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-05-08 06:05:10,811 [45   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "GetMerchandiseByFilter", controller = "Merchandise", area = ""}. Executing action GWebsite.AbpZeroTemplate.Application.Controllers.MerchandiseController.GetMerchandiseByFilter (GWebsite.AbpZeroTemplate.Web.Core)
+INFO  2019-05-08 06:05:10,811 [45   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:05:10,965 [45   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method GWebsite.AbpZeroTemplate.Application.Controllers.MerchandiseController.GetMerchandiseByFilter (GWebsite.AbpZeroTemplate.Web.Core) with arguments (GWebsite.AbpZeroTemplate.Application.Share.Merchandises.Dto.MerchandiseFilter) - Validation state: Valid
+INFO  2019-05-08 06:05:11,271 [45   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method GWebsite.AbpZeroTemplate.Application.Controllers.MerchandiseController.GetMerchandiseByFilter (GWebsite.AbpZeroTemplate.Web.Core), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 305.3949ms.
+INFO  2019-05-08 06:05:11,277 [41   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-05-08 06:05:11,280 [41   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action GWebsite.AbpZeroTemplate.Application.Controllers.MerchandiseController.GetMerchandiseByFilter (GWebsite.AbpZeroTemplate.Web.Core) in 469.1162ms
+INFO  2019-05-08 06:05:11,280 [41   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 476.9778ms 200 application/json; charset=utf-8
+INFO  2019-05-08 06:05:11,836 [45   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:5000/api/Merchandise/GetMerchandiseByFilter?Name=&MaxResultCount=10&SkipCount=0  
+INFO  2019-05-08 06:05:11,837 [45   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:05:11,837 [45   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.9738ms 204 
+INFO  2019-05-08 06:05:11,840 [41   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/api/Merchandise/GetMerchandiseByFilter?Name=&MaxResultCount=10&SkipCount=0 application/json 
+INFO  2019-05-08 06:05:11,840 [41   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:05:11,841 [41   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-05-08 06:05:11,842 [45   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:5000/api/MerchandiseType/GetMerchandiseByFilter?Name=&Sorting=&MaxResultCount=99&SkipCount=0  
+INFO  2019-05-08 06:05:11,843 [45   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:05:11,843 [45   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.3237ms 204 
+INFO  2019-05-08 06:05:11,846 [47   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/api/MerchandiseType/GetMerchandiseByFilter?Name=&Sorting=&MaxResultCount=99&SkipCount=0 application/json 
+INFO  2019-05-08 06:05:11,847 [47   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:05:11,847 [41   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "GetMerchandiseByFilter", controller = "Merchandise", area = ""}. Executing action GWebsite.AbpZeroTemplate.Application.Controllers.MerchandiseController.GetMerchandiseByFilter (GWebsite.AbpZeroTemplate.Web.Core)
+INFO  2019-05-08 06:05:11,847 [41   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:05:11,847 [47   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-05-08 06:05:11,854 [47   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "GetMerchandiseByFilter", controller = "MerchandiseType", area = ""}. Executing action GWebsite.AbpZeroTemplate.Application.Controllers.MerchandiseTypeController.GetMerchandiseByFilter (GWebsite.AbpZeroTemplate.Web.Core)
+INFO  2019-05-08 06:05:11,854 [47   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:05:11,856 [41   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method GWebsite.AbpZeroTemplate.Application.Controllers.MerchandiseController.GetMerchandiseByFilter (GWebsite.AbpZeroTemplate.Web.Core) with arguments (GWebsite.AbpZeroTemplate.Application.Share.Merchandises.Dto.MerchandiseFilter) - Validation state: Valid
+INFO  2019-05-08 06:05:11,862 [47   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method GWebsite.AbpZeroTemplate.Application.Controllers.MerchandiseTypeController.GetMerchandiseByFilter (GWebsite.AbpZeroTemplate.Web.Core) with arguments (GWebsite.AbpZeroTemplate.Application.Share.MerchandiseTypes.Dto.MerchandiseTypeFilter) - Validation state: Valid
+INFO  2019-05-08 06:05:11,882 [47   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method GWebsite.AbpZeroTemplate.Application.Controllers.MerchandiseTypeController.GetMerchandiseByFilter (GWebsite.AbpZeroTemplate.Web.Core), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 20.6529ms.
+INFO  2019-05-08 06:05:11,891 [47   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-05-08 06:05:11,891 [47   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action GWebsite.AbpZeroTemplate.Application.Controllers.MerchandiseTypeController.GetMerchandiseByFilter (GWebsite.AbpZeroTemplate.Web.Core) in 37.1582ms
+INFO  2019-05-08 06:05:11,891 [47   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 44.5101ms 200 application/json; charset=utf-8
+INFO  2019-05-08 06:05:11,896 [41   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method GWebsite.AbpZeroTemplate.Application.Controllers.MerchandiseController.GetMerchandiseByFilter (GWebsite.AbpZeroTemplate.Web.Core), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 39.3096ms.
+INFO  2019-05-08 06:05:11,910 [49   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-05-08 06:05:11,910 [49   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action GWebsite.AbpZeroTemplate.Application.Controllers.MerchandiseController.GetMerchandiseByFilter (GWebsite.AbpZeroTemplate.Web.Core) in 63.1566ms
+INFO  2019-05-08 06:05:11,910 [49   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 70.3862ms 200 application/json; charset=utf-8
+INFO  2019-05-08 06:05:13,822 [47   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:5000/api/MerchandiseType/GetMerchandiseByFilter?Name=&Sorting=&MaxResultCount=99&SkipCount=0  
+INFO  2019-05-08 06:05:13,822 [47   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:05:13,822 [47   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.234ms 204 
+INFO  2019-05-08 06:05:13,822 [47   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:5000/api/Merchandise/GetMerchandiseForEdit  
+INFO  2019-05-08 06:05:13,822 [47   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:05:13,822 [47   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.1346ms 204 
+INFO  2019-05-08 06:05:13,826 [47   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/api/MerchandiseType/GetMerchandiseByFilter?Name=&Sorting=&MaxResultCount=99&SkipCount=0 application/json 
+INFO  2019-05-08 06:05:13,826 [47   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:05:13,827 [47   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-05-08 06:05:13,830 [39   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/api/Merchandise/GetMerchandiseForEdit application/json 
+INFO  2019-05-08 06:05:13,830 [39   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:05:13,831 [39   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-05-08 06:05:13,832 [47   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "GetMerchandiseByFilter", controller = "MerchandiseType", area = ""}. Executing action GWebsite.AbpZeroTemplate.Application.Controllers.MerchandiseTypeController.GetMerchandiseByFilter (GWebsite.AbpZeroTemplate.Web.Core)
+INFO  2019-05-08 06:05:13,833 [47   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:05:13,838 [39   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "GetMerchandiseForEdit", controller = "Merchandise", area = ""}. Executing action GWebsite.AbpZeroTemplate.Application.Controllers.MerchandiseController.GetMerchandiseForEdit (GWebsite.AbpZeroTemplate.Web.Core)
+INFO  2019-05-08 06:05:13,838 [39   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:05:13,840 [47   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method GWebsite.AbpZeroTemplate.Application.Controllers.MerchandiseTypeController.GetMerchandiseByFilter (GWebsite.AbpZeroTemplate.Web.Core) with arguments (GWebsite.AbpZeroTemplate.Application.Share.MerchandiseTypes.Dto.MerchandiseTypeFilter) - Validation state: Valid
+INFO  2019-05-08 06:05:13,847 [39   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method GWebsite.AbpZeroTemplate.Application.Controllers.MerchandiseController.GetMerchandiseForEdit (GWebsite.AbpZeroTemplate.Web.Core) with arguments (0) - Validation state: Valid
+INFO  2019-05-08 06:05:13,853 [47   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method GWebsite.AbpZeroTemplate.Application.Controllers.MerchandiseTypeController.GetMerchandiseByFilter (GWebsite.AbpZeroTemplate.Web.Core), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 12.3306ms.
+INFO  2019-05-08 06:05:13,858 [45   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-05-08 06:05:13,858 [45   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action GWebsite.AbpZeroTemplate.Application.Controllers.MerchandiseTypeController.GetMerchandiseByFilter (GWebsite.AbpZeroTemplate.Web.Core) in 25.6383ms
+INFO  2019-05-08 06:05:13,858 [45   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 32.1475ms 200 application/json; charset=utf-8
+INFO  2019-05-08 06:05:13,868 [39   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method GWebsite.AbpZeroTemplate.Application.Controllers.MerchandiseController.GetMerchandiseForEdit (GWebsite.AbpZeroTemplate.Web.Core), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 21.5853ms.
+INFO  2019-05-08 06:05:13,874 [44   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-05-08 06:05:13,874 [44   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action GWebsite.AbpZeroTemplate.Application.Controllers.MerchandiseController.GetMerchandiseForEdit (GWebsite.AbpZeroTemplate.Web.Core) in 35.9715ms
+INFO  2019-05-08 06:05:13,874 [44   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 43.901ms 200 application/json; charset=utf-8
+INFO  2019-05-08 06:05:17,179 [45   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:5000/api/Merchandise/GetMerchandiseByFilter?Name=&MaxResultCount=10&SkipCount=0  
+INFO  2019-05-08 06:05:17,179 [44   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:5000/api/MerchandiseType/GetMerchandiseByFilter?Name=&Sorting=&MaxResultCount=99&SkipCount=0  
+INFO  2019-05-08 06:05:17,179 [44   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:05:17,179 [45   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:05:17,179 [44   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.2218ms 204 
+INFO  2019-05-08 06:05:17,179 [45   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.2411ms 204 
+INFO  2019-05-08 06:05:17,182 [44   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/api/MerchandiseType/GetMerchandiseByFilter?Name=&Sorting=&MaxResultCount=99&SkipCount=0 application/json 
+INFO  2019-05-08 06:05:17,182 [44   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:05:17,183 [45   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/api/Merchandise/GetMerchandiseByFilter?Name=&MaxResultCount=10&SkipCount=0 application/json 
+INFO  2019-05-08 06:05:17,183 [45   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:05:17,183 [44   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-05-08 06:05:17,183 [45   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-05-08 06:05:17,193 [45   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "GetMerchandiseByFilter", controller = "Merchandise", area = ""}. Executing action GWebsite.AbpZeroTemplate.Application.Controllers.MerchandiseController.GetMerchandiseByFilter (GWebsite.AbpZeroTemplate.Web.Core)
+INFO  2019-05-08 06:05:17,193 [44   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "GetMerchandiseByFilter", controller = "MerchandiseType", area = ""}. Executing action GWebsite.AbpZeroTemplate.Application.Controllers.MerchandiseTypeController.GetMerchandiseByFilter (GWebsite.AbpZeroTemplate.Web.Core)
+INFO  2019-05-08 06:05:17,193 [45   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:05:17,193 [44   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:05:17,209 [44   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method GWebsite.AbpZeroTemplate.Application.Controllers.MerchandiseTypeController.GetMerchandiseByFilter (GWebsite.AbpZeroTemplate.Web.Core) with arguments (GWebsite.AbpZeroTemplate.Application.Share.MerchandiseTypes.Dto.MerchandiseTypeFilter) - Validation state: Valid
+INFO  2019-05-08 06:05:17,218 [45   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method GWebsite.AbpZeroTemplate.Application.Controllers.MerchandiseController.GetMerchandiseByFilter (GWebsite.AbpZeroTemplate.Web.Core) with arguments (GWebsite.AbpZeroTemplate.Application.Share.Merchandises.Dto.MerchandiseFilter) - Validation state: Valid
+INFO  2019-05-08 06:05:17,242 [44   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method GWebsite.AbpZeroTemplate.Application.Controllers.MerchandiseTypeController.GetMerchandiseByFilter (GWebsite.AbpZeroTemplate.Web.Core), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 32.4321ms.
+INFO  2019-05-08 06:05:17,243 [45   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method GWebsite.AbpZeroTemplate.Application.Controllers.MerchandiseController.GetMerchandiseByFilter (GWebsite.AbpZeroTemplate.Web.Core), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 24.9949ms.
+INFO  2019-05-08 06:05:17,261 [45   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-05-08 06:05:17,261 [45   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action GWebsite.AbpZeroTemplate.Application.Controllers.MerchandiseTypeController.GetMerchandiseByFilter (GWebsite.AbpZeroTemplate.Web.Core) in 68.4929ms
+INFO  2019-05-08 06:05:17,262 [45   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 79.7597ms 200 application/json; charset=utf-8
+INFO  2019-05-08 06:05:17,282 [45   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-05-08 06:05:17,283 [45   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action GWebsite.AbpZeroTemplate.Application.Controllers.MerchandiseController.GetMerchandiseByFilter (GWebsite.AbpZeroTemplate.Web.Core) in 89.873ms
+INFO  2019-05-08 06:05:17,284 [45   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 100.9784ms 200 application/json; charset=utf-8
+INFO  2019-05-08 06:05:22,481 [49   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:5000/api/MerchandiseType/GetMerchandiseByFilter?Name=&MaxResultCount=10&SkipCount=0  
+INFO  2019-05-08 06:05:22,481 [49   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:05:22,481 [49   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.1642ms 204 
+INFO  2019-05-08 06:05:22,485 [45   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/api/MerchandiseType/GetMerchandiseByFilter?Name=&MaxResultCount=10&SkipCount=0 application/json 
+INFO  2019-05-08 06:05:22,485 [45   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:05:22,485 [45   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-05-08 06:05:22,490 [45   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "GetMerchandiseByFilter", controller = "MerchandiseType", area = ""}. Executing action GWebsite.AbpZeroTemplate.Application.Controllers.MerchandiseTypeController.GetMerchandiseByFilter (GWebsite.AbpZeroTemplate.Web.Core)
+INFO  2019-05-08 06:05:22,490 [45   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:05:22,500 [45   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method GWebsite.AbpZeroTemplate.Application.Controllers.MerchandiseTypeController.GetMerchandiseByFilter (GWebsite.AbpZeroTemplate.Web.Core) with arguments (GWebsite.AbpZeroTemplate.Application.Share.MerchandiseTypes.Dto.MerchandiseTypeFilter) - Validation state: Valid
+INFO  2019-05-08 06:05:22,511 [45   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method GWebsite.AbpZeroTemplate.Application.Controllers.MerchandiseTypeController.GetMerchandiseByFilter (GWebsite.AbpZeroTemplate.Web.Core), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 10.9186ms.
+INFO  2019-05-08 06:05:22,516 [45   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-05-08 06:05:22,516 [45   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action GWebsite.AbpZeroTemplate.Application.Controllers.MerchandiseTypeController.GetMerchandiseByFilter (GWebsite.AbpZeroTemplate.Web.Core) in 26.0414ms
+INFO  2019-05-08 06:05:22,516 [45   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 31.4717ms 200 application/json; charset=utf-8
+INFO  2019-05-08 06:05:23,289 [49   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:5000/api/MerchandiseType/GetMerchandiseByFilter?Name=&MaxResultCount=10&SkipCount=0  
+INFO  2019-05-08 06:05:23,289 [49   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:05:23,289 [49   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.2471ms 204 
+INFO  2019-05-08 06:05:23,294 [49   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/api/MerchandiseType/GetMerchandiseByFilter?Name=&MaxResultCount=10&SkipCount=0 application/json 
+INFO  2019-05-08 06:05:23,294 [49   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:05:23,294 [49   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-05-08 06:05:23,300 [49   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "GetMerchandiseByFilter", controller = "MerchandiseType", area = ""}. Executing action GWebsite.AbpZeroTemplate.Application.Controllers.MerchandiseTypeController.GetMerchandiseByFilter (GWebsite.AbpZeroTemplate.Web.Core)
+INFO  2019-05-08 06:05:23,300 [49   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:05:23,312 [49   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method GWebsite.AbpZeroTemplate.Application.Controllers.MerchandiseTypeController.GetMerchandiseByFilter (GWebsite.AbpZeroTemplate.Web.Core) with arguments (GWebsite.AbpZeroTemplate.Application.Share.MerchandiseTypes.Dto.MerchandiseTypeFilter) - Validation state: Valid
+INFO  2019-05-08 06:05:23,325 [49   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method GWebsite.AbpZeroTemplate.Application.Controllers.MerchandiseTypeController.GetMerchandiseByFilter (GWebsite.AbpZeroTemplate.Web.Core), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 13.5469ms.
+INFO  2019-05-08 06:05:23,332 [49   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-05-08 06:05:23,332 [49   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action GWebsite.AbpZeroTemplate.Application.Controllers.MerchandiseTypeController.GetMerchandiseByFilter (GWebsite.AbpZeroTemplate.Web.Core) in 32.2391ms
+INFO  2019-05-08 06:05:23,333 [49   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 39.0554ms 200 application/json; charset=utf-8
+INFO  2019-05-08 06:05:24,986 [41   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:5000/api/Merchandise/GetMerchandiseByFilter?Name=&MaxResultCount=10&SkipCount=0  
+INFO  2019-05-08 06:05:24,986 [49   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:5000/api/MerchandiseType/GetMerchandiseByFilter?Name=&Sorting=&MaxResultCount=99&SkipCount=0  
+INFO  2019-05-08 06:05:24,986 [41   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:05:24,986 [49   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:05:24,986 [41   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.1839ms 204 
+INFO  2019-05-08 06:05:24,986 [49   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.1318ms 204 
+INFO  2019-05-08 06:05:24,988 [41   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/api/Merchandise/GetMerchandiseByFilter?Name=&MaxResultCount=10&SkipCount=0 application/json 
+INFO  2019-05-08 06:05:24,988 [41   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:05:24,989 [41   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-05-08 06:05:24,996 [49   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/api/MerchandiseType/GetMerchandiseByFilter?Name=&Sorting=&MaxResultCount=99&SkipCount=0 application/json 
+INFO  2019-05-08 06:05:24,996 [49   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:05:24,997 [49   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-05-08 06:05:24,998 [41   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "GetMerchandiseByFilter", controller = "Merchandise", area = ""}. Executing action GWebsite.AbpZeroTemplate.Application.Controllers.MerchandiseController.GetMerchandiseByFilter (GWebsite.AbpZeroTemplate.Web.Core)
+INFO  2019-05-08 06:05:24,998 [41   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:05:25,001 [49   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "GetMerchandiseByFilter", controller = "MerchandiseType", area = ""}. Executing action GWebsite.AbpZeroTemplate.Application.Controllers.MerchandiseTypeController.GetMerchandiseByFilter (GWebsite.AbpZeroTemplate.Web.Core)
+INFO  2019-05-08 06:05:25,002 [49   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:05:25,009 [41   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method GWebsite.AbpZeroTemplate.Application.Controllers.MerchandiseController.GetMerchandiseByFilter (GWebsite.AbpZeroTemplate.Web.Core) with arguments (GWebsite.AbpZeroTemplate.Application.Share.Merchandises.Dto.MerchandiseFilter) - Validation state: Valid
+INFO  2019-05-08 06:05:25,013 [49   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method GWebsite.AbpZeroTemplate.Application.Controllers.MerchandiseTypeController.GetMerchandiseByFilter (GWebsite.AbpZeroTemplate.Web.Core) with arguments (GWebsite.AbpZeroTemplate.Application.Share.MerchandiseTypes.Dto.MerchandiseTypeFilter) - Validation state: Valid
+INFO  2019-05-08 06:05:25,054 [41   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method GWebsite.AbpZeroTemplate.Application.Controllers.MerchandiseController.GetMerchandiseByFilter (GWebsite.AbpZeroTemplate.Web.Core), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 44.1987ms.
+INFO  2019-05-08 06:05:25,058 [49   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method GWebsite.AbpZeroTemplate.Application.Controllers.MerchandiseTypeController.GetMerchandiseByFilter (GWebsite.AbpZeroTemplate.Web.Core), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 44.9199ms.
+INFO  2019-05-08 06:05:25,068 [41   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-05-08 06:05:25,069 [41   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action GWebsite.AbpZeroTemplate.Application.Controllers.MerchandiseController.GetMerchandiseByFilter (GWebsite.AbpZeroTemplate.Web.Core) in 70.325ms
+INFO  2019-05-08 06:05:25,069 [41   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 80.5543ms 200 application/json; charset=utf-8
+INFO  2019-05-08 06:05:25,098 [41   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-05-08 06:05:25,098 [41   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action GWebsite.AbpZeroTemplate.Application.Controllers.MerchandiseTypeController.GetMerchandiseByFilter (GWebsite.AbpZeroTemplate.Web.Core) in 96.5902ms
+INFO  2019-05-08 06:05:25,098 [41   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 102.0118ms 200 application/json; charset=utf-8
+INFO  2019-05-08 06:05:26,100 [41   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:5000/api/Merchandise/GetMerchandiseByFilter?Name=&MaxResultCount=10&SkipCount=0  
+INFO  2019-05-08 06:05:26,100 [41   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:05:26,100 [41   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.219ms 204 
+INFO  2019-05-08 06:05:26,102 [49   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/api/Merchandise/GetMerchandiseByFilter?Name=&MaxResultCount=10&SkipCount=0 application/json 
+INFO  2019-05-08 06:05:26,102 [49   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:05:26,102 [49   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-05-08 06:05:26,103 [41   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:5000/api/MerchandiseType/GetMerchandiseByFilter?Name=&Sorting=&MaxResultCount=99&SkipCount=0  
+INFO  2019-05-08 06:05:26,103 [41   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:05:26,104 [41   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.1559ms 204 
+INFO  2019-05-08 06:05:26,107 [39   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/api/MerchandiseType/GetMerchandiseByFilter?Name=&Sorting=&MaxResultCount=99&SkipCount=0 application/json 
+INFO  2019-05-08 06:05:26,108 [39   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:05:26,108 [39   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-05-08 06:05:26,110 [49   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "GetMerchandiseByFilter", controller = "Merchandise", area = ""}. Executing action GWebsite.AbpZeroTemplate.Application.Controllers.MerchandiseController.GetMerchandiseByFilter (GWebsite.AbpZeroTemplate.Web.Core)
+INFO  2019-05-08 06:05:26,110 [49   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:05:26,111 [39   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "GetMerchandiseByFilter", controller = "MerchandiseType", area = ""}. Executing action GWebsite.AbpZeroTemplate.Application.Controllers.MerchandiseTypeController.GetMerchandiseByFilter (GWebsite.AbpZeroTemplate.Web.Core)
+INFO  2019-05-08 06:05:26,111 [39   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:05:26,120 [49   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method GWebsite.AbpZeroTemplate.Application.Controllers.MerchandiseController.GetMerchandiseByFilter (GWebsite.AbpZeroTemplate.Web.Core) with arguments (GWebsite.AbpZeroTemplate.Application.Share.Merchandises.Dto.MerchandiseFilter) - Validation state: Valid
+INFO  2019-05-08 06:05:26,120 [39   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method GWebsite.AbpZeroTemplate.Application.Controllers.MerchandiseTypeController.GetMerchandiseByFilter (GWebsite.AbpZeroTemplate.Web.Core) with arguments (GWebsite.AbpZeroTemplate.Application.Share.MerchandiseTypes.Dto.MerchandiseTypeFilter) - Validation state: Valid
+INFO  2019-05-08 06:05:26,133 [39   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method GWebsite.AbpZeroTemplate.Application.Controllers.MerchandiseTypeController.GetMerchandiseByFilter (GWebsite.AbpZeroTemplate.Web.Core), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 12.6231ms.
+INFO  2019-05-08 06:05:26,133 [49   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method GWebsite.AbpZeroTemplate.Application.Controllers.MerchandiseController.GetMerchandiseByFilter (GWebsite.AbpZeroTemplate.Web.Core), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 12.9686ms.
+INFO  2019-05-08 06:05:26,138 [41   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-05-08 06:05:26,138 [41   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action GWebsite.AbpZeroTemplate.Application.Controllers.MerchandiseTypeController.GetMerchandiseByFilter (GWebsite.AbpZeroTemplate.Web.Core) in 27.0535ms
+INFO  2019-05-08 06:05:26,138 [41   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 30.5949ms 200 application/json; charset=utf-8
+INFO  2019-05-08 06:05:26,141 [45   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-05-08 06:05:26,141 [45   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action GWebsite.AbpZeroTemplate.Application.Controllers.MerchandiseController.GetMerchandiseByFilter (GWebsite.AbpZeroTemplate.Web.Core) in 30.5827ms
+INFO  2019-05-08 06:05:26,141 [45   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 39.533ms 200 application/json; charset=utf-8
+INFO  2019-05-08 06:06:13,333 [52   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:5000/api/MerchandiseType/GetMerchandiseByFilter?Name=&MaxResultCount=10&SkipCount=0  
+INFO  2019-05-08 06:06:13,333 [52   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:06:13,334 [52   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.2013ms 204 
+INFO  2019-05-08 06:06:13,336 [52   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/api/MerchandiseType/GetMerchandiseByFilter?Name=&MaxResultCount=10&SkipCount=0 application/json 
+INFO  2019-05-08 06:06:13,336 [52   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:06:13,337 [52   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-05-08 06:06:13,341 [52   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "GetMerchandiseByFilter", controller = "MerchandiseType", area = ""}. Executing action GWebsite.AbpZeroTemplate.Application.Controllers.MerchandiseTypeController.GetMerchandiseByFilter (GWebsite.AbpZeroTemplate.Web.Core)
+INFO  2019-05-08 06:06:13,341 [52   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:06:13,355 [52   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method GWebsite.AbpZeroTemplate.Application.Controllers.MerchandiseTypeController.GetMerchandiseByFilter (GWebsite.AbpZeroTemplate.Web.Core) with arguments (GWebsite.AbpZeroTemplate.Application.Share.MerchandiseTypes.Dto.MerchandiseTypeFilter) - Validation state: Valid
+INFO  2019-05-08 06:06:13,364 [52   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method GWebsite.AbpZeroTemplate.Application.Controllers.MerchandiseTypeController.GetMerchandiseByFilter (GWebsite.AbpZeroTemplate.Web.Core), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 9.4623ms.
+INFO  2019-05-08 06:06:13,381 [52   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-05-08 06:06:13,382 [52   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action GWebsite.AbpZeroTemplate.Application.Controllers.MerchandiseTypeController.GetMerchandiseByFilter (GWebsite.AbpZeroTemplate.Web.Core) in 40.2329ms
+INFO  2019-05-08 06:06:13,382 [52   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 46.0596ms 200 application/json; charset=utf-8
+INFO  2019-05-08 06:06:14,508 [44   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:5000/api/MerchandiseType/GetMerchandiseByFilter?Name=&MaxResultCount=10&SkipCount=0  
+INFO  2019-05-08 06:06:14,509 [44   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:06:14,509 [44   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.1989ms 204 
+INFO  2019-05-08 06:06:14,510 [52   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/api/MerchandiseType/GetMerchandiseByFilter?Name=&MaxResultCount=10&SkipCount=0 application/json 
+INFO  2019-05-08 06:06:14,510 [52   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:06:14,511 [52   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-05-08 06:06:14,517 [52   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "GetMerchandiseByFilter", controller = "MerchandiseType", area = ""}. Executing action GWebsite.AbpZeroTemplate.Application.Controllers.MerchandiseTypeController.GetMerchandiseByFilter (GWebsite.AbpZeroTemplate.Web.Core)
+INFO  2019-05-08 06:06:14,517 [52   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:06:14,525 [52   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method GWebsite.AbpZeroTemplate.Application.Controllers.MerchandiseTypeController.GetMerchandiseByFilter (GWebsite.AbpZeroTemplate.Web.Core) with arguments (GWebsite.AbpZeroTemplate.Application.Share.MerchandiseTypes.Dto.MerchandiseTypeFilter) - Validation state: Valid
+INFO  2019-05-08 06:06:14,570 [52   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method GWebsite.AbpZeroTemplate.Application.Controllers.MerchandiseTypeController.GetMerchandiseByFilter (GWebsite.AbpZeroTemplate.Web.Core), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 45.2866ms.
+INFO  2019-05-08 06:06:14,576 [52   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-05-08 06:06:14,576 [52   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action GWebsite.AbpZeroTemplate.Application.Controllers.MerchandiseTypeController.GetMerchandiseByFilter (GWebsite.AbpZeroTemplate.Web.Core) in 58.9216ms
+INFO  2019-05-08 06:06:14,577 [52   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 66.1954ms 200 application/json; charset=utf-8
+INFO  2019-05-08 06:06:14,859 [45   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:5000/api/Merchandise/GetMerchandiseByFilter?Name=&MaxResultCount=10&SkipCount=0  
+INFO  2019-05-08 06:06:14,859 [45   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:06:14,859 [45   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.3971ms 204 
+INFO  2019-05-08 06:06:14,859 [45   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:5000/api/MerchandiseType/GetMerchandiseByFilter?Name=&Sorting=&MaxResultCount=99&SkipCount=0  
+INFO  2019-05-08 06:06:14,859 [45   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:06:14,859 [45   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.1219ms 204 
+INFO  2019-05-08 06:06:14,862 [45   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/api/Merchandise/GetMerchandiseByFilter?Name=&MaxResultCount=10&SkipCount=0 application/json 
+INFO  2019-05-08 06:06:14,862 [45   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:06:14,865 [45   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-05-08 06:06:14,868 [52   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/api/MerchandiseType/GetMerchandiseByFilter?Name=&Sorting=&MaxResultCount=99&SkipCount=0 application/json 
+INFO  2019-05-08 06:06:14,868 [52   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:06:14,869 [52   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-05-08 06:06:14,871 [45   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "GetMerchandiseByFilter", controller = "Merchandise", area = ""}. Executing action GWebsite.AbpZeroTemplate.Application.Controllers.MerchandiseController.GetMerchandiseByFilter (GWebsite.AbpZeroTemplate.Web.Core)
+INFO  2019-05-08 06:06:14,871 [45   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:06:14,873 [52   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "GetMerchandiseByFilter", controller = "MerchandiseType", area = ""}. Executing action GWebsite.AbpZeroTemplate.Application.Controllers.MerchandiseTypeController.GetMerchandiseByFilter (GWebsite.AbpZeroTemplate.Web.Core)
+INFO  2019-05-08 06:06:14,873 [52   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:06:14,879 [45   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method GWebsite.AbpZeroTemplate.Application.Controllers.MerchandiseController.GetMerchandiseByFilter (GWebsite.AbpZeroTemplate.Web.Core) with arguments (GWebsite.AbpZeroTemplate.Application.Share.Merchandises.Dto.MerchandiseFilter) - Validation state: Valid
+INFO  2019-05-08 06:06:14,882 [52   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method GWebsite.AbpZeroTemplate.Application.Controllers.MerchandiseTypeController.GetMerchandiseByFilter (GWebsite.AbpZeroTemplate.Web.Core) with arguments (GWebsite.AbpZeroTemplate.Application.Share.MerchandiseTypes.Dto.MerchandiseTypeFilter) - Validation state: Valid
+INFO  2019-05-08 06:06:14,893 [45   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method GWebsite.AbpZeroTemplate.Application.Controllers.MerchandiseController.GetMerchandiseByFilter (GWebsite.AbpZeroTemplate.Web.Core), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 13.811ms.
+INFO  2019-05-08 06:06:14,900 [45   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-05-08 06:06:14,900 [45   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action GWebsite.AbpZeroTemplate.Application.Controllers.MerchandiseController.GetMerchandiseByFilter (GWebsite.AbpZeroTemplate.Web.Core) in 29.2859ms
+INFO  2019-05-08 06:06:14,900 [45   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 37.9785ms 200 application/json; charset=utf-8
+INFO  2019-05-08 06:06:15,082 [52   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method GWebsite.AbpZeroTemplate.Application.Controllers.MerchandiseTypeController.GetMerchandiseByFilter (GWebsite.AbpZeroTemplate.Web.Core), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 199.7059ms.
+INFO  2019-05-08 06:06:15,090 [52   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-05-08 06:06:15,090 [52   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action GWebsite.AbpZeroTemplate.Application.Controllers.MerchandiseTypeController.GetMerchandiseByFilter (GWebsite.AbpZeroTemplate.Web.Core) in 216.4886ms
+INFO  2019-05-08 06:06:15,090 [52   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 221.969ms 200 application/json; charset=utf-8
+INFO  2019-05-08 06:06:16,306 [56   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:5000/api/Merchandise/GetMerchandiseByFilter?Name=&MaxResultCount=10&SkipCount=0  
+INFO  2019-05-08 06:06:16,306 [56   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:06:16,306 [56   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.2115ms 204 
+INFO  2019-05-08 06:06:16,306 [56   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:5000/api/MerchandiseType/GetMerchandiseByFilter?Name=&Sorting=&MaxResultCount=99&SkipCount=0  
+INFO  2019-05-08 06:06:16,306 [56   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:06:16,306 [56   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.0931ms 204 
+INFO  2019-05-08 06:06:16,310 [44   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/api/Merchandise/GetMerchandiseByFilter?Name=&MaxResultCount=10&SkipCount=0 application/json 
+INFO  2019-05-08 06:06:16,312 [44   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:06:16,313 [44   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-05-08 06:06:16,315 [45   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/api/MerchandiseType/GetMerchandiseByFilter?Name=&Sorting=&MaxResultCount=99&SkipCount=0 application/json 
+INFO  2019-05-08 06:06:16,315 [45   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:06:16,316 [45   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-05-08 06:06:16,318 [44   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "GetMerchandiseByFilter", controller = "Merchandise", area = ""}. Executing action GWebsite.AbpZeroTemplate.Application.Controllers.MerchandiseController.GetMerchandiseByFilter (GWebsite.AbpZeroTemplate.Web.Core)
+INFO  2019-05-08 06:06:16,318 [44   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:06:16,323 [45   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "GetMerchandiseByFilter", controller = "MerchandiseType", area = ""}. Executing action GWebsite.AbpZeroTemplate.Application.Controllers.MerchandiseTypeController.GetMerchandiseByFilter (GWebsite.AbpZeroTemplate.Web.Core)
+INFO  2019-05-08 06:06:16,323 [45   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:06:16,331 [44   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method GWebsite.AbpZeroTemplate.Application.Controllers.MerchandiseController.GetMerchandiseByFilter (GWebsite.AbpZeroTemplate.Web.Core) with arguments (GWebsite.AbpZeroTemplate.Application.Share.Merchandises.Dto.MerchandiseFilter) - Validation state: Valid
+INFO  2019-05-08 06:06:16,334 [45   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method GWebsite.AbpZeroTemplate.Application.Controllers.MerchandiseTypeController.GetMerchandiseByFilter (GWebsite.AbpZeroTemplate.Web.Core) with arguments (GWebsite.AbpZeroTemplate.Application.Share.MerchandiseTypes.Dto.MerchandiseTypeFilter) - Validation state: Valid
+INFO  2019-05-08 06:06:16,359 [45   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method GWebsite.AbpZeroTemplate.Application.Controllers.MerchandiseTypeController.GetMerchandiseByFilter (GWebsite.AbpZeroTemplate.Web.Core), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 24.8768ms.
+INFO  2019-05-08 06:06:16,360 [44   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method GWebsite.AbpZeroTemplate.Application.Controllers.MerchandiseController.GetMerchandiseByFilter (GWebsite.AbpZeroTemplate.Web.Core), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 28.4885ms.
+INFO  2019-05-08 06:06:16,369 [45   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-05-08 06:06:16,369 [44   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-05-08 06:06:16,369 [45   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action GWebsite.AbpZeroTemplate.Application.Controllers.MerchandiseController.GetMerchandiseByFilter (GWebsite.AbpZeroTemplate.Web.Core) in 50.2148ms
+INFO  2019-05-08 06:06:16,369 [44   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action GWebsite.AbpZeroTemplate.Application.Controllers.MerchandiseTypeController.GetMerchandiseByFilter (GWebsite.AbpZeroTemplate.Web.Core) in 45.2093ms
+INFO  2019-05-08 06:06:16,369 [45   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 58.6271ms 200 application/json; charset=utf-8
+INFO  2019-05-08 06:06:16,369 [44   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 53.9239ms 200 application/json; charset=utf-8
+INFO  2019-05-08 06:06:18,668 [52   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:5000/api/VendorType/GetVendorTypesByFilter?Name=&MaxResultCount=10&SkipCount=0  
+INFO  2019-05-08 06:06:18,668 [52   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:06:18,668 [52   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.2155ms 204 
+INFO  2019-05-08 06:06:18,672 [52   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/api/VendorType/GetVendorTypesByFilter?Name=&MaxResultCount=10&SkipCount=0 application/json 
+INFO  2019-05-08 06:06:18,672 [52   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:06:18,673 [52   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-05-08 06:06:18,680 [52   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "GetVendorTypesByFilter", controller = "VendorType", area = ""}. Executing action GWebsite.AbpZeroTemplate.Application.Controllers.VendorTypeController.GetVendorTypesByFilter (GWebsite.AbpZeroTemplate.Web.Core)
+INFO  2019-05-08 06:06:18,680 [52   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:06:18,685 [52   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method GWebsite.AbpZeroTemplate.Application.Controllers.VendorTypeController.GetVendorTypesByFilter (GWebsite.AbpZeroTemplate.Web.Core) with arguments (GWebsite.AbpZeroTemplate.Application.Share.VendorTypes.Dto.VendorTypeFilter) - Validation state: Valid
+INFO  2019-05-08 06:06:18,697 [52   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method GWebsite.AbpZeroTemplate.Application.Controllers.VendorTypeController.GetVendorTypesByFilter (GWebsite.AbpZeroTemplate.Web.Core), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 12.3784ms.
+INFO  2019-05-08 06:06:18,702 [41   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-05-08 06:06:18,702 [41   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action GWebsite.AbpZeroTemplate.Application.Controllers.VendorTypeController.GetVendorTypesByFilter (GWebsite.AbpZeroTemplate.Web.Core) in 21.9809ms
+INFO  2019-05-08 06:06:18,702 [41   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 29.8066ms 200 application/json; charset=utf-8
+INFO  2019-05-08 06:06:19,572 [44   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:5000/api/VendorType/GetVendorTypesByFilter?Name=&Sorting=&MaxResultCount=99&SkipCount=0  
+INFO  2019-05-08 06:06:19,572 [44   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:06:19,573 [44   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.2222ms 204 
+INFO  2019-05-08 06:06:19,574 [44   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:5000/api/Vendor/GetVendorsByFilter?Name=&MaxResultCount=10&SkipCount=0  
+INFO  2019-05-08 06:06:19,576 [44   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:06:19,577 [44   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 2.9085ms 204 
+INFO  2019-05-08 06:06:19,577 [44   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/api/VendorType/GetVendorTypesByFilter?Name=&Sorting=&MaxResultCount=99&SkipCount=0 application/json 
+INFO  2019-05-08 06:06:19,578 [44   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:06:19,580 [44   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-05-08 06:06:19,582 [45   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/api/Vendor/GetVendorsByFilter?Name=&MaxResultCount=10&SkipCount=0 application/json 
+INFO  2019-05-08 06:06:19,582 [45   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:06:19,582 [45   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-05-08 06:06:19,584 [44   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "GetVendorTypesByFilter", controller = "VendorType", area = ""}. Executing action GWebsite.AbpZeroTemplate.Application.Controllers.VendorTypeController.GetVendorTypesByFilter (GWebsite.AbpZeroTemplate.Web.Core)
+INFO  2019-05-08 06:06:19,584 [44   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:06:19,586 [45   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "GetVendorsByFilter", controller = "Vendor", area = ""}. Executing action GWebsite.AbpZeroTemplate.Application.Controllers.VendorController.GetVendorsByFilter (GWebsite.AbpZeroTemplate.Web.Core)
+INFO  2019-05-08 06:06:19,587 [45   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:06:19,594 [44   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method GWebsite.AbpZeroTemplate.Application.Controllers.VendorTypeController.GetVendorTypesByFilter (GWebsite.AbpZeroTemplate.Web.Core) with arguments (GWebsite.AbpZeroTemplate.Application.Share.VendorTypes.Dto.VendorTypeFilter) - Validation state: Valid
+INFO  2019-05-08 06:06:19,596 [45   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method GWebsite.AbpZeroTemplate.Application.Controllers.VendorController.GetVendorsByFilter (GWebsite.AbpZeroTemplate.Web.Core) with arguments (GWebsite.AbpZeroTemplate.Application.Share.Vendors.Dto.VendorFilter) - Validation state: Valid
+INFO  2019-05-08 06:06:19,623 [44   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method GWebsite.AbpZeroTemplate.Application.Controllers.VendorTypeController.GetVendorTypesByFilter (GWebsite.AbpZeroTemplate.Web.Core), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 28.9661ms.
+INFO  2019-05-08 06:06:19,623 [45   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method GWebsite.AbpZeroTemplate.Application.Controllers.VendorController.GetVendorsByFilter (GWebsite.AbpZeroTemplate.Web.Core), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 26.9702ms.
+INFO  2019-05-08 06:06:19,631 [45   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-05-08 06:06:19,632 [45   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action GWebsite.AbpZeroTemplate.Application.Controllers.VendorController.GetVendorsByFilter (GWebsite.AbpZeroTemplate.Web.Core) in 45.0979ms
+INFO  2019-05-08 06:06:19,632 [45   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 50.0833ms 200 application/json; charset=utf-8
+INFO  2019-05-08 06:06:19,888 [45   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:5000/api/VendorType/GetVendorTypesByFilter?Name=&MaxResultCount=10&SkipCount=0  
+INFO  2019-05-08 06:06:19,888 [45   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:06:19,888 [45   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.1859ms 204 
+INFO  2019-05-08 06:06:19,890 [41   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/api/VendorType/GetVendorTypesByFilter?Name=&MaxResultCount=10&SkipCount=0 application/json 
+INFO  2019-05-08 06:06:19,890 [41   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:06:19,890 [41   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-05-08 06:06:19,897 [41   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "GetVendorTypesByFilter", controller = "VendorType", area = ""}. Executing action GWebsite.AbpZeroTemplate.Application.Controllers.VendorTypeController.GetVendorTypesByFilter (GWebsite.AbpZeroTemplate.Web.Core)
+INFO  2019-05-08 06:06:19,897 [41   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:06:19,906 [41   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method GWebsite.AbpZeroTemplate.Application.Controllers.VendorTypeController.GetVendorTypesByFilter (GWebsite.AbpZeroTemplate.Web.Core) with arguments (GWebsite.AbpZeroTemplate.Application.Share.VendorTypes.Dto.VendorTypeFilter) - Validation state: Valid
+INFO  2019-05-08 06:06:19,933 [45   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-05-08 06:06:19,933 [45   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action GWebsite.AbpZeroTemplate.Application.Controllers.VendorTypeController.GetVendorTypesByFilter (GWebsite.AbpZeroTemplate.Web.Core) in 348.7966ms
+INFO  2019-05-08 06:06:19,933 [45   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 355.971ms 200 application/json; charset=utf-8
+INFO  2019-05-08 06:06:19,935 [41   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method GWebsite.AbpZeroTemplate.Application.Controllers.VendorTypeController.GetVendorTypesByFilter (GWebsite.AbpZeroTemplate.Web.Core), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 28.4131ms.
+INFO  2019-05-08 06:06:19,942 [41   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-05-08 06:06:19,943 [41   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action GWebsite.AbpZeroTemplate.Application.Controllers.VendorTypeController.GetVendorTypesByFilter (GWebsite.AbpZeroTemplate.Web.Core) in 45.2357ms
+INFO  2019-05-08 06:06:19,943 [41   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 53.3981ms 200 application/json; charset=utf-8
+INFO  2019-05-08 06:06:21,736 [56   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:5000/api/MerchandiseType/GetMerchandiseByFilter?Name=&MaxResultCount=10&SkipCount=0  
+INFO  2019-05-08 06:06:21,736 [56   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:06:21,736 [56   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.1417ms 204 
+INFO  2019-05-08 06:06:21,737 [41   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/api/MerchandiseType/GetMerchandiseByFilter?Name=&MaxResultCount=10&SkipCount=0 application/json 
+INFO  2019-05-08 06:06:21,737 [41   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:06:21,738 [41   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-05-08 06:06:21,746 [41   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "GetMerchandiseByFilter", controller = "MerchandiseType", area = ""}. Executing action GWebsite.AbpZeroTemplate.Application.Controllers.MerchandiseTypeController.GetMerchandiseByFilter (GWebsite.AbpZeroTemplate.Web.Core)
+INFO  2019-05-08 06:06:21,746 [41   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:06:21,758 [41   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method GWebsite.AbpZeroTemplate.Application.Controllers.MerchandiseTypeController.GetMerchandiseByFilter (GWebsite.AbpZeroTemplate.Web.Core) with arguments (GWebsite.AbpZeroTemplate.Application.Share.MerchandiseTypes.Dto.MerchandiseTypeFilter) - Validation state: Valid
+INFO  2019-05-08 06:06:21,778 [41   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method GWebsite.AbpZeroTemplate.Application.Controllers.MerchandiseTypeController.GetMerchandiseByFilter (GWebsite.AbpZeroTemplate.Web.Core), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 20.7177ms.
+INFO  2019-05-08 06:06:21,785 [52   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-05-08 06:06:21,785 [52   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action GWebsite.AbpZeroTemplate.Application.Controllers.MerchandiseTypeController.GetMerchandiseByFilter (GWebsite.AbpZeroTemplate.Web.Core) in 39.4403ms
+INFO  2019-05-08 06:06:21,785 [52   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 48.0638ms 200 application/json; charset=utf-8
+INFO  2019-05-08 06:06:22,029 [41   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:5000/api/Vendor/GetVendorsByFilter?Name=&MaxResultCount=10&SkipCount=0  
+INFO  2019-05-08 06:06:22,029 [41   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:06:22,029 [41   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.2313ms 204 
+INFO  2019-05-08 06:06:22,033 [52   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/api/Vendor/GetVendorsByFilter?Name=&MaxResultCount=10&SkipCount=0 application/json 
+INFO  2019-05-08 06:06:22,033 [52   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:06:22,035 [52   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-05-08 06:06:22,041 [52   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "GetVendorsByFilter", controller = "Vendor", area = ""}. Executing action GWebsite.AbpZeroTemplate.Application.Controllers.VendorController.GetVendorsByFilter (GWebsite.AbpZeroTemplate.Web.Core)
+INFO  2019-05-08 06:06:22,041 [52   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:06:22,051 [52   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method GWebsite.AbpZeroTemplate.Application.Controllers.VendorController.GetVendorsByFilter (GWebsite.AbpZeroTemplate.Web.Core) with arguments (GWebsite.AbpZeroTemplate.Application.Share.Vendors.Dto.VendorFilter) - Validation state: Valid
+INFO  2019-05-08 06:06:22,064 [52   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method GWebsite.AbpZeroTemplate.Application.Controllers.VendorController.GetVendorsByFilter (GWebsite.AbpZeroTemplate.Web.Core), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 12.6831ms.
+INFO  2019-05-08 06:06:22,068 [52   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-05-08 06:06:22,068 [52   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action GWebsite.AbpZeroTemplate.Application.Controllers.VendorController.GetVendorsByFilter (GWebsite.AbpZeroTemplate.Web.Core) in 26.971ms
+INFO  2019-05-08 06:06:22,068 [52   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 35.6956ms 200 application/json; charset=utf-8
+INFO  2019-05-08 06:06:22,687 [41   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:5000/api/Merchandise/GetMerchandiseByFilter?Name=&MaxResultCount=10&SkipCount=0  
+INFO  2019-05-08 06:06:22,687 [41   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:06:22,687 [41   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.1768ms 204 
+INFO  2019-05-08 06:06:22,688 [41   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:5000/api/MerchandiseType/GetMerchandiseByFilter?Name=&Sorting=&MaxResultCount=99&SkipCount=0  
+INFO  2019-05-08 06:06:22,688 [41   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:06:22,688 [41   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.2996ms 204 
+INFO  2019-05-08 06:06:22,692 [52   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/api/Merchandise/GetMerchandiseByFilter?Name=&MaxResultCount=10&SkipCount=0 application/json 
+INFO  2019-05-08 06:06:22,692 [52   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:06:22,693 [52   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-05-08 06:06:22,698 [52   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "GetMerchandiseByFilter", controller = "Merchandise", area = ""}. Executing action GWebsite.AbpZeroTemplate.Application.Controllers.MerchandiseController.GetMerchandiseByFilter (GWebsite.AbpZeroTemplate.Web.Core)
+INFO  2019-05-08 06:06:22,698 [52   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:06:22,698 [45   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/api/MerchandiseType/GetMerchandiseByFilter?Name=&Sorting=&MaxResultCount=99&SkipCount=0 application/json 
+INFO  2019-05-08 06:06:22,698 [45   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:06:22,699 [45   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-05-08 06:06:22,710 [45   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "GetMerchandiseByFilter", controller = "MerchandiseType", area = ""}. Executing action GWebsite.AbpZeroTemplate.Application.Controllers.MerchandiseTypeController.GetMerchandiseByFilter (GWebsite.AbpZeroTemplate.Web.Core)
+INFO  2019-05-08 06:06:22,710 [45   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:06:22,714 [52   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method GWebsite.AbpZeroTemplate.Application.Controllers.MerchandiseController.GetMerchandiseByFilter (GWebsite.AbpZeroTemplate.Web.Core) with arguments (GWebsite.AbpZeroTemplate.Application.Share.Merchandises.Dto.MerchandiseFilter) - Validation state: Valid
+INFO  2019-05-08 06:06:22,741 [45   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method GWebsite.AbpZeroTemplate.Application.Controllers.MerchandiseTypeController.GetMerchandiseByFilter (GWebsite.AbpZeroTemplate.Web.Core) with arguments (GWebsite.AbpZeroTemplate.Application.Share.MerchandiseTypes.Dto.MerchandiseTypeFilter) - Validation state: Valid
+INFO  2019-05-08 06:06:22,750 [52   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method GWebsite.AbpZeroTemplate.Application.Controllers.MerchandiseController.GetMerchandiseByFilter (GWebsite.AbpZeroTemplate.Web.Core), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 36.1969ms.
+INFO  2019-05-08 06:06:22,764 [45   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method GWebsite.AbpZeroTemplate.Application.Controllers.MerchandiseTypeController.GetMerchandiseByFilter (GWebsite.AbpZeroTemplate.Web.Core), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 23.1162ms.
+INFO  2019-05-08 06:06:22,765 [52   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-05-08 06:06:22,765 [52   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action GWebsite.AbpZeroTemplate.Application.Controllers.MerchandiseController.GetMerchandiseByFilter (GWebsite.AbpZeroTemplate.Web.Core) in 66.8432ms
+INFO  2019-05-08 06:06:22,765 [52   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 73.1996ms 200 application/json; charset=utf-8
+INFO  2019-05-08 06:06:22,796 [52   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-05-08 06:06:22,796 [52   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action GWebsite.AbpZeroTemplate.Application.Controllers.MerchandiseTypeController.GetMerchandiseByFilter (GWebsite.AbpZeroTemplate.Web.Core) in 86.2404ms
+INFO  2019-05-08 06:06:22,797 [52   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 98.7314ms 200 application/json; charset=utf-8
+INFO  2019-05-08 06:06:24,036 [45   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:5000/api/MerchandiseType/GetMerchandiseByFilter?Name=&MaxResultCount=10&SkipCount=0  
+INFO  2019-05-08 06:06:24,036 [45   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:06:24,036 [45   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.3094ms 204 
+INFO  2019-05-08 06:06:24,039 [45   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/api/MerchandiseType/GetMerchandiseByFilter?Name=&MaxResultCount=10&SkipCount=0 application/json 
+INFO  2019-05-08 06:06:24,039 [45   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:06:24,040 [45   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-05-08 06:06:24,043 [45   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "GetMerchandiseByFilter", controller = "MerchandiseType", area = ""}. Executing action GWebsite.AbpZeroTemplate.Application.Controllers.MerchandiseTypeController.GetMerchandiseByFilter (GWebsite.AbpZeroTemplate.Web.Core)
+INFO  2019-05-08 06:06:24,043 [45   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:06:24,051 [45   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method GWebsite.AbpZeroTemplate.Application.Controllers.MerchandiseTypeController.GetMerchandiseByFilter (GWebsite.AbpZeroTemplate.Web.Core) with arguments (GWebsite.AbpZeroTemplate.Application.Share.MerchandiseTypes.Dto.MerchandiseTypeFilter) - Validation state: Valid
+INFO  2019-05-08 06:06:24,067 [45   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method GWebsite.AbpZeroTemplate.Application.Controllers.MerchandiseTypeController.GetMerchandiseByFilter (GWebsite.AbpZeroTemplate.Web.Core), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 15.9833ms.
+INFO  2019-05-08 06:06:24,075 [55   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-05-08 06:06:24,075 [55   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action GWebsite.AbpZeroTemplate.Application.Controllers.MerchandiseTypeController.GetMerchandiseByFilter (GWebsite.AbpZeroTemplate.Web.Core) in 32.0721ms
+INFO  2019-05-08 06:06:24,075 [55   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 35.9917ms 200 application/json; charset=utf-8
+INFO  2019-05-08 06:06:24,630 [45   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:5000/api/Merchandise/GetMerchandiseByFilter?Name=&MaxResultCount=10&SkipCount=0  
+INFO  2019-05-08 06:06:24,630 [45   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:06:24,631 [45   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.341ms 204 
+INFO  2019-05-08 06:06:24,631 [45   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 OPTIONS http://localhost:5000/api/MerchandiseType/GetMerchandiseByFilter?Name=&Sorting=&MaxResultCount=99&SkipCount=0  
+INFO  2019-05-08 06:06:24,631 [45   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:06:24,631 [45   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.2021ms 204 
+INFO  2019-05-08 06:06:24,635 [45   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/api/Merchandise/GetMerchandiseByFilter?Name=&MaxResultCount=10&SkipCount=0 application/json 
+INFO  2019-05-08 06:06:24,635 [45   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:06:24,636 [45   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-05-08 06:06:24,640 [55   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:5000/api/MerchandiseType/GetMerchandiseByFilter?Name=&Sorting=&MaxResultCount=99&SkipCount=0 application/json 
+INFO  2019-05-08 06:06:24,640 [55   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:06:24,640 [55   ] uthentication.JwtBearer.JwtBearerHandler - Successfully validated the token.
+INFO  2019-05-08 06:06:24,642 [45   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "GetMerchandiseByFilter", controller = "Merchandise", area = ""}. Executing action GWebsite.AbpZeroTemplate.Application.Controllers.MerchandiseController.GetMerchandiseByFilter (GWebsite.AbpZeroTemplate.Web.Core)
+INFO  2019-05-08 06:06:24,643 [45   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:06:24,645 [55   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "GetMerchandiseByFilter", controller = "MerchandiseType", area = ""}. Executing action GWebsite.AbpZeroTemplate.Application.Controllers.MerchandiseTypeController.GetMerchandiseByFilter (GWebsite.AbpZeroTemplate.Web.Core)
+INFO  2019-05-08 06:06:24,645 [55   ] pNetCore.Cors.Infrastructure.CorsService - Policy execution successful.
+INFO  2019-05-08 06:06:24,717 [45   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method GWebsite.AbpZeroTemplate.Application.Controllers.MerchandiseController.GetMerchandiseByFilter (GWebsite.AbpZeroTemplate.Web.Core) with arguments (GWebsite.AbpZeroTemplate.Application.Share.Merchandises.Dto.MerchandiseFilter) - Validation state: Valid
+INFO  2019-05-08 06:06:24,720 [55   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method GWebsite.AbpZeroTemplate.Application.Controllers.MerchandiseTypeController.GetMerchandiseByFilter (GWebsite.AbpZeroTemplate.Web.Core) with arguments (GWebsite.AbpZeroTemplate.Application.Share.MerchandiseTypes.Dto.MerchandiseTypeFilter) - Validation state: Valid
+INFO  2019-05-08 06:06:24,731 [45   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method GWebsite.AbpZeroTemplate.Application.Controllers.MerchandiseController.GetMerchandiseByFilter (GWebsite.AbpZeroTemplate.Web.Core), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 14.2424ms.
+INFO  2019-05-08 06:06:24,743 [55   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method GWebsite.AbpZeroTemplate.Application.Controllers.MerchandiseTypeController.GetMerchandiseByFilter (GWebsite.AbpZeroTemplate.Web.Core), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 23.4881ms.
+INFO  2019-05-08 06:06:24,744 [45   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-05-08 06:06:24,744 [45   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action GWebsite.AbpZeroTemplate.Application.Controllers.MerchandiseController.GetMerchandiseByFilter (GWebsite.AbpZeroTemplate.Web.Core) in 101.1923ms
+INFO  2019-05-08 06:06:24,744 [45   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 108.8238ms 200 application/json; charset=utf-8
+INFO  2019-05-08 06:06:24,761 [55   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2019-05-08 06:06:24,762 [55   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action GWebsite.AbpZeroTemplate.Application.Controllers.MerchandiseTypeController.GetMerchandiseByFilter (GWebsite.AbpZeroTemplate.Web.Core) in 116.9594ms
+INFO  2019-05-08 06:06:24,762 [55   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 122.0742ms 200 application/json; charset=utf-8
+DEBUG 2019-05-08 06:07:06,491 [48   ] Abp.AspNetCore.SignalR.Hubs.AbpCommonHub - A client is disconnected: rdg9OIq83jRkz0yH-joCkA
+DEBUG 2019-05-08 06:07:06,502 [41   ] AbpZeroTemplate.Web.Chat.SignalR.ChatHub - A client is disconnected: ZSiu2Nl09Kb2suzVcgdYBg
+INFO  2019-05-08 06:07:06,511 [48   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 169382.5461ms 101 
+INFO  2019-05-08 06:07:06,511 [41   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 169264.6424ms 101 
+DEBUG 2019-05-08 06:07:12,226 [24   ] Abp.Modules.AbpModuleManager             - Shutting down has been started
+DEBUG 2019-05-08 06:07:12,228 [24   ] Abp.BackgroundJobs.BackgroundJobManager  - Stop background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2019-05-08 06:07:12,228 [24   ] enancy.SubscriptionExpirationCheckWorker - Stop background worker: GSoft.AbpZeroTemplate.MultiTenancy.SubscriptionExpirationCheckWorker
+DEBUG 2019-05-08 06:07:12,228 [24   ] cy.SubscriptionExpireEmailNotifierWorker - Stop background worker: GSoft.AbpZeroTemplate.MultiTenancy.SubscriptionExpireEmailNotifierWorker
+DEBUG 2019-05-08 06:07:12,229 [24   ] Abp.BackgroundJobs.BackgroundJobManager  - WaitToStop background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2019-05-08 06:07:12,229 [24   ] enancy.SubscriptionExpirationCheckWorker - WaitToStop background worker: GSoft.AbpZeroTemplate.MultiTenancy.SubscriptionExpirationCheckWorker
+DEBUG 2019-05-08 06:07:12,229 [24   ] cy.SubscriptionExpireEmailNotifierWorker - WaitToStop background worker: GSoft.AbpZeroTemplate.MultiTenancy.SubscriptionExpireEmailNotifierWorker
+DEBUG 2019-05-08 06:07:12,229 [24   ] Abp.Modules.AbpModuleManager             - Shutting down completed.

@@ -8,6 +8,7 @@ import { LazyLoadEvent } from 'primeng/components/common/lazyloadevent';
 import { Paginator } from 'primeng/components/paginator/paginator';
 import { Table } from 'primeng/components/table/table';
 import { VendorServiceProxy } from '@shared/service-proxies/service-proxies';
+import { VendorTypeServiceProxy } from '@shared/service-proxies/service-proxies';
 import { CreateOrEditVendorModalComponent } from './create-or-edit-vendor-modal.component';
 
 @Component({
@@ -29,9 +30,13 @@ export class VendorComponent extends AppComponentBase implements AfterViewInit, 
      */
     vendorName: string;
 
+    // list vendortype
+    vendortypeList: any[];
+
     constructor(
         injector: Injector,
         private _vendorService: VendorServiceProxy,
+        private _vendortypeService: VendorTypeServiceProxy,
         private _activatedRoute: ActivatedRoute,
     ) {
         super(injector);
@@ -41,6 +46,11 @@ export class VendorComponent extends AppComponentBase implements AfterViewInit, 
      * Hàm xử lý trước khi View được init
      */
     ngOnInit(): void {
+        //load list vendortype
+        this._vendortypeService.getVendorTypesByFilter(null, null, 99, 0,
+        ).subscribe(result => {
+            this.vendortypeList = result.items;
+        });
     }
 
     /**
@@ -122,5 +132,14 @@ export class VendorComponent extends AppComponentBase implements AfterViewInit, 
      */
     truncateString(text): string {
         return abp.utils.truncateStringWithPostfix(text, 32, '...');
+    }
+
+    getVendorTypeName(TypeID): String {
+        for (let vendortype of this.vendortypeList) {
+            if (vendortype.id==TypeID) {
+                return vendortype.name;
+            }
+        }
+        return "";
     }
 }

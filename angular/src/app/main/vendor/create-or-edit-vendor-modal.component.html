@@ -21,8 +21,9 @@
                     </div>
                     <div class="form-group">
                         <label>{{l("VendorTypeID")}} *</label>
-                        <input #nameInput="ngModel" class="form-control" type="text" name="TypeID"
-                               [(ngModel)]="vendor.typeID" required maxlength="64">
+                        <select id="TypeID" name="TypeID" class="form-control" [(ngModel)]="vendor.typeID">
+                            <option *ngFor="let vendortype of vendortypeList" [value]="vendortype.id">{{vendortype.name}}</option>
+                        </select>
                         <validation-messages [formCtrl]="typeIDInput"></validation-messages>
                     </div>
                     <div class="form-group">
