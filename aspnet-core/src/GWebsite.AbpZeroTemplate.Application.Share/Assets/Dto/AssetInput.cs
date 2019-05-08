@@ -15,7 +15,7 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.Assets.Dto
         public string nameAsset { get; set; }
         public int mountAsset { get; set;  }
         public bool? isRentOut { get; set; } = false;
-        public int valueAsset { get; set; }
+        public decimal valueAsset { get; set; }
 
     }
 }
