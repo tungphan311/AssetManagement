@@ -12,6 +12,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { PhoneBookComponent } from './phonebook/phonebook.component';
 import { CreatePersonModalComponent } from './phonebook/create-person-modal.component';
 import { AssetDashboardComponent } from './asset_dashboard/asset_dashboard.component';
+import { ThemTaiSanModalComponent } from './asset_dashboard/ThemTaiSan-modal.component';
+import { XuatTaiSanModalComponent } from './asset_dashboard/XuatTaiSan-modal.component';
 
 @NgModule({
     imports: [
@@ -31,6 +33,8 @@ import { AssetDashboardComponent } from './asset_dashboard/asset_dashboard.compo
         PhoneBookComponent,
         CreatePersonModalComponent,
         AssetDashboardComponent,
+        ThemTaiSanModalComponent,
+        XuatTaiSanModalComponent,
     ]
 })
 export class MainModule { }

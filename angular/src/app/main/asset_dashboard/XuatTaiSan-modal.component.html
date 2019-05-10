@@ -1,0 +1,30 @@
+<div bsModal #modal="bs-modal" (onShown)="onShown()" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modal" aria-hidden="true" [config]="{backdrop: 'static'}">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <form *ngIf="active" #personForm="ngForm" novalidate (ngSubmit)="save()">
+                <div class="modal-header">
+                    <h4 class="modal-title">
+                        <span>{{"Transfer Asset"}}</span>
+                    </h4>
+                    <button type="button" class="close" (click)="close()" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <label style="font-weight: bold; margin-bottom: 15px">{{this.input.donViXuat}}</label>
+                    <div class="form-group">
+                        <label>{{"Transfer asset To"}}</label>
+                        <input #donViNhan name="donViNhan"class="form-control" type="text" [(ngModel)]="input.donViNhan" required maxlength="32">
+                    </div>
+                    <div class="form-group">
+                        <label>{{"Number of transfering asset(s)"}}</label>
+                        <input #soLuongXuat name="soLuongXuat" class="form-control" onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 48 && event.charCode <= 57" min="0" type="number" [(ngModel)]="input.soLuong" required maxlength="32">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button [disabled]="saving" type="button" class="btn btn-secondary" (click)="close()">{{"Cancel"}}</button>
+                    <button type="submit" class="btn btn-primary" [disabled]="!personForm.form.valid" [buttonBusy]="saving" [busyText]="l('SavingWithThreeDot')"><i class="fa fa-save"></i> <span>{{"Save"}}</span></button>
+                </div>
+            </form>
+        </div>
+    </div>

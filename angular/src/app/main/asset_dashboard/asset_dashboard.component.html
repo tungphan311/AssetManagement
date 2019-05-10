@@ -5,8 +5,12 @@
                 <h3 class="m-subheader__title m-subheader__title--separator">
                     <span>ASSET DASHBOARD</span>
                 </h3>
-                <span class="m-section__sub">Asset Management Statistics</span>
+                <span class="m-section__sub">
+                    Asset Management Statistics
+                </span>
             </div>
+            <button class="btn btn-primary" style="float: right;"(click)="themTaiSanModal.show()"><i class="fa fa-plus"></i> {{"Add Asset"}}</button>
+            <button class="btn btn-primary" style="float: right;"(click)="XuatTaiSanModal.show()"><i class="fa fa-exchange"></i> {{"Transfer Asset"}}</button>
         </div>
     </div>
     <div class="m-content"> <!--info card-->
@@ -111,15 +115,15 @@
             </svg>
             <ul class="os-percentages horizontal-list">
                 <li>
-                    <p class="ios os scnd-font-color" style="border-color: #34bfa3">Active</p>
+                    <p class="os scnd-font-color" style="border-color: #34bfa3">Active</p>
                     <p class="os-percentage">{{header_stats.Assets_Active}}</p>
                 </li>
                 <li>
-                    <p class="mac os scnd-font-color" style="border-color: #36a3f7">Storage</p>
+                    <p class="os scnd-font-color" style="border-color: #36a3f7">Storage</p>
                     <p class="os-percentage">{{header_stats.Assets_Storage}}</p>
                 </li>
                 <li>
-                    <p class="linux os scnd-font-color" style="border-color: #ffb822">Disposed</p>
+                    <p class="os scnd-font-color" style="border-color: #ffb822">Disposed</p>
                     <p class="os-percentage">{{header_stats.Assets_Disposed}}</p>
                 </li>
             </ul>
@@ -232,4 +236,7 @@
         </div>
 
     </div>
+
+    <themTaiSanModal #themTaiSanModal (modalSave)="getData()"></themTaiSanModal>
+    <XuatTaiSanModal #XuatTaiSanModal (modalSave)="getData()"></XuatTaiSanModal>
 </div>

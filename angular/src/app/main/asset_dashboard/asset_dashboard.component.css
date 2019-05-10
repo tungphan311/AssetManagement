@@ -43,19 +43,6 @@
 	font-size: 15px;	
 	border-top: 4px solid #e64c65;	
 }
-						
-.os.ios 
-{
-}
-.os.mac 
-{
-	border-top: 4px solid #11a8ab;
-}
-
-.os.linux 
-{
-	border-top: 4px solid #fcb150;
-}
 
 .os-percentage 
 {
@@ -65,22 +52,26 @@
 }
 
 
-  .horizontal-list {
+.horizontal-list 
+{
 	margin: 0;
 	padding: 0;
 	list-style-type: none;
 	display: flex;
 	flex-direction: row;
 }
-	.horizontal-list li {
-		flex: 1;
-	}
 
-	.titular {
-display: block;
-line-height: 60px;
-margin: 0;
-text-align: center;
-border-top-left-radius: 5px;
-border-top-right-radius: 5px;
+.horizontal-list li
+{
+	flex: 1;
+}
+
+.titular
+{
+	display: block;
+	line-height: 60px;
+	margin: 0;
+	text-align: center;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
 }

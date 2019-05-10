@@ -23,24 +23,21 @@ export class AssetDashboardComponent extends AppComponentBase implements OnInit
         this.chart = new PieChartData();
         this.assets_state_chart = new ProfitSharePieChart();
         this.userName = this.appSession.user.userName;
+        if(this.appSession.user.userName == "admin")
+            this.userName = "DonViChinh";
     }
 
     ngOnInit(): void 
     {
-    	if (this.userName == "admin")
-    	{
-        	this._DonViService.getDonVi("DonViChinh").subscribe( result => 
-        	{
-                this.get_display_data(result);
-            });
-        }
-        else
+    	this.getData();
+    }
+
+    getData(): void
+    {
+        this._DonViService.getDonVi(this.userName).subscribe( result => 
         {
-        	this._DonViService.getDonVi(this.userName).subscribe( result => 
-        	{
-                this.get_display_data(result);
-            });
-        }
+            this.get_display_data(result);
+        });
     }
 
     get_display_data(result): void

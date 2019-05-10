@@ -30,6 +30,41 @@ namespace GSoft.AbpZeroTemplate
             return ObjectMapper.Map<List<DonViDto>>(people);
         }
 
+        public DonViDto ThemTaiSanVaoDonVi(DonViThemTaiSanInput input)
+        {
+
+            var result = _DonViRepository.Single(b => b.TenDonVi == input.TenDonVi);
+            if (result != null)
+            {
+                result.TaiSanTrongKho += input.TaiSanThem;
+                _DonViRepository.Update(result);
+            }
+
+            return ObjectMapper.Map<DonViDto>(result);
+
+        }
+
+        public bool DonViXuatTaiSan(DonViXuatTaiSanInput input)
+        {
+
+            var don_vi_xuat = _DonViRepository.Single(b => b.TenDonVi == input.DonViXuat);
+            var don_vi_nhan = _DonViRepository.Single(b => b.TenDonVi == input.DonViNhan);
+
+            if (don_vi_xuat == null || don_vi_nhan == null)
+                return false;
+            else if (don_vi_xuat.TaiSanTrongKho - input.SoLuong < 0)
+                return false;
+            else
+            {
+                don_vi_xuat.TaiSanTrongKho -= input.SoLuong;
+                don_vi_xuat.TaiSanSuDung += input.SoLuong;
+                don_vi_nhan.TaiSanSuDung += input.SoLuong;
+                _DonViRepository.Update(don_vi_xuat);
+                _DonViRepository.Update(don_vi_nhan);
+                return true;
+            }
+        }
+
         //public async Task DeleteDonVi(EntityDto input)
         //{
         //    await _DonViRepository.DeleteAsync(input.Id);

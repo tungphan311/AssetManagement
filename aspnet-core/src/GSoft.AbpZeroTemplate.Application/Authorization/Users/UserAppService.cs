@@ -48,6 +48,7 @@ namespace GSoft.AbpZeroTemplate.Authorization.Users
         private readonly IEnumerable<IPasswordValidator<User>> _passwordValidators;
         private readonly IPasswordHasher<User> _passwordHasher;
         private readonly IRepository<OrganizationUnit, long> _organizationUnitRepository;
+        private readonly IRepository<DonVi> _DonViRepository;
 
         public UserAppService(
             RoleManager roleManager,
@@ -61,7 +62,8 @@ namespace GSoft.AbpZeroTemplate.Authorization.Users
             IUserPolicy userPolicy,
             IEnumerable<IPasswordValidator<User>> passwordValidators,
             IPasswordHasher<User> passwordHasher,
-            IRepository<OrganizationUnit, long> organizationUnitRepository)
+            IRepository<OrganizationUnit, long> organizationUnitRepository,
+            IRepository<DonVi> DonViRepository)
         {
             _roleManager = roleManager;
             _userEmailer = userEmailer;
@@ -75,6 +77,7 @@ namespace GSoft.AbpZeroTemplate.Authorization.Users
             _passwordValidators = passwordValidators;
             _passwordHasher = passwordHasher;
             _organizationUnitRepository = organizationUnitRepository;
+            _DonViRepository = DonViRepository;
 
             AppUrlService = NullAppUrlService.Instance;
         }
@@ -339,6 +342,23 @@ namespace GSoft.AbpZeroTemplate.Authorization.Users
 
             //Organization Units
             await UserManager.SetOrganizationUnitsAsync(user, input.OrganizationUnits.ToArray());
+            
+//-------------------------------------------------------------------------------------------------
+
+            var don_vi = _DonViRepository.FirstOrDefault(p => p.TenDonVi == input.User.UserName);
+            if (don_vi == null)
+            {
+                _DonViRepository.Insert(
+                    new DonVi
+                    {
+                        TenDonVi = input.User.UserName,
+                        TaiSanSuDung = 0,
+                        TaiSanHu = 0,
+                        TaiSanTrongKho = 0,
+                    });
+            }
+
+//--------------------------------------------------------------------------------------------------
 
             //Send activation email
             if (input.SendActivationEmail)
