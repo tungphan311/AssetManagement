@@ -12,17 +12,41 @@
             </div>
             <div class="modal-body">
                 <div class="form-group">
+                    <p>Mã code: {{merchandise.code}}</p>
+                </div>
+                <div class="form-group">
                     <p>Tên hàng hoá: {{merchandise.name}}</p>
                 </div>
                 <div class="form-group">
                     <p>Loại hàng hoá: {{getTypeNames(merchandise.typeID)}}</p>
                 </div>
                 <div class="form-group">
+                    <p>Mã nhà cung cấp: {{getTypeVenderNames(merchandise.typeVender)}}</p>
+                </div>
+                <div class="form-group">
+                    <p>Giá: {{merchandise.price}}</p>
+                </div>
+                <div class="form-group">
+                    <p>Đơn vị tính: {{merchandise.unit}}</p>
+                </div>
+                <div class="form-group">
                     <label>Thông tin chi tiết:</label>
                     <p>{{merchandise.info}}</p>
                 </div>
                 <div class="form-group">
-                    <p>Giá: {{merchandise.price}}đ</p>
+                    <p>
+                        Hoạt động: 
+                        <span *ngIf="merchandise.isActive">
+                            <input type="checkbox" checked onclick="return false;">
+                        </span>
+                        <span *ngIf="!merchandise.isActive">
+                            <input type="checkbox" onclick="return false;">
+                        </span>
+                    </p> 
+                </div>
+                <div class="form-group">
+                    <label>Ghi chú: </label>
+                    <p>{{merchandise.note}}</p>
                 </div>
             </div>
             <div class="modal-footer">

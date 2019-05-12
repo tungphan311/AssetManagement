@@ -3,7 +3,7 @@ import { appModuleAnimation } from "@shared/animations/routerTransition";
 import { AppComponentBase } from "@shared/common/app-component-base";
 import { Table } from "primeng/components/table/table";
 import { Paginator } from "primeng/components/paginator/paginator";
-import { MerchandiseServiceProxy, MerchandiseTypeServiceProxy, VendorTypeServiceProxy } from "@shared/service-proxies/service-proxies";
+import { MerchandiseServiceProxy, MerchandiseTypeServiceProxy, VendorTypeServiceProxy, VendorServiceProxy } from "@shared/service-proxies/service-proxies";
 import { ActivatedRoute, Params } from "@angular/router";
 import { LazyLoadEvent } from "primeng/components/common/lazyloadevent";
 import { CreateOrEditMerchandiseModalComponent } from "./create-or-edit-merchandise-modal.component";
@@ -43,7 +43,7 @@ export class MerchandiseComponent extends AppComponentBase implements AfterViewI
         injector: Injector,
         private _merchandiseService: MerchandiseServiceProxy,
         private _merTypeService: MerchandiseTypeServiceProxy,
-        private _vendorTypeService: VendorTypeServiceProxy,
+        private _vendorService: VendorServiceProxy,
         private _activatedRoute: ActivatedRoute,
     ) {
         super(injector);
@@ -86,6 +86,14 @@ export class MerchandiseComponent extends AppComponentBase implements AfterViewI
         }
     }
 
+    getTypeVenderNames(id: number): any {
+        for (const iterator of this.typeVender) {
+            if (iterator.id == id) {
+                return iterator.name;
+            }
+        }
+    }
+
     reloadList(merchandiseCode, merchandiseName, merchandiseTypeID, merchandiseTypeVender, merchandiseIsActive, event?: LazyLoadEvent) {
         this._merchandiseService.getMerchandiseByFilter(merchandiseCode, 
             merchandiseName, merchandiseTypeID, merchandiseTypeVender, merchandiseIsActive, 
@@ -98,16 +106,24 @@ export class MerchandiseComponent extends AppComponentBase implements AfterViewI
             this.primengTableHelper.hideLoadingIndicator();
         });
 
-        // this._merTypeService.getMerchandiseByFilter(null, null, 99, 0).subscribe(result => {
-        //     this.merType = result.items
-        // })
+        this._merTypeService.getMerchandiseByFilter(null, null, null, null, 999, 0).subscribe(result => {
+            this.merType = result.items
+        })
+
+        this._vendorService.getVendorsByFilter(null, null, 999, 0).subscribe(result => {
+            this.typeVender = result.items
+        })
     }
 
     init(): void {
         //get params từ url để thực hiện filter
         this._activatedRoute.params.subscribe((params: Params) => {
+            this.merchandiseCode = params['code'] || '';
             this.merchandiseName = params['name'] || '';
-            this.reloadList(null,this.merchandiseName, 0, 0, null, null);
+            this.merchandiseTypeID = params['typeID'] || 0;
+            this.merchandiseTypeVender = params['typeVender'] || 0;
+            this.merchandiseIsActive = params[String('isActive')] || '';
+            this.reloadList(this.merchandiseCode,this.merchandiseName, this.merchandiseTypeID, this.merchandiseTypeVender, this.merchandiseIsActive, null);
         });
     }
 
@@ -123,7 +139,7 @@ export class MerchandiseComponent extends AppComponentBase implements AfterViewI
 
     applyFilters(): void {
         //truyền params lên url thông qua router
-        this.reloadList(null,this.merchandiseName, 0, 0, null, null);
+        this.reloadList(this.merchandiseCode,this.merchandiseName, this.merchandiseTypeID, this.merchandiseTypeVender, this.merchandiseIsActive, null);
 
         if (this.paginator.getPage() !== 0) {
             this.paginator.changePage(0);

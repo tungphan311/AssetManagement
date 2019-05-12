@@ -1,7 +1,7 @@
 import { Component, ElementRef, EventEmitter, Injector, Output, ViewChild } from '@angular/core';
 import { AppComponentBase } from '@shared/common/app-component-base';
 import { ModalDirective } from 'ngx-bootstrap';
-import { MerchandiseInput, MerchandiseServiceProxy, ComboboxItemDto, MerchandiseTypeServiceProxy } from '@shared/service-proxies/service-proxies';
+import { MerchandiseInput, MerchandiseServiceProxy, ComboboxItemDto, MerchandiseTypeServiceProxy, VendorTypeServiceProxy, VendorServiceProxy } from '@shared/service-proxies/service-proxies';
 import { Table } from 'primeng/components/table/table';
 import { Paginator } from 'primeng/components/paginator/paginator';
 import { LazyLoadEvent } from 'primeng/primeng';
@@ -30,11 +30,13 @@ export class CreateOrEditMerchandiseModalComponent extends AppComponentBase {
     merchandise: MerchandiseInput = new MerchandiseInput();
 
     merchandiseTypes = []
+    typeVender = []
 
     constructor(
         injector: Injector,
         private _merchandiseService: MerchandiseServiceProxy,
-        private _merTypeService: MerchandiseTypeServiceProxy
+        private _merTypeService: MerchandiseTypeServiceProxy,
+        private _vendorService: VendorServiceProxy
     ) {
         super(injector);
     }
@@ -47,9 +49,13 @@ export class CreateOrEditMerchandiseModalComponent extends AppComponentBase {
             this.modal.show();
         })
 
-        // this._merTypeService.getMerchandiseByFilter(null, null, 99, 0).subscribe(result => {
-        //     this.merchandiseTypes = result.items
-        // })
+        this._merTypeService.getMerchandiseByFilter(null, null, null, null, 999, 0).subscribe(result => {
+            this.merchandiseTypes = result.items
+        })
+
+        this._vendorService.getVendorsByFilter(null, null, 999, 0).subscribe(result => {
+            this.typeVender = result.items
+        })
     }
 
     save(): void {

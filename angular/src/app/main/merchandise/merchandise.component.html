@@ -24,13 +24,33 @@
                         <div class="row align-items-center m--margin-bottom-10">
                             <div class="col-sm-12">
                                 <div class="input-group">
-                                    <input [(ngModel)]="merchandiseName" name="merchandiseName" autoFocus class="form-control"
-                                        placeholder="Nhập tên hàng hoá" type="text">
+                                    <label>Mã hàng hoá</label>
+                                    <input [(ngModel)]="merchandiseCode" name="merchandiseCode" autofocus class="form-control" placeholder="Nhập mã hàng hoá" type="text">
+                                    <label>Tên hàng hoá</label>
+                                    <input [(ngModel)]="merchandiseName" name="merchandiseName" autoFocus class="form-control" placeholder="Nhập tên hàng hoá" type="text">                                  
                                     <span class="input-group-btn">
                                         <button (click)="applyFilters()" class="btn btn-primary" type="submit"><i
                                                 class="icon-refresh"></i>
                                             {{l("Refresh")}}</button>
                                     </span>
+                                </div>                              
+                                <div class="input-group">
+                                    <label>Loại hàng hoá</label>
+                                    <select [(ngModel)]="merchandiseTypeID" name="merchandiseTypeID" autofocus class="form-control">
+                                        <option value="0" selected="selected">Tất cả</option>
+                                        <option *ngFor="let item of merType" value="item.id">{{item.name}}</option>
+                                    </select>
+                                    <label>Mã nhà cung cấp</label>
+                                    <select [(ngModel)]="merchandiseTypeVender" name="merchandiseTypeVender" autofocus class="form-control">
+                                        <option value="0" selected="selected">Tất cả</option>
+                                        <option *ngFor="let item of typeVender" value="item.id">{{item.name}}</option>
+                                    </select>                
+                                    <label>Hoạt động</label>
+                                    <select [(ngModel)]="merchandiseIsActive" name="merchandiseIsActive" autofocus class="form-control">
+                                        <option value="" selected="selected">Tất cả</option>
+                                        <option value="True">Còn</option>
+                                        <option value="False">Không</option>
+                                    </select>
                                 </div>
                             </div>
                         </div>
@@ -44,6 +64,10 @@
                             [responsive]="primengTableHelper.isResponsive">
                             <ng-template pTemplate="header">
                                 <tr>
+                                    <th pSortableColumn="code">
+                                        Mã code
+                                        <p-sortIcon field="code"></p-sortIcon>
+                                    </th>
                                     <th pSortableColumn="name">
                                         {{l("MerchandiseName")}}
                                         <p-sortIcon field="name"></p-sortIcon>
@@ -52,19 +76,39 @@
                                         {{l("MerchandiseTypeID")}}
                                         <p-sortIcon field="typeID"></p-sortIcon>
                                     </th>
-                                    <th pSortableColumn="info">
-                                        {{l("MerchandiseDetail")}}
-                                        <p-sortIcon field="info"></p-sortIcon>
+                                    <th pSortableColumn="typeVender">
+                                        Mã nhà cung cấp
+                                        <p-sortIcon field="typeVender"></p-sortIcon>
                                     </th>
                                     <th pSortableColumn="price">
                                         {{l("MerchandisePrice")}}
                                         <p-sortIcon field="price"></p-sortIcon>
+                                    </th>
+                                    <th pSortableColumn="unit">
+                                        Đơn vị tính
+                                        <p-sortIcon field="unit"></p-sortIcon>
+                                    </th>
+                                    <th pSortableColumn="info">
+                                        {{l("MerchandiseDetail")}}
+                                        <p-sortIcon field="info"></p-sortIcon>
+                                    </th>
+                                    <th pSortableColumn="isActive">
+                                        Hoạt động
+                                        <p-sortIcon field="isActive"></p-sortIcon>
+                                    </th>
+                                    <th pSortableColumn="note">
+                                        Ghi chú
+                                        <p-sortIcon field="note"></p-sortIcon>
                                     </th>
                                     <th>{{l('Edit')}}</th>
                                 </tr>
                             </ng-template>
                             <ng-template pTemplate="body" let-record="$implicit" >
                                 <tr>
+                                    <td>
+                                        <span class="ui-column-title">Mã code</span>
+                                        <span title="{{record.code}}">{{truncateString(record.code)}}</span>
+                                    </td>
                                     <td>
                                         <span class="ui-column-title">Tên hàng hoá</span>
                                         <span title="{{record.name}}">{{truncateString(record.name)}}</span>
@@ -74,12 +118,33 @@
                                         <span title="{{record.typeID}}" >{{getTypeNames(record.typeID)}}</span>
                                     </td>
                                     <td>
-                                        <span class="ui-column-title">Thông tin chi tiết</span>
-                                        <span title="{{record.info}}">{{truncateString(record.info)}}</span>
+                                        <span class="ui-column-title">Loại hàng hoá</span>
+                                        <span title="{{record.typeVender}}" >{{getTypeVenderNames(record.typeVender)}}</span>
                                     </td>
                                     <td>
                                         <span class="ui-column-title">Giá</span>
                                         <span title="{{record.price}}">{{truncateString(record.price)}}</span>
+                                    </td>
+                                    <td>
+                                        <span class="ui-column-title">Đơn vị tính</span>
+                                        <span title="{{record.unit}}">{{truncateString(record.unit)}}</span>
+                                    </td>
+                                    <td>
+                                        <span class="ui-column-title">Thông tin chi tiết</span>
+                                        <span title="{{record.info}}">{{truncateString(record.info)}}</span>
+                                    </td>
+                                    <td>
+                                        <span class="ui-column-title">Hoạt động</span>
+                                        <span title="{{record.isActive}}" *ngIf="record.isActive">
+                                            <input type="checkbox" checked onclick="return false;">
+                                        </span>
+                                        <span title="{{record.isActive}}" *ngIf="!record.isActive">
+                                            <input type="checkbox" onclick="return false;">
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <span class="ui-column-title">Ghi chú</span>
+                                        <span title="{{record.note}}">{{truncateString(record.note)}}</span>
                                     </td>
                                     <td>
                                         <button
