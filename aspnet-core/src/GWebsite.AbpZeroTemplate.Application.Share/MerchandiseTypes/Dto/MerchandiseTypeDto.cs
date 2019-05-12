@@ -9,8 +9,12 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.MerchandiseTypes.Dto
 {
     public class MerchandiseTypeDto: Entity<int>
     {
+        public string TypeID { get; set; }
+
         public string Name { get; set; }
 
-        public string Info { get; set; }
+        public bool IsActive { get; set; }
+
+        public string Note { get; set; }
     }
 }

@@ -77,12 +77,31 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.MerchandiseTypes
         {
             var query = merchandiseTypeRepository.GetAll().Where(x => !x.IsDelete);
 
+            // filter by typeID
+            if (input.TypeID != null)
+            {
+                query = query.Where(x => x.TypeID.ToLower().Contains(input.TypeID));
+            }
+
             // filter by name
             if (input.Name != null)
             {
-                query = query.Where(x => x.Name.ToLower().Equals(input.Name));
+                query = query.Where(x => x.Name.ToLower().Contains(input.Name));
             }
 
+            // filter by isActive
+            if (input.IsActive != null)
+            {
+                if (input.IsActive.Equals(("True").ToLower()))
+                {
+                    query = query.Where(x => x.IsActive == true);
+                }
+                else if (input.IsActive.Equals(("False").ToLower()))
+                {
+                    query = query.Where(x => x.IsActive == false);
+                }
+            }                 
+            
             var totalCount = query.Count();
 
             // sort
@@ -98,18 +117,6 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.MerchandiseTypes
             return new PagedResultDto<MerchandiseTypeDto>(
                 totalCount,
                 items.Select(item => ObjectMapper.Map<MerchandiseTypeDto>(item)).ToList());
-        }
-
-        public string GetNameById(int id)
-        {
-            var merchandiseTypeEntity = merchandiseTypeRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.Id == id);
-
-            if (merchandiseTypeEntity == null)
-            {
-
-            }
-
-            return merchandiseTypeEntity.Name;
         }
         #endregion
 

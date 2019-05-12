@@ -3,7 +3,7 @@ import { appModuleAnimation } from "@shared/animations/routerTransition";
 import { AppComponentBase } from "@shared/common/app-component-base";
 import { Table } from "primeng/components/table/table";
 import { Paginator } from "primeng/components/paginator/paginator";
-import { MerchandiseServiceProxy, MerchandiseTypeServiceProxy } from "@shared/service-proxies/service-proxies";
+import { MerchandiseServiceProxy, MerchandiseTypeServiceProxy, VendorTypeServiceProxy } from "@shared/service-proxies/service-proxies";
 import { ActivatedRoute, Params } from "@angular/router";
 import { LazyLoadEvent } from "primeng/components/common/lazyloadevent";
 import { CreateOrEditMerchandiseModalComponent } from "./create-or-edit-merchandise-modal.component";
@@ -31,13 +31,19 @@ export class MerchandiseComponent extends AppComponentBase implements AfterViewI
      * tạo các biến dể filters
      */
     merchandiseName: string
+    merchandiseCode: string
+    merchandiseTypeID: number
+    merchandiseTypeVender: number
+    merchandiseIsActive: string
 
     merType = []
+    typeVender = []
     
     constructor(
         injector: Injector,
         private _merchandiseService: MerchandiseServiceProxy,
         private _merTypeService: MerchandiseTypeServiceProxy,
+        private _vendorTypeService: VendorTypeServiceProxy,
         private _activatedRoute: ActivatedRoute,
     ) {
         super(injector);
@@ -69,7 +75,7 @@ export class MerchandiseComponent extends AppComponentBase implements AfterViewI
          * mặc định ban đầu lấy hết dữ liệu nên dữ liệu filter = null
          */
 
-        this.reloadList(null, event);
+        this.reloadList(null, null, 0, 0, null, event);
     }
 
     getTypeNames(id: number): any {
@@ -80,8 +86,9 @@ export class MerchandiseComponent extends AppComponentBase implements AfterViewI
         }
     }
 
-    reloadList(merchandiseName, event?: LazyLoadEvent) {
-        this._merchandiseService.getMerchandiseByFilter(merchandiseName, 
+    reloadList(merchandiseCode, merchandiseName, merchandiseTypeID, merchandiseTypeVender, merchandiseIsActive, event?: LazyLoadEvent) {
+        this._merchandiseService.getMerchandiseByFilter(merchandiseCode, 
+            merchandiseName, merchandiseTypeID, merchandiseTypeVender, merchandiseIsActive, 
             this.primengTableHelper.getSorting(this.dataTable),
             this.primengTableHelper.getMaxResultCount(this.paginator, event),
             this.primengTableHelper.getSkipCount(this.paginator, event),
@@ -91,16 +98,16 @@ export class MerchandiseComponent extends AppComponentBase implements AfterViewI
             this.primengTableHelper.hideLoadingIndicator();
         });
 
-        this._merTypeService.getMerchandiseByFilter(null, null, 99, 0).subscribe(result => {
-            this.merType = result.items
-        })
+        // this._merTypeService.getMerchandiseByFilter(null, null, 99, 0).subscribe(result => {
+        //     this.merType = result.items
+        // })
     }
 
     init(): void {
         //get params từ url để thực hiện filter
         this._activatedRoute.params.subscribe((params: Params) => {
             this.merchandiseName = params['name'] || '';
-            this.reloadList(this.merchandiseName, null);
+            this.reloadList(null,this.merchandiseName, 0, 0, null, null);
         });
     }
 
@@ -116,7 +123,7 @@ export class MerchandiseComponent extends AppComponentBase implements AfterViewI
 
     applyFilters(): void {
         //truyền params lên url thông qua router
-        this.reloadList(this.merchandiseName, null);
+        this.reloadList(null,this.merchandiseName, 0, 0, null, null);
 
         if (this.paginator.getPage() !== 0) {
             this.paginator.changePage(0);

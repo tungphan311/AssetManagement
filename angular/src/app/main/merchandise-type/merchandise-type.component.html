@@ -24,7 +24,16 @@
                         <div class="row align-items-center m--margin-bottom-10">
                             <div class="col-sm-12">
                                 <div class="input-group">
-                                    <input [(ngModel)]="merchandiseTypeName" name="merchandiseTypeName" autoFocus class="form-control" placeholder="Nhập tên loại hàng hoá" type="text">
+                                    <label valign="middle">Mã loại hàng hoá</label>
+                                    <input [(ngModel)]="merchandiseTypeID" name="merchandiseTypeID" autoFocus class="form-control" placeholder="Nhập mã loại hàng hoá" type="text">
+                                    <label>Tên loại hàng hoá</label>
+                                    <input [(ngModel)]="merchandiseTypeName" name="merchandiseTypeName" autoFocus class="form-control" placeholder="Nhập tên loại hàng hoá" type="text">                              
+                                    <label>Hoạt động</label>
+                                    <select [(ngModel)]="isActive" name="isActive" autofocus class="form-control" aria-selected="undefined">
+                                        <option value="undefined" selected>Tất cả</option>
+                                        <option value="true">Còn</option>
+                                        <option value="false">Không</option>
+                                    </select>    
                                     <span class="input-group-btn">
                                         <button (click)="applyFilters()" class="btn btn-primary" type="submit">
                                             <i class="icon-refresh"></i>{{l("Refresh")}}
@@ -43,13 +52,21 @@
                         [responsive]="primengTableHelper.isResponsive">
                             <ng-template pTemplate="header">
                                 <tr>
+                                    <th pSortableColumn="typeID">
+                                        Mã loại hàng hoá
+                                        <p-sortIcon field="typeID"></p-sortIcon>
+                                    </th>
                                     <th pSortableColumn="name">
                                         Tên loại hàng hoá
                                         <p-sortIcon field="name"></p-sortIcon>
                                     </th>
-                                    <th pSortableColumn="info">
-                                        Thông tin chi tiết
-                                        <p-sortIcon field="info"></p-sortIcon>
+                                    <th pSortableColumn="isActive">
+                                        Hoạt động
+                                        <p-sortIcon field="isActive"></p-sortIcon>
+                                    </th>
+                                    <th pSortableColumn="note">
+                                        Ghi chú
+                                        <p-sortIcon field="note"></p-sortIcon>
                                     </th>
                                     <th>{{l('Edit')}}</th>
                                 </tr>
@@ -57,12 +74,25 @@
                             <ng-template pTemplate="body" let-record="$implicit">
                                 <tr>
                                     <td>
+                                        <span class="ui-column-title">Mã loại hàng hoá</span>
+                                        <span title="{{record.typeID}}">{{truncateString(record.typeID)}}</span>
+                                    </td>
+                                    <td>
                                         <span class="ui-column-title">Tên loại hàng hoá</span>
                                         <span title="{{record.name}}">{{truncateString(record.name)}}</span>
                                     </td>
                                     <td>
-                                        <span class="ui-column-title">Thông tin chi tiết</span>
-                                        <span title="{{record.info}}">{{truncateString(record.info)}}</span>
+                                        <span class="ui-column-title">Hoạt động</span>
+                                        <span title="{{record.isActive}}" *ngIf="record.isActive">
+                                            <input type="checkbox" checked onclick="return false;">
+                                        </span>
+                                        <span title="{{record.isActive}}" *ngIf="!record.isActive">
+                                            <input type="checkbox" onclick="return false;">
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <span class="ui-column-title">Ghi chú</span>
+                                        <span title="{{record.note}}">{{truncateString(record.note)}}</span>
                                     </td>
                                     <td>
                                         <button class="btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill" (click)="createOrEditModal.show(record.id)" title="{{l('Edit')}}">

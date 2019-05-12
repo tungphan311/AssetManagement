@@ -47,9 +47,9 @@ export class CreateOrEditMerchandiseModalComponent extends AppComponentBase {
             this.modal.show();
         })
 
-        this._merTypeService.getMerchandiseByFilter(null, null, 99, 0).subscribe(result => {
-            this.merchandiseTypes = result.items
-        })
+        // this._merTypeService.getMerchandiseByFilter(null, null, 99, 0).subscribe(result => {
+        //     this.merchandiseTypes = result.items
+        // })
     }
 
     save(): void {

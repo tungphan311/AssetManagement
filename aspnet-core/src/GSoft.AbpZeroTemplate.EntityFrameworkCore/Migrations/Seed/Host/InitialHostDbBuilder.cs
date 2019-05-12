@@ -18,8 +18,6 @@ namespace GSoft.AbpZeroTemplate.Migrations.Seed.Host
             new HostRoleAndUserCreator(_context).Create();
             new DefaultSettingsCreator(_context).Create();
 
-            new MerchandiseInit(_context).Create();
-
             _context.SaveChanges();
         }
     }

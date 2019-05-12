@@ -75,11 +75,43 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Merchandises
         {
             var query = merchandiseRepository.GetAll().Where(x => !x.IsDelete);
 
+            // filter by code 
+            if (input.Code != null)
+            {
+                query = query.Where(x => x.Code.ToLower().Contains(input.Code.ToLower()));
+            }
+
             //filter by name 
             if (input.Name != null)
             {
-                query = query.Where(x => x.Name.ToLower().Equals(input.Name));
+                query = query.Where(x => x.Name.ToLower().Contains(input.Name.ToLower()));
             }
+
+            // filter by typeID
+            if (input.TypeID != 0)
+            {
+                query = query.Where(x => x.TypeID == input.TypeID);
+            }
+
+            // filter by type vender
+            if (input.TypeVender != 0)
+            {
+                query = query.Where(x => x.TypeVender == input.TypeVender);
+            }
+
+            // filter by isActive 
+            if (input.IsActive != null)
+            {
+                if (input.IsActive.Equals("True"))
+                {
+                    query = query.Where(x => x.IsActive == true);
+                }
+                else if (input.IsActive.Equals("False"))
+                {
+                    query = query.Where(x => x.IsActive == false);
+                }
+            }
+            
 
             var totalCount = query.Count();
 

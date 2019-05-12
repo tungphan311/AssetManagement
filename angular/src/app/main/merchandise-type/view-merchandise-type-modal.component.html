@@ -13,11 +13,25 @@
             </div>
             <div class="modal-body">
                 <div class="form-group">
+                    <p>Mã loại hàng hoá: {{merchandiseType.typeID}}</p>
+                </div>
+                <div class="form-group">
                     <p>Tên loại hàng hoá: {{merchandiseType.name}}</p>
                 </div>
                 <div class="form-group">
-                    <label>Thông tin chi tiết:</label>
-                    <p>{{merchandiseType.info}}</p>
+                    <p>
+                        Hoạt động: 
+                        <span *ngIf="merchandiseType.isActive">
+                            <input type="checkbox" checked onclick="return false;">
+                        </span>
+                        <span *ngIf="!merchandiseType.isActive">
+                            <input type="checkbox" onclick="return false;">
+                        </span>
+                    </p> 
+                </div>
+                <div class="form-group">
+                    <label>Ghi chú:</label>
+                    <p>{{merchandiseType.note}}</p>
                 </div>
             </div>
             <div class="modal-footer">

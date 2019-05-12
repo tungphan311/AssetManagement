@@ -4555,16 +4555,28 @@ export class MerchandiseServiceProxy {
     }
 
     /**
+     * @code (optional) 
      * @name (optional) 
+     * @typeID (optional) 
+     * @typeVender (optional) 
+     * @isActive (optional) 
      * @sorting (optional) 
      * @maxResultCount (optional) 
      * @skipCount (optional) 
      * @return Success
      */
-    getMerchandiseByFilter(name: string | null | undefined, sorting: string | null | undefined, maxResultCount: number | null | undefined, skipCount: number | null | undefined): Observable<PagedResultDtoOfMerchandiseDto> {
+    getMerchandiseByFilter(code: string | null | undefined, name: string | null | undefined, typeID: number | null | undefined, typeVender: number | null | undefined, isActive: string | null | undefined, sorting: string | null | undefined, maxResultCount: number | null | undefined, skipCount: number | null | undefined): Observable<PagedResultDtoOfMerchandiseDto> {
         let url_ = this.baseUrl + "/api/Merchandise/GetMerchandiseByFilter?";
+        if (code !== undefined)
+            url_ += "Code=" + encodeURIComponent("" + code) + "&"; 
         if (name !== undefined)
             url_ += "Name=" + encodeURIComponent("" + name) + "&"; 
+        if (typeID !== undefined)
+            url_ += "TypeID=" + encodeURIComponent("" + typeID) + "&"; 
+        if (typeVender !== undefined)
+            url_ += "TypeVender=" + encodeURIComponent("" + typeVender) + "&"; 
+        if (isActive !== undefined)
+            url_ += "IsActive=" + encodeURIComponent("" + isActive) + "&"; 
         if (sorting !== undefined)
             url_ += "Sorting=" + encodeURIComponent("" + sorting) + "&"; 
         if (maxResultCount !== undefined)
@@ -4844,16 +4856,22 @@ export class MerchandiseTypeServiceProxy {
     }
 
     /**
+     * @typeID (optional) 
      * @name (optional) 
+     * @isActive (optional) 
      * @sorting (optional) 
      * @maxResultCount (optional) 
      * @skipCount (optional) 
      * @return Success
      */
-    getMerchandiseByFilter(name: string | null | undefined, sorting: string | null | undefined, maxResultCount: number | null | undefined, skipCount: number | null | undefined): Observable<PagedResultDtoOfMerchandiseTypeDto> {
+    getMerchandiseByFilter(typeID: string | null | undefined, name: string | null | undefined, isActive: string | null | undefined, sorting: string | null | undefined, maxResultCount: number | null | undefined, skipCount: number | null | undefined): Observable<PagedResultDtoOfMerchandiseTypeDto> {
         let url_ = this.baseUrl + "/api/MerchandiseType/GetMerchandiseByFilter?";
+        if (typeID !== undefined)
+            url_ += "TypeID=" + encodeURIComponent("" + typeID) + "&"; 
         if (name !== undefined)
             url_ += "Name=" + encodeURIComponent("" + name) + "&"; 
+        if (isActive !== undefined)
+            url_ += "IsActive=" + encodeURIComponent("" + isActive) + "&"; 
         if (sorting !== undefined)
             url_ += "Sorting=" + encodeURIComponent("" + sorting) + "&"; 
         if (maxResultCount !== undefined)
@@ -4960,61 +4978,6 @@ export class MerchandiseTypeServiceProxy {
             }));
         }
         return _observableOf<MerchandiseTypeInput>(<any>null);
-    }
-
-    /**
-     * @id (optional) 
-     * @return Success
-     */
-    getNameById(id: number | null | undefined): Observable<string> {
-        let url_ = this.baseUrl + "/api/MerchandiseType/GetNameById?";
-        if (id !== undefined)
-            url_ += "id=" + encodeURIComponent("" + id) + "&"; 
-        url_ = url_.replace(/[?&]$/, "");
-
-        let options_ : any = {
-            observe: "response",
-            responseType: "blob",
-            headers: new HttpHeaders({
-                "Content-Type": "application/json", 
-                "Accept": "application/json"
-            })
-        };
-
-        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
-            return this.processGetNameById(response_);
-        })).pipe(_observableCatch((response_: any) => {
-            if (response_ instanceof HttpResponseBase) {
-                try {
-                    return this.processGetNameById(<any>response_);
-                } catch (e) {
-                    return <Observable<string>><any>_observableThrow(e);
-                }
-            } else
-                return <Observable<string>><any>_observableThrow(response_);
-        }));
-    }
-
-    protected processGetNameById(response: HttpResponseBase): Observable<string> {
-        const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
-            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
-
-        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
-        if (status === 200) {
-            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
-            let result200: any = null;
-            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            result200 = resultData200 !== undefined ? resultData200 : <any>null;
-            return _observableOf(result200);
-            }));
-        } else if (status !== 200 && status !== 204) {
-            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-            }));
-        }
-        return _observableOf<string>(<any>null);
     }
 
     /**
@@ -15827,10 +15790,15 @@ export interface IPagedResultDtoOfMerchandiseDto {
 }
 
 export class MerchandiseDto implements IMerchandiseDto {
+    code!: string | undefined;
     name!: string | undefined;
     typeID!: number | undefined;
+    typeVender!: number | undefined;
+    price!: string | undefined;
+    unit!: string | undefined;
     info!: string | undefined;
-    price!: number | undefined;
+    isActive!: boolean | undefined;
+    note!: string | undefined;
     id!: number | undefined;
 
     constructor(data?: IMerchandiseDto) {
@@ -15844,10 +15812,15 @@ export class MerchandiseDto implements IMerchandiseDto {
 
     init(data?: any) {
         if (data) {
+            this.code = data["code"];
             this.name = data["name"];
             this.typeID = data["typeID"];
-            this.info = data["info"];
+            this.typeVender = data["typeVender"];
             this.price = data["price"];
+            this.unit = data["unit"];
+            this.info = data["info"];
+            this.isActive = data["isActive"];
+            this.note = data["note"];
             this.id = data["id"];
         }
     }
@@ -15861,28 +15834,43 @@ export class MerchandiseDto implements IMerchandiseDto {
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
+        data["code"] = this.code;
         data["name"] = this.name;
         data["typeID"] = this.typeID;
-        data["info"] = this.info;
+        data["typeVender"] = this.typeVender;
         data["price"] = this.price;
+        data["unit"] = this.unit;
+        data["info"] = this.info;
+        data["isActive"] = this.isActive;
+        data["note"] = this.note;
         data["id"] = this.id;
         return data; 
     }
 }
 
 export interface IMerchandiseDto {
+    code: string | undefined;
     name: string | undefined;
     typeID: number | undefined;
+    typeVender: number | undefined;
+    price: string | undefined;
+    unit: string | undefined;
     info: string | undefined;
-    price: number | undefined;
+    isActive: boolean | undefined;
+    note: string | undefined;
     id: number | undefined;
 }
 
 export class MerchandiseInput implements IMerchandiseInput {
+    code!: string | undefined;
     name!: string | undefined;
     typeID!: number | undefined;
+    typeVender!: number | undefined;
+    price!: string | undefined;
+    unit!: string | undefined;
     info!: string | undefined;
-    price!: number | undefined;
+    isActive!: boolean | undefined;
+    note!: string | undefined;
     id!: number | undefined;
 
     constructor(data?: IMerchandiseInput) {
@@ -15896,10 +15884,15 @@ export class MerchandiseInput implements IMerchandiseInput {
 
     init(data?: any) {
         if (data) {
+            this.code = data["code"];
             this.name = data["name"];
             this.typeID = data["typeID"];
-            this.info = data["info"];
+            this.typeVender = data["typeVender"];
             this.price = data["price"];
+            this.unit = data["unit"];
+            this.info = data["info"];
+            this.isActive = data["isActive"];
+            this.note = data["note"];
             this.id = data["id"];
         }
     }
@@ -15913,28 +15906,43 @@ export class MerchandiseInput implements IMerchandiseInput {
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
+        data["code"] = this.code;
         data["name"] = this.name;
         data["typeID"] = this.typeID;
-        data["info"] = this.info;
+        data["typeVender"] = this.typeVender;
         data["price"] = this.price;
+        data["unit"] = this.unit;
+        data["info"] = this.info;
+        data["isActive"] = this.isActive;
+        data["note"] = this.note;
         data["id"] = this.id;
         return data; 
     }
 }
 
 export interface IMerchandiseInput {
+    code: string | undefined;
     name: string | undefined;
     typeID: number | undefined;
+    typeVender: number | undefined;
+    price: string | undefined;
+    unit: string | undefined;
     info: string | undefined;
-    price: number | undefined;
+    isActive: boolean | undefined;
+    note: string | undefined;
     id: number | undefined;
 }
 
 export class MerchandiseForViewDto implements IMerchandiseForViewDto {
+    code!: string | undefined;
     name!: string | undefined;
     typeID!: number | undefined;
+    typeVender!: number | undefined;
+    price!: string | undefined;
+    unit!: string | undefined;
     info!: string | undefined;
-    price!: number | undefined;
+    isActive!: boolean | undefined;
+    note!: string | undefined;
 
     constructor(data?: IMerchandiseForViewDto) {
         if (data) {
@@ -15947,10 +15955,15 @@ export class MerchandiseForViewDto implements IMerchandiseForViewDto {
 
     init(data?: any) {
         if (data) {
+            this.code = data["code"];
             this.name = data["name"];
             this.typeID = data["typeID"];
-            this.info = data["info"];
+            this.typeVender = data["typeVender"];
             this.price = data["price"];
+            this.unit = data["unit"];
+            this.info = data["info"];
+            this.isActive = data["isActive"];
+            this.note = data["note"];
         }
     }
 
@@ -15963,19 +15976,29 @@ export class MerchandiseForViewDto implements IMerchandiseForViewDto {
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
+        data["code"] = this.code;
         data["name"] = this.name;
         data["typeID"] = this.typeID;
-        data["info"] = this.info;
+        data["typeVender"] = this.typeVender;
         data["price"] = this.price;
+        data["unit"] = this.unit;
+        data["info"] = this.info;
+        data["isActive"] = this.isActive;
+        data["note"] = this.note;
         return data; 
     }
 }
 
 export interface IMerchandiseForViewDto {
+    code: string | undefined;
     name: string | undefined;
     typeID: number | undefined;
+    typeVender: number | undefined;
+    price: string | undefined;
+    unit: string | undefined;
     info: string | undefined;
-    price: number | undefined;
+    isActive: boolean | undefined;
+    note: string | undefined;
 }
 
 export class PagedResultDtoOfMerchandiseTypeDto implements IPagedResultDtoOfMerchandiseTypeDto {
@@ -16027,8 +16050,10 @@ export interface IPagedResultDtoOfMerchandiseTypeDto {
 }
 
 export class MerchandiseTypeDto implements IMerchandiseTypeDto {
+    typeID!: string | undefined;
     name!: string | undefined;
-    info!: string | undefined;
+    isActive!: boolean | undefined;
+    note!: string | undefined;
     id!: number | undefined;
 
     constructor(data?: IMerchandiseTypeDto) {
@@ -16042,8 +16067,10 @@ export class MerchandiseTypeDto implements IMerchandiseTypeDto {
 
     init(data?: any) {
         if (data) {
+            this.typeID = data["typeID"];
             this.name = data["name"];
-            this.info = data["info"];
+            this.isActive = data["isActive"];
+            this.note = data["note"];
             this.id = data["id"];
         }
     }
@@ -16057,22 +16084,28 @@ export class MerchandiseTypeDto implements IMerchandiseTypeDto {
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
+        data["typeID"] = this.typeID;
         data["name"] = this.name;
-        data["info"] = this.info;
+        data["isActive"] = this.isActive;
+        data["note"] = this.note;
         data["id"] = this.id;
         return data; 
     }
 }
 
 export interface IMerchandiseTypeDto {
+    typeID: string | undefined;
     name: string | undefined;
-    info: string | undefined;
+    isActive: boolean | undefined;
+    note: string | undefined;
     id: number | undefined;
 }
 
 export class MerchandiseTypeInput implements IMerchandiseTypeInput {
+    typeID!: string | undefined;
     name!: string | undefined;
-    info!: string | undefined;
+    isActive!: boolean | undefined;
+    note!: string | undefined;
     id!: number | undefined;
 
     constructor(data?: IMerchandiseTypeInput) {
@@ -16086,8 +16119,10 @@ export class MerchandiseTypeInput implements IMerchandiseTypeInput {
 
     init(data?: any) {
         if (data) {
+            this.typeID = data["typeID"];
             this.name = data["name"];
-            this.info = data["info"];
+            this.isActive = data["isActive"];
+            this.note = data["note"];
             this.id = data["id"];
         }
     }
@@ -16101,22 +16136,28 @@ export class MerchandiseTypeInput implements IMerchandiseTypeInput {
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
+        data["typeID"] = this.typeID;
         data["name"] = this.name;
-        data["info"] = this.info;
+        data["isActive"] = this.isActive;
+        data["note"] = this.note;
         data["id"] = this.id;
         return data; 
     }
 }
 
 export interface IMerchandiseTypeInput {
+    typeID: string | undefined;
     name: string | undefined;
-    info: string | undefined;
+    isActive: boolean | undefined;
+    note: string | undefined;
     id: number | undefined;
 }
 
 export class MerchandiseTypeForViewDto implements IMerchandiseTypeForViewDto {
+    typeID!: string | undefined;
     name!: string | undefined;
-    info!: string | undefined;
+    isActive!: boolean | undefined;
+    note!: string | undefined;
 
     constructor(data?: IMerchandiseTypeForViewDto) {
         if (data) {
@@ -16129,8 +16170,10 @@ export class MerchandiseTypeForViewDto implements IMerchandiseTypeForViewDto {
 
     init(data?: any) {
         if (data) {
+            this.typeID = data["typeID"];
             this.name = data["name"];
-            this.info = data["info"];
+            this.isActive = data["isActive"];
+            this.note = data["note"];
         }
     }
 
@@ -16143,15 +16186,19 @@ export class MerchandiseTypeForViewDto implements IMerchandiseTypeForViewDto {
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
+        data["typeID"] = this.typeID;
         data["name"] = this.name;
-        data["info"] = this.info;
+        data["isActive"] = this.isActive;
+        data["note"] = this.note;
         return data; 
     }
 }
 
 export interface IMerchandiseTypeForViewDto {
+    typeID: string | undefined;
     name: string | undefined;
-    info: string | undefined;
+    isActive: boolean | undefined;
+    note: string | undefined;
 }
 
 export class GetNotificationsOutput implements IGetNotificationsOutput {

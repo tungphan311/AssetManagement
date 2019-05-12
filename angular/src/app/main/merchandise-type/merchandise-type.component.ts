@@ -24,6 +24,8 @@ export class MerchandiseTypeComponent extends AppComponentBase implements AfterV
    
     // biến để filter
     merchandiseTypeName: string;
+    merchandiseTypeID: string;
+    isActive: string;
 
     constructor(
         injector: Injector,
@@ -57,12 +59,12 @@ export class MerchandiseTypeComponent extends AppComponentBase implements AfterV
        this.primengTableHelper.showLoadingIndicator();
 
        // default filter = null
-       this.reloadList(null, event);
+       this.reloadList(null, null, null, event);
    }
 
-   reloadList(merchandiseTypeName, event?: LazyLoadEvent) {
+   reloadList(merchandiseTypeID, merchandiseTypeName, isActive, event?: LazyLoadEvent) {
        this._merchandiseTypeService.getMerchandiseByFilter(
-            merchandiseTypeName, 
+            merchandiseTypeID, merchandiseTypeName, isActive,
             this.primengTableHelper.getSorting(this.dataTable),
             this.primengTableHelper.getMaxResultCount(this.paginator, event),
             this.primengTableHelper.getSkipCount(this.paginator, event),
@@ -76,8 +78,10 @@ export class MerchandiseTypeComponent extends AppComponentBase implements AfterV
    init(): void {
        // get params from url to filter
        this._activatedRoute.params.subscribe((params: Params) => {
+           this.merchandiseTypeID = params['typeID'] || '';
            this.merchandiseTypeName = params['name'] || '';
-           this.reloadList(this.merchandiseTypeName, null);
+           this.isActive = params[String('isActive')] || '';
+           this.reloadList(this.merchandiseTypeID, this.merchandiseTypeName, this.isActive, null);
        });
    }
 
@@ -93,7 +97,7 @@ export class MerchandiseTypeComponent extends AppComponentBase implements AfterV
 
    applyFilters(): void {
        // load params to url through router
-       this.reloadList(this.merchandiseTypeName, null);
+       this.reloadList(this.merchandiseTypeID, this.merchandiseTypeName, this.isActive, null);
 
        if (this.paginator.getPage() !== 0) {
            this.paginator.changePage(0);
@@ -112,5 +116,14 @@ export class MerchandiseTypeComponent extends AppComponentBase implements AfterV
     */
     truncateString(text): string {
         return abp.utils.truncateStringWithPostfix(text, 32, '...');
+    }
+
+    customIsActive(bool): string {
+        if (bool == true) {
+            return "Còn";
+        }
+        else {
+            return "Không";
+        }
     }
 }
