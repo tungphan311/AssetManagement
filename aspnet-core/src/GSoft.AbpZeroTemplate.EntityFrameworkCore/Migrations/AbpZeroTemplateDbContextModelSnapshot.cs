@@ -1730,25 +1730,54 @@ namespace GSoft.AbpZeroTemplate.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Alias")
-                        .HasColumnType("varchar(150)");
+                    b.Property<int>("BlankField0");
+
+                    b.Property<int>("BlankField1");
+
+                    b.Property<string>("BlankField10");
+
+                    b.Property<int>("BlankField2");
+
+                    b.Property<decimal>("BlankField3");
+
+                    b.Property<decimal>("BlankField4");
+
+                    b.Property<decimal>("BlankField5");
+
+                    b.Property<string>("BlankField6");
+
+                    b.Property<string>("BlankField7");
+
+                    b.Property<string>("BlankField8");
+
+                    b.Property<string>("BlankField9");
+
+                    b.Property<string>("Content");
 
                     b.Property<string>("CreatedBy");
 
                     b.Property<DateTime?>("CreatedDate");
 
+                    b.Property<decimal>("CurrentPrice");
+
                     b.Property<string>("Description")
                         .HasMaxLength(500);
 
-                    b.Property<string>("Image")
-                        .HasMaxLength(255);
+                    b.Property<decimal>("ExpectedPrice");
+
+                    b.Property<string>("Image");
 
                     b.Property<bool>("IsDelete");
 
                     b.Property<string>("Name")
                         .HasMaxLength(100);
 
-                    b.Property<decimal>("Price");
+                    b.Property<string>("ProductCode")
+                        .HasColumnType("varchar(50)");
+
+                    b.Property<int>("ProductDetailId");
+
+                    b.Property<int>("Status");
 
                     b.Property<string>("UpdatedBy");
 
@@ -1759,11 +1788,141 @@ namespace GSoft.AbpZeroTemplate.Migrations
 
                     b.Property<decimal>("VAT");
 
-                    b.Property<decimal>("WholePrice");
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductDetailId");
+
+                    b.ToTable("Products");
+                });
+
+            modelBuilder.Entity("GWebsite.AbpZeroTemplate.Core.Models.ProductCategory", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("BlankField0");
+
+                    b.Property<int>("BlankField1");
+
+                    b.Property<string>("BlankField10");
+
+                    b.Property<int>("BlankField2");
+
+                    b.Property<decimal>("BlankField3");
+
+                    b.Property<decimal>("BlankField4");
+
+                    b.Property<decimal>("BlankField5");
+
+                    b.Property<string>("BlankField6");
+
+                    b.Property<string>("BlankField7");
+
+                    b.Property<string>("BlankField8");
+
+                    b.Property<string>("BlankField9");
+
+                    b.Property<string>("CreatedBy");
+
+                    b.Property<DateTime?>("CreatedDate");
+
+                    b.Property<string>("Description")
+                        .HasMaxLength(500);
+
+                    b.Property<string>("Image");
+
+                    b.Property<bool>("IsDelete");
+
+                    b.Property<string>("Name")
+                        .HasMaxLength(100);
+
+                    b.Property<string>("ProductCategoryCode");
+
+                    b.Property<int>("Status");
+
+                    b.Property<string>("UpdatedBy");
+
+                    b.Property<DateTime?>("UpdatedDate");
+
+                    b.Property<string>("Url");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Products");
+                    b.ToTable("ProductCategories");
+                });
+
+            modelBuilder.Entity("GWebsite.AbpZeroTemplate.Core.Models.ProductDetail", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("ProductCategoryId");
+
+                    b.Property<int>("ProviderId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductCategoryId");
+
+                    b.HasIndex("ProviderId");
+
+                    b.ToTable("ProductDetails");
+                });
+
+            modelBuilder.Entity("GWebsite.AbpZeroTemplate.Core.Models.Provider", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Address")
+                        .HasMaxLength(255);
+
+                    b.Property<string>("BlankField");
+
+                    b.Property<string>("BlankField1");
+
+                    b.Property<string>("BlankField2");
+
+                    b.Property<string>("BlankField3");
+
+                    b.Property<string>("CreatedBy");
+
+                    b.Property<DateTime?>("CreatedDate");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("Image");
+
+                    b.Property<string>("Info")
+                        .HasMaxLength(500);
+
+                    b.Property<bool>("IsDelete");
+
+                    b.Property<string>("Name")
+                        .HasMaxLength(100);
+
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("varchar(20)");
+
+                    b.Property<string>("ProviderCode")
+                        .HasColumnType("varchar(50)");
+
+                    b.Property<int>("Status");
+
+                    b.Property<string>("UpdatedBy");
+
+                    b.Property<DateTime?>("UpdatedDate");
+
+                    b.Property<string>("WebsiteUrl")
+                        .HasMaxLength(500);
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Providers");
                 });
 
             modelBuilder.Entity("GSoft.AbpZeroTemplate.Editions.SubscribableEdition", b =>
@@ -2034,6 +2193,27 @@ namespace GSoft.AbpZeroTemplate.Migrations
                         .WithMany("Permissions")
                         .HasForeignKey("RoleId")
                         .HasConstraintName("FK_dbo.Permissions_dbo.AppRoles_RoleId");
+                });
+
+            modelBuilder.Entity("GWebsite.AbpZeroTemplate.Core.Models.Product", b =>
+                {
+                    b.HasOne("GWebsite.AbpZeroTemplate.Core.Models.ProductDetail", "ProductDetail")
+                        .WithMany()
+                        .HasForeignKey("ProductDetailId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("GWebsite.AbpZeroTemplate.Core.Models.ProductDetail", b =>
+                {
+                    b.HasOne("GWebsite.AbpZeroTemplate.Core.Models.ProductCategory", "ProductCategory")
+                        .WithMany()
+                        .HasForeignKey("ProductCategoryId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("GWebsite.AbpZeroTemplate.Core.Models.Provider", "Provider")
+                        .WithMany()
+                        .HasForeignKey("ProviderId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("Abp.Application.Features.EditionFeatureSetting", b =>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GWebsite.AbpZeroTemplate.Core.Models.Enums.Base;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -13,31 +14,45 @@ namespace GWebsite.AbpZeroTemplate.Core.Models
     {
         public Product()
         {
-            Price = 0;
-            WholePrice = 0;
+            ExpectedPrice = 0;
+            CurrentPrice = 0;
             VAT = 0;
             CreatedDate = DateTime.Now;
             UpdatedDate = DateTime.Now;
             IsDelete = true;
         }
-        //public int ProviderId { get; set; }
+        public int ProductDetailId { get; set; }
+        [Column(TypeName = "varchar(50)")]
+        public string ProductCode { get; set; }
         [StringLength(100)]
         public string Name { get; set; }
         [DefaultValue(0)]
-        public decimal Price { get; set; }
+        public decimal ExpectedPrice { get; set; }
+        [DefaultValue(0)]
+        public decimal CurrentPrice { get; set; }
         [DefaultValue(0)]
         public decimal VAT { get; set; }
-        [DefaultValue(0)]
-        public decimal WholePrice { get; set; }
-        [StringLength(255)]
         public string Image { get; set; }
         [StringLength(500)]
         public string Url { get; set; }
         [StringLength(500)]
         public string Description { get; set; }
-        [Column(TypeName = "varchar(150)")]
-        public string Alias { get; set; }
-        //[ForeignKey("ProviderId")]
-        //public virtual Provider Provider { get; set; }
+        public string Content { get; set; }
+        public Status Status { get; set; }
+        [ForeignKey("ProductDetailId")]
+        public virtual ProductDetail ProductDetail { get; set; }
+
+        //Blank Field
+        public int BlankField0 { get; set; }
+        public int BlankField1 { get; set; }
+        public int BlankField2 { get; set; }
+        public decimal BlankField3 { get; set; }
+        public decimal BlankField4 { get; set; }
+        public decimal BlankField5 { get; set; }
+        public string BlankField6 { get; set; }
+        public string BlankField7 { get; set; }
+        public string BlankField8 { get; set; }
+        public string BlankField9 { get; set; }
+        public string BlankField10 { get; set; }
     }
 }
