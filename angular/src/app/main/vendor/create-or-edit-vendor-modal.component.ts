@@ -1,7 +1,7 @@
 import { Component, ElementRef, EventEmitter, Injector, Output, ViewChild } from '@angular/core';
 import { AppComponentBase } from '@shared/common/app-component-base';
 import { ModalDirective } from 'ngx-bootstrap';
-import { VendorServiceProxy, VendorInput } from '@shared/service-proxies/service-proxies';
+import { VendorServiceProxy, VendorInput, VendorTypeServiceProxy } from '@shared/service-proxies/service-proxies';
 
 
 @Component({
@@ -26,9 +26,13 @@ export class CreateOrEditVendorModalComponent extends AppComponentBase {
 
     vendor: VendorInput = new VendorInput();
 
+    vendortypeList: any[];
+
     constructor(
         injector: Injector,
-        private _vendorService: VendorServiceProxy
+        private _vendorService: VendorServiceProxy,
+        private _vendortypeService: VendorTypeServiceProxy
+
     ) {
         super(injector);
     }
@@ -36,6 +40,11 @@ export class CreateOrEditVendorModalComponent extends AppComponentBase {
     show(vendorId?: number | null | undefined): void {
         this.saving = false;
 
+        //load list vendortype
+        this._vendortypeService.getVendorTypesByFilter(null, null, 99, 0,
+        ).subscribe(result => {
+            this.vendortypeList = result.items;
+        });
 
         this._vendorService.getVendorForEdit(vendorId).subscribe(result => {
             this.vendor = result;
