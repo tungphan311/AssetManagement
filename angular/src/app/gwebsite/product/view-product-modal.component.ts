@@ -22,7 +22,7 @@ export class ViewProductModalComponent extends AppComponentBase {
     }
 
     show(productId?: number | null | undefined): void {
-        this._productService.getCustomerForView(productId).subscribe(result => {
+        this._productService.getProductForView(productId).subscribe(result => {
             this.product = result;
             this.modal.show();
         })

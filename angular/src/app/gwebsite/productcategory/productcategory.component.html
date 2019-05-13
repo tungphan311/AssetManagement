@@ -4,15 +4,15 @@
         <div class="d-flex align-items-center">
             <div class="mr-auto col-xs-6">
                 <h3 class="m-subheader__title m-subheader__title--separator">
-                    <span>{{l("Product")}}</span>
+                    <span>{{l("ProductCategory")}}</span>
                 </h3>
                 <span class="m-section__sub">
-                    {{l("ProductInfo")}}
+                    {{l("ProductCategoryInfo")}}
                 </span>
             </div>
             <div class="col-xs-6 text-right">
-                <button (click)="createProduct()" *ngIf="isGranted('Pages.Administration.Product.Create')"
-                    class="btn btn-primary"><i class="fa fa-plus"></i> {{l("CreateNewProduct")}}</button>
+                <button (click)="createProductCategory()" *ngIf="isGranted('Pages.Administration.ProductCategory.Create')"
+                    class="btn btn-primary"><i class="fa fa-plus"></i> {{l("CreateNewProductCategory")}}</button>
             </div>
         </div>
     </div>
@@ -25,8 +25,8 @@
                         <div class="row align-items-center m--margin-bottom-10">
                             <div class="col-sm-12">
                                 <div class="input-group">
-                                    <input [(ngModel)]="productName" name="productName" autoFocus class="form-control"
-                                        placeholder="Nhập tên sản phẩm" type="text">
+                                    <input [(ngModel)]="productCategoryName" name="productCategoryName" autoFocus class="form-control"
+                                        placeholder="Nhập tên danh mục sản phẩm" type="text">
                                     <span class="input-group-btn">
                                         <button (click)="applyFilters()" class="btn btn-primary" type="submit"><i
                                                 class="icon-refresh"></i>
@@ -40,7 +40,7 @@
                 <div class="row align-items-center">
                     <!--<Primeng-TurboTable-Start>-->
                     <div class="primeng-datatable-container" [busyIf]="primengTableHelper.isLoading">
-                        <p-table #dataTable (onLazyLoad)="getProducts($event)" [value]="primengTableHelper.records"
+                        <p-table #dataTable (onLazyLoad)="getProductCategories($event)" [value]="primengTableHelper.records"
                             rows="{{primengTableHelper.defaultRecordsCountPerPage}}" [paginator]="false" [lazy]="true"
                             [responsive]="primengTableHelper.isResponsive">
                             <ng-template pTemplate="header">
@@ -49,11 +49,8 @@
                                         Tên sản phẩm
                                         <p-sortIcon field="name"></p-sortIcon>
                                     </th>
-                                    <th pSortableColumn="expectedPrice">
-                                        Giá dự kiến 
-                                    </th>
-                                    <th pSortableColumn="currentPrice">
-                                        Giá hiện tại 
+                                    <th pSortableColumn="productCategoryCode">
+                                        Mã code 
                                     </th>
                                     <th pSortableColumn="description">
                                         Miêu tả
@@ -62,14 +59,6 @@
                                     <th pSortableColumn="image">
                                         Hình Ảnh
                                         <p-sortIcon field="image"></p-sortIcon>
-                                    </th> 
-                                    <th pSortableColumn="productCategoryId">
-                                        Id danh mục
-                                        <p-sortIcon field="productCategoryId"></p-sortIcon>
-                                    </th> 
-                                    <th pSortableColumn="productDetail">
-                                        Chi tiết
-                                        <p-sortIcon field="productDetail"></p-sortIcon>
                                     </th> 
                                     <th>{{l('Edit')}}</th>
                                 </tr>
@@ -81,12 +70,8 @@
                                         <span title="{{record.name}}">{{truncateString(record.name)}}</span>
                                     </td>
                                     <td>
-                                        <span class="ui-column-title">Giá dự kiến </span>
-                                        <span title="{{record.expectedPrice}}">{{truncateString(record.expectedPrice)}}</span>
-                                    </td>
-                                    <td>
-                                        <span class="ui-column-title">Giá hiện tại</span>
-                                        <span title="{{record.currentPrice}}">{{truncateString(record.currentPrice)}}</span>
+                                        <span class="ui-column-title">Mã code </span>
+                                        <span title="{{record.productCategoryCode}}">{{truncateString(record.productCategoryCode)}}</span>
                                     </td>
                                     <td>
                                         <span class="ui-column-title">Miêu tả</span>
@@ -95,17 +80,7 @@
                                     <td>
                                         <span class="ui-column-title">Hình ảnh</span>      
                                         <a href="{{record.image}}" target="_blank" ><img src="{{record.image}}" width="100" height="100"/></a>
-
-                                    </td>
-                                    <td>
-                                        <span class="ui-column-title">Id danh mục</span>      
-                                        <span title="{{record.productCategoryId}}">{{truncateString(record.productCategoryId)}}</span>
-
-                                    </td>
-                                    <td>
-                                        <span class="ui-column-title">Chi tiết</span>      
-                                        <span title="{{record.productDetail}}">{{truncateString(record.productDetail)}}</span>
-
+                                        
                                     </td>
                                     <td>
                                         <button
@@ -116,13 +91,13 @@
 
                                         <button
                                             class="btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill"
-                                            (click)="deleteProduct(record.id)" title="{{l('Delete')}}">
+                                            (click)="deleteProductCategory(record.id)" title="{{l('Delete')}}">
                                             <i class="fa fa-times" [attr.aria-label]="l('Delete')"></i>
                                         </button>
 
                                         <button
                                             class="btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill"
-                                            (click)="viewProductModal.show(record.id)" title="{{l('View')}}">
+                                            (click)="viewProductCategoryModal.show(record.id)" title="{{l('View')}}">
                                             <i class="fa fa-eye" [attr.aria-label]="l('View')"></i>
                                         </button>
                                     </td>
@@ -134,7 +109,7 @@
                         </div>
                         <div class="primeng-paging-container">
                             <p-paginator rows="{{primengTableHelper.defaultRecordsCountPerPage}}" #paginator
-                                (onPageChange)="getProducts($event)"
+                                (onPageChange)="getProductCategories($event)"
                                 [totalRecords]="primengTableHelper.totalRecordsCount"
                                 [rowsPerPageOptions]="primengTableHelper.predefinedRecordsCountPerPage">
                             </p-paginator>
@@ -148,6 +123,6 @@
             </div>
         </div>
     </div>
-    <createOrEditProductModal #createOrEditModal (modalSave)="reloadPage()"></createOrEditProductModal>
-    <viewProductModal #viewProductModal></viewProductModal>
+    <createOrEditProductCategoryModal #createOrEditModal (modalSave)="reloadPage()"></createOrEditProductCategoryModal>
+    <viewProductCategoryModal #viewProductCategoryModal></viewProductCategoryModal>
 </div>

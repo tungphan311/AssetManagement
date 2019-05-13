@@ -4,6 +4,7 @@ import { MenuClientComponent } from '@app/gwebsite/menu-client/menu-client.compo
 import { DemoModelComponent } from './demo-model/demo-model.component';
 import { CustomerComponent } from './customer/customer.component';
 import { ProductComponent } from './product/product.component';
+import { ProductCategoryComponent } from './productcategory/productcategory.component';
 
 @NgModule({
     imports: [
@@ -43,8 +44,18 @@ import { ProductComponent } from './product/product.component';
                         data: { permission: 'Pages.Administration.Product' }
                     },
                 ]
-            }    
+            },
+            {
+                path: '',
+                children: [
+                    {
+                        path: 'productcategory', component: ProductCategoryComponent,
+                        data: { permission: 'Pages.Administration.ProductCategory' }
+                    },
+                ]
+            }          
         ])
+        
     ],
     exports: [
         RouterModule

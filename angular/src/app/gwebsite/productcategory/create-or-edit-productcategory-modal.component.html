@@ -5,8 +5,8 @@
             <form #editForm="ngForm" novalidate (ngSubmit)="save()">
                 <div class="modal-header">
                     <h4 class="modal-title">
-                        <span *ngIf="product.id">Cập nhật sản phẩm: {{product.name}}</span>
-                        <span *ngIf="!product.id">Tạo mới sản phẩm</span>
+                        <span *ngIf="productCategory.id">Cập nhật danh mục sản phẩm: {{productCategory.name}}</span>
+                        <span *ngIf="!productCategory.id">Tạo mới danh mục sản phẩm</span>
                     </h4>
                     <button type="button" class="close" (click)="close()" [attr.aria-label]="l('Close')">
                         <span aria-hidden="true">&times;</span>
@@ -14,48 +14,30 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        <label>Tên sản phẩm *</label>
+                        <label>Tên danh mục sản phẩm *</label>
                         <input #nameInput="ngModel" class="form-control" type="text" name="Name"
-                            [(ngModel)]="product.name" required maxlength="64">
+                            [(ngModel)]="productCategory.name" required maxlength="64">
                         <validation-messages [formCtrl]="nameInput"></validation-messages>
                     </div>
                     <div class="form-group">
-                        <label>Giá dự kiến của sản phẩm *</label>
-                        <input #addressInput="ngModel" class="form-control" type="number" name="ExpectedPrice"
-                            [(ngModel)]="product.expectedprice" required maxlength="64">
-                        <validation-messages [formCtrl]="expectedpriceInput"></validation-messages>
-                    </div>
-                    <div class="form-group">
-                        <label>Giá hiện tại của sản phẩm *</label>
-                        <input #addressInput="ngModel" class="form-control" type="number" name="CurrentPrice"
-                            [(ngModel)]="product.currentprice" required maxlength="64">
-                        <validation-messages [formCtrl]="currentpriceInput"></validation-messages>
+                        <label>Mã code danh mục sản phẩm *</label>
+                        <input #addressInput="ngModel" class="form-control" type="text" name="ProductCategoryCode"
+                            [(ngModel)]="productCategory.productCategoryCode" required maxlength="64">
+                        <validation-messages [formCtrl]="productCategoryCodeInput"></validation-messages>
                     </div>
                     <div class="form-group">
                         <label>Miêu tả*</label>
                         <input #addressInput="ngModel" class="form-control" type="text" name="Description"
-                            [(ngModel)]="product.description" required maxlength="64">
+                            [(ngModel)]="productCategory.description" required maxlength="64">
                         <validation-messages [formCtrl]="descriptionInput"></validation-messages>
                     </div>
                     <div class="form-group">
                         <label>Image*</label>
                         <input #addressInput="ngModel" class="form-control" type="textbox" name="Image" 
                             placeholder="Vui lòng nhập Url của Ảnh" type="text"
-                            [(ngModel)]="product.image" required maxlength="64" 
+                            [(ngModel)]="productCategory.image" required maxlength="64" 
                             >
                         <validation-messages [formCtrl]="imageInput"></validation-messages>
-                    </div>
-                    <div class="form-group">
-                        <label>Id danh mục sản phẩm*</label>
-                        <input #addressInput="ngModel" class="form-control" type="text" name="ProductCategoryId"
-                            [(ngModel)]="product.productCategoryId" required maxlength="64">
-                        <validation-messages [formCtrl]="productCategoryIdInput"></validation-messages>
-                    </div>
-                    <div class="form-group">
-                        <label>Chi tiết*</label>
-                        <input #addressInput="ngModel" class="form-control" type="productDetailDto" name="ProductDetail"
-                            [(ngModel)]="product.productDetail" required maxlength="64">
-                        <validation-messages [formCtrl]="productDetailInput"></validation-messages>
                     </div>
                 </div>
                 <div class="modal-footer">

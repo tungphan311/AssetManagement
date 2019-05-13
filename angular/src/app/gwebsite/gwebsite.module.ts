@@ -23,6 +23,12 @@ import { ProductServiceProxy } from '@shared/service-proxies/service-proxies';
 import { ProductComponent } from './product/product.component';
 import { ViewProductModalComponent } from './product/view-product-modal.component';
 import { CreateOrEditProductModalComponent } from './product/create-or-edit-product-modal.component';
+
+import { ProductCategoryServiceProxy } from '@shared/service-proxies/service-proxies';
+import { ProductCategoryComponent } from './productcategory/productcategory.component';
+import { ViewProductCategoryModalComponent } from './productcategory/view-productcategory-modal.component';
+import { CreateOrEditProductCategoryModalComponent } from './productcategory/create-or-edit-productcategory-modal.component';
+
 @NgModule({
     imports: [
         FormsModule,
@@ -46,13 +52,14 @@ import { CreateOrEditProductModalComponent } from './product/create-or-edit-prod
         MenuClientComponent, CreateOrEditMenuClientModalComponent,
         DemoModelComponent, CreateOrEditDemoModelModalComponent, ViewDemoModelModalComponent,
         CustomerComponent, CreateOrEditCustomerModalComponent, ViewCustomerModalComponent,
-        ProductComponent, CreateOrEditProductModalComponent, ViewProductModalComponent
-
+        ProductComponent, CreateOrEditProductModalComponent, ViewProductModalComponent,
+        ProductCategoryComponent, CreateOrEditProductCategoryModalComponent, ViewProductCategoryModalComponent
     ],
     providers: [
         DemoModelServiceProxy,
         CustomerServiceProxy,
-        ProductServiceProxy
+        ProductServiceProxy,
+        ProductCategoryServiceProxy    
     ]
 })
 export class GWebsiteModule { }
