@@ -9,6 +9,8 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.VendorTypes.Dto
     /// </summary>
     public class VendorTypeFilter : PagedAndSortedInputDto
     {
+        public string Code { get; set; }
         public string Name { get; set; }
+        public string IsActive { get; set; }
     }
 }

@@ -10,26 +10,26 @@ using GSoft.AbpZeroTemplate;
 
 namespace GWebsite.AbpZeroTemplate.Core.Models
 {
-    [Table("Vendor")]
     public class Vendor: FullAuditModel
     {  
-        [Required]
-        [MaxLength(VendorConsts.MaxNameLength)]
-        public virtual string Name { get; set; }
+        public string Code { get; set; }
 
-        [Required]
-        public virtual int TypeID { get; set; }
+        public string Name { get; set; }
 
-        [Required]
-        [MaxLength(VendorConsts.MaxEmailAddressLength)]
-        public virtual string EmailAddress { get; set; }
+        public int TypeID { get; set; }
 
-        [Required]
-        [MaxLength(VendorConsts.MaxAddressLength)]
-        public virtual string Address { get; set; }
+        public string EmailAddress { get; set; }
 
-        [Required]
-        [MaxLength(VendorConsts.MaxPhoneNumberLength)]
-        public virtual string PhoneNumber { get; set; }
+        public string Address { get; set; }
+
+        public string TIN { get; set; }
+
+        public string PhoneNumber { get; set; }
+
+        public string Contact { get; set; }
+
+        public bool IsActive { get; set; }
+
+        public string Note { get; set; }
     }
 }

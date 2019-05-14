@@ -8,7 +8,9 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.VendorTypes.Dto
     /// </summary>
     public class VendorTypeInput : Entity<int>
     {
+        public string Code { get; set; }
         public string Name { get; set; }
-        public string Info { get; set; }
+        public bool IsActive { get; set; }
+        public string Note { get; set; }
     }
 }
