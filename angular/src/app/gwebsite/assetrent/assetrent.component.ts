@@ -34,7 +34,7 @@ export class AssetRentComponent extends AppComponentBase
     /**
      * tạo các biến dể filters
      */
-    assetName: string;
+    nameAsset: string;
     rentBy: string;
 
     constructor(
@@ -78,10 +78,10 @@ export class AssetRentComponent extends AppComponentBase
         this.reloadList(null, event);
     }
 
-    reloadList(assetName, rentBy, event?: LazyLoadEvent) {
+    reloadList(nameAsset, rentBy, event?: LazyLoadEvent) {
         this._assetRentService
             .getAssetRentByFilter(
-                assetName,
+                nameAsset,
                 rentBy,
                 this.primengTableHelper.getSorting(this.dataTable),
                 this.primengTableHelper.getMaxResultCount(
@@ -106,8 +106,8 @@ export class AssetRentComponent extends AppComponentBase
     init(): void {
         //get params từ url để thực hiện filter
         this._activatedRoute.params.subscribe((params: Params) => {
-            this.assetName = params["nameAsset"] || "";
-            this.reloadList(this.assetName, null);
+            this.nameAsset = params["nameAsset"] || "";
+            this.reloadList(this.nameAsset, null);
         });
     }
 
@@ -117,7 +117,7 @@ export class AssetRentComponent extends AppComponentBase
 
     applyFilters(): void {
         //truyền params lên url thông qua router
-        this.reloadList(this.assetName, null);
+        this.reloadList(this.nameAsset, null);
 
         if (this.paginator.getPage() !== 0) {
             this.paginator.changePage(0);

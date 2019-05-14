@@ -12,7 +12,7 @@ using System.Linq;
 using System.Linq.Dynamic.Core;
 
 
-namespace GWebsite.AbpZeroTemplate.Web.Core.Assets
+namespace GWebsite.AbpZeroTemplate.Web.Core.AssetRents
 {
     [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient)]
     public class AssetRentAppService : GWebsiteAppServiceBase, IAssetRentAppService

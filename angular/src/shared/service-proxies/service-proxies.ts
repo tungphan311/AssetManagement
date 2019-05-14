@@ -1413,6 +1413,495 @@ export class AssetServiceProxy {
 }
 
 @Injectable()
+export class DetailAssetRentServiceProxy {
+    private http: HttpClient;
+    private baseUrl: string;
+    protected jsonParseReviver:
+        | ((key: string, value: any) => any)
+        | undefined = undefined;
+
+    constructor(
+        @Inject(HttpClient) http: HttpClient,
+        @Optional() @Inject(API_BASE_URL) baseUrl?: string
+    ) {
+        this.http = http;
+        this.baseUrl = baseUrl ? baseUrl : "";
+    }
+
+    /**
+     * @nameAsset (optional)
+     * @sorting (optional)
+     * @maxResultCount (optional)
+     * @skipCount (optional)
+     * @return Success
+     */
+    getDetailAssetRentByFilter(
+        rentBy :string |null| undefined,
+        nameAsset: string | null | undefined,
+        sorting: string | null | undefined,
+        maxResultCount: number | null | undefined,
+        skipCount: number | null | undefined
+    ): Observable<PagedResultDtoOfDetailAssetRentDto> {
+        let url_ =
+            this.baseUrl + "/api/DetailnameAsset/GetDetailAssetRentByFilter?";
+        if (nameAsset !== undefined)
+            url_ += "nameAsset=" + encodeURIComponent("" + nameAsset) + "&";
+         if (rentBy !== undefined)
+            url_ += "rentBy=" + encodeURIComponent("" + rentBy) + "&";
+        if (sorting !== undefined)
+            url_ += "Sorting=" + encodeURIComponent("" + sorting) + "&";
+        if (maxResultCount !== undefined)
+            url_ +=
+                "MaxResultCount=" +
+                encodeURIComponent("" + maxResultCount) +
+                "&";
+        if (skipCount !== undefined)
+            url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_: any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json",
+                Accept: "application/json"
+            })
+        };
+
+        return this.http
+            .request("get", url_, options_)
+            .pipe(
+                _observableMergeMap((response_: any) => {
+                    return this.processGetDetailAssetRentByFilter(response_);
+                })
+            )
+            .pipe(
+                _observableCatch((response_: any) => {
+                    if (response_ instanceof HttpResponseBase) {
+                        try {
+                            return this.processGetDetailAssetRentByFilter(<any>(
+                                response_
+                            ));
+                        } catch (e) {
+                            return <
+                                Observable<PagedResultDtoOfDetailAssetRentDto>
+                            >(<any>_observableThrow(e));
+                        }
+                    } else
+                        return <Observable<PagedResultDtoOfDetailAssetRentDto>>(
+                            (<any>_observableThrow(response_))
+                        );
+                })
+            );
+    }
+
+    protected processGetDetailAssetRentByFilter(
+        response: HttpResponseBase
+    ): Observable<PagedResultDtoOfDetailAssetRentDto> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse
+                ? response.body
+                : (<any>response).error instanceof Blob
+                ? (<any>response).error
+                : undefined;
+
+        let _headers: any = {};
+        if (response.headers) {
+            for (let key of response.headers.keys()) {
+                _headers[key] = response.headers.get(key);
+            }
+        }
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(
+                _observableMergeMap(_responseText => {
+                    let result200: any = null;
+                    let resultData200 =
+                        _responseText === ""
+                            ? null
+                            : JSON.parse(_responseText, this.jsonParseReviver);
+                    result200 = resultData200
+                        ? PagedResultDtoOfDetailAssetRentDto.fromJS(
+                              resultData200
+                          )
+                        : new PagedResultDtoOfDetailAssetRentDto();
+                    return _observableOf(result200);
+                })
+            );
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(
+                _observableMergeMap(_responseText => {
+                    return throwException(
+                        "An unexpected server error occurred.",
+                        status,
+                        _responseText,
+                        _headers
+                    );
+                })
+            );
+        }
+        return _observableOf<PagedResultDtoOfDetailAssetRentDto>(<any>null);
+    }
+
+    /**
+     * @id (optional)
+     * @return Success
+     */
+    getDetailAssetRentForEdit(
+        detailId: number | null | undefined
+    ): Observable<DetailAssetRentInput> {
+        let url_ =
+            this.baseUrl + "/api/DetailAssetRent/GetDetailAssetRentForEdit?";
+        if (detailId !== undefined)
+            url_ += "detailId=" + encodeURIComponent("" + detailId) + "&";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_: any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json",
+                Accept: "application/json"
+            })
+        };
+
+        return this.http
+            .request("get", url_, options_)
+            .pipe(
+                _observableMergeMap((response_: any) => {
+                    return this.processGetDetailAssetRentForEdit(response_);
+                })
+            )
+            .pipe(
+                _observableCatch((response_: any) => {
+                    if (response_ instanceof HttpResponseBase) {
+                        try {
+                            return this.processGetDetailAssetRentForEdit(<any>(
+                                response_
+                            ));
+                        } catch (e) {
+                            return <Observable<DetailAssetRentInput>>(
+                                (<any>_observableThrow(e))
+                            );
+                        }
+                    } else
+                        return <Observable<DetailAssetRentInput>>(
+                            (<any>_observableThrow(response_))
+                        );
+                })
+            );
+    }
+
+    protected processGetDetailAssetRentForEdit(
+        response: HttpResponseBase
+    ): Observable<DetailAssetRentInput> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse
+                ? response.body
+                : (<any>response).error instanceof Blob
+                ? (<any>response).error
+                : undefined;
+
+        let _headers: any = {};
+        if (response.headers) {
+            for (let key of response.headers.keys()) {
+                _headers[key] = response.headers.get(key);
+            }
+        }
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(
+                _observableMergeMap(_responseText => {
+                    let result200: any = null;
+                    let resultData200 =
+                        _responseText === ""
+                            ? null
+                            : JSON.parse(_responseText, this.jsonParseReviver);
+                    result200 = resultData200
+                        ? DetailAssetRentInput.fromJS(resultData200)
+                        : new DetailAssetRentInput();
+                    return _observableOf(result200);
+                })
+            );
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(
+                _observableMergeMap(_responseText => {
+                    return throwException(
+                        "An unexpected server error occurred.",
+                        status,
+                        _responseText,
+                        _headers
+                    );
+                })
+            );
+        }
+        return _observableOf<DetailAssetRentInput>(<any>null);
+    }
+
+    /**
+     * @input (optional)
+     * @return Success
+     */
+    createOrEditDetailAssetRent(
+        input: DetailAssetRentInput | null | undefined
+    ): Observable<void> {
+        let url_ =
+            this.baseUrl + "/api/DetailAssetRent/CreateOrEditDetailAssetRent";
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(input);
+
+        let options_: any = {
+            body: content_,
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json"
+            })
+        };
+
+        return this.http
+            .request("post", url_, options_)
+            .pipe(
+                _observableMergeMap((response_: any) => {
+                    return this.processCreateOrEditDetailAssetRent(response_);
+                })
+            )
+            .pipe(
+                _observableCatch((response_: any) => {
+                    if (response_ instanceof HttpResponseBase) {
+                        try {
+                            return this.processCreateOrEditDetailAssetRent(<
+                                any
+                            >response_);
+                        } catch (e) {
+                            return <Observable<void>>(<any>_observableThrow(e));
+                        }
+                    } else
+                        return <Observable<void>>(
+                            (<any>_observableThrow(response_))
+                        );
+                })
+            );
+    }
+
+    protected processCreateOrEditDetailAssetRent(
+        response: HttpResponseBase
+    ): Observable<void> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse
+                ? response.body
+                : (<any>response).error instanceof Blob
+                ? (<any>response).error
+                : undefined;
+
+        let _headers: any = {};
+        if (response.headers) {
+            for (let key of response.headers.keys()) {
+                _headers[key] = response.headers.get(key);
+            }
+        }
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(
+                _observableMergeMap(_responseText => {
+                    return _observableOf<void>(<any>null);
+                })
+            );
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(
+                _observableMergeMap(_responseText => {
+                    return throwException(
+                        "An unexpected server error occurred.",
+                        status,
+                        _responseText,
+                        _headers
+                    );
+                })
+            );
+        }
+        return _observableOf<void>(<any>null);
+    }
+
+    /**
+     * @return Success
+     */
+    deleteDetailAssetRent(detailId: number): Observable<void> {
+        let url_ =
+            this.baseUrl + "/api/DetailAssetRent/DeleteDetailAssetRent/{id}";
+        if (detailId === undefined || detailId === null)
+            throw new Error("The parameter 'detailId' must be defined.");
+        url_ = url_.replace("{id}", encodeURIComponent("" + detailId));
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_: any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json"
+            })
+        };
+
+        return this.http
+            .request("delete", url_, options_)
+            .pipe(
+                _observableMergeMap((response_: any) => {
+                    return this.processDeleteDetailAssetRent(response_);
+                })
+            )
+            .pipe(
+                _observableCatch((response_: any) => {
+                    if (response_ instanceof HttpResponseBase) {
+                        try {
+                            return this.processDeleteDetailAssetRent(<any>(
+                                response_
+                            ));
+                        } catch (e) {
+                            return <Observable<void>>(<any>_observableThrow(e));
+                        }
+                    } else
+                        return <Observable<void>>(
+                            (<any>_observableThrow(response_))
+                        );
+                })
+            );
+    }
+
+    protected processDeleteDetailAssetRent(
+        response: HttpResponseBase
+    ): Observable<void> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse
+                ? response.body
+                : (<any>response).error instanceof Blob
+                ? (<any>response).error
+                : undefined;
+
+        let _headers: any = {};
+        if (response.headers) {
+            for (let key of response.headers.keys()) {
+                _headers[key] = response.headers.get(key);
+            }
+        }
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(
+                _observableMergeMap(_responseText => {
+                    return _observableOf<void>(<any>null);
+                })
+            );
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(
+                _observableMergeMap(_responseText => {
+                    return throwException(
+                        "An unexpected server error occurred.",
+                        status,
+                        _responseText,
+                        _headers
+                    );
+                })
+            );
+        }
+        return _observableOf<void>(<any>null);
+    }
+
+    /**
+     * @id (optional)
+     * @return Success
+     */
+    getDetailAssetRentForView(
+        detailId: number | null | undefined
+    ): Observable<DetailAssetRentForView> {
+        let url_ =
+            this.baseUrl + "/api/DetailAssetRent/GetDetailAssetRentForView?";
+        if (detailId !== undefined)
+            url_ += "detailId=" + encodeURIComponent("" + detailId) + "&";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_: any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json",
+                Accept: "application/json"
+            })
+        };
+
+        return this.http
+            .request("get", url_, options_)
+            .pipe(
+                _observableMergeMap((response_: any) => {
+                    return this.processGetDetailAssetRentForView(response_);
+                })
+            )
+            .pipe(
+                _observableCatch((response_: any) => {
+                    if (response_ instanceof HttpResponseBase) {
+                        try {
+                            return this.processGetDetailAssetRentForView(<any>(
+                                response_
+                            ));
+                        } catch (e) {
+                            return <Observable<DetailAssetRentForView>>(
+                                (<any>_observableThrow(e))
+                            );
+                        }
+                    } else
+                        return <Observable<DetailAssetRentForView>>(
+                            (<any>_observableThrow(response_))
+                        );
+                })
+            );
+    }
+
+    protected processGetDetailAssetRentForView(
+        response: HttpResponseBase
+    ): Observable<DetailAssetRentForView> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse
+                ? response.body
+                : (<any>response).error instanceof Blob
+                ? (<any>response).error
+                : undefined;
+
+        let _headers: any = {};
+        if (response.headers) {
+            for (let key of response.headers.keys()) {
+                _headers[key] = response.headers.get(key);
+            }
+        }
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(
+                _observableMergeMap(_responseText => {
+                    let result200: any = null;
+                    let resultData200 =
+                        _responseText === ""
+                            ? null
+                            : JSON.parse(_responseText, this.jsonParseReviver);
+                    result200 = resultData200
+                        ? DetailAssetRentForView.fromJS(resultData200)
+                        : new DetailAssetRentForView();
+                    return _observableOf(result200);
+                })
+            );
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(
+                _observableMergeMap(_responseText => {
+                    return throwException(
+                        "An unexpected server error occurred.",
+                        status,
+                        _responseText,
+                        _headers
+                    );
+                })
+            );
+        }
+        return _observableOf<DetailAssetRentForView>(<any>null);
+    }
+}
+
+@Injectable()
 export class AssetRentServiceProxy {
     private http: HttpClient;
     private baseUrl: string;
@@ -17736,6 +18225,248 @@ export interface IAssetForView {
     nameAsset: string | undefined;
     mountAsset: number | undefined;
     id: number | undefined;
+}
+
+export class PagedResultDtoOfDetailAssetRentDto
+    implements IPagedResultDtoOfDetailAssetRentDto {
+    totalCount!: number | undefined;
+    items!: DetailAssetRentDto[] | undefined;
+
+    constructor(data?: IPagedResultDtoOfAssetDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.totalCount = data["totalCount"];
+            if (data["items"] && data["items"].constructor === Array) {
+                this.items = [];
+                for (let item of data["items"])
+                    this.items.push(DetailAssetRentDto.fromJS(item));
+            }
+        }
+    }
+
+    static fromJS(data: any): PagedResultDtoOfDetailAssetRentDto {
+        data = typeof data === "object" ? data : {};
+        let result = new PagedResultDtoOfDetailAssetRentDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === "object" ? data : {};
+        data["totalCount"] = this.totalCount;
+        if (this.items && this.items.constructor === Array) {
+            data["items"] = [];
+            for (let item of this.items) data["items"].push(item.toJSON());
+        }
+        return data;
+    }
+}
+
+export interface IPagedResultDtoOfDetailAssetRentDto {
+    totalCount: number | undefined;
+    items: DetailAssetRentDto[] | undefined;
+}
+
+export class DetailAssetRentDto implements IDetailAssetRentDto {
+    nameAsset!: string | undefined;
+    rentBy!: string | undefined;
+    isPay!: boolean | undefined;
+    dayPay!: string | undefined;
+    rate!: number | undefined;
+    describe!: string | undefined;
+    money!: number | undefined;
+    detailId!: undefined;
+
+    constructor(data?: IDetailAssetRentDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.nameAsset = data["nameAsset"];
+            this.rentBy = data["rentBy"];
+            this.isPay = data["isPay"];
+            this.dayPay = data["dayPay"];
+            this.rate = data["rate"];
+            this.describe = data["describe"];
+            this.money = data["money"];
+            this.detailId = data["detailId"];
+        }
+    }
+
+    static fromJS(data: any): DetailAssetRentDto {
+        data = typeof data === "object" ? data : {};
+        let result = new DetailAssetRentDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === "object" ? data : {};
+        data["nameAsset"] = this.nameAsset;
+        data["rentBy"] = this.rentBy;
+        data["isPay"] = this.isPay;
+        data["dayPay"] = this.dayPay;
+        data["rate"] = this.rate;
+        data["describe"] = this.describe;
+        data["money"] = this.money;
+        data["detailId"] = this.detailId;
+        return data;
+    }
+}
+
+export interface IDetailAssetRentDto {
+    nameAsset: string | undefined;
+    rentBy: string | undefined;
+    isPay: boolean | undefined;
+    dayPay: string | undefined;
+    rate: number | undefined;
+    describe: string | undefined;
+    money: number | undefined;
+    detailId: undefined;
+}
+
+export class DetailAssetRentInput implements IDetailAssetRentInput {
+    nameAsset!: string | undefined;
+    rentBy!: string | undefined;
+    isPay!: boolean | undefined;
+    dayPay!: string | undefined;
+    rate!: number | undefined;
+    describe!: string | undefined;
+    money!: number | undefined;
+    detailId!: undefined;
+
+    constructor(data?: IDetailAssetRentInput) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.nameAsset = data["nameAsset"];
+            this.rentBy = data["rentBy"];
+            this.isPay = data["isPay"];
+            this.dayPay = data["dayPay"];
+            this.rate = data["rate"];
+            this.describe = data["describe"];
+            this.money = data["money"];
+            this.detailId = data["detailId"]
+        }
+    }
+
+    static fromJS(data: any): DetailAssetRentInput {
+        data = typeof data === "object" ? data : {};
+        let result = new DetailAssetRentInput();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === "object" ? data : {};
+        data["nameAsset"] = this.nameAsset;
+        data["rentBy"] = this.rentBy;
+        data["isPay"] = this.isPay;
+        data["dayPay"] = this.dayPay;
+        data["rate"] = this.rate;
+        data["describe"] = this.describe;
+        data["money"] = this.money;
+        data["detailId"] = this.detailId;
+        return data;
+    }
+}
+
+export interface IDetailAssetRentInput {
+    nameAsset: string | undefined;
+    rentBy: string | undefined;
+    isPay: boolean | undefined;
+    dayPay: string | undefined;
+    rate: number | undefined;
+    describe: string | undefined;
+    money: number | undefined;
+    detailId: undefined;
+}
+
+export class DetailAssetRentForView implements IDetailAssetRentForView {
+    nameAsset!: string | undefined;
+    rentBy!: string | undefined;
+    isPay!: boolean | undefined;
+    dayPay!: string | undefined;
+    rate!: number | undefined;
+    describe!: string | undefined;
+    money!: number | undefined;
+    detailId!: undefined;
+    id!: undefined;
+
+    constructor(data?: IDetailAssetRentForView) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.nameAsset = data["nameAsset"];
+            this.rentBy = data["rentBy"];
+            this.isPay = data["isPay"];
+            this.dayPay = data["dayPay"];
+            this.rate = data["rate"];
+            this.describe = data["describe"];
+            this.money = data["money"];
+            this.detailId = data["detailId"];
+        }
+    }
+
+    static fromJS(data: any): DetailAssetRentForView {
+        data = typeof data === "object" ? data : {};
+        let result = new DetailAssetRentForView();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === "object" ? data : {};
+        data["nameAsset"] = this.nameAsset;
+        data["rentBy"] = this.rentBy;
+        data["isPay"] = this.isPay;
+        data["dayPay"] = this.dayPay;
+        data["rate"] = this.rate;
+        data["describe"] = this.describe;
+        data["money"] = this.money;
+        data["detailId"] = this.detailId;
+        return data;
+    }
+}
+
+export interface IDetailAssetRentForView {
+    nameAsset: string | undefined;
+    rentBy: string | undefined;
+    isPay: boolean | undefined;
+    dayPay: string | undefined;
+    rate: number | undefined;
+    describe: string | undefined;
+    money: number | undefined;
+    detailId: undefined;
+    id: undefined;
 }
 
 export class PagedResultDtoOfAssetRentDto

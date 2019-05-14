@@ -52,9 +52,14 @@ namespace GWebsite.AbpZeroTemplate.Core.Authorization
             asset.CreateChildPermission(GWebsitePermissions.Pages_Administration_Asset_Delete, L("DeletingAsset"));
 
             var assetRent = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_AssetRent, L("AssetRent"));
-            asset.CreateChildPermission(GWebsitePermissions.Pages_Administration_AssetRent_Create, L("CreatingNewAssetRent"));
-            asset.CreateChildPermission(GWebsitePermissions.Pages_Administration_AssetRent_Edit, L("EditingAssetRent"));
-            asset.CreateChildPermission(GWebsitePermissions.Pages_Administration_AssetRent_Delete, L("DeletingAssetRent"));
+            assetRent.CreateChildPermission(GWebsitePermissions.Pages_Administration_AssetRent_Create, L("CreatingNewAssetRent"));
+            assetRent.CreateChildPermission(GWebsitePermissions.Pages_Administration_AssetRent_Edit, L("EditingAssetRent"));
+            assetRent.CreateChildPermission(GWebsitePermissions.Pages_Administration_AssetRent_Delete, L("DeletingAssetRent"));
+
+            var detailAssetRent = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_DetailAssetRent, L("DetailAssetRent"));
+            detailAssetRent.CreateChildPermission(GWebsitePermissions.Pages_Administration_DetailAssetRent_Create, L("CreatingNewDetailAssetRent"));
+            detailAssetRent.CreateChildPermission(GWebsitePermissions.Pages_Administration_DetailAssetRent_Edit, L("EditingDetailAssetRent"));
+            detailAssetRent.CreateChildPermission(GWebsitePermissions.Pages_Administration_DetailAssetRent_Delete, L("DeletingDetailAssetRent"));
 
         }
 

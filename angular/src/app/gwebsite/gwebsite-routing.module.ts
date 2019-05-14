@@ -5,6 +5,7 @@ import { DemoModelComponent } from "./demo-model/demo-model.component";
 import { CustomerComponent } from "./customer/customer.component";
 import { AssetComponent } from "./asset/asset.component";
 import { AssetRentComponent } from "./assetrent/assetrent.component";
+import { DetailAssetRentComponent } from "./detailassetrent/detailassetrent.component";
 
 @NgModule({
     imports: [
@@ -56,6 +57,18 @@ import { AssetRentComponent } from "./assetrent/assetrent.component";
                         path: "assetrent",
                         component: AssetRentComponent,
                         data: { permission: "Pages.Administration.AssetRent" }
+                    }
+                ]
+            },
+            {
+                path: "",
+                children: [
+                    {
+                        path: "detailassetrent",
+                        component: DetailAssetRentComponent,
+                        data: {
+                            permission: "Pages.Administration.DetailAssetRent"
+                        }
                     }
                 ]
             }

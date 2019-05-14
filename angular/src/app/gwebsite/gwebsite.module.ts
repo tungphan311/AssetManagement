@@ -38,6 +38,9 @@ import { CreateOrEditCustomerModalComponent } from "./customer/create-or-edit-cu
 import { CreateAssetRentModalComponent } from "./assetrent/create-assetrent-modal.component";
 import { ViewAssetRentModalComponent } from "./assetrent/view-assetrent-modal.component";
 import { AssetRentComponent } from "./assetrent/assetrent.component";
+import { CreateDetailAssetRentModalComponent } from "./detailassetrent/create-detailassetrent-modal.component";
+import { ViewDetailAssetRentModalComponent } from "./detailassetrent/view-detailassetrent-modal.component";
+import { DetailAssetRentComponent } from "./detailassetrent/detailassetrent.component";
 
 @NgModule({
     imports: [
@@ -72,7 +75,10 @@ import { AssetRentComponent } from "./assetrent/assetrent.component";
         CreateOrEditAssetModalComponent,
         CreateAssetRentModalComponent,
         AssetRentComponent,
-        ViewAssetRentModalComponent
+        ViewAssetRentModalComponent,
+        CreateDetailAssetRentModalComponent,
+        ViewDetailAssetRentModalComponent,
+        DetailAssetRentComponent
     ],
     providers: [DemoModelServiceProxy]
 })

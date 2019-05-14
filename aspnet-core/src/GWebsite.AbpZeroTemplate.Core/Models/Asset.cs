@@ -8,9 +8,14 @@ namespace GWebsite.AbpZeroTemplate.Core.Models
 {
     public class Asset : FullAuditModel
     {
+        //public int assetID { get; set; }
         public string nameAsset { get; set; }
         public int mountAsset { get; set; }
         public bool isRentOut { get; set; }
+        //public string picture { get; set; }
+        //public string describe { get; set;  }
         public decimal valueAsset { get; set; }
+
+        
     }
 }
