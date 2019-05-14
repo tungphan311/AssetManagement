@@ -24,7 +24,7 @@ namespace GWebsite.AbpZeroTemplate.Core.Models
         public virtual int BriefcaseID { get; set; }
 
         [Required]
-        public virtual int Note { get; set; }
+        public virtual string Note { get; set; }
 
         [Required]
         public virtual int ContractWarrantyTypeID { get; set; }

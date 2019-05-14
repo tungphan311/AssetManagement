@@ -1584,7 +1584,7 @@ namespace GSoft.AbpZeroTemplate.Migrations
                     b.Property<string>("Name")
                         .IsRequired();
 
-                    b.Property<int>("Note");
+                    b.Property<string>("Note");
 
                     b.Property<string>("UpdatedBy");
 
