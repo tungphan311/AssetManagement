@@ -44,7 +44,6 @@
         public const string Pages_Administration_VendorType_Edit = "Pages.Administration.VendorType.Edit";
         public const string Pages_Administration_VendorType_Delete = "Pages.Administration.VendorType.Delete";
 
-
         public const string Pages_Administration_Merch_Vendor = "Pages.Administration.Merch_Vendor";
         public const string Pages_Administration_Merch_Vendor_Create = "Pages.Administration.Merch_Vendor.Create";
         public const string Pages_Administration_Merch_Vendor_Edit = "Pages.Administration.Merch_Vendor.Edit";

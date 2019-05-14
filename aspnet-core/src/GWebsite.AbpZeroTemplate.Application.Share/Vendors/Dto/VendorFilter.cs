@@ -15,6 +15,6 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.Vendors.Dto
 
         public int TypeID { get; set; }
 
-        public bool IsActive { get; set; }
+        public string IsActive { get; set; }
     }
 }
