@@ -7,7 +7,7 @@ import * as _ from 'lodash';
 import { LazyLoadEvent } from 'primeng/components/common/lazyloadevent';
 import { Paginator } from 'primeng/components/paginator/paginator';
 import { Table } from 'primeng/components/table/table';
-import { VendorTypeServiceProxy } from '@shared/service-proxies/service-proxies';
+import { VendorTypeServiceProxy, VendorTypeInput } from '@shared/service-proxies/service-proxies';
 import { CreateOrEditVendorTypeModalComponent } from './create-or-edit-vendortype-modal.component';
 
 @Component({
@@ -27,7 +27,10 @@ export class VendorTypeComponent extends AppComponentBase implements AfterViewIn
     /**
      * tạo các biến dể filters
      */
+    vendortypeCode: string;
     vendortypeName: string;
+    vendortypeIsActive: string;
+    
 
     constructor(
         injector: Injector,
@@ -68,12 +71,13 @@ export class VendorTypeComponent extends AppComponentBase implements AfterViewIn
          * mặc định ban đầu lấy hết dữ liệu nên dữ liệu filter = null
          */
 
-        this.reloadList(null, event);
+        this.reloadList(null,null,null, event);
 
     }
 
-    reloadList(vendortypeName, event?: LazyLoadEvent) {
-        this._vendortypeService.getVendorTypesByFilter(vendortypeName, this.primengTableHelper.getSorting(this.dataTable),
+    reloadList( vendortypeCode,vendortypeName, vendortypeIsActive, event?: LazyLoadEvent) {
+        this._vendortypeService.getVendorTypesByFilter(vendortypeCode,vendortypeName , vendortypeIsActive,
+            this.primengTableHelper.getSorting(this.dataTable),
             this.primengTableHelper.getMaxResultCount(this.paginator, event),
             this.primengTableHelper.getSkipCount(this.paginator, event),
         ).subscribe(result => {
@@ -92,8 +96,10 @@ export class VendorTypeComponent extends AppComponentBase implements AfterViewIn
     init(): void {
         //get params từ url để thực hiện filter
         this._activatedRoute.params.subscribe((params: Params) => {
+            this.vendortypeCode = params['code'] || '';
             this.vendortypeName = params['name'] || '';
-            this.reloadList(this.vendortypeName, null);
+            this.vendortypeIsActive = params['isActive'] || '';
+            this.reloadList(this.vendortypeCode,this.vendortypeName,this.vendortypeIsActive , null);
         });
     }
 
@@ -103,7 +109,7 @@ export class VendorTypeComponent extends AppComponentBase implements AfterViewIn
 
     applyFilters(): void {
         //truyền params lên url thông qua router
-        this.reloadList(this.vendortypeName, null);
+        this.reloadList(this.vendortypeCode, this.vendortypeName, this.vendortypeIsActive, null);
 
         if (this.paginator.getPage() !== 0) {
             this.paginator.changePage(0);

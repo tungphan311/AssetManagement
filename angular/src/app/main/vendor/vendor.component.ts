@@ -28,7 +28,10 @@ export class VendorComponent extends AppComponentBase implements AfterViewInit, 
     /**
      * tạo các biến dể filters
      */
+    vendorCode: string;
     vendorName: string;
+    vendorTypeID: number;
+    vendorIsActive: string;
 
     // list vendortype
     vendortypeList: any[];
@@ -47,7 +50,7 @@ export class VendorComponent extends AppComponentBase implements AfterViewInit, 
      */
     ngOnInit(): void {
         //load list vendortype
-        this._vendortypeService.getVendorTypesByFilter(null, null, 99, 0,
+        this._vendortypeService.getVendorTypesByFilter(null, null, null, null, 99, 0,
         ).subscribe(result => {
             this.vendortypeList = result.items;
         });
@@ -78,12 +81,13 @@ export class VendorComponent extends AppComponentBase implements AfterViewInit, 
          * mặc định ban đầu lấy hết dữ liệu nên dữ liệu filter = null
          */
 
-        this.reloadList(null, event);
+        this.reloadList(null,null,0,null, event);
 
     }
 
-    reloadList(vendorName, event?: LazyLoadEvent) {
-        this._vendorService.getVendorsByFilter(vendorName, this.primengTableHelper.getSorting(this.dataTable),
+    reloadList(vendorCode, vendorName, vendorTypeID, vendorIsActive, event ?: LazyLoadEvent) {
+        this._vendorService.getVendorsByFilter(vendorCode, vendorName, vendorTypeID, vendorIsActive,
+            this.primengTableHelper.getSorting(this.dataTable),
             this.primengTableHelper.getMaxResultCount(this.paginator, event),
             this.primengTableHelper.getSkipCount(this.paginator, event),
         ).subscribe(result => {
@@ -102,8 +106,11 @@ export class VendorComponent extends AppComponentBase implements AfterViewInit, 
     init(): void {
         //get params từ url để thực hiện filter
         this._activatedRoute.params.subscribe((params: Params) => {
+            this.vendorCode = params['code'] || '';
             this.vendorName = params['name'] || '';
-            this.reloadList(this.vendorName, null);
+            this.vendorTypeID = params['typeID'] || 0;
+            this.vendorIsActive = params['isActive'] || '';
+            this.reloadList(this.vendorCode, this.vendorName, this.vendorTypeID, this.vendorIsActive, null);
         });
     }
 
@@ -113,7 +120,7 @@ export class VendorComponent extends AppComponentBase implements AfterViewInit, 
 
     applyFilters(): void {
         //truyền params lên url thông qua router
-        this.reloadList(this.vendorName, null);
+        this.reloadList(this.vendorCode, this.vendorName, this.vendorTypeID, this.vendorIsActive, null);
 
         if (this.paginator.getPage() !== 0) {
             this.paginator.changePage(0);

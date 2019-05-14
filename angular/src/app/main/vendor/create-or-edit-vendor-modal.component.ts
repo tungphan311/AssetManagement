@@ -41,7 +41,7 @@ export class CreateOrEditVendorModalComponent extends AppComponentBase {
         this.saving = false;
 
         //load list vendortype
-        this._vendortypeService.getVendorTypesByFilter(null, null, 99, 0,
+        this._vendortypeService.getVendorTypesByFilter(null, null, null, null, 99, 0,
         ).subscribe(result => {
             this.vendortypeList = result.items;
         });

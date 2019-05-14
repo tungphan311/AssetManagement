@@ -12,13 +12,28 @@
             </div>
             <div class="modal-body">
                 <div class="form-group">
+                    <label>{{l("VendorTypeCode")}}</label>
+                    <p>{{vendortype.code}}</p>
+                </div>
+                <div class="form-group">
                     <label>{{l("VendorTypeName")}}</label>
                     <p>{{vendortype.name}}</p>
                 </div>
                 <div class="form-group">
-                    <label>{{l("Info")}}</label>
-                    <p>{{vendortype.info}}</p>
-                </div>               
+                    <p>
+                        {{l("IsActive")}}
+                        <span *ngIf="vendortype.isActive">
+                            <input type="checkbox" checked onclick="return false;">
+                        </span>
+                        <span *ngIf="!vendortype.isActive">
+                            <input type="checkbox" onclick="return false;">
+                        </span>
+                    </p>
+                </div>
+                <div class="form-group">
+                    <label>{{l("Note")}}</label>
+                    <p>{{vendortype.note}}</p>
+                </div>
             </div>
             <div class="modal-footer">
                 <button [disabled]="saving" type="button" class="btn btn-default"

@@ -25,12 +25,25 @@
                         <div class="row align-items-center m--margin-bottom-10">
                             <div class="col-sm-12">
                                 <div class="input-group">
+                                    <input [(ngModel)]="vendorCode" name="vendorCode" autoFocus class="form-control"
+                                           placeholder="Type Vendor Code" type="text">
                                     <input [(ngModel)]="vendorName" name="vendorName" autoFocus class="form-control"
-                                        placeholder="Type Vendor Name" type="text">
+                                           placeholder="Type Vendor Name" type="text">
+                                    <select [(ngModel)]="vendorTypeID" name="vendorTypeID" autofocus class="form-control">
+                                        <option value="0" selected="selected">Tất cả</option>
+                                        <option *ngFor="let item of vendortypeList" value="item.id">{{item.name}}</option>
+                                    </select>                                  
+                                    <label>Hoạt động</label>
+                                    <select [(ngModel)]="vendorIsActive" name="vendorIsActive" autofocus class="form-control">
+                                        <option value="" selected="selected">Tất cả</option>
+                                        <option value="True">Còn</option>
+                                        <option value="False">Không</option>
+                                    </select>
                                     <span class="input-group-btn">
-                                        <button (click)="applyFilters()" class="btn btn-primary" type="submit"><i
-                                                class="icon-refresh"></i>
-                                            {{l("Refresh")}}</button>
+                                        <button (click)="applyFilters()" class="btn btn-primary" type="submit">
+                                            <i class="icon-refresh"></i>
+                                            {{l("Refresh")}}
+                                        </button>
                                     </span>
                                 </div>
                             </div>
@@ -45,6 +58,10 @@
                             [responsive]="primengTableHelper.isResponsive">
                             <ng-template pTemplate="header">
                                 <tr>
+                                    <th pSortableColumn="code">
+                                        {{l("VendorCode")}}
+                                        <p-sortIcon field="code"></p-sortIcon>
+                                    </th>
                                     <th pSortableColumn="name">
                                         {{l("VendorName")}}
                                         <p-sortIcon field="name"></p-sortIcon>
@@ -55,18 +72,41 @@
                                     </th>
                                     <th pSortableColumn="emailaddress">
                                         {{l("EmailAddress")}}
+                                        <p-sortIcon field="emailaddress"></p-sortIcon>
                                     </th>
                                     <th pSortableColumn="address">
                                         {{l("Address")}}
+                                        <p-sortIcon field="address"></p-sortIcon>
+                                    </th>
+                                    <th pSortableColumn="tin">
+                                        {{l("TIN")}}
+                                        <p-sortIcon field="tin"></p-sortIcon>
                                     </th>
                                     <th pSortableColumn="phonenumber">
                                         {{l("PhoneNumber")}}
+                                        <p-sortIcon field="phonenumber"></p-sortIcon>
+                                    </th>
+                                    <th pSortableColumn="contact">
+                                        {{l("Contact")}}
+                                        <p-sortIcon field="contact"></p-sortIcon>
+                                    </th>
+                                    <th pSortableColumn="isactive">
+                                        {{l("IsActive")}}
+                                        <p-sortIcon field="isactive"></p-sortIcon>
+                                    </th>
+                                    <th pSortableColumn="note">
+                                        {{l("Note")}}
+                                        <p-sortIcon field="note"></p-sortIcon>
                                     </th>
                                     <th>{{l('Edit')}}</th>
                                 </tr>
                             </ng-template>
                             <ng-template pTemplate="body" let-record="$implicit">
                                 <tr>
+                                    <td>
+                                        <span class="ui-column-title">{{l("VendorCode")}}</span>
+                                        <span title="{{record.code}}">{{truncateString(record.code)}}</span>
+                                    </td>
                                     <td>
                                         <span class="ui-column-title">{{l("VendorName")}}</span>
                                         <span title="{{record.name}}">{{truncateString(record.name)}}</span>
@@ -84,8 +124,29 @@
                                         <span title="{{record.address}}">{{truncateString(record.address)}}</span>
                                     </td>
                                     <td>
+                                        <span class="ui-column-title">{{l("TIN")}}</span>
+                                        <span title="{{record.tin}}">{{truncateString(record.tin)}}</span>
+                                    </td>
+                                    <td>
                                         <span class="ui-column-title">{{l("PhoneNumber")}}</span>
                                         <span title="{{record.phoneNumber}}">{{truncateString(record.phoneNumber)}}</span>
+                                    </td>
+                                    <td>
+                                        <span class="ui-column-title">{{l("Contact")}}</span>
+                                        <span title="{{record.contact}}">{{truncateString(record.contact)}}</span>
+                                    </td>
+                                    <td>
+                                        <span class="ui-column-title">{{l("IsActive")}}</span>
+                                        <span title="{{record.isActive}}" *ngIf="record.isActive">
+                                            <input type="checkbox" checked onclick="return false;">
+                                        </span>
+                                        <span title="{{record.isActive}}" *ngIf="!record.isActive">
+                                            <input type="checkbox" onclick="return false;">
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <span class="ui-column-title">{{l("Note")}}</span>
+                                        <span title="{{record.note}}">{{truncateString(record.note)}}</span>
                                     </td>
                                     <td>
                                         <button class="btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill"

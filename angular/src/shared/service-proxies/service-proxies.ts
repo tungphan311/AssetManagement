@@ -10073,16 +10073,25 @@ export class VendorServiceProxy {
     }
 
     /**
+     * @code (optional) 
      * @name (optional) 
+     * @typeID (optional) 
+     * @isActive (optional) 
      * @sorting (optional) 
      * @maxResultCount (optional) 
      * @skipCount (optional) 
      * @return Success
      */
-    getVendorsByFilter(name: string | null | undefined, sorting: string | null | undefined, maxResultCount: number | null | undefined, skipCount: number | null | undefined): Observable<PagedResultDtoOfVendorDto> {
+    getVendorsByFilter(code: string | null | undefined, name: string | null | undefined, typeID: number | null | undefined, isActive: string | null | undefined, sorting: string | null | undefined, maxResultCount: number | null | undefined, skipCount: number | null | undefined): Observable<PagedResultDtoOfVendorDto> {
         let url_ = this.baseUrl + "/api/Vendor/GetVendorsByFilter?";
+        if (code !== undefined)
+            url_ += "Code=" + encodeURIComponent("" + code) + "&"; 
         if (name !== undefined)
             url_ += "Name=" + encodeURIComponent("" + name) + "&"; 
+        if (typeID !== undefined)
+            url_ += "TypeID=" + encodeURIComponent("" + typeID) + "&"; 
+        if (isActive !== undefined)
+            url_ += "IsActive=" + encodeURIComponent("" + isActive) + "&"; 
         if (sorting !== undefined)
             url_ += "Sorting=" + encodeURIComponent("" + sorting) + "&"; 
         if (maxResultCount !== undefined)
@@ -10362,16 +10371,22 @@ export class VendorTypeServiceProxy {
     }
 
     /**
+     * @code (optional) 
      * @name (optional) 
+     * @isActive (optional) 
      * @sorting (optional) 
      * @maxResultCount (optional) 
      * @skipCount (optional) 
      * @return Success
      */
-    getVendorTypesByFilter(name: string | null | undefined, sorting: string | null | undefined, maxResultCount: number | null | undefined, skipCount: number | null | undefined): Observable<PagedResultDtoOfVendorTypeDto> {
+    getVendorTypesByFilter(code: string | null | undefined, name: string | null | undefined, isActive: string | null | undefined, sorting: string | null | undefined, maxResultCount: number | null | undefined, skipCount: number | null | undefined): Observable<PagedResultDtoOfVendorTypeDto> {
         let url_ = this.baseUrl + "/api/VendorType/GetVendorTypesByFilter?";
+        if (code !== undefined)
+            url_ += "Code=" + encodeURIComponent("" + code) + "&"; 
         if (name !== undefined)
             url_ += "Name=" + encodeURIComponent("" + name) + "&"; 
+        if (isActive !== undefined)
+            url_ += "IsActive=" + encodeURIComponent("" + isActive) + "&"; 
         if (sorting !== undefined)
             url_ += "Sorting=" + encodeURIComponent("" + sorting) + "&"; 
         if (maxResultCount !== undefined)
@@ -21640,11 +21655,16 @@ export interface IPagedResultDtoOfVendorDto {
 }
 
 export class VendorDto implements IVendorDto {
+    code!: string | undefined;
     name!: string | undefined;
     typeID!: number | undefined;
     emailAddress!: string | undefined;
     address!: string | undefined;
+    tin!: string | undefined;
     phoneNumber!: string | undefined;
+    contact!: string | undefined;
+    isActive!: boolean | undefined;
+    note!: string | undefined;
     id!: number | undefined;
 
     constructor(data?: IVendorDto) {
@@ -21658,11 +21678,16 @@ export class VendorDto implements IVendorDto {
 
     init(data?: any) {
         if (data) {
+            this.code = data["code"];
             this.name = data["name"];
             this.typeID = data["typeID"];
             this.emailAddress = data["emailAddress"];
             this.address = data["address"];
+            this.tin = data["tin"];
             this.phoneNumber = data["phoneNumber"];
+            this.contact = data["contact"];
+            this.isActive = data["isActive"];
+            this.note = data["note"];
             this.id = data["id"];
         }
     }
@@ -21676,31 +21701,46 @@ export class VendorDto implements IVendorDto {
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
+        data["code"] = this.code;
         data["name"] = this.name;
         data["typeID"] = this.typeID;
         data["emailAddress"] = this.emailAddress;
         data["address"] = this.address;
+        data["tin"] = this.tin;
         data["phoneNumber"] = this.phoneNumber;
+        data["contact"] = this.contact;
+        data["isActive"] = this.isActive;
+        data["note"] = this.note;
         data["id"] = this.id;
         return data; 
     }
 }
 
 export interface IVendorDto {
+    code: string | undefined;
     name: string | undefined;
     typeID: number | undefined;
     emailAddress: string | undefined;
     address: string | undefined;
+    tin: string | undefined;
     phoneNumber: string | undefined;
+    contact: string | undefined;
+    isActive: boolean | undefined;
+    note: string | undefined;
     id: number | undefined;
 }
 
 export class VendorInput implements IVendorInput {
+    code!: string | undefined;
     name!: string | undefined;
     typeID!: number | undefined;
     emailAddress!: string | undefined;
     address!: string | undefined;
+    tin!: string | undefined;
     phoneNumber!: string | undefined;
+    contact!: string | undefined;
+    isActive!: boolean | undefined;
+    note!: string | undefined;
     id!: number | undefined;
 
     constructor(data?: IVendorInput) {
@@ -21714,11 +21754,16 @@ export class VendorInput implements IVendorInput {
 
     init(data?: any) {
         if (data) {
+            this.code = data["code"];
             this.name = data["name"];
             this.typeID = data["typeID"];
             this.emailAddress = data["emailAddress"];
             this.address = data["address"];
+            this.tin = data["tin"];
             this.phoneNumber = data["phoneNumber"];
+            this.contact = data["contact"];
+            this.isActive = data["isActive"];
+            this.note = data["note"];
             this.id = data["id"];
         }
     }
@@ -21732,31 +21777,46 @@ export class VendorInput implements IVendorInput {
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
+        data["code"] = this.code;
         data["name"] = this.name;
         data["typeID"] = this.typeID;
         data["emailAddress"] = this.emailAddress;
         data["address"] = this.address;
+        data["tin"] = this.tin;
         data["phoneNumber"] = this.phoneNumber;
+        data["contact"] = this.contact;
+        data["isActive"] = this.isActive;
+        data["note"] = this.note;
         data["id"] = this.id;
         return data; 
     }
 }
 
 export interface IVendorInput {
+    code: string | undefined;
     name: string | undefined;
     typeID: number | undefined;
     emailAddress: string | undefined;
     address: string | undefined;
+    tin: string | undefined;
     phoneNumber: string | undefined;
+    contact: string | undefined;
+    isActive: boolean | undefined;
+    note: string | undefined;
     id: number | undefined;
 }
 
 export class VendorForViewDto implements IVendorForViewDto {
+    code!: string | undefined;
     name!: string | undefined;
     typeID!: number | undefined;
     emailAddress!: string | undefined;
     address!: string | undefined;
+    tin!: string | undefined;
     phoneNumber!: string | undefined;
+    contact!: string | undefined;
+    isActive!: boolean | undefined;
+    note!: string | undefined;
 
     constructor(data?: IVendorForViewDto) {
         if (data) {
@@ -21769,11 +21829,16 @@ export class VendorForViewDto implements IVendorForViewDto {
 
     init(data?: any) {
         if (data) {
+            this.code = data["code"];
             this.name = data["name"];
             this.typeID = data["typeID"];
             this.emailAddress = data["emailAddress"];
             this.address = data["address"];
+            this.tin = data["tin"];
             this.phoneNumber = data["phoneNumber"];
+            this.contact = data["contact"];
+            this.isActive = data["isActive"];
+            this.note = data["note"];
         }
     }
 
@@ -21786,21 +21851,31 @@ export class VendorForViewDto implements IVendorForViewDto {
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
+        data["code"] = this.code;
         data["name"] = this.name;
         data["typeID"] = this.typeID;
         data["emailAddress"] = this.emailAddress;
         data["address"] = this.address;
+        data["tin"] = this.tin;
         data["phoneNumber"] = this.phoneNumber;
+        data["contact"] = this.contact;
+        data["isActive"] = this.isActive;
+        data["note"] = this.note;
         return data; 
     }
 }
 
 export interface IVendorForViewDto {
+    code: string | undefined;
     name: string | undefined;
     typeID: number | undefined;
     emailAddress: string | undefined;
     address: string | undefined;
+    tin: string | undefined;
     phoneNumber: string | undefined;
+    contact: string | undefined;
+    isActive: boolean | undefined;
+    note: string | undefined;
 }
 
 export class PagedResultDtoOfVendorTypeDto implements IPagedResultDtoOfVendorTypeDto {
@@ -21852,8 +21927,10 @@ export interface IPagedResultDtoOfVendorTypeDto {
 }
 
 export class VendorTypeDto implements IVendorTypeDto {
+    code!: string | undefined;
     name!: string | undefined;
-    info!: string | undefined;
+    isActive!: boolean | undefined;
+    note!: string | undefined;
     id!: number | undefined;
 
     constructor(data?: IVendorTypeDto) {
@@ -21867,8 +21944,10 @@ export class VendorTypeDto implements IVendorTypeDto {
 
     init(data?: any) {
         if (data) {
+            this.code = data["code"];
             this.name = data["name"];
-            this.info = data["info"];
+            this.isActive = data["isActive"];
+            this.note = data["note"];
             this.id = data["id"];
         }
     }
@@ -21882,22 +21961,28 @@ export class VendorTypeDto implements IVendorTypeDto {
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
+        data["code"] = this.code;
         data["name"] = this.name;
-        data["info"] = this.info;
+        data["isActive"] = this.isActive;
+        data["note"] = this.note;
         data["id"] = this.id;
         return data; 
     }
 }
 
 export interface IVendorTypeDto {
+    code: string | undefined;
     name: string | undefined;
-    info: string | undefined;
+    isActive: boolean | undefined;
+    note: string | undefined;
     id: number | undefined;
 }
 
 export class VendorTypeInput implements IVendorTypeInput {
+    code!: string | undefined;
     name!: string | undefined;
-    info!: string | undefined;
+    isActive!: boolean | undefined;
+    note!: string | undefined;
     id!: number | undefined;
 
     constructor(data?: IVendorTypeInput) {
@@ -21911,8 +21996,10 @@ export class VendorTypeInput implements IVendorTypeInput {
 
     init(data?: any) {
         if (data) {
+            this.code = data["code"];
             this.name = data["name"];
-            this.info = data["info"];
+            this.isActive = data["isActive"];
+            this.note = data["note"];
             this.id = data["id"];
         }
     }
@@ -21926,22 +22013,28 @@ export class VendorTypeInput implements IVendorTypeInput {
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
+        data["code"] = this.code;
         data["name"] = this.name;
-        data["info"] = this.info;
+        data["isActive"] = this.isActive;
+        data["note"] = this.note;
         data["id"] = this.id;
         return data; 
     }
 }
 
 export interface IVendorTypeInput {
+    code: string | undefined;
     name: string | undefined;
-    info: string | undefined;
+    isActive: boolean | undefined;
+    note: string | undefined;
     id: number | undefined;
 }
 
 export class VendorTypeForViewDto implements IVendorTypeForViewDto {
+    code!: string | undefined;
     name!: string | undefined;
-    info!: string | undefined;
+    isActive!: boolean | undefined;
+    note!: string | undefined;
 
     constructor(data?: IVendorTypeForViewDto) {
         if (data) {
@@ -21954,8 +22047,10 @@ export class VendorTypeForViewDto implements IVendorTypeForViewDto {
 
     init(data?: any) {
         if (data) {
+            this.code = data["code"];
             this.name = data["name"];
-            this.info = data["info"];
+            this.isActive = data["isActive"];
+            this.note = data["note"];
         }
     }
 
@@ -21968,15 +22063,19 @@ export class VendorTypeForViewDto implements IVendorTypeForViewDto {
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
+        data["code"] = this.code;
         data["name"] = this.name;
-        data["info"] = this.info;
+        data["isActive"] = this.isActive;
+        data["note"] = this.note;
         return data; 
     }
 }
 
 export interface IVendorTypeForViewDto {
+    code: string | undefined;
     name: string | undefined;
-    info: string | undefined;
+    isActive: boolean | undefined;
+    note: string | undefined;
 }
 
 export class GetLatestWebLogsOutput implements IGetLatestWebLogsOutput {

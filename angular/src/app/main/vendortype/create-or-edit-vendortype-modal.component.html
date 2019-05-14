@@ -14,17 +14,31 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
+                        <label>{{l("VendorTypeCode")}} *</label>
+                        <input #codeInput="ngModel" class="form-control" type="text" name="code"
+                               [(ngModel)]="vendortype.code" required maxlength="64">
+                        <validation-messages [formCtrl]="codeInput"></validation-messages>
+                    </div>
+                    <div class="form-group">
                         <label>{{l("VendorTypeName")}} *</label>
                         <input #nameInput="ngModel" class="form-control" type="text" name="Name"
                                [(ngModel)]="vendortype.name" required maxlength="64">
                         <validation-messages [formCtrl]="nameInput"></validation-messages>
                     </div>
                     <div class="form-group">
-                        <label>{{l("VendorTypeInfo")}} *</label>
-                        <input #nameInput="ngModel" class="form-control" type="text" name="Info"
-                               [(ngModel)]="vendortype.info" required maxlength="64">
-                        <validation-messages [formCtrl]="infoInput"></validation-messages>
-                    </div>                  
+                        <p>
+                            Hoạt động *:
+                            <span>
+                                <input #isActiveInput="ngModel" class="form-control" type="checkbox" name="IsActive" [(ngModel)]="vendortype.isActive" required>
+                            </span>
+                        </p>
+                    </div>
+                    <div class="form-group">
+                        <label>{{l("Note")}} *</label>
+                        <input #noteInput="ngModel" class="form-control" type="text" name="Note"
+                               [(ngModel)]="vendortype.note" required maxlength="64">
+                        <validation-messages [formCtrl]="noteInput"></validation-messages>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button [disabled]="saving" type="button" class="btn btn-default"

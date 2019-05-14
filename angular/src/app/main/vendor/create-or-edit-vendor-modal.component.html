@@ -14,6 +14,12 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
+                        <label>{{l("VendorCode")}} *</label>
+                        <input #codeInput="ngModel" class="form-control" type="text" name="Code"
+                               [(ngModel)]="vendor.code" required maxlength="64">
+                        <validation-messages [formCtrl]="codeInput"></validation-messages>
+                    </div>
+                    <div class="form-group">
                         <label>{{l("VendorName")}} *</label>
                         <input #nameInput="ngModel" class="form-control" type="text" name="Name"
                                [(ngModel)]="vendor.name" required maxlength="64">
@@ -28,7 +34,7 @@
                     </div>
                     <div class="form-group">
                         <label>{{l("EmailAddress")}} *</label>
-                        <input #nameInput="ngModel" class="form-control" type="text" name="EmailAddress"
+                        <input #emailAddressInput="ngModel" class="form-control" type="text" name="EmailAddress"
                                [(ngModel)]="vendor.emailAddress" required maxlength="64">
                         <validation-messages [formCtrl]="emailAddressInput"></validation-messages>
                     </div>
@@ -39,10 +45,33 @@
                         <validation-messages [formCtrl]="addressInput"></validation-messages>
                     </div>
                     <div class="form-group">
+                        <label>{{l("TIN")}} *</label>
+                        <input #tinInput="ngModel" class="form-control" type="text" name="TIN"
+                               [(ngModel)]="vendor.tin" required maxlength="64">
+                        <validation-messages [formCtrl]="tinInput"></validation-messages>
+                    </div>
+                    <div class="form-group">
                         <label>{{l("PhoneNumber")}} *</label>
-                        <input #nameInput="ngModel" class="form-control" type="text" name="PhoneNumber"
+                        <input #phoneNumberInput="ngModel" class="form-control" type="text" name="PhoneNumber"
                                [(ngModel)]="vendor.phoneNumber" required maxlength="64">
                         <validation-messages [formCtrl]="phoneNumberInput"></validation-messages>
+                    </div>
+                    <div class="form-group">
+                        <label>{{l("Contact")}} *</label>
+                        <input #contactInput="ngModel" class="form-control" type="text" name="Contact"
+                               [(ngModel)]="vendor.contact" required maxlength="64">
+                        <validation-messages [formCtrl]="contactInput"></validation-messages>
+                    </div>
+                    <div class="form-group">
+                        <label>{{l("IsActive")}} *</label>
+                        <input #isActiveInput="ngModel" class="form-control" type="checkbox" name="IsActive" [(ngModel)]="vendor.isActive">
+                        <validation-messages [formCtrl]="isActiveInput"></validation-messages>
+                    </div>
+                    <div class="form-group">
+                        <label>{{l("Note")}} *</label>
+                        <input #contactInput="ngModel" class="form-control" type="text" name="Note"
+                               [(ngModel)]="vendor.note" required maxlength="64">
+                        <validation-messages [formCtrl]="noteInput"></validation-messages>
                     </div>
                 </div>
                 <div class="modal-footer">
