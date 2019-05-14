@@ -24,6 +24,8 @@ import { ViewMerchandiseModalComponent } from './merchandise/view-merchandise-mo
 import { MerchandiseTypeComponent } from './merchandise-type/merchandise-type.component';
 import { CreateOrEditMerchandiseTypeModalComponent } from './merchandise-type/create-or-edit-merchandise-type-modal.component';
 import { ViewMerchandiseTypeModalComponent } from './merchandise-type/view-merchandise-type-modal.component';
+import { CreateMerchandiseModalComponent } from './vendor/create-merchandise-modal.component';
+
 @NgModule({
     imports: [
         CommonModule,
@@ -57,6 +59,7 @@ import { ViewMerchandiseTypeModalComponent } from './merchandise-type/view-merch
         VendorComponent, CreateOrEditVendorModalComponent, ViewVendorModalComponent,
         AssignmentTableComponent,
         VendorTypeComponent, CreateOrEditVendorTypeModalComponent, ViewVendorTypeModalComponent,
+        CreateMerchandiseModalComponent,
     ],
     providers: [
         

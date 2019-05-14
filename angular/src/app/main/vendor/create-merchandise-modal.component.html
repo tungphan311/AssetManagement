@@ -1,0 +1,73 @@
+<div bsModal #createModal="bs-modal" class="modal fade" tabindex="-1" role="dialog"
+    aria-labelledby="createModal" aria-hidden="true" [config]="{backdrop: 'static'}">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <form #editForm="ngForm" novalidate (ngSubmit)="save()">
+                <div class="modal-header">
+                    <h4 class="modal-title">
+                        <span *ngIf="merchandise.id">Cập nhật hàng hoá: {{merchandise.name}}</span>
+                        <span *ngIf="!merchandise.id">Tạo mới hàng hoá</span>
+                    </h4>
+                    <button type="button" class="close" (click)="close()" [attr.aria-label]="l('Close')">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>Mã code *</label>
+                        <input #codeInput="ngModel" class="form-control" type="text" name="Code" [(ngModel)]="merchandise.code" required maxlength="64">
+                        <validation-messages [formCtrl]="codeInput"></validation-messages>
+                    </div>
+                    <div class="form-group">
+                        <label>Tên hàng hoá *</label>
+                        <input #nameInput="ngModel" class="form-control" type="text" name="Name" [(ngModel)]="merchandise.name" required maxlength="64">
+                        <validation-messages [formCtrl]="nameInput"></validation-messages>
+                    </div>
+                    <div class="form-group">
+                        <label>Loại hàng hoá *</label>
+                        <select #typeIDInput="ngModel" class="form-control" [(ngModel)]="merchandise.typeID" name="typeID" required>
+                            <option *ngFor="let item of merchandiseTypes" [value]="item.id">{{item.name}}</option>
+                        </select>
+                        <validation-messages [formCtrl]="typeIDInput"></validation-messages>
+                    </div>               
+                    <div class="form-group">
+                        <label>Giá *</label>
+                        <input #priceInput="ngModel" class="form-control" type="text" name="Price"
+                            [(ngModel)]="merchandise.price" required maxlength="64">
+                        <validation-messages [formCtrl]="priceInput"></validation-messages>
+                    </div>
+                    <div class="form-group">
+                        <label>Đơn vị tính *</label>
+                        <input #unitInput="ngModel" class="form-control" type="text" name="Unit"
+                            [(ngModel)]="merchandise.unit" required maxlength="64">
+                        <validation-messages [formCtrl]="unitInput"></validation-messages>
+                    </div>
+                    <div class="form-group">
+                        <label>Thông tin chi tiết *</label>
+                        <input #infoInput="ngModel" class="form-control" type="text" name="Info"
+                            [(ngModel)]="merchandise.info" required maxlength="255">
+                        <validation-messages [formCtrl]="infoInput"></validation-messages>
+                    </div>
+                    <div class="form-group">
+                        <label>Hoạt động *</label>
+                        <input #isActiveInput="ngModel" class="form-control" type="checkbox" name="IsActive" [(ngModel)]="merchandise.isActive">
+                        <validation-messages [formCtrl]="isActiveInput"></validation-messages>
+                    </div>
+                    <div class="form-group">
+                        <label>Ghi chú *</label>
+                        <input #noteInput="ngModel" class="form-control" type="text" name="Note"
+                            [(ngModel)]="merchandise.note" required maxlength="255">
+                        <validation-messages [formCtrl]="noteInput"></validation-messages>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button [disabled]="saving" type="button" class="btn btn-default" (click)="close()">{{l("Cancel")}}</button>
+                    <button type="submit" class="btn btn-primary" [buttonBusy]="saving" [busyText]="l('SavingWithThreeDot')">
+                        <i class="fa fa-save"></i>
+                        <span>{{l("Save")}}</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
