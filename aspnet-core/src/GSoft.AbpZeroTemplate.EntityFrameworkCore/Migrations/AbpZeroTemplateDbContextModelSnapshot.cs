@@ -1551,6 +1551,58 @@ namespace GSoft.AbpZeroTemplate.Migrations
                     b.ToTable("AppUserRoles");
                 });
 
+            modelBuilder.Entity("GWebsite.AbpZeroTemplate.Core.Models.Contract", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("BriefcaseID");
+
+                    b.Property<int>("ContractID");
+
+                    b.Property<int>("ContractWarrantyAmount");
+
+                    b.Property<DateTime>("ContractWarrantyExpireDate");
+
+                    b.Property<int>("ContractWarrantyID");
+
+                    b.Property<int>("ContractWarrantyPercent");
+
+                    b.Property<int>("ContractWarrantyTypeID");
+
+                    b.Property<string>("CreatedBy");
+
+                    b.Property<DateTime?>("CreatedDate");
+
+                    b.Property<DateTime>("DeliveryTime");
+
+                    b.Property<bool>("IsDelete");
+
+                    b.Property<string>("Name")
+                        .IsRequired();
+
+                    b.Property<int>("Note");
+
+                    b.Property<string>("UpdatedBy");
+
+                    b.Property<DateTime?>("UpdatedDate");
+
+                    b.Property<int>("WarrantyGuaranteeAmount");
+
+                    b.Property<DateTime>("WarrantyGuaranteeExpireDate");
+
+                    b.Property<int>("WarrantyGuaranteeID");
+
+                    b.Property<int>("WarrantyGuaranteePercent");
+
+                    b.Property<int>("WarrantyGuaranteeTypeID");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Purchase");
+                });
+
             modelBuilder.Entity("GWebsite.AbpZeroTemplate.Core.Models.Customer", b =>
                 {
                     b.Property<int>("Id")
@@ -1726,6 +1778,8 @@ namespace GSoft.AbpZeroTemplate.Migrations
 
                     b.Property<string>("Code");
 
+                    b.Property<int?>("ContractId");
+
                     b.Property<string>("CreatedBy");
 
                     b.Property<DateTime?>("CreatedDate");
@@ -1753,6 +1807,8 @@ namespace GSoft.AbpZeroTemplate.Migrations
                     b.Property<DateTime?>("UpdatedDate");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ContractId");
 
                     b.ToTable("Merchandises");
                 });
@@ -2142,6 +2198,13 @@ namespace GSoft.AbpZeroTemplate.Migrations
                         .WithMany("InverseParent")
                         .HasForeignKey("ParentId")
                         .HasConstraintName("FK_dbo.Functions_dbo.Functions_ParentId");
+                });
+
+            modelBuilder.Entity("GWebsite.AbpZeroTemplate.Core.Models.Merchandise", b =>
+                {
+                    b.HasOne("GWebsite.AbpZeroTemplate.Core.Models.Contract")
+                        .WithMany("MerchandiseList")
+                        .HasForeignKey("ContractId");
                 });
 
             modelBuilder.Entity("GWebsite.AbpZeroTemplate.Core.Models.Permission", b =>

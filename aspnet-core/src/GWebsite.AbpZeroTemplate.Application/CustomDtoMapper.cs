@@ -1,4 +1,6 @@
 using AutoMapper;
+using GWebsite.AbpZeroTemplate.Application.Share.Contracts;
+using GWebsite.AbpZeroTemplate.Application.Share.Contracts.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.Customers.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.DemoModels.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.MenuClients.Dto;
@@ -61,6 +63,13 @@ namespace GWebsite.AbpZeroTemplate.Applications
             configuration.CreateMap<Merch_Vendor, Merch_VendorDto>();
             configuration.CreateMap<Merch_VendorInput, Merch_Vendor>();
             configuration.CreateMap<Merch_Vendor, Merch_VendorInput>();
+
+            //Contract
+            configuration.CreateMap<Contract,ContractDto>();
+            configuration.CreateMap<ContractInput,Contract>();
+            configuration.CreateMap<Contract, ContractInput>();
+            configuration.CreateMap<Contract, ContractForViewDto>();
+
         }
     }
 }
