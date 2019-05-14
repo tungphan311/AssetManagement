@@ -9,7 +9,6 @@ using GWebsite.AbpZeroTemplate.Application.Share.Merchandises.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.MerchandiseTypes.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.Vendors.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.VendorTypes.Dto;
-using GWebsite.AbpZeroTemplate.Application.Share.Merch_Vendors.Dto;
 using GWebsite.AbpZeroTemplate.Core.Models;
 
 namespace GWebsite.AbpZeroTemplate.Applications

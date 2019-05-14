@@ -4,8 +4,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { MerchandiseComponent } from './merchandise/merchandise.component';
 import { VendorComponent } from './vendor/vendor.component';
 import { VendorTypeComponent } from './vendortype/vendortype.component';
-import { AssignmentTableComponent } from './assignment-table/assignment-table.component';
 import { MerchandiseTypeComponent } from './merchandise-type/merchandise-type.component';
+import { ContractComponent } from './contract/contract.component';
 
 @NgModule({
     imports: [
@@ -18,7 +18,12 @@ import { MerchandiseTypeComponent } from './merchandise-type/merchandise-type.co
                     { path: 'merchandise-type', component: MerchandiseTypeComponent, data: { permission: 'Pages.Administration.MerchandiseType' } },
                     { path: 'vendor', component: VendorComponent, data: { permission: 'Pages.Administration.Vendor' } },
                     { path: 'vendortype', component: VendorTypeComponent, data: { permission: 'Pages.Administration.VendorType' } },
-                    { path: 'assignment-table', component: AssignmentTableComponent }
+                    { 
+                        path: 'contract', component: ContractComponent,
+                        data: {
+                            permission: 'Pages.Administration.Contract'
+                        },
+                    }
                 ]
             }
         ])

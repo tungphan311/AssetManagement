@@ -58,13 +58,5 @@ namespace GWebsite.AbpZeroTemplate.Core.Models
 
         [Required]
         public virtual List<Merchandise> MerchandiseList { get; set; }
-
-
-
-
-
-
-
-
     }
 }

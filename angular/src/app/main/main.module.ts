@@ -12,7 +12,6 @@ import { TableModule } from 'primeng/table';
 import { DashboardComponent } from './dashboard/dashboard.component'; 
 import { MainRoutingModule } from './main-routing.module';
 import { MerchandiseComponent } from './merchandise/merchandise.component';
-import { AssignmentTableComponent } from './assignment-table/assignment-table.component';
 import { VendorComponent } from './vendor/vendor.component';
 import { ViewVendorModalComponent } from './vendor/view-vendor-modal.component';
 import { CreateOrEditVendorModalComponent } from './vendor/create-or-edit-vendor-modal.component';
@@ -25,6 +24,9 @@ import { MerchandiseTypeComponent } from './merchandise-type/merchandise-type.co
 import { CreateOrEditMerchandiseTypeModalComponent } from './merchandise-type/create-or-edit-merchandise-type-modal.component';
 import { ViewMerchandiseTypeModalComponent } from './merchandise-type/view-merchandise-type-modal.component';
 import { CreateMerchandiseModalComponent } from './vendor/create-merchandise-modal.component';
+import { ContractComponent } from './contract/contract.component';
+import { CreateOrEditContractModalComponent } from './contract/create-or-edit-contract-modal.component';
+import { ViewContractModalComponent } from './contract/view-contract-modal.component';
 
 @NgModule({
     imports: [
@@ -57,7 +59,7 @@ import { CreateMerchandiseModalComponent } from './vendor/create-merchandise-mod
         MerchandiseComponent, CreateOrEditMerchandiseModalComponent, ViewMerchandiseModalComponent,
         MerchandiseTypeComponent, CreateOrEditMerchandiseTypeModalComponent, ViewMerchandiseTypeModalComponent,
         VendorComponent, CreateOrEditVendorModalComponent, ViewVendorModalComponent,
-        AssignmentTableComponent,
+        ContractComponent, CreateOrEditContractModalComponent, ViewContractModalComponent,
         VendorTypeComponent, CreateOrEditVendorTypeModalComponent, ViewVendorTypeModalComponent,
         CreateMerchandiseModalComponent,
     ],

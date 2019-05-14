@@ -806,6 +806,6 @@
     <text name="MerchandiseName">Tên hàng hoá</text>
     <text name="MerchandiseTypeID">Loại hàng hoá</text>
     <text name="MerchandiseDetail">Thông tin chi tiết</text>
-    <text name="MerchandisePrice">Giá</text>
+    <text name="MerchandisePrice">Giá tham khảo</text>
   </texts>
 </localizationDictionary>
