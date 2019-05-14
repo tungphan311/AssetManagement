@@ -48,7 +48,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.VendorTypes
         }
 
         public VendorTypeInput GetVendorTypeForEdit(int id)
-        {
+        { 
             var vendortypeEntity = vendortypeRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.Id == id);
             if (vendortypeEntity == null)
             {

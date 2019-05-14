@@ -58,12 +58,7 @@ namespace GWebsite.AbpZeroTemplate.Applications
             configuration.CreateMap<VendorTypeInput, VendorType>();
             configuration.CreateMap<VendorType, VendorTypeInput>();
             configuration.CreateMap<VendorType, VendorTypeForViewDto>();
-
-            // Merch_Vendor
-            configuration.CreateMap<Merch_Vendor, Merch_VendorDto>();
-            configuration.CreateMap<Merch_VendorInput, Merch_Vendor>();
-            configuration.CreateMap<Merch_Vendor, Merch_VendorInput>();
-
+          
             //Contract
             configuration.CreateMap<Contract,ContractDto>();
             configuration.CreateMap<ContractInput,Contract>();
