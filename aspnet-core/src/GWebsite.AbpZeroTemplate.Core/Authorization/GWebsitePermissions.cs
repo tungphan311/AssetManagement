@@ -44,5 +44,10 @@
         public const string Pages_Administration_Provider_Edit = "Pages.Administration.Provider.Edit";
         public const string Pages_Administration_Provider_Delete = "Pages.Administration.Provider.Delete";
 
+        public const string Pages_Administration_Project = "Pages.Administration.Project";
+        public const string Pages_Administration_Project_Create = "Pages.Administration.Project.Create";
+        public const string Pages_Administration_Project_Edit = "Pages.Administration.Project.Edit";
+        public const string Pages_Administration_Project_Delete = "Pages.Administration.Project.Delete";
+
     }
 }

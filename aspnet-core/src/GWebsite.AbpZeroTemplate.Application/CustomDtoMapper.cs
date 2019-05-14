@@ -5,6 +5,7 @@ using GWebsite.AbpZeroTemplate.Application.Share.MenuClients.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.ProductCategories.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.ProductDetails.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.Products.Dto;
+using GWebsite.AbpZeroTemplate.Application.Share.Projects.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.Providers.Dto;
 using GWebsite.AbpZeroTemplate.Core.Models;
 
@@ -53,6 +54,12 @@ namespace GWebsite.AbpZeroTemplate.Applications
             configuration.CreateMap<ProductDetail, ProductDetailDto>();
             configuration.CreateMap<ProductDetailInput, ProductDetail>();
             configuration.CreateMap<ProductDetail, ProductDetailInput>();
+
+            // Project
+            configuration.CreateMap<Project, ProjectDto>();
+            configuration.CreateMap<ProjectInput, Project>();
+            configuration.CreateMap<Project, ProjectInput>();
+            configuration.CreateMap<Project, ProjectForViewDto>();
         }
     }
 }

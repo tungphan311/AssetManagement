@@ -66,6 +66,11 @@ namespace GWebsite.AbpZeroTemplate.Core.Authorization
             provider.CreateChildPermission(GWebsitePermissions.Pages_Administration_Provider_Edit, L("EditingProvider"));
             provider.CreateChildPermission(GWebsitePermissions.Pages_Administration_Provider_Delete, L("DeletingProvider"));
 
+            var project = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_Project, L("Project"));
+            project.CreateChildPermission(GWebsitePermissions.Pages_Administration_Project_Create, L("CreatingNewProject"));
+            project.CreateChildPermission(GWebsitePermissions.Pages_Administration_Project_Edit, L("EditingProject"));
+            project.CreateChildPermission(GWebsitePermissions.Pages_Administration_Project_Delete, L("DeletingProject"));
+
         }
 
         private static ILocalizableString L(string name)
