@@ -65,11 +65,6 @@ namespace GWebsite.AbpZeroTemplate.Core.Authorization
             vendortype.CreateChildPermission(GWebsitePermissions.Pages_Administration_VendorType_Create, L("CreateNewVendorType"));
             vendortype.CreateChildPermission(GWebsitePermissions.Pages_Administration_VendorType_Edit, L("EditingVendorType"));
             vendortype.CreateChildPermission(GWebsitePermissions.Pages_Administration_VendorType_Delete, L("DeletingVendorType"));
-
-            var contract = pages.CreateChildPermission(GWebsitePermissions.Pages_Administration_Contract, L("Contract"));
-            contract.CreateChildPermission(GWebsitePermissions.Pages_Administration_Contract_Create, L("CreateNewContract"));
-            contract.CreateChildPermission(GWebsitePermissions.Pages_Administration_Contract_Edit, L("EditingContract"));
-            contract.CreateChildPermission(GWebsitePermissions.Pages_Administration_Contract_Delete, L("DeletingContract"));
         }
 
         private static ILocalizableString L(string name)
