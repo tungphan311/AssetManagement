@@ -1573,7 +1573,11 @@ namespace GSoft.AbpZeroTemplate.Migrations
 
                     b.Property<string>("nameAsset");
 
+<<<<<<< HEAD
                     b.Property<decimal>("valueAsset");
+=======
+                    b.Property<int>("valueAsset");
+>>>>>>> 1b39af43372e3632a1299669826a8996354131fa
 
                     b.HasKey("Id");
 
