@@ -35,7 +35,7 @@ export class ViewMerchandiseModalComponent extends AppComponentBase {
             this.merType = result.items
         })
 
-        this._vendorService.getVendorsByFilter(null, null, 999, 0).subscribe(result => {
+        this._vendorService.getVendorsByFilter(null, null, 0, null, null, 999, 0).subscribe(result => {
             this.typeVender = result.items
         })
     }
