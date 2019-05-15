@@ -46,16 +46,26 @@
                         <validation-messages [formCtrl]="imageInput"></validation-messages>
                     </div>
                     <div class="form-group">
+                        <label>Chi tiết : *</label>
                         <label>Id danh mục sản phẩm*</label>
-                        <input #addressInput="ngModel" class="form-control" type="text" name="ProductCategoryId"
+                        <select #addressInput="ngModel" class="form-control" type="text" name="ProductCategoryId"
                             [(ngModel)]="product.productCategoryId" required maxlength="64">
+                            ><option value="1001">1001</option>
+                            ><option value="1002">1002</option>
+                            ><option value="1003">1003</option>
+                            ><option value="1004">1004</option>
+                            </select>
                         <validation-messages [formCtrl]="productCategoryIdInput"></validation-messages>
                     </div>
                     <div class="form-group">
-                        <label>Chi tiết*</label>
-                        <input #addressInput="ngModel" class="form-control" type="productDetailDto" name="ProductDetail"
-                            [(ngModel)]="product.productDetail" required maxlength="64">
-                        <validation-messages [formCtrl]="productDetailInput"></validation-messages>
+                        <label>Id nhà cung cấp*</label>
+                        <select #addressInput="ngModel" class="form-control" type="text" name="ProvinderId"
+                            [(ngModel)]="product.providerId" required maxlength="64">
+                            ><option value="100">100 Công ty A</option>
+                            ><option value="101">101 Công ty B</option>
+                            ><option value="101">102 Công ty B</option>
+                            </select>
+                        <validation-messages [formCtrl]="providerIdInput"></validation-messages>
                     </div>
                 </div>
                 <div class="modal-footer">

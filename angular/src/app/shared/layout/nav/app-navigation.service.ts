@@ -22,6 +22,8 @@ export class AppNavigationService {
             //new AppMenuItem('Customer', 'Pages.Administration.Customer', 'flaticon-menu-1', '/app/gwebsite/customer'),
             new AppMenuItem('Product', 'Pages.Administration.Product', 'flaticon-menu-1', '/app/gwebsite/product'),
             new AppMenuItem('ProductCategory', 'Pages.Administration.ProductCategory', 'flaticon-menu-1', '/app/gwebsite/productcategory'),
+            new AppMenuItem('Project', 'Pages.Administration.Project', 'flaticon-menu-1', '/app/gwebsite/project'),
+
             ]),
             new AppMenuItem('Systems', '', 'flaticon-layers', '', [
                 new AppMenuItem('OrganizationUnits', 'Pages.Administration.OrganizationUnits', 'flaticon-map', '/app/admin/organization-units'),
