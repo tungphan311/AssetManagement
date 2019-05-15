@@ -35,6 +35,8 @@ import { HeaderNotificationsComponent } from './shared/layout/notifications/head
 import { NotificationSettingsModalComponent } from './shared/layout/notifications/notification-settings-modal.component';
 import { NotificationsComponent } from './shared/layout/notifications/notifications.component';
 
+import { BsDatepickerModule } from 'ngx-bootstrap';
+
 @NgModule({
     declarations: [
         AppComponent,
@@ -73,7 +75,8 @@ import { NotificationsComponent } from './shared/layout/notifications/notificati
         TableModule,
         PaginatorModule,
         PrimeNgFileUploadModule,
-        ProgressBarModule
+        ProgressBarModule,
+        BsDatepickerModule.forRoot()
     ],
     providers: [
         ImpersonationService,

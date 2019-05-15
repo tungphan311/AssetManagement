@@ -17570,7 +17570,7 @@ export interface IPagedResultDtoOfProductCategoryDto {
 
 export class ProductCategoryDto implements IProductCategoryDto {
     name!: string | undefined;
-    productCategoryCode!: number | undefined;
+    productCategoryCode!: string | undefined;
     description!: string | undefined;
     image!: string | undefined;
     id!: number | undefined;
@@ -17614,7 +17614,7 @@ export class ProductCategoryDto implements IProductCategoryDto {
 
 export interface IProductCategoryDto {
     name: string | undefined;
-    productCategoryCode: number | undefined;
+    productCategoryCode: string| undefined;
     description: string | undefined;
     image: string | undefined;
     id: number | undefined;
@@ -17622,7 +17622,7 @@ export interface IProductCategoryDto {
 
 export class ProductCategoryInput implements IProductCategoryInput {
     name!: string | undefined;
-    productCategoryCode!: number | undefined;
+    productCategoryCode!: string | undefined;
     description!: string | undefined;
     image!: string | undefined;
     id!: number | undefined;
@@ -17666,7 +17666,7 @@ export class ProductCategoryInput implements IProductCategoryInput {
 
 export interface IProductCategoryInput {
     name: string | undefined;
-    productCategoryCode: number | undefined;
+    productCategoryCode: string| undefined;
     description: string | undefined;
     image: string | undefined;
     id: number | undefined;
@@ -17674,7 +17674,7 @@ export interface IProductCategoryInput {
 
 export class ProductCategoryForViewDto implements IProductCategoryForViewDto {
     name!: string | undefined;
-    productCategoryCode!: number | undefined;
+     productCategoryCode!: string | undefined;
     description!: string | undefined;
     image!: string | undefined;
 
@@ -17715,7 +17715,7 @@ export class ProductCategoryForViewDto implements IProductCategoryForViewDto {
 
 export interface IProductCategoryForViewDto {
     name: string | undefined;
-    productCategoryCode: number | undefined;
+    productCategoryCode: string| undefined;
     description: string | undefined;
     image: string | undefined;
 }

@@ -21,7 +21,7 @@
                     </div>
                     <div class="form-group">
                         <label>Ngày tạo dự án*</label>
-                        <input #addressInput="ngModel" class="form-control" type="date" name="ProjectCreatedDate"
+                        <input #dateInput="ngModel" class="form-control" type="datetime-local" name="ProjectCreatedDate"
                             [(ngModel)]="project.projectCreatedDate" required maxlength="64">
 
                         <validation-messages [formCtrl]="projectCreatedDateInput"></validation-messages>
@@ -30,10 +30,12 @@
                     <div class="m-checkbox-list">
                             <label class="m-checkbox">
                                 <input #addressInput="ngModel" type="checkbox" name="Status" 
-                                [(ngModel)]="project.status" required maxlength="64">
+                                (change)="getStatus($event)"
+                                [ngModel]="project.status" required maxlength="64">
                                 <label>Hoạt động*</label>
                                  <span></span>                           
                             </label>
+                            <h1>{{project.status}}</h1>
                             <validation-messages [formCtrl]="statusInput"></validation-messages>
 
                     </div>

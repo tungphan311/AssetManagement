@@ -34,12 +34,13 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Products
             if (detail == null)
             {
                 Console.WriteLine("Cannot find out productDetail. Exit");
-                return;
             }
             else
             {
-                productInput.ProductDetailId = detail.Id;
+
             }
+            productInput.ProductDetailId = detail.Id;
+
             if (productInput.Id == 0)
             {
                 Create(productInput);
