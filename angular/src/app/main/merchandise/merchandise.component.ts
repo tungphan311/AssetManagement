@@ -94,7 +94,7 @@ export class MerchandiseComponent extends AppComponentBase implements AfterViewI
         }
     }
 
-    reloadList(merchandiseCode, merchandiseName, merchandiseTypeID, merchandiseTypeVender, merchandiseIsActive, event?: LazyLoadEvent) {
+    reloadList(merchandiseCode, merchandiseName, merchandiseTypeID: number, merchandiseTypeVender, merchandiseIsActive, event?: LazyLoadEvent) {
         this._merchandiseService.getMerchandiseByFilter(merchandiseCode, 
             merchandiseName, merchandiseTypeID, merchandiseTypeVender, merchandiseIsActive, 
             this.primengTableHelper.getSorting(this.dataTable),

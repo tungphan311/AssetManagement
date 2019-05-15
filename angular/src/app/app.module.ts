@@ -34,6 +34,7 @@ import { UserNotificationHelper } from './shared/layout/notifications/UserNotifi
 import { HeaderNotificationsComponent } from './shared/layout/notifications/header-notifications.component';
 import { NotificationSettingsModalComponent } from './shared/layout/notifications/notification-settings-modal.component';
 import { NotificationsComponent } from './shared/layout/notifications/notifications.component';
+import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
     declarations: [
@@ -73,7 +74,9 @@ import { NotificationsComponent } from './shared/layout/notifications/notificati
         TableModule,
         PaginatorModule,
         PrimeNgFileUploadModule,
-        ProgressBarModule
+        ProgressBarModule,
+        BrowserAnimationsModule,
+        NoopAnimationsModule
     ],
     providers: [
         ImpersonationService,

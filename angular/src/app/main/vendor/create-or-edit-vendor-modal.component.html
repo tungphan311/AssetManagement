@@ -68,10 +68,9 @@
                         <validation-messages [formCtrl]="isActiveInput"></validation-messages>
                     </div>
                     <div class="form-group">
-                        <label>{{l("Note")}} *</label>
+                        <label>{{l("Note")}}</label>
                         <input #contactInput="ngModel" class="form-control" type="text" name="Note"
-                               [(ngModel)]="vendor.note" required maxlength="64">
-                        <validation-messages [formCtrl]="noteInput"></validation-messages>
+                               [(ngModel)]="vendor.note" maxlength="255">
                     </div>
                 </div>
                 <div class="modal-footer">

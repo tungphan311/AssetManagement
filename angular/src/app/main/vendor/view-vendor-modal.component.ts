@@ -85,7 +85,7 @@ export class ViewVendorModalComponent extends AppComponentBase {
         this.modal.hide();
     }
     getVendorTypeName(TypeID): String {
-        for (let vendortype of this.vendortypeList) {
+        for (const vendortype of this.vendortypeList) {
             if (vendortype.id == TypeID) {
                 return vendortype.name;
             }

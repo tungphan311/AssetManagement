@@ -34,7 +34,7 @@ export class VendorComponent extends AppComponentBase implements AfterViewInit, 
     vendorIsActive: string;
 
     // list vendortype
-    vendortypeList: any[];
+    vendortypeList = [];
 
     constructor(
         injector: Injector,
