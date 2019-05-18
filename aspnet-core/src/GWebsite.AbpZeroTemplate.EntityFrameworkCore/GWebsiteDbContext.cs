@@ -29,6 +29,9 @@ namespace GWebsite.AbpZeroTemplate.EntityFrameworkCore
         public virtual DbSet<Vendor> Vendors { get; set; }
         public virtual DbSet<VendorType> VendorTypes { get; set; }
         public virtual DbSet<Contract> Contracts { get; set; }
+        public virtual DbSet<ContractDetail> ContractDetails { get; set; }
+        public virtual DbSet<ContractPayment> ContractPayments { get; set; }
+        public virtual DbSet<Project> Projects { get; set; }
         /// <summary>
         /// GPermissions dùng cho bên Gwebsite
         /// </summary>
