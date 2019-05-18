@@ -19,13 +19,14 @@ namespace GWebsite.AbpZeroTemplate.Core.Models
             VAT = 0;
             CreatedDate = DateTime.Now;
             UpdatedDate = DateTime.Now;
-            IsDelete = true;
+            IsDelete = false;
         }
-        public int ProductDetailId { get; set; }
         [Column(TypeName = "varchar(50)")]
         public string ProductCode { get; set; }
-        [StringLength(100)]
+        [StringLength(500)]
         public string Name { get; set; }
+        [StringLength(500)]
+        public string ProductName { get; set; }
         [DefaultValue(0)]
         public decimal ExpectedPrice { get; set; }
         [DefaultValue(0)]
@@ -38,9 +39,8 @@ namespace GWebsite.AbpZeroTemplate.Core.Models
         [StringLength(500)]
         public string Description { get; set; }
         public string Content { get; set; }
-        public Status Status { get; set; }
-        [ForeignKey("ProductDetailId")]
-        public virtual ProductDetail ProductDetail { get; set; }
+        public bool IsActive { get; set; }
+
 
         //Blank Field
         public int BlankField0 { get; set; }

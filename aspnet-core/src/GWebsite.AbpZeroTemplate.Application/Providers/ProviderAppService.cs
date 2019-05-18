@@ -26,13 +26,20 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Providers
 
         public void CreateOrEditProvider(ProviderInput ProviderInput)
         {
-            if (ProviderInput.Id == 0)
+            try
             {
-                Create(ProviderInput);
+                if (ProviderInput.Id == 0)
+                {
+                    Create(ProviderInput);
+                }
+                else
+                {
+                    Update(ProviderInput);
+                }
             }
-            else
+            catch (Exception e)
             {
-                Update(ProviderInput);
+                Console.WriteLine("Exception Provider COE: " + e.ToString());
             }
         }
 
@@ -101,11 +108,19 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Providers
         [AbpAuthorize(GWebsitePermissions.Pages_Administration_Provider_Create)]
         private void Create(ProviderInput providerInput)
         {
-            var providerEntity = ObjectMapper.Map<Provider>(providerInput);
-            if (providerEntity == null) System.Console.WriteLine("null: ");
-            SetAuditInsert(providerEntity);
-            providerRepository.Insert(providerEntity);
-            CurrentUnitOfWork.SaveChanges();
+            try
+            {
+
+                var providerEntity = ObjectMapper.Map<Provider>(providerInput);
+                if (providerEntity == null) System.Console.WriteLine("null: ");
+                SetAuditInsert(providerEntity);
+                providerRepository.Insert(providerEntity);
+                CurrentUnitOfWork.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Exception Provider Create: " + e.ToString());
+            }
 
         }
 

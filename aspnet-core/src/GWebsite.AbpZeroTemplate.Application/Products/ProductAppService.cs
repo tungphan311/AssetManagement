@@ -3,12 +3,10 @@ using Abp.Authorization;
 using Abp.Domain.Repositories;
 using Abp.Linq.Extensions;
 using GWebsite.AbpZeroTemplate.Application;
-using GWebsite.AbpZeroTemplate.Application.Share.ProductDetails;
 using GWebsite.AbpZeroTemplate.Application.Share.Products;
 using GWebsite.AbpZeroTemplate.Application.Share.Products.Dto;
 using GWebsite.AbpZeroTemplate.Core.Authorization;
 using GWebsite.AbpZeroTemplate.Core.Models;
-using GWebsite.AbpZeroTemplate.Web.Core.ProductDetails;
 using System;
 using System.Linq;
 using System.Linq.Dynamic.Core;
@@ -18,28 +16,16 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Products
     public class ProductAppService : GWebsiteAppServiceBase, IProductAppService
     {
         private readonly IRepository<Product> productRepository;
-        private readonly IProductDetailAppService productDetailService;
 
-        public ProductAppService(IRepository<Product> productRepository, IProductDetailAppService productDetailService)
+        public ProductAppService(IRepository<Product> productRepository)
         {
             this.productRepository = productRepository;
-            this.productDetailService = productDetailService;
         }
 
         #region Public Method
 
         public void CreateOrEditProduct(ProductInput productInput)
         {
-            var detail = productDetailService.FindByFkId(productInput.ProductDetail.ProviderId, productInput.ProductDetail.ProductCategoryId);
-            if (detail == null)
-            {
-                Console.WriteLine("Cannot find out productDetail. Exit");
-            }
-            else
-            {
-
-            }
-            productInput.ProductDetailId = detail.Id;
 
             if (productInput.Id == 0)
             {

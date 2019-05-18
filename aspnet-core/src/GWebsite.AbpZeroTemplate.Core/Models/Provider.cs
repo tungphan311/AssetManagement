@@ -14,7 +14,7 @@ namespace GWebsite.AbpZeroTemplate.Core.Models
     {
         public Provider()
         {
-
+            IsActive = true;
         }
         [Column(TypeName = "varchar(50)")]
         public string ProviderCode { get; set; }
@@ -31,7 +31,7 @@ namespace GWebsite.AbpZeroTemplate.Core.Models
         [StringLength(500)]
         public string Info { get; set; }
         public string Image { get; set; }
-        public Status Status { get; set; }
+        public bool IsActive { get; set; }
 
         public string BlankField { get; set; }
         public string BlankField1 { get; set; }

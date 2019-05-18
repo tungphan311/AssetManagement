@@ -29,15 +29,10 @@
         public const string Pages_Administration_Product_Edit = "Pages.Administration.Product.Edit";
         public const string Pages_Administration_Product_Delete = "Pages.Administration.Product.Delete";
 
-        public const string Pages_Administration_ProductDetail = "Pages.Administration.ProductDetail";
-        public const string Pages_Administration_ProductDetail_Create = "Pages.Administration.ProductDetail.Create";
-        public const string Pages_Administration_ProductDetail_Edit = "Pages.Administration.ProductDetail.Edit";
-        public const string Pages_Administration_ProductDetail_Delete = "Pages.Administration.ProductDetail.Delete";
-
-        public const string Pages_Administration_ProductCategory = "Pages.Administration.ProductCategory";
-        public const string Pages_Administration_ProductCategory_Create = "Pages.Administration.ProductCategory.Create";
-        public const string Pages_Administration_ProductCategory_Edit = "Pages.Administration.ProductCategory.Edit";
-        public const string Pages_Administration_ProductCategory_Delete = "Pages.Administration.ProductCategory.Delete";
+        public const string Pages_Administration_ProductProvider = "Pages.Administration.ProductProvider";
+        public const string Pages_Administration_ProductProvider_Create = "Pages.Administration.ProductProvider.Create";
+        public const string Pages_Administration_ProductProvider_Edit = "Pages.Administration.ProductProvider.Edit";
+        public const string Pages_Administration_ProductProvider_Delete = "Pages.Administration.ProductProvider.Delete";
 
         public const string Pages_Administration_Provider = "Pages.Administration.Provider";
         public const string Pages_Administration_Provider_Create = "Pages.Administration.Provider.Create";

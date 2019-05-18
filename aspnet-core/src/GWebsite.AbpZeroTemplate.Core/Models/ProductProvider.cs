@@ -8,12 +8,13 @@ using System.Threading.Tasks;
 
 namespace GWebsite.AbpZeroTemplate.Core.Models
 {
-    public class ProductDetail : Entity<int>
+    public class ProductProvider : Entity<int>
     {
-        public int ProductCategoryId { get; set; }
+        public int ProductId { get; set; }
         public int ProviderId { get; set; }
-        [ForeignKey("ProductCategoryId")]
-        public virtual ProductCategory ProductCategory { get; set; }
+        public bool IsDelete { get; set; }
+        [ForeignKey("ProductId")]
+        public virtual Product Product { get; set; }
         [ForeignKey("ProviderId")]
         public virtual Provider Provider { get; set; }
     }

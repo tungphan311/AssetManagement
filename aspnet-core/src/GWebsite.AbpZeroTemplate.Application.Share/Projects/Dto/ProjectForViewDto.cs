@@ -12,6 +12,6 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.Projects.Dto
     {
         public string Name { get; set; }
         public DateTime ProjectCreatedDate { get; set; }
-        public Status Status { get; set; }
+        public bool IsActive { get; set; }
     }
 }

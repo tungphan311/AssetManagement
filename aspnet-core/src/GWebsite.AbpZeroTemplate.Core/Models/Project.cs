@@ -13,6 +13,6 @@ namespace GWebsite.AbpZeroTemplate.Core.Models
         [StringLength(100)]
         public string Name { get; set; }
         public DateTime ProjectCreatedDate { get; set; }
-        public Status Status { get; set; }
+        public bool IsActive { get; set; }
     }
 }

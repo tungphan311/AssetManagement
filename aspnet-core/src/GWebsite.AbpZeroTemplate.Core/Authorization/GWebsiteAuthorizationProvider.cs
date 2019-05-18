@@ -51,15 +51,11 @@ namespace GWebsite.AbpZeroTemplate.Core.Authorization
             product.CreateChildPermission(GWebsitePermissions.Pages_Administration_Product_Edit, L("EditingProduct"));
             product.CreateChildPermission(GWebsitePermissions.Pages_Administration_Product_Delete, L("DeletingProduct"));
 
-            var productDetail = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_ProductDetail, L("ProductDetail"));
-            productDetail.CreateChildPermission(GWebsitePermissions.Pages_Administration_ProductDetail_Create, L("CreatingNewProductDetail"));
-            productDetail.CreateChildPermission(GWebsitePermissions.Pages_Administration_ProductDetail_Edit, L("EditingProductDetail"));
-            productDetail.CreateChildPermission(GWebsitePermissions.Pages_Administration_ProductDetail_Delete, L("DeletingProductDetail"));
+            var productProvider = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_ProductProvider, L("ProductProvider"));
+            productProvider.CreateChildPermission(GWebsitePermissions.Pages_Administration_ProductProvider_Create, L("CreatingNewProductProvider"));
+            productProvider.CreateChildPermission(GWebsitePermissions.Pages_Administration_ProductProvider_Edit, L("EditingProductProvider"));
+            productProvider.CreateChildPermission(GWebsitePermissions.Pages_Administration_ProductProvider_Delete, L("DeletingProductProvider"));
 
-            var productCategory = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_ProductCategory, L("ProductCategory"));
-            productCategory.CreateChildPermission(GWebsitePermissions.Pages_Administration_ProductCategory_Create, L("CreatingNewProductCategory"));
-            productCategory.CreateChildPermission(GWebsitePermissions.Pages_Administration_ProductCategory_Edit, L("EditingProductCategory"));
-            productCategory.CreateChildPermission(GWebsitePermissions.Pages_Administration_ProductCategory_Delete, L("DeletingProductCategory"));
 
             var provider = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_Provider, L("Provider"));
             provider.CreateChildPermission(GWebsitePermissions.Pages_Administration_Provider_Create, L("CreatingNewProvider"));

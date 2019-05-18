@@ -2,8 +2,7 @@ using AutoMapper;
 using GWebsite.AbpZeroTemplate.Application.Share.Customers.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.DemoModels.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.MenuClients.Dto;
-using GWebsite.AbpZeroTemplate.Application.Share.ProductCategories.Dto;
-using GWebsite.AbpZeroTemplate.Application.Share.ProductDetails.Dto;
+using GWebsite.AbpZeroTemplate.Application.Share.ProductProviders.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.Products.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.Projects.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.Providers.Dto;
@@ -37,23 +36,16 @@ namespace GWebsite.AbpZeroTemplate.Applications
             configuration.CreateMap<ProductInput, Product>();
             configuration.CreateMap<Product, ProductInput>();
             configuration.CreateMap<Product, ProductForViewDto>();
-
-            // ProductCategory
-            configuration.CreateMap<ProductCategory, ProductCategoryDto>();
-            configuration.CreateMap<ProductCategoryInput, ProductCategory>();
-            configuration.CreateMap<ProductCategory, ProductCategoryInput>();
-            configuration.CreateMap<ProductCategory, ProductCategoryForViewDto>();
-
             // Provider
             configuration.CreateMap<Provider, ProviderDto>();
-            configuration.CreateMap<ProductInput, Provider>();
+            configuration.CreateMap<ProviderInput, Provider>();
             configuration.CreateMap<Provider, ProviderInput>();
             configuration.CreateMap<Provider, ProviderForViewDto>();
 
-            //ProductDetail
-            configuration.CreateMap<ProductDetail, ProductDetailDto>();
-            configuration.CreateMap<ProductDetailInput, ProductDetail>();
-            configuration.CreateMap<ProductDetail, ProductDetailInput>();
+            //ProductProvider
+            configuration.CreateMap<ProductProvider, ProductProviderDto>();
+            configuration.CreateMap<ProductProviderInput, ProductProvider>();
+            configuration.CreateMap<ProductProvider, ProductProviderInput>();
 
             // Project
             configuration.CreateMap<Project, ProjectDto>();

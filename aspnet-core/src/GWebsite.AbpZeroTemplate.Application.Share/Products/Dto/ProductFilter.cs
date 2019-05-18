@@ -13,5 +13,6 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.Products.Dto
     public class ProductFilter : PagedAndSortedInputDto
     {
         public string Name { get; set; }
+        public string ProductName { get; set; }
     }
 }
