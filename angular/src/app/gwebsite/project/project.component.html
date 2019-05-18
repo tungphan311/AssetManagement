@@ -53,9 +53,9 @@
                                             Ngày tạo dự án
                                             <p-sortIcon field="projectCreatedDate"></p-sortIcon>
                                         </th>
-                                    <th pSortableColumn="status">
+                                    <th pSortableColumn="isActive">
                                         Trạng thái hoạt động
-                                        <p-sortIcon field="status"></p-sortIcon>
+                                        <p-sortIcon field="isActive"></p-sortIcon>
                                     </th>
                                     <th>{{l('Edit')}}</th>
                                 </tr>
@@ -67,13 +67,13 @@
                                         <span title="{{record.name}}">{{truncateString(record.name)}}</span>
                                     </td>
                                     <td >
-                                            <span class="ui-column-title"> Ngày tạo dự án</span>
+                                            <span class="ui-column-title">Ngày tạo dự án</span>
                                             <span title="{{record.projectCreatedDate}}">{{truncateString(record.projectCreatedDate)| momentFormat:'L'}}</span>
 
                                         </td>
                                     <td>
                                         <span class="ui-column-title">Trạng thái hoạt động</span>      
-                                        <span title="{{record.status}}">{{truncateString(record.status)}}</span>
+                                        <span title="{{record.isActive}}">{{truncateString(record.isActive)}}</span>
 
                                     </td>
                                     <td>

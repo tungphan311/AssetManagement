@@ -12,10 +12,18 @@
                 </button>
             </div>
             <div class="modal-body">
+               <div class="form-group">
+                    <label>Mã sản phẩm</label>
+                    <p>{{product.productCode}}</p>
+                </div>
                 <div class="form-group">
                     <label>Tên sản phẩm</label>
                     <p>{{product.name}}</p>
                 </div>
+                <div class="form-group">
+                    <label>Tên thực tế sản phẩm</label>
+                    <p>{{product.productName}}</p>
+                 </div>
                 <div class="form-group">
                     <label>Giá dự kiến của sản phẩm</label>
                     <p>{{product.expectedprice}}</p>
@@ -31,14 +39,6 @@
                 <div class="form-group">
                     <label>Image</label>
                     <p>{{product.image}}</p>
-                </div>
-                <div class="form-group">
-                    <label>Id danh mục</label>
-                    <p>{{product.productCategoryId}}</p>
-                </div>
-                <div class="form-group">
-                    <label>Chi tiết</label>
-                    <p>{{product.productDetail}}</p>
                 </div>
             </div>
             <div class="modal-footer">

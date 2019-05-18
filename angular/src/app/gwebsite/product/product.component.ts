@@ -73,14 +73,14 @@ export class ProductComponent extends AppComponentBase implements AfterViewInit,
     }
 
     reloadList(productName, event?: LazyLoadEvent) {
-        this._productService.getProductsByFilter(productName, this.primengTableHelper.getSorting(this.dataTable),
-            this.primengTableHelper.getMaxResultCount(this.paginator, event),
-            this.primengTableHelper.getSkipCount(this.paginator, event),
-        ).subscribe(result => {
-            this.primengTableHelper.totalRecordsCount = result.totalCount;
-            this.primengTableHelper.records = result.items;
-            this.primengTableHelper.hideLoadingIndicator();
-        });
+        this._productService.getProductsByFilter(productName,productName, this.primengTableHelper.getSorting(this.dataTable),
+        this.primengTableHelper.getMaxResultCount(this.paginator, event),
+        this.primengTableHelper.getSkipCount(this.paginator, event),
+    ).subscribe(result => {
+        this.primengTableHelper.totalRecordsCount = result.totalCount;
+        this.primengTableHelper.records = result.items;
+        this.primengTableHelper.hideLoadingIndicator();
+    });
     }
 
     deleteProduct(id): void {
