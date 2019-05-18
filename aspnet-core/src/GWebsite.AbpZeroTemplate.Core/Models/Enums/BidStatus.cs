@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 
 namespace GWebsite.AbpZeroTemplate.Core.Models.Enums
 {
-    public enum ProductEnum
+    public enum BidStatus
     {
-        Available,
-        Unavailable
+        NoAction,
+        Waiting,
+        Accepted,
+        Cancel
     }
 }

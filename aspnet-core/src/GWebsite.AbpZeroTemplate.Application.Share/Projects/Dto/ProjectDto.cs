@@ -14,6 +14,7 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.Projects.Dto
     public class ProjectDto : Entity<int>
     {
         public string Name { get; set; }
+        public string ActivityType { get; set; }
         public DateTime ProjectCreatedDate { get; set; }
         public bool IsActive { get; set; }
     }
