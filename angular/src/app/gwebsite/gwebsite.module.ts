@@ -24,15 +24,11 @@ import { ProductComponent } from './product/product.component';
 import { ViewProductModalComponent } from './product/view-product-modal.component';
 import { CreateOrEditProductModalComponent } from './product/create-or-edit-product-modal.component';
 
-import { ProductCategoryServiceProxy } from '@shared/service-proxies/service-proxies';
-import { ProductCategoryComponent } from './productcategory/productcategory.component';
-import { ViewProductCategoryModalComponent } from './productcategory/view-productcategory-modal.component';
-import { CreateOrEditProductCategoryModalComponent } from './productcategory/create-or-edit-productcategory-modal.component';
-
 import { ProjectServiceProxy } from '@shared/service-proxies/service-proxies';
 import { ProjectComponent } from './project/project.component';
 import { ViewProjectModalComponent } from './project/view-project-modal.component';
 import { CreateOrEditProjectModalComponent } from './project/create-or-edit-project-modal.component';
+
 @NgModule({
     imports: [
         FormsModule,
@@ -57,14 +53,14 @@ import { CreateOrEditProjectModalComponent } from './project/create-or-edit-proj
         DemoModelComponent, CreateOrEditDemoModelModalComponent, ViewDemoModelModalComponent,
         CustomerComponent, CreateOrEditCustomerModalComponent, ViewCustomerModalComponent,
         ProductComponent, CreateOrEditProductModalComponent, ViewProductModalComponent,
-        ProductCategoryComponent, CreateOrEditProductCategoryModalComponent, ViewProductCategoryModalComponent,
         ProjectComponent, CreateOrEditProjectModalComponent, ViewProjectModalComponent
+
+
     ],
     providers: [
         DemoModelServiceProxy,
         CustomerServiceProxy,
         ProductServiceProxy,
-        ProductCategoryServiceProxy,   
         ProjectServiceProxy
     ]
 })

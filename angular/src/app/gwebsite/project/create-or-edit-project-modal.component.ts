@@ -1,7 +1,7 @@
 import { Component, ElementRef, EventEmitter, Injector, Output, ViewChild } from '@angular/core';
 import { AppComponentBase } from '@shared/common/app-component-base';
 import { ModalDirective } from 'ngx-bootstrap';
-import { ProjectServiceProxy, ProjectInput,ProjectInputStatus } from '@shared/service-proxies/service-proxies';
+import { ProjectServiceProxy, ProjectInput } from '@shared/service-proxies/service-proxies';
 @Component({
     selector: 'createOrEditProjectModal',
     templateUrl: './create-or-edit-project-modal.component.html'
@@ -56,7 +56,7 @@ export class CreateOrEditProjectModalComponent extends AppComponentBase {
 
     }
 
-    getStatus(value:any):void{
+    /*getStatus(value:any):void{
         console.log('value is '+value.target.checked)
         if(value.target.checked) 
             this.project.status= ProjectInputStatus._1
@@ -64,7 +64,7 @@ export class CreateOrEditProjectModalComponent extends AppComponentBase {
             this.project.status= ProjectInputStatus._0
 
 
-    }
+    }*/
 
     close(): void {
         this.modal.hide();

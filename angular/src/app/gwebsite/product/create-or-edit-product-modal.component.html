@@ -14,22 +14,34 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
+                         <label>Mã sản phẩm *</label>
+                        <input #nameInput="ngModel" class="form-control" type="text" name="ProductCode"
+                                 [(ngModel)]="product.productCode" required maxlength="64">
+                        <validation-messages [formCtrl]="productCodeInput"></validation-messages>
+                         </div>
+                    <div class="form-group">
                         <label>Tên sản phẩm *</label>
                         <input #nameInput="ngModel" class="form-control" type="text" name="Name"
                             [(ngModel)]="product.name" required maxlength="64">
                         <validation-messages [formCtrl]="nameInput"></validation-messages>
                     </div>
                     <div class="form-group">
+                        <label>Tên thực tế sản phẩm *</label>
+                        <input #nameInput="ngModel" class="form-control" type="text" name="ProductName"
+                            [(ngModel)]="product.productName" required maxlength="64">
+                        <validation-messages [formCtrl]="productName"></validation-messages>
+                        </div>
+                    <div class="form-group">
                         <label>Giá dự kiến của sản phẩm *</label>
                         <input #addressInput="ngModel" class="form-control" type="number" name="ExpectedPrice"
-                            [(ngModel)]="product.expectedprice" required maxlength="64">
-                        <validation-messages [formCtrl]="expectedpriceInput"></validation-messages>
+                            [(ngModel)]="product.expectedPrice" required maxlength="64">
+                        <validation-messages [formCtrl]="expectedPriceInput"></validation-messages>
                     </div>
                     <div class="form-group">
                         <label>Giá hiện tại của sản phẩm *</label>
                         <input #addressInput="ngModel" class="form-control" type="number" name="CurrentPrice"
-                            [(ngModel)]="product.currentprice" required maxlength="64">
-                        <validation-messages [formCtrl]="currentpriceInput"></validation-messages>
+                            [(ngModel)]="product.currentPrice" required maxlength="64">
+                        <validation-messages [formCtrl]="currentPriceInput"></validation-messages>
                     </div>
                     <div class="form-group">
                         <label>Miêu tả*</label>
@@ -44,28 +56,6 @@
                             [(ngModel)]="product.image" required maxlength="64" 
                             >
                         <validation-messages [formCtrl]="imageInput"></validation-messages>
-                    </div>
-                    <div class="form-group">
-                        <label>Chi tiết : *</label>
-                        <label>Id danh mục sản phẩm*</label>
-                        <select #addressInput="ngModel" class="form-control" type="text" name="ProductCategoryId"
-                            [(ngModel)]="product.productCategoryId" required maxlength="64">
-                            ><option value="1001">1001</option>
-                            ><option value="1002">1002</option>
-                            ><option value="1003">1003</option>
-                            ><option value="1004">1004</option>
-                            </select>
-                        <validation-messages [formCtrl]="productCategoryIdInput"></validation-messages>
-                    </div>
-                    <div class="form-group">
-                        <label>Id nhà cung cấp*</label>
-                        <select #addressInput="ngModel" class="form-control" type="text" name="ProvinderId"
-                            [(ngModel)]="product.providerId" required maxlength="64">
-                            ><option value="100">100 Công ty A</option>
-                            ><option value="101">101 Công ty B</option>
-                            ><option value="101">102 Công ty B</option>
-                            </select>
-                        <validation-messages [formCtrl]="providerIdInput"></validation-messages>
                     </div>
                 </div>
                 <div class="modal-footer">

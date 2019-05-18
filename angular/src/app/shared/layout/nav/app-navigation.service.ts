@@ -20,9 +20,8 @@ export class AppNavigationService {
             //new AppMenuItem('MenuClient', 'Pages.Administration.MenuClient', 'flaticon-menu-1', '/app/gwebsite/menu-client'),
             //new AppMenuItem('DemoModel', 'Pages.Administration.DemoModel', 'flaticon-menu-1', '/app/gwebsite/demo-model'),
             //new AppMenuItem('Customer', 'Pages.Administration.Customer', 'flaticon-menu-1', '/app/gwebsite/customer'),
-            new AppMenuItem('Product', 'Pages.Administration.Product', 'flaticon-menu-1', '/app/gwebsite/product'),
-            new AppMenuItem('ProductCategory', 'Pages.Administration.ProductCategory', 'flaticon-menu-1', '/app/gwebsite/productcategory'),
-            new AppMenuItem('Project', 'Pages.Administration.Project', 'flaticon-menu-1', '/app/gwebsite/project'),
+            new AppMenuItem('Sản Phẩm', 'Pages.Administration.Product', 'flaticon-menu-1', '/app/gwebsite/product'),
+            new AppMenuItem('Dự Án', 'Pages.Administration.Project', 'flaticon-menu-1', '/app/gwebsite/project'),
 
             ]),
             new AppMenuItem('Systems', '', 'flaticon-layers', '', [
