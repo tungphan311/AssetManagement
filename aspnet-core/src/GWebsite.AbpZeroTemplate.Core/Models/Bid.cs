@@ -1,4 +1,5 @@
 ﻿using GWebsite.AbpZeroTemplate.Core.Models.Enums;
+using GWebsite.AbpZeroTemplate.Core.Models.Enums.Base;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -14,7 +15,7 @@ namespace GWebsite.AbpZeroTemplate.Core.Models
         public string Code { get; set; }
         public DateTime FromDate { get; set; }
         public DateTime ToDate { get; set; }
-        public BidStatus BidStatus { get; set; }
+        public Status Status { get; set; }
         public BiddingForm BiddingForm { get; set; }
         [Column(TypeName = "varchar(50)")]
         public string ProjectCode { get; set; }

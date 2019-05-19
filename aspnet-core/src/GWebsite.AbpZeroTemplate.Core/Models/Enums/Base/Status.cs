@@ -8,7 +8,9 @@ namespace GWebsite.AbpZeroTemplate.Core.Models.Enums.Base
 {
     public enum Status
     {
-        Active,
-        InActive
+        NoAction,
+        Waiting,
+        Accepted,
+        Cancel
     }
 }

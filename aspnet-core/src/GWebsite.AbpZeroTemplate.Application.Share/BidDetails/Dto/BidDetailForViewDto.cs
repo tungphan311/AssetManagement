@@ -1,4 +1,5 @@
-﻿using GWebsite.AbpZeroTemplate.Application.Share.Providers.Dto;
+﻿using GWebsite.AbpZeroTemplate.Application.Share.Bids.Dto;
+using GWebsite.AbpZeroTemplate.Application.Share.Providers.Dto;
 using GWebsite.AbpZeroTemplate.Core.Models.Enums;
 using System;
 using System.Collections.Generic;
@@ -21,6 +22,7 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.BidDetails.Dto
         public string Note { get; set; }
         public int ProviderId { get; set; }
         public int BidId { get; set; }
-        public ProviderDto ProviderDto { get; set; }
+        public ProviderDto Provider { get; set; }
+        public BidDto Bid { get; set; }
     }
 }

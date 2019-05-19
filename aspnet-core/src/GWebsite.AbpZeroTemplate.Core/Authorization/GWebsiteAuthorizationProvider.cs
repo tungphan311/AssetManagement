@@ -76,6 +76,21 @@ namespace GWebsite.AbpZeroTemplate.Core.Authorization
             bidDetail.CreateChildPermission(GWebsitePermissions.Pages_Administration_BidDetail_Create, L("CreatingNewBidDetail"));
             bidDetail.CreateChildPermission(GWebsitePermissions.Pages_Administration_BidDetail_Edit, L("EditingBidDetail"));
             bidDetail.CreateChildPermission(GWebsitePermissions.Pages_Administration_BidDetail_Delete, L("DeletingBidDetail"));
+
+            var contract = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_Contract, L("Contract"));
+            contract.CreateChildPermission(GWebsitePermissions.Pages_Administration_Contract_Create, L("CreatingNewContract"));
+            contract.CreateChildPermission(GWebsitePermissions.Pages_Administration_Contract_Edit, L("EditingContract"));
+            contract.CreateChildPermission(GWebsitePermissions.Pages_Administration_Contract_Delete, L("DeletingContract"));
+
+            var contractPaymentDetail = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_ContractPaymentDetail, L("ContractPaymentDetail"));
+            contractPaymentDetail.CreateChildPermission(GWebsitePermissions.Pages_Administration_ContractPaymentDetail_Create, L("CreatingNewContractPaymentDetail"));
+            contractPaymentDetail.CreateChildPermission(GWebsitePermissions.Pages_Administration_ContractPaymentDetail_Edit, L("EditingContractPaymentDetail"));
+            contractPaymentDetail.CreateChildPermission(GWebsitePermissions.Pages_Administration_ContractPaymentDetail_Delete, L("DeletingContractPaymentDetail"));
+
+            var productContract = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_ProductContract, L("ProductContract"));
+            productContract.CreateChildPermission(GWebsitePermissions.Pages_Administration_ProductContract_Create, L("CreatingNewProductContract"));
+            productContract.CreateChildPermission(GWebsitePermissions.Pages_Administration_ProductContract_Edit, L("EditingProductContract"));
+            productContract.CreateChildPermission(GWebsitePermissions.Pages_Administration_ProductContract_Delete, L("DeletingProductContract"));
         }
 
         private static ILocalizableString L(string name)

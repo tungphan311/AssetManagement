@@ -10,7 +10,7 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.BidDetails
 {
     public interface IBidDetailAppService
     {
-        void CreateOrEditBidDetail(BidDetailInput BidDetailInput);
+        void CreateOrEditBidDetail(BidDetailInput bidDetailInput);
         BidDetailInput GetBidDetailForEdit(int id);
         void DeleteBidDetail(int id);
         void DeleteMultiBidDetail(int bidId);

@@ -1,9 +1,12 @@
 using AutoMapper;
 using GWebsite.AbpZeroTemplate.Application.Share.BidDetails.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.Bids.Dto;
+using GWebsite.AbpZeroTemplate.Application.Share.ContractPaymentDetails.Dto;
+using GWebsite.AbpZeroTemplate.Application.Share.Contracts.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.Customers.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.DemoModels.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.MenuClients.Dto;
+using GWebsite.AbpZeroTemplate.Application.Share.ProductContracts.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.ProductProviders.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.Products.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.Projects.Dto;
@@ -66,6 +69,24 @@ namespace GWebsite.AbpZeroTemplate.Applications
             configuration.CreateMap<BidDetailInput, BidDetail>();
             configuration.CreateMap<BidDetail, BidDetailInput>();
             configuration.CreateMap<BidDetail, BidDetailForViewDto>();
+
+            // Contract
+            configuration.CreateMap<Contract, ContractDto>();
+            configuration.CreateMap<ContractInput, Contract>();
+            configuration.CreateMap<Contract, ContractInput>();
+            configuration.CreateMap<Contract, ContractForViewDto>();
+
+            // ContractPaymentDetail
+            configuration.CreateMap<ContractPaymentDetail, ContractPaymentDetailDto>();
+            configuration.CreateMap<ContractPaymentDetailInput, ContractPaymentDetail>();
+            configuration.CreateMap<ContractPaymentDetail, ContractPaymentDetailInput>();
+            configuration.CreateMap<ContractPaymentDetail, ContractPaymentDetailForViewDto>();
+
+            // ProductContract
+            configuration.CreateMap<ProductContract, ProductContractDto>();
+            configuration.CreateMap<ProductContractInput, ProductContract>();
+            configuration.CreateMap<ProductContract, ProductContractInput>();
+            configuration.CreateMap<ProductContract, ProductContractForViewDto>();
         }
     }
 }
