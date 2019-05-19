@@ -23,7 +23,7 @@ import { ContractComponent } from './contract/contract.component';
                         data: {
                             permission: 'Pages.Administration.Contract'
                         },
-                    }
+                    },
                 ]
             }
         ])
