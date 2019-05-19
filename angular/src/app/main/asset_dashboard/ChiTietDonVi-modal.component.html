@@ -1,0 +1,103 @@
+<div bsModal #modal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modal" aria-hidden="true" [config]="{backdrop: 'static'}">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <form *ngIf="active" #personForm="ngForm" novalidate (ngSubmit)="save()">
+                <div class="modal-header">
+                    <h4 class="modal-title">
+                        <span>Chi Tiet Tai San Trong Don Vi</span>
+                    </h4>
+                    <button type="button" class="close" (click)="close()" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <div class="m-content"> <!--info card-->
+                    <div class="row pl-4 pr-4 row-eq-height">
+                        <div class="col-sm-12 col-md-6 col-lg-3 p-0">
+                            <div class="m-widget24 border-primary rounded m-2 p-2 shadow-sm" style="border-style: solid; border-width: 1px 1px 1px 4px">
+                           
+                                    <div class="0" style="display: flex; flex-direction: row; align-items: center; justify-content: center">
+                                        <div class="0 pl-2" style="flex: 1; display: flex; flex-direction: column; font-weight: bold; font-size: 1.3rem">
+                                            So Luong
+                                        </div>
+                                        <div class="m--font-primary pr-2" style="font-weight: bold; font-size: 2rem">{{donvi.soLuongTaiSan}}</div>
+                                    </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-6 col-lg-3 p-0">
+                            <div class="m-widget24 border-success rounded m-2 p-2 shadow-sm" style="border-style: solid; border-width: 1px 1px 1px 4px">
+                                    <div class="0" style="display: flex; flex-direction: row; align-items: center; justify-content: center">
+                                        <div class="0 pl-2" style="flex: 1; display: flex; flex-direction: column; font-weight: bold; font-size: 1.3rem">
+                                            Su Dung
+                                        </div>
+                                        <div class="m--font-success pr-2" style="font-weight: bold; font-size: 2rem">{{donvi.taiSanSuDung}}</div>
+                                    </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-6 col-lg-3 p-0">
+                            <div class="m-widget24 border-info rounded m-2 p-2 shadow-sm" style="border-style: solid; border-width: 1px 1px 1px 4px">
+                               
+                                    <div class="0" style="display: flex; flex-direction: row; align-items: center; justify-content: center">
+                                        <div class="0 pl-2" style="flex: 1; display: flex; flex-direction: column; font-weight: bold; font-size: 1.3rem">
+                                            Trong Kho
+                                        </div>
+                                        <div class="m--font-info pr-2" style="font-weight: bold; font-size: 2rem">{{donvi.taiSanTrongKho}}</div>
+                                    </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-6 col-lg-3 p-0">
+                            <div class="m-widget24 border-warning rounded m-2 p-2 shadow-sm" style="border-style: solid; border-width: 1px 1px 1px 4px">
+                               
+                                    <div class="0" style="display: flex; flex-direction: row; align-items: center; justify-content: center">
+                                        <div class="0 pl-2" style="flex: 1; display: flex; flex-direction: column; font-weight: bold; font-size: 1.3rem">
+                                            Hu Hong
+                                        </div>
+                                        <div class="m--font-warning pr-2" style="font-weight: bold; font-size: 2rem">{{donvi.taiSanHu}}</div>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-body">
+                    <div class="d-flex flex-column justify-content-center align-items-center" style="margin-bottom: 15px">
+                        <div style="font-size: 20px; margin-bottom: 5px">{{this.donvi.tenDonVi}}</div>
+                        <div *ngIf="donvi.donViChinh" style="font-weight: bold;">Don vi chinh:&nbsp;&nbsp;{{this.donvi.donViChinh}}</div>
+                    </div>
+
+                    <div class="form-group border border-success rounded" style="border-width: 2px">
+                        <label class="w-100 p-3 mb-0" style="font-size: 18px; font-weight: bold; background-color: #007E33">Tai San Su Dung</label>
+                        <div class="p-2" style="background-color: #8bc34a">
+                            <li class="m-1" style="font-size: 16px; list-style-type: none; font-family: Arial, Helvetica, sans-serif" *ngFor="let tai_san of tai_san_su_dung">
+                                <span class="badge">ID{{tai_san.id}}</span> {{tai_san.tenTaiSan}}
+                            </li>
+                        </div>
+                    </div>
+
+                    <div class="form-group border border-info rounded" style="border-width: 2px">
+                        <label class="w-100 p-3 mb-0" style="font-size: 18px; font-weight: bold; background-color: #00695c">Tai San Trong Kho</label>
+                        <div class="p-2" style="background-color: #2BBBAD">
+                            <li class="m-1" style="font-size: 16px; list-style-type: none; font-family: Arial, Helvetica, sans-serif" *ngFor="let tai_san of tai_san_trong_kho">
+                                <span class="badge">ID{{tai_san.id}}</span> {{tai_san.tenTaiSan}}
+                            </li>
+                        </div>
+                    </div>
+
+                    <div class="form-group border border-warning rounded" style="border-width: 2px">
+                        <label class="w-100 p-3 mb-0" style="font-size: 18px; font-weight: bold; background-color: #FF8800">Tai San Hu Hong</label>
+                        <div class="p-2" style="background-color: #ffbb33">
+                            <li class="m-1" style="font-size: 16px; list-style-type: none; font-family: Arial, Helvetica, sans-serif" *ngFor="let tai_san of tai_san_hu_hong">
+                                <span class="badge">ID{{tai_san.id}}</span> {{tai_san.tenTaiSan}}
+                            </li>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="modal-footer">
+                    <button [disabled]="saving" type="button" class="btn btn-outline-dark" (click)="close()">{{"Cancel"}}</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

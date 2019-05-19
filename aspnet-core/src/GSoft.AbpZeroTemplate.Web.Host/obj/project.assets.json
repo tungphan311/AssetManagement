@@ -15143,11 +15143,11 @@
   "project": {
     "version": "5.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\admin\\Desktop\\aspzero\\aspnet-core\\src\\GSoft.AbpZeroTemplate.Web.Host\\GSoft.AbpZeroTemplate.Web.Host.csproj",
+      "projectUniqueName": "C:\\Users\\admin\\Downloads\\AssetManagement-Nh-m-1\\aspnet-core\\src\\GSoft.AbpZeroTemplate.Web.Host\\GSoft.AbpZeroTemplate.Web.Host.csproj",
       "projectName": "GSoft.AbpZeroTemplate.Web.Host",
-      "projectPath": "C:\\Users\\admin\\Desktop\\aspzero\\aspnet-core\\src\\GSoft.AbpZeroTemplate.Web.Host\\GSoft.AbpZeroTemplate.Web.Host.csproj",
+      "projectPath": "C:\\Users\\admin\\Downloads\\AssetManagement-Nh-m-1\\aspnet-core\\src\\GSoft.AbpZeroTemplate.Web.Host\\GSoft.AbpZeroTemplate.Web.Host.csproj",
       "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\admin\\Desktop\\aspzero\\aspnet-core\\src\\GSoft.AbpZeroTemplate.Web.Host\\obj\\",
+      "outputPath": "C:\\Users\\admin\\Downloads\\AssetManagement-Nh-m-1\\aspnet-core\\src\\GSoft.AbpZeroTemplate.Web.Host\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -15166,8 +15166,8 @@
       "frameworks": {
         "netcoreapp2.1": {
           "projectReferences": {
-            "C:\\Users\\admin\\Desktop\\aspzero\\aspnet-core\\src\\GSoft.AbpZeroTemplate.Web.Core\\GSoft.AbpZeroTemplate.Web.Core.csproj": {
-              "projectPath": "C:\\Users\\admin\\Desktop\\aspzero\\aspnet-core\\src\\GSoft.AbpZeroTemplate.Web.Core\\GSoft.AbpZeroTemplate.Web.Core.csproj"
+            "C:\\Users\\admin\\Downloads\\AssetManagement-Nh-m-1\\aspnet-core\\src\\GSoft.AbpZeroTemplate.Web.Core\\GSoft.AbpZeroTemplate.Web.Core.csproj": {
+              "projectPath": "C:\\Users\\admin\\Downloads\\AssetManagement-Nh-m-1\\aspnet-core\\src\\GSoft.AbpZeroTemplate.Web.Core\\GSoft.AbpZeroTemplate.Web.Core.csproj"
             }
           }
         }

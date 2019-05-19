@@ -7,3 +7,12 @@ C:\Users\admin\Desktop\aspzero\aspnet-core\src\GSoft.AbpZeroTemplate.Core.Shared
 C:\Users\admin\Desktop\aspzero\aspnet-core\src\GSoft.AbpZeroTemplate.Core.Shared\obj\Debug\netstandard2.0\GSoft.AbpZeroTemplate.Core.Shared.dll
 C:\Users\admin\Desktop\aspzero\aspnet-core\src\GSoft.AbpZeroTemplate.Core.Shared\obj\Debug\netstandard2.0\GSoft.AbpZeroTemplate.Core.Shared.pdb
 C:\Users\admin\Desktop\aspzero\aspnet-core\src\GSoft.AbpZeroTemplate.Core.Shared\obj\Debug\netstandard2.0\GSoft.AbpZeroTemplate.Core.Shared.csprojAssemblyReference.cache
+C:\Users\admin\Downloads\AssetManagement-Nh-m-1\aspnet-core\src\GSoft.AbpZeroTemplate.Core.Shared\bin\Debug\netstandard2.0\GSoft.AbpZeroTemplate.Core.Shared.deps.json
+C:\Users\admin\Downloads\AssetManagement-Nh-m-1\aspnet-core\src\GSoft.AbpZeroTemplate.Core.Shared\bin\Debug\netstandard2.0\GSoft.AbpZeroTemplate.Core.Shared.dll
+C:\Users\admin\Downloads\AssetManagement-Nh-m-1\aspnet-core\src\GSoft.AbpZeroTemplate.Core.Shared\bin\Debug\netstandard2.0\GSoft.AbpZeroTemplate.Core.Shared.pdb
+C:\Users\admin\Downloads\AssetManagement-Nh-m-1\aspnet-core\src\GSoft.AbpZeroTemplate.Core.Shared\obj\Debug\netstandard2.0\GSoft.AbpZeroTemplate.Core.Shared.csprojAssemblyReference.cache
+C:\Users\admin\Downloads\AssetManagement-Nh-m-1\aspnet-core\src\GSoft.AbpZeroTemplate.Core.Shared\obj\Debug\netstandard2.0\GSoft.AbpZeroTemplate.Core.Shared.csproj.CoreCompileInputs.cache
+C:\Users\admin\Downloads\AssetManagement-Nh-m-1\aspnet-core\src\GSoft.AbpZeroTemplate.Core.Shared\obj\Debug\netstandard2.0\GSoft.AbpZeroTemplate.Core.Shared.AssemblyInfoInputs.cache
+C:\Users\admin\Downloads\AssetManagement-Nh-m-1\aspnet-core\src\GSoft.AbpZeroTemplate.Core.Shared\obj\Debug\netstandard2.0\GSoft.AbpZeroTemplate.Core.Shared.AssemblyInfo.cs
+C:\Users\admin\Downloads\AssetManagement-Nh-m-1\aspnet-core\src\GSoft.AbpZeroTemplate.Core.Shared\obj\Debug\netstandard2.0\GSoft.AbpZeroTemplate.Core.Shared.dll
+C:\Users\admin\Downloads\AssetManagement-Nh-m-1\aspnet-core\src\GSoft.AbpZeroTemplate.Core.Shared\obj\Debug\netstandard2.0\GSoft.AbpZeroTemplate.Core.Shared.pdb

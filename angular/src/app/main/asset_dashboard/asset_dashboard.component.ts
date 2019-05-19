@@ -11,20 +11,18 @@ import { DonViServiceProxy, DonViDto } from '@shared/service-proxies/service-pro
 
 export class AssetDashboardComponent extends AppComponentBase implements OnInit
 {
-	userName = '';
-	header_stats: AssetHeaderStats;
+    people: DonViDto[] = [];
 	chart: PieChartData;
-	assets_state_chart: ProfitSharePieChart;
+    header_stats: AssetHeaderStats;
 
     constructor(injector: Injector, private _DonViService: DonViServiceProxy) 
     {
         super(injector);
-        this.header_stats = new AssetHeaderStats();
         this.chart = new PieChartData();
-        this.assets_state_chart = new ProfitSharePieChart();
-        this.userName = this.appSession.user.userName;
-        if(this.appSession.user.userName == "admin")
-            this.userName = "DonViChinh";
+        this.header_stats = new AssetHeaderStats();
+        // this.userName = this.appSession.user.userName;
+        // if(this.appSession.user.userName == "admin")
+        //     this.userName = "DonViChinh";
     }
 
     ngOnInit(): void 
@@ -34,9 +32,10 @@ export class AssetDashboardComponent extends AppComponentBase implements OnInit
 
     getData(): void
     {
-        this._DonViService.getDonVi(this.userName).subscribe( result => 
+        this._DonViService.getDonVi("").subscribe( result => 
         {
             this.get_display_data(result);
+            this.people = result;
         });
     }
 
@@ -82,37 +81,4 @@ class AssetHeaderStats
     Assets_Storage_Counter = 0;
     Assets_Disposed = 0; 
     Assets_Disposed_Counter = 0;
-}
-
-
-class ProfitSharePieChart
-{
-    //== Profit Share Chart.
-    //** Based on Chartist plugin - https://gionkunz.github.io/chartist-js/index.html
-
-    _canvasId: string;
-    data: number[];
-    chartData: {};
-
-    constructor() 
-    {
-        this.init([56, 28, 16]);
-        this.chartData = {
-    datasets: [{
-        data: [10, 20, 30]
-    }],
-
-    // These labels appear in the legend and in the tooltips when hovering different arcs
-    labels: [
-        'Red',
-        'Yellow',
-        'Blue'
-    ]
-};
-    }
-
-    init(data: number[]) 
-    {
-        this.data = data;
-    }
 }

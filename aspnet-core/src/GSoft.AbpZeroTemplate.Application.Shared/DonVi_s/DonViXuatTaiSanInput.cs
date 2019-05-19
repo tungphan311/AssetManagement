@@ -6,10 +6,10 @@ namespace GSoft.AbpZeroTemplate.DonVi_s
 {
     public class DonViXuatTaiSanInput
     {
-        public string DonViXuat { get; set; }
+        public int DonViNhanId { get; set; }
 
-        public string DonViNhan { get; set; }
+        public int DonViXuatId { get; set; }
 
-        public int SoLuong { get; set; }
+        public int TaiSanXuatId { get; set; }
     }
 }

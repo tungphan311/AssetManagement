@@ -1,29 +1,37 @@
-<div bsModal #modal="bs-modal" (onShown)="onShown()" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modal" aria-hidden="true" [config]="{backdrop: 'static'}">
+<div bsModal #modal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modal" aria-hidden="true" [config]="{backdrop: 'static'}">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
-            <form *ngIf="active" #personForm="ngForm" novalidate (ngSubmit)="save()">
+            <form *ngIf="active" #Form="ngForm" novalidate (ngSubmit)="save()">
                 <div class="modal-header">
                     <h4 class="modal-title">
-                        <span>{{"Transfer Asset"}}</span>
+                        <span>Xuat Tai San</span>
                     </h4>
                     <button type="button" class="close" (click)="close()" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <label style="font-weight: bold; margin-bottom: 15px">{{this.input.donViXuat}}</label>
-                    <div class="form-group">
-                        <label>{{"Transfer asset To"}}</label>
-                        <input #donViNhan name="donViNhan"class="form-control" type="text" [(ngModel)]="input.donViNhan" required maxlength="32">
+                    <div class="d-flex flex-column justify-content-center align-items-center" style="margin-bottom: 15px">
+                        <div style="font-size: 20px; margin-bottom: 5px">{{this.don_vi_nhan[0].tenDonVi}}</div>
+                        <div *ngIf="don_vi_nhan[0].donViChinh" style="font-weight: bold;">Don vi chinh:&nbsp;&nbsp;{{this.don_vi_nhan[0].donViChinh}}</div>
+                    </div>                    <div class="form-group">
+                        <label>Don Vi Su Dung Tai San</label>
+                        <input class="form-control" type="hidden" [(ngModel)]="input.donViNhanId" [ngModelOptions]="{standalone: true}" required>
+                        <select class="form-control" [(ngModel)]="input.donViNhanId" [ngModelOptions]="{standalone: true}" required>
+                            <option *ngFor="let don_vi of don_vi_nhan" [value]="don_vi.id">ID{{don_vi.id}}  -  {{don_vi.tenDonVi}}</option>
+                        </select>
                     </div>
                     <div class="form-group">
-                        <label>{{"Number of transfering asset(s)"}}</label>
-                        <input #soLuongXuat name="soLuongXuat" class="form-control" onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 48 && event.charCode <= 57" min="0" type="number" [(ngModel)]="input.soLuong" required maxlength="32">
+                        <label>Tai San Xuat</label>
+                        <input class="form-control" type="hidden" [(ngModel)]="input.taiSanXuatId" [ngModelOptions]="{standalone: true}" required>
+                        <select class="form-control" [(ngModel)]="input.taiSanXuatId" [ngModelOptions]="{standalone: true}" required>
+                            <option *ngFor="let tai_san of tai_san_trong_kho" [value]="tai_san.id">ID{{tai_san.id}}  -  {{tai_san.tenTaiSan}}</option>
+                        </select>
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button [disabled]="saving" type="button" class="btn btn-secondary" (click)="close()">{{"Cancel"}}</button>
-                    <button type="submit" class="btn btn-primary" [disabled]="!personForm.form.valid" [buttonBusy]="saving" [busyText]="l('SavingWithThreeDot')"><i class="fa fa-save"></i> <span>{{"Save"}}</span></button>
+                    <button type="submit" class="btn btn-primary" [disabled]="!Form.form.valid" [buttonBusy]="saving" [busyText]="l('SavingWithThreeDot')"><i class="fa fa-save"></i> <span>{{"Save"}}</span></button>
                 </div>
             </form>
         </div>

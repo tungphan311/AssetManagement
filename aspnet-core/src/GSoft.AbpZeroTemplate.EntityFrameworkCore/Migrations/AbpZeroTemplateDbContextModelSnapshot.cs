@@ -1096,28 +1096,7 @@ namespace GSoft.AbpZeroTemplate.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("CreationTime");
-
-                    b.Property<long?>("CreatorUserId");
-
-                    b.Property<long?>("DeleterUserId");
-
-                    b.Property<DateTime?>("DeletionTime");
-
-                    b.Property<string>("DonViChinh")
-                        .HasMaxLength(255);
-
-                    b.Property<bool>("IsDeleted");
-
-                    b.Property<DateTime?>("LastModificationTime");
-
-                    b.Property<long?>("LastModifierUserId");
-
-                    b.Property<int>("TaiSanHu");
-
-                    b.Property<int>("TaiSanSuDung");
-
-                    b.Property<int>("TaiSanTrongKho");
+                    b.Property<int>("DonViChinhId");
 
                     b.Property<string>("TenDonVi")
                         .IsRequired()
@@ -1353,6 +1332,30 @@ namespace GSoft.AbpZeroTemplate.Migrations
                     b.HasIndex("TenantId");
 
                     b.ToTable("AppBinaryObjects");
+                });
+
+            modelBuilder.Entity("GSoft.AbpZeroTemplate.TaiSan", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("BiHuHong");
+
+                    b.Property<int>("DangSuDung");
+
+                    b.Property<int>("DangTrongKho");
+
+                    b.Property<string>("NhomTaiSan")
+                        .HasMaxLength(255);
+
+                    b.Property<string>("TenTaiSan")
+                        .IsRequired()
+                        .HasMaxLength(255);
+
+                    b.HasKey("Id");
+
+                    b.ToTable("PbTaiSan");
                 });
 
             modelBuilder.Entity("GWebsite.AbpZeroTemplate.Core.Models.Announcement", b =>

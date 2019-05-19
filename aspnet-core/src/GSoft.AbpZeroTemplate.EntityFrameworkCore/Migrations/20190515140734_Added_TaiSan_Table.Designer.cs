@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GSoft.AbpZeroTemplate.Migrations
 {
     [DbContext(typeof(AbpZeroTemplateDbContext))]
-    [Migration("20190417040223_Added_DonVi_Table")]
-    partial class Added_DonVi_Table
+    [Migration("20190515140734_Added_TaiSan_Table")]
+    partial class Added_TaiSan_Table
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -1098,34 +1098,15 @@ namespace GSoft.AbpZeroTemplate.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("CreationTime");
-
-                    b.Property<long?>("CreatorUserId");
-
-                    b.Property<long?>("DeleterUserId");
-
-                    b.Property<DateTime?>("DeletionTime");
-
-                    b.Property<string>("DonViChinh")
-                        .HasMaxLength(255);
-
-                    b.Property<bool>("IsDeleted");
-
-                    b.Property<DateTime?>("LastModificationTime");
-
-                    b.Property<long?>("LastModifierUserId");
-
-                    b.Property<int>("TaiSanHu");
-
-                    b.Property<int>("TaiSanSuDung");
-
-                    b.Property<int>("TaiSanTrongKho");
+                    b.Property<int?>("DonViChinhId");
 
                     b.Property<string>("TenDonVi")
                         .IsRequired()
                         .HasMaxLength(255);
 
                     b.HasKey("Id");
+
+                    b.HasIndex("DonViChinhId");
 
                     b.ToTable("PbDonVi");
                 });
@@ -1355,6 +1336,32 @@ namespace GSoft.AbpZeroTemplate.Migrations
                     b.HasIndex("TenantId");
 
                     b.ToTable("AppBinaryObjects");
+                });
+
+            modelBuilder.Entity("GSoft.AbpZeroTemplate.TaiSan", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("DonViId");
+
+                    b.Property<int?>("DonViId1");
+
+                    b.Property<string>("NhomTaiSan")
+                        .HasMaxLength(255);
+
+                    b.Property<string>("TenTaiSan")
+                        .IsRequired()
+                        .HasMaxLength(255);
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DonViId");
+
+                    b.HasIndex("DonViId1");
+
+                    b.ToTable("PbTaiSan");
                 });
 
             modelBuilder.Entity("GWebsite.AbpZeroTemplate.Core.Models.Announcement", b =>
@@ -1970,6 +1977,13 @@ namespace GSoft.AbpZeroTemplate.Migrations
                         .HasForeignKey("LastModifierUserId");
                 });
 
+            modelBuilder.Entity("GSoft.AbpZeroTemplate.DonVi", b =>
+                {
+                    b.HasOne("GSoft.AbpZeroTemplate.DonVi", "DonViChinh")
+                        .WithMany()
+                        .HasForeignKey("DonViChinhId");
+                });
+
             modelBuilder.Entity("GSoft.AbpZeroTemplate.MultiTenancy.Payments.SubscriptionPayment", b =>
                 {
                     b.HasOne("Abp.Application.Editions.Edition", "Edition")
@@ -1995,6 +2009,17 @@ namespace GSoft.AbpZeroTemplate.Migrations
                     b.HasOne("GSoft.AbpZeroTemplate.Authorization.Users.User", "LastModifierUser")
                         .WithMany()
                         .HasForeignKey("LastModifierUserId");
+                });
+
+            modelBuilder.Entity("GSoft.AbpZeroTemplate.TaiSan", b =>
+                {
+                    b.HasOne("GSoft.AbpZeroTemplate.DonVi")
+                        .WithMany("TaiSanSuDung")
+                        .HasForeignKey("DonViId");
+
+                    b.HasOne("GSoft.AbpZeroTemplate.DonVi")
+                        .WithMany("TaiSanTrongKho")
+                        .HasForeignKey("DonViId1");
                 });
 
             modelBuilder.Entity("GWebsite.AbpZeroTemplate.Core.Models.Announcement", b =>

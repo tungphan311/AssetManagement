@@ -142,6 +142,8 @@ namespace GSoft.AbpZeroTemplate
             configuration.CreateMap<CreatePersonInput, Person>();
 
             configuration.CreateMap<DonVi, DonViDto>();
+
+            configuration.CreateMap<TaiSan, TaiSanDto>();
         }
     }
 }

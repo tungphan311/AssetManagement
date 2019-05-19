@@ -4,9 +4,13 @@ namespace GSoft.AbpZeroTemplate.DonVi_s
 {
     public class DonViDto
     {
+        public int Id { get; set; }
+
         public string TenDonVi { get; set; }
 
         public string DonViChinh { get; set; }
+
+        public int DonViChinhId { get; set; }
 
         public int TaiSanSuDung { get; set; }
 

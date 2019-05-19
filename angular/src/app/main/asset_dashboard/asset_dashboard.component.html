@@ -9,8 +9,8 @@
                     Asset Management Statistics
                 </span>
             </div>
-            <button class="btn btn-primary" style="float: right;"(click)="themTaiSanModal.show()"><i class="fa fa-plus"></i> {{"Add Asset"}}</button>
-            <button class="btn btn-primary" style="float: right;"(click)="XuatTaiSanModal.show()"><i class="fa fa-exchange"></i> {{"Transfer Asset"}}</button>
+            <!-- <button class="btn btn-primary" style="float: right;"(click)="ThemTaiSanModal.show(people[0])"><i class="fa fa-plus"></i> {{"Add Asset"}}</button>
+            <button class="btn btn-primary" style="float: right;"(click)="XuatTaiSanModal.show()"><i class="fa fa-exchange"></i> {{"Transfer Asset"}}</button> -->
         </div>
     </div>
     <div class="m-content"> <!--info card-->
@@ -30,7 +30,6 @@
                                 </span>
                             </div>
                         </div>
-                        <div class="m--space-5"></div>
                     </div>
                 </div>
             </div>
@@ -49,7 +48,6 @@
                                 </span>
                             </div>
                         </div>
-                        <div class="m--space-5"></div>
                     </div>
                 </div>
             </div>
@@ -68,7 +66,6 @@
                                 </span>
                             </div>
                         </div>
-                        <div class="m--space-5"></div>
                     </div>
                 </div>
             </div>
@@ -87,7 +84,6 @@
                                 </span>
                             </div>
                         </div>
-                        <div class="m--space-5"></div>
                     </div>
                 </div>
             </div>
@@ -99,6 +95,63 @@
                 <p>HERE! {{userName}}</p>
             </div>
             
+        </div>
+    </div>
+
+    <div class="m-content">
+        <div class="m-portlet m-portlet--mobile">
+            <div class="m-portlet__body">
+
+                <h3>{{l("AllPeople")}}</h3>
+                <div class="m-widget1">
+                    <div class="row m-row--no-padding align-items-center">
+                        <div class="col">
+                            <h4 class="m-widget1__title">Ten Don Vi</h4>
+                        </div>
+                        <div class="col">
+                            <h4 class="m--align-center m-widget1__title">Tong Tai San</h4>
+                        </div>
+                        <div class="col">
+                            <h4 class="m--align-center m-widget1__title">Su Dung</h4>
+                        </div>
+                        <div class="col">
+                            <h4 class="m--align-center m-widget1__title">Trong Kho</h4>
+                        </div>
+                        <div class="col">
+                            <h4 class="m--align-center m-widget1__title">Hu Hong</h4>
+                        </div>
+                        <div class="col m--align-right">
+                           <!--  <button id="deletePerson" (click)="deletePerson(person)" title="{{'Delete'}}" class="btn btn-outline-danger m-btn m-btn--icon m-btn--icon-only m-btn--pill" href="javascript:;">
+                                <i class="fa fa-times"></i>
+                            </button> -->
+                        </div>
+                    </div>
+                    <div class="m-widget1__item" *ngFor="let person of people">
+                        <div class="row m-row--no-padding align-items-center">
+                            <div class="col" (click)="ChiTietDonViModal.show(person)">
+                                <h3 class="m-widget1__title">{{person.tenDonVi}}</h3>
+                                <span class="m-widget1__desc" *ngIf="person.donViChinh">{{person.donViChinh}}</span>
+                            </div>
+                            <div class="col">
+                                <h5 class="m--align-center m--font-primary">{{person.soLuongTaiSan}}</h5>
+                            </div>
+                            <div class="col">
+                                <h5 class="m--align-center m--font-success">{{person.taiSanSuDung}}</h5>
+                            </div>
+                            <div class="col">
+                                <h5 class="m--align-center m--font-info">{{person.taiSanTrongKho}}</h5>
+                            </div>
+                            <div class="col">
+                                <h5 class="m--align-center m--font-warning">{{person.taiSanHu}}</h5>
+                            </div>
+                            <div class="col m--align-right d-flex flex-row">
+                                <button class="btn btn-primary pl-3 pr-3 pt-2 pb-2 float-right" (click)="ThemTaiSanModal.show(person)"><i class="fa fa-plus"></i>Them</button>
+                                <button class="btn btn-primary pl-3 pr-3 pt-2 pb-2 float-right" (click)="XuatTaiSanModal.show(person)"><i class="fa fa-exchange"></i>Xuat</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -206,7 +259,7 @@
                                 </div>
                             </div>
                             <div class="col">
-                                <div class="m-widget14__legends" *ngIf="assets_state_chart.data">
+                                <div class="m-widget14__legends">
                                     <div class="m-widget14__legend">
                                         <span class="m-widget14__legend-bullet m--bg-accent"></span>
                                         <span class="m-widget14__legend-text">
@@ -223,7 +276,6 @@
                                         <span class="m-widget14__legend-bullet m--bg-brand"></span>
                                         <span class="m-widget14__legend-text">
                                             0% Custom Development
-
                                         </span>
                                     </div>
                                 </div>
@@ -237,6 +289,7 @@
 
     </div>
 
-    <themTaiSanModal #themTaiSanModal (modalSave)="getData()"></themTaiSanModal>
+    <ThemTaiSanModal #ThemTaiSanModal (modalSave)="getData()"></ThemTaiSanModal>
     <XuatTaiSanModal #XuatTaiSanModal (modalSave)="getData()"></XuatTaiSanModal>
+    <ChiTietDonViModal #ChiTietDonViModal></ChiTietDonViModal>
 </div>
