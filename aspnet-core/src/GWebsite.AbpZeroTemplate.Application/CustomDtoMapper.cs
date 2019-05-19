@@ -1,6 +1,8 @@
 using AutoMapper;
 using GWebsite.AbpZeroTemplate.Application.Share.Contracts;
 using GWebsite.AbpZeroTemplate.Application.Share.Contracts.Dto;
+using GWebsite.AbpZeroTemplate.Application.Share.ContractDetails.Dto;
+using GWebsite.AbpZeroTemplate.Application.Share.ContractPayments.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.Customers.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.DemoModels.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.MenuClients.Dto;
@@ -9,6 +11,7 @@ using GWebsite.AbpZeroTemplate.Application.Share.Merchandises.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.MerchandiseTypes.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.Vendors.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.VendorTypes.Dto;
+using GWebsite.AbpZeroTemplate.Application.Share.Projects.Dto;
 using GWebsite.AbpZeroTemplate.Core.Models;
 
 namespace GWebsite.AbpZeroTemplate.Applications
@@ -63,6 +66,23 @@ namespace GWebsite.AbpZeroTemplate.Applications
             configuration.CreateMap<ContractInput,Contract>();
             configuration.CreateMap<Contract, ContractInput>();
             configuration.CreateMap<Contract, ContractForViewDto>();
+
+            //ContractDetailDetail
+            configuration.CreateMap<ContractDetail, ContractDetailDto>();
+            configuration.CreateMap<ContractDetailInput, ContractDetail>();
+            configuration.CreateMap<ContractDetail, ContractDetailInput>();
+
+            //ContractPaymentDetail
+            configuration.CreateMap<ContractPayment, ContractPaymentDto>();
+            configuration.CreateMap<ContractPaymentInput, ContractPayment>();
+            configuration.CreateMap<ContractPayment, ContractPaymentInput>();
+
+
+            //Project
+            configuration.CreateMap<Project, ProjectDto>();
+            configuration.CreateMap<ProjectInput, Project>();
+            configuration.CreateMap<Project, ProjectInput>();
+            configuration.CreateMap<Project, ProjectForViewDto>();
 
         }
     }

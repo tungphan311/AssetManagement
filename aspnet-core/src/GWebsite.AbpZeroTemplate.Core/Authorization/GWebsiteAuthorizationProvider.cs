@@ -70,6 +70,11 @@ namespace GWebsite.AbpZeroTemplate.Core.Authorization
             contract.CreateChildPermission(GWebsitePermissions.Pages_Administration_Contract_Create, L("CreateNewContract"));
             contract.CreateChildPermission(GWebsitePermissions.Pages_Administration_Contract_Edit, L("EditingContract"));
             contract.CreateChildPermission(GWebsitePermissions.Pages_Administration_Contract_Delete, L("DeletingContract"));
+
+            var project = pages.CreateChildPermission(GWebsitePermissions.Pages_Administration_Project, L("Project"));
+            project.CreateChildPermission(GWebsitePermissions.Pages_Administration_Project_Create, L("CreateNewProject"));
+            project.CreateChildPermission(GWebsitePermissions.Pages_Administration_Project_Edit, L("EditingProject"));
+            project.CreateChildPermission(GWebsitePermissions.Pages_Administration_Project_Delete, L("DeletingProject"));
         }
 
         private static ILocalizableString L(string name)

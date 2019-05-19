@@ -8,55 +8,26 @@ using System.Threading.Tasks;
 
 namespace GWebsite.AbpZeroTemplate.Core.Models
 {
-    [Table("Purchase")]
     public class Contract : FullAuditModel
     {
-        [Required]
-        public virtual int ContractID { get; set; }
+        public string Name { get; set; }
+        public DateTime DeliveryTime { get; set; }
+        public int BriefcaseID { get; set; }
+        public int VendorID { get; set; } // luu id cua don vi trung thau vao day
+        public string Note { get; set; }  
 
-        [Required]
-        public virtual string Name { get; set; }
+        public string ContractWarrantyType { get; set; }
+        public string ContractWarrantyID { get; set; }
+        public DateTime ContractWarrantyExpireDate { get; set; }
+        public float ContractWarrantyPercent { get; set; }
+        public float ContractWarrantyAmount { get; set; }
+        public string ContractWarrantyBank { get; set; }
 
-        [Required]
-        public virtual DateTime DeliveryTime { get; set; }
-
-        [Required]
-        public virtual int BriefcaseID { get; set; }
-
-        [Required]
-        public virtual string Note { get; set; }
-
-        [Required]
-        public virtual int ContractWarrantyTypeID { get; set; }
-
-        [Required]
-        public virtual int ContractWarrantyID { get; set; }
-
-        [Required]
-        public virtual DateTime ContractWarrantyExpireDate { get; set; }
-
-        [Required]
-        public virtual int ContractWarrantyPercent { get; set; }
-
-        [Required]
-        public virtual int ContractWarrantyAmount { get; set; }
-
-        [Required]
-        public virtual int WarrantyGuaranteeTypeID { get; set; }
-
-        [Required]
-        public virtual int WarrantyGuaranteeID { get; set; }
-
-        [Required]
-        public virtual DateTime WarrantyGuaranteeExpireDate { get; set; }
-
-        [Required]
-        public virtual int WarrantyGuaranteePercent { get; set; }
-
-        [Required]
-        public virtual int WarrantyGuaranteeAmount { get; set; }
-
-        [Required]
-        public virtual List<Merchandise> MerchandiseList { get; set; }
+        public int WarrantyGuaranteeTypeID { get; set; }
+        public int WarrantyGuaranteeID { get; set; }
+        public DateTime WarrantyGuaranteeExpireDate { get; set; }
+        public int WarrantyGuaranteePercent { get; set; }
+        public int WarrantyGuaranteeAmount { get; set; }
+        public string WarrantyGuaranteeBank { get; set; }
     }
 }

@@ -9,16 +9,15 @@ using System.Threading.Tasks;
 namespace GWebsite.AbpZeroTemplate.Application.Share.Contracts.Dto
 {
     /// <summary>
-    /// <model cref="Customer"></model>
+    /// <model cref="Contract"></model>
     /// </summary>
     public class ContractFilter : PagedAndSortedInputDto
     {
-        [Required]
-        public virtual int ContractID { get; set; }
-
-        [Required]
-        public virtual string Name { get; set; }
-
-    }
-        
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string DeliveryTime { get; set; }
+        public int BriefcaseID { get; set; }
+        public int VendorID { get; set; }
+       
+    }     
 }

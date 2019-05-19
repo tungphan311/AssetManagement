@@ -71,10 +71,33 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Contracts
         {
             var query = contractRepository.GetAll().Where(x => !x.IsDelete);
 
-            // filter by value
+            // filter by Id
+            if (input.Id != 0)
+            {
+                query = query.Where(x => x.Id == input.Id);
+            }
+
+            //filter by name 
             if (input.Name != null)
             {
-                query = query.Where(x => x.Name.ToLower().Equals(input.Name));
+                query = query.Where(x => x.Name.ToLower().Contains(input.Name.ToLower()));
+            }
+
+            if (input.DeliveryTime != null)
+            {
+                //xu ly lay theo date time tinh sau
+            }
+
+            // filter by BriefcaseID
+            if (input.BriefcaseID != 0)
+            {
+                query = query.Where(x => x.BriefcaseID == input.BriefcaseID);
+            }
+
+            // filter by VendorID
+            if (input.VendorID != 0)
+            {
+                query = query.Where(x => x.VendorID == input.VendorID);
             }
 
             var totalCount = query.Count();

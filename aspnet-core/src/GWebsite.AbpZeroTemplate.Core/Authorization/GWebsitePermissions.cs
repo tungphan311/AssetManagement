@@ -44,10 +44,10 @@
         public const string Pages_Administration_VendorType_Edit = "Pages.Administration.VendorType.Edit";
         public const string Pages_Administration_VendorType_Delete = "Pages.Administration.VendorType.Delete";
 
-        public const string Pages_Administration_Merch_Vendor = "Pages.Administration.Merch_Vendor";
-        public const string Pages_Administration_Merch_Vendor_Create = "Pages.Administration.Merch_Vendor.Create";
-        public const string Pages_Administration_Merch_Vendor_Edit = "Pages.Administration.Merch_Vendor.Edit";
-        public const string Pages_Administration_Merch_Vendor_Delete = "Pages.Administration.Merch_Vendor.Delete";
+        public const string Pages_Administration_Project = "Pages.Administration.Project";
+        public const string Pages_Administration_Project_Create = "Pages.Administration.Project.Create";
+        public const string Pages_Administration_Project_Edit = "Pages.Administration.Project.Edit";
+        public const string Pages_Administration_Project_Delete = "Pages.Administration.Project.Delete";
 
         public const string Pages_Administration_Contract = "Pages.Administration.Contract";
         public const string Pages_Administration_Contract_Create = "Pages.Administration.Contract.Create";
