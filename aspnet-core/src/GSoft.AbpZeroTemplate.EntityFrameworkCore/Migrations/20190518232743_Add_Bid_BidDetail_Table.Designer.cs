@@ -4,14 +4,16 @@ using GSoft.AbpZeroTemplate.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace GSoft.AbpZeroTemplate.Migrations
 {
     [DbContext(typeof(AbpZeroTemplateDbContext))]
-    partial class AbpZeroTemplateDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190518232743_Add_Bid_BidDetail_Table")]
+    partial class Add_Bid_BidDetail_Table
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -1604,8 +1606,6 @@ namespace GSoft.AbpZeroTemplate.Migrations
                     b.Property<string>("BankName")
                         .HasMaxLength(100);
 
-                    b.Property<int>("BidId");
-
                     b.Property<decimal>("BidPrice");
 
                     b.Property<DateTime?>("BiddingCreatedDate");
@@ -1625,8 +1625,6 @@ namespace GSoft.AbpZeroTemplate.Migrations
                     b.Property<int>("ProviderId");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("BidId");
 
                     b.HasIndex("ProviderId");
 
@@ -2242,11 +2240,6 @@ namespace GSoft.AbpZeroTemplate.Migrations
 
             modelBuilder.Entity("GWebsite.AbpZeroTemplate.Core.Models.BidDetail", b =>
                 {
-                    b.HasOne("GWebsite.AbpZeroTemplate.Core.Models.Bid", "Bid")
-                        .WithMany()
-                        .HasForeignKey("BidId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
                     b.HasOne("GWebsite.AbpZeroTemplate.Core.Models.Provider", "Provider")
                         .WithMany()
                         .HasForeignKey("ProviderId")

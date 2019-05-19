@@ -1,4 +1,6 @@
 using AutoMapper;
+using GWebsite.AbpZeroTemplate.Application.Share.BidDetails.Dto;
+using GWebsite.AbpZeroTemplate.Application.Share.Bids.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.Customers.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.DemoModels.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.MenuClients.Dto;
@@ -52,6 +54,18 @@ namespace GWebsite.AbpZeroTemplate.Applications
             configuration.CreateMap<ProjectInput, Project>();
             configuration.CreateMap<Project, ProjectInput>();
             configuration.CreateMap<Project, ProjectForViewDto>();
+
+            // Bid
+            configuration.CreateMap<Bid, BidDto>();
+            configuration.CreateMap<BidInput, Bid>();
+            configuration.CreateMap<Bid, BidInput>();
+            configuration.CreateMap<Bid, BidForViewDto>();
+
+            // BidDetail
+            configuration.CreateMap<BidDetail, BidDetailDto>();
+            configuration.CreateMap<BidDetailInput, BidDetail>();
+            configuration.CreateMap<BidDetail, BidDetailInput>();
+            configuration.CreateMap<BidDetail, BidDetailForViewDto>();
         }
     }
 }

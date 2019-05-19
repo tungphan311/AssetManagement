@@ -44,5 +44,15 @@
         public const string Pages_Administration_Project_Edit = "Pages.Administration.Project.Edit";
         public const string Pages_Administration_Project_Delete = "Pages.Administration.Project.Delete";
 
+        public const string Pages_Administration_Bid = "Pages.Administration.Bid";
+        public const string Pages_Administration_Bid_Create = "Pages.Administration.Bid.Create";
+        public const string Pages_Administration_Bid_Edit = "Pages.Administration.Bid.Edit";
+        public const string Pages_Administration_Bid_Delete = "Pages.Administration.Bid.Delete";
+
+        public const string Pages_Administration_BidDetail = "Pages.Administration.BidDetail";
+        public const string Pages_Administration_BidDetail_Create = "Pages.Administration.BidDetail.Create";
+        public const string Pages_Administration_BidDetail_Edit = "Pages.Administration.BidDetail.Edit";
+        public const string Pages_Administration_BidDetail_Delete = "Pages.Administration.BidDetail.Delete";
+
     }
 }

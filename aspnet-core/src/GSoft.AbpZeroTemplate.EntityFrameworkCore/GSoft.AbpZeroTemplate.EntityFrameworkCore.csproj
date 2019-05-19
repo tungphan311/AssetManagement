@@ -18,6 +18,7 @@
     <Compile Remove="Migrations\20190323114143_AddDemoModel.cs" />
     <Compile Remove="Migrations\20190507124105_newDb.cs" />
     <Compile Remove="Migrations\20190507124625_newDb.cs" />
+    <Compile Remove="Migrations\20190518232531_Add_Bid_BidDetail_Table.cs" />
   </ItemGroup>
 
   <ItemGroup>
