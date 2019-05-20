@@ -10,6 +10,7 @@ namespace GWebsite.AbpZeroTemplate.Core.Models
 {
     public class Contract : FullAuditModel
     {
+        public string ContractID { get; set; }
         public string Name { get; set; }
         public DateTime DeliveryTime { get; set; }
         public int BriefcaseID { get; set; }

@@ -2086,9 +2086,8 @@ export class ContractServiceProxy {
     }
 
     /**
-     * @id (optional) 
+     * @contractID (optional) 
      * @name (optional) 
-     * @deliveryTime (optional) 
      * @briefcaseID (optional) 
      * @vendorID (optional) 
      * @sorting (optional) 
@@ -2096,14 +2095,12 @@ export class ContractServiceProxy {
      * @skipCount (optional) 
      * @return Success
      */
-    getContractsByFilter(id: number | null | undefined, name: string | null | undefined, deliveryTime: string | null | undefined, briefcaseID: number | null | undefined, vendorID: number | null | undefined, sorting: string | null | undefined, maxResultCount: number | null | undefined, skipCount: number | null | undefined): Observable<PagedResultDtoOfContractDto> {
+    getContractsByFilter(contractID: string | null | undefined, name: string | null | undefined, briefcaseID: number | null | undefined, vendorID: number | null | undefined, sorting: string | null | undefined, maxResultCount: number | null | undefined, skipCount: number | null | undefined): Observable<PagedResultDtoOfContractDto> {
         let url_ = this.baseUrl + "/api/Contract/GetContractsByFilter?";
-        if (id !== undefined)
-            url_ += "Id=" + encodeURIComponent("" + id) + "&"; 
+        if (contractID !== undefined)
+            url_ += "ContractID=" + encodeURIComponent("" + contractID) + "&"; 
         if (name !== undefined)
             url_ += "Name=" + encodeURIComponent("" + name) + "&"; 
-        if (deliveryTime !== undefined)
-            url_ += "DeliveryTime=" + encodeURIComponent("" + deliveryTime) + "&"; 
         if (briefcaseID !== undefined)
             url_ += "BriefcaseID=" + encodeURIComponent("" + briefcaseID) + "&"; 
         if (vendorID !== undefined)
@@ -14747,6 +14744,7 @@ export interface IPagedResultDtoOfContractDto {
 }
 
 export class ContractDto implements IContractDto {
+    contractID!: string | undefined;
     name!: string | undefined;
     deliveryTime!: moment.Moment | undefined;
     briefcaseID!: number | undefined;
@@ -14777,6 +14775,7 @@ export class ContractDto implements IContractDto {
 
     init(data?: any) {
         if (data) {
+            this.contractID = data["contractID"];
             this.name = data["name"];
             this.deliveryTime = data["deliveryTime"] ? moment(data["deliveryTime"].toString()) : <any>undefined;
             this.briefcaseID = data["briefcaseID"];
@@ -14807,6 +14806,7 @@ export class ContractDto implements IContractDto {
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
+        data["contractID"] = this.contractID;
         data["name"] = this.name;
         data["deliveryTime"] = this.deliveryTime ? this.deliveryTime.toISOString() : <any>undefined;
         data["briefcaseID"] = this.briefcaseID;
@@ -14830,6 +14830,7 @@ export class ContractDto implements IContractDto {
 }
 
 export interface IContractDto {
+    contractID: string | undefined;
     name: string | undefined;
     deliveryTime: moment.Moment | undefined;
     briefcaseID: number | undefined;
@@ -14851,6 +14852,7 @@ export interface IContractDto {
 }
 
 export class ContractInput implements IContractInput {
+    contractID!: string | undefined;
     name!: string | undefined;
     deliveryTime!: moment.Moment | undefined;
     briefcaseID!: number | undefined;
@@ -14881,6 +14883,7 @@ export class ContractInput implements IContractInput {
 
     init(data?: any) {
         if (data) {
+            this.contractID = data["contractID"];
             this.name = data["name"];
             this.deliveryTime = data["deliveryTime"] ? moment(data["deliveryTime"].toString()) : <any>undefined;
             this.briefcaseID = data["briefcaseID"];
@@ -14911,6 +14914,7 @@ export class ContractInput implements IContractInput {
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
+        data["contractID"] = this.contractID;
         data["name"] = this.name;
         data["deliveryTime"] = this.deliveryTime ? this.deliveryTime.toISOString() : <any>undefined;
         data["briefcaseID"] = this.briefcaseID;
@@ -14934,6 +14938,7 @@ export class ContractInput implements IContractInput {
 }
 
 export interface IContractInput {
+    contractID: string | undefined;
     name: string | undefined;
     deliveryTime: moment.Moment | undefined;
     briefcaseID: number | undefined;
@@ -14955,6 +14960,7 @@ export interface IContractInput {
 }
 
 export class ContractForViewDto implements IContractForViewDto {
+    contractID!: string | undefined;
     name!: string | undefined;
     deliveryTime!: moment.Moment | undefined;
     briefcaseID!: number | undefined;
@@ -14984,6 +14990,7 @@ export class ContractForViewDto implements IContractForViewDto {
 
     init(data?: any) {
         if (data) {
+            this.contractID = data["contractID"];
             this.name = data["name"];
             this.deliveryTime = data["deliveryTime"] ? moment(data["deliveryTime"].toString()) : <any>undefined;
             this.briefcaseID = data["briefcaseID"];
@@ -15013,6 +15020,7 @@ export class ContractForViewDto implements IContractForViewDto {
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
+        data["contractID"] = this.contractID;
         data["name"] = this.name;
         data["deliveryTime"] = this.deliveryTime ? this.deliveryTime.toISOString() : <any>undefined;
         data["briefcaseID"] = this.briefcaseID;
@@ -15035,6 +15043,7 @@ export class ContractForViewDto implements IContractForViewDto {
 }
 
 export interface IContractForViewDto {
+    contractID: string | undefined;
     name: string | undefined;
     deliveryTime: moment.Moment | undefined;
     briefcaseID: number | undefined;
