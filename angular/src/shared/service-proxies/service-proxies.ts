@@ -8502,19 +8502,22 @@ export class ProjectServiceProxy {
     }
 
     /**
+     * @projectID (optional) 
      * @name (optional) 
-     * @isActive (optional) 
+     * @dayCreate (optional) 
      * @sorting (optional) 
      * @maxResultCount (optional) 
      * @skipCount (optional) 
      * @return Success
      */
-    getProjectsByFilter(name: string | null | undefined, isActive: string | null | undefined, sorting: string | null | undefined, maxResultCount: number | null | undefined, skipCount: number | null | undefined): Observable<PagedResultDtoOfProjectDto> {
+    getProjectsByFilter(projectID: string | null | undefined, name: string | null | undefined, dayCreate: moment.Moment | null | undefined, sorting: string | null | undefined, maxResultCount: number | null | undefined, skipCount: number | null | undefined): Observable<PagedResultDtoOfProjectDto> {
         let url_ = this.baseUrl + "/api/Project/GetProjectsByFilter?";
+        if (projectID !== undefined)
+            url_ += "ProjectID=" + encodeURIComponent("" + projectID) + "&"; 
         if (name !== undefined)
             url_ += "Name=" + encodeURIComponent("" + name) + "&"; 
-        if (isActive !== undefined)
-            url_ += "IsActive=" + encodeURIComponent("" + isActive) + "&"; 
+        if (dayCreate !== undefined)
+            url_ += "DayCreate=" + encodeURIComponent(dayCreate ? "" + dayCreate.toJSON() : "") + "&"; 
         if (sorting !== undefined)
             url_ += "Sorting=" + encodeURIComponent("" + sorting) + "&"; 
         if (maxResultCount !== undefined)
@@ -21218,7 +21221,9 @@ export interface IPagedResultDtoOfProjectDto {
 }
 
 export class ProjectDto implements IProjectDto {
+    projectID!: string | undefined;
     name!: string | undefined;
+    dayCreate!: moment.Moment | undefined;
     isActive!: boolean | undefined;
     id!: number | undefined;
 
@@ -21233,7 +21238,9 @@ export class ProjectDto implements IProjectDto {
 
     init(data?: any) {
         if (data) {
+            this.projectID = data["projectID"];
             this.name = data["name"];
+            this.dayCreate = data["dayCreate"] ? moment(data["dayCreate"].toString()) : <any>undefined;
             this.isActive = data["isActive"];
             this.id = data["id"];
         }
@@ -21248,7 +21255,9 @@ export class ProjectDto implements IProjectDto {
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
+        data["projectID"] = this.projectID;
         data["name"] = this.name;
+        data["dayCreate"] = this.dayCreate ? this.dayCreate.toISOString() : <any>undefined;
         data["isActive"] = this.isActive;
         data["id"] = this.id;
         return data; 
@@ -21256,13 +21265,17 @@ export class ProjectDto implements IProjectDto {
 }
 
 export interface IProjectDto {
+    projectID: string | undefined;
     name: string | undefined;
+    dayCreate: moment.Moment | undefined;
     isActive: boolean | undefined;
     id: number | undefined;
 }
 
 export class ProjectInput implements IProjectInput {
+    projectID!: string | undefined;
     name!: string | undefined;
+    dayCreate!: moment.Moment | undefined;
     isActive!: boolean | undefined;
     id!: number | undefined;
 
@@ -21277,7 +21290,9 @@ export class ProjectInput implements IProjectInput {
 
     init(data?: any) {
         if (data) {
+            this.projectID = data["projectID"];
             this.name = data["name"];
+            this.dayCreate = data["dayCreate"] ? moment(data["dayCreate"].toString()) : <any>undefined;
             this.isActive = data["isActive"];
             this.id = data["id"];
         }
@@ -21292,7 +21307,9 @@ export class ProjectInput implements IProjectInput {
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
+        data["projectID"] = this.projectID;
         data["name"] = this.name;
+        data["dayCreate"] = this.dayCreate ? this.dayCreate.toISOString() : <any>undefined;
         data["isActive"] = this.isActive;
         data["id"] = this.id;
         return data; 
@@ -21300,13 +21317,17 @@ export class ProjectInput implements IProjectInput {
 }
 
 export interface IProjectInput {
+    projectID: string | undefined;
     name: string | undefined;
+    dayCreate: moment.Moment | undefined;
     isActive: boolean | undefined;
     id: number | undefined;
 }
 
 export class ProjectForViewDto implements IProjectForViewDto {
+    projectID!: string | undefined;
     name!: string | undefined;
+    dayCreate!: moment.Moment | undefined;
     isActive!: boolean | undefined;
 
     constructor(data?: IProjectForViewDto) {
@@ -21320,7 +21341,9 @@ export class ProjectForViewDto implements IProjectForViewDto {
 
     init(data?: any) {
         if (data) {
+            this.projectID = data["projectID"];
             this.name = data["name"];
+            this.dayCreate = data["dayCreate"] ? moment(data["dayCreate"].toString()) : <any>undefined;
             this.isActive = data["isActive"];
         }
     }
@@ -21334,14 +21357,18 @@ export class ProjectForViewDto implements IProjectForViewDto {
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
+        data["projectID"] = this.projectID;
         data["name"] = this.name;
+        data["dayCreate"] = this.dayCreate ? this.dayCreate.toISOString() : <any>undefined;
         data["isActive"] = this.isActive;
         return data; 
     }
 }
 
 export interface IProjectForViewDto {
+    projectID: string | undefined;
     name: string | undefined;
+    dayCreate: moment.Moment | undefined;
     isActive: boolean | undefined;
 }
 

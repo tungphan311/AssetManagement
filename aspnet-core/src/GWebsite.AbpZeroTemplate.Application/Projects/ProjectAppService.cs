@@ -79,19 +79,14 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Projects
                 query = query.Where(x => x.Name.ToLower().Contains(input.Name.ToLower()));
             }
 
-    
-
-            // filter by isActive 
-            if (input.IsActive != null)
+            if (input.ProjectID != null)
             {
-                if (input.IsActive.Equals("True"))
-                {
-                    query = query.Where(x => x.IsActive == true);
-                }
-                else if (input.IsActive.Equals("False"))
-                {
-                    query = query.Where(x => x.IsActive == false);
-                }
+                query = query.Where(x => x.ProjectID.ToLower().Contains(input.ProjectID.ToLower()));
+            }
+
+            if (input.DayCreate != null)
+            {
+                query = query.Where(x => x.DayCreate.DayOfYear >= input.DayCreate.DayOfYear);
             }
 
             var totalCount = query.Count();
