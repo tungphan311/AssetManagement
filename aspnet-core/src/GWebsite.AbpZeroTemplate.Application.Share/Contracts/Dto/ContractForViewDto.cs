@@ -9,6 +9,7 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.Contracts.Dto
 {
     public class ContractForViewDto
     {
+        public string ContractID { get; set; }
         public string Name { get; set; }
         public DateTime DeliveryTime { get; set; }
         public int BriefcaseID { get; set; }

@@ -13,6 +13,7 @@ using GWebsite.AbpZeroTemplate.Application.Share.Vendors.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.VendorTypes.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.Projects.Dto;
 using GWebsite.AbpZeroTemplate.Core.Models;
+using GWebsite.AbpZeroTemplate.Application.Share.AssignmentTables.Dto;
 
 namespace GWebsite.AbpZeroTemplate.Applications
 {
@@ -83,6 +84,12 @@ namespace GWebsite.AbpZeroTemplate.Applications
             configuration.CreateMap<ProjectInput, Project>();
             configuration.CreateMap<Project, ProjectInput>();
             configuration.CreateMap<Project, ProjectForViewDto>();
+
+            //AssignmentTable
+            configuration.CreateMap<AssignmentTable, AssignmentTableDto>();
+            configuration.CreateMap<AssignmentTableInput, AssignmentTable>();
+            configuration.CreateMap<AssignmentTable, AssignmentTableInput>();
+            configuration.CreateMap<AssignmentTable, AssignmentTableForViewDto>();
 
         }
     }

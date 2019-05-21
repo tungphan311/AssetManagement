@@ -1551,6 +1551,7 @@ namespace GSoft.AbpZeroTemplate.Migrations
                     b.ToTable("AppUserRoles");
                 });
 
+            modelBuilder.Entity("GWebsite.AbpZeroTemplate.Core.Models.AssignmentTable", b =>
             modelBuilder.Entity("GWebsite.AbpZeroTemplate.Core.Models.Bid", b =>
                 {
                     b.Property<int>("Id")
@@ -1604,6 +1605,9 @@ namespace GSoft.AbpZeroTemplate.Migrations
 
                     b.Property<DateTime?>("CreatedDate");
 
+                    b.Property<bool>("IsDelete");
+
+                    b.Property<int>("MerchID");
                     b.Property<DateTime>("GuaranteeExpired");
 
                     b.Property<string>("GuaranteeMethod");
@@ -1618,6 +1622,11 @@ namespace GSoft.AbpZeroTemplate.Migrations
 
                     b.Property<DateTime?>("UpdatedDate");
 
+                    b.Property<int>("VendorID");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("AssigmentTables");
                     b.Property<int>("VendorId");
 
                     b.Property<bool>("isAccept");
@@ -1634,6 +1643,8 @@ namespace GSoft.AbpZeroTemplate.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("BriefcaseID");
+
+                    b.Property<string>("ContractID");
 
                     b.Property<float>("ContractWarrantyAmount");
 

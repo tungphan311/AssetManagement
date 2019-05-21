@@ -13,9 +13,9 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.Contracts.Dto
     /// </summary>
     public class ContractFilter : PagedAndSortedInputDto
     {
-        public int Id { get; set; }
+        public string ContractID { get; set; }
         public string Name { get; set; }
-        public string DeliveryTime { get; set; }
+        //public DateTime DeliveryTime { get; set; }
         public int BriefcaseID { get; set; }
         public int VendorID { get; set; }
        

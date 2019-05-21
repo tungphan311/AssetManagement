@@ -72,9 +72,9 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Contracts
             var query = contractRepository.GetAll().Where(x => !x.IsDelete);
 
             // filter by Id
-            if (input.Id != 0)
+            if (input.ContractID != null)
             {
-                query = query.Where(x => x.Id == input.Id);
+                query = query.Where(x => x.ContractID.ToLower().Contains(input.ContractID.ToLower()));
             }
 
             //filter by name 
@@ -83,10 +83,10 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Contracts
                 query = query.Where(x => x.Name.ToLower().Contains(input.Name.ToLower()));
             }
 
-            if (input.DeliveryTime != null)
-            {
-                //xu ly lay theo date time tinh sau
-            }
+            //if (input.DeliveryTime != null)
+            //{
+            //    query = query.Where(x => x.DeliveryTime == input.DeliveryTime);
+            //}
 
             // filter by BriefcaseID
             if (input.BriefcaseID != 0)

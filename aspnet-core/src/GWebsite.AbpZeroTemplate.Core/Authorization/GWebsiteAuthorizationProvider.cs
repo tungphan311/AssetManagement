@@ -75,6 +75,11 @@ namespace GWebsite.AbpZeroTemplate.Core.Authorization
             project.CreateChildPermission(GWebsitePermissions.Pages_Administration_Project_Create, L("CreateNewProject"));
             project.CreateChildPermission(GWebsitePermissions.Pages_Administration_Project_Edit, L("EditingProject"));
             project.CreateChildPermission(GWebsitePermissions.Pages_Administration_Project_Delete, L("DeletingProject"));
+
+            var assignmenttable = pages.CreateChildPermission(GWebsitePermissions.Pages_Administration_AssignmentTable, L("AsssignmentTable"));
+            project.CreateChildPermission(GWebsitePermissions.Pages_Administration_AssignmentTable_Create, L("CreateNewAsssignmentTable"));
+            project.CreateChildPermission(GWebsitePermissions.Pages_Administration_AssignmentTable_Edit, L("EdittingAsssignmentTable"));
+            project.CreateChildPermission(GWebsitePermissions.Pages_Administration_AssignmentTable_Delete, L("DeletingAsssignmentTable"));
         }
 
         private static ILocalizableString L(string name)
