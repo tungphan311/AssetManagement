@@ -1552,6 +1552,20 @@ namespace GSoft.AbpZeroTemplate.Migrations
                 });
 
             modelBuilder.Entity("GWebsite.AbpZeroTemplate.Core.Models.AssignmentTable", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("MerchID");
+
+                    b.Property<int>("VendorID");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("AssigmentTables");
+                });
+
             modelBuilder.Entity("GWebsite.AbpZeroTemplate.Core.Models.Bid", b =>
                 {
                     b.Property<int>("Id")
