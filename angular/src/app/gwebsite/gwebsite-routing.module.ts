@@ -6,7 +6,8 @@ import { CustomerComponent } from './customer/customer.component';
 import { ProductComponent } from './product/product.component';
 import { ProjectComponent } from './project/project.component';
 import { BidComponent } from './bid/bid.component';
-
+//import { ProviderComponentComponent } from './provider/provider.component';
+//import { conventionComponent } from './convention/convention.component';
 @NgModule({
     imports: [
         RouterModule.forChild([
@@ -64,6 +65,24 @@ import { BidComponent } from './bid/bid.component';
                     },
                 ]
             }     
+			 // {
+            //     path: '',
+            //     children: [
+            //         {
+            //             path: 'provider', component: ProviderComponent,
+            //             data: { permission: 'Pages.Administration.Provider' }
+            //         },
+            //     ]
+            // },   
+			// {
+            //     path: '',
+            //     children: [
+            //         {
+            //             path: 'convention', component: ConventionComponent,
+            //             data: { permission: 'Pages.Administration.convention' }
+            //         },
+            //     ]
+            // }   			
         ])
         
     ],
