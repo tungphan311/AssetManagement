@@ -1,0 +1,57 @@
+<div bsModal #viewModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="viewModal"
+    aria-hidden="true" [config]="{backdrop: 'static'}">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">
+                    <span *ngIf="bid.id">{{l("EditBid")}}: {{bid.code}}</span>
+                    <span *ngIf="!bid.id">{{l("CreateNewBid")}}</span>
+                </h4>
+                <button type="button" class="close" (click)="close()" [attr.aria-label]="l('Close')">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Số hồ sơ *</label>
+                    <p>{{bid.code}}</p>
+                </div>
+                <div class="form-group">
+                    <label>Hạng mục thầu *</label>
+                    <p>{{bid.projectId}}</p>
+                </div>
+                <div class="form-group">
+                    <label>Hình thức thầu *</label>
+                    <p>{{bid.biddingForm}}</p>
+                </div>
+                <div class="form-group">
+                    <label>Từ ngày*</label>
+                    <p>{{bid.fromDate}}</p>
+                 </div>
+                <div class="form-group">
+                    <label>Đến ngày*</label>
+                    <p>{{bid.toDate}}</p>
+                </div>
+                <div class="form-group">
+                    <label>Số tiền bảo lãnh *</label>
+                    <p>{{bid.cautionMoney}}</p>
+                </div>
+                <div class="form-group">
+                    <label>File đính kèm*</label>
+                    <p>{{bid.attachmentFile}}</p>
+                </div>
+                <div class="form-group">
+                    <label>Trạng thái duyệt *</label>
+                    <p>{{bid.projectId}}</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button [disabled]="saving" type="button" class="btn btn-default"
+                    (click)="close()">{{l("Cancel")}}</button>
+                <button type="submit" class="btn btn-primary" [buttonBusy]="saving"
+                    [busyText]="l('SavingWithThreeDot')"><i class="fa fa-save"></i>
+                    <span>{{l("Save")}}</span></button>
+            </div>
+        </div>
+    </div>
+</div>

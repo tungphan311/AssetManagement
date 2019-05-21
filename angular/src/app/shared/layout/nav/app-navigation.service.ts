@@ -22,6 +22,7 @@ export class AppNavigationService {
             //new AppMenuItem('Customer', 'Pages.Administration.Customer', 'flaticon-menu-1', '/app/gwebsite/customer'),
             new AppMenuItem('Sản Phẩm', 'Pages.Administration.Product', 'flaticon-menu-1', '/app/gwebsite/product'),
             new AppMenuItem('Dự Án', 'Pages.Administration.Project', 'flaticon-menu-1', '/app/gwebsite/project'),
+            new AppMenuItem('Hồ sơ thầu', 'Pages.Administration.Bid', 'flaticon-menu-1', '/app/gwebsite/bid'),
 
             ]),
             new AppMenuItem('Systems', '', 'flaticon-layers', '', [

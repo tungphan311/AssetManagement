@@ -5,7 +5,7 @@ import { DemoModelComponent } from './demo-model/demo-model.component';
 import { CustomerComponent } from './customer/customer.component';
 import { ProductComponent } from './product/product.component';
 import { ProjectComponent } from './project/project.component';
-
+import { BidComponent } from './bid/bid.component';
 
 @NgModule({
     imports: [
@@ -54,9 +54,16 @@ import { ProjectComponent } from './project/project.component';
                         data: { permission: 'Pages.Administration.Project' }
                     },
                 ]
-            }
-
-            
+            },
+            {
+                path: '',
+                children: [
+                    {
+                        path: 'bid', component: BidComponent,
+                        data: { permission: 'Pages.Administration.Bid' }
+                    },
+                ]
+            }     
         ])
         
     ],

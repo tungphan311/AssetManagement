@@ -29,6 +29,11 @@ import { ProjectComponent } from './project/project.component';
 import { ViewProjectModalComponent } from './project/view-project-modal.component';
 import { CreateOrEditProjectModalComponent } from './project/create-or-edit-project-modal.component';
 
+import { BidServiceProxy } from '@shared/service-proxies/service-proxies';
+import { BidComponent } from './bid/bid.component';
+import { ViewBidModalComponent } from './bid/view-bid-modal.component';
+import { CreateOrEditBidModalComponent } from './bid/create-or-edit-bid-modal.component';
+
 @NgModule({
     imports: [
         FormsModule,
@@ -53,15 +58,15 @@ import { CreateOrEditProjectModalComponent } from './project/create-or-edit-proj
         DemoModelComponent, CreateOrEditDemoModelModalComponent, ViewDemoModelModalComponent,
         CustomerComponent, CreateOrEditCustomerModalComponent, ViewCustomerModalComponent,
         ProductComponent, CreateOrEditProductModalComponent, ViewProductModalComponent,
-        ProjectComponent, CreateOrEditProjectModalComponent, ViewProjectModalComponent
-
-
+        ProjectComponent, CreateOrEditProjectModalComponent, ViewProjectModalComponent,
+        BidComponent, CreateOrEditBidModalComponent, ViewBidModalComponent
     ],
     providers: [
         DemoModelServiceProxy,
         CustomerServiceProxy,
         ProductServiceProxy,
-        ProjectServiceProxy
+        ProjectServiceProxy,
+        BidServiceProxy
     ]
 })
 export class GWebsiteModule { }

@@ -2,6 +2,8 @@ import { Component, ElementRef, EventEmitter, Injector, Output, ViewChild } from
 import { AppComponentBase } from '@shared/common/app-component-base';
 import { ModalDirective } from 'ngx-bootstrap';
 import { ProjectServiceProxy, ProjectInput } from '@shared/service-proxies/service-proxies';
+
+
 @Component({
     selector: 'createOrEditProjectModal',
     templateUrl: './create-or-edit-project-modal.component.html'
@@ -30,9 +32,6 @@ export class CreateOrEditProjectModalComponent extends AppComponentBase {
     ) {
         super(injector);
     }
-    ngOnInit(){
-       console.log('onInit')
-     }
 
     show(projectId?: number | null | undefined): void {
         this.saving = false;
@@ -46,8 +45,7 @@ export class CreateOrEditProjectModalComponent extends AppComponentBase {
     }
 
     save(): void {
-        let input = this.project;       
-        console.log(input)
+        let input = this.project;
         this.saving = true;
         this._projectService.createOrEditProject(input).subscribe(result => {
             this.notify.info(this.l('SavedSuccessfully'));
@@ -55,16 +53,6 @@ export class CreateOrEditProjectModalComponent extends AppComponentBase {
         })
 
     }
-
-    /*getStatus(value:any):void{
-        console.log('value is '+value.target.checked)
-        if(value.target.checked) 
-            this.project.status= ProjectInputStatus._1
-         else
-            this.project.status= ProjectInputStatus._0
-
-
-    }*/
 
     close(): void {
         this.modal.hide();

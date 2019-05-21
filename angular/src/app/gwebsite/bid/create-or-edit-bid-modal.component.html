@@ -1,0 +1,85 @@
+<div bsModal #createOrEditModal="bs-modal" class="modal fade" tabindex="-1" role="dialog"
+    aria-labelledby="createOrEditModal" aria-hidden="true" [config]="{backdrop: 'static'}">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <form #editForm="ngForm" novalidate (ngSubmit)="save()">
+                <div class="modal-header">
+                    <h4 class="modal-title">
+                        <span *ngIf="bid.id">Cập nhật hồ sơ thầu: {{bid.code}}</span>
+                        <span *ngIf="!bid.id">Tạo mới hồ sơ thầu</span>
+                    </h4>
+                    <button type="button" class="close" (click)="close()" [attr.aria-label]="l('Close')">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>Số hồ sơ *</label>
+                        <input #codeInput="ngModel" class="form-control" type="text" name="Code"
+                            [(ngModel)]="bid.code" required maxlength="64">
+                        <validation-messages [formCtrl]="nameInput"></validation-messages>
+                    </div>
+                    <div class="form-group">
+                        <label>Hạng mục thầu *</label>
+                        <input #projecitInput="ngModel" class="form-control" type="text" name="ProjectId"
+                            [(ngModel)]="bid.projectId" required maxlength="64">
+                        <validation-messages [formCtrl]="projectIdInput"></validation-messages>
+                    </div>
+                    <div class="form-group">
+                            <label>Hình thức thầu *</label>
+                            <select #bidformCombobox class="form-control" name="BiddingForm"
+                                [(ngModel)]="bid.biddingForm" jq-plugin="selectpicker" required >
+                                <option disabled >---Chọn Hình Thức Thầu---</option>
+                                <option value="0">Trực tiếp</option>
+                                <option value="1">Qua mạng</option>
+                            </select>
+                            <!-- <validation-messages [formCtrl]="biddingFormInput"></validation-messages> -->
+                        </div>
+                    <div class="form-group">
+                        <label>Từ ngày*</label>
+                        <input #fromdateInput="ngModel" class="form-control" [ngModel]="bid.fromDate | date:'yyyy-MM-dd'"
+                            (ngModelChange)="bid.fromDate = $event" type="date" name="FromDate" required />
+                        <validation-messages [formCtrl]="fromDateInput"></validation-messages>
+                    </div>
+                    <div class="form-group">
+                         <label>Đến ngày*</label>
+                        <input #todateInput="ngModel" class="form-control" [ngModel]="bid.toDate | date:'yyyy-MM-dd'"
+                            (ngModelChange)="bid.toDate = $event" type="date" name="ToDate" required />
+                        <validation-messages [formCtrl]="toDateInput"></validation-messages>
+                    </div>
+                    <div class="form-group">
+                        <label>Số tiền bảo lãnh *</label>
+                        <input #cautionmoneyInput="ngModel" class="form-control" type="text" name="CautionMoney"
+                                [(ngModel)]="bid.cautionMoney" required maxlength="64">
+                        <validation-messages [formCtrl]="cautionMoneyInput"></validation-messages>
+                     </div>
+                    <div class="form-group">
+                         <label>File đính kèm*</label>
+                        <input #fileInput="ngModel" class="form-control" type="text" name="AttachmentFile"
+                            [(ngModel)]="bid.attachmentFile" required maxlength="64">
+                         <validation-messages [formCtrl]="attachmentFileInput"></validation-messages>
+                    </div>
+                    <div class="form-group">
+                        <div class="m-checkbox-list">
+                            <label class="m-checkbox">
+                            <input #isActiveInput="ngModel" type="checkbox" name="Status"
+                                [(ngModel)]="bid.status" 
+                                >
+                            <span></span>
+                        <label> Trạng thái duyệt * </label>  
+                         </label>
+                            <validation-messages [formCtrl]="statusInput"></validation-messages>        
+                    </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button [disabled]="saving" type="button" class="btn btn-default"
+                        (click)="close()">{{l("Cancel")}}</button>
+                    <button type="submit" class="btn btn-primary" [buttonBusy]="saving"
+                        [busyText]="l('SavingWithThreeDot')"><i class="fa fa-save"></i>
+                        <span>{{l("Save")}}</span></button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
