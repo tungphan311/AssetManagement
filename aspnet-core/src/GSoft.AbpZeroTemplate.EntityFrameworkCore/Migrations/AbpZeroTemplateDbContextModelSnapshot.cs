@@ -1552,10 +1552,54 @@ namespace GSoft.AbpZeroTemplate.Migrations
                 });
 
             modelBuilder.Entity("GWebsite.AbpZeroTemplate.Core.Models.AssignmentTable", b =>
+            modelBuilder.Entity("GWebsite.AbpZeroTemplate.Core.Models.Bid", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("BeginDay");
+
+                    b.Property<string>("BiddingForm");
+
+                    b.Property<string>("Category");
+
+                    b.Property<string>("CreatedBy");
+
+                    b.Property<DateTime?>("CreatedDate");
+
+                    b.Property<DateTime>("EndReceivingRecords");
+
+                    b.Property<bool>("IsDelete");
+
+                    b.Property<string>("Name");
+
+                    b.Property<int>("ProjectId");
+
+                    b.Property<DateTime>("StartReceivingRecords");
+
+                    b.Property<double>("TotalPrice");
+
+                    b.Property<string>("UpdatedBy");
+
+                    b.Property<DateTime?>("UpdatedDate");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Bids");
+                });
+
+            modelBuilder.Entity("GWebsite.AbpZeroTemplate.Core.Models.Bidder", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("ApplyDay");
+
+                    b.Property<int>("BidID");
+
+                    b.Property<int>("CertificateNumber");
 
                     b.Property<string>("CreatedBy");
 
@@ -1564,6 +1608,15 @@ namespace GSoft.AbpZeroTemplate.Migrations
                     b.Property<bool>("IsDelete");
 
                     b.Property<int>("MerchID");
+                    b.Property<DateTime>("GuaranteeExpired");
+
+                    b.Property<string>("GuaranteeMethod");
+
+                    b.Property<bool>("IsDelete");
+
+                    b.Property<string>("Note");
+
+                    b.Property<double>("OfferPrice");
 
                     b.Property<string>("UpdatedBy");
 
@@ -1574,6 +1627,13 @@ namespace GSoft.AbpZeroTemplate.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("AssigmentTables");
+                    b.Property<int>("VendorId");
+
+                    b.Property<bool>("isAccept");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Bidders");
                 });
 
             modelBuilder.Entity("GWebsite.AbpZeroTemplate.Core.Models.Contract", b =>
@@ -1583,6 +1643,8 @@ namespace GSoft.AbpZeroTemplate.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("BriefcaseID");
+
+                    b.Property<string>("ContractID");
 
                     b.Property<float>("ContractWarrantyAmount");
 
@@ -1932,6 +1994,43 @@ namespace GSoft.AbpZeroTemplate.Migrations
                     b.ToTable("GPermissions");
                 });
 
+            modelBuilder.Entity("GWebsite.AbpZeroTemplate.Core.Models.PO", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("ApproveReportDay");
+
+                    b.Property<int>("ContractID");
+
+                    b.Property<DateTime>("CreateDay");
+
+                    b.Property<string>("CreatedBy");
+
+                    b.Property<DateTime?>("CreatedDate");
+
+                    b.Property<bool>("IsDelete");
+
+                    b.Property<string>("OrderName");
+
+                    b.Property<int>("POID");
+
+                    b.Property<DateTime>("ReceiveReportDay");
+
+                    b.Property<int>("ReportID");
+
+                    b.Property<string>("UpdatedBy");
+
+                    b.Property<DateTime?>("UpdatedDate");
+
+                    b.Property<int>("VendorID");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("POs");
+                });
+
             modelBuilder.Entity("GWebsite.AbpZeroTemplate.Core.Models.Project", b =>
                 {
                     b.Property<int>("Id")
@@ -1942,11 +2041,15 @@ namespace GSoft.AbpZeroTemplate.Migrations
 
                     b.Property<DateTime?>("CreatedDate");
 
+                    b.Property<DateTime>("DayCreate");
+
                     b.Property<bool>("IsActive");
 
                     b.Property<bool>("IsDelete");
 
                     b.Property<string>("Name");
+
+                    b.Property<string>("ProjectID");
 
                     b.Property<string>("UpdatedBy");
 

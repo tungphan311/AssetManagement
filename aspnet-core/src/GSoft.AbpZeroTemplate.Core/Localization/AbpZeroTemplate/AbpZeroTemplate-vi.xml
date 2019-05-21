@@ -807,5 +807,6 @@
     <text name="MerchandiseTypeID">Loại hàng hoá</text>
     <text name="MerchandiseDetail">Thông tin chi tiết</text>
     <text name="MerchandisePrice">Giá tham khảo</text>
+    <text name="Project">Quản lý dự án</text>
   </texts>
 </localizationDictionary>

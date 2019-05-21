@@ -30,7 +30,7 @@
                                     <input [(ngModel)]="vendorName" name="vendorName" autoFocus class="form-control"
                                            placeholder="Type Vendor Name" type="text">
                                     <select [(ngModel)]="vendorTypeID" name="vendorTypeID" autofocus class="form-control">
-                                        <option value="0" selected="selected">Tất cả</option>
+                                        <option value="0" selected="selected">Tất cả</option>    
                                         <option *ngFor="let item of vendortypeList" value="{{item.id}}">{{item.name}}</option>
                                     </select>                                  
                                     <label>Hoạt động</label>

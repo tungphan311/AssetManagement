@@ -9,7 +9,10 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.Projects.Dto
     /// </summary>
     public class ProjectFilter : PagedAndSortedInputDto
     {
+        public string ProjectID { get; set; }
+
         public string Name { get; set; }
-        public string IsActive { get; set; }
+
+        public DateTime DayCreate { get; set; }
     }
 }
