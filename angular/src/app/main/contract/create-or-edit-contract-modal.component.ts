@@ -89,6 +89,12 @@ export class CreateOrEditContractModalComponent extends AppComponentBase {
         this.paginator.changePage(this.paginator.getPage());
     }
 
+    deleteContract(id): void {
+        this._contractDetailService.deleteContractDetail(id).subscribe(() => {
+            this.reloadPage();
+        })
+    }
+
     close(): void {
         this.modal.hide();
         this.modalSave.emit(null);

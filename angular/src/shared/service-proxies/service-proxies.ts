@@ -14111,182 +14111,6 @@ export interface IEntityPropertyChangeDto {
     id: number | undefined;
 }
 
-export class PagedResultDtoOfAssignmentTableDto implements IPagedResultDtoOfAssignmentTableDto {
-    totalCount!: number | undefined;
-    items!: AssignmentTableDto[] | undefined;
-
-    constructor(data?: IPagedResultDtoOfAssignmentTableDto) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(data?: any) {
-        if (data) {
-            this.totalCount = data["totalCount"];
-            if (data["items"] && data["items"].constructor === Array) {
-                this.items = [];
-                for (let item of data["items"])
-                    this.items.push(AssignmentTableDto.fromJS(item));
-            }
-        }
-    }
-
-    static fromJS(data: any): PagedResultDtoOfAssignmentTableDto {
-        data = typeof data === 'object' ? data : {};
-        let result = new PagedResultDtoOfAssignmentTableDto();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["totalCount"] = this.totalCount;
-        if (this.items && this.items.constructor === Array) {
-            data["items"] = [];
-            for (let item of this.items)
-                data["items"].push(item.toJSON());
-        }
-        return data; 
-    }
-}
-
-export interface IPagedResultDtoOfAssignmentTableDto {
-    totalCount: number | undefined;
-    items: AssignmentTableDto[] | undefined;
-}
-
-export class AssignmentTableDto implements IAssignmentTableDto {
-    merchID!: number | undefined;
-    vendorID!: number | undefined;
-    id!: number | undefined;
-
-    constructor(data?: IAssignmentTableDto) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(data?: any) {
-        if (data) {
-            this.merchID = data["merchID"];
-            this.vendorID = data["vendorID"];
-            this.id = data["id"];
-        }
-    }
-
-    static fromJS(data: any): AssignmentTableDto {
-        data = typeof data === 'object' ? data : {};
-        let result = new AssignmentTableDto();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["merchID"] = this.merchID;
-        data["vendorID"] = this.vendorID;
-        data["id"] = this.id;
-        return data; 
-    }
-}
-
-export interface IAssignmentTableDto {
-    merchID: number | undefined;
-    vendorID: number | undefined;
-    id: number | undefined;
-}
-
-export class AssignmentTableInput implements IAssignmentTableInput {
-    merchID!: number | undefined;
-    vendorID!: number | undefined;
-    id!: number | undefined;
-
-    constructor(data?: IAssignmentTableInput) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(data?: any) {
-        if (data) {
-            this.merchID = data["merchID"];
-            this.vendorID = data["vendorID"];
-            this.id = data["id"];
-        }
-    }
-
-    static fromJS(data: any): AssignmentTableInput {
-        data = typeof data === 'object' ? data : {};
-        let result = new AssignmentTableInput();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["merchID"] = this.merchID;
-        data["vendorID"] = this.vendorID;
-        data["id"] = this.id;
-        return data; 
-    }
-}
-
-export interface IAssignmentTableInput {
-    merchID: number | undefined;
-    vendorID: number | undefined;
-    id: number | undefined;
-}
-
-export class AssignmentTableForViewDto implements IAssignmentTableForViewDto {
-    merchID!: number | undefined;
-    vendorID!: number | undefined;
-
-    constructor(data?: IAssignmentTableForViewDto) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(data?: any) {
-        if (data) {
-            this.merchID = data["merchID"];
-            this.vendorID = data["vendorID"];
-        }
-    }
-
-    static fromJS(data: any): AssignmentTableForViewDto {
-        data = typeof data === 'object' ? data : {};
-        let result = new AssignmentTableForViewDto();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["merchID"] = this.merchID;
-        data["vendorID"] = this.vendorID;
-        return data; 
-    }
-}
-
-export interface IAssignmentTableForViewDto {
-    merchID: number | undefined;
-    vendorID: number | undefined;
-}
-
 export class PagedResultDtoOfBidDto implements IPagedResultDtoOfBidDto {
     totalCount!: number | undefined;
     items!: BidDto[] | undefined;
@@ -15782,8 +15606,11 @@ export interface IPagedResultDtoOfContractDetailDto {
 export class ContractDetailDto implements IContractDetailDto {
     contractID!: number | undefined;
     merchID!: number | undefined;
+    merCode!: string | undefined;
+    merName!: string | undefined;
     quantity!: number | undefined;
     price!: number | undefined;
+    note!: string | undefined;
     id!: number | undefined;
 
     constructor(data?: IContractDetailDto) {
@@ -15799,8 +15626,11 @@ export class ContractDetailDto implements IContractDetailDto {
         if (data) {
             this.contractID = data["contractID"];
             this.merchID = data["merchID"];
+            this.merCode = data["merCode"];
+            this.merName = data["merName"];
             this.quantity = data["quantity"];
             this.price = data["price"];
+            this.note = data["note"];
             this.id = data["id"];
         }
     }
@@ -15816,8 +15646,11 @@ export class ContractDetailDto implements IContractDetailDto {
         data = typeof data === 'object' ? data : {};
         data["contractID"] = this.contractID;
         data["merchID"] = this.merchID;
+        data["merCode"] = this.merCode;
+        data["merName"] = this.merName;
         data["quantity"] = this.quantity;
         data["price"] = this.price;
+        data["note"] = this.note;
         data["id"] = this.id;
         return data; 
     }
@@ -15826,16 +15659,22 @@ export class ContractDetailDto implements IContractDetailDto {
 export interface IContractDetailDto {
     contractID: number | undefined;
     merchID: number | undefined;
+    merCode: string | undefined;
+    merName: string | undefined;
     quantity: number | undefined;
     price: number | undefined;
+    note: string | undefined;
     id: number | undefined;
 }
 
 export class ContractDetailInput implements IContractDetailInput {
     contractID!: number | undefined;
     merchID!: number | undefined;
+    merCode!: string | undefined;
+    merName!: string | undefined;
     quantity!: number | undefined;
     price!: number | undefined;
+    note!: string | undefined;
     id!: number | undefined;
 
     constructor(data?: IContractDetailInput) {
@@ -15851,8 +15690,11 @@ export class ContractDetailInput implements IContractDetailInput {
         if (data) {
             this.contractID = data["contractID"];
             this.merchID = data["merchID"];
+            this.merCode = data["merCode"];
+            this.merName = data["merName"];
             this.quantity = data["quantity"];
             this.price = data["price"];
+            this.note = data["note"];
             this.id = data["id"];
         }
     }
@@ -15868,8 +15710,11 @@ export class ContractDetailInput implements IContractDetailInput {
         data = typeof data === 'object' ? data : {};
         data["contractID"] = this.contractID;
         data["merchID"] = this.merchID;
+        data["merCode"] = this.merCode;
+        data["merName"] = this.merName;
         data["quantity"] = this.quantity;
         data["price"] = this.price;
+        data["note"] = this.note;
         data["id"] = this.id;
         return data; 
     }
@@ -15878,8 +15723,11 @@ export class ContractDetailInput implements IContractDetailInput {
 export interface IContractDetailInput {
     contractID: number | undefined;
     merchID: number | undefined;
+    merCode: string | undefined;
+    merName: string | undefined;
     quantity: number | undefined;
     price: number | undefined;
+    note: string | undefined;
     id: number | undefined;
 }
 
