@@ -30,6 +30,10 @@ import { ViewContractModalComponent } from './contract/view-contract-modal.compo
 import { ProjectComponent } from './project/project.component';
 import { ViewProjectModalComponent } from './project/view-project-modal.component';
 import { CreateOrEditProjectModalComponent } from './project/create-or-edit-project-modal.component';
+import { AssignmentTableComponent } from './assignment-table/assignment-table.component';
+import { ViewAssignmentTableModalComponent } from './assignment-table/view-assignment-table-modal.component';
+import { CreateOrEditAssignmentTableModalComponent } from './assignment-table/create-or-edit-assignment-table-modal.component';
+
 
 @NgModule({
     imports: [
@@ -65,7 +69,9 @@ import { CreateOrEditProjectModalComponent } from './project/create-or-edit-proj
         ContractComponent, CreateOrEditContractModalComponent, ViewContractModalComponent,
         VendorTypeComponent, CreateOrEditVendorTypeModalComponent, ViewVendorTypeModalComponent,
         ProjectComponent, CreateOrEditProjectModalComponent, ViewProjectModalComponent,
+        AssignmentTableComponent, 
         CreateMerchandiseModalComponent,
+        
     ],
     providers: [
         

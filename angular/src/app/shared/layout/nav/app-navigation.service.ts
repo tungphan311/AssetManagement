@@ -40,7 +40,12 @@ export class AppNavigationService {
                 new AppMenuItem('Merchandise', 'Pages.Administration.Merchandise', 'flaticon-business', '/app/main/merchandise'),
                 new AppMenuItem('MerchandiseType', 'Pages.Administration.MerchandiseType', 'flaticon-business', '/app/main/merchandise-type'),
                 new AppMenuItem('Contract', 'Pages.Administration.Contract', 'flaticon2-contract', '/app/main/contract'),
+<<<<<<< HEAD
                 new AppMenuItem('Project', 'Pages.Administration.Project', 'flaticon2-contract', '/app/main/project')
+=======
+                new AppMenuItem('AssignmentTable', 'Pages.Administration.AssignmentTable', 'flaticon2-contract', '/app/main/assignment-table'),
+                new AppMenuItem('Project', 'Pages.Administration.Project', 'flaticon-folder', '/app/main/project')
+>>>>>>> 4359cd65c05ab1667b76c2355710653ccfa01734
             ])
         ]);
     }
