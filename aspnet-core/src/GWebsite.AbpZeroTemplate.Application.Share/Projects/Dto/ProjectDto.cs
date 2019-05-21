@@ -1,4 +1,5 @@
 ﻿using Abp.Domain.Entities;
+using System;
 using GWebsite.AbpZeroTemplate.Core.Models;
 
 namespace GWebsite.AbpZeroTemplate.Application.Share.Projects.Dto
@@ -8,7 +9,9 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.Projects.Dto
     /// </summary>
     public class ProjectDto : Entity<int>
     {
+        public string Code { get; set; }
         public string Name { get; set; }
+        public DateTime Date { get; set; }
         public bool IsActive { get; set; }
     }
 }

@@ -27,6 +27,9 @@ import { CreateMerchandiseModalComponent } from './vendor/create-merchandise-mod
 import { ContractComponent } from './contract/contract.component';
 import { CreateOrEditContractModalComponent } from './contract/create-or-edit-contract-modal.component';
 import { ViewContractModalComponent } from './contract/view-contract-modal.component';
+import { ProjectComponent } from './project/project.component';
+import { ViewProjectModalComponent } from './project/view-project-modal.component';
+import { CreateOrEditProjectModalComponent } from './project/create-or-edit-project-modal.component';
 
 @NgModule({
     imports: [
@@ -61,6 +64,7 @@ import { ViewContractModalComponent } from './contract/view-contract-modal.compo
         VendorComponent, CreateOrEditVendorModalComponent, ViewVendorModalComponent,
         ContractComponent, CreateOrEditContractModalComponent, ViewContractModalComponent,
         VendorTypeComponent, CreateOrEditVendorTypeModalComponent, ViewVendorTypeModalComponent,
+        ProjectComponent, CreateOrEditProjectModalComponent, ViewProjectModalComponent,
         CreateMerchandiseModalComponent,
     ],
     providers: [

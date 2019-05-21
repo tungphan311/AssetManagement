@@ -7666,19 +7666,22 @@ export class ProjectServiceProxy {
     }
 
     /**
+     * @code (optional) 
      * @name (optional) 
-     * @isActive (optional) 
+     * @date (optional) 
      * @sorting (optional) 
      * @maxResultCount (optional) 
      * @skipCount (optional) 
      * @return Success
      */
-    getProjectsByFilter(name: string | null | undefined, isActive: string | null | undefined, sorting: string | null | undefined, maxResultCount: number | null | undefined, skipCount: number | null | undefined): Observable<PagedResultDtoOfProjectDto> {
+    getProjectsByFilter(code: string | null | undefined, name: string | null | undefined, date: string | null | undefined, sorting: string | null | undefined, maxResultCount: number | null | undefined, skipCount: number | null | undefined): Observable<PagedResultDtoOfProjectDto> {
         let url_ = this.baseUrl + "/api/Project/GetProjectsByFilter?";
+        if (code !== undefined)
+            url_ += "Code=" + encodeURIComponent("" + code) + "&"; 
         if (name !== undefined)
             url_ += "Name=" + encodeURIComponent("" + name) + "&"; 
-        if (isActive !== undefined)
-            url_ += "IsActive=" + encodeURIComponent("" + isActive) + "&"; 
+        if (date !== undefined)
+            url_ += "Date=" + encodeURIComponent("" + date) + "&"; 
         if (sorting !== undefined)
             url_ += "Sorting=" + encodeURIComponent("" + sorting) + "&"; 
         if (maxResultCount !== undefined)
@@ -13479,12 +13482,14 @@ export class ContractDto implements IContractDto {
     contractWarrantyPercent!: number | undefined;
     contractWarrantyAmount!: number | undefined;
     contractWarrantyBank!: string | undefined;
+    contractWarrantyFile!: string | undefined;
     warrantyGuaranteeTypeID!: number | undefined;
     warrantyGuaranteeID!: number | undefined;
     warrantyGuaranteeExpireDate!: moment.Moment | undefined;
     warrantyGuaranteePercent!: number | undefined;
     warrantyGuaranteeAmount!: number | undefined;
     warrantyGuaranteeBank!: string | undefined;
+    warrantyGuaranteeFile!: string | undefined;
     id!: number | undefined;
 
     constructor(data?: IContractDto) {
@@ -13509,12 +13514,14 @@ export class ContractDto implements IContractDto {
             this.contractWarrantyPercent = data["contractWarrantyPercent"];
             this.contractWarrantyAmount = data["contractWarrantyAmount"];
             this.contractWarrantyBank = data["contractWarrantyBank"];
+            this.contractWarrantyFile = data["contractWarrantyFile"];
             this.warrantyGuaranteeTypeID = data["warrantyGuaranteeTypeID"];
             this.warrantyGuaranteeID = data["warrantyGuaranteeID"];
             this.warrantyGuaranteeExpireDate = data["warrantyGuaranteeExpireDate"] ? moment(data["warrantyGuaranteeExpireDate"].toString()) : <any>undefined;
             this.warrantyGuaranteePercent = data["warrantyGuaranteePercent"];
             this.warrantyGuaranteeAmount = data["warrantyGuaranteeAmount"];
             this.warrantyGuaranteeBank = data["warrantyGuaranteeBank"];
+            this.warrantyGuaranteeFile = data["warrantyGuaranteeFile"];
             this.id = data["id"];
         }
     }
@@ -13539,12 +13546,14 @@ export class ContractDto implements IContractDto {
         data["contractWarrantyPercent"] = this.contractWarrantyPercent;
         data["contractWarrantyAmount"] = this.contractWarrantyAmount;
         data["contractWarrantyBank"] = this.contractWarrantyBank;
+        data["contractWarrantyFile"] = this.contractWarrantyFile;
         data["warrantyGuaranteeTypeID"] = this.warrantyGuaranteeTypeID;
         data["warrantyGuaranteeID"] = this.warrantyGuaranteeID;
         data["warrantyGuaranteeExpireDate"] = this.warrantyGuaranteeExpireDate ? this.warrantyGuaranteeExpireDate.toISOString() : <any>undefined;
         data["warrantyGuaranteePercent"] = this.warrantyGuaranteePercent;
         data["warrantyGuaranteeAmount"] = this.warrantyGuaranteeAmount;
         data["warrantyGuaranteeBank"] = this.warrantyGuaranteeBank;
+        data["warrantyGuaranteeFile"] = this.warrantyGuaranteeFile;
         data["id"] = this.id;
         return data; 
     }
@@ -13562,12 +13571,14 @@ export interface IContractDto {
     contractWarrantyPercent: number | undefined;
     contractWarrantyAmount: number | undefined;
     contractWarrantyBank: string | undefined;
+    contractWarrantyFile: string | undefined;
     warrantyGuaranteeTypeID: number | undefined;
     warrantyGuaranteeID: number | undefined;
     warrantyGuaranteeExpireDate: moment.Moment | undefined;
     warrantyGuaranteePercent: number | undefined;
     warrantyGuaranteeAmount: number | undefined;
     warrantyGuaranteeBank: string | undefined;
+    warrantyGuaranteeFile: string | undefined;
     id: number | undefined;
 }
 
@@ -13583,12 +13594,14 @@ export class ContractInput implements IContractInput {
     contractWarrantyPercent!: number | undefined;
     contractWarrantyAmount!: number | undefined;
     contractWarrantyBank!: string | undefined;
+    contractWarrantyFile!: string | undefined;
     warrantyGuaranteeTypeID!: number | undefined;
     warrantyGuaranteeID!: number | undefined;
     warrantyGuaranteeExpireDate!: moment.Moment | undefined;
     warrantyGuaranteePercent!: number | undefined;
     warrantyGuaranteeAmount!: number | undefined;
     warrantyGuaranteeBank!: string | undefined;
+    warrantyGuaranteeFile!: string | undefined;
     id!: number | undefined;
 
     constructor(data?: IContractInput) {
@@ -13613,12 +13626,14 @@ export class ContractInput implements IContractInput {
             this.contractWarrantyPercent = data["contractWarrantyPercent"];
             this.contractWarrantyAmount = data["contractWarrantyAmount"];
             this.contractWarrantyBank = data["contractWarrantyBank"];
+            this.contractWarrantyFile = data["contractWarrantyFile"];
             this.warrantyGuaranteeTypeID = data["warrantyGuaranteeTypeID"];
             this.warrantyGuaranteeID = data["warrantyGuaranteeID"];
             this.warrantyGuaranteeExpireDate = data["warrantyGuaranteeExpireDate"] ? moment(data["warrantyGuaranteeExpireDate"].toString()) : <any>undefined;
             this.warrantyGuaranteePercent = data["warrantyGuaranteePercent"];
             this.warrantyGuaranteeAmount = data["warrantyGuaranteeAmount"];
             this.warrantyGuaranteeBank = data["warrantyGuaranteeBank"];
+            this.warrantyGuaranteeFile = data["warrantyGuaranteeFile"];
             this.id = data["id"];
         }
     }
@@ -13643,12 +13658,14 @@ export class ContractInput implements IContractInput {
         data["contractWarrantyPercent"] = this.contractWarrantyPercent;
         data["contractWarrantyAmount"] = this.contractWarrantyAmount;
         data["contractWarrantyBank"] = this.contractWarrantyBank;
+        data["contractWarrantyFile"] = this.contractWarrantyFile;
         data["warrantyGuaranteeTypeID"] = this.warrantyGuaranteeTypeID;
         data["warrantyGuaranteeID"] = this.warrantyGuaranteeID;
         data["warrantyGuaranteeExpireDate"] = this.warrantyGuaranteeExpireDate ? this.warrantyGuaranteeExpireDate.toISOString() : <any>undefined;
         data["warrantyGuaranteePercent"] = this.warrantyGuaranteePercent;
         data["warrantyGuaranteeAmount"] = this.warrantyGuaranteeAmount;
         data["warrantyGuaranteeBank"] = this.warrantyGuaranteeBank;
+        data["warrantyGuaranteeFile"] = this.warrantyGuaranteeFile;
         data["id"] = this.id;
         return data; 
     }
@@ -13666,12 +13683,14 @@ export interface IContractInput {
     contractWarrantyPercent: number | undefined;
     contractWarrantyAmount: number | undefined;
     contractWarrantyBank: string | undefined;
+    contractWarrantyFile: string | undefined;
     warrantyGuaranteeTypeID: number | undefined;
     warrantyGuaranteeID: number | undefined;
     warrantyGuaranteeExpireDate: moment.Moment | undefined;
     warrantyGuaranteePercent: number | undefined;
     warrantyGuaranteeAmount: number | undefined;
     warrantyGuaranteeBank: string | undefined;
+    warrantyGuaranteeFile: string | undefined;
     id: number | undefined;
 }
 
@@ -13687,12 +13706,14 @@ export class ContractForViewDto implements IContractForViewDto {
     contractWarrantyPercent!: number | undefined;
     contractWarrantyAmount!: number | undefined;
     contractWarrantyBank!: string | undefined;
+    contractWarrantyFile!: string | undefined;
     warrantyGuaranteeTypeID!: number | undefined;
     warrantyGuaranteeID!: number | undefined;
     warrantyGuaranteeExpireDate!: moment.Moment | undefined;
     warrantyGuaranteePercent!: number | undefined;
     warrantyGuaranteeAmount!: number | undefined;
     warrantyGuaranteeBank!: string | undefined;
+    warrantyGuaranteeFile!: string | undefined;
 
     constructor(data?: IContractForViewDto) {
         if (data) {
@@ -13716,12 +13737,14 @@ export class ContractForViewDto implements IContractForViewDto {
             this.contractWarrantyPercent = data["contractWarrantyPercent"];
             this.contractWarrantyAmount = data["contractWarrantyAmount"];
             this.contractWarrantyBank = data["contractWarrantyBank"];
+            this.contractWarrantyFile = data["contractWarrantyFile"];
             this.warrantyGuaranteeTypeID = data["warrantyGuaranteeTypeID"];
             this.warrantyGuaranteeID = data["warrantyGuaranteeID"];
             this.warrantyGuaranteeExpireDate = data["warrantyGuaranteeExpireDate"] ? moment(data["warrantyGuaranteeExpireDate"].toString()) : <any>undefined;
             this.warrantyGuaranteePercent = data["warrantyGuaranteePercent"];
             this.warrantyGuaranteeAmount = data["warrantyGuaranteeAmount"];
             this.warrantyGuaranteeBank = data["warrantyGuaranteeBank"];
+            this.warrantyGuaranteeFile = data["warrantyGuaranteeFile"];
         }
     }
 
@@ -13745,12 +13768,14 @@ export class ContractForViewDto implements IContractForViewDto {
         data["contractWarrantyPercent"] = this.contractWarrantyPercent;
         data["contractWarrantyAmount"] = this.contractWarrantyAmount;
         data["contractWarrantyBank"] = this.contractWarrantyBank;
+        data["contractWarrantyFile"] = this.contractWarrantyFile;
         data["warrantyGuaranteeTypeID"] = this.warrantyGuaranteeTypeID;
         data["warrantyGuaranteeID"] = this.warrantyGuaranteeID;
         data["warrantyGuaranteeExpireDate"] = this.warrantyGuaranteeExpireDate ? this.warrantyGuaranteeExpireDate.toISOString() : <any>undefined;
         data["warrantyGuaranteePercent"] = this.warrantyGuaranteePercent;
         data["warrantyGuaranteeAmount"] = this.warrantyGuaranteeAmount;
         data["warrantyGuaranteeBank"] = this.warrantyGuaranteeBank;
+        data["warrantyGuaranteeFile"] = this.warrantyGuaranteeFile;
         return data; 
     }
 }
@@ -13767,12 +13792,14 @@ export interface IContractForViewDto {
     contractWarrantyPercent: number | undefined;
     contractWarrantyAmount: number | undefined;
     contractWarrantyBank: string | undefined;
+    contractWarrantyFile: string | undefined;
     warrantyGuaranteeTypeID: number | undefined;
     warrantyGuaranteeID: number | undefined;
     warrantyGuaranteeExpireDate: moment.Moment | undefined;
     warrantyGuaranteePercent: number | undefined;
     warrantyGuaranteeAmount: number | undefined;
     warrantyGuaranteeBank: string | undefined;
+    warrantyGuaranteeFile: string | undefined;
 }
 
 export class PagedResultDtoOfContractDetailDto implements IPagedResultDtoOfContractDetailDto {
@@ -19694,7 +19721,9 @@ export interface IPagedResultDtoOfProjectDto {
 }
 
 export class ProjectDto implements IProjectDto {
+    code!: string | undefined;
     name!: string | undefined;
+    date!: moment.Moment | undefined;
     isActive!: boolean | undefined;
     id!: number | undefined;
 
@@ -19709,7 +19738,9 @@ export class ProjectDto implements IProjectDto {
 
     init(data?: any) {
         if (data) {
+            this.code = data["code"];
             this.name = data["name"];
+            this.date = data["date"] ? moment(data["date"].toString()) : <any>undefined;
             this.isActive = data["isActive"];
             this.id = data["id"];
         }
@@ -19724,7 +19755,9 @@ export class ProjectDto implements IProjectDto {
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
+        data["code"] = this.code;
         data["name"] = this.name;
+        data["date"] = this.date ? this.date.toISOString() : <any>undefined;
         data["isActive"] = this.isActive;
         data["id"] = this.id;
         return data; 
@@ -19732,13 +19765,17 @@ export class ProjectDto implements IProjectDto {
 }
 
 export interface IProjectDto {
+    code: string | undefined;
     name: string | undefined;
+    date: moment.Moment | undefined;
     isActive: boolean | undefined;
     id: number | undefined;
 }
 
 export class ProjectInput implements IProjectInput {
+    code!: string | undefined;
     name!: string | undefined;
+    date!: moment.Moment | undefined;
     isActive!: boolean | undefined;
     id!: number | undefined;
 
@@ -19753,7 +19790,9 @@ export class ProjectInput implements IProjectInput {
 
     init(data?: any) {
         if (data) {
+            this.code = data["code"];
             this.name = data["name"];
+            this.date = data["date"] ? moment(data["date"].toString()) : <any>undefined;
             this.isActive = data["isActive"];
             this.id = data["id"];
         }
@@ -19768,7 +19807,9 @@ export class ProjectInput implements IProjectInput {
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
+        data["code"] = this.code;
         data["name"] = this.name;
+        data["date"] = this.date ? this.date.toISOString() : <any>undefined;
         data["isActive"] = this.isActive;
         data["id"] = this.id;
         return data; 
@@ -19776,13 +19817,17 @@ export class ProjectInput implements IProjectInput {
 }
 
 export interface IProjectInput {
+    code: string | undefined;
     name: string | undefined;
+    date: moment.Moment | undefined;
     isActive: boolean | undefined;
     id: number | undefined;
 }
 
 export class ProjectForViewDto implements IProjectForViewDto {
+    code!: string | undefined;
     name!: string | undefined;
+    date!: moment.Moment | undefined;
     isActive!: boolean | undefined;
 
     constructor(data?: IProjectForViewDto) {
@@ -19796,7 +19841,9 @@ export class ProjectForViewDto implements IProjectForViewDto {
 
     init(data?: any) {
         if (data) {
+            this.code = data["code"];
             this.name = data["name"];
+            this.date = data["date"] ? moment(data["date"].toString()) : <any>undefined;
             this.isActive = data["isActive"];
         }
     }
@@ -19810,14 +19857,18 @@ export class ProjectForViewDto implements IProjectForViewDto {
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
+        data["code"] = this.code;
         data["name"] = this.name;
+        data["date"] = this.date ? this.date.toISOString() : <any>undefined;
         data["isActive"] = this.isActive;
         return data; 
     }
 }
 
 export interface IProjectForViewDto {
+    code: string | undefined;
     name: string | undefined;
+    date: moment.Moment | undefined;
     isActive: boolean | undefined;
 }
 

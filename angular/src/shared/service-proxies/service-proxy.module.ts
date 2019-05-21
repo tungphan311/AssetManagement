@@ -45,6 +45,7 @@ import { WebApiServiceProxy } from './webapi.service';
         ApiServiceProxies.VendorServiceProxy,
         ApiServiceProxies.VendorTypeServiceProxy,
         ApiServiceProxies.ContractServiceProxy,
+        ApiServiceProxies.ProjectServiceProxy,
         WebApiServiceProxy,
         { provide: HTTP_INTERCEPTORS, useClass: AbpHttpInterceptor, multi: true }
     ]

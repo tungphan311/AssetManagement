@@ -792,6 +792,7 @@
       <text name="Vender">Vender</text>
       <text name="Merchandise">Merchandise</text>
       <text name="Contract">Contract</text>
+      <text name="Project">Project</text>
       <text name="CreateNewMerchandise">Create New Merchandise</text>
       <text name="MerchandiseInfo">Merchandise Info</text>
       <text name="MerchandiseName">Name</text>
