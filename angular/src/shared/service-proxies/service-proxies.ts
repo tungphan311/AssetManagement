@@ -14111,7 +14111,6 @@ export interface IAssignmentTableForViewDto {
     vendorID: number | undefined;
 }
 
-export class PagedResultDtoOfAuditLogListDto implements IPagedResultDtoOfAuditLogListDto {
 export class PagedResultDtoOfBidDto implements IPagedResultDtoOfBidDto {
     totalCount!: number | undefined;
     items!: BidDto[] | undefined;

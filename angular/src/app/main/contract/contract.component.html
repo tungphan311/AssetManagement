@@ -18,32 +18,40 @@
                 <form autocomplete="off">
                     <div class="m-form m-form--label-align-right" id="TextsFilterForm">
                         <div class="row align-items-center m--margin-bottom-10">
-                            <div class="col-sm-12">
+                            <div class="col-sm-20">
                                 <div class="input-group">
-                                    <label>Số hợp đồng</label>
-                                    <input [(ngModel)]="contractID" name="contractID" autofocus class="form-control" placeholder="Nhập mã hợp đồng" type="text">
-                                    <label>Tên hợp đồng</label>
-                                    <input [(ngModel)]="contractName" name="contractName" autoFocus class="form-control" placeholder="Nhập tên hợp đồng" type="text">                                  
-                                    <label>Ngày hợp đồng</label>
-                                    <input [(ngModel)]="createDate" name="createDate" autofocus class="form-control" type="date">
-                                </div>                              
-                                <div class="input-group">
-                                    <label>Mã gói thầu</label>
-                                    <select [(ngModel)]="briefCaseID" name="briefCaseID" autofocus class="form-control">
-                                        <option value="0" selected="selected">--NULL--</option>
-                                        <option *ngFor="let item of listBid" value="{{item.id}}">{{item.name}}</option>
-                                    </select>
-                                    <label>Nhà cung cấp</label>
-                                    <select [(ngModel)]="vendorID" name="vendorID" autofocus class="form-control">
-                                        <option value="0" selected="selected">Tất cả</option>
-                                        <option *ngFor="let item of listVendor" value="{{item.id}}">{{item.name}}</option>
-                                    </select>   
-                                    <span class="input-group-btn">
+                                    <div class="col-sm-3 form-group">
+                                        <label>Số hợp đồng</label>
+                                        <input [(ngModel)]="contractID" name="contractID" autofocus class="form-control" placeholder="Nhập mã hợp đồng" type="text">
+                                    </div>
+                                    <div class="col-sm-4 form-group">
+                                        <label>Tên hợp đồng</label>
+                                        <input [(ngModel)]="contractName" name="contractName" autoFocus class="form-control" placeholder="Nhập tên hợp đồng" type="text">
+                                    </div>
+                                    <div class="col-sm-3 form-group">
+                                        <label>Ngày hợp đồng</label>
+                                        <input [(ngModel)]="createDate" name="createDate" autofocus class="form-control" type="date">
+                                    </div>   
+                                    <div class="col-sm-3 form-group">
+                                        <label>Mã gói thầu</label>
+                                        <select [(ngModel)]="briefCaseID" name="briefCaseID" autofocus class="form-control">
+                                            <option value="0" selected="selected">--NULL--</option>
+                                            <option *ngFor="let item of listBid" value="{{item.id}}">{{item.name}}</option>
+                                        </select>
+                                    </div>       
+                                    <div class="col-sm-5 form-group">
+                                        <label>Nhà cung cấp</label>
+                                        <select [(ngModel)]="vendorID" name="vendorID" autofocus class="form-control">
+                                            <option value="0" selected="selected">Tất cả</option>
+                                            <option *ngFor="let item of listVendor" value="{{item.id}}">{{item.name}}</option>
+                                        </select>   
+                                    </div>     
+                                    <span class="align-items-bottom">
                                         <button (click)="applyFilters()" class="btn btn-primary" type="submit"><i
                                                 class="icon-refresh"></i>
                                             {{l("Refresh")}}</button>
-                                    </span>           
-                                </div>                     
+                                    </span>                       
+                                </div>                                                
                             </div>
                         </div>
                     </div>
@@ -118,7 +126,7 @@
 
                                         <button
                                             class="btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill"
-                                            (click)="deleteMerchandise(record.id)" title="{{l('Delete')}}">
+                                            (click)="deleteContract(record.id)" title="{{l('Delete')}}">
                                             <i class="fa fa-times" [attr.aria-label]="l('Delete')"></i>
                                         </button>
 

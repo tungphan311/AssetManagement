@@ -7,7 +7,6 @@ import { VendorTypeComponent } from './vendortype/vendortype.component';
 import { MerchandiseTypeComponent } from './merchandise-type/merchandise-type.component';
 import { ContractComponent } from './contract/contract.component';
 import { AssignmentTableComponent } from './assignment-table/assignment-table.component';
-import { ProjectComponent } from './project/project.component';
 
 @NgModule({
     imports: [
@@ -32,13 +31,6 @@ import { ProjectComponent } from './project/project.component';
                             permission: 'Pages.Administration.AssignmentTable'
                         },
                     },
-                    {
-                        path: 'project', component: ProjectComponent,
-                        data: {
-                            permission: 'Pages.Administration.Project'
-                        },
-                    }
-                  
                 ]
             }
         ])
