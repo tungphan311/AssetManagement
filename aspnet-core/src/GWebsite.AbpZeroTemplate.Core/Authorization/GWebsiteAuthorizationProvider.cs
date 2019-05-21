@@ -61,6 +61,7 @@ namespace GWebsite.AbpZeroTemplate.Core.Authorization
             detailAssetRent.CreateChildPermission(GWebsitePermissions.Pages_Administration_DetailAssetRent_Edit, L("EditingDetailAssetRent"));
             detailAssetRent.CreateChildPermission(GWebsitePermissions.Pages_Administration_DetailAssetRent_Delete, L("DeletingDetailAssetRent"));
 
+
         }
 
         private static ILocalizableString L(string name)

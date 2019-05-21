@@ -21,9 +21,9 @@ export class ViewDetailAssetRentModalComponent extends AppComponentBase {
         super(injector);
     }
 
-    show(detailId?: number | null | undefined): void {
+    show(detailAssetRentId?: number | null | undefined): void {
         this._detailAssetRentService
-            .getDetailAssetRentForView(detailId)
+            .getDetailAssetRenttForView(detailAssetRentId)
             .subscribe(result => {
                 this.detailAssetRent = result;
                 this.modal.show();

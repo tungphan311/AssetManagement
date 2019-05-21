@@ -27,7 +27,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.DetailAssetRents
 
         public void CreateOrEditDetailAssetRent(DetailAssetRentInput detailAssetRentInput)
         {
-            if (detailAssetRentInput.detailId == 0)
+            if (detailAssetRentInput.Id == 0)
             {
                 Create(detailAssetRentInput);
             }
@@ -37,11 +37,11 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.DetailAssetRents
             }
         }
 
-       
 
-        public void DeleteDetailAssetRent(int detailId)
+
+        public void DeleteDetailAssetRent(int id)
         {
-            var detailAssetRentEntity = detailAssetRentRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.detailId == detailId);
+            var detailAssetRentEntity = detailAssetRentRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.Id == id);
             if (detailAssetRentEntity != null)
             {
                 detailAssetRentEntity.IsDelete = true;
@@ -50,9 +50,9 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.DetailAssetRents
             }
         }
 
-        public DetailAssetRentInput GetDetailAssetRentForEdit(int detailId)
+        public DetailAssetRentInput GetDetailAssetRentForEdit(int id)
         {
-            var detailAssetRentEntity = detailAssetRentRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.detailId == detailId);
+            var detailAssetRentEntity = detailAssetRentRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.Id == id);
             if (detailAssetRentEntity == null)
             {
 
@@ -61,9 +61,9 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.DetailAssetRents
             return ObjectMapper.Map<DetailAssetRentInput>(detailAssetRentEntity);
         }
 
-        public DetailAssetRentForView GetDetailAssetRentForView(int detailId)
+        public DetailAssetRentForView GetDetailAssetRentForView(int id)
         {
-            var detailAssetRentEntity = detailAssetRentRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.detailId == detailId);
+            var detailAssetRentEntity = detailAssetRentRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.Id == id);
             if (detailAssetRentEntity == null)
             {
                 return null;
@@ -115,7 +115,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.DetailAssetRents
         [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient_Edit)]
         private void Update(DetailAssetRentInput detailAssetRentInput)
         {
-            var detailAssetRentEntity = detailAssetRentRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.detailId == detailAssetRentInput.detailId);
+            var detailAssetRentEntity = detailAssetRentRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.Id == detailAssetRentInput.Id);
             if (detailAssetRentEntity == null)
             {
             }
@@ -129,6 +129,8 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.DetailAssetRents
     }
 
 }
+
+
 
 
 

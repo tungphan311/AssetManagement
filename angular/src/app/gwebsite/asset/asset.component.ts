@@ -34,7 +34,7 @@ export class AssetComponent extends AppComponentBase
     /**
      * tạo các biến dể filters
      */
-    nameAsset: string;
+    assetName: string;
 
     constructor(
         injector: Injector,
@@ -77,10 +77,10 @@ export class AssetComponent extends AppComponentBase
         this.reloadList(null, event);
     }
 
-    reloadList(nameAsset, event?: LazyLoadEvent) {
+    reloadList(assetName, event?: LazyLoadEvent) {
         this._assetService
             .getAssetByFilter(
-                nameAsset,
+                assetName,
                 this.primengTableHelper.getSorting(this.dataTable),
                 this.primengTableHelper.getMaxResultCount(
                     this.paginator,
@@ -104,8 +104,8 @@ export class AssetComponent extends AppComponentBase
     init(): void {
         //get params từ url để thực hiện filter
         this._activatedRoute.params.subscribe((params: Params) => {
-            this.nameAsset = params["nameAsset"] || "";
-            this.reloadList(this.nameAsset, null);
+            this.assetName = params["nameAsset"] || "";
+            this.reloadList(this.assetName, null);
         });
     }
 
@@ -115,7 +115,7 @@ export class AssetComponent extends AppComponentBase
 
     applyFilters(): void {
         //truyền params lên url thông qua router
-        this.reloadList(this.nameAsset, null);
+        this.reloadList(this.assetName, null);
 
         if (this.paginator.getPage() !== 0) {
             this.paginator.changePage(0);

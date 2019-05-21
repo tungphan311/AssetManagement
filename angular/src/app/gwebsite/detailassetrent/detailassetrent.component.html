@@ -17,8 +17,7 @@
                     "
                     class="btn btn-primary"
                 >
-                    <i class="fa fa-plus"></i>
-                    {{ l("CreateNewDetailAssetRent") }}
+                    <i class="fa fa-plus"></i> {{ l("CreateNewAsset") }}
                 </button>
             </div>
         </div>
@@ -35,14 +34,6 @@
                         <div class="row align-items-center m--margin-bottom-10">
                             <div class="col-sm-12">
                                 <div class="input-group">
-                                    <input
-                                        [(ngModel)]="nameAsset"
-                                        name="NameAsset"
-                                        autoFocus
-                                        class="form-control"
-                                        placeholder="Nhập tên tài sản"
-                                        type="text"
-                                    />
                                     <input
                                         [(ngModel)]="rentBy"
                                         name="RentBy"
@@ -74,7 +65,7 @@
                     >
                         <p-table
                             #dataTable
-                            (onLazyLoad)="getDetailAssetsRent($event)"
+                            (onLazyLoad)="getDetailAssetRent($event)"
                             [value]="primengTableHelper.records"
                             rows="{{
                                 primengTableHelper.defaultRecordsCountPerPage
@@ -91,23 +82,24 @@
                                             field="nameAsset"
                                         ></p-sortIcon>
                                     </th>
-                                    <th pSortableColumn="rentBy">
-                                        Người thuê
-                                    </th>
-                                    <th pSortableColumn="dayPay">
-                                        Ngày trả
+                                    <th pSortableColumn="nameAsset">
+                                        Ngày thanh toán
                                         <p-sortIcon field="dayPay"></p-sortIcon>
                                     </th>
+                                    <th pSortableColumn="isPay">
+                                        đã trả ?
+                                        <p-sortIcon field="isPay"></p-sortIcon>
+                                    </th>
                                     <th pSortableColumn="rate">
-                                        lai xuất
+                                        Lãi xuất
                                         <p-sortIcon field="rate"></p-sortIcon>
                                     </th>
                                     <th pSortableColumn="money">
-                                        tiền thanh toán
+                                        tiền trả VND
                                         <p-sortIcon field="money"></p-sortIcon>
                                     </th>
                                     <th pSortableColumn="describe">
-                                        mô tả
+                                        Mô tả
                                         <p-sortIcon
                                             field="describe"
                                         ></p-sortIcon>
@@ -130,23 +122,23 @@
                                     </td>
                                     <td>
                                         <span class="ui-column-title"
-                                            >Người Thuê</span
+                                            >Ngày thanh toán</span
                                         >
-                                        <span title="{{ record.rentBy }}">{{
-                                            truncateString(record.rentBy)
-                                        }}</span>
-                                    </td>
-                                    <td>
-                                        <span class="ui-column-title"
-                                            >ngày trả
-                                        </span>
                                         <span title="{{ record.dayPay }}">{{
                                             truncateString(record.dayPay)
                                         }}</span>
                                     </td>
                                     <td>
                                         <span class="ui-column-title"
-                                            >lãi xuât</span
+                                            >đã trả ?</span
+                                        >
+                                        <span title="{{ record.isPay }}">{{
+                                            truncateString(record.isPay)
+                                        }}</span>
+                                    </td>
+                                    <td>
+                                        <span class="ui-column-title"
+                                            >lãi xuất</span
                                         >
                                         <span title="{{ record.rate }}">{{
                                             truncateString(record.rate)
@@ -154,18 +146,18 @@
                                     </td>
                                     <td>
                                         <span class="ui-column-title"
-                                            >đã thanh toán
-                                        </span>
-                                        <span title="{{ record.isPay }}">{{
-                                            truncateString(record.isPay)
+                                            >Tiền trả</span
+                                        >
+                                        <span title="{{ record.money }}">{{
+                                            truncateString(record.money)
                                         }}</span>
                                     </td>
                                     <td>
                                         <span class="ui-column-title"
-                                            >tiền thanh toán</span
+                                            >Mô tả</span
                                         >
-                                        <span title="{{ record.money }}">{{
-                                            truncateString(record.money)
+                                        <span title="{{ record.describe }}">{{
+                                            truncateString(record.describe)
                                         }}</span>
                                     </td>
                                     <td>
@@ -173,7 +165,7 @@
                                             class="btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill"
                                             (click)="
                                                 createOrEditModal.show(
-                                                    record.detailId
+                                                    record.id
                                                 )
                                             "
                                             title="{{ l('Edit') }}"
@@ -187,9 +179,7 @@
                                         <button
                                             class="btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill"
                                             (click)="
-                                                deleteDetailAssetRent(
-                                                    record.detailId
-                                                )
+                                                deleteDetailAssetRent(record.id)
                                             "
                                             title="{{ l('Delete') }}"
                                         >
@@ -202,8 +192,8 @@
                                         <button
                                             class="btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill"
                                             (click)="
-                                                viewdetailAssetRentModal.show(
-                                                    record.detailId
+                                                viewDetailAssetRentModal.show(
+                                                    record.id
                                                 )
                                             "
                                             title="{{ l('View') }}"
@@ -229,7 +219,7 @@
                                     primengTableHelper.defaultRecordsCountPerPage
                                 }}"
                                 #paginator
-                                (onPageChange)="getDetailAssetsRent($event)"
+                                (onPageChange)="getDetailAssetRent($event)"
                                 [totalRecords]="
                                     primengTableHelper.totalRecordsCount
                                 "

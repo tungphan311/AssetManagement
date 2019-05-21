@@ -24,7 +24,7 @@ namespace GWebsite.AbpZeroTemplate.Application.Controllers
         [HttpGet]
         public AssetInput GetAssetForEdit(int id)
         {
-            return assetAppService.GetAssetForEdit(id);
+            return assetAppService.getAssetForEdit(id);
         }
 
         [HttpPost]

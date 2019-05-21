@@ -8,12 +8,12 @@ using Abp.Application.Services.Dto;
 
 namespace GWebsite.AbpZeroTemplate.Application.Share.DetailAssetRents
 {
-    public interface  IDetailAssetRentAppService
+    public interface IDetailAssetRentAppService
     {
-        void CreateOrEditDetailAssetRent (DetailAssetRentInput assetInput);
-        DetailAssetRentInput GetDetailAssetRentForEdit(int DetailId);
-        void DeleteDetailAssetRent(int DetailId);
+        void CreateOrEditDetailAssetRent(DetailAssetRentInput assetInput);
+        DetailAssetRentInput GetDetailAssetRentForEdit(int id);
+        void DeleteDetailAssetRent(int id);
         PagedResultDto<DetailAssetRentDto> GetDetailAssetRent(DetailAssetRentFilter input);
-        DetailAssetRentForView GetDetailAssetRentForView(int DetailId);
-    }   
+        DetailAssetRentForView GetDetailAssetRentForView(int id);
+    }
 }

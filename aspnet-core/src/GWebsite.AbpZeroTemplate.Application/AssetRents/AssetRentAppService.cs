@@ -10,6 +10,7 @@ using GWebsite.AbpZeroTemplate.Core.Authorization;
 using GWebsite.AbpZeroTemplate.Core.Models;
 using System.Linq;
 using System.Linq.Dynamic.Core;
+using System;
 
 
 namespace GWebsite.AbpZeroTemplate.Web.Core.AssetRents
@@ -27,6 +28,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.AssetRents
 
         public void CreateOrEditAssetRent(AssetRentInput assetRentInput)
         {
+           
             if (assetRentInput.Id == 0)
             {
                 Create(assetRentInput);

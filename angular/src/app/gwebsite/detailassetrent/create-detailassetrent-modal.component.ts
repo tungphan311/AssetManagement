@@ -39,6 +39,21 @@ export class CreateDetailAssetRentModalComponent extends AppComponentBase {
         super(injector);
     }
 
+    // tslint:disable-next-line:use-life-cycle-interface
+    ngAfterViewInit(): void {
+        let t = this;
+        $(this.dateInput.nativeElement)
+            .datetimepicker({
+                locale: abp.localization.currentLanguage.name,
+                format: "L"
+            })
+            .on("dp.change", function(_e: any) {
+                t.detailassetrent.dayPay = $(t.dateInput.nativeElement)
+                    .val()
+                    .toString();
+            });
+    }
+
     show(detailAssetRentId?: number | null | undefined): void {
         this.saving = false;
 

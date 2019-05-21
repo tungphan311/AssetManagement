@@ -11,14 +11,14 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.DetailAssetRents.Dto
     /// <summary>
     /// <model cref="DetailAssetRent"></model>
     /// </summary>
-    public class DetailAssetRentDto : Entity<int> 
+    public class DetailAssetRentDto : Entity<int>
     {
         public string nameAsset { get; set; }
-        public string rentBy { get; set;  }
-        public bool isPay { get; set;  }
-        public DateTime? dayPay { get; set;  }
+        public string rentBy { get; set; }
+        public bool isPay { get; set; }
+        public string dayPay { get; set; }
         public float rate { get; set; }
-        public string describe { get; set;  }
-        public decimal money { get; set;  }
+        public string describe { get; set; }
+        public decimal money { get; set; }
     }
 }

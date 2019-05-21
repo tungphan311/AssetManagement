@@ -60,7 +60,7 @@ export class DetailAssetRentComponent extends AppComponentBase
     }
 
     /**
-     * Hàm get danh sách AssetRent
+     * Hàm get danh sách DetailAssetRent
      * @param event
      */
     getDetailAsssetsRent(event?: LazyLoadEvent) {
@@ -97,12 +97,10 @@ export class DetailAssetRentComponent extends AppComponentBase
             });
     }
 
-    deleteDetailAssetRent(detailId): void {
-        this._detailAssetRentService
-            .deleteDetailAssetRent(detailId)
-            .subscribe(() => {
-                this.reloadPage();
-            });
+    deleteDetailAssetRent(id: number): void {
+        this._detailAssetRentService.deleteDetailAssetRent(id).subscribe(() => {
+            this.reloadPage();
+        });
     }
 
     init(): void {

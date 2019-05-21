@@ -7,7 +7,6 @@ using GWebsite.AbpZeroTemplate.Application.Share.MenuClients.Dto;
 using GWebsite.AbpZeroTemplate.Core.Models;
 using GWebsite.AbpZeroTemplate.Application.Share.AssetsRents.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.DetailAssetRents.Dto;
-
 namespace GWebsite.AbpZeroTemplate.Applications
 {
     internal static class CustomDtoMapper
@@ -44,13 +43,14 @@ namespace GWebsite.AbpZeroTemplate.Applications
             configuration.CreateMap<AsssetRent, AssetRentForView>();
             configuration.CreateMap<AsssetRent, AssetRentInput>();
             configuration.CreateMap<AssetRentInput, AsssetRent>();
-            
+
             //DetailAssetRent 
             configuration.CreateMap<DetailAssetRent, DetailAssetRentDto>();
             configuration.CreateMap<DetailAssetRent, DetailAssetRentFilter>();
             configuration.CreateMap<DetailAssetRent, DetailAssetRentForView>();
             configuration.CreateMap<DetailAssetRent, DetailAssetRentInput>();
             configuration.CreateMap<DetailAssetRentInput, DetailAssetRent>();
+
 
         }
     }

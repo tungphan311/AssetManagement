@@ -1573,11 +1573,7 @@ namespace GSoft.AbpZeroTemplate.Migrations
 
                     b.Property<string>("nameAsset");
 
-<<<<<<< HEAD
                     b.Property<decimal>("valueAsset");
-=======
-                    b.Property<int>("valueAsset");
->>>>>>> 1b39af43372e3632a1299669826a8996354131fa
 
                     b.HasKey("Id");
 
@@ -1600,9 +1596,7 @@ namespace GSoft.AbpZeroTemplate.Migrations
 
                     b.Property<DateTime?>("UpdatedDate");
 
-                    b.Property<string>("assetRentID");
-
-                    b.Property<DateTime>("datePay");
+                    b.Property<DateTime?>("datePay");
 
                     b.Property<DateTime?>("dateRent");
 
@@ -1691,11 +1685,9 @@ namespace GSoft.AbpZeroTemplate.Migrations
 
                     b.Property<int>("assetRentId");
 
-                    b.Property<DateTime?>("dayPay");
+                    b.Property<DateTime>("dayPay");
 
                     b.Property<string>("describe");
-
-                    b.Property<int>("detailId");
 
                     b.Property<bool>("isPay");
 

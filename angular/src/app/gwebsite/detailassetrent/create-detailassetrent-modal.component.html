@@ -13,11 +13,11 @@
             <form #editForm="ngForm" novalidate (ngSubmit)="save()">
                 <div class="modal-header">
                     <h4 class="modal-title">
-                        <span *ngIf="detailassetrent.detailId"
+                        <span *ngIf="detailassetrent.id"
                             >Cập nhật chi tiết tài sản :
                             {{ detailassetrent.assetName }}</span
                         >
-                        <span *ngIf="!detailassetrent.detailId"
+                        <span *ngIf="!detailassetrent.id"
                             >Tạo mới chi tiết tài sản
                         </span>
                     </h4>
@@ -37,8 +37,8 @@
                             #nameInput="ngModel"
                             class="form-control"
                             type="text"
-                            name="AssetName"
-                            [(ngModel)]="detailassetrent.assetName"
+                            name="NameAsset"
+                            [(ngModel)]="detailassetrent.nameAsset"
                             required
                             maxlength="64"
                         />
@@ -81,7 +81,7 @@
                         <input
                             #nameInput="ngModel"
                             class="form-control"
-                            type="datetime-local"
+                            type="date"
                             name="DayPay"
                             [(ngModel)]="detailassetrent.dayPay"
                             required
@@ -128,10 +128,9 @@
                             class="form-control"
                             type="checkbox"
                             checked="true"
-                            name="isPay"
+                            name="IsPay"
                             [(ngModel)]="detailassetrent.isPay"
                             required
-                            maxlength="64"
                         />
                         <validation-messages
                             [formCtrl]="isPayInput"

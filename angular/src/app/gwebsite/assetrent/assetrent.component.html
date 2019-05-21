@@ -97,6 +97,12 @@
                                             field="numberRent"
                                         ></p-sortIcon>
                                     </th>
+                                    <th pSortableColumn="rentBy">
+                                        Thời gian thuê
+                                    </th>
+                                    <th pSortableColumn="rentBy">
+                                        Thời gian trả
+                                    </th>
                                     <th>{{ l("Edit") }}</th>
                                 </tr>
                             </ng-template>
@@ -127,6 +133,22 @@
                                         >
                                         <span title="{{ record.numberRent }}">{{
                                             truncateString(record.numberRent)
+                                        }}</span>
+                                    </td>
+                                    <td>
+                                        <span class="ui-column-title"
+                                            >thời gian thuê</span
+                                        >
+                                        <span title="{{ record.dateRent }}">{{
+                                            truncateString(record.dateRent)
+                                        }}</span>
+                                    </td>
+                                    <td>
+                                        <span class="ui-column-title"
+                                            >thời gian trả
+                                        </span>
+                                        <span title="{{ record.datePay }}">{{
+                                            truncateString(record.datePay)
                                         }}</span>
                                     </td>
                                     <td>
@@ -186,7 +208,7 @@
                                     primengTableHelper.defaultRecordsCountPerPage
                                 }}"
                                 #paginator
-                                (onPageChange)="getAssetsRent($event)"
+                                (onPageChange)="getAssetsRents($event)"
                                 [totalRecords]="
                                     primengTableHelper.totalRecordsCount
                                 "

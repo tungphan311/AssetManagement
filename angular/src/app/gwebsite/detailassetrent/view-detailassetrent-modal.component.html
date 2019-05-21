@@ -12,11 +12,11 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title">
-                    <span *ngIf="detailAssetRent.detailId"
+                    <span *ngIf="detailAssetRent.id"
                         >{{ l("EditDetailAssetRent") }}:
                         {{ detailAssetRent.nameAsset }}</span
                     >
-                    <span *ngIf="!detailAssetRent.detailId">{{
+                    <span *ngIf="!detailAssetRent.id">{{
                         l("CreateNewDetailAssetRent")
                     }}</span>
                 </h4>
@@ -32,34 +32,35 @@
             <div class="modal-body">
                 <div class="form-group">
                     <label>Tên Tài sản</label>
-                    <p>{{ assetRent.nameAsset }}</p>
+                    <p>{{ detailAssetRent.nameAsset }}</p>
                 </div>
                 <div class="form-group">
                     <label>Người thuê </label>
-                    <p>{{ assetRent.rentBy }}</p>
+                    <p>{{ detailAssetRent.rentBy }}</p>
                 </div>
                 <div class="form-group">
-                    <label>11111111 </label>
+                    <label> Ngày trả </label>
                     <p>{{ detailAssetRent.dayPay }}</p>
-                    <div class="modal-footer">
-                        <button
-                            [disabled]="saving"
-                            type="button"
-                            class="btn btn-default"
-                            (click)="close()"
-                        >
-                            {{ l("Cancel") }}
-                        </button>
-                        <button
-                            type="submit"
-                            class="btn btn-primary"
-                            [buttonBusy]="saving"
-                            [busyText]="l('SavingWithThreeDot')"
-                        >
-                            <i class="fa fa-save"></i>
-                            <span>{{ l("Save") }}</span>
-                        </button>
-                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button
+                        [disabled]="saving"
+                        type="button"
+                        class="btn btn-default"
+                        (click)="close()"
+                    >
+                        {{ l("Cancel") }}
+                    </button>
+                    <button
+                        type="submit"
+                        class="btn btn-primary"
+                        [buttonBusy]="saving"
+                        [busyText]="l('SavingWithThreeDot')"
+                    >
+                        <i class="fa fa-save"></i>
+                        <span>{{ l("Save") }}</span>
+                    </button>
                 </div>
             </div>
         </div>

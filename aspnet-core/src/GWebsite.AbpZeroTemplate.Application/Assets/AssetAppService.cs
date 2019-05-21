@@ -14,11 +14,11 @@ using System.Linq.Dynamic.Core;
 namespace GWebsite.AbpZeroTemplate.Web.Core.Assets
 {
     [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient)]
-    public class DetailAssetRentAppService : GWebsiteAppServiceBase, IAssetAppService
+    public class AssetAppService : GWebsiteAppServiceBase, IAssetAppService
     {
         private readonly IRepository<Asset> assetRepository;
 
-        public DetailAssetRentAppService(IRepository<Asset> assetRepository)
+        public AssetAppService(IRepository<Asset> assetRepository)
         {
             this.assetRepository = assetRepository;
         }
@@ -49,7 +49,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Assets
             }
         }
 
-        public AssetInput GetAssetForEdit(int id)
+        public AssetInput getAssetForEdit(int id)
         {
             var assetEntity = assetRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.Id == id);
             if (assetEntity == null)

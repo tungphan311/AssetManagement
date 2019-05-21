@@ -10,7 +10,7 @@ namespace GWebsite.AbpZeroTemplate.Application.Controllers
     {
         private readonly IDetailAssetRentAppService detailAssetRentAppService;
 
-        public DetailAssetRentController (IDetailAssetRentAppService detailAssetRentAppService)
+        public DetailAssetRentController(IDetailAssetRentAppService detailAssetRentAppService)
         {
             this.detailAssetRentAppService = detailAssetRentAppService;
         }
@@ -22,9 +22,9 @@ namespace GWebsite.AbpZeroTemplate.Application.Controllers
         }
 
         [HttpGet]
-        public DetailAssetRentInput GetDetailAssetRentForEdit(int detailId)
+        public DetailAssetRentInput GetDetailAssetRentForEdit(int id)
         {
-            return detailAssetRentAppService.GetDetailAssetRentForEdit(detailId);
+            return detailAssetRentAppService.GetDetailAssetRentForEdit(id);
         }
 
         [HttpPost]
@@ -33,16 +33,17 @@ namespace GWebsite.AbpZeroTemplate.Application.Controllers
             detailAssetRentAppService.CreateOrEditDetailAssetRent(input);
         }
 
-        [HttpDelete("{detailId}")]
-        public void DeleteDetailAssetRent(int detailId)
+        [HttpDelete("{id}")]
+        public void DeleteDetailAssetRent(int id)
         {
-            detailAssetRentAppService.DeleteDetailAssetRent(detailId);
+            detailAssetRentAppService.DeleteDetailAssetRent(id);
         }
 
         [HttpGet]
-        public DetailAssetRentForView GetDetailAssetRentForView(int detailId)
+        public DetailAssetRentForView GetDetailAssetRenttForView(int id)
         {
-            return detailAssetRentAppService.GetDetailAssetRentForView(detailId);
+            return detailAssetRentAppService.GetDetailAssetRentForView(id);
         }
     }
 }
+

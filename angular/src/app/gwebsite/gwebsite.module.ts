@@ -77,8 +77,8 @@ import { DetailAssetRentComponent } from "./detailassetrent/detailassetrent.comp
         AssetRentComponent,
         ViewAssetRentModalComponent,
         CreateDetailAssetRentModalComponent,
-        ViewDetailAssetRentModalComponent,
-        DetailAssetRentComponent
+        DetailAssetRentComponent,
+        ViewDetailAssetRentModalComponent
     ],
     providers: [DemoModelServiceProxy]
 })

@@ -6,16 +6,17 @@ using System.Threading.Tasks;
 
 namespace GWebsite.AbpZeroTemplate.Core.Models
 {
-    public class DetailAssetRent :FullAuditModel
+    public class DetailAssetRent : FullAuditModel
     {
-        public int detailId { get; set; }
-        public string  nameAsset { get; set; }
-        public string rentBy { get; set;  }
+        public string nameAsset { get; set; }
+        public string rentBy { get; set; }
         public int assetRentId { get; set; }
         public float rate { get; set; }
         public DateTime? dayPay { get; set; }
-        public decimal money { get; set;  }
+        public decimal money { get; set; }
         public string describe { get; set; }
-        public bool isPay { get; set;  }
+        public bool isPay { get; set; }
     }
 }
+
+
