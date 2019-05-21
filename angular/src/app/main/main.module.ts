@@ -27,6 +27,9 @@ import { CreateMerchandiseModalComponent } from './vendor/create-merchandise-mod
 import { ContractComponent } from './contract/contract.component';
 import { CreateOrEditContractModalComponent } from './contract/create-or-edit-contract-modal.component';
 import { ViewContractModalComponent } from './contract/view-contract-modal.component';
+import { AssignmentTableComponent } from './assignment-table/assignment-table.component';
+import { ViewAssignmentTableModalComponent } from './assignment-table/view-assignment-table-modal.component';
+import { CreateOrEditAssignmentTableModalComponent } from './assignment-table/create-or-edit-assignment-table-modal.component';
 
 @NgModule({
     imports: [
@@ -61,7 +64,8 @@ import { ViewContractModalComponent } from './contract/view-contract-modal.compo
         VendorComponent, CreateOrEditVendorModalComponent, ViewVendorModalComponent,
         ContractComponent, CreateOrEditContractModalComponent, ViewContractModalComponent,
         VendorTypeComponent, CreateOrEditVendorTypeModalComponent, ViewVendorTypeModalComponent,
-        CreateMerchandiseModalComponent,
+        CreateMerchandiseModalComponent, 
+        AssignmentTableComponent, 
     ],
     providers: [
         

@@ -6,6 +6,7 @@ import { VendorComponent } from './vendor/vendor.component';
 import { VendorTypeComponent } from './vendortype/vendortype.component';
 import { MerchandiseTypeComponent } from './merchandise-type/merchandise-type.component';
 import { ContractComponent } from './contract/contract.component';
+import { AssignmentTableComponent } from './assignment-table/assignment-table.component';
 
 @NgModule({
     imports: [
@@ -23,7 +24,14 @@ import { ContractComponent } from './contract/contract.component';
                         data: {
                             permission: 'Pages.Administration.Contract'
                         },
+                    },
+                    {
+                        path: 'assignment-table', component: AssignmentTableComponent,
+                        data: {
+                            permission: 'Pages.Administration.AssignmentTable'
+                        },
                     }
+                  
                 ]
             }
         ])
