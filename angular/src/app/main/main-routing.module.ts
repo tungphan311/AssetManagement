@@ -19,6 +19,7 @@ import { AssignmentTableComponent } from './assignment-table/assignment-table.co
                     { path: 'merchandise-type', component: MerchandiseTypeComponent, data: { permission: 'Pages.Administration.MerchandiseType' } },
                     { path: 'vendor', component: VendorComponent, data: { permission: 'Pages.Administration.Vendor' } },
                     { path: 'vendortype', component: VendorTypeComponent, data: { permission: 'Pages.Administration.VendorType' } },
+                    { path: 'project', component: ProjectComponent, data: { permission: 'Pages.Administration.Project' } },
                     { 
                         path: 'contract', component: ContractComponent,
                         data: {

@@ -46,6 +46,7 @@ import { WebApiServiceProxy } from './webapi.service';
         ApiServiceProxies.VendorTypeServiceProxy,
         ApiServiceProxies.ContractServiceProxy,
         ApiServiceProxies.ContractDetailServiceProxy,
+        ApiServiceProxies.ProjectServiceProxy,
         ApiServiceProxies.AssignmentTableServiceProxy,
         ApiServiceProxies.BidServiceProxy,
         ApiServiceProxies.BidderServiceProxy,

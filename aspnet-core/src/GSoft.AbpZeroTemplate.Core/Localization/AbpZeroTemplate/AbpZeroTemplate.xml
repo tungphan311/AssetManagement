@@ -792,12 +792,12 @@
       <text name="Vender">Vender</text>
       <text name="Merchandise">Merchandise</text>
       <text name="Contract">Contract</text>
+      <text name="Project">Project</text>
       <text name="CreateNewMerchandise">Create New Merchandise</text>
       <text name="MerchandiseInfo">Merchandise Info</text>
       <text name="MerchandiseName">Name</text>
       <text name="MerchandiseTypeID">Merchandise's Type</text>
       <text name="MerchandiseDetail">Detail</text>
       <text name="MerchandisePrice">Price</text>
-      <text name="Project">Project</text>
     </texts>
 </localizationDictionary>

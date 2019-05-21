@@ -27,6 +27,9 @@ import { CreateMerchandiseModalComponent } from './vendor/create-merchandise-mod
 import { ContractComponent } from './contract/contract.component';
 import { CreateOrEditContractModalComponent } from './contract/create-or-edit-contract-modal.component';
 import { ViewContractModalComponent } from './contract/view-contract-modal.component';
+import { ProjectComponent } from './project/project.component';
+import { ViewProjectModalComponent } from './project/view-project-modal.component';
+import { CreateOrEditProjectModalComponent } from './project/create-or-edit-project-modal.component';
 import { AssignmentTableComponent } from './assignment-table/assignment-table.component';
 import { ViewAssignmentTableModalComponent } from './assignment-table/view-assignment-table-modal.component';
 import { CreateOrEditAssignmentTableModalComponent } from './assignment-table/create-or-edit-assignment-table-modal.component';
@@ -66,7 +69,7 @@ import { AddContractDetailModalComponent } from './contract/add-contract-detail-
         ContractComponent, CreateOrEditContractModalComponent, ViewContractModalComponent,
         AddContractDetailModalComponent,
         VendorTypeComponent, CreateOrEditVendorTypeModalComponent, ViewVendorTypeModalComponent,
-        CreateMerchandiseModalComponent, 
+        ProjectComponent, CreateOrEditProjectModalComponent, ViewProjectModalComponent,
         AssignmentTableComponent, 
         CreateMerchandiseModalComponent,
     ],

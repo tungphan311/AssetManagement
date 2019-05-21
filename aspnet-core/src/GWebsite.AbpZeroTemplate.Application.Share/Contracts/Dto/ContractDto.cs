@@ -26,6 +26,7 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.Contracts
         public float ContractWarrantyPercent { get; set; }
         public float ContractWarrantyAmount { get; set; }
         public string ContractWarrantyBank { get; set; }
+        public string ContractWarrantyFile { get; set; }
 
         public int WarrantyGuaranteeTypeID { get; set; }
         public int WarrantyGuaranteeID { get; set; }
@@ -33,5 +34,6 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.Contracts
         public int WarrantyGuaranteePercent { get; set; }
         public int WarrantyGuaranteeAmount { get; set; }
         public string WarrantyGuaranteeBank { get; set; }
-     }
+        public string WarrantyGuaranteeFile { get; set; }
+    }
 }

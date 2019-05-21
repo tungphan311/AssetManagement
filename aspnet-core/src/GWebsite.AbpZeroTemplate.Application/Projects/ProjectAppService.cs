@@ -27,8 +27,8 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Projects
         public void CreateOrEditProject(ProjectInput projectInput)
         {
             if (projectInput.Id == 0)
-            {
-                Create(projectInput);
+            {         
+                Create(projectInput);       
             }
             else
             {
@@ -71,7 +71,10 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Projects
         {
             var query = projectRepository.GetAll().Where(x => !x.IsDelete);
 
-           
+            if (input.Code != null)
+            {
+                query = query.Where(x => x.Code.ToLower().Contains(input.Code.ToLower()));
+            }
 
             // filter by name 
             if (input.Name != null)
@@ -79,15 +82,12 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Projects
                 query = query.Where(x => x.Name.ToLower().Contains(input.Name.ToLower()));
             }
 
-            if (input.ProjectID != null)
+            if (input.Date != null)
             {
-                query = query.Where(x => x.ProjectID.ToLower().Contains(input.ProjectID.ToLower()));
+                //xu ly lay theo date time tinh sau
             }
 
-            if (input.DayCreate != null)
-            {
-                query = query.Where(x => x.DayCreate.DayOfYear >= input.DayCreate.DayOfYear);
-            }
+
 
             var totalCount = query.Count();
 
