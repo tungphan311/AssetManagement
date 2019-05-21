@@ -13,5 +13,7 @@ namespace GSoft.AbpZeroTemplate
         public virtual string TenDonVi { get; set; }
 
         public virtual int DonViChinhId { get; set; }
+
+        public virtual string DiaChi { get; set; }
     }
 }

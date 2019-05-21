@@ -9,8 +9,8 @@
                     Asset Management Statistics
                 </span>
             </div>
-            <!-- <button class="btn btn-primary" style="float: right;"(click)="ThemTaiSanModal.show(people[0])"><i class="fa fa-plus"></i> {{"Add Asset"}}</button>
-            <button class="btn btn-primary" style="float: right;"(click)="XuatTaiSanModal.show()"><i class="fa fa-exchange"></i> {{"Transfer Asset"}}</button> -->
+            <button class="btn btn-primary" style="float: right;"(click)="ThemDonViModal.show()"><i class="fa fa-plus"></i>Them Don Vi</button>
+            <!--<button class="btn btn-primary" style="float: right;"(click)="XuatTaiSanModal.show()"><i class="fa fa-exchange"></i> {{"Transfer Asset"}}</button> -->
         </div>
     </div>
     <div class="m-content"> <!--info card-->
@@ -292,4 +292,5 @@
     <ThemTaiSanModal #ThemTaiSanModal (modalSave)="getData()"></ThemTaiSanModal>
     <XuatTaiSanModal #XuatTaiSanModal (modalSave)="getData()"></XuatTaiSanModal>
     <ChiTietDonViModal #ChiTietDonViModal></ChiTietDonViModal>
+    <ThemDonViModal #ThemDonViModal (modalSave)="getData()"></ThemDonViModal>
 </div>

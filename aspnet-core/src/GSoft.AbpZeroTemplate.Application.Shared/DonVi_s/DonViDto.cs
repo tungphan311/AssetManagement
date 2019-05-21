@@ -8,6 +8,8 @@ namespace GSoft.AbpZeroTemplate.DonVi_s
 
         public string TenDonVi { get; set; }
 
+        public  string DiaChi { get; set; }
+
         public string DonViChinh { get; set; }
 
         public int DonViChinhId { get; set; }

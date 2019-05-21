@@ -16,14 +16,14 @@
                         <div *ngIf="don_vi_nhan[0].donViChinh" style="font-weight: bold;">Don vi chinh:&nbsp;&nbsp;{{this.don_vi_nhan[0].donViChinh}}</div>
                     </div>                    <div class="form-group">
                         <label>Don Vi Su Dung Tai San</label>
-                        <input class="form-control" type="hidden" [(ngModel)]="input.donViNhanId" [ngModelOptions]="{standalone: true}" required>
+                        <input name="don_vi_nhan_id" class="form-control" type="hidden" [(ngModel)]="input.donViNhanId" required>
                         <select class="form-control" [(ngModel)]="input.donViNhanId" [ngModelOptions]="{standalone: true}" required>
                             <option *ngFor="let don_vi of don_vi_nhan" [value]="don_vi.id">ID{{don_vi.id}}  -  {{don_vi.tenDonVi}}</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <label>Tai San Xuat</label>
-                        <input class="form-control" type="hidden" [(ngModel)]="input.taiSanXuatId" [ngModelOptions]="{standalone: true}" required>
+                        <input name="tai_san_xuat_id" class="form-control" type="hidden" [(ngModel)]="input.taiSanXuatId" required>
                         <select class="form-control" [(ngModel)]="input.taiSanXuatId" [ngModelOptions]="{standalone: true}" required>
                             <option *ngFor="let tai_san of tai_san_trong_kho" [value]="tai_san.id">ID{{tai_san.id}}  -  {{tai_san.tenTaiSan}}</option>
                         </select>

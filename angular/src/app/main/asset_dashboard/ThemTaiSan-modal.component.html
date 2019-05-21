@@ -14,11 +14,12 @@
                 <div class="modal-body">
                     <div class="d-flex flex-column justify-content-center align-items-center" style="margin-bottom: 15px">
                         <div style="font-size: 20px; margin-bottom: 5px">{{this.donvi.tenDonVi}}</div>
+                        <div style="font-weight: bold;">Dia chi:&nbsp;&nbsp;{{this.donvi.diaChi}}</div>
                         <div *ngIf="donvi.donViChinh" style="font-weight: bold;">Don vi chinh:&nbsp;&nbsp;{{this.donvi.donViChinh}}</div>
                     </div>
                     <div class="form-group">
                         <label>Ten Tai San Them</label>
-                        <input #ten_tai_san_them class="form-control" type="text" [(ngModel)]="input.tenTaiSanThem" [ngModelOptions]="{standalone: true}" required>
+                        <input #ten_tai_san_them name="ten_tai_san_them" class="form-control" type="text" [(ngModel)]="input.tenTaiSanThem" required>
                         <!-- <input #taiSanThem class="form-control" onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 48 && event.charCode <= 57" min="0" type="number" name="soTaiSan" [(ngModel)]="input.taiSanThem" required maxlength="32"> -->
                     </div>
                 </div>

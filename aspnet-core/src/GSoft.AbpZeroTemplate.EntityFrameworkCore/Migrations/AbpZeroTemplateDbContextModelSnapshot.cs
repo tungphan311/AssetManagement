@@ -1096,6 +1096,8 @@ namespace GSoft.AbpZeroTemplate.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("DiaChi");
+
                     b.Property<int>("DonViChinhId");
 
                     b.Property<string>("TenDonVi")

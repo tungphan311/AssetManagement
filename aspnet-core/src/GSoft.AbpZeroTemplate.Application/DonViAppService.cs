@@ -107,6 +107,7 @@ namespace GSoft.AbpZeroTemplate
             DonViDto dv_dto = new DonViDto();
             dv_dto.Id = don_vi.Id;
             dv_dto.TenDonVi = don_vi.TenDonVi;
+            dv_dto.DiaChi = don_vi.DiaChi;
             try
             {
                 dv_dto.DonViChinh = _DonViRepository.FirstOrDefault(p => p.Id == don_vi.DonViChinhId).TenDonVi;
@@ -117,16 +118,25 @@ namespace GSoft.AbpZeroTemplate
             return dv_dto;
         }
 
-        //public async Task DeleteDonVi(EntityDto input)
-        //{
-        //    await _DonViRepository.DeleteAsync(input.Id);
-        //}
+        public bool DeleteDonVi(int don_vi_id)
+        {
+            try
+            {
+                _DonViRepository.DeleteAsync(don_vi_id);
+                return true;
+            }
+            catch (Exception) { return false; }
+        }
 
-        //public async Task CreateDonVi(CreateDonViInput input)
-        //{
-        //    //var person = ObjectMapper.Map<Person>(input);
-        //    //await _DonViRepository.InsertAsync(person);
-        //}
+        public bool CreateDonVi(CreateDonViInput input)
+        {
+            try
+            {
+                _DonViRepository.Insert(ObjectMapper.Map<DonVi>(input));
+                return true;
+            }
+            catch (Exception) { return false; }
+        }
 
     }
 }
