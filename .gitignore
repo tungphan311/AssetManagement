@@ -4,3 +4,7 @@ aspnet-core/src/GSoft.AbpZeroTemplate.Web.Host/App_Data/Logs/Logs.txt
 aspnet-core/src/GSoft.AbpZeroTemplate.Web.Host/App_Data/Logs/Logs.txt
 aspnet-core/src/GSoft.AbpZeroTemplate.Web.Host/App_Data/Logs/Logs.txt
 aspnet-core/src/GSoft.AbpZeroTemplate.Web.Host/App_Data/Logs/Logs.txt
+aspnet-core/src/GSoft.AbpZeroTemplate.Web.Host/App_Data/Logs/Logs.txt
+aspnet-core/src/GSoft.AbpZeroTemplate.Web.Host/appsettings.json
+aspnet-core/src/GSoft.AbpZeroTemplate.Web.Mvc/appsettings.json
+aspnet-core/src/GSoft.AbpZeroTemplate.Web.Public/appsettings.json
