@@ -9,6 +9,8 @@ using GWebsite.AbpZeroTemplate.Core.Authorization;
 using GWebsite.AbpZeroTemplate.Core.Models;
 using System.Linq;
 using System.Linq.Dynamic.Core;
+using System;
+
 
 namespace GWebsite.AbpZeroTemplate.Web.Core.Projects
 {
@@ -85,6 +87,9 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Projects
             if (input.Date != null)
             {
                 //xu ly lay theo date time tinh sau
+                DateTime dt = DateTime.ParseExact(input.Date, "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture);
+                dt = dt.ToUniversalTime();
+                query = query.Where(x => x.Date.DayOfYear == dt.DayOfYear);
             }
 
 
@@ -105,6 +110,8 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Projects
                 totalCount,
                 items.Select(item => ObjectMapper.Map<ProjectDto>(item)).ToList());
         }
+
+     
 
         #endregion
 

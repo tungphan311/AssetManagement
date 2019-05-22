@@ -26,6 +26,11 @@
                         <validation-messages [formCtrl]="nameInput"></validation-messages>
                     </div>
                     <div class="form-group">
+                        <label>Ngày tạo dự án *</label>
+                        <input [(ngModel)]="project.date" name="Date" autofocus class="form-control" type="date">                      
+                    </div>
+                    
+                    <div class="form-group">
                         <label>Hoạt động *</label>
                         <input #isActiveInput="ngModel" class="form-control" type="checkbox" name="IsActive" [(ngModel)]="project.isActive">
                         <validation-messages [formCtrl]="isActiveInput"></validation-messages>

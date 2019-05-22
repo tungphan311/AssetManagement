@@ -4,6 +4,7 @@ import { ModalDirective } from 'ngx-bootstrap';
 import { ProjectServiceProxy, ProjectInput } from '@shared/service-proxies/service-proxies';
 
 
+
 @Component({
     selector: 'createOrEditProjectModal',
     templateUrl: './create-or-edit-project-modal.component.html'
@@ -39,6 +40,11 @@ export class CreateOrEditProjectModalComponent extends AppComponentBase {
 
         this._projectService.getProjectForEdit(projectId).subscribe(result => {
             this.project = result;
+            var moment = require('moment');      
+            var _date = moment(result.date);
+            var tz = _date.utcOffset(); 
+            _date.add(tz, 'm');
+            this.project.date = _date.format('YYYY-MM-DD');
             this.modal.show();
 
         })
@@ -46,10 +52,8 @@ export class CreateOrEditProjectModalComponent extends AppComponentBase {
 
     save(): void {
         let input = this.project;
-        if (!input.id){
-            var moment = require('moment');
-            input.date=moment();
-        }
+        var moment = require('moment');
+        input.date = moment(input.date);
         this.saving = true;
         this._projectService.createOrEditProject(input).subscribe(result => {
             this.notify.info(this.l('SavedSuccessfully'));

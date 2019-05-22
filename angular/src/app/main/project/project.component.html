@@ -28,6 +28,7 @@
                                         placeholder="Nhập mã dự án" type="text">
                                     <input [(ngModel)]="projectName" name="projectName" autoFocus class="form-control"
                                         placeholder="Nhập tên dự án" type="text">
+                                    <input [(ngModel)]="projectDate" name="projectDate" autofocus class="form-control" type="date">      
                                     <span class="input-group-btn">
                                         <button (click)="applyFilters()" class="btn btn-primary" type="submit"><i
                                                 class="icon-refresh"></i>
@@ -73,7 +74,7 @@
                                     </td>
                                     <td>
                                         <span class="ui-column-title"> {{l("ProjectDate")}}</span>
-                                        <span title="{{record.date}}">{{truncateString(record.date)}}</span>
+                                        <span title="{{record.date}}">{{truncateString(dateFormat(record.date))}}</span>
                                     </td>
                                     <td>
                                         <button

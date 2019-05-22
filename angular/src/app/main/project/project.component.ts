@@ -130,6 +130,14 @@ export class ProjectComponent extends AppComponentBase implements AfterViewInit,
      * Tạo pipe thay vì tạo từng hàm truncate như thế này
      * @param text
      */
+    dateFormat(date): string {
+        var moment = require('moment');
+        //add timezone vào time :/ với cách éo thể nào ngu hơn đc =))
+        var _date = moment(date);
+        var tz = _date.utcOffset(); //lấy timezone đv phút
+        _date.add(tz, 'm'); //add phút
+        return _date.format('DD/MM/YYYY');
+    }
     truncateString(text): string {
         return abp.utils.truncateStringWithPostfix(text, 32, '...');
     }
