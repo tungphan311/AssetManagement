@@ -799,5 +799,6 @@
       <text name="MerchandiseTypeID">Merchandise's Type</text>
       <text name="MerchandiseDetail">Detail</text>
       <text name="MerchandisePrice">Price</text>
+      <text name="Bid">Bid</text>
     </texts>
 </localizationDictionary>

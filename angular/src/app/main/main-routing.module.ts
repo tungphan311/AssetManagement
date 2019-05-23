@@ -8,6 +8,7 @@ import { MerchandiseTypeComponent } from './merchandise-type/merchandise-type.co
 import { ContractComponent } from './contract/contract.component';
 import { AssignmentTableComponent } from './assignment-table/assignment-table.component';
 import { ProjectComponent } from './project/project.component';
+import { BidComponent } from './bid/bid.component';
 
 @NgModule({
     imports: [
@@ -21,6 +22,7 @@ import { ProjectComponent } from './project/project.component';
                     { path: 'vendor', component: VendorComponent, data: { permission: 'Pages.Administration.Vendor' } },
                     { path: 'vendortype', component: VendorTypeComponent, data: { permission: 'Pages.Administration.VendorType' } },
                     { path: 'project', component: ProjectComponent, data: { permission: 'Pages.Administration.Project' } },
+                    { path: 'bid', component: BidComponent, data: { permission: 'Pages.Administration.Bid' } },
                     { 
                         path: 'contract', component: ContractComponent,
                         data: {

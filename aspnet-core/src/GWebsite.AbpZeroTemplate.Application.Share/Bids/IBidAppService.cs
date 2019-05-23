@@ -16,6 +16,6 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.Bids
         BidInput GetBidForEdit(int id);
         void DeleteBid(int id);
         PagedResultDto<BidDto> GetBids(BidFilter filter);
-        BidForViewDto GetBidForViewDto(int id);
+        BidForViewDto GetBidForView(int id);
     }
 }

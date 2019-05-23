@@ -14,6 +14,7 @@ using GWebsite.AbpZeroTemplate.Application.Share.VendorTypes.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.Projects.Dto;
 using GWebsite.AbpZeroTemplate.Core.Models;
 using GWebsite.AbpZeroTemplate.Application.Share.AssignmentTables.Dto;
+using GWebsite.AbpZeroTemplate.Application.Share.Bids.Dto;
 
 namespace GWebsite.AbpZeroTemplate.Applications
 {
@@ -90,6 +91,12 @@ namespace GWebsite.AbpZeroTemplate.Applications
             configuration.CreateMap<AssignmentTableInput, AssignmentTable>();
             configuration.CreateMap<AssignmentTable, AssignmentTableInput>();
             configuration.CreateMap<AssignmentTable, AssignmentTableForViewDto>();
+
+            //Bid
+            configuration.CreateMap<Bid, BidDto>();
+            configuration.CreateMap<BidInput, Bid>();
+            configuration.CreateMap<Bid, BidInput>();
+            configuration.CreateMap<Bid, BidForViewDto>();
 
         }
     }

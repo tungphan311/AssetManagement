@@ -13,9 +13,9 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.Bids.Dto
 
         public string Category { get; set; }
 
-        public DateTime StartReceivingRecords { get; set; }
+        public string StartReceivingRecords { get; set; }
 
-        public DateTime EndReceivingRecords { get; set; }
+        public string EndReceivingRecords { get; set; }
 
         public string BiddingForm { get; set; }
 

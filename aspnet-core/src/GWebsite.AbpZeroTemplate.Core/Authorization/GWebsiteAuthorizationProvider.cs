@@ -80,6 +80,11 @@ namespace GWebsite.AbpZeroTemplate.Core.Authorization
             project.CreateChildPermission(GWebsitePermissions.Pages_Administration_AssignmentTable_Create, L("CreateNewAsssignmentTable"));
             project.CreateChildPermission(GWebsitePermissions.Pages_Administration_AssignmentTable_Edit, L("EdittingAsssignmentTable"));
             project.CreateChildPermission(GWebsitePermissions.Pages_Administration_AssignmentTable_Delete, L("DeletingAsssignmentTable"));
+
+            var bid = pages.CreateChildPermission(GWebsitePermissions.Pages_Administration_Bid, L("Bid"));
+            bid.CreateChildPermission(GWebsitePermissions.Pages_Administration_Bid_Create, L("CreateNewBid"));
+            bid.CreateChildPermission(GWebsitePermissions.Pages_Administration_Bid_Edit, L("EditingBid"));
+            bid.CreateChildPermission(GWebsitePermissions.Pages_Administration_Bid_Delete, L("DeletingBid"));
         }
 
         private static ILocalizableString L(string name)

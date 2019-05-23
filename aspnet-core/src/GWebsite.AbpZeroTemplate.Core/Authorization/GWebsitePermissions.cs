@@ -59,5 +59,10 @@
         public const string Pages_Administration_AssignmentTable_Edit = "Pages.Administration.AssignmentTable.Edit";
         public const string Pages_Administration_AssignmentTable_Delete = "Pages.Administration.AssignmentTable.Delete";
 
+        public const string Pages_Administration_Bid = "Pages.Administration.Bid";
+        public const string Pages_Administration_Bid_Create = "Pages.Administration.Bid.Create";
+        public const string Pages_Administration_Bid_Edit = "Pages.Administration.Bid.Edit";
+        public const string Pages_Administration_Bid_Delete = "Pages.Administration.Bid.Delete";
+
     }
 }
