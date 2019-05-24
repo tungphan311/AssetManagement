@@ -38,6 +38,11 @@ export class AssignmentTableComponent extends AppComponentBase implements AfterV
             this.init();
         });
     }
+    deleteAssignmentTable(id): void {
+        this._assignmentTableService.deleteAssignmentTable(id).subscribe(() => {
+            this.reloadPage();
+        })
+    }
 
     ngOnInit(): void {
         //load list assignmenttable
