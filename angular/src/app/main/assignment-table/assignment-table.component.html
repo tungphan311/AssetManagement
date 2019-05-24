@@ -25,13 +25,29 @@
                         <div class="row align-items-center m--margin-bottom-10">
                             <div class="col-sm-12">
                                 <div class="input-group">
-                                    <input [(ngModel)]="MerchID" name="MerchID"  autoFocus class="form-control"
+                                    <!-- <input [(ngModel)]="MerchID" name="MerchID"  autoFocus class="form-control"
                                            placeholder="Type Merchandise ID" type="text">
                                     <input [(ngModel)]="VendorID" name="VendorID" autoFocus class="form-control"
-                                            placeholder="Type Vendor ID" type="text">
+                                            placeholder="Type Vendor ID" type="text"> -->
+                                            <div class="form-group">
+                                                    <label>Mã hàng hóa *</label>
+                                                    <select #merchIDInput="ngModel" class="form-control" [(ngModel)]="MerchID" name="MerchID" required>
+                                                        <option value="0" selected="selected">Tất cả</option>
+                                                        <option *ngFor="let item of merchlist" [value]="item.id">{{item.name}}</option>
+                                                    </select>
+                                                    <validation-messages [formCtrl]="merchIDInput"></validation-messages>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Mã nhà cung cấp *</label>
+                                                    <select #vendorIDInput="ngModel" class="form-control" [(ngModel)]="VendorID" name="VendorID" required>
+                                                        <option value="0" selected="selected">Tất cả</option>
+                                                        <option *ngFor="let item of vendorlist" [value]="item.id">{{item.name}}</option>
+                                                    </select>
+                                                    <validation-messages [formCtrl]="vendorIDInput"></validation-messages>
+                                                </div>            
                                     <span class="input-group-btn">
                                         <button (click)="applyFilters()" class="btn btn-primary" type="submit">
-                                            <i class="icon-refresh"></i>
+                                            <i class="icon-refresh"></i> 
                                             {{l("Refresh")}}
                                         </button>
                                     </span>
@@ -48,12 +64,16 @@
                             [responsive]="primengTableHelper.isResponsive">
                             <ng-template pTemplate="header">
                                 <tr>
+                                    <th pSortableColumn="id">
+                                        {{l("AssigmentTableID")}}
+                                        <p-sortIcon field="id"></p-sortIcon>
+                                    </th> 
                                     <th pSortableColumn="MerchID">
-                                        {{l("MerchandiseID")}}
+                                        {{l("MerchandiseName")}}
                                         <p-sortIcon field="MerchID"></p-sortIcon>
                                     </th> 
                                     <th pSortableColumn="VendorID">
-                                        {{l("VendorID")}}
+                                        {{l("VendorName")}}
                                         <p-sortIcon field="VendorID"></p-sortIcon>
                                     </th>
                                     <th>{{l('Edit')}}</th>
@@ -62,12 +82,16 @@
                             <ng-template pTemplate="body" let-record="$implicit">
                                 <tr>
                                     <td>
-                                        <span class="ui-column-title">{{l("MerchID")}}</span>
-                                        <span title="{{record.MerchID}}">{{truncateString(record.merchID)}}</span>
+                                        <span class="ui-column-title">{{l("MerchandiseName")}}</span>
+                                        <span title="{{record.merchName}}">{{truncateString(record.id)}}</span>
                                     </td>
                                     <td>
-                                        <span class="ui-column-title">{{l("VendorID")}}</span>
-                                        <span title="{{record.VendorID}}">{{truncateString(record.vendorID)}}</span>
+                                        <span class="ui-column-title">{{l("MerchandiseName")}}</span>
+                                        <span title="{{record.merchName}}">{{getMerchName(record.merchID)}}</span>
+                                    </td>
+                                    <td>
+                                        <span class="ui-column-title">{{l("VendorName")}}</span>
+                                        <span title="{{record.vendorName}}">{{getVendorName(record.vendorID)}}</span>
                                     </td>
                                     <td>
                                         <button class="btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill"
@@ -108,5 +132,5 @@
         </div>
     </div>
     <createOrEditAssignmentTableModal #createOrEditModal (modalSave)="reloadPage()"></createOrEditAssignmentTableModal>
-    <!-- <viewVendorModal #viewVendorModal></viewVendorModal> --> -->
+    <!-- <viewVendorModal #viewVendorModal></viewVendorModal> --> 
 </div>

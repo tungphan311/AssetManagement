@@ -13,16 +13,6 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <!-- <div class="form-group">
-                        <label>Mã hàng hóa *</label>
-                        <input #merchIDInput="ngModel" class="form-control" type="text" name="Merchandise ID" [(ngModel)]="assignmentTable.merchID" required maxlength="64">
-                        <validation-messages [formCtrl]="merchIDInput"></validation-messages>
-                    </div>
-                    <div class="form-group">
-                        <label>Mã nhà cung cấp  *</label>
-                        <input #vendorIDInput="ngModel" class="form-control" type="text" name="Vendor ID" [(ngModel)]="assignmentTable.vendorID" required maxlength="64">
-                        <validation-messages [formCtrl]="vendorIDInput"></validation-messages>
-                    </div> -->
                     <div class="form-group">
                         <label>Mã hàng hóa *</label>
                         <select #merchIDInput="ngModel" class="form-control" [(ngModel)]="assignmentTable.merchID" name="merchID" required>

@@ -3,7 +3,7 @@ import { appModuleAnimation } from "@shared/animations/routerTransition";
 import { AppComponentBase } from "@shared/common/app-component-base";
 import { Table } from "primeng/table";
 import { Paginator, LazyLoadEvent } from "primeng/primeng";
-import { AssignmentTableServiceProxy } from "@shared/service-proxies/service-proxies";
+import { AssignmentTableServiceProxy, MerchandiseServiceProxy, VendorServiceProxy } from "@shared/service-proxies/service-proxies";
 import { ActivatedRoute, Params } from "@angular/router";
 import { CreateOrEditAssignmentTableModalComponent } from "./create-or-edit-assignment-table-modal.component";
 
@@ -22,12 +22,16 @@ export class AssignmentTableComponent extends AppComponentBase implements AfterV
     MerchID: string
     VendorID: string
 
-    // list assignment table
+    // list 
     assignmenttablelist = [];
+    vendorlist=[];
+    merchlist=[];
 
     constructor(
         injector: Injector,
         private _assignmentTableService: AssignmentTableServiceProxy,
+        private _merchandiseService: MerchandiseServiceProxy,
+        private _vendorService: VendorServiceProxy,
         private _activatedRoute: ActivatedRoute,
     ) {
         super(injector);
@@ -87,6 +91,12 @@ export class AssignmentTableComponent extends AppComponentBase implements AfterV
             this.primengTableHelper.records = result.items;
             this.primengTableHelper.hideLoadingIndicator();
         });
+        this._merchandiseService.getMerchandiseByFilter(null,null,0,0,null,null,99,0).subscribe(result => {
+            this.merchlist=result.items
+        })
+        this._vendorService.getVendorsByFilter(null,null,0,null,null,99,0).subscribe(result =>{
+            this.vendorlist=result.items
+        })
     }
 
     init(): void {
@@ -112,6 +122,21 @@ export class AssignmentTableComponent extends AppComponentBase implements AfterV
     }
     createAssignmentTable() : void {
          this.createOrEditModal.show();
+    }
+    getMerchName(id: number): any {
+        for (const iterator of this.merchlist) {
+            if (iterator.id === id) {
+                return iterator.name;
+            }
+        }
+    }
+
+    getVendorName(id: number): any {
+        for (const iterator of this.vendorlist) {
+            if (iterator.id == id) {
+                return iterator.name;
+            }
+        }
     }
 
 
