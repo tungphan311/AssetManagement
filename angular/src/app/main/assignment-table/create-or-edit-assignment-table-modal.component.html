@@ -1,10 +1,37 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace MyCompanyName.AbpZeroTemplate.AngularUI.src.app.main.assignment_table
-{
-    class assignment_talbe
-    {
-    }
-}
+﻿<div bsModal #createOrEditModal="bs-modal" class="modal fade" tabindex="-1" role="dialog"
+    aria-labelledby="createOrEditModal" aria-hidden="true" [config]="{backdrop: 'static'}">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <form #editForm="ngForm" novalidate (ngSubmit)="save()">
+                <div class="modal-header">
+                    <h4 class="modal-title">
+                        <span *ngIf="assignmentTable.id">Cập nhật bảng gán : {{assignmentTable.id}}</span>
+                        <span *ngIf="!assignmentTable.id">Tạo mới bảng gán</span>
+                    </h4>
+                    <button type="button" class="close" (click)="close()" [attr.aria-label]="l('Close')">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>Mã hàng hóa *</label>
+                        <input #codeInput="ngModel" class="form-control" type="text" name="Merchandise ID" [(ngModel)]="assignmentTable.merchID" required maxlength="64">
+                        <validation-messages [formCtrl]="codeInput"></validation-messages>
+                    </div>
+                    <div class="form-group">
+                        <label>Mã nhà cung cấp  *</label>
+                        <input #nameInput="ngModel" class="form-control" type="text" name="Vendor ID" [(ngModel)]="assignmentTable.vendorID" required maxlength="64">
+                        <validation-messages [formCtrl]="nameInput"></validation-messages>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button [disabled]="saving" type="button" class="btn btn-default" (click)="close()">{{l("Cancel")}}</button>
+                    <button type="submit" class="btn btn-primary" [buttonBusy]="saving" [busyText]="l('SavingWithThreeDot')">
+                        <i class="fa fa-save"></i>
+                        <span>{{l("Save")}}</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

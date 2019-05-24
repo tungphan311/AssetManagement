@@ -70,7 +70,7 @@ import { AddContractDetailModalComponent } from './contract/add-contract-detail-
         AddContractDetailModalComponent,
         VendorTypeComponent, CreateOrEditVendorTypeModalComponent, ViewVendorTypeModalComponent,
         ProjectComponent, CreateOrEditProjectModalComponent, ViewProjectModalComponent,
-        AssignmentTableComponent, 
+        AssignmentTableComponent, CreateOrEditAssignmentTableModalComponent,
         CreateMerchandiseModalComponent,
     ],
     providers: [

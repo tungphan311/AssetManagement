@@ -73,9 +73,13 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.AssignmentTables
             var query = AssignmentTableRepository.GetAll().Where(x => !x.IsDelete);
 
             // filter by value
-            if (input.MerchID != null)
+            if (input.MerchID != 0)
             {
-                query = query.Where(x => x.MerchID.Equals(input.MerchID));
+                query = query.Where(x => x.MerchID==input.MerchID);
+            }
+            if (input.VendorID != 0)
+            {
+                query = query.Where(x => x.VendorID == input.VendorID);
             }
 
             var totalCount = query.Count();
