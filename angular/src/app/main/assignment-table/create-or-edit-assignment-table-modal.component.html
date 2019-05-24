@@ -13,15 +13,29 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                         <label>Mã hàng hóa *</label>
-                        <input #codeInput="ngModel" class="form-control" type="text" name="Merchandise ID" [(ngModel)]="assignmentTable.merchID" required maxlength="64">
-                        <validation-messages [formCtrl]="codeInput"></validation-messages>
+                        <input #merchIDInput="ngModel" class="form-control" type="text" name="Merchandise ID" [(ngModel)]="assignmentTable.merchID" required maxlength="64">
+                        <validation-messages [formCtrl]="merchIDInput"></validation-messages>
                     </div>
                     <div class="form-group">
                         <label>Mã nhà cung cấp  *</label>
-                        <input #nameInput="ngModel" class="form-control" type="text" name="Vendor ID" [(ngModel)]="assignmentTable.vendorID" required maxlength="64">
-                        <validation-messages [formCtrl]="nameInput"></validation-messages>
+                        <input #vendorIDInput="ngModel" class="form-control" type="text" name="Vendor ID" [(ngModel)]="assignmentTable.vendorID" required maxlength="64">
+                        <validation-messages [formCtrl]="vendorIDInput"></validation-messages>
+                    </div> -->
+                    <div class="form-group">
+                        <label>Mã hàng hóa *</label>
+                        <select #merchIDInput="ngModel" class="form-control" [(ngModel)]="assignmentTable.merchID" name="merchID" required>
+                            <option *ngFor="let item of merchandises" [value]="item.id">{{item.name}}</option>
+                        </select>
+                        <validation-messages [formCtrl]="merchIDInput"></validation-messages>
+                    </div>
+                    <div class="form-group">
+                        <label>Mã nhà cung cấp *</label>
+                        <select #vendorIDInput="ngModel" class="form-control" [(ngModel)]="assignmentTable.vendorID" name="vendorID" required>
+                            <option *ngFor="let item of vendors" [value]="item.id">{{item.name}}</option>
+                        </select>
+                        <validation-messages [formCtrl]="vendorIDInput"></validation-messages>
                     </div>
                 </div>
                 <div class="modal-footer">

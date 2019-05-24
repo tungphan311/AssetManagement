@@ -1,173 +1,35 @@
-<div [@routerTransition]>
-    <div class="m-subheader ">
-        <div class="d-flex align-items-center">
-            <div class="mr-auto col-sm-6">
-                <h3 class="m-subheader__title m-subheader__title--separator">
-                    <span>{{"ContractDetail"}}</span>
-                </h3>
-            </div>
-        </div>
-    </div>
-    <div class="m-content">
-        <div class="m-portlet m-portlet--mobile">
-            <form novalidate (ngSubmit)="save()">
+<div bsModal #createOrEditModal="bs-modal" class="modal fade" tabindex="-1" role="dialog"
+    aria-labelledby="createOrEditModal" aria-hidden="true" [config]="{backdrop: 'static'}">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <form #editForm="ngForm" novalidate (ngSubmit)="save()">
                 <div class="modal-header">
                     <h4 class="modal-title">
-                        <i class="fa fa-search"></i>
-                        <span>   Thông tin chi tiết</span>
+                        <span *ngIf="assignmentTable.id">Cập nhật bảng gán : {{assignmentTable.id}}</span>
+                        <span *ngIf="!assignmentTable.id">Tạo mới bảng gán</span>
                     </h4>
+                    <button type="button" class="close" (click)="close()" [attr.aria-label]="l('Close')">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
                 <div class="modal-body">
-                    <div class="input-group form-group">
-                        <label class="margin-right-5">Số hợp đồng *</label>
-                        <input #contractIDInput="ngModel" class="form-control margin-left-5" type="text" name="ContractID" [(ngModel)]="contract.contractID" required maxlength="64">
-                        <validation-messages [formCtrl]="contractIDInput"></validation-messages>
-                        <label class="margin-right-5">Tên hợp đồng *</label>
-                        <input #nameInput="ngModel" class="form-control margin-left-5" type="text" name="Name" [(ngModel)]="contract.name" required maxlength="64">
+                    <div class="form-group">
+                        <label>Mã hàng hóa *</label>
+                        <input #codeInput="ngModel" class="form-control" type="text" name="Merchandise ID" [(ngModel)]="assignmentTable.merchID" required maxlength="64">
+                        <validation-messages [formCtrl]="codeInput"></validation-messages>
+                    </div>
+                    <div class="form-group">
+                        <label>Mã nhà cung cấp  *</label>
+                        <input #nameInput="ngModel" class="form-control" type="text" name="Vendor ID" [(ngModel)]="assignmentTable.vendorID" required maxlength="64">
                         <validation-messages [formCtrl]="nameInput"></validation-messages>
-                        <label class="margin-right-5">Ngày giao hàng *</label>
-                        <input #dateInput="ngModel" class="form-control margin-left-5" type="datetime" name="DeliveryTime" [(ngModel)]="contract.deliveryTime" required>
-                        <validation-messages [formCtrl]="dateInput"></validation-messages>
                     </div>
-                    <div class="input-group form-group">
-                        <label class="margin-right-5">Số hồ sơ</label>
-                        <input class="form-control margin-left-5" type="button" name="FileID" [(ngModel)]="contract.briefcaseID" required>
-                        <label class="margin-right-5">Mã đơn vị trúng thầu</label>
-                        <input class="form-control margin-left-5" type="text" name="UnitID" readonly>
-                    </div>
-                    <div class="input-group form-group">
-                        <label class="margin-right-5">Tên đơn vị trúng thầu</label>
-                        <input class="form-control margin-left-5" type="text" name="UnitName" readonly>
-                        <label class="margin-right-5">Số điện thoại</label>
-                        <input class="form-control margin-left-5" type="text" name="Phone" readonly>
-                    </div>
-                    <div class="input-group form-group">
-                        <label class="margin-right-5">Địa chỉ</label>
-                        <input class="form-control margin-left-5" type="text" name="Address" readonly>
-                        <label class="margin-right-5 margin-left-5">Người liên hệ</label>
-                        <input class="form-control" type="text" name="Contact" readonly>
-                    </div>
-                    <div class="input-group form-group">
-                        <label class="margin-right-5">Ghi chú</label>
-                        <input class="form-control margin-left-5" type="text" name="Note" [(ngModel)]="contract.note" maxlength="255">
-                    </div>
-                    <form>
-                        <fieldset style="border: solid; border-width: thin">
-                            <legend visible="true" style="width:auto; margin-left: 10px;">Bảo lãnh hợp đồng</legend>
-                            <div class="input-group form-group">
-                                Hình thức <select class="form-control" [(ngModel)]="contract.contractWarrantyTypeID" name="ContractWarrantyTypeID">
-                                    <option value="1">Hình thức 1</option>
-                                    <option value="2">Hình thức 2</option>
-                                </select>
-                                Số chứng thư bảo lãnh <input type="text" [(ngModel)]="contract.contractWarrantyID" name="ContractWarrantyID">
-                                Ngày hết hạn chứng thư <input type="datetime" [(ngModel)]="contract.contractWarrantyExpireDate" name="ContractWarrantyExpireDate">
-                            </div>
-                            <div class="input-group form-group">
-                                Tỷ lệ <input type="text" [(ngModel)]="contract.contractWarrantyPercent" name="ContractWarrantyPercent">
-                                Số tiền <input type="text" [(ngModel)]="contract.contractWarrantyAmount" value="0" name="ContractWarrantyAmount">
-                            </div>
-                            <div class="input-group form-group">
-                                Ngân hàng bão lãnh <input type="text" name="ContractWarrantyBank">
-                            </div>
-                            <div class="input-group form-group">
-                                File đính kèm <input type="text" name="ContactWarrantyFile">
-                                <span class="input-group-btn">
-                                    <button class="btn btn-primary" type="submit">
-                                        <span>{{"Upload"}}</span>
-                                    </button>
-                                </span>
-                            </div>
-                        </fieldset>
-                    </form>
-                    <form>
-                        <fieldset style="border: solid; border-width: thin">
-                            <legend visible="true" style="width:auto; margin-left: 10px;">Bảo lãnh bảo hành</legend>
-                            <div class="input-group form-group">
-                                Hình thức <select class="form-control" [(ngModel)]="contract.warrantyGuaranteeTypeID" name="WarrantyGuaranteeTypeID">
-                                    <option value="1">Hình thức 1</option>
-                                    <option value="2">Hình thức 2</option>
-                                </select>
-                                Số chứng thư bảo lãnh <input type="text" [(ngModel)]="contract.warrantyGuaranteeID" name="WarrantyGuaranteeID">
-                                Ngày hết hạn chứng thư <input type="datetime" [(ngModel)]="contract.warrantyGuaranteeExpireDate" name="WarrantyGuaranteeExpireDate">
-                            </div>
-                            <div class="input-group form-group">
-                                Tỷ lệ <input type="text" [(ngModel)]="contract.warrantyGuaranteePercent" name="WarrantyGuaranteePercent">
-                                Số tiền <input type="text" [(ngModel)]="contract.warrantyGuaranteeAmount" value="0" name="WarrantyGuaranteeAmount">
-                            </div>
-                            <div class="input-group form-group">
-                                Ngân hàng bão lãnh <input type="text" name="WarrantyGuaranteeBank">
-                            </div>
-                            <div class="input-group form-group">
-                                File đính kèm <input type="text" name="ContactWarrantyFile">
-                                <span class="input-group-btn">
-                                    <button class="btn btn-primary" type="submit">
-                                        <span>{{"Upload"}}</span>
-                                    </button>
-                                </span>
-                            </div>
-                        </fieldset>
-                    </form>
                 </div>
-                <div class="modal-header">
-                    <h4 class="modal-title">
-                        <i class="fa fa-list"></i>
-                        <span>   Danh sách hàng hoá</span>
-                    </h4>
-                </div>
-                <div class="row align-items-center">
-                    <!--<Primeng-TurboTable-Start>-->
-                    <div class="primeng-datatable-container" [busyIf]="primengTableHelper.isLoading">
-                        <p-table #dataTable (onLazyLoad)="getMerchandises($event)" [value]="primengTableHelper.records"
-                                 rows="{{primengTableHelper.defaultRecordsCountPerPage}}" [paginator]="false" [lazy]="true"
-                                 [responsive]="primengTableHelper.isResponsive">
-                            <ng-template pTemplate="header">
-                                <tr>
-                                    <th>
-                                        STT
-                                    </th>
-                                    <th>
-                                        Mã hàng hoá
-                                    </th>
-                                    <th>
-                                        {{l("MerchandiseName")}}
-                                    </th>
-                                    <th>
-                                        Số lượng
-                                    </th>
-                                    <th>
-                                        Đơn giá
-                                    </th>
-                                    <th>
-                                        Số tiền
-                                    </th>
-                                    <th>
-                                        Đã duyệt
-                                    </th>
-                                    <th pSortableColumn="note">
-                                        Ghi chú
-                                        <p-sortIcon field="note"></p-sortIcon>
-                                    </th>
-                                </tr>
-                            </ng-template>
-                            <ng-template pTemplate="body" let-record="$implicit">
-                                <tr>
-                                    <td class="counterCell"></td>
-                                </tr>
-                                <td>
-                                    <span class="ui-column-title">Tên hàng hoá</span>
-                                    <span title="{{record.code}}">{{truncateString(record.code)}}</span>
-                                </td>
-                                <td>
-                                    <span class="ui-column-title">Tên hàng hoá</span>
-                                    <span title="{{record.name}}">{{truncateString(record.name)}}</span>
-                                </td>
-                                <td>
-                                    <span class="ui-column-title">Số lượng</span>
-                                    <span>0</span>
-                                </td>
-                            </ng-template>
-                        </p-table>
-                    </div>
+                <div class="modal-footer">
+                    <button [disabled]="saving" type="button" class="btn btn-default" (click)="close()">{{l("Cancel")}}</button>
+                    <button type="submit" class="btn btn-primary" [buttonBusy]="saving" [busyText]="l('SavingWithThreeDot')">
+                        <i class="fa fa-save"></i>
+                        <span>{{l("Save")}}</span>
+                    </button>
                 </div>
             </form>
         </div>

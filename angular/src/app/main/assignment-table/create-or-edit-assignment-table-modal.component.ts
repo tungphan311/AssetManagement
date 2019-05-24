@@ -21,6 +21,9 @@ export class CreateOrEditAssignmentTableModalComponent extends AppComponentBase 
 
     saving=false;
 
+    vendors =[]
+    merchandises = []
+
     assignmentTable: AssignmentTableInput = new AssignmentTableInput();
 
 
@@ -38,6 +41,12 @@ export class CreateOrEditAssignmentTableModalComponent extends AppComponentBase 
             this.assignmentTable = result;
             this.modal.show();
         })
+        this._vendorService.getVendorsByFilter(null,null,0,null,null,99,0).subscribe(result => {
+            this.vendors=result.items;
+            })
+        this._merchandiseService.getMerchandiseByFilter(null,null,0,0,null,null,99,0).subscribe(result => {
+            this.merchandises=result.items;
+            }) 
         
     }
 
