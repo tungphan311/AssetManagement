@@ -4,7 +4,8 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title">
-                    <span *ngIf="project.id">{{l("ProjectInfo")}}: {{project.name}}</span>  
+                    <span *ngIf="bid.id">{{l("EditBid")}}: {{bid.name}}</span>
+                    <span *ngIf="!bid.id">{{l("CreateNewBid")}}</span>
                 </h4>
                 <button type="button" class="close" (click)="close()" [attr.aria-label]="l('Close')">
                     <span aria-hidden="true">&times;</span>
@@ -12,27 +13,8 @@
             </div>
             <div class="modal-body">
                 <div class="form-group">
-                    <label>Mã dự án</label>
-                    <p>{{project.code}}</p>
-                </div>
-                <div class="form-group">
-                    <label>Tên dự án</label>
-                    <p>{{project.name}}</p>
-                </div>
-                <div class="form-group">
-                    <label>Ngày tạo dự án</label>
-                    <p>{{dateFormat(project.date)}}</p>
-                </div>
-                <div class="form-group">
-                    <p>
-                        {{l("IsActive")}}
-                        <span *ngIf="project.isActive">
-                            <input type="checkbox" checked onclick="return false;">
-                        </span>
-                        <span *ngIf="!project.isActive">
-                            <input type="checkbox" onclick="return false;">
-                        </span>
-                    </p>
+                    <label>Tên gói thầu</label>
+                    <p>{{bid.name}}</p>
                 </div>
             </div>
             <div class="modal-footer">

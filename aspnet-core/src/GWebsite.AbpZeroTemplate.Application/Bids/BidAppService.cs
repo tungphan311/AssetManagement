@@ -64,7 +64,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Bids
             return ObjectMapper.Map<BidInput>(entity);
         }
 
-        public BidForViewDto GetBidForViewDto(int id)
+        public BidForViewDto GetBidForView(int id)
         {
             var entity = repository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.Id == id);
 
@@ -95,12 +95,12 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Bids
             // filter by Date 
             if (filter.StartReceivingRecords != null)
             {
-                query = query.Where(x => x.StartReceivingRecords.DayOfYear >= filter.StartReceivingRecords.DayOfYear);
+                //query = query.Where(x => x.StartReceivingRecords.DayOfYear >= filter.StartReceivingRecords.DayOfYear);
             }
 
             if (filter.EndReceivingRecords != null)
             {
-                query = query.Where(x => x.EndReceivingRecords.DayOfYear <= filter.EndReceivingRecords.DayOfYear);
+                //query = query.Where(x => x.EndReceivingRecords.DayOfYear <= filter.EndReceivingRecords.DayOfYear);
             }
 
             if (filter.BiddingForm != null)

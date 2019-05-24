@@ -1335,16 +1335,16 @@ export class BidServiceProxy {
      * @skipCount (optional) 
      * @return Success
      */
-    getBidByFilter(name: string | null | undefined, category: string | null | undefined, startReceivingRecords: moment.Moment | null | undefined, endReceivingRecords: moment.Moment | null | undefined, biddingForm: string | null | undefined, vendorId: number | null | undefined, sorting: string | null | undefined, maxResultCount: number | null | undefined, skipCount: number | null | undefined): Observable<PagedResultDtoOfBidDto> {
-        let url_ = this.baseUrl + "/api/Bid/GetBidByFilter?";
+    getBidsByFilter(name: string | null | undefined, category: string | null | undefined, startReceivingRecords: string | null | undefined, endReceivingRecords: string | null | undefined, biddingForm: string | null | undefined, vendorId: number | null | undefined, sorting: string | null | undefined, maxResultCount: number | null | undefined, skipCount: number | null | undefined): Observable<PagedResultDtoOfBidDto> {
+        let url_ = this.baseUrl + "/api/Bid/GetBidsByFilter?";
         if (name !== undefined)
             url_ += "Name=" + encodeURIComponent("" + name) + "&"; 
         if (category !== undefined)
             url_ += "Category=" + encodeURIComponent("" + category) + "&"; 
         if (startReceivingRecords !== undefined)
-            url_ += "StartReceivingRecords=" + encodeURIComponent(startReceivingRecords ? "" + startReceivingRecords.toJSON() : "") + "&"; 
+            url_ += "StartReceivingRecords=" + encodeURIComponent("" + startReceivingRecords) + "&"; 
         if (endReceivingRecords !== undefined)
-            url_ += "EndReceivingRecords=" + encodeURIComponent(endReceivingRecords ? "" + endReceivingRecords.toJSON() : "") + "&"; 
+            url_ += "EndReceivingRecords=" + encodeURIComponent("" + endReceivingRecords) + "&"; 
         if (biddingForm !== undefined)
             url_ += "BiddingForm=" + encodeURIComponent("" + biddingForm) + "&"; 
         if (vendorId !== undefined)
@@ -1367,11 +1367,11 @@ export class BidServiceProxy {
         };
 
         return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
-            return this.processGetBidByFilter(response_);
+            return this.processGetBidsByFilter(response_);
         })).pipe(_observableCatch((response_: any) => {
             if (response_ instanceof HttpResponseBase) {
                 try {
-                    return this.processGetBidByFilter(<any>response_);
+                    return this.processGetBidsByFilter(<any>response_);
                 } catch (e) {
                     return <Observable<PagedResultDtoOfBidDto>><any>_observableThrow(e);
                 }
@@ -1380,7 +1380,7 @@ export class BidServiceProxy {
         }));
     }
 
-    protected processGetBidByFilter(response: HttpResponseBase): Observable<PagedResultDtoOfBidDto> {
+    protected processGetBidsByFilter(response: HttpResponseBase): Observable<PagedResultDtoOfBidDto> {
         const status = response.status;
         const responseBlob = 
             response instanceof HttpResponse ? response.body : 
@@ -1564,8 +1564,8 @@ export class BidServiceProxy {
      * @id (optional) 
      * @return Success
      */
-    getBidForViewDto(id: number | null | undefined): Observable<BidForViewDto> {
-        let url_ = this.baseUrl + "/api/Bid/GetBidForViewDto?";
+    getBidForView(id: number | null | undefined): Observable<BidForViewDto> {
+        let url_ = this.baseUrl + "/api/Bid/GetBidForView?";
         if (id !== undefined)
             url_ += "id=" + encodeURIComponent("" + id) + "&"; 
         url_ = url_.replace(/[?&]$/, "");
@@ -1580,11 +1580,11 @@ export class BidServiceProxy {
         };
 
         return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
-            return this.processGetBidForViewDto(response_);
+            return this.processGetBidForView(response_);
         })).pipe(_observableCatch((response_: any) => {
             if (response_ instanceof HttpResponseBase) {
                 try {
-                    return this.processGetBidForViewDto(<any>response_);
+                    return this.processGetBidForView(<any>response_);
                 } catch (e) {
                     return <Observable<BidForViewDto>><any>_observableThrow(e);
                 }
@@ -1593,7 +1593,7 @@ export class BidServiceProxy {
         }));
     }
 
-    protected processGetBidForViewDto(response: HttpResponseBase): Observable<BidForViewDto> {
+    protected processGetBidForView(response: HttpResponseBase): Observable<BidForViewDto> {
         const status = response.status;
         const responseBlob = 
             response instanceof HttpResponse ? response.body : 
@@ -1634,8 +1634,8 @@ export class BidderServiceProxy {
      * @skipCount (optional) 
      * @return Success
      */
-    getBidderByFilter(bidId: number | null | undefined, sorting: string | null | undefined, maxResultCount: number | null | undefined, skipCount: number | null | undefined): Observable<PagedResultDtoOfBidderDto> {
-        let url_ = this.baseUrl + "/api/Bidder/GetBidderByFilter?";
+    getBiddersByFilter(bidId: number | null | undefined, sorting: string | null | undefined, maxResultCount: number | null | undefined, skipCount: number | null | undefined): Observable<PagedResultDtoOfBidderDto> {
+        let url_ = this.baseUrl + "/api/Bidder/GetBiddersByFilter?";
         if (bidId !== undefined)
             url_ += "BidId=" + encodeURIComponent("" + bidId) + "&"; 
         if (sorting !== undefined)
@@ -1656,11 +1656,11 @@ export class BidderServiceProxy {
         };
 
         return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
-            return this.processGetBidderByFilter(response_);
+            return this.processGetBiddersByFilter(response_);
         })).pipe(_observableCatch((response_: any) => {
             if (response_ instanceof HttpResponseBase) {
                 try {
-                    return this.processGetBidderByFilter(<any>response_);
+                    return this.processGetBiddersByFilter(<any>response_);
                 } catch (e) {
                     return <Observable<PagedResultDtoOfBidderDto>><any>_observableThrow(e);
                 }
@@ -1669,7 +1669,7 @@ export class BidderServiceProxy {
         }));
     }
 
-    protected processGetBidderByFilter(response: HttpResponseBase): Observable<PagedResultDtoOfBidderDto> {
+    protected processGetBiddersByFilter(response: HttpResponseBase): Observable<PagedResultDtoOfBidderDto> {
         const status = response.status;
         const responseBlob = 
             response instanceof HttpResponse ? response.body : 

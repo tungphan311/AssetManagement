@@ -27,7 +27,13 @@ export class ViewProjectModalComponent extends AppComponentBase {
             this.modal.show();
         })
     }
-
+    dateFormat(date): string {
+        var moment = require('moment');
+        var _date = moment(date);
+        var tz = _date.utcOffset();
+        _date.add(tz, 'm');
+        return _date.format('DD/MM/YYYY');
+    }
     close() : void{
         this.modal.hide();
     }

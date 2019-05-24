@@ -21,7 +21,7 @@ namespace GWebsite.AbpZeroTemplate.Application.Controllers
         }
 
         [HttpGet]
-        public PagedResultDto<BidderDto> GetBidderByFilter(BidderFilter filter)
+        public PagedResultDto<BidderDto> GetBiddersByFilter(BidderFilter filter)
         {
             return bidAppService.GetBidders(filter);
         }

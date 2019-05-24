@@ -21,7 +21,7 @@ namespace GWebsite.AbpZeroTemplate.Application.Controllers
         }
 
         [HttpGet]
-        public PagedResultDto<BidDto> GetBidByFilter(BidFilter filter)
+        public PagedResultDto<BidDto> GetBidsByFilter(BidFilter filter)
         {
             return bidAppService.GetBids(filter);
         }
@@ -45,9 +45,9 @@ namespace GWebsite.AbpZeroTemplate.Application.Controllers
         }
 
         [HttpGet]
-        public BidForViewDto GetBidForViewDto(int id)
+        public BidForViewDto GetBidForView(int id)
         {
-            return bidAppService.GetBidForViewDto(id);
+            return bidAppService.GetBidForView(id);
         }
     }
 }

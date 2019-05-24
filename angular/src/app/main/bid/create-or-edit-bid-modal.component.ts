@@ -1,19 +1,18 @@
 import { Component, ElementRef, EventEmitter, Injector, Output, ViewChild } from '@angular/core';
 import { AppComponentBase } from '@shared/common/app-component-base';
 import { ModalDirective } from 'ngx-bootstrap';
-import { ProjectServiceProxy, ProjectInput } from '@shared/service-proxies/service-proxies';
-
+import { BidServiceProxy, BidInput } from '@shared/service-proxies/service-proxies';
 
 
 @Component({
-    selector: 'createOrEditProjectModal',
-    templateUrl: './create-or-edit-project-modal.component.html'
+    selector: 'createOrEditBidModal',
+    templateUrl: './create-or-edit-bid-modal.component.html'
 })
-export class CreateOrEditProjectModalComponent extends AppComponentBase {
+export class CreateOrEditBidModalComponent extends AppComponentBase {
 
 
     @ViewChild('createOrEditModal') modal: ModalDirective;
-    @ViewChild('projectCombobox') projectCombobox: ElementRef;
+    @ViewChild('bidCombobox') bidCombobox: ElementRef;
     @ViewChild('iconCombobox') iconCombobox: ElementRef;
     @ViewChild('dateInput') dateInput: ElementRef;
 
@@ -25,37 +24,32 @@ export class CreateOrEditProjectModalComponent extends AppComponentBase {
 
     saving = false;
 
-    project: ProjectInput = new ProjectInput();
-    
+    bid: BidInput = new BidInput();
+
     constructor(
         injector: Injector,
-        private _projectService: ProjectServiceProxy
+        private _bidService: BidServiceProxy
     ) {
         super(injector);
     }
 
-    show(projectId?: number | null | undefined): void {
+    show(bidId?: number | null | undefined): void {
         this.saving = false;
 
 
-        this._projectService.getProjectForEdit(projectId).subscribe(result => {
-            this.project = result;
-            var moment = require('moment');      
-            var _date = moment(result.date);
-            var tz = _date.utcOffset(); 
-            _date.add(tz, 'm');
-            this.project.date = _date.format('YYYY-MM-DD');
+        this._bidService.getBidForEdit(bidId).subscribe(result => {
+            this.bid = result;
             this.modal.show();
 
         })
     }
 
     save(): void {
-        let input = this.project;
+        let input = this.bid;
         var moment = require('moment');
-        input.date = moment(input.date);
+        input.beginDay = moment(input.beginDay);
         this.saving = true;
-        this._projectService.createOrEditProject(input).subscribe(result => {
+        this._bidService.createOrEditBid(input).subscribe(result => {
             this.notify.info(this.l('SavedSuccessfully'));
             this.close();
         })
