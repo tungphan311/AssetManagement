@@ -8,7 +8,8 @@ import { AddContractDetailModalComponent } from "./add-contract-detail-modal-com
 
 @Component({
     selector: 'createOrEditContractModal',
-    templateUrl: './create-or-edit-contract-modal.component.html'
+    templateUrl: './create-or-edit-contract-modal.component.html',
+    outputs: ['data:listMerchandises']
 })
 
 export class CreateOrEditContractModalComponent extends AppComponentBase {

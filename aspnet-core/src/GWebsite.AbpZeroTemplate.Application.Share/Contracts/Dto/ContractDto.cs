@@ -1,4 +1,5 @@
 ﻿using Abp.Domain.Entities;
+using GWebsite.AbpZeroTemplate.Application.Share.ContractDetails.Dto;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
