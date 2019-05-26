@@ -37,6 +37,8 @@ import { AddContractDetailModalComponent } from './contract/add-contract-detail-
 import { BidComponent } from './bid/bid.component';
 import { ViewBidModalComponent } from './bid/view-bid-modal.component';
 import { CreateOrEditBidModalComponent } from './bid/create-or-edit-bid-modal.component';
+import { SelectProjectModalComponent } from './bid/select-project-modal.component';
+
 
 @NgModule({
     imports: [
@@ -74,7 +76,7 @@ import { CreateOrEditBidModalComponent } from './bid/create-or-edit-bid-modal.co
         VendorTypeComponent, CreateOrEditVendorTypeModalComponent, ViewVendorTypeModalComponent,
         ProjectComponent, CreateOrEditProjectModalComponent, ViewProjectModalComponent,
         AssignmentTableComponent, CreateOrEditAssignmentTableModalComponent,
-        BidComponent, CreateOrEditBidModalComponent, ViewBidModalComponent,
+        BidComponent, CreateOrEditBidModalComponent, ViewBidModalComponent, SelectProjectModalComponent,
         CreateMerchandiseModalComponent,
     ],
     providers: [

@@ -1,3 +1,4 @@
+<div [@routerTransition]>
 <div bsModal #createOrEditModal="bs-modal" class="modal fade" tabindex="-1" role="dialog"
     aria-labelledby="createOrEditModal" aria-hidden="true" [config]="{backdrop: 'static'}">
     <div class="modal-dialog modal-lg">
@@ -27,13 +28,13 @@
                         <div class="col-xs-4">
                             <label for="ex3">Mã dự án *</label>
                             <div class="input-group col-xs-4">
-                                <input #projectIDInput="ngModel" class="form-control" type="text" name="ProjectID" [(ngModel)]="bid.projectID" required readonly>                               
+                                <input #projectCodeInput="ngModel" class="form-control" type="text" name="ProjectCode" [(ngModel)]="projectCode" required readonly>                               
                                 <span class="input-group-btn">
-                                    <button class="btn btn-primary" type="button">
+                                    <button class="btn btn-primary" (click)="selectProjectModal.show()" type="button">
                                         <i class="fa fa-ellipsis-h"></i>
                                     </button>
                                 </span>
-                                <validation-messages [formCtrl]="projectIDInput"></validation-messages>
+                                <validation-messages [formCtrl]="projectCodeInput"></validation-messages>
                             </div>
                         </div>
                     </div>
@@ -59,7 +60,7 @@
                             <label for="ex7">Hình thức thầu *</label>
                             <select id="ex7" name="BiddingForm" class="form-control" [(ngModel)]="bid.biddingForm" required>
                                 <option selected value="Đấu thầu">Đấu thầu</option>
-                                <option value="Hình thức khác">Hình thức khác</option>
+                                <option value="Chỉ định">Chỉ định</option>
                             </select>
                         </div>
                     </div>
@@ -86,4 +87,6 @@
             </form>
         </div>
     </div>
+</div>
+<selectProjectModal #selectProjectModal (modalSave)="reloadProject($event)"></selectProjectModal>
 </div>
