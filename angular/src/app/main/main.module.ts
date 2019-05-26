@@ -73,7 +73,7 @@ import { CreateOrEditBidModalComponent } from './bid/create-or-edit-bid-modal.co
         AddContractDetailModalComponent,
         VendorTypeComponent, CreateOrEditVendorTypeModalComponent, ViewVendorTypeModalComponent,
         ProjectComponent, CreateOrEditProjectModalComponent, ViewProjectModalComponent,
-        AssignmentTableComponent, CreateOrEditAssignmentTableModalComponent,
+        AssignmentTableComponent, CreateOrEditAssignmentTableModalComponent, ViewAssignmentTableModalComponent,
         BidComponent, CreateOrEditBidModalComponent, ViewBidModalComponent,
         CreateMerchandiseModalComponent,
     ],
