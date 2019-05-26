@@ -25,10 +25,6 @@
                         <div class="row align-items-center m--margin-bottom-10">
                             <div class="col-sm-12">
                                 <div class="input-group">
-                                    <!-- <input [(ngModel)]="MerchID" name="MerchID"  autoFocus class="form-control"
-                                           placeholder="Type Merchandise ID" type="text">
-                                    <input [(ngModel)]="VendorID" name="VendorID" autoFocus class="form-control"
-                                            placeholder="Type Vendor ID" type="text"> -->
                                             <div class="form-group">
                                                     <label>Mã hàng hóa *</label>
                                                     <select #merchIDInput="ngModel" class="form-control" [(ngModel)]="MerchID" name="MerchID" required>
@@ -69,7 +65,7 @@
                                         <p-sortIcon field="id"></p-sortIcon>
                                     </th> 
                                     <th pSortableColumn="MerchID">
-                                        {{l("MerchandiseName")}}
+                                        MerchandiseName
                                         <p-sortIcon field="MerchID"></p-sortIcon>
                                     </th> 
                                     <th pSortableColumn="VendorID">
@@ -105,7 +101,7 @@
                                         </button>
 
                                         <button class="btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill"
-                                                (click)="viewVendorModal.show(record.id)" title="{{l('View')}}">
+                                                (click)="viewAssignmentModal.show(record.id)" title="{{l('View')}}">
                                             <i class="fa fa-eye" [attr.aria-label]="l('View')"></i>
                                         </button>
                                     </td>
@@ -132,5 +128,5 @@
         </div>
     </div>
     <createOrEditAssignmentTableModal #createOrEditModal (modalSave)="reloadPage()"></createOrEditAssignmentTableModal>
-    <!-- <viewVendorModal #viewVendorModal></viewVendorModal> --> 
+    <viewAssignmentTableModal #viewAssignmentModal></viewAssignmentTableModal> 
 </div>

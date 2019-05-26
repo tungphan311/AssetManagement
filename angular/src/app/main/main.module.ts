@@ -75,7 +75,7 @@ import { SelectProjectModalComponent } from './bid/select-project-modal.componen
         AddContractDetailModalComponent,
         VendorTypeComponent, CreateOrEditVendorTypeModalComponent, ViewVendorTypeModalComponent,
         ProjectComponent, CreateOrEditProjectModalComponent, ViewProjectModalComponent,
-        AssignmentTableComponent, CreateOrEditAssignmentTableModalComponent,
+        AssignmentTableComponent, CreateOrEditAssignmentTableModalComponent, ViewAssignmentTableModalComponent,
         BidComponent, CreateOrEditBidModalComponent, ViewBidModalComponent, SelectProjectModalComponent,
         CreateMerchandiseModalComponent,
     ],
