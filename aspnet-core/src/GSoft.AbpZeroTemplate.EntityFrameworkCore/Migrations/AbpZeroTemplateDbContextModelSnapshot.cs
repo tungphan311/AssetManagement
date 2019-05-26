@@ -1090,25 +1090,6 @@ namespace GSoft.AbpZeroTemplate.Migrations
                     b.ToTable("AppChatMessages");
                 });
 
-            modelBuilder.Entity("GSoft.AbpZeroTemplate.DonVi", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("DiaChi");
-
-                    b.Property<int>("DonViChinhId");
-
-                    b.Property<string>("TenDonVi")
-                        .IsRequired()
-                        .HasMaxLength(255);
-
-                    b.HasKey("Id");
-
-                    b.ToTable("PbDonVi");
-                });
-
             modelBuilder.Entity("GSoft.AbpZeroTemplate.Friendships.Friendship", b =>
                 {
                     b.Property<long>("Id")
@@ -1342,18 +1323,16 @@ namespace GSoft.AbpZeroTemplate.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("BiHuHong");
-
-                    b.Property<int>("DangSuDung");
-
-                    b.Property<int>("DangTrongKho");
-
                     b.Property<string>("NhomTaiSan")
                         .HasMaxLength(255);
 
                     b.Property<string>("TenTaiSan")
                         .IsRequired()
                         .HasMaxLength(255);
+
+                    b.Property<int>("TrangThai");
+
+                    b.Property<long>("UnitId");
 
                     b.HasKey("Id");
 

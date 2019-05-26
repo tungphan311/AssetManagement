@@ -15,7 +15,6 @@ import { AssetDashboardComponent } from './asset_dashboard/asset_dashboard.compo
 import { ThemTaiSanModalComponent } from './asset_dashboard/ThemTaiSan-modal.component';
 import { XuatTaiSanModalComponent } from './asset_dashboard/XuatTaiSan-modal.component';
 import { ChiTietDonViModalComponent } from './asset_dashboard/ChiTietDonVi-modal.component';
-import { ThemDonViModalComponent } from './asset_dashboard/ThemDonVi-modal.component';
 
 @NgModule({
     imports: [
@@ -38,7 +37,6 @@ import { ThemDonViModalComponent } from './asset_dashboard/ThemDonVi-modal.compo
         ThemTaiSanModalComponent,
         XuatTaiSanModalComponent,
         ChiTietDonViModalComponent,
-        ThemDonViModalComponent,
     ]
 })
 export class MainModule { }

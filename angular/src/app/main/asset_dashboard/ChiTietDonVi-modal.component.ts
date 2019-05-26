@@ -1,6 +1,6 @@
 import { Component, ViewChild, Injector, ElementRef, Output, EventEmitter } from '@angular/core';
 import { ModalDirective } from 'ngx-bootstrap';
-import { DonViServiceProxy, DonViDto, TaiSanDto} from '@shared/service-proxies/service-proxies';
+import { DonViServiceProxy, UnitTaiSanDto, TaiSanDto} from '@shared/service-proxies/service-proxies';
 import { AppComponentBase } from '@shared/common/app-component-base';
 import { finalize } from 'rxjs/operators';
 
@@ -13,7 +13,7 @@ export class ChiTietDonViModalComponent extends AppComponentBase {
     @Output() modalSave: EventEmitter<any> = new EventEmitter<any>();
     @ViewChild('modal') modal: ModalDirective;
 
-    donvi: DonViDto = new DonViDto();
+    unit: UnitTaiSanDto = new UnitTaiSanDto();
 
     tai_san_hu_hong: TaiSanDto[] = [];
     tai_san_su_dung: TaiSanDto[] = [];
@@ -24,16 +24,16 @@ export class ChiTietDonViModalComponent extends AppComponentBase {
 
     constructor(
         injector: Injector,
-        private _personService: DonViServiceProxy
+        private _Service: DonViServiceProxy
     ) {
         super(injector);
     }
 
-    show(don_vi): void {
+    show(unit): void {
         this.active = true;
-        this.donvi = don_vi;
-        this._personService.taiSanSuDung(don_vi.id).subscribe(result => { this.tai_san_su_dung = result});
-        this._personService.taiSanTrongKho(don_vi.id).subscribe(result => { this.tai_san_trong_kho = result});
+        this.unit = unit;
+        this._Service.taiSanTheoTrangThai(unit.id, 1).subscribe(result => { this.tai_san_su_dung = result });
+        this._Service.taiSanTheoTrangThai(unit.id, 0).subscribe(result => { this.tai_san_trong_kho = result });
         this.modal.show();
         // if(this.appSession.user.userName == "admin")
         //     this.input.tenDonVi = "DonViChinh";

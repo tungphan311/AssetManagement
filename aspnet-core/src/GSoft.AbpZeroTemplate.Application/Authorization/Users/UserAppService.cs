@@ -61,8 +61,7 @@ namespace GSoft.AbpZeroTemplate.Authorization.Users
             IUserPolicy userPolicy,
             IEnumerable<IPasswordValidator<User>> passwordValidators,
             IPasswordHasher<User> passwordHasher,
-            IRepository<OrganizationUnit, long> organizationUnitRepository,
-            IRepository<DonVi> DonViRepository)
+            IRepository<OrganizationUnit, long> organizationUnitRepository)
         {
             _roleManager = roleManager;
             _userEmailer = userEmailer;

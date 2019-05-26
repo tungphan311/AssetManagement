@@ -14,11 +14,9 @@ namespace GSoft.AbpZeroTemplate
         [MaxLength(255)]
         public virtual string NhomTaiSan { get; set; }
 
-        public virtual int DangTrongKho { get; set; }
+        public virtual int TrangThai { get; set; }
 
-        public virtual int DangSuDung { get; set; }
-
-        public virtual int BiHuHong { get; set; }
+        public virtual long UnitId { get; set; }
 
     }
 }

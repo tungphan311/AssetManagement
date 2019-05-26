@@ -9,7 +9,6 @@
                     Asset Management Statistics
                 </span>
             </div>
-            <button class="btn btn-primary" style="float: right;"(click)="ThemDonViModal.show()"><i class="fa fa-plus"></i>Them Don Vi</button>
             <!--<button class="btn btn-primary" style="float: right;"(click)="XuatTaiSanModal.show()"><i class="fa fa-exchange"></i> {{"Transfer Asset"}}</button> -->
         </div>
     </div>
@@ -126,27 +125,26 @@
                             </button> -->
                         </div>
                     </div>
-                    <div class="m-widget1__item" *ngFor="let person of people">
+                    <div class="m-widget1__item" *ngFor="let dto of unit_taisan">
                         <div class="row m-row--no-padding align-items-center">
-                            <div class="col" (click)="ChiTietDonViModal.show(person)">
-                                <h3 class="m-widget1__title">{{person.tenDonVi}}</h3>
-                                <span class="m-widget1__desc" *ngIf="person.donViChinh">{{person.donViChinh}}</span>
+                            <div class="col" (click)="ChiTietDonViModal.show(dto)">
+                                <h3 class="m-widget1__title">{{dto.name}}</h3>
                             </div>
                             <div class="col">
-                                <h5 class="m--align-center m--font-primary">{{person.soLuongTaiSan}}</h5>
+                                <h5 class="m--align-center m--font-primary">{{dto.soLuong}}</h5>
                             </div>
                             <div class="col">
-                                <h5 class="m--align-center m--font-success">{{person.taiSanSuDung}}</h5>
+                                <h5 class="m--align-center m--font-success">{{dto.suDung}}</h5>
                             </div>
                             <div class="col">
-                                <h5 class="m--align-center m--font-info">{{person.taiSanTrongKho}}</h5>
+                                <h5 class="m--align-center m--font-info">{{dto.trongKho}}</h5>
                             </div>
                             <div class="col">
-                                <h5 class="m--align-center m--font-warning">{{person.taiSanHu}}</h5>
+                                <h5 class="m--align-center m--font-warning">{{dto.huHong}}</h5>
                             </div>
                             <div class="col m--align-right d-flex flex-row">
-                                <button class="btn btn-primary pl-3 pr-3 pt-2 pb-2 float-right" (click)="ThemTaiSanModal.show(person)"><i class="fa fa-plus"></i>Them</button>
-                                <button class="btn btn-primary pl-3 pr-3 pt-2 pb-2 float-right" (click)="XuatTaiSanModal.show(person)"><i class="fa fa-exchange"></i>Xuat</button>
+                                <button class="btn btn-primary pl-3 pr-3 pt-2 pb-2 float-right" (click)="ThemTaiSanModal.show(dto)"><i class="fa fa-plus"></i>Them</button>
+                                <button class="btn btn-primary pl-3 pr-3 pt-2 pb-2 float-right" (click)="XuatTaiSanModal.show(dto)"><i class="fa fa-exchange"></i>Xuat</button>
                             </div>
                         </div>
                     </div>
@@ -292,5 +290,4 @@
     <ThemTaiSanModal #ThemTaiSanModal (modalSave)="getData()"></ThemTaiSanModal>
     <XuatTaiSanModal #XuatTaiSanModal (modalSave)="getData()"></XuatTaiSanModal>
     <ChiTietDonViModal #ChiTietDonViModal></ChiTietDonViModal>
-    <ThemDonViModal #ThemDonViModal (modalSave)="getData()"></ThemDonViModal>
 </div>

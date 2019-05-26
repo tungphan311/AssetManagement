@@ -6134,11 +6134,11 @@
   "project": {
     "version": "5.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\admin\\Downloads\\AssetManagement-Nh-m-1\\aspnet-core\\src\\GSoft.AbpZeroTemplate.Application.Shared\\GSoft.AbpZeroTemplate.Application.Shared.csproj",
+      "projectUniqueName": "C:\\Users\\admin\\Desktop\\aspzero\\aspnet-core\\src\\GSoft.AbpZeroTemplate.Application.Shared\\GSoft.AbpZeroTemplate.Application.Shared.csproj",
       "projectName": "GSoft.AbpZeroTemplate.Application.Shared",
-      "projectPath": "C:\\Users\\admin\\Downloads\\AssetManagement-Nh-m-1\\aspnet-core\\src\\GSoft.AbpZeroTemplate.Application.Shared\\GSoft.AbpZeroTemplate.Application.Shared.csproj",
+      "projectPath": "C:\\Users\\admin\\Desktop\\aspzero\\aspnet-core\\src\\GSoft.AbpZeroTemplate.Application.Shared\\GSoft.AbpZeroTemplate.Application.Shared.csproj",
       "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\admin\\Downloads\\AssetManagement-Nh-m-1\\aspnet-core\\src\\GSoft.AbpZeroTemplate.Application.Shared\\obj\\",
+      "outputPath": "C:\\Users\\admin\\Desktop\\aspzero\\aspnet-core\\src\\GSoft.AbpZeroTemplate.Application.Shared\\obj\\",
       "projectStyle": "PackageReference",
       "crossTargeting": true,
       "fallbackFolders": [
@@ -6158,8 +6158,8 @@
       "frameworks": {
         "netstandard2.0": {
           "projectReferences": {
-            "C:\\Users\\admin\\Downloads\\AssetManagement-Nh-m-1\\aspnet-core\\src\\GSoft.AbpZeroTemplate.Core.Shared\\GSoft.AbpZeroTemplate.Core.Shared.csproj": {
-              "projectPath": "C:\\Users\\admin\\Downloads\\AssetManagement-Nh-m-1\\aspnet-core\\src\\GSoft.AbpZeroTemplate.Core.Shared\\GSoft.AbpZeroTemplate.Core.Shared.csproj"
+            "C:\\Users\\admin\\Desktop\\aspzero\\aspnet-core\\src\\GSoft.AbpZeroTemplate.Core.Shared\\GSoft.AbpZeroTemplate.Core.Shared.csproj": {
+              "projectPath": "C:\\Users\\admin\\Desktop\\aspzero\\aspnet-core\\src\\GSoft.AbpZeroTemplate.Core.Shared\\GSoft.AbpZeroTemplate.Core.Shared.csproj"
             }
           }
         }

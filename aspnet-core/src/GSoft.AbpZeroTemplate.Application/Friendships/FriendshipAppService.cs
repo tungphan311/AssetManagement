@@ -46,7 +46,6 @@ namespace GSoft.AbpZeroTemplate.Friendships
             {
                 throw new UserFriendlyException(L("YouAlreadySentAFriendshipRequestToThisUser"));
             }
-
             var user = await UserManager.FindByIdAsync(AbpSession.GetUserId().ToString());
 
             User probableFriendUser;

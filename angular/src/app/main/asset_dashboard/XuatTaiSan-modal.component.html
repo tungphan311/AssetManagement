@@ -12,26 +12,28 @@
                 </div>
                 <div class="modal-body">
                     <div class="d-flex flex-column justify-content-center align-items-center" style="margin-bottom: 15px">
-                        <div style="font-size: 20px; margin-bottom: 5px">{{this.don_vi_nhan[0].tenDonVi}}</div>
-                        <div *ngIf="don_vi_nhan[0].donViChinh" style="font-weight: bold;">Don vi chinh:&nbsp;&nbsp;{{this.don_vi_nhan[0].donViChinh}}</div>
-                    </div>                    <div class="form-group">
+                        <div style="font-size: 20px; margin-bottom: 5px">{{this.unit.name}}</div>
+                    </div>
+                    <div class="form-group">
                         <label>Don Vi Su Dung Tai San</label>
-                        <input name="don_vi_nhan_id" class="form-control" type="hidden" [(ngModel)]="input.donViNhanId" required>
-                        <select class="form-control" [(ngModel)]="input.donViNhanId" [ngModelOptions]="{standalone: true}" required>
-                            <option *ngFor="let don_vi of don_vi_nhan" [value]="don_vi.id">ID{{don_vi.id}}  -  {{don_vi.tenDonVi}}</option>
+                        <input name="unit_nhan_id" class="form-control" type="hidden" [(ngModel)]="input.unitNhanId" required>
+                        <select class="form-control" [(ngModel)]="input.unitNhanId" [ngModelOptions]="{standalone: true}" required>
+                            <option [value]=""></option>
+                            <option *ngFor="let unit_con of unit_nhan" [value]="unit_con.id">ID{{unit_con.id}}  -  {{unit_con.name}}</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <label>Tai San Xuat</label>
                         <input name="tai_san_xuat_id" class="form-control" type="hidden" [(ngModel)]="input.taiSanXuatId" required>
                         <select class="form-control" [(ngModel)]="input.taiSanXuatId" [ngModelOptions]="{standalone: true}" required>
+                            <option [value]=""></option>
                             <option *ngFor="let tai_san of tai_san_trong_kho" [value]="tai_san.id">ID{{tai_san.id}}  -  {{tai_san.tenTaiSan}}</option>
                         </select>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button [disabled]="saving" type="button" class="btn btn-secondary" (click)="close()">{{"Cancel"}}</button>
-                    <button type="submit" class="btn btn-primary" [disabled]="!Form.form.valid" [buttonBusy]="saving" [busyText]="l('SavingWithThreeDot')"><i class="fa fa-save"></i> <span>{{"Save"}}</span></button>
+                    <button [disabled]="saving" type="button" class="btn btn-secondary" (click)="close()">Cancel</button>
+                    <button type="submit" class="btn btn-primary" [disabled]="!Form.form.valid" [buttonBusy]="saving" [busyText]="l('SavingWithThreeDot')"><i class="fa fa-save"></i> <span>Save</span></button>
                 </div>
             </form>
         </div>

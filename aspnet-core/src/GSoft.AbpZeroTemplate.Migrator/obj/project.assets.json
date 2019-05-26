@@ -11185,11 +11185,11 @@
   "project": {
     "version": "5.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\admin\\Downloads\\AssetManagement-Nh-m-1\\aspnet-core\\src\\GSoft.AbpZeroTemplate.Migrator\\GSoft.AbpZeroTemplate.Migrator.csproj",
+      "projectUniqueName": "C:\\Users\\admin\\Desktop\\aspzero\\aspnet-core\\src\\GSoft.AbpZeroTemplate.Migrator\\GSoft.AbpZeroTemplate.Migrator.csproj",
       "projectName": "GSoft.AbpZeroTemplate.Migrator",
-      "projectPath": "C:\\Users\\admin\\Downloads\\AssetManagement-Nh-m-1\\aspnet-core\\src\\GSoft.AbpZeroTemplate.Migrator\\GSoft.AbpZeroTemplate.Migrator.csproj",
+      "projectPath": "C:\\Users\\admin\\Desktop\\aspzero\\aspnet-core\\src\\GSoft.AbpZeroTemplate.Migrator\\GSoft.AbpZeroTemplate.Migrator.csproj",
       "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\admin\\Downloads\\AssetManagement-Nh-m-1\\aspnet-core\\src\\GSoft.AbpZeroTemplate.Migrator\\obj\\",
+      "outputPath": "C:\\Users\\admin\\Desktop\\aspzero\\aspnet-core\\src\\GSoft.AbpZeroTemplate.Migrator\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -11208,8 +11208,8 @@
       "frameworks": {
         "netcoreapp2.1": {
           "projectReferences": {
-            "C:\\Users\\admin\\Downloads\\AssetManagement-Nh-m-1\\aspnet-core\\src\\GSoft.AbpZeroTemplate.EntityFrameworkCore\\GSoft.AbpZeroTemplate.EntityFrameworkCore.csproj": {
-              "projectPath": "C:\\Users\\admin\\Downloads\\AssetManagement-Nh-m-1\\aspnet-core\\src\\GSoft.AbpZeroTemplate.EntityFrameworkCore\\GSoft.AbpZeroTemplate.EntityFrameworkCore.csproj"
+            "C:\\Users\\admin\\Desktop\\aspzero\\aspnet-core\\src\\GSoft.AbpZeroTemplate.EntityFrameworkCore\\GSoft.AbpZeroTemplate.EntityFrameworkCore.csproj": {
+              "projectPath": "C:\\Users\\admin\\Desktop\\aspzero\\aspnet-core\\src\\GSoft.AbpZeroTemplate.EntityFrameworkCore\\GSoft.AbpZeroTemplate.EntityFrameworkCore.csproj"
             }
           }
         }

@@ -1,6 +1,6 @@
 import { Component, ViewChild, Injector, ElementRef, Output, EventEmitter } from '@angular/core';
 import { ModalDirective } from 'ngx-bootstrap';
-import { DonViServiceProxy, DonViThemTaiSanInput, DonViDto } from '@shared/service-proxies/service-proxies';
+import { DonViServiceProxy, UnitThemTaiSanInput, UnitTaiSanDto } from '@shared/service-proxies/service-proxies';
 import { AppComponentBase } from '@shared/common/app-component-base';
 import { finalize } from 'rxjs/operators';
 
@@ -15,23 +15,23 @@ export class ThemTaiSanModalComponent extends AppComponentBase {
     @ViewChild('modal') modal: ModalDirective;
     @ViewChild('ten_tai_san_them') ten_tai_san_them: ElementRef;
 
-    input: DonViThemTaiSanInput = new DonViThemTaiSanInput();
-    donvi: DonViDto = new DonViDto();
+    input: UnitThemTaiSanInput = new UnitThemTaiSanInput();
+    unit: UnitTaiSanDto = new UnitTaiSanDto();
 
     active: boolean = false;
     saving: boolean = false;
 
     constructor(
         injector: Injector,
-        private _personService: DonViServiceProxy
+        private _Service: DonViServiceProxy
     ) {
         super(injector);
     }
 
-    show(don_vi): void {
+    show(unit): void {
         this.active = true;
-        this.donvi = don_vi;
-        this.input.donViId = this.donvi.id;
+        this.unit = unit;
+        this.input.unitId = this.unit.id;
         this.input.tenTaiSanThem = "";
         this.modal.show();
         
@@ -45,7 +45,7 @@ export class ThemTaiSanModalComponent extends AppComponentBase {
 
     save(): void {
         this.saving = true;
-        this._personService.donViThemTaiSan(this.input)
+        this._Service.unitThemTaiSan(this.input)
             .pipe(finalize(() => this.saving = false))
             .subscribe(result => {
                 if(result)

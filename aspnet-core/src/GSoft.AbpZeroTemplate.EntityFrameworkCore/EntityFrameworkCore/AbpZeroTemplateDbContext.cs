@@ -18,8 +18,6 @@ namespace GSoft.AbpZeroTemplate.EntityFrameworkCore
         /* Define an IDbSet for each entity of the application */
         public virtual DbSet<TaiSan> TaiSan { get; set; }
 
-        public virtual DbSet<DonVi> DonVi { get; set; }
-
         public virtual DbSet<Person> Persons { get; set; }
 
         public virtual DbSet<BinaryObject> BinaryObjects { get; set; }

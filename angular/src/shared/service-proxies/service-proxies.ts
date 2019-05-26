@@ -2487,13 +2487,10 @@ export class DonViServiceProxy {
     }
 
     /**
-     * @filter (optional) 
      * @return Success
      */
-    getDonVi(filter: string | null | undefined): Observable<DonViDto[]> {
-        let url_ = this.baseUrl + "/api/services/app/DonVi/GetDonVi?";
-        if (filter !== undefined)
-            url_ += "Filter=" + encodeURIComponent("" + filter) + "&"; 
+    getUnit(): Observable<UnitTaiSanDto[]> {
+        let url_ = this.baseUrl + "/api/services/app/DonVi/GetUnit";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
@@ -2506,20 +2503,20 @@ export class DonViServiceProxy {
         };
 
         return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
-            return this.processGetDonVi(response_);
+            return this.processGetUnit(response_);
         })).pipe(_observableCatch((response_: any) => {
             if (response_ instanceof HttpResponseBase) {
                 try {
-                    return this.processGetDonVi(<any>response_);
+                    return this.processGetUnit(<any>response_);
                 } catch (e) {
-                    return <Observable<DonViDto[]>><any>_observableThrow(e);
+                    return <Observable<UnitTaiSanDto[]>><any>_observableThrow(e);
                 }
             } else
-                return <Observable<DonViDto[]>><any>_observableThrow(response_);
+                return <Observable<UnitTaiSanDto[]>><any>_observableThrow(response_);
         }));
     }
 
-    protected processGetDonVi(response: HttpResponseBase): Observable<DonViDto[]> {
+    protected processGetUnit(response: HttpResponseBase): Observable<UnitTaiSanDto[]> {
         const status = response.status;
         const responseBlob = 
             response instanceof HttpResponse ? response.body : 
@@ -2533,7 +2530,7 @@ export class DonViServiceProxy {
             if (resultData200 && resultData200.constructor === Array) {
                 result200 = [];
                 for (let item of resultData200)
-                    result200.push(DonViDto.fromJS(item));
+                    result200.push(UnitTaiSanDto.fromJS(item));
             }
             return _observableOf(result200);
             }));
@@ -2542,17 +2539,17 @@ export class DonViServiceProxy {
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             }));
         }
-        return _observableOf<DonViDto[]>(<any>null);
+        return _observableOf<UnitTaiSanDto[]>(<any>null);
     }
 
     /**
-     * @don_vi_id (optional) 
+     * @unit_code (optional) 
      * @return Success
      */
-    getDonViCon(don_vi_id: number | null | undefined): Observable<DonViDto[]> {
-        let url_ = this.baseUrl + "/api/services/app/DonVi/GetDonViCon?";
-        if (don_vi_id !== undefined)
-            url_ += "don_vi_id=" + encodeURIComponent("" + don_vi_id) + "&"; 
+    getUnitCon(unit_code: string | null | undefined): Observable<UnitTaiSanDto[]> {
+        let url_ = this.baseUrl + "/api/services/app/DonVi/GetUnitCon?";
+        if (unit_code !== undefined)
+            url_ += "unit_code=" + encodeURIComponent("" + unit_code) + "&"; 
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
@@ -2565,20 +2562,20 @@ export class DonViServiceProxy {
         };
 
         return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
-            return this.processGetDonViCon(response_);
+            return this.processGetUnitCon(response_);
         })).pipe(_observableCatch((response_: any) => {
             if (response_ instanceof HttpResponseBase) {
                 try {
-                    return this.processGetDonViCon(<any>response_);
+                    return this.processGetUnitCon(<any>response_);
                 } catch (e) {
-                    return <Observable<DonViDto[]>><any>_observableThrow(e);
+                    return <Observable<UnitTaiSanDto[]>><any>_observableThrow(e);
                 }
             } else
-                return <Observable<DonViDto[]>><any>_observableThrow(response_);
+                return <Observable<UnitTaiSanDto[]>><any>_observableThrow(response_);
         }));
     }
 
-    protected processGetDonViCon(response: HttpResponseBase): Observable<DonViDto[]> {
+    protected processGetUnitCon(response: HttpResponseBase): Observable<UnitTaiSanDto[]> {
         const status = response.status;
         const responseBlob = 
             response instanceof HttpResponse ? response.body : 
@@ -2592,7 +2589,7 @@ export class DonViServiceProxy {
             if (resultData200 && resultData200.constructor === Array) {
                 result200 = [];
                 for (let item of resultData200)
-                    result200.push(DonViDto.fromJS(item));
+                    result200.push(UnitTaiSanDto.fromJS(item));
             }
             return _observableOf(result200);
             }));
@@ -2601,15 +2598,15 @@ export class DonViServiceProxy {
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             }));
         }
-        return _observableOf<DonViDto[]>(<any>null);
+        return _observableOf<UnitTaiSanDto[]>(<any>null);
     }
 
     /**
      * @input (optional) 
      * @return Success
      */
-    donViThemTaiSan(input: DonViThemTaiSanInput | null | undefined): Observable<boolean> {
-        let url_ = this.baseUrl + "/api/services/app/DonVi/DonViThemTaiSan";
+    unitThemTaiSan(input: UnitThemTaiSanInput | null | undefined): Observable<boolean> {
+        let url_ = this.baseUrl + "/api/services/app/DonVi/UnitThemTaiSan";
         url_ = url_.replace(/[?&]$/, "");
 
         const content_ = JSON.stringify(input);
@@ -2625,11 +2622,11 @@ export class DonViServiceProxy {
         };
 
         return this.http.request("post", url_, options_).pipe(_observableMergeMap((response_ : any) => {
-            return this.processDonViThemTaiSan(response_);
+            return this.processUnitThemTaiSan(response_);
         })).pipe(_observableCatch((response_: any) => {
             if (response_ instanceof HttpResponseBase) {
                 try {
-                    return this.processDonViThemTaiSan(<any>response_);
+                    return this.processUnitThemTaiSan(<any>response_);
                 } catch (e) {
                     return <Observable<boolean>><any>_observableThrow(e);
                 }
@@ -2638,295 +2635,7 @@ export class DonViServiceProxy {
         }));
     }
 
-    protected processDonViThemTaiSan(response: HttpResponseBase): Observable<boolean> {
-        const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
-            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
-
-        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
-        if (status === 200) {
-            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
-            let result200: any = null;
-            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            result200 = resultData200 !== undefined ? resultData200 : <any>null;
-            return _observableOf(result200);
-            }));
-        } else if (status !== 200 && status !== 204) {
-            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-            }));
-        }
-        return _observableOf<boolean>(<any>null);
-    }
-
-    /**
-     * @input (optional) 
-     * @return Success
-     */
-    donViXuatTaiSan(input: DonViXuatTaiSanInput | null | undefined): Observable<boolean> {
-        let url_ = this.baseUrl + "/api/services/app/DonVi/DonViXuatTaiSan";
-        url_ = url_.replace(/[?&]$/, "");
-
-        const content_ = JSON.stringify(input);
-
-        let options_ : any = {
-            body: content_,
-            observe: "response",
-            responseType: "blob",
-            headers: new HttpHeaders({
-                "Content-Type": "application/json", 
-                "Accept": "application/json"
-            })
-        };
-
-        return this.http.request("post", url_, options_).pipe(_observableMergeMap((response_ : any) => {
-            return this.processDonViXuatTaiSan(response_);
-        })).pipe(_observableCatch((response_: any) => {
-            if (response_ instanceof HttpResponseBase) {
-                try {
-                    return this.processDonViXuatTaiSan(<any>response_);
-                } catch (e) {
-                    return <Observable<boolean>><any>_observableThrow(e);
-                }
-            } else
-                return <Observable<boolean>><any>_observableThrow(response_);
-        }));
-    }
-
-    protected processDonViXuatTaiSan(response: HttpResponseBase): Observable<boolean> {
-        const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
-            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
-
-        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
-        if (status === 200) {
-            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
-            let result200: any = null;
-            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            result200 = resultData200 !== undefined ? resultData200 : <any>null;
-            return _observableOf(result200);
-            }));
-        } else if (status !== 200 && status !== 204) {
-            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-            }));
-        }
-        return _observableOf<boolean>(<any>null);
-    }
-
-    /**
-     * @id_don_vi (optional) 
-     * @return Success
-     */
-    taiSanTrongKho(id_don_vi: number | null | undefined): Observable<TaiSanDto[]> {
-        let url_ = this.baseUrl + "/api/services/app/DonVi/TaiSanTrongKho?";
-        if (id_don_vi !== undefined)
-            url_ += "id_don_vi=" + encodeURIComponent("" + id_don_vi) + "&"; 
-        url_ = url_.replace(/[?&]$/, "");
-
-        let options_ : any = {
-            observe: "response",
-            responseType: "blob",
-            headers: new HttpHeaders({
-                "Content-Type": "application/json", 
-                "Accept": "application/json"
-            })
-        };
-
-        return this.http.request("post", url_, options_).pipe(_observableMergeMap((response_ : any) => {
-            return this.processTaiSanTrongKho(response_);
-        })).pipe(_observableCatch((response_: any) => {
-            if (response_ instanceof HttpResponseBase) {
-                try {
-                    return this.processTaiSanTrongKho(<any>response_);
-                } catch (e) {
-                    return <Observable<TaiSanDto[]>><any>_observableThrow(e);
-                }
-            } else
-                return <Observable<TaiSanDto[]>><any>_observableThrow(response_);
-        }));
-    }
-
-    protected processTaiSanTrongKho(response: HttpResponseBase): Observable<TaiSanDto[]> {
-        const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
-            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
-
-        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
-        if (status === 200) {
-            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
-            let result200: any = null;
-            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            if (resultData200 && resultData200.constructor === Array) {
-                result200 = [];
-                for (let item of resultData200)
-                    result200.push(TaiSanDto.fromJS(item));
-            }
-            return _observableOf(result200);
-            }));
-        } else if (status !== 200 && status !== 204) {
-            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-            }));
-        }
-        return _observableOf<TaiSanDto[]>(<any>null);
-    }
-
-    /**
-     * @id_don_vi (optional) 
-     * @return Success
-     */
-    taiSanSuDung(id_don_vi: number | null | undefined): Observable<TaiSanDto[]> {
-        let url_ = this.baseUrl + "/api/services/app/DonVi/TaiSanSuDung?";
-        if (id_don_vi !== undefined)
-            url_ += "id_don_vi=" + encodeURIComponent("" + id_don_vi) + "&"; 
-        url_ = url_.replace(/[?&]$/, "");
-
-        let options_ : any = {
-            observe: "response",
-            responseType: "blob",
-            headers: new HttpHeaders({
-                "Content-Type": "application/json", 
-                "Accept": "application/json"
-            })
-        };
-
-        return this.http.request("post", url_, options_).pipe(_observableMergeMap((response_ : any) => {
-            return this.processTaiSanSuDung(response_);
-        })).pipe(_observableCatch((response_: any) => {
-            if (response_ instanceof HttpResponseBase) {
-                try {
-                    return this.processTaiSanSuDung(<any>response_);
-                } catch (e) {
-                    return <Observable<TaiSanDto[]>><any>_observableThrow(e);
-                }
-            } else
-                return <Observable<TaiSanDto[]>><any>_observableThrow(response_);
-        }));
-    }
-
-    protected processTaiSanSuDung(response: HttpResponseBase): Observable<TaiSanDto[]> {
-        const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
-            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
-
-        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
-        if (status === 200) {
-            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
-            let result200: any = null;
-            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            if (resultData200 && resultData200.constructor === Array) {
-                result200 = [];
-                for (let item of resultData200)
-                    result200.push(TaiSanDto.fromJS(item));
-            }
-            return _observableOf(result200);
-            }));
-        } else if (status !== 200 && status !== 204) {
-            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-            }));
-        }
-        return _observableOf<TaiSanDto[]>(<any>null);
-    }
-
-    /**
-     * @id_don_vi (optional) 
-     * @return Success
-     */
-    taiSanHuHong(id_don_vi: number | null | undefined): Observable<TaiSanDto[]> {
-        let url_ = this.baseUrl + "/api/services/app/DonVi/TaiSanHuHong?";
-        if (id_don_vi !== undefined)
-            url_ += "id_don_vi=" + encodeURIComponent("" + id_don_vi) + "&"; 
-        url_ = url_.replace(/[?&]$/, "");
-
-        let options_ : any = {
-            observe: "response",
-            responseType: "blob",
-            headers: new HttpHeaders({
-                "Content-Type": "application/json", 
-                "Accept": "application/json"
-            })
-        };
-
-        return this.http.request("post", url_, options_).pipe(_observableMergeMap((response_ : any) => {
-            return this.processTaiSanHuHong(response_);
-        })).pipe(_observableCatch((response_: any) => {
-            if (response_ instanceof HttpResponseBase) {
-                try {
-                    return this.processTaiSanHuHong(<any>response_);
-                } catch (e) {
-                    return <Observable<TaiSanDto[]>><any>_observableThrow(e);
-                }
-            } else
-                return <Observable<TaiSanDto[]>><any>_observableThrow(response_);
-        }));
-    }
-
-    protected processTaiSanHuHong(response: HttpResponseBase): Observable<TaiSanDto[]> {
-        const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
-            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
-
-        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
-        if (status === 200) {
-            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
-            let result200: any = null;
-            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            if (resultData200 && resultData200.constructor === Array) {
-                result200 = [];
-                for (let item of resultData200)
-                    result200.push(TaiSanDto.fromJS(item));
-            }
-            return _observableOf(result200);
-            }));
-        } else if (status !== 200 && status !== 204) {
-            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-            }));
-        }
-        return _observableOf<TaiSanDto[]>(<any>null);
-    }
-
-    /**
-     * @don_vi_id (optional) 
-     * @return Success
-     */
-    deleteDonVi(don_vi_id: number | null | undefined): Observable<boolean> {
-        let url_ = this.baseUrl + "/api/services/app/DonVi/DeleteDonVi?";
-        if (don_vi_id !== undefined)
-            url_ += "don_vi_id=" + encodeURIComponent("" + don_vi_id) + "&"; 
-        url_ = url_.replace(/[?&]$/, "");
-
-        let options_ : any = {
-            observe: "response",
-            responseType: "blob",
-            headers: new HttpHeaders({
-                "Content-Type": "application/json", 
-                "Accept": "application/json"
-            })
-        };
-
-        return this.http.request("delete", url_, options_).pipe(_observableMergeMap((response_ : any) => {
-            return this.processDeleteDonVi(response_);
-        })).pipe(_observableCatch((response_: any) => {
-            if (response_ instanceof HttpResponseBase) {
-                try {
-                    return this.processDeleteDonVi(<any>response_);
-                } catch (e) {
-                    return <Observable<boolean>><any>_observableThrow(e);
-                }
-            } else
-                return <Observable<boolean>><any>_observableThrow(response_);
-        }));
-    }
-
-    protected processDeleteDonVi(response: HttpResponseBase): Observable<boolean> {
+    protected processUnitThemTaiSan(response: HttpResponseBase): Observable<boolean> {
         const status = response.status;
         const responseBlob = 
             response instanceof HttpResponse ? response.body : 
@@ -2952,8 +2661,8 @@ export class DonViServiceProxy {
      * @input (optional) 
      * @return Success
      */
-    createDonVi(input: CreateDonViInput | null | undefined): Observable<boolean> {
-        let url_ = this.baseUrl + "/api/services/app/DonVi/CreateDonVi";
+    unitXuatTaiSan(input: UnitXuatTaiSanInput | null | undefined): Observable<boolean> {
+        let url_ = this.baseUrl + "/api/services/app/DonVi/UnitXuatTaiSan";
         url_ = url_.replace(/[?&]$/, "");
 
         const content_ = JSON.stringify(input);
@@ -2969,11 +2678,11 @@ export class DonViServiceProxy {
         };
 
         return this.http.request("post", url_, options_).pipe(_observableMergeMap((response_ : any) => {
-            return this.processCreateDonVi(response_);
+            return this.processUnitXuatTaiSan(response_);
         })).pipe(_observableCatch((response_: any) => {
             if (response_ instanceof HttpResponseBase) {
                 try {
-                    return this.processCreateDonVi(<any>response_);
+                    return this.processUnitXuatTaiSan(<any>response_);
                 } catch (e) {
                     return <Observable<boolean>><any>_observableThrow(e);
                 }
@@ -2982,7 +2691,7 @@ export class DonViServiceProxy {
         }));
     }
 
-    protected processCreateDonVi(response: HttpResponseBase): Observable<boolean> {
+    protected processUnitXuatTaiSan(response: HttpResponseBase): Observable<boolean> {
         const status = response.status;
         const responseBlob = 
             response instanceof HttpResponse ? response.body : 
@@ -3002,6 +2711,68 @@ export class DonViServiceProxy {
             }));
         }
         return _observableOf<boolean>(<any>null);
+    }
+
+    /**
+     * @unit_id (optional) 
+     * @trang_thai (optional) 
+     * @return Success
+     */
+    taiSanTheoTrangThai(unit_id: number | null | undefined, trang_thai: number | null | undefined): Observable<TaiSanDto[]> {
+        let url_ = this.baseUrl + "/api/services/app/DonVi/TaiSanTheoTrangThai?";
+        if (unit_id !== undefined)
+            url_ += "unit_id=" + encodeURIComponent("" + unit_id) + "&"; 
+        if (trang_thai !== undefined)
+            url_ += "trang_thai=" + encodeURIComponent("" + trang_thai) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("post", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processTaiSanTheoTrangThai(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processTaiSanTheoTrangThai(<any>response_);
+                } catch (e) {
+                    return <Observable<TaiSanDto[]>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<TaiSanDto[]>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processTaiSanTheoTrangThai(response: HttpResponseBase): Observable<TaiSanDto[]> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            if (resultData200 && resultData200.constructor === Array) {
+                result200 = [];
+                for (let item of resultData200)
+                    result200.push(TaiSanDto.fromJS(item));
+            }
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<TaiSanDto[]>(<any>null);
     }
 }
 
@@ -12357,19 +12128,16 @@ export interface IStringOutput {
     output: string | undefined;
 }
 
-export class DonViDto implements IDonViDto {
+export class UnitTaiSanDto implements IUnitTaiSanDto {
     id!: number | undefined;
-    tenDonVi!: string | undefined;
-    diaChi!: string | undefined;
-    donViChinh!: string | undefined;
-    donViChinhId!: number | undefined;
-    taiSanSuDung!: number | undefined;
-    taiSanHu!: number | undefined;
-    taiSanTrongKho!: number | undefined;
-    soLuongTaiSan!: number | undefined;
-    isDeleted!: boolean | undefined;
+    name!: string | undefined;
+    code!: string | undefined;
+    soLuong!: number | undefined;
+    trongKho!: number | undefined;
+    suDung!: number | undefined;
+    huHong!: number | undefined;
 
-    constructor(data?: IDonViDto) {
+    constructor(data?: IUnitTaiSanDto) {
         if (data) {
             for (var property in data) {
                 if (data.hasOwnProperty(property))
@@ -12381,21 +12149,18 @@ export class DonViDto implements IDonViDto {
     init(data?: any) {
         if (data) {
             this.id = data["id"];
-            this.tenDonVi = data["tenDonVi"];
-            this.diaChi = data["diaChi"];
-            this.donViChinh = data["donViChinh"];
-            this.donViChinhId = data["donViChinhId"];
-            this.taiSanSuDung = data["taiSanSuDung"];
-            this.taiSanHu = data["taiSanHu"];
-            this.taiSanTrongKho = data["taiSanTrongKho"];
-            this.soLuongTaiSan = data["soLuongTaiSan"];
-            this.isDeleted = data["isDeleted"];
+            this.name = data["name"];
+            this.code = data["code"];
+            this.soLuong = data["soLuong"];
+            this.trongKho = data["trongKho"];
+            this.suDung = data["suDung"];
+            this.huHong = data["huHong"];
         }
     }
 
-    static fromJS(data: any): DonViDto {
+    static fromJS(data: any): UnitTaiSanDto {
         data = typeof data === 'object' ? data : {};
-        let result = new DonViDto();
+        let result = new UnitTaiSanDto();
         result.init(data);
         return result;
     }
@@ -12403,37 +12168,31 @@ export class DonViDto implements IDonViDto {
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
         data["id"] = this.id;
-        data["tenDonVi"] = this.tenDonVi;
-        data["diaChi"] = this.diaChi;
-        data["donViChinh"] = this.donViChinh;
-        data["donViChinhId"] = this.donViChinhId;
-        data["taiSanSuDung"] = this.taiSanSuDung;
-        data["taiSanHu"] = this.taiSanHu;
-        data["taiSanTrongKho"] = this.taiSanTrongKho;
-        data["soLuongTaiSan"] = this.soLuongTaiSan;
-        data["isDeleted"] = this.isDeleted;
+        data["name"] = this.name;
+        data["code"] = this.code;
+        data["soLuong"] = this.soLuong;
+        data["trongKho"] = this.trongKho;
+        data["suDung"] = this.suDung;
+        data["huHong"] = this.huHong;
         return data; 
     }
 }
 
-export interface IDonViDto {
+export interface IUnitTaiSanDto {
     id: number | undefined;
-    tenDonVi: string | undefined;
-    diaChi: string | undefined;
-    donViChinh: string | undefined;
-    donViChinhId: number | undefined;
-    taiSanSuDung: number | undefined;
-    taiSanHu: number | undefined;
-    taiSanTrongKho: number | undefined;
-    soLuongTaiSan: number | undefined;
-    isDeleted: boolean | undefined;
+    name: string | undefined;
+    code: string | undefined;
+    soLuong: number | undefined;
+    trongKho: number | undefined;
+    suDung: number | undefined;
+    huHong: number | undefined;
 }
 
-export class DonViThemTaiSanInput implements IDonViThemTaiSanInput {
-    donViId!: number | undefined;
+export class UnitThemTaiSanInput implements IUnitThemTaiSanInput {
+    unitId!: number | undefined;
     tenTaiSanThem!: string | undefined;
 
-    constructor(data?: IDonViThemTaiSanInput) {
+    constructor(data?: IUnitThemTaiSanInput) {
         if (data) {
             for (var property in data) {
                 if (data.hasOwnProperty(property))
@@ -12444,37 +12203,37 @@ export class DonViThemTaiSanInput implements IDonViThemTaiSanInput {
 
     init(data?: any) {
         if (data) {
-            this.donViId = data["donViId"];
+            this.unitId = data["unitId"];
             this.tenTaiSanThem = data["tenTaiSanThem"];
         }
     }
 
-    static fromJS(data: any): DonViThemTaiSanInput {
+    static fromJS(data: any): UnitThemTaiSanInput {
         data = typeof data === 'object' ? data : {};
-        let result = new DonViThemTaiSanInput();
+        let result = new UnitThemTaiSanInput();
         result.init(data);
         return result;
     }
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
-        data["donViId"] = this.donViId;
+        data["unitId"] = this.unitId;
         data["tenTaiSanThem"] = this.tenTaiSanThem;
         return data; 
     }
 }
 
-export interface IDonViThemTaiSanInput {
-    donViId: number | undefined;
+export interface IUnitThemTaiSanInput {
+    unitId: number | undefined;
     tenTaiSanThem: string | undefined;
 }
 
-export class DonViXuatTaiSanInput implements IDonViXuatTaiSanInput {
-    donViNhanId!: number | undefined;
-    donViXuatId!: number | undefined;
+export class UnitXuatTaiSanInput implements IUnitXuatTaiSanInput {
+    unitNhanId!: number | undefined;
+    unitXuatId!: number | undefined;
     taiSanXuatId!: number | undefined;
 
-    constructor(data?: IDonViXuatTaiSanInput) {
+    constructor(data?: IUnitXuatTaiSanInput) {
         if (data) {
             for (var property in data) {
                 if (data.hasOwnProperty(property))
@@ -12485,31 +12244,31 @@ export class DonViXuatTaiSanInput implements IDonViXuatTaiSanInput {
 
     init(data?: any) {
         if (data) {
-            this.donViNhanId = data["donViNhanId"];
-            this.donViXuatId = data["donViXuatId"];
+            this.unitNhanId = data["unitNhanId"];
+            this.unitXuatId = data["unitXuatId"];
             this.taiSanXuatId = data["taiSanXuatId"];
         }
     }
 
-    static fromJS(data: any): DonViXuatTaiSanInput {
+    static fromJS(data: any): UnitXuatTaiSanInput {
         data = typeof data === 'object' ? data : {};
-        let result = new DonViXuatTaiSanInput();
+        let result = new UnitXuatTaiSanInput();
         result.init(data);
         return result;
     }
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
-        data["donViNhanId"] = this.donViNhanId;
-        data["donViXuatId"] = this.donViXuatId;
+        data["unitNhanId"] = this.unitNhanId;
+        data["unitXuatId"] = this.unitXuatId;
         data["taiSanXuatId"] = this.taiSanXuatId;
         return data; 
     }
 }
 
-export interface IDonViXuatTaiSanInput {
-    donViNhanId: number | undefined;
-    donViXuatId: number | undefined;
+export interface IUnitXuatTaiSanInput {
+    unitNhanId: number | undefined;
+    unitXuatId: number | undefined;
     taiSanXuatId: number | undefined;
 }
 
@@ -12559,50 +12318,6 @@ export interface ITaiSanDto {
     tenTaiSan: string | undefined;
     nhomTaiSan: string | undefined;
     isDeleted: boolean | undefined;
-}
-
-export class CreateDonViInput implements ICreateDonViInput {
-    tenDonVi!: string;
-    donViChinhId!: number | undefined;
-    diaChi!: string | undefined;
-
-    constructor(data?: ICreateDonViInput) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(data?: any) {
-        if (data) {
-            this.tenDonVi = data["tenDonVi"];
-            this.donViChinhId = data["donViChinhId"];
-            this.diaChi = data["diaChi"];
-        }
-    }
-
-    static fromJS(data: any): CreateDonViInput {
-        data = typeof data === 'object' ? data : {};
-        let result = new CreateDonViInput();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["tenDonVi"] = this.tenDonVi;
-        data["donViChinhId"] = this.donViChinhId;
-        data["diaChi"] = this.diaChi;
-        return data; 
-    }
-}
-
-export interface ICreateDonViInput {
-    tenDonVi: string;
-    donViChinhId: number | undefined;
-    diaChi: string | undefined;
 }
 
 export class ListResultDtoOfEditionListDto implements IListResultDtoOfEditionListDto {

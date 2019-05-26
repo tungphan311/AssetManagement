@@ -1,7 +1,9 @@
 ﻿using Abp.Application.Services;
+using Abp.Authorization.Users;
 using Abp.Collections.Extensions;
 using Abp.Domain.Repositories;
 using Abp.Extensions;
+using Abp.Organizations;
 using GSoft.AbpZeroTemplate.DonVi_s;
 using System;
 using System.Collections.Generic;
@@ -11,131 +13,98 @@ namespace GSoft.AbpZeroTemplate
 {
     public class DonViAppService : AbpZeroTemplateAppServiceBase, IApplicationService
     {
-        private readonly IRepository<DonVi> _DonViRepository;
         private readonly IRepository<TaiSan> _TaiSanRepository;
+        private readonly IRepository<OrganizationUnit, long> _OrganizationUnitRepository;
+        private readonly IRepository<UserOrganizationUnit, long> _UserOrganizationUnitRepository;
 
-        public DonViAppService(IRepository<DonVi> DonViRepository, IRepository<TaiSan> TaiSanRepository)
+        public DonViAppService(
+            IRepository<TaiSan> TaiSanRepository,
+            IRepository<OrganizationUnit, long> OrganizationUnitRepository,
+            IRepository<UserOrganizationUnit, long> UserOrganizationUnitRepository)
         {
-            _DonViRepository = DonViRepository;
             _TaiSanRepository = TaiSanRepository;
+            _OrganizationUnitRepository = OrganizationUnitRepository;
+            _UserOrganizationUnitRepository = UserOrganizationUnitRepository;
         }
 
-        public List<DonViDto> GetDonVi(GetDonViInput input)
+        public List<UnitTaiSanDto> GetUnit()
         {
-            var list_don_vi = _DonViRepository.GetAll()
-                .WhereIf(!input.Filter.IsNullOrEmpty(), p => p.TenDonVi.ToLower().Equals(input.Filter.ToLower()))
-                .ToList();
+            long user_id = GetCurrentUser().Id;
+            List<long> list_org_id = _UserOrganizationUnitRepository.GetAll().Where(p => p.UserId == user_id).Select(p => p.OrganizationUnitId).ToList();
+            List<String> list_org_code = _OrganizationUnitRepository.GetAll().Where(p => list_org_id.Contains(p.Id)).Select(p => p.Code).ToList();
 
-            List<DonViDto> result = new List<DonViDto>();
-            foreach (DonVi don_vi in list_don_vi)
-                result.Add(MapDonViToDTO(don_vi));
-            return result;
+            List<UnitTaiSanDto> list_result = new List<UnitTaiSanDto>();
+            HashSet<OrganizationUnit> set_org_all = new HashSet<OrganizationUnit>();
+            foreach (string code in list_org_code)
+                set_org_all.UnionWith(_OrganizationUnitRepository.GetAll().Where(p => p.Code.StartsWith(code)).ToList());
+
+            foreach (OrganizationUnit org in set_org_all)
+                list_result.Add(UnitTaiSanDtoMap(org));
+
+            return list_result;
         }
 
-        public List<DonViDto> GetDonViCon(int don_vi_id = -1)
+        public List<UnitTaiSanDto> GetUnitCon(string unit_code)
         {
-            var list_don_vi = _DonViRepository.GetAll().Where(p => p.DonViChinhId == don_vi_id).ToList();
-            List<DonViDto> result = new List<DonViDto>();
-            foreach (DonVi don_vi in list_don_vi)
-                result.Add(MapDonViToDTO(don_vi));
-            return result;
+            List<OrganizationUnit> list_unit_con = _OrganizationUnitRepository.GetAll().Where(p => p.Code.StartsWith(unit_code)).ToList();
+            List<UnitTaiSanDto> result = new List<UnitTaiSanDto>();
+            foreach (OrganizationUnit unit in list_unit_con)
+                result.Add(UnitTaiSanDtoMap(unit));
+            return result; 
         }
 
-        public bool DonViThemTaiSan(DonViThemTaiSanInput input)
+        public bool UnitThemTaiSan(UnitThemTaiSanInput input)
         {
-            if (_DonViRepository.FirstOrDefault(b => b.Id == input.DonViId) != null)
+            if (_OrganizationUnitRepository.FirstOrDefault(b => b.Id == input.UnitId) != null)
             {
-                _TaiSanRepository.Insert(new TaiSan { TenTaiSan = input.TenTaiSanThem, DangTrongKho = input.DonViId });
+                _TaiSanRepository.Insert(new TaiSan { TenTaiSan = input.TenTaiSanThem, UnitId = input.UnitId });
                 return true;
             }
             return false;
         }
 
-        public bool DonViXuatTaiSan(DonViXuatTaiSanInput input)
+        public bool UnitXuatTaiSan(UnitXuatTaiSanInput input)
         {
-            var don_vi_nhan = _DonViRepository.FirstOrDefault(b => b.Id == input.DonViNhanId);
-            var don_vi_xuat = _DonViRepository.FirstOrDefault(b => b.Id == input.DonViXuatId);
+            var don_vi_nhan = _OrganizationUnitRepository.FirstOrDefault(b => b.Id == input.UnitNhanId);
+            var don_vi_xuat = _OrganizationUnitRepository.FirstOrDefault(b => b.Id == input.UnitXuatId);
             TaiSan tai_san = _TaiSanRepository.FirstOrDefault(s => s.Id == input.TaiSanXuatId);
 
             if (don_vi_xuat == null || don_vi_nhan == null || tai_san == null)
                 return false;
             else
             {
-                tai_san.DangTrongKho = 0;
-                tai_san.DangSuDung = don_vi_nhan.Id;
+                tai_san.TrangThai = 1;
+                tai_san.UnitId = don_vi_nhan.Id;
                 _TaiSanRepository.Update(tai_san);
                 return true;
             }
         }
 
-        public List<TaiSanDto> TaiSanTrongKho(int id_don_vi = -1)
+        public List<TaiSanDto> TaiSanTheoTrangThai(long unit_id = -1, int trang_thai = 0)
         {
             List<TaiSanDto> result = new List<TaiSanDto>();
-            var list_tai_san = _TaiSanRepository.GetAllList().Where(p => p.DangTrongKho == id_don_vi);
+            var list_tai_san = _TaiSanRepository.GetAllList().Where(p => p.UnitId == unit_id && p.TrangThai == trang_thai);
             result = ObjectMapper.Map<List<TaiSanDto>>(list_tai_san);
             return result;
         }
 
-        public List<TaiSanDto> TaiSanSuDung(int id_don_vi = -1)
+        private UnitTaiSanDto UnitTaiSanDtoMap(OrganizationUnit unit)
         {
-            List<TaiSanDto> result = new List<TaiSanDto>();
-            var list_tai_san = _TaiSanRepository.GetAllList().Where(p => p.DangSuDung == id_don_vi);
-            result = ObjectMapper.Map<List<TaiSanDto>>(list_tai_san);
-            return result;
-        }
+            UnitTaiSanDto dto = new UnitTaiSanDto();
+            List<TaiSan> list_tai_san = _TaiSanRepository.GetAll().Where(p => p.UnitId == unit.Id).ToList();
 
-        public List<TaiSanDto> TaiSanHuHong(int id_don_vi = -1)
-        {
-            List<TaiSanDto> result = new List<TaiSanDto>();
-            var list_tai_san = _TaiSanRepository.GetAllList().Where(p => p.BiHuHong == id_don_vi);
-            result = ObjectMapper.Map<List<TaiSanDto>>(list_tai_san);
-            return result;
-        }
+            List<TaiSan> list_tai_san_con = new List<TaiSan>();
+            List<OrganizationUnit> list_unit_con = _OrganizationUnitRepository.GetAll().Where(p => p.Code.StartsWith(unit.Code)).ToList();
+            foreach (OrganizationUnit unit_con in list_unit_con)
+                list_tai_san_con.AddRange(_TaiSanRepository.GetAll().Where(p => p.UnitId == unit_con.Id));
 
-        private int TinhSoTaiSanCuaDonVi(DonVi don_vi)
-        {
-            int result = 0;
-            result += _TaiSanRepository.GetAll().Where(p => p.DangSuDung == don_vi.Id).ToList().Count();
-            var list_don_vi_con = _DonViRepository.GetAll().Where(p => p.DonViChinhId == don_vi.Id).ToList();
-            foreach (DonVi don_vi_con in list_don_vi_con)
-                    result += TinhSoTaiSanCuaDonVi(don_vi_con);
-            return result;
-        }
-
-        private DonViDto MapDonViToDTO(DonVi don_vi)
-        {
-            DonViDto dv_dto = new DonViDto();
-            dv_dto.Id = don_vi.Id;
-            dv_dto.TenDonVi = don_vi.TenDonVi;
-            dv_dto.DiaChi = don_vi.DiaChi;
-            try
-            {
-                dv_dto.DonViChinh = _DonViRepository.FirstOrDefault(p => p.Id == don_vi.DonViChinhId).TenDonVi;
-                dv_dto.DonViChinhId = don_vi.DonViChinhId;
-            } catch (Exception) { }
-            dv_dto.TaiSanSuDung = TinhSoTaiSanCuaDonVi(don_vi);
-            dv_dto.TaiSanTrongKho = _TaiSanRepository.GetAll().Where(p => p.DangTrongKho == don_vi.Id).Count();
-            return dv_dto;
-        }
-
-        public bool DeleteDonVi(int don_vi_id)
-        {
-            try
-            {
-                _DonViRepository.DeleteAsync(don_vi_id);
-                return true;
-            }
-            catch (Exception) { return false; }
-        }
-
-        public bool CreateDonVi(CreateDonViInput input)
-        {
-            try
-            {
-                _DonViRepository.Insert(ObjectMapper.Map<DonVi>(input));
-                return true;
-            }
-            catch (Exception) { return false; }
+            dto.Id = unit.Id;
+            dto.Code = unit.Code;
+            dto.Name = unit.DisplayName;
+            dto.TrongKho = list_tai_san.Where(p => p.TrangThai == 0).Count();
+            dto.SuDung = list_tai_san_con.Where(p => p.TrangThai == 1).Count();
+            dto.HuHong = list_tai_san.Where(p => p.TrangThai == 2).Count();
+            return dto;
         }
 
     }

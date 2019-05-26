@@ -17407,11 +17407,11 @@
   "project": {
     "version": "5.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\admin\\Downloads\\AssetManagement-Nh-m-1\\aspnet-core\\src\\GSoft.AbpZeroTemplate.Web.Core\\GSoft.AbpZeroTemplate.Web.Core.csproj",
+      "projectUniqueName": "C:\\Users\\admin\\Desktop\\aspzero\\aspnet-core\\src\\GSoft.AbpZeroTemplate.Web.Core\\GSoft.AbpZeroTemplate.Web.Core.csproj",
       "projectName": "GSoft.AbpZeroTemplate.Web.Core",
-      "projectPath": "C:\\Users\\admin\\Downloads\\AssetManagement-Nh-m-1\\aspnet-core\\src\\GSoft.AbpZeroTemplate.Web.Core\\GSoft.AbpZeroTemplate.Web.Core.csproj",
+      "projectPath": "C:\\Users\\admin\\Desktop\\aspzero\\aspnet-core\\src\\GSoft.AbpZeroTemplate.Web.Core\\GSoft.AbpZeroTemplate.Web.Core.csproj",
       "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\admin\\Downloads\\AssetManagement-Nh-m-1\\aspnet-core\\src\\GSoft.AbpZeroTemplate.Web.Core\\obj\\",
+      "outputPath": "C:\\Users\\admin\\Desktop\\aspzero\\aspnet-core\\src\\GSoft.AbpZeroTemplate.Web.Core\\obj\\",
       "projectStyle": "PackageReference",
       "crossTargeting": true,
       "fallbackFolders": [
@@ -17432,27 +17432,27 @@
       "frameworks": {
         "netcoreapp2.1": {
           "projectReferences": {
-            "C:\\Users\\admin\\Downloads\\AssetManagement-Nh-m-1\\aspnet-core\\src\\GSoft.AbpZeroTemplate.Application\\GSoft.AbpZeroTemplate.Application.csproj": {
-              "projectPath": "C:\\Users\\admin\\Downloads\\AssetManagement-Nh-m-1\\aspnet-core\\src\\GSoft.AbpZeroTemplate.Application\\GSoft.AbpZeroTemplate.Application.csproj"
+            "C:\\Users\\admin\\Desktop\\aspzero\\aspnet-core\\src\\GSoft.AbpZeroTemplate.Application\\GSoft.AbpZeroTemplate.Application.csproj": {
+              "projectPath": "C:\\Users\\admin\\Desktop\\aspzero\\aspnet-core\\src\\GSoft.AbpZeroTemplate.Application\\GSoft.AbpZeroTemplate.Application.csproj"
             },
-            "C:\\Users\\admin\\Downloads\\AssetManagement-Nh-m-1\\aspnet-core\\src\\GSoft.AbpZeroTemplate.EntityFrameworkCore\\GSoft.AbpZeroTemplate.EntityFrameworkCore.csproj": {
-              "projectPath": "C:\\Users\\admin\\Downloads\\AssetManagement-Nh-m-1\\aspnet-core\\src\\GSoft.AbpZeroTemplate.EntityFrameworkCore\\GSoft.AbpZeroTemplate.EntityFrameworkCore.csproj"
+            "C:\\Users\\admin\\Desktop\\aspzero\\aspnet-core\\src\\GSoft.AbpZeroTemplate.EntityFrameworkCore\\GSoft.AbpZeroTemplate.EntityFrameworkCore.csproj": {
+              "projectPath": "C:\\Users\\admin\\Desktop\\aspzero\\aspnet-core\\src\\GSoft.AbpZeroTemplate.EntityFrameworkCore\\GSoft.AbpZeroTemplate.EntityFrameworkCore.csproj"
             },
-            "C:\\Users\\admin\\Downloads\\AssetManagement-Nh-m-1\\aspnet-core\\src\\GWebsite.AbpZeroTemplate.Web.Core\\GWebsite.AbpZeroTemplate.Web.Core.csproj": {
-              "projectPath": "C:\\Users\\admin\\Downloads\\AssetManagement-Nh-m-1\\aspnet-core\\src\\GWebsite.AbpZeroTemplate.Web.Core\\GWebsite.AbpZeroTemplate.Web.Core.csproj"
+            "C:\\Users\\admin\\Desktop\\aspzero\\aspnet-core\\src\\GWebsite.AbpZeroTemplate.Web.Core\\GWebsite.AbpZeroTemplate.Web.Core.csproj": {
+              "projectPath": "C:\\Users\\admin\\Desktop\\aspzero\\aspnet-core\\src\\GWebsite.AbpZeroTemplate.Web.Core\\GWebsite.AbpZeroTemplate.Web.Core.csproj"
             }
           }
         },
         "net461": {
           "projectReferences": {
-            "C:\\Users\\admin\\Downloads\\AssetManagement-Nh-m-1\\aspnet-core\\src\\GSoft.AbpZeroTemplate.Application\\GSoft.AbpZeroTemplate.Application.csproj": {
-              "projectPath": "C:\\Users\\admin\\Downloads\\AssetManagement-Nh-m-1\\aspnet-core\\src\\GSoft.AbpZeroTemplate.Application\\GSoft.AbpZeroTemplate.Application.csproj"
+            "C:\\Users\\admin\\Desktop\\aspzero\\aspnet-core\\src\\GSoft.AbpZeroTemplate.Application\\GSoft.AbpZeroTemplate.Application.csproj": {
+              "projectPath": "C:\\Users\\admin\\Desktop\\aspzero\\aspnet-core\\src\\GSoft.AbpZeroTemplate.Application\\GSoft.AbpZeroTemplate.Application.csproj"
             },
-            "C:\\Users\\admin\\Downloads\\AssetManagement-Nh-m-1\\aspnet-core\\src\\GSoft.AbpZeroTemplate.EntityFrameworkCore\\GSoft.AbpZeroTemplate.EntityFrameworkCore.csproj": {
-              "projectPath": "C:\\Users\\admin\\Downloads\\AssetManagement-Nh-m-1\\aspnet-core\\src\\GSoft.AbpZeroTemplate.EntityFrameworkCore\\GSoft.AbpZeroTemplate.EntityFrameworkCore.csproj"
+            "C:\\Users\\admin\\Desktop\\aspzero\\aspnet-core\\src\\GSoft.AbpZeroTemplate.EntityFrameworkCore\\GSoft.AbpZeroTemplate.EntityFrameworkCore.csproj": {
+              "projectPath": "C:\\Users\\admin\\Desktop\\aspzero\\aspnet-core\\src\\GSoft.AbpZeroTemplate.EntityFrameworkCore\\GSoft.AbpZeroTemplate.EntityFrameworkCore.csproj"
             },
-            "C:\\Users\\admin\\Downloads\\AssetManagement-Nh-m-1\\aspnet-core\\src\\GWebsite.AbpZeroTemplate.Web.Core\\GWebsite.AbpZeroTemplate.Web.Core.csproj": {
-              "projectPath": "C:\\Users\\admin\\Downloads\\AssetManagement-Nh-m-1\\aspnet-core\\src\\GWebsite.AbpZeroTemplate.Web.Core\\GWebsite.AbpZeroTemplate.Web.Core.csproj"
+            "C:\\Users\\admin\\Desktop\\aspzero\\aspnet-core\\src\\GWebsite.AbpZeroTemplate.Web.Core\\GWebsite.AbpZeroTemplate.Web.Core.csproj": {
+              "projectPath": "C:\\Users\\admin\\Desktop\\aspzero\\aspnet-core\\src\\GWebsite.AbpZeroTemplate.Web.Core\\GWebsite.AbpZeroTemplate.Web.Core.csproj"
             }
           }
         }
