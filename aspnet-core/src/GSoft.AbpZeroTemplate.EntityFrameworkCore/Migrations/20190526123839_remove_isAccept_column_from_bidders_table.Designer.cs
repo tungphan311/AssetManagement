@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GSoft.AbpZeroTemplate.Migrations
 {
     [DbContext(typeof(AbpZeroTemplateDbContext))]
-    [Migration("20190526113204_remove_vendorid")]
-    partial class remove_vendorid
+    [Migration("20190526123839_remove_isAccept_column_from_bidders_table")]
+    partial class remove_isAccept_column_from_bidders_table
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -1645,7 +1645,7 @@ namespace GSoft.AbpZeroTemplate.Migrations
 
                     b.Property<DateTime?>("UpdatedDate");
 
-                    b.Property<bool>("isAccept");
+                    b.Property<int>("VendorId");
 
                     b.HasKey("Id");
 

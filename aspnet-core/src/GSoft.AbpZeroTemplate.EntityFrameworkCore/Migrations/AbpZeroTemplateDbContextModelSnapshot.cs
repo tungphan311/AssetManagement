@@ -1645,8 +1645,6 @@ namespace GSoft.AbpZeroTemplate.Migrations
 
                     b.Property<int>("VendorId");
 
-                    b.Property<bool>("isAccept");
-
                     b.HasKey("Id");
 
                     b.ToTable("Bidders");

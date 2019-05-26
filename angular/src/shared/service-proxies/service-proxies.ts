@@ -1628,16 +1628,16 @@ export class BidderServiceProxy {
     }
 
     /**
-     * @bidId (optional) 
+     * @bidID (optional) 
      * @sorting (optional) 
      * @maxResultCount (optional) 
      * @skipCount (optional) 
      * @return Success
      */
-    getBiddersByFilter(bidId: number | null | undefined, sorting: string | null | undefined, maxResultCount: number | null | undefined, skipCount: number | null | undefined): Observable<PagedResultDtoOfBidderDto> {
+    getBiddersByFilter(bidID: number | null | undefined, sorting: string | null | undefined, maxResultCount: number | null | undefined, skipCount: number | null | undefined): Observable<PagedResultDtoOfBidderDto> {
         let url_ = this.baseUrl + "/api/Bidder/GetBiddersByFilter?";
-        if (bidId !== undefined)
-            url_ += "BidId=" + encodeURIComponent("" + bidId) + "&"; 
+        if (bidID !== undefined)
+            url_ += "BidID=" + encodeURIComponent("" + bidID) + "&"; 
         if (sorting !== undefined)
             url_ += "Sorting=" + encodeURIComponent("" + sorting) + "&"; 
         if (maxResultCount !== undefined)
@@ -14469,7 +14469,6 @@ export class BidderDto implements IBidderDto {
     vendorId!: number | undefined;
     applyDay!: moment.Moment | undefined;
     offerPrice!: number | undefined;
-    isAccept!: boolean | undefined;
     guaranteeMethod!: string | undefined;
     guaranteeExpired!: moment.Moment | undefined;
     certificateNumber!: number | undefined;
@@ -14491,7 +14490,6 @@ export class BidderDto implements IBidderDto {
             this.vendorId = data["vendorId"];
             this.applyDay = data["applyDay"] ? moment(data["applyDay"].toString()) : <any>undefined;
             this.offerPrice = data["offerPrice"];
-            this.isAccept = data["isAccept"];
             this.guaranteeMethod = data["guaranteeMethod"];
             this.guaranteeExpired = data["guaranteeExpired"] ? moment(data["guaranteeExpired"].toString()) : <any>undefined;
             this.certificateNumber = data["certificateNumber"];
@@ -14513,7 +14511,6 @@ export class BidderDto implements IBidderDto {
         data["vendorId"] = this.vendorId;
         data["applyDay"] = this.applyDay ? this.applyDay.toISOString() : <any>undefined;
         data["offerPrice"] = this.offerPrice;
-        data["isAccept"] = this.isAccept;
         data["guaranteeMethod"] = this.guaranteeMethod;
         data["guaranteeExpired"] = this.guaranteeExpired ? this.guaranteeExpired.toISOString() : <any>undefined;
         data["certificateNumber"] = this.certificateNumber;
@@ -14528,7 +14525,6 @@ export interface IBidderDto {
     vendorId: number | undefined;
     applyDay: moment.Moment | undefined;
     offerPrice: number | undefined;
-    isAccept: boolean | undefined;
     guaranteeMethod: string | undefined;
     guaranteeExpired: moment.Moment | undefined;
     certificateNumber: number | undefined;
@@ -14541,7 +14537,6 @@ export class BidderInput implements IBidderInput {
     vendorId!: number | undefined;
     applyDay!: moment.Moment | undefined;
     offerPrice!: number | undefined;
-    isAccept!: boolean | undefined;
     guaranteeMethod!: string | undefined;
     guaranteeExpired!: moment.Moment | undefined;
     certificateNumber!: number | undefined;
@@ -14563,7 +14558,6 @@ export class BidderInput implements IBidderInput {
             this.vendorId = data["vendorId"];
             this.applyDay = data["applyDay"] ? moment(data["applyDay"].toString()) : <any>undefined;
             this.offerPrice = data["offerPrice"];
-            this.isAccept = data["isAccept"];
             this.guaranteeMethod = data["guaranteeMethod"];
             this.guaranteeExpired = data["guaranteeExpired"] ? moment(data["guaranteeExpired"].toString()) : <any>undefined;
             this.certificateNumber = data["certificateNumber"];
@@ -14585,7 +14579,6 @@ export class BidderInput implements IBidderInput {
         data["vendorId"] = this.vendorId;
         data["applyDay"] = this.applyDay ? this.applyDay.toISOString() : <any>undefined;
         data["offerPrice"] = this.offerPrice;
-        data["isAccept"] = this.isAccept;
         data["guaranteeMethod"] = this.guaranteeMethod;
         data["guaranteeExpired"] = this.guaranteeExpired ? this.guaranteeExpired.toISOString() : <any>undefined;
         data["certificateNumber"] = this.certificateNumber;
@@ -14600,7 +14593,6 @@ export interface IBidderInput {
     vendorId: number | undefined;
     applyDay: moment.Moment | undefined;
     offerPrice: number | undefined;
-    isAccept: boolean | undefined;
     guaranteeMethod: string | undefined;
     guaranteeExpired: moment.Moment | undefined;
     certificateNumber: number | undefined;
@@ -14613,7 +14605,6 @@ export class BidderForViewDto implements IBidderForViewDto {
     vendorId!: number | undefined;
     applyDay!: moment.Moment | undefined;
     offerPrice!: number | undefined;
-    isAccept!: boolean | undefined;
     guaranteeMethod!: string | undefined;
     guaranteeExpired!: moment.Moment | undefined;
     certificateNumber!: number | undefined;
@@ -14634,7 +14625,6 @@ export class BidderForViewDto implements IBidderForViewDto {
             this.vendorId = data["vendorId"];
             this.applyDay = data["applyDay"] ? moment(data["applyDay"].toString()) : <any>undefined;
             this.offerPrice = data["offerPrice"];
-            this.isAccept = data["isAccept"];
             this.guaranteeMethod = data["guaranteeMethod"];
             this.guaranteeExpired = data["guaranteeExpired"] ? moment(data["guaranteeExpired"].toString()) : <any>undefined;
             this.certificateNumber = data["certificateNumber"];
@@ -14655,7 +14645,6 @@ export class BidderForViewDto implements IBidderForViewDto {
         data["vendorId"] = this.vendorId;
         data["applyDay"] = this.applyDay ? this.applyDay.toISOString() : <any>undefined;
         data["offerPrice"] = this.offerPrice;
-        data["isAccept"] = this.isAccept;
         data["guaranteeMethod"] = this.guaranteeMethod;
         data["guaranteeExpired"] = this.guaranteeExpired ? this.guaranteeExpired.toISOString() : <any>undefined;
         data["certificateNumber"] = this.certificateNumber;
@@ -14669,7 +14658,6 @@ export interface IBidderForViewDto {
     vendorId: number | undefined;
     applyDay: moment.Moment | undefined;
     offerPrice: number | undefined;
-    isAccept: boolean | undefined;
     guaranteeMethod: string | undefined;
     guaranteeExpired: moment.Moment | undefined;
     certificateNumber: number | undefined;

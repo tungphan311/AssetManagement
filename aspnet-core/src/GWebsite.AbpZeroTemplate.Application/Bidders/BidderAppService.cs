@@ -80,9 +80,9 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Bidders
         {
             var query = repository.GetAll().Where(x => !x.IsDelete);
 
-            if (filter.BidId != 0)
+            if (filter.BidID != 0)
             {
-                query = query.Where(x => x.BidID == filter.BidId);
+                query = query.Where(x => x.BidID == filter.BidID);
             }
 
             var totalCount = query.Count();

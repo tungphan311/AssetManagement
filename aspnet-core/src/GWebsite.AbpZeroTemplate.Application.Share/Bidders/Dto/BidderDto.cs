@@ -15,8 +15,6 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.Bidders.Dto
 
         public double OfferPrice { get; set; }
 
-        public bool isAccept { get; set; }
-
         public string GuaranteeMethod { get; set; }
 
         public DateTime GuaranteeExpired { get; set; }

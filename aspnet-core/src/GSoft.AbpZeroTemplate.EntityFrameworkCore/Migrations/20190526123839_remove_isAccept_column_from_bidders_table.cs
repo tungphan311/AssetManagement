@@ -2,22 +2,22 @@
 
 namespace GSoft.AbpZeroTemplate.Migrations
 {
-    public partial class remove_vendorid : Migration
+    public partial class remove_isAccept_column_from_bidders_table : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropColumn(
-                name: "VendorId",
+                name: "isAccept",
                 table: "Bidders");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AddColumn<int>(
-                name: "VendorId",
+            migrationBuilder.AddColumn<bool>(
+                name: "isAccept",
                 table: "Bidders",
                 nullable: false,
-                defaultValue: 0);
+                defaultValue: false);
         }
     }
 }
