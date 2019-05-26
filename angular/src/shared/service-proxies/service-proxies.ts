@@ -1750,8 +1750,8 @@ export class BidderServiceProxy {
      * @input (optional) 
      * @return Success
      */
-    createOrEditBid(input: BidderInput | null | undefined): Observable<void> {
-        let url_ = this.baseUrl + "/api/Bidder/CreateOrEditBid";
+    createOrEditBidder(input: BidderInput | null | undefined): Observable<void> {
+        let url_ = this.baseUrl + "/api/Bidder/CreateOrEditBidder";
         url_ = url_.replace(/[?&]$/, "");
 
         const content_ = JSON.stringify(input);
@@ -1766,11 +1766,11 @@ export class BidderServiceProxy {
         };
 
         return this.http.request("post", url_, options_).pipe(_observableMergeMap((response_ : any) => {
-            return this.processCreateOrEditBid(response_);
+            return this.processCreateOrEditBidder(response_);
         })).pipe(_observableCatch((response_: any) => {
             if (response_ instanceof HttpResponseBase) {
                 try {
-                    return this.processCreateOrEditBid(<any>response_);
+                    return this.processCreateOrEditBidder(<any>response_);
                 } catch (e) {
                     return <Observable<void>><any>_observableThrow(e);
                 }
@@ -1779,7 +1779,7 @@ export class BidderServiceProxy {
         }));
     }
 
-    protected processCreateOrEditBid(response: HttpResponseBase): Observable<void> {
+    protected processCreateOrEditBidder(response: HttpResponseBase): Observable<void> {
         const status = response.status;
         const responseBlob = 
             response instanceof HttpResponse ? response.body : 
@@ -1847,6 +1847,61 @@ export class BidderServiceProxy {
             }));
         }
         return _observableOf<void>(<any>null);
+    }
+
+    /**
+     * @id (optional) 
+     * @return Success
+     */
+    getBidderForView(id: number | null | undefined): Observable<BidderForViewDto> {
+        let url_ = this.baseUrl + "/api/Bidder/GetBidderForView?";
+        if (id !== undefined)
+            url_ += "id=" + encodeURIComponent("" + id) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetBidderForView(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetBidderForView(<any>response_);
+                } catch (e) {
+                    return <Observable<BidderForViewDto>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<BidderForViewDto>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetBidderForView(response: HttpResponseBase): Observable<BidderForViewDto> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 ? BidderForViewDto.fromJS(resultData200) : new BidderForViewDto();
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<BidderForViewDto>(<any>null);
     }
 }
 
@@ -2380,6 +2435,7 @@ export class ContractServiceProxy {
     /**
      * @contractID (optional) 
      * @name (optional) 
+     * @deliveryTime (optional) 
      * @briefcaseID (optional) 
      * @vendorID (optional) 
      * @sorting (optional) 
@@ -2387,12 +2443,14 @@ export class ContractServiceProxy {
      * @skipCount (optional) 
      * @return Success
      */
-    getContractsByFilter(contractID: string | null | undefined, name: string | null | undefined, briefcaseID: number | null | undefined, vendorID: number | null | undefined, sorting: string | null | undefined, maxResultCount: number | null | undefined, skipCount: number | null | undefined): Observable<PagedResultDtoOfContractDto> {
+    getContractsByFilter(contractID: string | null | undefined, name: string | null | undefined, deliveryTime: string | null | undefined, briefcaseID: number | null | undefined, vendorID: number | null | undefined, sorting: string | null | undefined, maxResultCount: number | null | undefined, skipCount: number | null | undefined): Observable<PagedResultDtoOfContractDto> {
         let url_ = this.baseUrl + "/api/Contract/GetContractsByFilter?";
         if (contractID !== undefined)
             url_ += "ContractID=" + encodeURIComponent("" + contractID) + "&"; 
         if (name !== undefined)
             url_ += "Name=" + encodeURIComponent("" + name) + "&"; 
+        if (deliveryTime !== undefined)
+            url_ += "DeliveryTime=" + encodeURIComponent("" + deliveryTime) + "&"; 
         if (briefcaseID !== undefined)
             url_ += "BriefcaseID=" + encodeURIComponent("" + briefcaseID) + "&"; 
         if (vendorID !== undefined)
@@ -14488,7 +14546,7 @@ export class BidderInput implements IBidderInput {
     guaranteeExpired!: moment.Moment | undefined;
     certificateNumber!: number | undefined;
     note!: string | undefined;
-    bidId!: string | undefined;
+    bidID!: number | undefined;
     id!: number | undefined;
 
     constructor(data?: IBidderInput) {
@@ -14510,7 +14568,7 @@ export class BidderInput implements IBidderInput {
             this.guaranteeExpired = data["guaranteeExpired"] ? moment(data["guaranteeExpired"].toString()) : <any>undefined;
             this.certificateNumber = data["certificateNumber"];
             this.note = data["note"];
-            this.bidId = data["bidId"];
+            this.bidID = data["bidID"];
             this.id = data["id"];
         }
     }
@@ -14532,7 +14590,7 @@ export class BidderInput implements IBidderInput {
         data["guaranteeExpired"] = this.guaranteeExpired ? this.guaranteeExpired.toISOString() : <any>undefined;
         data["certificateNumber"] = this.certificateNumber;
         data["note"] = this.note;
-        data["bidId"] = this.bidId;
+        data["bidID"] = this.bidID;
         data["id"] = this.id;
         return data; 
     }
@@ -14547,8 +14605,76 @@ export interface IBidderInput {
     guaranteeExpired: moment.Moment | undefined;
     certificateNumber: number | undefined;
     note: string | undefined;
-    bidId: string | undefined;
+    bidID: number | undefined;
     id: number | undefined;
+}
+
+export class BidderForViewDto implements IBidderForViewDto {
+    vendorId!: number | undefined;
+    applyDay!: moment.Moment | undefined;
+    offerPrice!: number | undefined;
+    isAccept!: boolean | undefined;
+    guaranteeMethod!: string | undefined;
+    guaranteeExpired!: moment.Moment | undefined;
+    certificateNumber!: number | undefined;
+    note!: string | undefined;
+    bidID!: number | undefined;
+
+    constructor(data?: IBidderForViewDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.vendorId = data["vendorId"];
+            this.applyDay = data["applyDay"] ? moment(data["applyDay"].toString()) : <any>undefined;
+            this.offerPrice = data["offerPrice"];
+            this.isAccept = data["isAccept"];
+            this.guaranteeMethod = data["guaranteeMethod"];
+            this.guaranteeExpired = data["guaranteeExpired"] ? moment(data["guaranteeExpired"].toString()) : <any>undefined;
+            this.certificateNumber = data["certificateNumber"];
+            this.note = data["note"];
+            this.bidID = data["bidID"];
+        }
+    }
+
+    static fromJS(data: any): BidderForViewDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new BidderForViewDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["vendorId"] = this.vendorId;
+        data["applyDay"] = this.applyDay ? this.applyDay.toISOString() : <any>undefined;
+        data["offerPrice"] = this.offerPrice;
+        data["isAccept"] = this.isAccept;
+        data["guaranteeMethod"] = this.guaranteeMethod;
+        data["guaranteeExpired"] = this.guaranteeExpired ? this.guaranteeExpired.toISOString() : <any>undefined;
+        data["certificateNumber"] = this.certificateNumber;
+        data["note"] = this.note;
+        data["bidID"] = this.bidID;
+        return data; 
+    }
+}
+
+export interface IBidderForViewDto {
+    vendorId: number | undefined;
+    applyDay: moment.Moment | undefined;
+    offerPrice: number | undefined;
+    isAccept: boolean | undefined;
+    guaranteeMethod: string | undefined;
+    guaranteeExpired: moment.Moment | undefined;
+    certificateNumber: number | undefined;
+    note: string | undefined;
+    bidID: number | undefined;
 }
 
 export class ListResultDtoOfCacheDto implements IListResultDtoOfCacheDto {
@@ -19347,6 +19473,7 @@ export class MerchandiseDto implements IMerchandiseDto {
     info!: string | undefined;
     isActive!: boolean | undefined;
     note!: string | undefined;
+    isAddContract!: boolean | undefined;
     id!: number | undefined;
 
     constructor(data?: IMerchandiseDto) {
@@ -19369,6 +19496,7 @@ export class MerchandiseDto implements IMerchandiseDto {
             this.info = data["info"];
             this.isActive = data["isActive"];
             this.note = data["note"];
+            this.isAddContract = data["isAddContract"];
             this.id = data["id"];
         }
     }
@@ -19391,6 +19519,7 @@ export class MerchandiseDto implements IMerchandiseDto {
         data["info"] = this.info;
         data["isActive"] = this.isActive;
         data["note"] = this.note;
+        data["isAddContract"] = this.isAddContract;
         data["id"] = this.id;
         return data; 
     }
@@ -19406,6 +19535,7 @@ export interface IMerchandiseDto {
     info: string | undefined;
     isActive: boolean | undefined;
     note: string | undefined;
+    isAddContract: boolean | undefined;
     id: number | undefined;
 }
 
@@ -19419,6 +19549,7 @@ export class MerchandiseInput implements IMerchandiseInput {
     info!: string | undefined;
     isActive!: boolean | undefined;
     note!: string | undefined;
+    isAddContract!: boolean | undefined;
     id!: number | undefined;
 
     constructor(data?: IMerchandiseInput) {
@@ -19441,6 +19572,7 @@ export class MerchandiseInput implements IMerchandiseInput {
             this.info = data["info"];
             this.isActive = data["isActive"];
             this.note = data["note"];
+            this.isAddContract = data["isAddContract"];
             this.id = data["id"];
         }
     }
@@ -19463,6 +19595,7 @@ export class MerchandiseInput implements IMerchandiseInput {
         data["info"] = this.info;
         data["isActive"] = this.isActive;
         data["note"] = this.note;
+        data["isAddContract"] = this.isAddContract;
         data["id"] = this.id;
         return data; 
     }
@@ -19478,6 +19611,7 @@ export interface IMerchandiseInput {
     info: string | undefined;
     isActive: boolean | undefined;
     note: string | undefined;
+    isAddContract: boolean | undefined;
     id: number | undefined;
 }
 

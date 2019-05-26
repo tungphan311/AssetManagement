@@ -29,5 +29,7 @@ namespace GWebsite.AbpZeroTemplate.Core.Models
         public bool IsActive { get; set; }
 
         public string Note { get; set; }
+
+        public bool IsAddContract { get; set; }
     }
 }

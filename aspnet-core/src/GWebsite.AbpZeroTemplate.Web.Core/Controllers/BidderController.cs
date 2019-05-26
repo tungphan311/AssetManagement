@@ -13,35 +13,41 @@ namespace GWebsite.AbpZeroTemplate.Application.Controllers
     [Route("api/[controller]/[action]")]
     public class BidderController: GWebsiteControllerBase
     {
-        private readonly IBidderAppService bidAppService;
+        private readonly IBidderAppService bidderAppService;
 
         public BidderController(IBidderAppService appService)
         {
-            bidAppService = appService;
+            bidderAppService = appService;
         }
 
         [HttpGet]
         public PagedResultDto<BidderDto> GetBiddersByFilter(BidderFilter filter)
         {
-            return bidAppService.GetBidders(filter);
+            return bidderAppService.GetBidders(filter);
         }
 
         [HttpGet]
         public BidderInput GetBidderForEdit(int id)
         {
-            return bidAppService.GetBidderForEdit(id);
+            return bidderAppService.GetBidderForEdit(id);
         }
 
         [HttpPost]
-        public void CreateOrEditBid([FromBody] BidderInput input)
+        public void CreateOrEditBidder([FromBody] BidderInput input)
         {
-            bidAppService.CreateOrEditBidder(input);
+            bidderAppService.CreateOrEditBidder(input);
         }
 
         [HttpDelete]
         public void DeleteBidder(int id)
         {
-            bidAppService.DeleteBidder(id);
+            bidderAppService.DeleteBidder(id);
+        }
+
+        [HttpGet]
+        public BidderForViewDto GetBidderForView(int id)
+        {
+            return bidderAppService.GetBidderForView(id);
         }
     }
 }

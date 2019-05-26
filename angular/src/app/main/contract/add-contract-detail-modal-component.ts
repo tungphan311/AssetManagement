@@ -3,7 +3,7 @@ import { AppComponentBase } from "@shared/common/app-component-base";
 import { ModalDirective } from "ngx-bootstrap";
 import { Table } from "primeng/table";
 import { Paginator, LazyLoadEvent } from "primeng/primeng";
-import { MerchandiseServiceProxy, ContractDetailInput, ContractDetailServiceProxy } from "@shared/service-proxies/service-proxies";
+import { MerchandiseServiceProxy, ContractDetailInput, ContractDetailServiceProxy, MerchandiseForViewDto, MerchandiseInput } from "@shared/service-proxies/service-proxies";
 
 @Component({
     selector: 'addContractDetailModal',
@@ -31,6 +31,7 @@ export class AddContractDetailModalComponent extends AppComponentBase {
 
    id = 0
    contractDetail: ContractDetailInput = new ContractDetailInput()
+   merchandise: MerchandiseInput = new MerchandiseInput()
 
    listMerType = []
    listMerchandises = []
@@ -54,11 +55,23 @@ export class AddContractDetailModalComponent extends AppComponentBase {
         //show loading trong gridview
         this.primengTableHelper.showLoadingIndicator();
 
-        this.reloadList(null, null, 0, null);
+        this.reloadList(null, null, 0, event);
    }
 
    test(id: number) {
-       this.savingId[id - 1] = !this.savingId[id - 1];
+       this._merchandiseService.getMerchandiseForEdit(id).subscribe(result => {
+            result.isAddContract = true;
+            
+            this._merchandiseService.createOrEditMerchandise(result).subscribe(rs => {
+
+            });
+       })
+
+       //this.merchandise.isAddContract = !this.merchandise.isAddContract;
+
+    //    this._merchandiseService.createOrEditMerchandise(this.merchandise).subscribe(result => {
+    //        console.log(this.merchandise.isAddContract);
+    //    })
    }
 
    reloadList(merID, merName, typeID, event: LazyLoadEvent) {
@@ -75,12 +88,6 @@ export class AddContractDetailModalComponent extends AppComponentBase {
             this.savingId.length = result.items.length;
             this.savingId.fill(false);
         });
-
-        // for (const item of this.listContractDetail) {
-        //     this._contractDetailService.deleteContractDetail(item.id).subscribe(result => {
-        //         this.notify.info(this.l('SaveSuccessfully'));
-        //     })
-        // }
    }
 
    applyFilters(): void {
@@ -106,7 +113,7 @@ export class AddContractDetailModalComponent extends AppComponentBase {
         this.saving = true;
 
         for (const iterator of this.listMerchandises) {
-            if (this.savingId[this.id] == true) {
+            if (iterator.isAddContract) {
                 this.contractDetail.merchID = iterator.id;
                 this.contractDetail.merCode = iterator.code;
                 this.contractDetail.merName = iterator.name;
@@ -116,11 +123,17 @@ export class AddContractDetailModalComponent extends AppComponentBase {
                 this._contractDetailService.createOrEditContractDetail(this.contractDetail).subscribe(result => {
                     this.notify.info(this.l('SavedSuccessfully'));
                 })
+                this.id = this.id + 1;
             }
-            this.id = this.id + 1;
         }
 
+        console.log(this.id);
+
         this.close()
+    }
+
+    reloadPage(): void {
+        this.paginator.changePage(this.paginator.getPage());
     }
 
     close(): void {

@@ -15,6 +15,7 @@ using GWebsite.AbpZeroTemplate.Application.Share.Projects.Dto;
 using GWebsite.AbpZeroTemplate.Core.Models;
 using GWebsite.AbpZeroTemplate.Application.Share.AssignmentTables.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.Bids.Dto;
+using GWebsite.AbpZeroTemplate.Application.Share.Bidders.Dto;
 
 namespace GWebsite.AbpZeroTemplate.Applications
 {
@@ -98,6 +99,11 @@ namespace GWebsite.AbpZeroTemplate.Applications
             configuration.CreateMap<Bid, BidInput>();
             configuration.CreateMap<Bid, BidForViewDto>();
 
+            // Bidder
+            configuration.CreateMap<Bidder, BidderDto>();
+            configuration.CreateMap<BidderInput, Bidder>();
+            configuration.CreateMap<Bidder, BidderInput>();
+            configuration.CreateMap<Bidder, BidderForViewDto>();
         }
     }
 }

@@ -23,7 +23,7 @@ export class ContractComponent extends AppComponentBase implements AfterViewInit
     // tao bien de filter
     contractID: string
     contractName: string
-    deliveryTime: Date
+    deliveryTime: String
     briefCaseID: number
     vendorID: number
 
@@ -64,12 +64,12 @@ export class ContractComponent extends AppComponentBase implements AfterViewInit
          * mặc định ban đầu lấy hết dữ liệu nên dữ liệu filter = null
          */
 
-        this.reloadList(null, null, 0, 0, event);
+        this.reloadList(null, null, null, 0, 0, event);
     }
 
-    reloadList(contractID, contractName, briefCaseID, vendorID, event: LazyLoadEvent) {
+    reloadList(contractID, contractName, deliveryTime, briefCaseID, vendorID, event: LazyLoadEvent) {
         this._contractService.getContractsByFilter(contractID,
-            contractName, briefCaseID, vendorID,
+            contractName, deliveryTime, briefCaseID, vendorID,
             this.primengTableHelper.getSorting(this.dataTable),
             this.primengTableHelper.getMaxResultCount(this.paginator, event),
             this.primengTableHelper.getSkipCount(this.paginator, event),
@@ -84,10 +84,10 @@ export class ContractComponent extends AppComponentBase implements AfterViewInit
         this._activatedRoute.params.subscribe((params: Params) => {
             this.contractID = params['contractID'] || '';
             this.contractName = params['name'] || '';
-            //this.deliveryTime = params['deliveryTime'] || ;
+            this.deliveryTime = params['deliveryTime'] || '';
             this.briefCaseID = params['briefcaseID'] || 0;
             this.vendorID = params['vendorID'] || 0;
-            this.reloadList(this.contractID, this.contractName, this.briefCaseID, this.vendorID, null);
+            this.reloadList(this.contractID, this.contractName, this.deliveryTime , this.briefCaseID, this.vendorID, null);
         });
     }
 
@@ -103,7 +103,7 @@ export class ContractComponent extends AppComponentBase implements AfterViewInit
 
     applyFilters(): void {
         //truyền params lên url thông qua router
-        this.reloadList(this.contractID, this.contractName, this.briefCaseID, this.vendorID, null);
+        this.reloadList(this.contractID, this.contractName, this.deliveryTime, this.briefCaseID, this.vendorID, null);
 
         if (this.paginator.getPage() !== 0) {
             this.paginator.changePage(0);

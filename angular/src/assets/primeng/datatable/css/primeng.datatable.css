@@ -25,14 +25,14 @@
 }
 .primeng-datatable-container .ui-table th {
   font-family: 'Poppins', 'Roboto';
-  border: none !important;
   padding: 10px 0px 10px 10px !important;
+  border: solid thin;
   text-align: left;
   font-weight: 600 !important;
 }
 .primeng-datatable-container .ui-table td {
   font-family: 'Poppins', 'Roboto';
-  border: none !important;
+  border: solid thin;
   padding: 8px 10px !important;
 }
 .primeng-datatable-container .ui-table table {
@@ -56,7 +56,7 @@
   vertical-align: middle;
 }
 .primeng-datatable-container .ui-table table tbody {
-  border: none !important;
+  border: solid thin;
 }
 .primeng-datatable-container .ui-table table tbody tr.ui-widget-content {
   border: none !important;

@@ -7,6 +7,7 @@ using GWebsite.AbpZeroTemplate.Application.Share.Contracts;
 using GWebsite.AbpZeroTemplate.Application.Share.Contracts.Dto;
 using GWebsite.AbpZeroTemplate.Core.Authorization;
 using GWebsite.AbpZeroTemplate.Core.Models;
+using System;
 using System.Linq;
 using System.Linq.Dynamic.Core;
 
@@ -83,10 +84,13 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Contracts
                 query = query.Where(x => x.Name.ToLower().Contains(input.Name.ToLower()));
             }
 
-            //if (input.DeliveryTime != null)
-            //{
-            //    query = query.Where(x => x.DeliveryTime == input.DeliveryTime);
-            //}
+            if (input.DeliveryTime != null)
+            {
+                DateTime dt = DateTime.ParseExact(input.DeliveryTime, "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture);
+                dt = dt.ToUniversalTime();
+                query = query.Where(x => x.DeliveryTime.DayOfYear == dt.DayOfYear);
+
+            }
 
             // filter by BriefcaseID
             if (input.BriefcaseID != 0)

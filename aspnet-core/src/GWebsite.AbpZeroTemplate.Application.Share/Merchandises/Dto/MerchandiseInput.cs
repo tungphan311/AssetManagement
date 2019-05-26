@@ -27,5 +27,7 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.Merchandises.Dto
         public bool IsActive { get; set; }
 
         public string Note { get; set; }
+
+        public bool IsAddContract { get; set; }
     }
 }
