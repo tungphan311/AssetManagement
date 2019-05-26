@@ -85,6 +85,11 @@ namespace GWebsite.AbpZeroTemplate.Core.Authorization
             bid.CreateChildPermission(GWebsitePermissions.Pages_Administration_Bid_Create, L("CreateNewBid"));
             bid.CreateChildPermission(GWebsitePermissions.Pages_Administration_Bid_Edit, L("EditingBid"));
             bid.CreateChildPermission(GWebsitePermissions.Pages_Administration_Bid_Delete, L("DeletingBid"));
+
+            var bidder = pages.CreateChildPermission(GWebsitePermissions.Pages_Administration_Bidder, L("Bidder"));
+            bidder.CreateChildPermission(GWebsitePermissions.Pages_Administration_Bidder_Create, L("CreateNewBidder"));
+            bidder.CreateChildPermission(GWebsitePermissions.Pages_Administration_Bidder_Edit, L("EditingBidder"));
+            bidder.CreateChildPermission(GWebsitePermissions.Pages_Administration_Bidder_Delete, L("DeletingBidder"));
         }
 
         private static ILocalizableString L(string name)

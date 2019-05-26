@@ -9,11 +9,12 @@ using System.Threading.Tasks;
 
 namespace GWebsite.AbpZeroTemplate.Application.Share.Bidders
 {
-    public interface IBidderAppService: IApplicationService
+    public interface IBidderAppService
     {
         void CreateOrEditBidder(BidderInput input);
         BidderInput GetBidderForEdit(int id);
         void DeleteBidder(int id);
         PagedResultDto<BidderDto> GetBidders(BidderFilter filter);
+        BidderForViewDto GetBidderForView(int id);
     }
 }

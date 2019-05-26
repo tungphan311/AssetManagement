@@ -14,8 +14,6 @@ namespace GWebsite.AbpZeroTemplate.Core.Models
 
         public double OfferPrice { get; set; }
 
-        public bool isAccept { get; set; }
-
         public string GuaranteeMethod { get; set; } 
 
         public DateTime GuaranteeExpired { get; set; }

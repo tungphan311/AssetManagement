@@ -61,79 +61,79 @@
                     <div class="primeng-datatable-container" [busyIf]="primengTableHelper.isLoading">
                         <p-table #dataTable (onLazyLoad)="getMerchandises($event)" [value]="primengTableHelper.records"
                             rows="{{primengTableHelper.defaultRecordsCountPerPage}}" [paginator]="false" [lazy]="true"
-                            [responsive]="primengTableHelper.isResponsive">
+                            [responsive]="primengTableHelper.isResponsive" [scrollable]="true">
                             <ng-template pTemplate="header">
                                 <tr>
-                                    <th pSortableColumn="code">
+                                    <th pSortableColumn="code" style="width: 100px; text-align: center;">
                                         Mã code
                                         <p-sortIcon field="code"></p-sortIcon>
                                     </th>
-                                    <th pSortableColumn="name">
+                                    <th pSortableColumn="name" style="width: 200px; text-align: center;">
                                         {{l("MerchandiseName")}}
                                         <p-sortIcon field="name"></p-sortIcon>
                                     </th>
-                                    <th pSortableColumn="typeID">
+                                    <th pSortableColumn="typeID" style="width: 200px; text-align: center;">
                                         {{l("MerchandiseTypeID")}}
                                         <p-sortIcon field="typeID"></p-sortIcon>
                                     </th>
-                                    <th pSortableColumn="typeVender">
+                                    <th pSortableColumn="typeVender" style="width: 200px; text-align: center;">
                                         Mã nhà cung cấp
                                         <p-sortIcon field="typeVender"></p-sortIcon>
                                     </th>
-                                    <th pSortableColumn="price">
+                                    <th pSortableColumn="price" style="width: 200px; text-align: center;">
                                         {{l("MerchandisePrice")}}
-                                        <p-sortIcon field="price"></p-sortIcon>
+                                        <p-sortIcon field="price" ></p-sortIcon>
                                     </th>
-                                    <th pSortableColumn="unit">
+                                    <th pSortableColumn="unit" style="width: 150px; text-align: center;">
                                         Đơn vị tính
                                         <p-sortIcon field="unit"></p-sortIcon>
                                     </th>
-                                    <th pSortableColumn="info">
+                                    <th pSortableColumn="info" style="width: 200px; text-align: center;">
                                         {{l("MerchandiseDetail")}}
                                         <p-sortIcon field="info"></p-sortIcon>
                                     </th>
-                                    <th pSortableColumn="isActive">
+                                    <th pSortableColumn="isActive" style="width: 150px; text-align: center;">
                                         Hoạt động
                                         <p-sortIcon field="isActive"></p-sortIcon>
                                     </th>
-                                    <th pSortableColumn="note">
+                                    <th pSortableColumn="note" style="width: 400px; text-align: center;">
                                         Ghi chú
                                         <p-sortIcon field="note"></p-sortIcon>
                                     </th>
-                                    <th>{{l('Edit')}}</th>
+                                    <th style="width: 200px; text-align: center;">{{l('Edit')}}</th>
                                 </tr>
                             </ng-template>
-                            <ng-template pTemplate="body" let-record="$implicit" >
+                            <ng-template pTemplate="body" let-record="$implicit">
                                 <tr>
-                                    <td>
+                                    <td style="width: 100px; text-align: center;">
                                         <span class="ui-column-title">Mã code</span>
-                                        <span title="{{record.code}}">{{truncateString(record.code)}}</span>
+                                        <span title="{{record.code}}" style="align-content: center">{{truncateString(record.code)}}</span>
                                     </td>
-                                    <td>
+                                    <td style="width: 200px; text-align: center;">
                                         <span class="ui-column-title">Tên hàng hoá</span>
                                         <span title="{{record.name}}">{{truncateString(record.name)}}</span>
                                     </td>
-                                    <td>
+                                    <td style="width: 200px; text-align: center;">
                                         <span class="ui-column-title">Loại hàng hoá</span>
                                         <span title="{{record.typeID}}" >{{getTypeNames(record.typeID)}}</span>
                                     </td>
-                                    <td>
+                                    <td style="width: 200px; text-align: center;">
                                         <span class="ui-column-title">Loại hàng hoá</span>
                                         <span title="{{record.typeVender}}" >{{getTypeVenderNames(record.typeVender)}}</span>
                                     </td>
-                                    <td>
+                                    <td style="width: 200px; text-align: center;">
                                         <span class="ui-column-title">Giá</span>
                                         <span title="{{record.price}}">{{truncateString(record.price)}}</span>
                                     </td>
-                                    <td>
+                                    <td style="width: 150px; text-align: center;">
                                         <span class="ui-column-title">Đơn vị tính</span>
                                         <span title="{{record.unit}}">{{truncateString(record.unit)}}</span>
                                     </td>
-                                    <td>
+                                    <td style="width: 200px; text-align: center;">
                                         <span class="ui-column-title">Thông tin chi tiết</span>
                                         <span title="{{record.info}}">{{truncateString(record.info)}}</span>
                                     </td>
-                                    <td>
+                                    <td style="width: 150px; text-align: center;">
                                         <span class="ui-column-title">Hoạt động</span>
                                         <span title="{{record.isActive}}" *ngIf="record.isActive">
                                             <input type="checkbox" checked onclick="return false;">
@@ -142,11 +142,11 @@
                                             <input type="checkbox" onclick="return false;">
                                         </span>
                                     </td>
-                                    <td>
+                                    <td style="width: 400px; text-align: center;">
                                         <span class="ui-column-title">Ghi chú</span>
                                         <span title="{{record.note}}">{{truncateString(record.note)}}</span>
                                     </td>
-                                    <td>
+                                    <td style="width: 200px; text-align: center;">
                                         <button
                                             class="btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill"
                                             (click)="createOrEditModal.show(record.id)" title="{{l('Edit')}}">

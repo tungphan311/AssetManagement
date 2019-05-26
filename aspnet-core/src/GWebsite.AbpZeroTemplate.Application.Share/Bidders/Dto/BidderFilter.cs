@@ -9,6 +9,6 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.Bidders.Dto
 {
     public class BidderFilter: PagedAndSortedInputDto
     {
-        public int BidId { get; set; }
+        public int BidID { get; set; }
     }
 }

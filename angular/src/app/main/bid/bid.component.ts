@@ -115,7 +115,13 @@ export class BidComponent extends AppComponentBase implements AfterViewInit, OnI
     createBid() {
         this.createOrEditModal.show();
     }
-
+    dateFormat(date): string {
+        var moment = require('moment');
+        var _date = moment(date);
+        var tz = _date.utcOffset();
+        _date.add(tz, 'm');
+        return _date.format('DD/MM/YYYY');
+    }
     /**
      * Tạo pipe thay vì tạo từng hàm truncate như thế này
      * @param text

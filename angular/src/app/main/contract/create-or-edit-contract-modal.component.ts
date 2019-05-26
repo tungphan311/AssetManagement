@@ -44,6 +44,13 @@ export class CreateOrEditContractModalComponent extends AppComponentBase {
 
         this._contractService.getContractForEdit(contractId).subscribe(result => {
             this.contract = result;
+
+            var moment = require('moment');
+            var date = moment(result.deliveryTime);
+            var tz = date.utcOffset();
+            date.add(tz, 'm');
+            this.contract.deliveryTime = date.format('YYYY-MM-DD');
+
             this.modal.show();
         })
 
@@ -74,10 +81,18 @@ export class CreateOrEditContractModalComponent extends AppComponentBase {
 
     addContractDetail() {
         this.addContractDetailModal.show();
+        for (const item of this.listContractDetail) {
+            this._contractDetailService.deleteContractDetail(item.id).subscribe(result => {
+                //this.notify.info(this.l('SaveSuccessfully'));
+            })
+        }
     }
 
     save(): void {
         let input = this.contract;
+        console.log(input.id);
+        var moment = require('moment');
+        input.deliveryTime = moment(input.deliveryTime);
         this.saving = true;
         this._contractService.createOrEditContract(input).subscribe(result => {
             this.notify.info(this.l('SavedSuccessfully'));
