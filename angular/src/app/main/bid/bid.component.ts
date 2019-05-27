@@ -7,7 +7,7 @@ import * as _ from 'lodash';
 import { LazyLoadEvent } from 'primeng/components/common/lazyloadevent';
 import { Paginator } from 'primeng/components/paginator/paginator';
 import { Table } from 'primeng/components/table/table';
-import { BidServiceProxy } from '@shared/service-proxies/service-proxies';
+import { BidServiceProxy,VendorServiceProxy } from '@shared/service-proxies/service-proxies';
 import { CreateOrEditBidModalComponent } from './create-or-edit-bid-modal.component';
 
 @Component({
@@ -28,10 +28,16 @@ export class BidComponent extends AppComponentBase implements AfterViewInit, OnI
      * tạo các biến dể filters
      */
     bidName: string;
+    bidCategory: string;
+    bidStart: string;
+    bidEnd: string;
+    bidForm: "All";
+    bidVendorCode: string;
 
     constructor(
         injector: Injector,
         private _bidService: BidServiceProxy,
+        private _vendorService: VendorServiceProxy,
         private _activatedRoute: ActivatedRoute,
     ) {
         super(injector);
@@ -68,18 +74,30 @@ export class BidComponent extends AppComponentBase implements AfterViewInit, OnI
          * mặc định ban đầu lấy hết dữ liệu nên dữ liệu filter = null
          */
 
-        this.reloadList(null, event);
+        this.reloadList(null,null,null,null,'All',null, event);
 
     }
 
-    reloadList(bidName, event?: LazyLoadEvent) {
-        this._bidService.getBidsByFilter(bidName,null,null,null,null,0, this.primengTableHelper.getSorting(this.dataTable),
+    reloadList(bidName,bidCategory,bidStart,bidEnd,bidForm,bidVendorCode, event?: LazyLoadEvent) {
+        this._bidService.getBidsByFilter(bidName,bidCategory,bidStart,bidEnd,bidForm,0, this.primengTableHelper.getSorting(this.dataTable),
             this.primengTableHelper.getMaxResultCount(this.paginator, event),
             this.primengTableHelper.getSkipCount(this.paginator, event),
         ).subscribe(result => {
+            if(bidVendorCode!=null)
+            {
+                //lọc theo mã đơn vị trúng thầu
+                this._vendorService.getVendorsByFilter(bidVendorCode,null,0,null,null,999,0).subscribe(vendorResult=>{
+                    result.items = result.items.filter(x=>vendorResult.items.filter(y=>y.id==x.bidderID).length>0)
+                    this.primengTableHelper.totalRecordsCount = result.items.length;
+                    this.primengTableHelper.records = result.items;
+                    this.primengTableHelper.hideLoadingIndicator();
+                })
+            }
+            else{
             this.primengTableHelper.totalRecordsCount = result.totalCount;
             this.primengTableHelper.records = result.items;
             this.primengTableHelper.hideLoadingIndicator();
+            }
         });
     }
 
@@ -93,7 +111,12 @@ export class BidComponent extends AppComponentBase implements AfterViewInit, OnI
         //get params từ url để thực hiện filter
         this._activatedRoute.params.subscribe((params: Params) => {
             this.bidName = params['name'] || '';
-            this.reloadList(this.bidName, null);
+            this.bidCategory = params['category'] || '';
+            this.bidStart=params['start']||'';
+            this.bidEnd=params['end']||'';
+            this.bidForm=params['form']||'All';
+            this.bidVendorCode=params['vendorcode']||'';
+            this.reloadList(this.bidName,this.bidCategory,this.bidStart,this.bidEnd,this.bidForm,this.bidVendorCode, null)
         });
     }
 
@@ -103,7 +126,7 @@ export class BidComponent extends AppComponentBase implements AfterViewInit, OnI
 
     applyFilters(): void {
         //truyền params lên url thông qua router
-        this.reloadList(this.bidName, null);
+        this.reloadList(this.bidName,this.bidCategory,this.bidStart,this.bidEnd,this.bidForm,this.bidVendorCode, null);
 
         if (this.paginator.getPage() !== 0) {
             this.paginator.changePage(0);

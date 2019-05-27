@@ -23,5 +23,7 @@ namespace GWebsite.AbpZeroTemplate.Core.Models
         public string BiddingForm { get; set; }
 
         public double TotalPrice { get; set; }
+
+        public int BidderID { get; set; } // id cua dv trung thau
     }
 }

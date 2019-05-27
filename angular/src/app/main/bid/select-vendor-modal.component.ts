@@ -6,20 +6,20 @@ import { ModalDirective } from 'ngx-bootstrap';
 import { LazyLoadEvent } from 'primeng/components/common/lazyloadevent';
 import { Paginator } from 'primeng/components/paginator/paginator';
 import { Table } from 'primeng/components/table/table';
-import { ProjectServiceProxy } from '@shared/service-proxies/service-proxies';
+import { VendorServiceProxy } from '@shared/service-proxies/service-proxies';
 
 
 @Component({
-    selector: 'selectProjectModal',
-    templateUrl: './select-project-modal.component.html'
+    selector: 'selectVendorModal',
+    templateUrl: './select-vendor-modal.component.html'
 })
 
-export class SelectProjectModalComponent extends AppComponentBase {
+export class SelectVendorModalComponent extends AppComponentBase {
 
     /**
      * @ViewChild là dùng get control và call thuộc tính, functions của control đó
      */
-    @ViewChild('selectProjectModal') selectProjectModal: ModalDirective;
+    @ViewChild('selectVendorModal') selectVendorModal: ModalDirective;
     @ViewChild('dataTable') dataTable: Table;
     @ViewChild('paginator') paginator: Paginator;
     
@@ -31,18 +31,18 @@ export class SelectProjectModalComponent extends AppComponentBase {
     /**
      * tạo các biến dể filters
      */
-    projectCode: string;
-    projectName: string;
-    projectDate: string;
+    vendorCode: string;
+    vendorName: string;
+    vendorDate: string;
 
     constructor(
         injector: Injector,
-        private _projectService: ProjectServiceProxy
+        private _vendorService: VendorServiceProxy
     ) {
         super(injector);
     }
 
-    getProjects(event?: LazyLoadEvent) {
+    getVendors(event?: LazyLoadEvent) {
         if (!this.paginator || !this.dataTable) {
             return;
         }
@@ -54,12 +54,12 @@ export class SelectProjectModalComponent extends AppComponentBase {
          * mặc định ban đầu lấy hết dữ liệu nên dữ liệu filter = null
          */
 
-        this.reloadList(null,null,null, event);
+        this.reloadList(null,null, event);
 
     }
 
-    reloadList(projectId, projectName, projectDate, event?: LazyLoadEvent) {
-        this._projectService.getProjectsByFilter(projectId,projectName,projectDate, this.primengTableHelper.getSorting(this.dataTable),
+    reloadList(vendorId, vendorName, event?: LazyLoadEvent) {
+        this._vendorService.getVendorsByFilter(vendorId,vendorName,0,"False", this.primengTableHelper.getSorting(this.dataTable),
             this.primengTableHelper.getMaxResultCount(this.paginator, event),
             this.primengTableHelper.getSkipCount(this.paginator, event),
         ).subscribe(result => {
@@ -74,7 +74,7 @@ export class SelectProjectModalComponent extends AppComponentBase {
 
     applyFilters(): void {
         //truyền params lên url thông qua router
-        this.reloadList(this.projectCode, this.projectName, this.projectDate, null);
+        this.reloadList(this.vendorCode, this.vendorName, null);
 
         if (this.paginator.getPage() !== 0) {
             this.paginator.changePage(0);
@@ -86,29 +86,21 @@ export class SelectProjectModalComponent extends AppComponentBase {
      * Tạo pipe thay vì tạo từng hàm truncate như thế này
      * @param text
      */
-    dateFormat(date): string {
-        var moment = require('moment');
-        //add timezone vào time :/ với cách éo thể nào ngu hơn đc =))
-        var _date = moment(date);
-        var tz = _date.utcOffset(); //lấy timezone đv phút
-        _date.add(tz, 'm'); //add phút
-        return _date.format('DD/MM/YYYY');
-    }
     truncateString(text): string {
         return abp.utils.truncateStringWithPostfix(text, 32, '...');
     }
     show(): void {
         this.saving = false;
-        this.selectProjectModal.show();
+        this.selectVendorModal.show();
     }
 
-    save(projectID:number): void {
+    save(vendorID:number): void {
         this.saving = true;
-        this.close(projectID);          
+        this.close(vendorID);          
     }
 
-    close(projectID?:number|0): void {
-        this.selectProjectModal.hide();
-        this.modalSave.emit(projectID);
+    close(vendorID?:number|0): void {
+        this.selectVendorModal.hide();
+        this.modalSave.emit(vendorID);
     }
 }

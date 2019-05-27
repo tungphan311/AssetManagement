@@ -22,8 +22,41 @@
                         <div class="row align-items-center m--margin-bottom-10">
                             <div class="col-sm-12">
                                 <div class="input-group">
-                                    <input [(ngModel)]="bidName" name="bidName" autoFocus class="form-control"
-                                        placeholder="Nhập mã hồ sơ thầu" type="text">
+                                    <div class ="form-group row margin-top-15">
+                                        <div class="col-xs-5 margin-right-20 margin-left-20">
+                                            <label for="ex1">Mã HS thầu</label>
+                                            <input [(ngModel)]="bidName" id="ex1" name="bidName" autoFocus class="form-control"
+                                                placeholder="Nhập mã hồ sơ thầu" type="text">
+                                        </div>
+                                        <div class="col-xs-5 margin-left-20">
+                                            <label for="ex2">Hạng mục thầu</label>
+                                            <input [(ngModel)]="bidCategory" id="ex2" name="bidCategory" autoFocus class="form-control"
+                                                placeholder="Nhập hạng mục thầu" type="text">
+                                        </div>
+                                        <div class="col-xs-5 margin-left-20">
+                                            <label for="ex3">Mã DV thầu</label>
+                                            <input [(ngModel)]="bidVendorCode" id="ex3" name="bidVendorCode" autoFocus class="form-control"
+                                                placeholder="Nhập mã DV thầu" type="text">
+                                        </div>
+                                        <div class="col-xs-4 margin-left-20">
+                                                <label for="ex4">Ngày phát HS thầu từ</label>
+                                                <input [(ngModel)]="bidStart" id="ex4" name="bidStart" autofocus class="form-control" type="date">   
+                                        </div>
+                                        <div class="col-xs-4 margin-left-20">
+                                                <label for="ex5">Đến ngày</label>
+                                                <input [(ngModel)]="bidEnd" id="ex5" name="bidEnd" autofocus class="form-control" type="date">   
+                                        </div>
+                                        <div class="col-xs-5 margin-left-20">
+                                                <label for="ex6">Hình thức thầu *</label>
+                                                <select id="ex6" name="bidForm" class="form-control" [(ngModel)]="bidForm">
+                                                    <option selected value="All">Tất cả</option>
+                                                    <option value="Đấu thầu">Đấu thầu</option>
+                                                    <option value="Chỉ định">Chỉ định</option>
+                                                </select>
+                                            </div>
+                                        
+
+                                    </div>
                                     <span class="input-group-btn">
                                         <button (click)="applyFilters()" class="btn btn-primary" type="submit"><i
                                                 class="icon-refresh"></i>

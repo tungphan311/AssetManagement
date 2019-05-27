@@ -14226,6 +14226,7 @@ export class BidDto implements IBidDto {
     endReceivingRecords!: moment.Moment | undefined;
     biddingForm!: string | undefined;
     totalPrice!: number | undefined;
+    bidderID!: number | undefined;
     id!: number | undefined;
 
     constructor(data?: IBidDto) {
@@ -14247,6 +14248,7 @@ export class BidDto implements IBidDto {
             this.endReceivingRecords = data["endReceivingRecords"] ? moment(data["endReceivingRecords"].toString()) : <any>undefined;
             this.biddingForm = data["biddingForm"];
             this.totalPrice = data["totalPrice"];
+            this.bidderID = data["bidderID"];
             this.id = data["id"];
         }
     }
@@ -14268,6 +14270,7 @@ export class BidDto implements IBidDto {
         data["endReceivingRecords"] = this.endReceivingRecords ? this.endReceivingRecords.toISOString() : <any>undefined;
         data["biddingForm"] = this.biddingForm;
         data["totalPrice"] = this.totalPrice;
+        data["bidderID"] = this.bidderID;
         data["id"] = this.id;
         return data; 
     }
@@ -14282,6 +14285,7 @@ export interface IBidDto {
     endReceivingRecords: moment.Moment | undefined;
     biddingForm: string | undefined;
     totalPrice: number | undefined;
+    bidderID: number | undefined;
     id: number | undefined;
 }
 
@@ -14294,6 +14298,7 @@ export class BidInput implements IBidInput {
     endReceivingRecords!: moment.Moment | undefined;
     biddingForm!: string | undefined;
     totalPrice!: number | undefined;
+    bidderID!: number | undefined;
     id!: number | undefined;
 
     constructor(data?: IBidInput) {
@@ -14315,6 +14320,7 @@ export class BidInput implements IBidInput {
             this.endReceivingRecords = data["endReceivingRecords"] ? moment(data["endReceivingRecords"].toString()) : <any>undefined;
             this.biddingForm = data["biddingForm"];
             this.totalPrice = data["totalPrice"];
+            this.bidderID = data["bidderID"];
             this.id = data["id"];
         }
     }
@@ -14336,6 +14342,7 @@ export class BidInput implements IBidInput {
         data["endReceivingRecords"] = this.endReceivingRecords ? this.endReceivingRecords.toISOString() : <any>undefined;
         data["biddingForm"] = this.biddingForm;
         data["totalPrice"] = this.totalPrice;
+        data["bidderID"] = this.bidderID;
         data["id"] = this.id;
         return data; 
     }
@@ -14350,6 +14357,7 @@ export interface IBidInput {
     endReceivingRecords: moment.Moment | undefined;
     biddingForm: string | undefined;
     totalPrice: number | undefined;
+    bidderID: number | undefined;
     id: number | undefined;
 }
 
@@ -14362,6 +14370,7 @@ export class BidForViewDto implements IBidForViewDto {
     endReceivingRecords!: moment.Moment | undefined;
     biddingForm!: string | undefined;
     totalPrice!: number | undefined;
+    bidderID!: number | undefined;
 
     constructor(data?: IBidForViewDto) {
         if (data) {
@@ -14382,6 +14391,7 @@ export class BidForViewDto implements IBidForViewDto {
             this.endReceivingRecords = data["endReceivingRecords"] ? moment(data["endReceivingRecords"].toString()) : <any>undefined;
             this.biddingForm = data["biddingForm"];
             this.totalPrice = data["totalPrice"];
+            this.bidderID = data["bidderID"];
         }
     }
 
@@ -14402,6 +14412,7 @@ export class BidForViewDto implements IBidForViewDto {
         data["endReceivingRecords"] = this.endReceivingRecords ? this.endReceivingRecords.toISOString() : <any>undefined;
         data["biddingForm"] = this.biddingForm;
         data["totalPrice"] = this.totalPrice;
+        data["bidderID"] = this.bidderID;
         return data; 
     }
 }
@@ -14415,6 +14426,7 @@ export interface IBidForViewDto {
     endReceivingRecords: moment.Moment | undefined;
     biddingForm: string | undefined;
     totalPrice: number | undefined;
+    bidderID: number | undefined;
 }
 
 export class PagedResultDtoOfBidderDto implements IPagedResultDtoOfBidderDto {
