@@ -21,7 +21,7 @@ export class AddContractDetailModalComponent extends AppComponentBase {
     /**
     * @Output dùng để public event cho component khác xử lý
     */
-   @Output() modalSaves: EventEmitter<any> = new EventEmitter<any>();
+   @Output('listMerchandises') data: EventEmitter<number[]> = new EventEmitter<number[]>();
 
    saving = false;
 
@@ -139,7 +139,7 @@ export class AddContractDetailModalComponent extends AppComponentBase {
     close(): void {
         console.log(this.savingId);
         this.addContractModal.hide();
-        this.modalSaves.emit(null);
+        this.data.emit(null);
     }
 
     /**
