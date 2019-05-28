@@ -130,6 +130,7 @@ namespace GSoft.AbpZeroTemplate.Web.Startup
 
             app.UseAuthentication();
             app.UseJwtTokenMiddleware();
+            app.UseDeveloperExceptionPage();
 
             if (bool.Parse(_appConfiguration["IdentityServer:IsEnabled"]))
             {

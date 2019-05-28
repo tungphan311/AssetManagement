@@ -23,7 +23,7 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.Contracts.Dto
         //public string BidCode { get; set; }
         //[Column(TypeName = "varchar(50)")]
         //public string ProviderCode { get; set; }
-        public DateTime ContractCreatedDate { get; set; }
+        public DateTime? ContractCreatedDate { get; set; }
         public Status Status { get; set; }
 
         public string Note { get; set; }
@@ -32,9 +32,9 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.Contracts.Dto
         public ContractGuaranteeForm ContractGuaranteeForm { get; set; }
 
         public string ContractCertificateNumber { get; set; }
-        public DateTime ContractCertificateEndDate { get; set; }
-        public DateTime ContractCertificatePrice { get; set; }
-        public DateTime ContractCertificatePricePercent { get; set; }
+        public DateTime? ContractCertificateEndDate { get; set; }
+        public decimal? ContractCertificatePrice { get; set; }
+        public decimal? ContractCertificatePricePercent { get; set; }
 
         public string ContractGuaranteeBankName { get; set; }
         public string ContractGuaranteeAttachmentFile { get; set; }
@@ -43,16 +43,16 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.Contracts.Dto
         public GuaranteeForm WarrantyGuaranteeForm { get; set; }
 
         public string WarrantyCertificateNumber { get; set; }
-        public DateTime WarrantyCertificateEndDate { get; set; }
-        public DateTime WarrantyCertificatePrice { get; set; }
-        public DateTime WarrantyCertificatePricePercent { get; set; }
+        public DateTime? WarrantyCertificateEndDate { get; set; }
+        public decimal? WarrantyCertificatePrice { get; set; }
+        public decimal? WarrantyCertificatePricePercent { get; set; }
 
         public string WarrantyGuaranteeBankName { get; set; }
         public string WarrantyGuaranteeAttachmentFile { get; set; }
         //
         //Price
-        public decimal TotalProductPrice { get; set; }
-        public decimal TotalPrice { get; set; }
+        public decimal? TotalProductPrice { get; set; }
+        public decimal? TotalPrice { get; set; }
 
         //FK
         public int? BidId { get; set; }

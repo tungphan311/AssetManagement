@@ -5269,3 +5269,310 @@ DEBUG 2019-04-17 08:14:29,266 [24   ] Abp.BackgroundJobs.BackgroundJobManager  -
 DEBUG 2019-04-17 08:14:29,266 [24   ] enancy.SubscriptionExpirationCheckWorker - WaitToStop background worker: GSoft.AbpZeroTemplate.MultiTenancy.SubscriptionExpirationCheckWorker
 DEBUG 2019-04-17 08:14:29,267 [24   ] cy.SubscriptionExpireEmailNotifierWorker - WaitToStop background worker: GSoft.AbpZeroTemplate.MultiTenancy.SubscriptionExpireEmailNotifierWorker
 DEBUG 2019-04-17 08:14:29,267 [24   ] Abp.Modules.AbpModuleManager             - Shutting down completed.
+DEBUG 2019-05-25 17:11:16,725 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2019-05-25 17:11:16,885 [1    ] Abp.Modules.AbpModuleManager             - Found 27 ABP modules in total.
+DEBUG 2019-05-25 17:11:16,925 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: GSoft.AbpZeroTemplate.Web.Startup.AbpZeroTemplateWebMvcModule, GSoft.AbpZeroTemplate.Web.Mvc, Version=5.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-25 17:11:16,929 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: GSoft.AbpZeroTemplate.Web.AbpZeroTemplateWebCoreModule, GSoft.AbpZeroTemplate.Web.Core, Version=5.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-25 17:11:16,930 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: GSoft.AbpZeroTemplate.AbpZeroTemplateApplicationModule, GSoft.AbpZeroTemplate.Application, Version=5.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-25 17:11:16,930 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: GSoft.AbpZeroTemplate.AbpZeroTemplateCoreModule, GSoft.AbpZeroTemplate.Core, Version=5.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-25 17:11:16,930 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.ZeroCore, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-25 17:11:16,931 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCommonModule, Abp.Zero.Common, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-25 17:11:16,931 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-25 17:11:16,931 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.Ldap.AbpZeroLdapModule, Abp.Zero.Ldap, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-25 17:11:16,932 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-25 17:11:16,932 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetZeroCore.AbpAspNetZeroCoreModule, Abp.AspNetZeroCore, Version=1.1.3.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-25 17:11:16,933 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.MailKit.AbpMailKitModule, Abp.MailKit, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-25 17:11:16,933 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: GWebsite.AbpZeroTemplate.Application.GWebsiteApplicationModule, GWebsite.AbpZeroTemplate.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-25 17:11:16,934 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: GSoft.AbpZeroTemplate.EntityFrameworkCore.AbpZeroTemplateEntityFrameworkCoreModule, GSoft.AbpZeroTemplate.EntityFrameworkCore, Version=5.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-25 17:11:16,934 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: GWebsite.AbpZeroTemplate.EntityFrameworkCore.GWebsiteEntityFrameworkCoreModule, GWebsite.AbpZeroTemplate.EntityFrameworkCore, Version=5.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-25 17:11:16,935 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFrameworkCore.AbpZeroCoreEntityFrameworkCoreModule, Abp.ZeroCore.EntityFrameworkCore, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-25 17:11:16,935 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFrameworkCore.AbpEntityFrameworkCoreModule, Abp.EntityFrameworkCore, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-25 17:11:16,935 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-25 17:11:16,935 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.IdentityServer4.AbpZeroCoreIdentityServerEntityFrameworkCoreModule, Abp.ZeroCore.IdentityServer4.EntityFrameworkCore, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-25 17:11:16,936 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.IdentityServer4.AbpZeroCoreIdentityServerModule, Abp.ZeroCore.IdentityServer4, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-25 17:11:16,936 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: GWebsite.AbpZeroTemplate.Application.GWebsiteCoreModule, GWebsite.AbpZeroTemplate.Core, Version=5.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-25 17:11:16,937 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetZeroCore.Web.AbpAspNetZeroCoreWebModule, Abp.AspNetZeroCore.Web, Version=1.1.3.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-25 17:11:16,937 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.AbpAspNetCoreModule, Abp.AspNetCore, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-25 17:11:16,937 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebCommonModule, Abp.Web.Common, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-25 17:11:16,937 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.SignalR.AbpAspNetCoreSignalRModule, Abp.AspNetCore.SignalR, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-25 17:11:16,937 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Runtime.Caching.Redis.AbpRedisCacheModule, Abp.RedisCache, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-25 17:11:16,938 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Hangfire.AbpHangfireAspNetCoreModule, Abp.HangFire.AspNetCore, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-25 17:11:16,938 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: GWebsite.AbpZeroTemplate.Web.Core.GWebsiteWebCoreModule, GWebsite.AbpZeroTemplate.Web.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-25 17:11:16,941 [1    ] Abp.Modules.AbpModuleManager             - 27 modules loaded.
+DEBUG 2019-05-25 17:11:17,394 [1    ] o.Configuration.LanguageManagementConfig - Converted Abp (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-05-25 17:11:17,394 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpZero (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-05-25 17:11:17,394 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpZeroTemplate (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-05-25 17:11:17,394 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpWeb (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-05-25 17:11:17,864 [1    ] ameworkCore.AbpEntityFrameworkCoreModule - Registering DbContext: GSoft.AbpZeroTemplate.EntityFrameworkCore.AbpZeroTemplateDbContext, GSoft.AbpZeroTemplate.EntityFrameworkCore, Version=5.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-25 17:11:18,832 [1    ] Abp.Localization.LocalizationManager     - Initializing 4 localization sources.
+DEBUG 2019-05-25 17:11:18,878 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2019-05-25 17:11:18,910 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2019-05-25 17:11:18,953 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZeroTemplate
+DEBUG 2019-05-25 17:11:18,965 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2019-05-25 17:11:19,019 [1    ] Abp.BackgroundJobs.BackgroundJobManager  - Start background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2019-05-25 17:11:19,097 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 14 classes define auto mapping attributes
+DEBUG 2019-05-25 17:11:19,097 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - GSoft.AbpZeroTemplate.Web.Models.TokenAuth.ExternalLoginProviderInfoModel
+DEBUG 2019-05-25 17:11:19,101 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - GSoft.AbpZeroTemplate.Friendships.Cache.FriendCacheItem
+DEBUG 2019-05-25 17:11:19,101 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - GSoft.AbpZeroTemplate.Web.Views.Shared.Components.TenantChange.TenantChangeViewModel
+DEBUG 2019-05-25 17:11:19,101 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - GSoft.AbpZeroTemplate.Web.Models.TenantRegistration.EditionsSelectViewModel
+DEBUG 2019-05-25 17:11:19,101 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - GSoft.AbpZeroTemplate.Web.Models.TenantRegistration.TenantRegisterResultViewModel
+DEBUG 2019-05-25 17:11:19,101 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - GSoft.AbpZeroTemplate.Web.Areas.AppAreaName.Models.Users.CreateOrEditUserModalViewModel
+DEBUG 2019-05-25 17:11:19,101 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - GSoft.AbpZeroTemplate.Web.Areas.AppAreaName.Models.Users.UserPermissionsEditViewModel
+DEBUG 2019-05-25 17:11:19,101 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - GSoft.AbpZeroTemplate.Web.Areas.AppAreaName.Models.Tenants.TenantFeaturesEditViewModel
+DEBUG 2019-05-25 17:11:19,102 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - GSoft.AbpZeroTemplate.Web.Areas.AppAreaName.Models.SubscriptionManagement.PaymentResultViewModel
+DEBUG 2019-05-25 17:11:19,102 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - GSoft.AbpZeroTemplate.Web.Areas.AppAreaName.Models.Roles.CreateOrEditRoleModalViewModel
+DEBUG 2019-05-25 17:11:19,102 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - GSoft.AbpZeroTemplate.Web.Areas.AppAreaName.Models.Profile.MySettingsViewModel
+DEBUG 2019-05-25 17:11:19,102 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - GSoft.AbpZeroTemplate.Web.Areas.AppAreaName.Models.OrganizationUnits.EditOrganizationUnitModalViewModel
+DEBUG 2019-05-25 17:11:19,102 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - GSoft.AbpZeroTemplate.Web.Areas.AppAreaName.Models.Languages.CreateOrEditLanguageModalViewModel
+DEBUG 2019-05-25 17:11:19,102 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - GSoft.AbpZeroTemplate.Web.Areas.AppAreaName.Models.Editions.CreateOrEditEditionModalViewModel
+WARN  2019-05-25 17:11:36,533 [4    ] Abp.BackgroundJobs.BackgroundJobManager  - System.Data.SqlClient.SqlException (0x80131904): A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server) ---> System.ComponentModel.Win32Exception (3): The system cannot find the path specified
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenDbConnection(Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.Open(Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.BeginTransaction(IsolationLevel isolationLevel)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.RelationalDatabaseFacadeExtensions.BeginTransaction(DatabaseFacade databaseFacade, IsolationLevel isolationLevel)
+   at Abp.EntityFrameworkCore.Uow.DbContextEfCoreTransactionStrategy.CreateDbContext[TDbContext](String connectionString, IDbContextResolver dbContextResolver) in D:\Github\aspnetboilerplate\src\Abp.EntityFrameworkCore\EntityFrameworkCore\Uow\DbContextEfCoreTransactionStrategy.cs:line 38
+   at Abp.EntityFrameworkCore.Uow.EfCoreUnitOfWork.GetOrCreateDbContext[TDbContext](Nullable`1 multiTenancySide) in D:\Github\aspnetboilerplate\src\Abp.EntityFrameworkCore\EntityFrameworkCore\Uow\EfCoreUnitOfWork.cs:line 116
+   at Abp.EntityFrameworkCore.Repositories.EfCoreRepositoryBase`3.get_Table() in D:\Github\aspnetboilerplate\src\Abp.EntityFrameworkCore\EntityFrameworkCore\Repositories\EfCoreRepositoryBaseOfTEntityAndTPrimaryKey.cs:line 39
+   at Abp.EntityFrameworkCore.Repositories.EfCoreRepositoryBase`3.GetAllIncluding(Expression`1[] propertySelectors) in D:\Github\aspnetboilerplate\src\Abp.EntityFrameworkCore\EntityFrameworkCore\Repositories\EfCoreRepositoryBaseOfTEntityAndTPrimaryKey.cs:line 88
+   at Castle.Proxies.Invocations.IRepository`2_GetAll_3.InvokeMethodOnTarget()
+   at Castle.DynamicProxy.AbstractInvocation.Proceed()
+   at Abp.Domain.Uow.UnitOfWorkInterceptor.PerformSyncUow(IInvocation invocation, UnitOfWorkOptions options) in D:\Github\aspnetboilerplate\src\Abp\Domain\Uow\UnitOfWorkInterceptor.cs:line 68
+   at Castle.DynamicProxy.AbstractInvocation.Proceed()
+   at Castle.Proxies.IRepository`2Proxy_1.GetAll()
+   at Abp.BackgroundJobs.BackgroundJobStore.GetWaitingJobsAsync(Int32 maxResultCount) in D:\Github\aspnetboilerplate\src\Abp.Zero.Common\BackgroundJobs\BackgroundJobStore.cs:line 36
+   at Castle.Proxies.Invocations.BackgroundJobStore_GetWaitingJobsAsync.InvokeMethodOnTarget()
+   at Castle.DynamicProxy.AbstractInvocation.Proceed()
+   at Abp.Domain.Uow.UnitOfWorkInterceptor.PerformAsyncUow(IInvocation invocation, UnitOfWorkOptions options) in D:\Github\aspnetboilerplate\src\Abp\Domain\Uow\UnitOfWorkInterceptor.cs:line 78
+   at Castle.DynamicProxy.AbstractInvocation.Proceed()
+   at Castle.Proxies.BackgroundJobStoreProxy.GetWaitingJobsAsync(Int32 maxResultCount)
+   at System.Threading.Tasks.Task`1.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot)
+--- End of stack trace from previous location where exception was thrown ---
+   at Nito.AsyncEx.Synchronous.TaskExtensions.WaitAndUnwrapException[TResult](Task`1 task)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot)
+--- End of stack trace from previous location where exception was thrown ---
+   at Nito.AsyncEx.Synchronous.TaskExtensions.WaitAndUnwrapException[TResult](Task`1 task)
+   at Nito.AsyncEx.AsyncContext.Run[TResult](Func`1 action)
+   at Abp.BackgroundJobs.BackgroundJobManager.DoWork() in D:\Github\aspnetboilerplate\src\Abp\BackgroundJobs\BackgroundJobManager.cs:line 93
+   at Abp.Threading.BackgroundWorkers.PeriodicBackgroundWorkerBase.Timer_Elapsed(Object sender, EventArgs e) in D:\Github\aspnetboilerplate\src\Abp\Threading\BackgroundWorkers\PeriodicBackgroundWorkerBase.cs:line 48
+ClientConnectionId:00000000-0000-0000-0000-000000000000
+Error Number:3,State:0,Class:20
+System.Data.SqlClient.SqlException (0x80131904): A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server) ---> System.ComponentModel.Win32Exception (3): The system cannot find the path specified
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenDbConnection(Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.Open(Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.BeginTransaction(IsolationLevel isolationLevel)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.RelationalDatabaseFacadeExtensions.BeginTransaction(DatabaseFacade databaseFacade, IsolationLevel isolationLevel)
+   at Abp.EntityFrameworkCore.Uow.DbContextEfCoreTransactionStrategy.CreateDbContext[TDbContext](String connectionString, IDbContextResolver dbContextResolver) in D:\Github\aspnetboilerplate\src\Abp.EntityFrameworkCore\EntityFrameworkCore\Uow\DbContextEfCoreTransactionStrategy.cs:line 38
+   at Abp.EntityFrameworkCore.Uow.EfCoreUnitOfWork.GetOrCreateDbContext[TDbContext](Nullable`1 multiTenancySide) in D:\Github\aspnetboilerplate\src\Abp.EntityFrameworkCore\EntityFrameworkCore\Uow\EfCoreUnitOfWork.cs:line 116
+   at Abp.EntityFrameworkCore.Repositories.EfCoreRepositoryBase`3.get_Table() in D:\Github\aspnetboilerplate\src\Abp.EntityFrameworkCore\EntityFrameworkCore\Repositories\EfCoreRepositoryBaseOfTEntityAndTPrimaryKey.cs:line 39
+   at Abp.EntityFrameworkCore.Repositories.EfCoreRepositoryBase`3.GetAllIncluding(Expression`1[] propertySelectors) in D:\Github\aspnetboilerplate\src\Abp.EntityFrameworkCore\EntityFrameworkCore\Repositories\EfCoreRepositoryBaseOfTEntityAndTPrimaryKey.cs:line 88
+   at Castle.Proxies.Invocations.IRepository`2_GetAll_3.InvokeMethodOnTarget()
+   at Castle.DynamicProxy.AbstractInvocation.Proceed()
+   at Abp.Domain.Uow.UnitOfWorkInterceptor.PerformSyncUow(IInvocation invocation, UnitOfWorkOptions options) in D:\Github\aspnetboilerplate\src\Abp\Domain\Uow\UnitOfWorkInterceptor.cs:line 68
+   at Castle.DynamicProxy.AbstractInvocation.Proceed()
+   at Castle.Proxies.IRepository`2Proxy_1.GetAll()
+   at Abp.BackgroundJobs.BackgroundJobStore.GetWaitingJobsAsync(Int32 maxResultCount) in D:\Github\aspnetboilerplate\src\Abp.Zero.Common\BackgroundJobs\BackgroundJobStore.cs:line 36
+   at Castle.Proxies.Invocations.BackgroundJobStore_GetWaitingJobsAsync.InvokeMethodOnTarget()
+   at Castle.DynamicProxy.AbstractInvocation.Proceed()
+   at Abp.Domain.Uow.UnitOfWorkInterceptor.PerformAsyncUow(IInvocation invocation, UnitOfWorkOptions options) in D:\Github\aspnetboilerplate\src\Abp\Domain\Uow\UnitOfWorkInterceptor.cs:line 78
+   at Castle.DynamicProxy.AbstractInvocation.Proceed()
+   at Castle.Proxies.BackgroundJobStoreProxy.GetWaitingJobsAsync(Int32 maxResultCount)
+   at System.Threading.Tasks.Task`1.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot)
+--- End of stack trace from previous location where exception was thrown ---
+   at Nito.AsyncEx.Synchronous.TaskExtensions.WaitAndUnwrapException[TResult](Task`1 task)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot)
+--- End of stack trace from previous location where exception was thrown ---
+   at Nito.AsyncEx.Synchronous.TaskExtensions.WaitAndUnwrapException[TResult](Task`1 task)
+   at Nito.AsyncEx.AsyncContext.Run[TResult](Func`1 action)
+   at Abp.BackgroundJobs.BackgroundJobManager.DoWork() in D:\Github\aspnetboilerplate\src\Abp\BackgroundJobs\BackgroundJobManager.cs:line 93
+   at Abp.Threading.BackgroundWorkers.PeriodicBackgroundWorkerBase.Timer_Elapsed(Object sender, EventArgs e) in D:\Github\aspnetboilerplate\src\Abp\Threading\BackgroundWorkers\PeriodicBackgroundWorkerBase.cs:line 48
+ClientConnectionId:00000000-0000-0000-0000-000000000000
+Error Number:3,State:0,Class:20
+INFO  2019-05-25 17:11:37,554 [4    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/robots.txt  
+INFO  2019-05-25 17:11:38,564 [4    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 1014.592ms 404 
+INFO  2019-05-25 17:11:38,574 [4    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://127.0.0.1:14515/iisintegration  0
+INFO  2019-05-25 17:11:38,574 [4    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.4918ms 202 
+DEBUG 2019-05-25 17:11:38,579 [8    ] Abp.Modules.AbpModuleManager             - Shutting down has been started
+DEBUG 2019-05-25 17:11:38,580 [8    ] Abp.BackgroundJobs.BackgroundJobManager  - Stop background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2019-05-25 17:11:38,581 [8    ] Abp.BackgroundJobs.BackgroundJobManager  - WaitToStop background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2019-05-25 17:11:38,581 [8    ] Abp.Modules.AbpModuleManager             - Shutting down completed.
+DEBUG 2019-05-28 20:44:02,846 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2019-05-28 20:44:03,392 [1    ] Abp.Modules.AbpModuleManager             - Found 27 ABP modules in total.
+DEBUG 2019-05-28 20:44:03,446 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: GSoft.AbpZeroTemplate.Web.Startup.AbpZeroTemplateWebMvcModule, GSoft.AbpZeroTemplate.Web.Mvc, Version=5.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-28 20:44:03,450 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: GSoft.AbpZeroTemplate.Web.AbpZeroTemplateWebCoreModule, GSoft.AbpZeroTemplate.Web.Core, Version=5.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-28 20:44:03,450 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: GSoft.AbpZeroTemplate.AbpZeroTemplateApplicationModule, GSoft.AbpZeroTemplate.Application, Version=5.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-28 20:44:03,451 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: GSoft.AbpZeroTemplate.AbpZeroTemplateCoreModule, GSoft.AbpZeroTemplate.Core, Version=5.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-28 20:44:03,451 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.ZeroCore, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-28 20:44:03,451 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCommonModule, Abp.Zero.Common, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-28 20:44:03,451 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-28 20:44:03,451 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.Ldap.AbpZeroLdapModule, Abp.Zero.Ldap, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-28 20:44:03,452 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-28 20:44:03,452 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetZeroCore.AbpAspNetZeroCoreModule, Abp.AspNetZeroCore, Version=1.1.3.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-28 20:44:03,452 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.MailKit.AbpMailKitModule, Abp.MailKit, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-28 20:44:03,453 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: GWebsite.AbpZeroTemplate.Application.GWebsiteApplicationModule, GWebsite.AbpZeroTemplate.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-28 20:44:03,453 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: GSoft.AbpZeroTemplate.EntityFrameworkCore.AbpZeroTemplateEntityFrameworkCoreModule, GSoft.AbpZeroTemplate.EntityFrameworkCore, Version=5.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-28 20:44:03,453 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: GWebsite.AbpZeroTemplate.EntityFrameworkCore.GWebsiteEntityFrameworkCoreModule, GWebsite.AbpZeroTemplate.EntityFrameworkCore, Version=5.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-28 20:44:03,453 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFrameworkCore.AbpZeroCoreEntityFrameworkCoreModule, Abp.ZeroCore.EntityFrameworkCore, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-28 20:44:03,453 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFrameworkCore.AbpEntityFrameworkCoreModule, Abp.EntityFrameworkCore, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-28 20:44:03,454 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-28 20:44:03,454 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.IdentityServer4.AbpZeroCoreIdentityServerEntityFrameworkCoreModule, Abp.ZeroCore.IdentityServer4.EntityFrameworkCore, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-28 20:44:03,454 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.IdentityServer4.AbpZeroCoreIdentityServerModule, Abp.ZeroCore.IdentityServer4, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-28 20:44:03,454 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: GWebsite.AbpZeroTemplate.Application.GWebsiteCoreModule, GWebsite.AbpZeroTemplate.Core, Version=5.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-28 20:44:03,455 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetZeroCore.Web.AbpAspNetZeroCoreWebModule, Abp.AspNetZeroCore.Web, Version=1.1.3.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-28 20:44:03,455 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.AbpAspNetCoreModule, Abp.AspNetCore, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-28 20:44:03,455 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebCommonModule, Abp.Web.Common, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-28 20:44:03,455 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.SignalR.AbpAspNetCoreSignalRModule, Abp.AspNetCore.SignalR, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-28 20:44:03,455 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Runtime.Caching.Redis.AbpRedisCacheModule, Abp.RedisCache, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-28 20:44:03,456 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Hangfire.AbpHangfireAspNetCoreModule, Abp.HangFire.AspNetCore, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-28 20:44:03,456 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: GWebsite.AbpZeroTemplate.Web.Core.GWebsiteWebCoreModule, GWebsite.AbpZeroTemplate.Web.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-28 20:44:03,461 [1    ] Abp.Modules.AbpModuleManager             - 27 modules loaded.
+DEBUG 2019-05-28 20:44:03,817 [1    ] o.Configuration.LanguageManagementConfig - Converted Abp (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-05-28 20:44:03,817 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpZero (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-05-28 20:44:03,817 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpZeroTemplate (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-05-28 20:44:03,817 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpWeb (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-05-28 20:44:04,716 [1    ] ameworkCore.AbpEntityFrameworkCoreModule - Registering DbContext: GSoft.AbpZeroTemplate.EntityFrameworkCore.AbpZeroTemplateDbContext, GSoft.AbpZeroTemplate.EntityFrameworkCore, Version=5.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-28 20:44:06,451 [1    ] Abp.Localization.LocalizationManager     - Initializing 4 localization sources.
+DEBUG 2019-05-28 20:44:06,483 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2019-05-28 20:44:06,500 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2019-05-28 20:44:06,530 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZeroTemplate
+DEBUG 2019-05-28 20:44:06,536 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2019-05-28 20:44:06,789 [1    ] Abp.BackgroundJobs.BackgroundJobManager  - Start background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2019-05-28 20:44:06,846 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 14 classes define auto mapping attributes
+DEBUG 2019-05-28 20:44:06,846 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - GSoft.AbpZeroTemplate.Web.Models.TokenAuth.ExternalLoginProviderInfoModel
+DEBUG 2019-05-28 20:44:06,851 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - GSoft.AbpZeroTemplate.Friendships.Cache.FriendCacheItem
+DEBUG 2019-05-28 20:44:06,851 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - GSoft.AbpZeroTemplate.Web.Views.Shared.Components.TenantChange.TenantChangeViewModel
+DEBUG 2019-05-28 20:44:06,851 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - GSoft.AbpZeroTemplate.Web.Models.TenantRegistration.EditionsSelectViewModel
+DEBUG 2019-05-28 20:44:06,851 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - GSoft.AbpZeroTemplate.Web.Models.TenantRegistration.TenantRegisterResultViewModel
+DEBUG 2019-05-28 20:44:06,851 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - GSoft.AbpZeroTemplate.Web.Areas.AppAreaName.Models.Users.CreateOrEditUserModalViewModel
+DEBUG 2019-05-28 20:44:06,851 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - GSoft.AbpZeroTemplate.Web.Areas.AppAreaName.Models.Users.UserPermissionsEditViewModel
+DEBUG 2019-05-28 20:44:06,851 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - GSoft.AbpZeroTemplate.Web.Areas.AppAreaName.Models.Tenants.TenantFeaturesEditViewModel
+DEBUG 2019-05-28 20:44:06,851 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - GSoft.AbpZeroTemplate.Web.Areas.AppAreaName.Models.SubscriptionManagement.PaymentResultViewModel
+DEBUG 2019-05-28 20:44:06,852 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - GSoft.AbpZeroTemplate.Web.Areas.AppAreaName.Models.Roles.CreateOrEditRoleModalViewModel
+DEBUG 2019-05-28 20:44:06,852 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - GSoft.AbpZeroTemplate.Web.Areas.AppAreaName.Models.Profile.MySettingsViewModel
+DEBUG 2019-05-28 20:44:06,852 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - GSoft.AbpZeroTemplate.Web.Areas.AppAreaName.Models.OrganizationUnits.EditOrganizationUnitModalViewModel
+DEBUG 2019-05-28 20:44:06,852 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - GSoft.AbpZeroTemplate.Web.Areas.AppAreaName.Models.Languages.CreateOrEditLanguageModalViewModel
+DEBUG 2019-05-28 20:44:06,852 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - GSoft.AbpZeroTemplate.Web.Areas.AppAreaName.Models.Editions.CreateOrEditEditionModalViewModel
+DEBUG 2019-05-28 20:44:07,709 [4    ] oCore.Licensing.AspNetZeroLicenseChecker - C:\Users\Khang\AppData\Local\Temp\1dc511a3b00cc41745ec0f9969e94e58.tmp
+FATAL 2019-05-28 20:44:07,717 [4    ] oCore.Licensing.AspNetZeroLicenseChecker - Failed to validate project name. Should not rename a project downloaded from aspnetzero.com. You can contact to info@aspnetzero.com if you are using a licensed product.
+StartIndex cannot be less than zero.
+Parameter name: startIndex
+System.ArgumentOutOfRangeException: StartIndex cannot be less than zero.
+Parameter name: startIndex
+   at System.String.Substring(Int32 startIndex, Int32 length)
+   at Abp.AspNetZeroCore.Licensing.AspNetZeroLicenseChecker.hm6KbyFNGd6mE4M4H9(Object , Int32 , Int32 )
+   at Abp.AspNetZeroCore.Licensing.AspNetZeroLicenseChecker.GetHashedProjectName()
+   at Abp.AspNetZeroCore.Licensing.AspNetZeroLicenseChecker.IsProjectNameValid()
+   at Abp.AspNetZeroCore.Licensing.AspNetZeroLicenseChecker.CheckInternal()
+DEBUG 2019-05-28 20:44:17,968 [1    ] enancy.SubscriptionExpirationCheckWorker - Start background worker: GSoft.AbpZeroTemplate.MultiTenancy.SubscriptionExpirationCheckWorker
+DEBUG 2019-05-28 20:44:17,970 [1    ] cy.SubscriptionExpireEmailNotifierWorker - Start background worker: GSoft.AbpZeroTemplate.MultiTenancy.SubscriptionExpireEmailNotifierWorker
+DEBUG 2019-05-28 20:44:19,054 [1    ] Abp.Modules.AbpModuleManager             - Shutting down has been started
+DEBUG 2019-05-28 20:44:19,055 [1    ] Abp.BackgroundJobs.BackgroundJobManager  - Stop background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2019-05-28 20:44:19,056 [1    ] enancy.SubscriptionExpirationCheckWorker - Stop background worker: GSoft.AbpZeroTemplate.MultiTenancy.SubscriptionExpirationCheckWorker
+DEBUG 2019-05-28 20:44:19,056 [1    ] cy.SubscriptionExpireEmailNotifierWorker - Stop background worker: GSoft.AbpZeroTemplate.MultiTenancy.SubscriptionExpireEmailNotifierWorker
+DEBUG 2019-05-28 20:44:19,056 [1    ] Abp.BackgroundJobs.BackgroundJobManager  - WaitToStop background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2019-05-28 20:44:19,056 [1    ] enancy.SubscriptionExpirationCheckWorker - WaitToStop background worker: GSoft.AbpZeroTemplate.MultiTenancy.SubscriptionExpirationCheckWorker
+DEBUG 2019-05-28 20:44:19,057 [1    ] cy.SubscriptionExpireEmailNotifierWorker - WaitToStop background worker: GSoft.AbpZeroTemplate.MultiTenancy.SubscriptionExpireEmailNotifierWorker
+DEBUG 2019-05-28 20:44:19,057 [1    ] Abp.Modules.AbpModuleManager             - Shutting down completed.
+DEBUG 2019-05-28 20:44:25,202 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2019-05-28 20:44:25,237 [1    ] Abp.Modules.AbpModuleManager             - Found 27 ABP modules in total.
+DEBUG 2019-05-28 20:44:25,299 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: GSoft.AbpZeroTemplate.Web.Startup.AbpZeroTemplateWebMvcModule, GSoft.AbpZeroTemplate.Web.Mvc, Version=5.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-28 20:44:25,302 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: GSoft.AbpZeroTemplate.Web.AbpZeroTemplateWebCoreModule, GSoft.AbpZeroTemplate.Web.Core, Version=5.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-28 20:44:25,302 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: GSoft.AbpZeroTemplate.AbpZeroTemplateApplicationModule, GSoft.AbpZeroTemplate.Application, Version=5.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-28 20:44:25,303 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: GSoft.AbpZeroTemplate.AbpZeroTemplateCoreModule, GSoft.AbpZeroTemplate.Core, Version=5.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-28 20:44:25,303 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.ZeroCore, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-28 20:44:25,303 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCommonModule, Abp.Zero.Common, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-28 20:44:25,303 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-28 20:44:25,304 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.Ldap.AbpZeroLdapModule, Abp.Zero.Ldap, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-28 20:44:25,304 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-28 20:44:25,305 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetZeroCore.AbpAspNetZeroCoreModule, Abp.AspNetZeroCore, Version=1.1.3.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-28 20:44:25,305 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.MailKit.AbpMailKitModule, Abp.MailKit, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-28 20:44:25,305 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: GWebsite.AbpZeroTemplate.Application.GWebsiteApplicationModule, GWebsite.AbpZeroTemplate.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-28 20:44:25,305 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: GSoft.AbpZeroTemplate.EntityFrameworkCore.AbpZeroTemplateEntityFrameworkCoreModule, GSoft.AbpZeroTemplate.EntityFrameworkCore, Version=5.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-28 20:44:25,306 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: GWebsite.AbpZeroTemplate.EntityFrameworkCore.GWebsiteEntityFrameworkCoreModule, GWebsite.AbpZeroTemplate.EntityFrameworkCore, Version=5.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-28 20:44:25,306 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFrameworkCore.AbpZeroCoreEntityFrameworkCoreModule, Abp.ZeroCore.EntityFrameworkCore, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-28 20:44:25,306 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFrameworkCore.AbpEntityFrameworkCoreModule, Abp.EntityFrameworkCore, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-28 20:44:25,306 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-28 20:44:25,307 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.IdentityServer4.AbpZeroCoreIdentityServerEntityFrameworkCoreModule, Abp.ZeroCore.IdentityServer4.EntityFrameworkCore, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-28 20:44:25,307 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.IdentityServer4.AbpZeroCoreIdentityServerModule, Abp.ZeroCore.IdentityServer4, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-28 20:44:25,307 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: GWebsite.AbpZeroTemplate.Application.GWebsiteCoreModule, GWebsite.AbpZeroTemplate.Core, Version=5.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-28 20:44:25,307 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetZeroCore.Web.AbpAspNetZeroCoreWebModule, Abp.AspNetZeroCore.Web, Version=1.1.3.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-28 20:44:25,308 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.AbpAspNetCoreModule, Abp.AspNetCore, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-28 20:44:25,308 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebCommonModule, Abp.Web.Common, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-28 20:44:25,308 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.SignalR.AbpAspNetCoreSignalRModule, Abp.AspNetCore.SignalR, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-28 20:44:25,308 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Runtime.Caching.Redis.AbpRedisCacheModule, Abp.RedisCache, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-28 20:44:25,309 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Hangfire.AbpHangfireAspNetCoreModule, Abp.HangFire.AspNetCore, Version=3.7.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-28 20:44:25,309 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: GWebsite.AbpZeroTemplate.Web.Core.GWebsiteWebCoreModule, GWebsite.AbpZeroTemplate.Web.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-28 20:44:25,313 [1    ] Abp.Modules.AbpModuleManager             - 27 modules loaded.
+DEBUG 2019-05-28 20:44:25,510 [1    ] o.Configuration.LanguageManagementConfig - Converted Abp (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-05-28 20:44:25,510 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpZero (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-05-28 20:44:25,510 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpZeroTemplate (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-05-28 20:44:25,510 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpWeb (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2019-05-28 20:44:26,066 [1    ] ameworkCore.AbpEntityFrameworkCoreModule - Registering DbContext: GSoft.AbpZeroTemplate.EntityFrameworkCore.AbpZeroTemplateDbContext, GSoft.AbpZeroTemplate.EntityFrameworkCore, Version=5.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2019-05-28 20:44:26,871 [1    ] Abp.Localization.LocalizationManager     - Initializing 4 localization sources.
+DEBUG 2019-05-28 20:44:26,909 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2019-05-28 20:44:26,928 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2019-05-28 20:44:26,965 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZeroTemplate
+DEBUG 2019-05-28 20:44:26,972 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2019-05-28 20:44:27,008 [1    ] Abp.BackgroundJobs.BackgroundJobManager  - Start background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2019-05-28 20:44:27,059 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 14 classes define auto mapping attributes
+DEBUG 2019-05-28 20:44:27,059 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - GSoft.AbpZeroTemplate.Web.Models.TokenAuth.ExternalLoginProviderInfoModel
+DEBUG 2019-05-28 20:44:27,062 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - GSoft.AbpZeroTemplate.Friendships.Cache.FriendCacheItem
+DEBUG 2019-05-28 20:44:27,062 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - GSoft.AbpZeroTemplate.Web.Views.Shared.Components.TenantChange.TenantChangeViewModel
+DEBUG 2019-05-28 20:44:27,062 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - GSoft.AbpZeroTemplate.Web.Models.TenantRegistration.EditionsSelectViewModel
+DEBUG 2019-05-28 20:44:27,062 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - GSoft.AbpZeroTemplate.Web.Models.TenantRegistration.TenantRegisterResultViewModel
+DEBUG 2019-05-28 20:44:27,062 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - GSoft.AbpZeroTemplate.Web.Areas.AppAreaName.Models.Users.CreateOrEditUserModalViewModel
+DEBUG 2019-05-28 20:44:27,062 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - GSoft.AbpZeroTemplate.Web.Areas.AppAreaName.Models.Users.UserPermissionsEditViewModel
+DEBUG 2019-05-28 20:44:27,062 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - GSoft.AbpZeroTemplate.Web.Areas.AppAreaName.Models.Tenants.TenantFeaturesEditViewModel
+DEBUG 2019-05-28 20:44:27,062 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - GSoft.AbpZeroTemplate.Web.Areas.AppAreaName.Models.SubscriptionManagement.PaymentResultViewModel
+DEBUG 2019-05-28 20:44:27,063 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - GSoft.AbpZeroTemplate.Web.Areas.AppAreaName.Models.Roles.CreateOrEditRoleModalViewModel
+DEBUG 2019-05-28 20:44:27,063 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - GSoft.AbpZeroTemplate.Web.Areas.AppAreaName.Models.Profile.MySettingsViewModel
+DEBUG 2019-05-28 20:44:27,063 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - GSoft.AbpZeroTemplate.Web.Areas.AppAreaName.Models.OrganizationUnits.EditOrganizationUnitModalViewModel
+DEBUG 2019-05-28 20:44:27,063 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - GSoft.AbpZeroTemplate.Web.Areas.AppAreaName.Models.Languages.CreateOrEditLanguageModalViewModel
+DEBUG 2019-05-28 20:44:27,063 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - GSoft.AbpZeroTemplate.Web.Areas.AppAreaName.Models.Editions.CreateOrEditEditionModalViewModel
+DEBUG 2019-05-28 20:44:31,338 [1    ] enancy.SubscriptionExpirationCheckWorker - Start background worker: GSoft.AbpZeroTemplate.MultiTenancy.SubscriptionExpirationCheckWorker
+DEBUG 2019-05-28 20:44:31,339 [1    ] cy.SubscriptionExpireEmailNotifierWorker - Start background worker: GSoft.AbpZeroTemplate.MultiTenancy.SubscriptionExpireEmailNotifierWorker
+INFO  2019-05-28 20:44:56,223 [8    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://127.0.0.1:28148/iisintegration  0
+DEBUG 2019-05-28 20:44:56,253 [12   ] Abp.Modules.AbpModuleManager             - Shutting down has been started
+DEBUG 2019-05-28 20:44:56,255 [12   ] Abp.BackgroundJobs.BackgroundJobManager  - Stop background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2019-05-28 20:44:56,255 [12   ] enancy.SubscriptionExpirationCheckWorker - Stop background worker: GSoft.AbpZeroTemplate.MultiTenancy.SubscriptionExpirationCheckWorker
+DEBUG 2019-05-28 20:44:56,255 [12   ] cy.SubscriptionExpireEmailNotifierWorker - Stop background worker: GSoft.AbpZeroTemplate.MultiTenancy.SubscriptionExpireEmailNotifierWorker
+DEBUG 2019-05-28 20:44:56,256 [12   ] Abp.BackgroundJobs.BackgroundJobManager  - WaitToStop background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2019-05-28 20:44:56,256 [12   ] enancy.SubscriptionExpirationCheckWorker - WaitToStop background worker: GSoft.AbpZeroTemplate.MultiTenancy.SubscriptionExpirationCheckWorker
+DEBUG 2019-05-28 20:44:56,256 [12   ] cy.SubscriptionExpireEmailNotifierWorker - WaitToStop background worker: GSoft.AbpZeroTemplate.MultiTenancy.SubscriptionExpireEmailNotifierWorker
+DEBUG 2019-05-28 20:44:56,256 [12   ] Abp.Modules.AbpModuleManager             - Shutting down completed.
+INFO  2019-05-28 20:44:56,344 [8    ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 123.5982ms 202 
+ERROR 2019-05-28 20:44:56,352 [12   ] NetCore.Server.Kestrel.Transport.Sockets - Unexpected exception in SocketConnection.StartAsync.
+System.ObjectDisposedException: Cannot access a disposed object.
+Object name: 'MemoryPoolBlock'.
+   at System.Buffers.ThrowHelper.ThrowObjectDisposedException(ExceptionArgument argument)
+   at System.Buffers.MemoryPoolBlock.Dispose()
+   at System.IO.Pipelines.BufferSegment.ResetMemory()
+   at System.IO.Pipelines.Pipe.CompletePipe()
+   at System.IO.Pipelines.Pipe.CompleteWriter(Exception exception)
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.Internal.SocketConnection.DoReceive()
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.Internal.SocketConnection.StartAsync(IConnectionDispatcher connectionDispatcher)

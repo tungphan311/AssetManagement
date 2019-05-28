@@ -39,10 +39,10 @@ import { CreateOrEditBidModalComponent } from './bid/create-or-edit-bid-modal.co
 //import { ViewProviderModalComponent } from './provider/view-provider-modal.component';
 //import { CreateOrEditProviderModalComponent } from './provider/create-or-edit-provider-modal.component';
 
-//import { conventionServiceProxy } from '@shared/service-proxies/service-proxies';
-//import { conventionComponent } from './convention/convention.component';
-//import { ViewconventionModalComponent } from './convention/view-convention-modal.component';
-//import { CreateOrEditconventionModalComponent } from './convention/create-or-edit-convention-modal.component';
+import { ContractServiceProxy } from '@shared/service-proxies/service-proxies';
+import { ContractComponent } from './contract/contract.component';
+import { ViewContractModalComponent } from './contract/view-contract-modal.component';
+import { CreateOrEditContractModalComponent } from './contract/create-or-edit-contract-modal.component';
 
 @NgModule({
     imports: [
@@ -69,18 +69,18 @@ import { CreateOrEditBidModalComponent } from './bid/create-or-edit-bid-modal.co
         CustomerComponent, CreateOrEditCustomerModalComponent, ViewCustomerModalComponent,
         ProductComponent, CreateOrEditProductModalComponent, ViewProductModalComponent,
         ProjectComponent, CreateOrEditProjectModalComponent, ViewProjectModalComponent,
-        BidComponent, CreateOrEditBidModalComponent, ViewBidModalComponent
+        BidComponent, CreateOrEditBidModalComponent, ViewBidModalComponent,
 		//ProviderComponent, CreateOrEditProviderModalComponent, ViewProviderModalComponent,
-		//conventionComponent, CreateOrEditconventionModalComponent, ViewconventionModalComponent
+		ContractComponent, CreateOrEditContractModalComponent, ViewContractModalComponent
     ],
     providers: [
         DemoModelServiceProxy,
         CustomerServiceProxy,
         ProductServiceProxy,
         ProjectServiceProxy,
-        BidServiceProxy
+        BidServiceProxy,
 		//ProviderServiceProxy
-		//ConventionServiceProxy
+		ContractServiceProxy
     ]
 })
 export class GWebsiteModule { }

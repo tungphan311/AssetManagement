@@ -7,7 +7,8 @@ import { ProductComponent } from './product/product.component';
 import { ProjectComponent } from './project/project.component';
 import { BidComponent } from './bid/bid.component';
 //import { ProviderComponentComponent } from './provider/provider.component';
-//import { conventionComponent } from './convention/convention.component';
+import { ContractComponent, } from './contract/contract.component';
+import {CreateOrEditContractModalComponent} from './contract/create-or-edit-contract-modal.component'
 @NgModule({
     imports: [
         RouterModule.forChild([
@@ -64,7 +65,22 @@ import { BidComponent } from './bid/bid.component';
                         data: { permission: 'Pages.Administration.Bid' }
                     },
                 ]
-            }     
+            },
+            {
+                path: '',
+                children: [
+                    {
+                        path: 'contract', component: ContractComponent,
+                        data: { permission: 'Pages.Administration.Contract' },
+                        children:[
+                            {
+                                path: 'createcontract', component: CreateOrEditContractModalComponent,
+                                data: { permission: 'Pages.Administration.Contract.Create' },
+                            }
+                        ]
+                    },
+                ]
+            },
 			 // {
             //     path: '',
             //     children: [
@@ -74,15 +90,7 @@ import { BidComponent } from './bid/bid.component';
             //         },
             //     ]
             // },   
-			// {
-            //     path: '',
-            //     children: [
-            //         {
-            //             path: 'convention', component: ConventionComponent,
-            //             data: { permission: 'Pages.Administration.convention' }
-            //         },
-            //     ]
-            // }   			
+		   			
         ])
         
     ],

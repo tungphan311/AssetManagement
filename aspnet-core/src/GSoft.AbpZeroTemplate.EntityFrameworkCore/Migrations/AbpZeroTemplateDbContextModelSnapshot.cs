@@ -1644,16 +1644,16 @@ namespace GSoft.AbpZeroTemplate.Migrations
                     b.Property<string>("Code")
                         .HasColumnType("varchar(50)");
 
-                    b.Property<DateTime>("ContractCertificateEndDate");
+                    b.Property<DateTime?>("ContractCertificateEndDate");
 
                     b.Property<string>("ContractCertificateNumber")
                         .HasMaxLength(50);
 
-                    b.Property<DateTime>("ContractCertificatePrice");
+                    b.Property<decimal?>("ContractCertificatePrice");
 
-                    b.Property<DateTime>("ContractCertificatePricePercent");
+                    b.Property<decimal?>("ContractCertificatePricePercent");
 
-                    b.Property<DateTime>("ContractCreatedDate");
+                    b.Property<DateTime?>("ContractCreatedDate");
 
                     b.Property<string>("ContractGuaranteeAttachmentFile");
 
@@ -1678,22 +1678,22 @@ namespace GSoft.AbpZeroTemplate.Migrations
 
                     b.Property<int>("Status");
 
-                    b.Property<decimal>("TotalPrice");
+                    b.Property<decimal?>("TotalPrice");
 
-                    b.Property<decimal>("TotalProductPrice");
+                    b.Property<decimal?>("TotalProductPrice");
 
                     b.Property<string>("UpdatedBy");
 
                     b.Property<DateTime?>("UpdatedDate");
 
-                    b.Property<DateTime>("WarrantyCertificateEndDate");
+                    b.Property<DateTime?>("WarrantyCertificateEndDate");
 
                     b.Property<string>("WarrantyCertificateNumber")
                         .HasMaxLength(50);
 
-                    b.Property<DateTime>("WarrantyCertificatePrice");
+                    b.Property<decimal?>("WarrantyCertificatePrice");
 
-                    b.Property<DateTime>("WarrantyCertificatePricePercent");
+                    b.Property<decimal?>("WarrantyCertificatePricePercent");
 
                     b.Property<string>("WarrantyGuaranteeAttachmentFile");
 

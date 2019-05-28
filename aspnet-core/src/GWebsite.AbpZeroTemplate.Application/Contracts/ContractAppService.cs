@@ -88,7 +88,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Contracts
             // filter by value
             if (input.Name != null)
             {
-                query = query.Where(x => x.Code.ToLower().StartsWith(input.Name));
+                query = query.Where(x => x.Name.ToLower().StartsWith(input.Name));
             }
 
             var totalCount = query.Count();

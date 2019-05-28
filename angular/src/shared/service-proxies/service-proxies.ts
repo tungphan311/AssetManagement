@@ -14486,15 +14486,15 @@ export class ContractDto implements IContractDto {
     contractGuaranteeForm!: ContractDtoContractGuaranteeForm | undefined;
     contractCertificateNumber!: string | undefined;
     contractCertificateEndDate!: moment.Moment | undefined;
-    contractCertificatePrice!: moment.Moment | undefined;
-    contractCertificatePricePercent!: moment.Moment | undefined;
+    contractCertificatePrice!: number | undefined;
+    contractCertificatePricePercent!: number | undefined;
     contractGuaranteeBankName!: string | undefined;
     contractGuaranteeAttachmentFile!: string | undefined;
     warrantyGuaranteeForm!: ContractDtoWarrantyGuaranteeForm | undefined;
     warrantyCertificateNumber!: string | undefined;
     warrantyCertificateEndDate!: moment.Moment | undefined;
-    warrantyCertificatePrice!: moment.Moment | undefined;
-    warrantyCertificatePricePercent!: moment.Moment | undefined;
+    warrantyCertificatePrice!: number | undefined;
+    warrantyCertificatePricePercent!: number | undefined;
     warrantyGuaranteeBankName!: string | undefined;
     warrantyGuaranteeAttachmentFile!: string | undefined;
     totalProductPrice!: number | undefined;
@@ -14562,15 +14562,15 @@ export class ContractDto implements IContractDto {
         data["contractGuaranteeForm"] = this.contractGuaranteeForm;
         data["contractCertificateNumber"] = this.contractCertificateNumber;
         data["contractCertificateEndDate"] = this.contractCertificateEndDate ? this.contractCertificateEndDate.toISOString() : <any>undefined;
-        data["contractCertificatePrice"] = this.contractCertificatePrice ? this.contractCertificatePrice.toISOString() : <any>undefined;
-        data["contractCertificatePricePercent"] = this.contractCertificatePricePercent ? this.contractCertificatePricePercent.toISOString() : <any>undefined;
+        data["contractCertificatePrice"] = this.contractCertificatePrice ? this.contractCertificatePrice : <any>undefined;
+        data["contractCertificatePricePercent"] = this.contractCertificatePricePercent ? this.contractCertificatePricePercent : <any>undefined;
         data["contractGuaranteeBankName"] = this.contractGuaranteeBankName;
         data["contractGuaranteeAttachmentFile"] = this.contractGuaranteeAttachmentFile;
         data["warrantyGuaranteeForm"] = this.warrantyGuaranteeForm;
         data["warrantyCertificateNumber"] = this.warrantyCertificateNumber;
         data["warrantyCertificateEndDate"] = this.warrantyCertificateEndDate ? this.warrantyCertificateEndDate.toISOString() : <any>undefined;
-        data["warrantyCertificatePrice"] = this.warrantyCertificatePrice ? this.warrantyCertificatePrice.toISOString() : <any>undefined;
-        data["warrantyCertificatePricePercent"] = this.warrantyCertificatePricePercent ? this.warrantyCertificatePricePercent.toISOString() : <any>undefined;
+        data["warrantyCertificatePrice"] = this.warrantyCertificatePrice ? this.warrantyCertificatePrice : <any>undefined;
+        data["warrantyCertificatePricePercent"] = this.warrantyCertificatePricePercent ? this.warrantyCertificatePricePercent : <any>undefined;
         data["warrantyGuaranteeBankName"] = this.warrantyGuaranteeBankName;
         data["warrantyGuaranteeAttachmentFile"] = this.warrantyGuaranteeAttachmentFile;
         data["totalProductPrice"] = this.totalProductPrice;
@@ -14593,15 +14593,15 @@ export interface IContractDto {
     contractGuaranteeForm: ContractDtoContractGuaranteeForm | undefined;
     contractCertificateNumber: string | undefined;
     contractCertificateEndDate: moment.Moment | undefined;
-    contractCertificatePrice: moment.Moment | undefined;
-    contractCertificatePricePercent: moment.Moment | undefined;
+    contractCertificatePrice: number | undefined;
+    contractCertificatePricePercent: number | undefined;
     contractGuaranteeBankName: string | undefined;
     contractGuaranteeAttachmentFile: string | undefined;
     warrantyGuaranteeForm: ContractDtoWarrantyGuaranteeForm | undefined;
     warrantyCertificateNumber: string | undefined;
     warrantyCertificateEndDate: moment.Moment | undefined;
-    warrantyCertificatePrice: moment.Moment | undefined;
-    warrantyCertificatePricePercent: moment.Moment | undefined;
+    warrantyCertificatePrice: number | undefined;
+    warrantyCertificatePricePercent: number | undefined;
     warrantyGuaranteeBankName: string | undefined;
     warrantyGuaranteeAttachmentFile: string | undefined;
     totalProductPrice: number | undefined;
@@ -14622,15 +14622,15 @@ export class ContractInput implements IContractInput {
     contractGuaranteeForm!: ContractInputContractGuaranteeForm | undefined;
     contractCertificateNumber!: string | undefined;
     contractCertificateEndDate!: moment.Moment | undefined;
-    contractCertificatePrice!: moment.Moment | undefined;
-    contractCertificatePricePercent!: moment.Moment | undefined;
+    contractCertificatePrice!: number | undefined;
+    contractCertificatePricePercent!: number | undefined;
     contractGuaranteeBankName!: string | undefined;
     contractGuaranteeAttachmentFile!: string | undefined;
     warrantyGuaranteeForm!: ContractInputWarrantyGuaranteeForm | undefined;
     warrantyCertificateNumber!: string | undefined;
     warrantyCertificateEndDate!: moment.Moment | undefined;
-    warrantyCertificatePrice!: moment.Moment | undefined;
-    warrantyCertificatePricePercent!: moment.Moment | undefined;
+    warrantyCertificatePrice!: number | undefined;
+    warrantyCertificatePricePercent!: number | undefined;
     warrantyGuaranteeBankName!: string | undefined;
     warrantyGuaranteeAttachmentFile!: string | undefined;
     totalProductPrice!: number | undefined;
@@ -14688,21 +14688,21 @@ export class ContractInput implements IContractInput {
         data = typeof data === 'object' ? data : {};
         data["code"] = this.code;
         data["name"] = this.name;
-        data["contractCreatedDate"] = this.contractCreatedDate ? this.contractCreatedDate.toISOString() : <any>undefined;
+        data["contractCreatedDate"] = this.contractCreatedDate ? this.contractCreatedDate : <any>undefined;
         data["status"] = this.status;
         data["note"] = this.note;
         data["contractGuaranteeForm"] = this.contractGuaranteeForm;
         data["contractCertificateNumber"] = this.contractCertificateNumber;
-        data["contractCertificateEndDate"] = this.contractCertificateEndDate ? this.contractCertificateEndDate.toISOString() : <any>undefined;
-        data["contractCertificatePrice"] = this.contractCertificatePrice ? this.contractCertificatePrice.toISOString() : <any>undefined;
-        data["contractCertificatePricePercent"] = this.contractCertificatePricePercent ? this.contractCertificatePricePercent.toISOString() : <any>undefined;
+        data["contractCertificateEndDate"] = this.contractCertificateEndDate ? this.contractCertificateEndDate : <any>undefined;
+        data["contractCertificatePrice"] = this.contractCertificatePrice ? this.contractCertificatePrice : <any>undefined;
+        data["contractCertificatePricePercent"] = this.contractCertificatePricePercent ? this.contractCertificatePricePercent : <any>undefined;
         data["contractGuaranteeBankName"] = this.contractGuaranteeBankName;
         data["contractGuaranteeAttachmentFile"] = this.contractGuaranteeAttachmentFile;
         data["warrantyGuaranteeForm"] = this.warrantyGuaranteeForm;
         data["warrantyCertificateNumber"] = this.warrantyCertificateNumber;
-        data["warrantyCertificateEndDate"] = this.warrantyCertificateEndDate ? this.warrantyCertificateEndDate.toISOString() : <any>undefined;
-        data["warrantyCertificatePrice"] = this.warrantyCertificatePrice ? this.warrantyCertificatePrice.toISOString() : <any>undefined;
-        data["warrantyCertificatePricePercent"] = this.warrantyCertificatePricePercent ? this.warrantyCertificatePricePercent.toISOString() : <any>undefined;
+        data["warrantyCertificateEndDate"] = this.warrantyCertificateEndDate ? this.warrantyCertificateEndDate : <any>undefined;
+        data["warrantyCertificatePrice"] = this.warrantyCertificatePrice ? this.warrantyCertificatePrice : <any>undefined;
+        data["warrantyCertificatePricePercent"] = this.warrantyCertificatePricePercent ? this.warrantyCertificatePricePercent : <any>undefined;
         data["warrantyGuaranteeBankName"] = this.warrantyGuaranteeBankName;
         data["warrantyGuaranteeAttachmentFile"] = this.warrantyGuaranteeAttachmentFile;
         data["totalProductPrice"] = this.totalProductPrice;
@@ -14723,15 +14723,15 @@ export interface IContractInput {
     contractGuaranteeForm: ContractInputContractGuaranteeForm | undefined;
     contractCertificateNumber: string | undefined;
     contractCertificateEndDate: moment.Moment | undefined;
-    contractCertificatePrice: moment.Moment | undefined;
-    contractCertificatePricePercent: moment.Moment | undefined;
+    contractCertificatePrice: number| undefined;
+    contractCertificatePricePercent: number | undefined;
     contractGuaranteeBankName: string | undefined;
     contractGuaranteeAttachmentFile: string | undefined;
     warrantyGuaranteeForm: ContractInputWarrantyGuaranteeForm | undefined;
     warrantyCertificateNumber: string | undefined;
     warrantyCertificateEndDate: moment.Moment | undefined;
-    warrantyCertificatePrice: moment.Moment | undefined;
-    warrantyCertificatePricePercent: moment.Moment | undefined;
+    warrantyCertificatePrice:number | undefined;
+    warrantyCertificatePricePercent: number | undefined;
     warrantyGuaranteeBankName: string | undefined;
     warrantyGuaranteeAttachmentFile: string | undefined;
     totalProductPrice: number | undefined;
@@ -14742,6 +14742,7 @@ export interface IContractInput {
 }
 
 export class ContractForViewDto implements IContractForViewDto {
+    id:number | undefined;
     code!: string | undefined;
     name!: string | undefined;
     contractCreatedDate!: moment.Moment | undefined;
@@ -14750,15 +14751,15 @@ export class ContractForViewDto implements IContractForViewDto {
     contractGuaranteeForm!: ContractForViewDtoContractGuaranteeForm | undefined;
     contractCertificateNumber!: string | undefined;
     contractCertificateEndDate!: moment.Moment | undefined;
-    contractCertificatePrice!: moment.Moment | undefined;
-    contractCertificatePricePercent!: moment.Moment | undefined;
+    contractCertificatePrice!: number | undefined;
+    contractCertificatePricePercent!: number | undefined;
     contractGuaranteeBankName!: string | undefined;
     contractGuaranteeAttachmentFile!: string | undefined;
     warrantyGuaranteeForm!: ContractForViewDtoWarrantyGuaranteeForm | undefined;
     warrantyCertificateNumber!: string | undefined;
     warrantyCertificateEndDate!: moment.Moment | undefined;
-    warrantyCertificatePrice!: moment.Moment | undefined;
-    warrantyCertificatePricePercent!: moment.Moment | undefined;
+    warrantyCertificatePrice!:number | undefined;
+    warrantyCertificatePricePercent!: number | undefined;
     warrantyGuaranteeBankName!: string | undefined;
     warrantyGuaranteeAttachmentFile!: string | undefined;
     totalProductPrice!: number | undefined;
@@ -14818,21 +14819,21 @@ export class ContractForViewDto implements IContractForViewDto {
         data = typeof data === 'object' ? data : {};
         data["code"] = this.code;
         data["name"] = this.name;
-        data["contractCreatedDate"] = this.contractCreatedDate ? this.contractCreatedDate.toISOString() : <any>undefined;
+        data["contractCreatedDate"] = this.contractCreatedDate ? this.contractCreatedDate : <any>undefined;
         data["status"] = this.status;
         data["note"] = this.note;
         data["contractGuaranteeForm"] = this.contractGuaranteeForm;
         data["contractCertificateNumber"] = this.contractCertificateNumber;
-        data["contractCertificateEndDate"] = this.contractCertificateEndDate ? this.contractCertificateEndDate.toISOString() : <any>undefined;
-        data["contractCertificatePrice"] = this.contractCertificatePrice ? this.contractCertificatePrice.toISOString() : <any>undefined;
-        data["contractCertificatePricePercent"] = this.contractCertificatePricePercent ? this.contractCertificatePricePercent.toISOString() : <any>undefined;
+        data["contractCertificateEndDate"] = this.contractCertificateEndDate ? this.contractCertificateEndDate : <any>undefined;
+        data["contractCertificatePrice"] = this.contractCertificatePrice ? this.contractCertificatePrice : <any>undefined;
+        data["contractCertificatePricePercent"] = this.contractCertificatePricePercent ? this.contractCertificatePricePercent : <any>undefined;
         data["contractGuaranteeBankName"] = this.contractGuaranteeBankName;
         data["contractGuaranteeAttachmentFile"] = this.contractGuaranteeAttachmentFile;
         data["warrantyGuaranteeForm"] = this.warrantyGuaranteeForm;
         data["warrantyCertificateNumber"] = this.warrantyCertificateNumber;
-        data["warrantyCertificateEndDate"] = this.warrantyCertificateEndDate ? this.warrantyCertificateEndDate.toISOString() : <any>undefined;
-        data["warrantyCertificatePrice"] = this.warrantyCertificatePrice ? this.warrantyCertificatePrice.toISOString() : <any>undefined;
-        data["warrantyCertificatePricePercent"] = this.warrantyCertificatePricePercent ? this.warrantyCertificatePricePercent.toISOString() : <any>undefined;
+        data["warrantyCertificateEndDate"] = this.warrantyCertificateEndDate ? this.warrantyCertificateEndDate : <any>undefined;
+        data["warrantyCertificatePrice"] = this.warrantyCertificatePrice ? this.warrantyCertificatePrice : <any>undefined;
+        data["warrantyCertificatePricePercent"] = this.warrantyCertificatePricePercent ? this.warrantyCertificatePricePercent : <any>undefined;
         data["warrantyGuaranteeBankName"] = this.warrantyGuaranteeBankName;
         data["warrantyGuaranteeAttachmentFile"] = this.warrantyGuaranteeAttachmentFile;
         data["totalProductPrice"] = this.totalProductPrice;
@@ -14846,6 +14847,7 @@ export class ContractForViewDto implements IContractForViewDto {
 }
 
 export interface IContractForViewDto {
+    id:number | undefined;
     code: string | undefined;
     name: string | undefined;
     contractCreatedDate: moment.Moment | undefined;
@@ -14854,15 +14856,15 @@ export interface IContractForViewDto {
     contractGuaranteeForm: ContractForViewDtoContractGuaranteeForm | undefined;
     contractCertificateNumber: string | undefined;
     contractCertificateEndDate: moment.Moment | undefined;
-    contractCertificatePrice: moment.Moment | undefined;
-    contractCertificatePricePercent: moment.Moment | undefined;
+    contractCertificatePrice: number | undefined;
+    contractCertificatePricePercent: number | undefined;
     contractGuaranteeBankName: string | undefined;
     contractGuaranteeAttachmentFile: string | undefined;
     warrantyGuaranteeForm: ContractForViewDtoWarrantyGuaranteeForm | undefined;
     warrantyCertificateNumber: string | undefined;
     warrantyCertificateEndDate: moment.Moment | undefined;
-    warrantyCertificatePrice: moment.Moment | undefined;
-    warrantyCertificatePricePercent: moment.Moment | undefined;
+    warrantyCertificatePrice: number | undefined;
+    warrantyCertificatePricePercent: number | undefined;
     warrantyGuaranteeBankName: string | undefined;
     warrantyGuaranteeAttachmentFile: string | undefined;
     totalProductPrice: number | undefined;
@@ -14965,7 +14967,7 @@ export class ContractPaymentDetailDto implements IContractPaymentDetailDto {
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
         data["installmentNumber"] = this.installmentNumber;
-        data["expectedDate"] = this.expectedDate ? this.expectedDate.toISOString() : <any>undefined;
+        data["expectedDate"] = this.expectedDate ? this.expectedDate : <any>undefined;
         data["percent"] = this.percent;
         data["price"] = this.price;
         data["description"] = this.description;
@@ -15031,7 +15033,7 @@ export class ContractPaymentDetailInput implements IContractPaymentDetailInput {
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
         data["installmentNumber"] = this.installmentNumber;
-        data["expectedDate"] = this.expectedDate ? this.expectedDate.toISOString() : <any>undefined;
+        data["expectedDate"] = this.expectedDate ? this.expectedDate : <any>undefined;
         data["percent"] = this.percent;
         data["price"] = this.price;
         data["description"] = this.description;
@@ -15095,7 +15097,7 @@ export class ContractPaymentDetailForViewDto implements IContractPaymentDetailFo
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
         data["installmentNumber"] = this.installmentNumber;
-        data["expectedDate"] = this.expectedDate ? this.expectedDate.toISOString() : <any>undefined;
+        data["expectedDate"] = this.expectedDate ? this.expectedDate : <any>undefined;
         data["percent"] = this.percent;
         data["price"] = this.price;
         data["description"] = this.description;
@@ -16420,9 +16422,9 @@ export class HostDashboardData implements IHostDashboardData {
         data["maxRecentTenantsShownCount"] = this.maxRecentTenantsShownCount;
         data["subscriptionEndAlertDayCount"] = this.subscriptionEndAlertDayCount;
         data["recentTenantsDayCount"] = this.recentTenantsDayCount;
-        data["subscriptionEndDateStart"] = this.subscriptionEndDateStart ? this.subscriptionEndDateStart.toISOString() : <any>undefined;
-        data["subscriptionEndDateEnd"] = this.subscriptionEndDateEnd ? this.subscriptionEndDateEnd.toISOString() : <any>undefined;
-        data["tenantCreationStartDate"] = this.tenantCreationStartDate ? this.tenantCreationStartDate.toISOString() : <any>undefined;
+        data["subscriptionEndDateStart"] = this.subscriptionEndDateStart ? this.subscriptionEndDateStart : <any>undefined;
+        data["subscriptionEndDateEnd"] = this.subscriptionEndDateEnd ? this.subscriptionEndDateEnd : <any>undefined;
+        data["tenantCreationStartDate"] = this.tenantCreationStartDate ? this.tenantCreationStartDate : <any>undefined;
         return data; 
     }
 }

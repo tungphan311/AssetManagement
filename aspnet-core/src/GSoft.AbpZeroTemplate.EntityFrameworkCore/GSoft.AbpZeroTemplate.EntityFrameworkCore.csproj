@@ -19,6 +19,9 @@
     <Compile Remove="Migrations\20190507124105_newDb.cs" />
     <Compile Remove="Migrations\20190507124625_newDb.cs" />
     <Compile Remove="Migrations\20190518232531_Add_Bid_BidDetail_Table.cs" />
+    <Compile Remove="Migrations\20190528125629_FixPriceType.cs" />
+    <Compile Remove="Migrations\20190528130549_FixPriceType_TableContract.cs" />
+    <Compile Remove="Migrations\20190528131353_Add_Table_Contract_ContractPaymentDetail_ProductContract.cs" />
   </ItemGroup>
 
   <ItemGroup>

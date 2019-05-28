@@ -85,7 +85,7 @@ namespace GSoft.AbpZeroTemplate.Web.Public.Controllers
             var websiteAddress = _webUrlService.GetSiteRootAddress(tenancyName);
 
             var originalReturnUrl = Request.Query.ContainsKey("ReturnUrl") ? Request.Query["ReturnUrl"].ToString() : "";
-            var returnUrl = websiteAddress.EnsureEndsWith('/') + "account/login?returnUrl="+ websiteAddress.EnsureEndsWith('/')+ originalReturnUrl.TrimStart('/');
+            var returnUrl = websiteAddress.EnsureEndsWith('/') + "account/login?returnUrl=" + websiteAddress.EnsureEndsWith('/') + originalReturnUrl.TrimStart('/');
             return Redirect(serverAddress.EnsureEndsWith('/') + "account/login?ss=true&returnUrl=" + WebUtility.UrlEncode(returnUrl));
         }
 
