@@ -76,6 +76,90 @@
                             </div>    
                         </fieldset>
                     </form>
+                 <nav class="navbar navbar-expand-sm navbar-light margin-top-15" style="background-color: #e3f2fd;">
+                        <h4 class="modal-title">
+                            <i class="fa fa-table"></i>
+                            <span>Danh sách DV tham gia thầu</span>
+                        </h4>
+                    </nav>  
+                    <div class="row align-items-center">
+                        <!--<Primeng-TurboTable-Start>-->
+                        <div class="primeng-datatable-container" [busyIf]="primengTableHelper.isLoading">
+                            <div class="d-flex align-items-center">
+                                <div class="primeng-paging-container">
+                                    <p-paginator rows="{{primengTableHelper.defaultRecordsCountPerPage}}" #paginator
+                                        (onPageChange)="getBidders($event)"
+                                        [totalRecords]="primengTableHelper.totalRecordsCount"
+                                        [rowsPerPageOptions]="primengTableHelper.predefinedRecordsCountPerPage">
+                                    </p-paginator>
+                                </div>
+                                <div class="col-xs-6 align-items-right">
+                                    <button [disabled]="saving" type="button" (click)="addBidder(0)" *ngIf="('Pages.Administration.Bid.Create')"
+                                        class="btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill">
+                                        <i class="fa fa-plus"></i>
+                                    </button>
+                                </div>
+                            </div>  
+                            <p-table #dataTable (onLazyLoad)="getBidders($event)" [value]="primengTableHelper.records"
+                                rows="{{primengTableHelper.defaultRecordsCountPerPage}}" [paginator]="false" [lazy]="true"
+                                [responsive]="primengTableHelper.isResponsive">
+                                <ng-template pTemplate="header">
+                                    <tr>
+                                        <th pSortableColumn="isSelected">
+                                            DV trúng thầu
+                                            <p-sortIcon field="isSelected"></p-sortIcon>
+                                        </th>
+                                        <th pSortableColumn="code">
+                                            Mã DV
+                                            <p-sortIcon field="code"></p-sortIcon>
+                                        </th>
+                                        <th pSortableColumn="name">
+                                            Tên DV
+                                            <p-sortIcon field="name"></p-sortIcon>
+                                        </th>
+                                        <th pSortableColumn="offerPrice">
+                                            Giá chào thầu
+                                            <p-sortIcon field="offerPrice"></p-sortIcon>
+                                        </th>                                 
+                                        <th>Chỉnh sửa</th>
+                                    </tr>
+                                </ng-template>
+                                <ng-template pTemplate="body" let-record="$implicit">
+                                    <tr>
+                                        <td>
+                                                <span class="ui-column-title">DV trúng thầu</span>
+                                                <div class="radio">
+                                                        <input type="radio" id="{{record.vendorCode}}" name="radio" [(ngModel)]="selectedVendorID" [value]="record.bidder.vendorId" />          
+                                                </div>
+                                        </td>
+                                        <td>
+                                            <span class="ui-column-title">Mã DV</span>
+                                            <span class="Code">{{truncateString(record.vendorCode)}}</span>
+                                        </td>
+                                        <td>
+                                            <span class="ui-column-title">Tên DV</span>
+                                            <span class="Name">{{truncateString(record.vendorName)}}</span>
+                                        </td>
+                                        <td>
+                                            <span class="ui-column-title">Giá chào thầu</span>
+                                            <span class="Name">{{truncateString(record.bidder.offerPrice)}}</span>
+                                        </td>
+                                        <td>
+                                            <button type="button" class="btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill"
+                                                (click)="addBidder(record.bidder.vendorId)" title="{{l('Edit')}}">
+                                            <i class="fa fa-edit" [attr.aria-label]="l('Edit')"></i>
+                                            </button>
+                                            <button type="button" class="btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill"
+                                                (click)="deleteBidder(record.bidder.vendorId)" title="{{l('Delete')}}">
+                                            <i class="fa fa-times" [attr.aria-label]="l('Delete')"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </ng-template>
+                            </p-table>
+                        </div>
+                        <!--<Primeng-TurboTable-End>-->
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button [disabled]="saving" type="button" class="btn btn-default"
@@ -89,4 +173,5 @@
     </div>
 </div>
 <selectProjectModal #selectProjectModal (modalSave)="reloadProject($event)"></selectProjectModal>
+<addBidderModal #addBidderModal (modalSave1)="addBiddertoList($event)"></addBidderModal>
 </div>
