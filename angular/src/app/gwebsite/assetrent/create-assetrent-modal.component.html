@@ -39,6 +39,21 @@
                             required
                             maxlength="64"
                         />
+
+                        <select
+                            #nameInput="ngModel"
+                            class="form-control"
+                            name="nameAsset"
+                            [(ngModel)]="assetrent.nameAsset"
+                            required
+                        >
+                            <option value>Chọn tên tài sản </option>
+                            <option
+                                *ngFor="let item of assets"
+                                value="{{ item.id }}"
+                                >{{ item.nameAsset }}</option
+                            >
+                        </select>
                         <validation-messages
                             [formCtrl]="nameAssetRentInput"
                         ></validation-messages>
@@ -54,6 +69,22 @@
                             required
                             maxlength="64"
                         />
+
+                        <select
+                            #nameInput="ngModel"
+                            class="form-control"
+                            name="RentBy"
+                            [(ngModel)]="assetrent.rentBy"
+                            required
+                        >
+                            <option value>Chọn người thuê</option>
+                            <option
+                                *ngFor="let item of customers"
+                                value="{{ item.id }}"
+                                >{{ item.name }}</option
+                            >
+                        </select>
+
                         <validation-messages
                             [formCtrl]="rentByInput"
                         ></validation-messages>
