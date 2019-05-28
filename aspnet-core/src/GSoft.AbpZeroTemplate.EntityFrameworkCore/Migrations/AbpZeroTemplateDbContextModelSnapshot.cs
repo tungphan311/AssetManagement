@@ -1743,6 +1743,8 @@ namespace GSoft.AbpZeroTemplate.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("ContractID");
+
                     b.ToTable("ContractDetails");
                 });
 
@@ -1943,7 +1945,7 @@ namespace GSoft.AbpZeroTemplate.Migrations
 
                     b.Property<string>("Note");
 
-                    b.Property<string>("Price");
+                    b.Property<float>("Price");
 
                     b.Property<int>("TypeID");
 
@@ -2403,6 +2405,14 @@ namespace GSoft.AbpZeroTemplate.Migrations
                         .WithMany("AppUserRoles")
                         .HasForeignKey("IdentityRoleId")
                         .HasConstraintName("FK_dbo.AppUserRoles_dbo.AppRoles_IdentityRole_Id");
+                });
+
+            modelBuilder.Entity("GWebsite.AbpZeroTemplate.Core.Models.ContractDetail", b =>
+                {
+                    b.HasOne("GWebsite.AbpZeroTemplate.Core.Models.Contract")
+                        .WithMany("Merchandises")
+                        .HasForeignKey("ContractID")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("GWebsite.AbpZeroTemplate.Core.Models.Function", b =>

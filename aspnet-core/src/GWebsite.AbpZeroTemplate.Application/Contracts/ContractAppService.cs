@@ -135,11 +135,19 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Contracts
             SetAuditInsert(contractEntity);
             var id = contractRepository.InsertAndGetId(contractEntity);
 
-            foreach(var product in contractInput.Products)
-            {
-                // insert vo bang ProductContract co productId va contractId
+            //foreach(var product in contractInput.Products)
+            //{
+            //    // insert vo bang ProductContract co productId va contractId
+            //    ContractDetailInput detailInput = new ContractDetailInput(id, product.Id, product.MerCode, product.MerName, product.Quantity, product.Price, product.Note);
+            //    var detailEntity = ObjectMapper.Map<ContractDetail>(detailInput);
+            //    SetAuditInsert(detailEntity);
+            //    detailRepository.Insert(detailEntity);
+            //}
 
-            }
+            //ContractDetailInput detailInput = new ContractDetailInput(id, 1, "CODE", "NAME", 1, 100, "NOTE");
+            //var detailEntity = ObjectMapper.Map<ContractDetail>(detailInput);
+            //SetAuditInsert(detailEntity);
+            //detailRepository.Insert(detailEntity);
 
             CurrentUnitOfWork.SaveChanges();
         }

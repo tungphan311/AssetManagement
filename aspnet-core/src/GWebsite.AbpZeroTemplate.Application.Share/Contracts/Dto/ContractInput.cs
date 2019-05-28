@@ -11,6 +11,16 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.Contracts.Dto
 {
     public class ProductInput : Entity<int>
     {
+        public ProductInput(int merID, string merCode, string merName, int quantity, float price, string note)
+        {
+            MerchandiseID = merID;
+            MerCode = merCode;
+            MerName = merName;
+            Quantity = quantity;
+            Price = price;
+            Note = note;
+        }
+
         public int MerchandiseID { get; set; }
 
         public string MerCode { get; set; }
@@ -20,6 +30,8 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.Contracts.Dto
         public int Quantity { get; set; }
 
         public float Price { get; set; }
+
+        public float Total { get; set; }
 
         public string Note { get; set; }
     }

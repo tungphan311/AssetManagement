@@ -18,6 +18,7 @@
     <Compile Remove="Migrations\20190323114143_AddDemoModel.cs" />
     <Compile Remove="Migrations\20190519140306_AssigmentTable.cs" />
     <Compile Remove="Migrations\20190519140306_AssigmentTable.Designer.cs" />
+    <Compile Remove="Migrations\20190528071356_find_error.cs" />
   </ItemGroup>
 
   <ItemGroup>

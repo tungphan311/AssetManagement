@@ -8,6 +8,17 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.ContractDetails.Dto
     /// </summary>
     public class ContractDetailInput : Entity<int>
     {
+        public ContractDetailInput(int contractID, int merchID, string merCode, string merName, int quantity, float price, string note)
+        {
+            ContractID = contractID;
+            MerchID = merchID;
+            MerCode = merCode;
+            MerName = merName;
+            Quantity = quantity;
+            Price = price;
+            Note = note;
+        }
+
         public int ContractID { get; set; }
 
         public int MerchID { get; set; }
