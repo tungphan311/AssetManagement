@@ -24,5 +24,7 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.Bids.Dto
         public string BiddingForm { get; set; }
 
         public double TotalPrice { get; set; }
+
+        public int BidderID { get; set; }
     }
 }

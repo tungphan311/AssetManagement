@@ -3,7 +3,7 @@ import { AppComponentBase } from "@shared/common/app-component-base";
 import { ModalDirective } from "ngx-bootstrap";
 import { Table } from "primeng/table";
 import { Paginator, LazyLoadEvent } from "primeng/primeng";
-import { MerchandiseServiceProxy, ContractDetailInput, ContractDetailServiceProxy, MerchandiseForViewDto, MerchandiseInput } from "@shared/service-proxies/service-proxies";
+import { MerchandiseServiceProxy, ContractDetailInput, ContractDetailServiceProxy, MerchandiseForViewDto, MerchandiseInput, MerchandiseDto } from "@shared/service-proxies/service-proxies";
 
 @Component({
     selector: 'addContractDetailModal',
@@ -21,13 +21,16 @@ export class AddContractDetailModalComponent extends AppComponentBase {
     /**
     * @Output dùng để public event cho component khác xử lý
     */
-   @Output() modalSaves: EventEmitter<any> = new EventEmitter<any>();
+   @Output('listMerchandises') data: EventEmitter<any[]> = new EventEmitter<any[]>();
+   @Output() modalSave: EventEmitter<any> = new EventEmitter<any>();
 
    saving = false;
 
    merID: string
    merName: string
    typeID: number
+
+   isSelectAll: boolean = false
 
    id = 0
    contractDetail: ContractDetailInput = new ContractDetailInput()
@@ -36,6 +39,7 @@ export class AddContractDetailModalComponent extends AppComponentBase {
    listMerType = []
    listMerchandises = []
    listContractDetail = []
+   listMerID: MerchandiseDto[] = []
 
    savingId: boolean[] = []
 
@@ -58,20 +62,23 @@ export class AddContractDetailModalComponent extends AppComponentBase {
         this.reloadList(null, null, 0, event);
    }
 
-   test(id: number) {
-       this._merchandiseService.getMerchandiseForEdit(id).subscribe(result => {
-            result.isAddContract = true;
-            
-            this._merchandiseService.createOrEditMerchandise(result).subscribe(rs => {
+   selectItem(id: number) {
+        // this.savingId[id - 1] = !this.savingId[id - 1];
+        // console.log(this.savingId);
+        for (const record of this.listMerchandises) {
+            if (!record.isAddContract) {
+                this.isSelectAll = false;
+                return;
+            }
+        }
+        
+        this.isSelectAll = true;
+   }
 
-            });
-       })
-
-       //this.merchandise.isAddContract = !this.merchandise.isAddContract;
-
-    //    this._merchandiseService.createOrEditMerchandise(this.merchandise).subscribe(result => {
-    //        console.log(this.merchandise.isAddContract);
-    //    })
+   selectAll(records = []) {
+       for (const record of records) {
+            record.isAddContract = this.isSelectAll;
+       }
    }
 
    reloadList(merID, merName, typeID, event: LazyLoadEvent) {
@@ -112,24 +119,16 @@ export class AddContractDetailModalComponent extends AppComponentBase {
    save(): void {
         this.saving = true;
 
+        //this.listMerID.length = 0;
+
         for (const iterator of this.listMerchandises) {
             if (iterator.isAddContract) {
-                this.contractDetail.merchID = iterator.id;
-                this.contractDetail.merCode = iterator.code;
-                this.contractDetail.merName = iterator.name;
-                this.contractDetail.quantity = 1;
-                this.contractDetail.price = iterator.price;
-                this.contractDetail.note = "";
-                this._contractDetailService.createOrEditContractDetail(this.contractDetail).subscribe(result => {
-                    this.notify.info(this.l('SavedSuccessfully'));
-                })
-                this.id = this.id + 1;
-            }
+                this.listMerID.push(iterator);
+            }    
         }
 
-        console.log(this.id);
-
-        this.close()
+        this.data.emit(this.listMerID);
+        this.close();
     }
 
     reloadPage(): void {
@@ -137,9 +136,9 @@ export class AddContractDetailModalComponent extends AppComponentBase {
     }
 
     close(): void {
-        console.log(this.savingId);
         this.addContractModal.hide();
-        this.modalSaves.emit(null);
+        this.data.emit(null);
+        this.modalSave.emit(null);
     }
 
     /**

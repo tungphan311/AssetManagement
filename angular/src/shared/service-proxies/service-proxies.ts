@@ -14226,6 +14226,7 @@ export class BidDto implements IBidDto {
     endReceivingRecords!: moment.Moment | undefined;
     biddingForm!: string | undefined;
     totalPrice!: number | undefined;
+    bidderID!: number | undefined;
     id!: number | undefined;
 
     constructor(data?: IBidDto) {
@@ -14247,6 +14248,7 @@ export class BidDto implements IBidDto {
             this.endReceivingRecords = data["endReceivingRecords"] ? moment(data["endReceivingRecords"].toString()) : <any>undefined;
             this.biddingForm = data["biddingForm"];
             this.totalPrice = data["totalPrice"];
+            this.bidderID = data["bidderID"];
             this.id = data["id"];
         }
     }
@@ -14268,6 +14270,7 @@ export class BidDto implements IBidDto {
         data["endReceivingRecords"] = this.endReceivingRecords ? this.endReceivingRecords.toISOString() : <any>undefined;
         data["biddingForm"] = this.biddingForm;
         data["totalPrice"] = this.totalPrice;
+        data["bidderID"] = this.bidderID;
         data["id"] = this.id;
         return data; 
     }
@@ -14282,6 +14285,7 @@ export interface IBidDto {
     endReceivingRecords: moment.Moment | undefined;
     biddingForm: string | undefined;
     totalPrice: number | undefined;
+    bidderID: number | undefined;
     id: number | undefined;
 }
 
@@ -14294,6 +14298,7 @@ export class BidInput implements IBidInput {
     endReceivingRecords!: moment.Moment | undefined;
     biddingForm!: string | undefined;
     totalPrice!: number | undefined;
+    bidderID!: number | undefined;
     id!: number | undefined;
 
     constructor(data?: IBidInput) {
@@ -14315,6 +14320,7 @@ export class BidInput implements IBidInput {
             this.endReceivingRecords = data["endReceivingRecords"] ? moment(data["endReceivingRecords"].toString()) : <any>undefined;
             this.biddingForm = data["biddingForm"];
             this.totalPrice = data["totalPrice"];
+            this.bidderID = data["bidderID"];
             this.id = data["id"];
         }
     }
@@ -14336,6 +14342,7 @@ export class BidInput implements IBidInput {
         data["endReceivingRecords"] = this.endReceivingRecords ? this.endReceivingRecords.toISOString() : <any>undefined;
         data["biddingForm"] = this.biddingForm;
         data["totalPrice"] = this.totalPrice;
+        data["bidderID"] = this.bidderID;
         data["id"] = this.id;
         return data; 
     }
@@ -14350,6 +14357,7 @@ export interface IBidInput {
     endReceivingRecords: moment.Moment | undefined;
     biddingForm: string | undefined;
     totalPrice: number | undefined;
+    bidderID: number | undefined;
     id: number | undefined;
 }
 
@@ -14362,6 +14370,7 @@ export class BidForViewDto implements IBidForViewDto {
     endReceivingRecords!: moment.Moment | undefined;
     biddingForm!: string | undefined;
     totalPrice!: number | undefined;
+    bidderID!: number | undefined;
 
     constructor(data?: IBidForViewDto) {
         if (data) {
@@ -14382,6 +14391,7 @@ export class BidForViewDto implements IBidForViewDto {
             this.endReceivingRecords = data["endReceivingRecords"] ? moment(data["endReceivingRecords"].toString()) : <any>undefined;
             this.biddingForm = data["biddingForm"];
             this.totalPrice = data["totalPrice"];
+            this.bidderID = data["bidderID"];
         }
     }
 
@@ -14402,6 +14412,7 @@ export class BidForViewDto implements IBidForViewDto {
         data["endReceivingRecords"] = this.endReceivingRecords ? this.endReceivingRecords.toISOString() : <any>undefined;
         data["biddingForm"] = this.biddingForm;
         data["totalPrice"] = this.totalPrice;
+        data["bidderID"] = this.bidderID;
         return data; 
     }
 }
@@ -14415,6 +14426,7 @@ export interface IBidForViewDto {
     endReceivingRecords: moment.Moment | undefined;
     biddingForm: string | undefined;
     totalPrice: number | undefined;
+    bidderID: number | undefined;
 }
 
 export class PagedResultDtoOfBidderDto implements IPagedResultDtoOfBidderDto {
@@ -15462,6 +15474,7 @@ export class ContractInput implements IContractInput {
     warrantyGuaranteeAmount!: number | undefined;
     warrantyGuaranteeBank!: string | undefined;
     warrantyGuaranteeFile!: string | undefined;
+    products!: ProductInput[] | undefined;
     id!: number | undefined;
 
     constructor(data?: IContractInput) {
@@ -15495,6 +15508,11 @@ export class ContractInput implements IContractInput {
             this.warrantyGuaranteeAmount = data["warrantyGuaranteeAmount"];
             this.warrantyGuaranteeBank = data["warrantyGuaranteeBank"];
             this.warrantyGuaranteeFile = data["warrantyGuaranteeFile"];
+            if (data["products"] && data["products"].constructor === Array) {
+                this.products = [];
+                for (let item of data["products"])
+                    this.products.push(ProductInput.fromJS(item));
+            }
             this.id = data["id"];
         }
     }
@@ -15528,6 +15546,11 @@ export class ContractInput implements IContractInput {
         data["warrantyGuaranteeAmount"] = this.warrantyGuaranteeAmount;
         data["warrantyGuaranteeBank"] = this.warrantyGuaranteeBank;
         data["warrantyGuaranteeFile"] = this.warrantyGuaranteeFile;
+        if (this.products && this.products.constructor === Array) {
+            data["products"] = [];
+            for (let item of this.products)
+                data["products"].push(item.toJSON());
+        }
         data["id"] = this.id;
         return data; 
     }
@@ -15554,6 +15577,71 @@ export interface IContractInput {
     warrantyGuaranteeAmount: number | undefined;
     warrantyGuaranteeBank: string | undefined;
     warrantyGuaranteeFile: string | undefined;
+    products: ProductInput[] | undefined;
+    id: number | undefined;
+}
+
+export class ProductInput implements IProductInput {
+    merchandiseID!: number | undefined;
+    merCode!: string | undefined;
+    merName!: string | undefined;
+    quantity!: number | undefined;
+    price!: number | undefined;
+    total!: number | undefined;
+    note!: string | undefined;
+    id!: number | undefined;
+
+    constructor(data?: IProductInput) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.merchandiseID = data["merchandiseID"];
+            this.merCode = data["merCode"];
+            this.merName = data["merName"];
+            this.quantity = data["quantity"];
+            this.price = data["price"];
+            this.total = data["total"];
+            this.note = data["note"];
+            this.id = data["id"];
+        }
+    }
+
+    static fromJS(data: any): ProductInput {
+        data = typeof data === 'object' ? data : {};
+        let result = new ProductInput();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["merchandiseID"] = this.merchandiseID;
+        data["merCode"] = this.merCode;
+        data["merName"] = this.merName;
+        data["quantity"] = this.quantity;
+        data["price"] = this.price;
+        data["total"] = this.total;
+        data["note"] = this.note;
+        data["id"] = this.id;
+        return data; 
+    }
+}
+
+export interface IProductInput {
+    merchandiseID: number | undefined;
+    merCode: string | undefined;
+    merName: string | undefined;
+    quantity: number | undefined;
+    price: number | undefined;
+    total: number | undefined;
+    note: string | undefined;
     id: number | undefined;
 }
 
@@ -19456,7 +19544,7 @@ export class MerchandiseDto implements IMerchandiseDto {
     name!: string | undefined;
     typeID!: number | undefined;
     typeVender!: number | undefined;
-    price!: string | undefined;
+    price!: number | undefined;
     unit!: string | undefined;
     info!: string | undefined;
     isActive!: boolean | undefined;
@@ -19518,7 +19606,7 @@ export interface IMerchandiseDto {
     name: string | undefined;
     typeID: number | undefined;
     typeVender: number | undefined;
-    price: string | undefined;
+    price: number | undefined;
     unit: string | undefined;
     info: string | undefined;
     isActive: boolean | undefined;
@@ -19532,7 +19620,7 @@ export class MerchandiseInput implements IMerchandiseInput {
     name!: string | undefined;
     typeID!: number | undefined;
     typeVender!: number | undefined;
-    price!: string | undefined;
+    price!: number | undefined;
     unit!: string | undefined;
     info!: string | undefined;
     isActive!: boolean | undefined;
@@ -19594,7 +19682,7 @@ export interface IMerchandiseInput {
     name: string | undefined;
     typeID: number | undefined;
     typeVender: number | undefined;
-    price: string | undefined;
+    price: number | undefined;
     unit: string | undefined;
     info: string | undefined;
     isActive: boolean | undefined;
@@ -19608,7 +19696,7 @@ export class MerchandiseForViewDto implements IMerchandiseForViewDto {
     name!: string | undefined;
     typeID!: number | undefined;
     typeVender!: number | undefined;
-    price!: string | undefined;
+    price!: number | undefined;
     unit!: string | undefined;
     info!: string | undefined;
     isActive!: boolean | undefined;
@@ -19664,7 +19752,7 @@ export interface IMerchandiseForViewDto {
     name: string | undefined;
     typeID: number | undefined;
     typeVender: number | undefined;
-    price: string | undefined;
+    price: number | undefined;
     unit: string | undefined;
     info: string | undefined;
     isActive: boolean | undefined;

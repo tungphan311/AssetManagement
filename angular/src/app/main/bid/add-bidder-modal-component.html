@@ -1,0 +1,85 @@
+<div [@routerTransition]>
+<div bsModal #addModal="bs-modal" class="modal fade" tabindex="-1" role="dialog"
+    aria-labelledby="addModal" aria-hidden="true" [config]="{backdrop: 'static'}">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <form #editForm="ngForm" novalidate (ngSubmit)="save()">
+                <div class="modal-header">
+                    <h4 class="modal-title">
+                        <span *ngIf="bidder.id">Chỉnh sửa DV tham gia thầu: {{bidder.name}}</span>
+                        <span *ngIf="!bidder.id">Thêm mới DV tham gia thầu</span>
+                    </h4>
+                    <button type="button" class="close" (click)="close()" [attr.aria-label]="l('Close')">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group row margin-top-15">
+                        <div class="col-xs-5 margin-right-20 margin-left-20">
+                            <label for="ex1">Mã DV *</label>
+                            <input #codeInput="ngModel" class="form-control" id="ex1" type="text" name="Code" [(ngModel)]="vendorCode" required readonly>
+                            <validation-messages [formCtrl]="codeInput"></validation-messages>
+                        </div>
+                        <div class="col-xs-4">
+                            <label for="ex2">Tên DV *</label>
+                            <div class="input-group col-xs-4">
+                            <input #nameInput="ngModel" class="form-control" id="ex2" type="text" name="Name" [(ngModel)]="vendorName" required readonly>
+                            <span *ngIf="!bidder.id" class="input-group-btn">
+                                    <button class="btn btn-primary" (click)="selectVendorModal.show()" type="button">
+                                        <i class="fa fa-ellipsis-h"></i>
+                                    </button>
+                                </span>
+                            <validation-messages [formCtrl]="nameInput"></validation-messages>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                            <div class="col-xs-4 margin-right-20 margin-left-20">
+                                <label for="ex3">Ngày nộp HS thầu *</label>
+                                <input #applyDayInput="ngModel" class="form-control" id="ex3" type="date" name="ApplyDay" [(ngModel)]="bidder.applyDay" required>
+                                <validation-messages [formCtrl]="applyDayInput"></validation-messages>
+                            </div>  
+                            <div class="col-xs-5">
+                                <label for="ex4">Gía chào thầu *</label>
+                                <input #offerPriceInput="ngModel" class="form-control" id="ex4" type="text" name="OfferPriceInput" [(ngModel)]="bidder.offerPrice" required maxlength="64">
+                                <validation-messages [formCtrl]="offerPriceInput"></validation-messages>
+                            </div>
+                    </div>
+                    <div class="form-group row">
+                            <div class="col-xs-5 margin-right-20 margin-left-20">
+                                <label for="ex5">Hình thức bảo lãnh *</label>
+                                <input #guaranteeMethodInput="ngModel" class="form-control" id="ex5" type="text" name="GuaranteeMethod" [(ngModel)]="bidder.guaranteeMethod" required>
+                                <validation-messages [formCtrl]="guaranteeMethodInput"></validation-messages>
+                            </div>  
+                            <div class="col-xs-4 margin-right-20">
+                                <label for="ex6">Ngày hết hạn BL *</label>
+                                <input #guaranteeExpiredInput="ngModel" class="form-control" id="ex6" type="date" name="GuaranteeExpired" [(ngModel)]="bidder.guaranteeExpired" required>
+                                <validation-messages [formCtrl]="guaranteeExpiredInput"></validation-messages>
+                            </div> 
+                            <div class="col-xs-5">
+                                <label for="ex7">Số chứng từ *</label>
+                                <input #certificateNumberInput="ngModel" class="form-control" id="ex7" type="text" name="CertificateNumberMethod" [(ngModel)]="bidder.certificateNumber" required>
+                                <validation-messages [formCtrl]="certificateNumberInput"></validation-messages>
+                            </div>    
+                    </div>
+                    <div class="form-group row">
+                            <div class="col-xs-5 margin-right-20 margin-left-20">
+                                <label for="ex8">Ghi chú</label>
+                                <input #noteInput="ngModel" class="form-control" id="ex8" type="text" name="Note" [(ngModel)]="bidder.note">
+                                <validation-messages [formCtrl]="noteInput"></validation-messages>
+                            </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button [disabled]="saving" type="button" class="btn btn-default"
+                        (click)="close(null)">{{l("Cancel")}}</button>
+                    <button type="submit" class="btn btn-primary" [buttonBusy]="saving"
+                        [busyText]="l('SavingWithThreeDot')"><i class="fa fa-save"></i>
+                        <span>{{l("Save")}}</span></button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<selectVendorModal #selectVendorModal (modalSave)="reloadVendor($event)"></selectVendorModal>
+</div>

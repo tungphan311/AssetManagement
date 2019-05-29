@@ -95,15 +95,23 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Bids
             // filter by Date 
             if (filter.StartReceivingRecords != null)
             {
-                //query = query.Where(x => x.StartReceivingRecords.DayOfYear >= filter.StartReceivingRecords.DayOfYear);
+                DateTime dt = DateTime.ParseExact(filter.StartReceivingRecords, "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture);
+                dt = dt.ToUniversalTime();
+                query = query.Where(x => x.BeginDay.DayOfYear > dt.DayOfYear);
             }
 
             if (filter.EndReceivingRecords != null)
             {
-                //query = query.Where(x => x.EndReceivingRecords.DayOfYear <= filter.EndReceivingRecords.DayOfYear);
+                DateTime dt = DateTime.ParseExact(filter.EndReceivingRecords, "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture);
+                dt = dt.ToUniversalTime();
+                query = query.Where(x => x.BeginDay.DayOfYear < dt.DayOfYear);
+            }
+            if (filter.VendorId != 0)
+            {
+                query = query.Where(x => x.BidderID == filter.VendorId);
             }
 
-            if (filter.BiddingForm != null)
+            if (filter.BiddingForm != "All")
             {
                 query = query.Where(x => x.BiddingForm.ToLower().Equals(filter.BiddingForm.ToLower()));
             }

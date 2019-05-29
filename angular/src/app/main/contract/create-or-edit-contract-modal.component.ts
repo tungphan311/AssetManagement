@@ -3,12 +3,13 @@ import { AppComponentBase } from "@shared/common/app-component-base";
 import { ModalDirective } from "ngx-bootstrap";
 import { Table } from "primeng/table";
 import { Paginator, LazyLoadEvent } from "primeng/primeng";
-import { ContractInput, ContractServiceProxy, ContractDetailServiceProxy } from "@shared/service-proxies/service-proxies";
+import { ContractInput, ContractServiceProxy, ContractDetailServiceProxy, ProductInput } from "@shared/service-proxies/service-proxies";
 import { AddContractDetailModalComponent } from "./add-contract-detail-modal-component";
 
 @Component({
     selector: 'createOrEditContractModal',
-    templateUrl: './create-or-edit-contract-modal.component.html'
+    templateUrl: './create-or-edit-contract-modal.component.html',
+    outputs: ['data:listMerchandises']
 })
 
 export class CreateOrEditContractModalComponent extends AppComponentBase {
@@ -26,10 +27,12 @@ export class CreateOrEditContractModalComponent extends AppComponentBase {
    @Output() modalSave: EventEmitter<any> = new EventEmitter<any>();
 
    saving = false;
+   id = 0;
 
    listContractDetail = []
 
     contract: ContractInput = new ContractInput();
+    products: ProductInput[] = [];
 
     constructor(
         injector: Injector,
@@ -57,6 +60,44 @@ export class CreateOrEditContractModalComponent extends AppComponentBase {
         this.reloadListContractDetail(0, null);
     }
 
+    getListMerchandises(event?: LazyLoadEvent) {
+        if (!this.paginator || !this.dataTable) {
+            return;
+        }
+
+        this.primengTableHelper.showLoadingIndicator();
+
+        this.passToProducts();
+
+        this.loadListMerchandise();
+    }
+
+    passToProducts() {
+       // this.products.length = 0;
+
+        this.addContractDetailModal.listMerID.forEach(element => {
+            let input: ProductInput = new ProductInput();
+            input.merchandiseID = element.id;
+            input.merCode = element.code;
+            input.merName = element.name;
+            input.quantity = 1;
+            input.price = element.price;
+            input.total = input.quantity * input.price;
+            input.note = "";
+
+            this.products.push(input);
+        });
+
+        this.contract.products = this.products;
+        console.log(this.contract.products);
+    }
+
+    loadListMerchandise() {
+        this.primengTableHelper.totalRecordsCount = this.contract.products.length;
+        this.primengTableHelper.records = this.contract.products;
+        this.primengTableHelper.hideLoadingIndicator();
+    }
+
     getContractDetails(event?: LazyLoadEvent) {
         if (!this.paginator || !this.dataTable) {
             return;
@@ -81,16 +122,15 @@ export class CreateOrEditContractModalComponent extends AppComponentBase {
 
     addContractDetail() {
         this.addContractDetailModal.show();
-        for (const item of this.listContractDetail) {
-            this._contractDetailService.deleteContractDetail(item.id).subscribe(result => {
-                //this.notify.info(this.l('SaveSuccessfully'));
-            })
-        }
+        // for (const item of this.listContractDetail) {
+        //     this._contractDetailService.deleteContractDetail(item.id).subscribe(result => {
+        //         //this.notify.info(this.l('SaveSuccessfully'));
+        //     })
+        // }
     }
 
     save(): void {
         let input = this.contract;
-        console.log(input.id);
         var moment = require('moment');
         input.deliveryTime = moment(input.deliveryTime);
         this.saving = true;
@@ -102,12 +142,6 @@ export class CreateOrEditContractModalComponent extends AppComponentBase {
     
     reloadPage(): void {
         this.paginator.changePage(this.paginator.getPage());
-    }
-
-    deleteContract(id): void {
-        this._contractDetailService.deleteContractDetail(id).subscribe(() => {
-            this.reloadPage();
-        })
     }
 
     close(): void {

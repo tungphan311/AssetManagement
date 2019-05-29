@@ -4,14 +4,16 @@ using GSoft.AbpZeroTemplate.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace GSoft.AbpZeroTemplate.Migrations
 {
     [DbContext(typeof(AbpZeroTemplateDbContext))]
-    partial class AbpZeroTemplateDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190528072447_remove_price")]
+    partial class remove_price
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -1584,8 +1586,6 @@ namespace GSoft.AbpZeroTemplate.Migrations
 
                     b.Property<DateTime>("BeginDay");
 
-                    b.Property<int>("BidderID");
-
                     b.Property<string>("BiddingForm");
 
                     b.Property<string>("Category");
@@ -1946,8 +1946,6 @@ namespace GSoft.AbpZeroTemplate.Migrations
                     b.Property<string>("Name");
 
                     b.Property<string>("Note");
-
-                    b.Property<float>("Price");
 
                     b.Property<int>("TypeID");
 

@@ -3,6 +3,7 @@ using Abp.Authorization;
 using Abp.Domain.Repositories;
 using Abp.Linq.Extensions;
 using GWebsite.AbpZeroTemplate.Application;
+using GWebsite.AbpZeroTemplate.Application.Share.ContractDetails.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.Contracts;
 using GWebsite.AbpZeroTemplate.Application.Share.Contracts.Dto;
 using GWebsite.AbpZeroTemplate.Core.Authorization;
@@ -17,10 +18,12 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Contracts
     public class ContractAppService : GWebsiteAppServiceBase, IContractAppService
     {
         private readonly IRepository<Contract> contractRepository;
+        private readonly IRepository<ContractDetail> detailRepository;
 
-        public ContractAppService(IRepository<Contract> contractRepository)
+        public ContractAppService(IRepository<Contract> contractRepository, IRepository<ContractDetail> detailRepository)
         {
             this.contractRepository = contractRepository;
+            this.detailRepository = detailRepository;
         }
 
         #region Public Method
@@ -130,7 +133,22 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Contracts
         {
             var contractEntity = ObjectMapper.Map<Contract>(contractInput);
             SetAuditInsert(contractEntity);
-            contractRepository.Insert(contractEntity);
+            var id = contractRepository.InsertAndGetId(contractEntity);
+
+            //foreach(var product in contractInput.Products)
+            //{
+            //    // insert vo bang ProductContract co productId va contractId
+            //    ContractDetailInput detailInput = new ContractDetailInput(id, product.Id, product.MerCode, product.MerName, product.Quantity, product.Price, product.Note);
+            //    var detailEntity = ObjectMapper.Map<ContractDetail>(detailInput);
+            //    SetAuditInsert(detailEntity);
+            //    detailRepository.Insert(detailEntity);
+            //}
+
+            //ContractDetailInput detailInput = new ContractDetailInput(id, 1, "CODE", "NAME", 1, 100, "NOTE");
+            //var detailEntity = ObjectMapper.Map<ContractDetail>(detailInput);
+            //SetAuditInsert(detailEntity);
+            //detailRepository.Insert(detailEntity);
+
             CurrentUnitOfWork.SaveChanges();
         }
 
