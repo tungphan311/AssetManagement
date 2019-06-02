@@ -5,7 +5,7 @@
             <div class="modal-header">
                 <h4 class="modal-title">
                     <span *ngIf="provider.id">{{l("EditProvider")}}: {{provider.name}}</span>
-                    <span *ngIf="!provider.id">{{l("CreateNewProvider")}}</span>
+                    <span *ngIf="!provider.id">{{l("Nha Cung Cấp")}}</span>
                 </h4>
                 <button type="button" class="close" (click)="close()" [attr.aria-label]="l('Close')">
                     <span aria-hidden="true">&times;</span>
@@ -13,35 +13,28 @@
             </div>
             <div class="modal-body">
                 <div class="form-group">
-                    <label>Tên sản phẩm</label>
+                    <label>Mã Nhà Cung Cấp</label>
+                    <p>{{provider.providerCode}}</p>
+                </div>
+                <div class="form-group">
+                    <label>Tên Nhà Cung Cấp</label>
                     <p>{{provider.name}}</p>
                 </div>
                 <div class="form-group">
-                    <label>Giá dự kiến của sản phẩm</label>
-                    <p>{{provider.expectedprice}}</p>
+                    <label>Email</label>
+                    <p>{{provider.email}}</p>
                 </div>
                 <div class="form-group">
-                    <label>Giá hiện tại của sản phẩm</label>
-                    <p>{{provider.currentprice}}</p>
+                    <label>Điện Thoại</label>
+                    <p>{{provider.phoneNumber}}</p>
                 </div>
                 <div class="form-group">
-                    <label>Miêu tả</label>
-                    <p>{{provider.description}}</p>
+                    <label>Địa Chỉ</label>
+                    <p>{{provider.address}}</p>
                 </div>
-                <div class="form-group">
-                    <label>Image</label>
-                    <p>{{provider.image}}</p>
-                </div>
-                <div class="form-group">
-                    <label>Id danh mục</label>
-                    <p>{{provider.providerCategoryId}}</p>
-                </div>
-                <div class="form-group">
-                    <label>Chi tiết</label>
-                    <p>{{provider.providerDetail}}</p>
-                </div>
+
             </div>
-            <div class="modal-footer">
+            <div class="modal-footer" *ngIf="provider.id">
                 <button [disabled]="saving" type="button" class="btn btn-default"
                     (click)="close()">{{l("Cancel")}}</button>
                 <button type="submit" class="btn btn-primary" [buttonBusy]="saving"

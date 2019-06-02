@@ -6,7 +6,7 @@ import { CustomerComponent } from './customer/customer.component';
 import { ProductComponent } from './product/product.component';
 import { ProjectComponent } from './project/project.component';
 import { BidComponent } from './bid/bid.component';
-//import { ProviderComponentComponent } from './provider/provider.component';
+import { ProviderComponent } from './provider/provider.component';
 import { ContractComponent, } from './contract/contract.component';
 import {CreateOrEditContractModalComponent} from './contract/create-or-edit-contract-modal.component'
 @NgModule({
@@ -81,15 +81,15 @@ import {CreateOrEditContractModalComponent} from './contract/create-or-edit-cont
                     },
                 ]
             },
-			 // {
-            //     path: '',
-            //     children: [
-            //         {
-            //             path: 'provider', component: ProviderComponent,
-            //             data: { permission: 'Pages.Administration.Provider' }
-            //         },
-            //     ]
-            // },   
+			 {
+                path: '',
+                children: [
+                    {
+                        path: 'provider', component: ProviderComponent,
+                        data: { permission: 'Pages.Administration.Provider' }
+                    },
+                ]
+            },   
 		   			
         ])
         

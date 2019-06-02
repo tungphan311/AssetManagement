@@ -34,10 +34,10 @@ import { BidComponent } from './bid/bid.component';
 import { ViewBidModalComponent } from './bid/view-bid-modal.component';
 import { CreateOrEditBidModalComponent } from './bid/create-or-edit-bid-modal.component';
 
-//import { ProviderServiceProxy } from '@shared/service-proxies/service-proxies';
-//import { ProviderComponent } from './provider/provider.component';
-//import { ViewProviderModalComponent } from './provider/view-provider-modal.component';
-//import { CreateOrEditProviderModalComponent } from './provider/create-or-edit-provider-modal.component';
+import { ProviderServiceProxy } from '@shared/service-proxies/service-proxies';
+import { ProviderComponent } from './provider/provider.component';
+import { ViewProviderModalComponent } from './provider/view-provider-modal.component';
+import { CreateOrEditProviderModalComponent } from './provider/create-or-edit-provider-modal.component';
 
 import { ContractServiceProxy } from '@shared/service-proxies/service-proxies';
 import { ContractComponent } from './contract/contract.component';
@@ -70,7 +70,7 @@ import { CreateOrEditContractModalComponent } from './contract/create-or-edit-co
         ProductComponent, CreateOrEditProductModalComponent, ViewProductModalComponent,
         ProjectComponent, CreateOrEditProjectModalComponent, ViewProjectModalComponent,
         BidComponent, CreateOrEditBidModalComponent, ViewBidModalComponent,
-		//ProviderComponent, CreateOrEditProviderModalComponent, ViewProviderModalComponent,
+		ProviderComponent, CreateOrEditProviderModalComponent, ViewProviderModalComponent,
 		ContractComponent, CreateOrEditContractModalComponent, ViewContractModalComponent
     ],
     providers: [
@@ -79,7 +79,7 @@ import { CreateOrEditContractModalComponent } from './contract/create-or-edit-co
         ProductServiceProxy,
         ProjectServiceProxy,
         BidServiceProxy,
-		//ProviderServiceProxy
+		ProviderServiceProxy,
 		ContractServiceProxy
     ]
 })

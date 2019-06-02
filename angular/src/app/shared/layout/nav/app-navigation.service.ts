@@ -23,7 +23,7 @@ export class AppNavigationService {
             new AppMenuItem('Sản Phẩm', 'Pages.Administration.Product', 'flaticon-menu-1', '/app/gwebsite/product'),
             new AppMenuItem('Dự Án', 'Pages.Administration.Project', 'flaticon-menu-1', '/app/gwebsite/project'),
             new AppMenuItem('Hồ sơ thầu', 'Pages.Administration.Bid', 'flaticon-menu-1', '/app/gwebsite/bid'),
-			//new AppMenuItem('Provider', 'Pages.Administration.Provider', 'flaticon-menu-1', '/app/gwebsite/provider'),
+			new AppMenuItem('Nhà Cung Cấp', 'Pages.Administration.Provider', 'flaticon-menu-1', '/app/gwebsite/provider'),
             new AppMenuItem('Hợp đồng', '', 'flaticon-menu-1', '',
             [
                 new AppMenuItem('Danh sách Hợp đồng', 'Pages.Administration.Contract', 'flaticon-menu-1', '/app/gwebsite/contract'),

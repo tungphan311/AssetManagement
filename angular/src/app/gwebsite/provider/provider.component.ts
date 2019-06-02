@@ -31,7 +31,7 @@ export class ProviderComponent extends AppComponentBase implements AfterViewInit
 
     constructor(
         injector: Injector,
-        private _ProviderService: ProviderServiceProxy,
+        private _providerService: ProviderServiceProxy,
         private _activatedRoute: ActivatedRoute,
     ) {
         super(injector);
@@ -73,7 +73,7 @@ export class ProviderComponent extends AppComponentBase implements AfterViewInit
     }
 
     reloadList(providerName, event?: LazyLoadEvent) {
-        this._ProviderService.getProvidersByFilter(providerName, this.primengTableHelper.getSorting(this.dataTable),
+        this._providerService.getProvidersByFilter(providerName, this.primengTableHelper.getSorting(this.dataTable),
             this.primengTableHelper.getMaxResultCount(this.paginator, event),
             this.primengTableHelper.getSkipCount(this.paginator, event),
         ).subscribe(result => {
@@ -84,7 +84,7 @@ export class ProviderComponent extends AppComponentBase implements AfterViewInit
     }
 
     deleteProvider(id): void {
-        this._ProviderService.deleteProvider(id).subscribe(() => {
+        this._providerService.deleteProvider(id).subscribe(() => {
             this.reloadPage();
         })
     }
