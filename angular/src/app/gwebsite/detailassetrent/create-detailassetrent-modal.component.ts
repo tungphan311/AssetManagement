@@ -12,6 +12,7 @@ import {
     DetailAssetRentServiceProxy,
     DetailAssetRentInput
 } from "@shared/service-proxies/service-proxies";
+import * as moment from 'moment';
 
 @Component({
     selector: "createDetailAssetRentModal",
@@ -42,16 +43,16 @@ export class CreateDetailAssetRentModalComponent extends AppComponentBase {
     // tslint:disable-next-line:use-life-cycle-interface
     ngAfterViewInit(): void {
         let t = this;
-        $(this.dateInput.nativeElement)
-            .datetimepicker({
-                locale: abp.localization.currentLanguage.name,
-                format: "L"
-            })
-            .on("dp.change", function(_e: any) {
-                t.detailassetrent.dayPay = $(t.dateInput.nativeElement)
-                    .val()
-                    .toString();
-            });
+        // $(this.dateInput.nativeElement)
+        //     .datetimepicker({
+        //         locale: abp.localization.currentLanguage.name,
+        //         format: "L"
+        //     })
+        //     .on("dp.change", function(_e: any) {
+        //         t.detailassetrent.dayPay = $(t.dateInput.nativeElement)
+        //             .val()
+        //             .toString();
+        //     });
     }
 
     show(detailAssetRentId?: number | null | undefined): void {
