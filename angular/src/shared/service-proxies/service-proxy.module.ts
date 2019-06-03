@@ -1,8 +1,8 @@
-import { AbpHttpInterceptor } from '@abp/abpHttpInterceptor';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { NgModule } from '@angular/core';
-import * as ApiServiceProxies from './service-proxies';
-import { WebApiServiceProxy } from './webapi.service';
+import { AbpHttpInterceptor } from "@abp/abpHttpInterceptor";
+import { HTTP_INTERCEPTORS } from "@angular/common/http";
+import { NgModule } from "@angular/core";
+import * as ApiServiceProxies from "./service-proxies";
+import { WebApiServiceProxy } from "./webapi.service";
 
 @NgModule({
     providers: [
@@ -52,7 +52,15 @@ import { WebApiServiceProxy } from './webapi.service';
         ApiServiceProxies.BidderServiceProxy,
         ApiServiceProxies.POServiceProxy,
         WebApiServiceProxy,
-        { provide: HTTP_INTERCEPTORS, useClass: AbpHttpInterceptor, multi: true }
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: AbpHttpInterceptor,
+            multi: true
+        },
+        ApiServiceProxies.CustomerServiceProxy,
+        ApiServiceProxies.AssetServiceProxy,
+        ApiServiceProxies.AssetRentServiceProxy,
+        ApiServiceProxies.DetailAssetRentServiceProxy
     ]
 })
-export class ServiceProxyModule { }
+export class ServiceProxyModule {}

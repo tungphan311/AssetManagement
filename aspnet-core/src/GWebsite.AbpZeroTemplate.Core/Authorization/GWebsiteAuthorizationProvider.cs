@@ -90,6 +90,22 @@ namespace GWebsite.AbpZeroTemplate.Core.Authorization
             bidder.CreateChildPermission(GWebsitePermissions.Pages_Administration_Bidder_Create, L("CreateNewBidder"));
             bidder.CreateChildPermission(GWebsitePermissions.Pages_Administration_Bidder_Edit, L("EditingBidder"));
             bidder.CreateChildPermission(GWebsitePermissions.Pages_Administration_Bidder_Delete, L("DeletingBidder"));
+            var asset = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_Asset, L("Asset"));
+            asset.CreateChildPermission(GWebsitePermissions.Pages_Administration_Asset_Create, L("CreatingNewAsset"));
+            asset.CreateChildPermission(GWebsitePermissions.Pages_Administration_Asset_Edit, L("EditingAsset"));
+            asset.CreateChildPermission(GWebsitePermissions.Pages_Administration_Asset_Delete, L("DeletingAsset"));
+
+            var assetRent = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_AssetRent, L("AssetRent"));
+            assetRent.CreateChildPermission(GWebsitePermissions.Pages_Administration_AssetRent_Create, L("CreatingNewAssetRent"));
+            assetRent.CreateChildPermission(GWebsitePermissions.Pages_Administration_AssetRent_Edit, L("EditingAssetRent"));
+            assetRent.CreateChildPermission(GWebsitePermissions.Pages_Administration_AssetRent_Delete, L("DeletingAssetRent"));
+
+            var detailAssetRent = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_DetailAssetRent, L("DetailAssetRent"));
+            detailAssetRent.CreateChildPermission(GWebsitePermissions.Pages_Administration_DetailAssetRent_Create, L("CreatingNewDetailAssetRent"));
+            detailAssetRent.CreateChildPermission(GWebsitePermissions.Pages_Administration_DetailAssetRent_Edit, L("EditingDetailAssetRent"));
+            detailAssetRent.CreateChildPermission(GWebsitePermissions.Pages_Administration_DetailAssetRent_Delete, L("DeletingDetailAssetRent"));
+
+
         }
 
         private static ILocalizableString L(string name)

@@ -19,6 +19,7 @@
     <Compile Remove="Migrations\20190519140306_AssigmentTable.cs" />
     <Compile Remove="Migrations\20190519140306_AssigmentTable.Designer.cs" />
     <Compile Remove="Migrations\20190528071356_find_error.cs" />
+    <Compile Remove="Migrations\20190416215511_addAsset.cs" />
   </ItemGroup>
 
   <ItemGroup>

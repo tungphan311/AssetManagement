@@ -4,6 +4,8 @@ using GWebsite.AbpZeroTemplate.Application.Share.Contracts.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.ContractDetails.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.ContractPayments.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.Customers.Dto;
+using GWebsite.AbpZeroTemplate.Application.Share.Assets.Dto;
+using GWebsite.AbpZeroTemplate.Application.Share.AssetRents.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.DemoModels.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.MenuClients.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.Merchandises;
@@ -17,6 +19,8 @@ using GWebsite.AbpZeroTemplate.Application.Share.AssignmentTables.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.Bids.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.Bidders.Dto;
 
+using GWebsite.AbpZeroTemplate.Application.Share.AssetsRents.Dto;
+using GWebsite.AbpZeroTemplate.Application.Share.DetailAssetRents.Dto;
 namespace GWebsite.AbpZeroTemplate.Applications
 {
     internal static class CustomDtoMapper
@@ -104,6 +108,28 @@ namespace GWebsite.AbpZeroTemplate.Applications
             configuration.CreateMap<BidderInput, Bidder>();
             configuration.CreateMap<Bidder, BidderInput>();
             configuration.CreateMap<Bidder, BidderForViewDto>();
+            //Asset 
+            configuration.CreateMap<Asset, AssetDto>();
+            configuration.CreateMap<Asset, AssetFilter>();
+            configuration.CreateMap<Asset, AssetForView>();
+            configuration.CreateMap<Asset, AssetInput>();
+            configuration.CreateMap<AssetInput, Asset>();
+           
+            //AssetRent 
+            configuration.CreateMap<AsssetRent, AssetRentDto>();
+            configuration.CreateMap<AsssetRent, AssetRentFilter>();
+            configuration.CreateMap<AsssetRent, AssetRentForView>();
+            configuration.CreateMap<AsssetRent, AssetRentInput>();
+            configuration.CreateMap<AssetRentInput, AsssetRent>();
+
+            //DetailAssetRent 
+            configuration.CreateMap<DetailAssetRent, DetailAssetRentDto>();
+            configuration.CreateMap<DetailAssetRent, DetailAssetRentFilter>();
+            configuration.CreateMap<DetailAssetRent, DetailAssetRentForView>();
+            configuration.CreateMap<DetailAssetRent, DetailAssetRentInput>();
+            configuration.CreateMap<DetailAssetRentInput, DetailAssetRent>();
+
+
         }
     }
 }
