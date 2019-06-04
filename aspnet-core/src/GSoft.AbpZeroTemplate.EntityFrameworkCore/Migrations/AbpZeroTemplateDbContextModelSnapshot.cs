@@ -1693,31 +1693,6 @@ namespace GSoft.AbpZeroTemplate.Migrations
                     b.ToTable("MenuClients");
                 });
 
-            modelBuilder.Entity("GWebsite.AbpZeroTemplate.Core.Models.ModelDemo", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("CreatedBy");
-
-                    b.Property<DateTime?>("CreatedDate");
-
-                    b.Property<bool>("IsDelete");
-
-                    b.Property<string>("Name");
-
-                    b.Property<string>("UpdatedBy");
-
-                    b.Property<DateTime?>("UpdatedDate");
-
-                    b.Property<int>("Value");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("ModelDemos");
-                });
-
             modelBuilder.Entity("GWebsite.AbpZeroTemplate.Core.Models.Permission", b =>
                 {
                     b.Property<int>("Id")
@@ -1747,6 +1722,37 @@ namespace GSoft.AbpZeroTemplate.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("GPermissions");
+                });
+
+            modelBuilder.Entity("GWebsite.AbpZeroTemplate.Core.Models.TaiSanThue", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("CreatedBy");
+
+                    b.Property<DateTime?>("CreatedDate");
+
+                    b.Property<string>("GiaTien");
+
+                    b.Property<bool>("IsDelete");
+
+                    b.Property<string>("MaTaiSan");
+
+                    b.Property<string>("NgayTra");
+
+                    b.Property<string>("TenTaiSan");
+
+                    b.Property<string>("TrangThai");
+
+                    b.Property<string>("UpdatedBy");
+
+                    b.Property<DateTime?>("UpdatedDate");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("TaiSanThues");
                 });
 
             modelBuilder.Entity("GSoft.AbpZeroTemplate.Editions.SubscribableEdition", b =>

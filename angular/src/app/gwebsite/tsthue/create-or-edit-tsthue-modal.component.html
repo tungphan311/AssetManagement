@@ -1,0 +1,57 @@
+<div bsModal #createOrEditModal="bs-modal" class="modal fade" tabindex="-1" role="dialog"
+    aria-labelledby="createOrEditModal" aria-hidden="true" [config]="{backdrop: 'static'}">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <form #editForm="ngForm" novalidate (ngSubmit)="save()">
+                <div class="modal-header">
+                    <h4 class="modal-title">
+                        <span *ngIf="tsthue.id">Cập nhật tài sản: {{tsthue.name}}</span>
+                        <span *ngIf="!tsthue.id">Thêm tài sản thuê</span>
+                    </h4>
+                    <button type="button" class="close" (click)="close()" [attr.aria-label]="l('Close')">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>Mã tài sản *</label>
+                        <input #nameInput="ngModel" class="form-control" type="text" name="Id"
+                               [(ngModel)]="tsthue.id" required maxlength="64">
+                        <validation-messages [formCtrl]="nameInput"></validation-messages>
+                    </div>
+                    <div class="form-group">
+                        <label>Tên tài sản *</label>
+                        <input #addressInput="ngModel" class="form-control" type="text" name="Ten"
+                               [(ngModel)]="tsthue.ten" required maxlength="64">
+                        <validation-messages [formCtrl]="addressInput"></validation-messages>
+                    </div>
+                    <div class="form-group">
+                        <label>Trạng thái *</label>
+                        <input #addressInput="ngModel" class="form-control" type="text" name="Trangthai"
+                               [(ngModel)]="tsthue.trangthai" required maxlength="64">
+                        <validation-messages [formCtrl]="infoInput"></validation-messages>
+                    </div>
+                    <div class="form-group">
+                        <label>Giá tiền *</label>
+                        <input #addressInput="ngModel" class="form-control" type="text" name="Giatien"
+                               [(ngModel)]="tsthue.giatien" required maxlength="64">
+                        <validation-messages [formCtrl]="infoInput"></validation-messages>
+                    </div>
+                    <div class="form-group">
+                        <label>Ngày hết hạn thuê *</label>
+                        <input #addressInput="ngModel" class="form-control" type="text" name="Ngaytra"
+                               [(ngModel)]="tsthue.ngaytra" required maxlength="64">
+                        <validation-messages [formCtrl]="infoInput"></validation-messages>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button [disabled]="saving" type="button" class="btn btn-default"
+                        (click)="close()">{{l("Cancel")}}</button>
+                    <button type="submit" class="btn btn-primary" [buttonBusy]="saving"
+                        [busyText]="l('SavingWithThreeDot')"><i class="fa fa-save"></i>
+                        <span>{{l("Save")}}</span></button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

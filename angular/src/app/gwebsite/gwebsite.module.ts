@@ -19,6 +19,11 @@ import { CustomerComponent } from './customer/customer.component';
 import { ViewCustomerModalComponent } from './customer/view-customer-modal.component';
 import { CreateOrEditCustomerModalComponent } from './customer/create-or-edit-customer-modal.component';
 
+import { TSThueServiceProxy } from './../../shared/service-proxies/service-proxies';
+import { TSThueComponent } from './tsthue/tsthue.component';
+import { ViewTSThueModalComponent } from './tsthue/view-tsthue-modal.component';
+import { CreateOrEditTSThueModalComponent } from './tsthue/create-or-edit-tsthue-modal.component';
+
 @NgModule({
     imports: [
         FormsModule,
@@ -42,10 +47,12 @@ import { CreateOrEditCustomerModalComponent } from './customer/create-or-edit-cu
         MenuClientComponent, CreateOrEditMenuClientModalComponent,
         DemoModelComponent, CreateOrEditDemoModelModalComponent, ViewDemoModelModalComponent,
         CustomerComponent, CreateOrEditCustomerModalComponent, ViewCustomerModalComponent,
+        TSThueComponent, CreateOrEditTSThueModalComponent, ViewTSThueModalComponent,
     ],
     providers: [
         DemoModelServiceProxy,
-        CustomerServiceProxy
+        CustomerServiceProxy,
+        TSThueServiceProxy
     ]
 })
 export class GWebsiteModule { }
