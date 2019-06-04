@@ -8,68 +8,19 @@ export class AppNavigationService {
     constructor(private _permissionService: PermissionCheckerService) {}
 
     getMenu(): AppMenu {
-        return new AppMenu("MainMenu", "MainMenu", [
-            new AppMenuItem(
-                "Dashboard",
-                "Pages.Administration.Host.Dashboard",
-                "flaticon-line-graph",
-                "/app/admin/hostDashboard"
-            ),
-            new AppMenuItem(
-                "Dashboard",
-                "Pages.Tenant.Dashboard",
-                "flaticon-line-graph",
-                "/app/main/dashboard"
-            ),
-            new AppMenuItem(
-                "Tenants",
-                "Pages.Tenants",
-                "flaticon-list-3",
-                "/app/admin/tenants"
-            ),
-            new AppMenuItem(
-                "Editions",
-                "Pages.Editions",
-                "flaticon-app",
-                "/app/admin/editions"
-            ),
-            new AppMenuItem("Administration", "", "flaticon-interface-8", "", [
-                new AppMenuItem(
-                    "MenuClient",
-                    "Pages.Administration.MenuClient",
-                    "flaticon-menu-1",
-                    "/app/gwebsite/menu-client"
-                ),
-                new AppMenuItem(
-                    "DemoModel",
-                    "Pages.Administration.DemoModel",
-                    "flaticon-menu-1",
-                    "/app/gwebsite/demo-model"
-                ),
-                new AppMenuItem(
-                    "Customer",
-                    "Pages.Administration.Customer",
-                    "flaticon-menu-1",
-                    "/app/gwebsite/customer"
-                ),
-                new AppMenuItem(
-                    "Asset",
-                    "Pages.Administration.Asset",
-                    "flaticon-menu-1",
-                    "/app/gwebsite/asset"
-                ),
-                new AppMenuItem(
-                    "AssetRent",
-                    "Pages.Administration.AssetRent",
-                    "flaticon-menu-1",
-                    "/app/gwebsite/assetrent"
-                ),
-                new AppMenuItem(
-                    "DetailAssetRent",
-                    "Pages.Administration.DetailAssetRent",
-                    "flaticon-menu-1",
-                    "/app/gwebsite/detailassetrent"
-                )
+        return new AppMenu('MainMenu', 'MainMenu', [
+            new AppMenuItem('Dashboard', 'Pages.Administration.Host.Dashboard', 'flaticon-line-graph', '/app/admin/hostDashboard'),
+            new AppMenuItem('Dashboard', 'Pages.Tenant.Dashboard', 'flaticon-line-graph', '/app/main/dashboard'),
+            new AppMenuItem('Tenants', 'Pages.Tenants', 'flaticon-list-3', '/app/admin/tenants'),
+            new AppMenuItem('Editions', 'Pages.Editions', 'flaticon-app', '/app/admin/editions'),
+            new AppMenuItem('Administration', '', 'flaticon-interface-8', '', [
+                new AppMenuItem('MenuClient', 'Pages.Administration.MenuClient', 'flaticon-menu-1', '/app/gwebsite/menu-client'),
+                new AppMenuItem('DemoModel', 'Pages.Administration.DemoModel', 'flaticon-menu-1', '/app/gwebsite/demo-model'),
+                new AppMenuItem('Customer', 'Pages.Administration.Customer', 'flaticon-menu-1', '/app/gwebsite/customer'),
+                new AppMenuItem("Asset", "Pages.Administration.Asset", "flaticon-menu-1", "/app/gwebsite/asset"),
+                new AppMenuItem("AssetRent", "Pages.Administration.AssetRent", "flaticon-menu-1", "/app/gwebsite/assetrent"),
+                new AppMenuItem("DetailAssetRent", "Pages.Administration.DetailAssetRent", "flaticon-menu-1", "/app/gwebsite/detailassetrent"),
+                new AppMenuItem('QLTS từ khi khai sinh đến thanh lý', 'Pages.Administration.Asset5', 'flaticon-menu-1', '/app/gwebsite/asset5')
             ]),
             new AppMenuItem("Systems", "", "flaticon-layers", "", [
                 new AppMenuItem(
