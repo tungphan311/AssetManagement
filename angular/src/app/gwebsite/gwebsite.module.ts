@@ -41,6 +41,9 @@ import { AssetRentComponent } from "./assetrent/assetrent.component";
 import { CreateDetailAssetRentModalComponent } from "./detailassetrent/create-detailassetrent-modal.component";
 import { ViewDetailAssetRentModalComponent } from "./detailassetrent/view-detailassetrent-modal.component";
 import { DetailAssetRentComponent } from "./detailassetrent/detailassetrent.component";
+import { Asset5Component } from "./asset5/asset5.component";
+import { CreateOrEditAsset5ModalComponent } from "./asset5/create-or-edit-asset5-modal.component";
+import { ViewAsset5ModalComponent } from "./asset5/view-asset5-modal.component";
 
 @NgModule({
     imports: [
@@ -78,7 +81,10 @@ import { DetailAssetRentComponent } from "./detailassetrent/detailassetrent.comp
         ViewAssetRentModalComponent,
         CreateDetailAssetRentModalComponent,
         DetailAssetRentComponent,
-        ViewDetailAssetRentModalComponent
+        ViewDetailAssetRentModalComponent,
+        Asset5Component,
+        CreateOrEditAsset5ModalComponent,
+        ViewAsset5ModalComponent
     ],
     providers: [
         DemoModelServiceProxy

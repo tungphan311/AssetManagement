@@ -8,7 +8,7 @@ import { LazyLoadEvent } from 'primeng/components/common/lazyloadevent';
 import { Paginator } from 'primeng/components/paginator/paginator';
 import { Table } from 'primeng/components/table/table';
 import { Asset5ServiceProxy } from '@shared/service-proxies/service-proxies';
-import { CreateOrEditAseet5ModalComponent } from './create-or-edit-asset5-modal.component';
+import { CreateOrEditAsset5ModalComponent } from './create-or-edit-asset5-modal.component';
 
 @Component({
     templateUrl: './asset5.component.html',
