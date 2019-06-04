@@ -1,9 +1,10 @@
-import { Component, ViewChild, ElementRef, Output, EventEmitter, Injector } from "@angular/core";
+import { Component, ViewChild, ElementRef, Output, EventEmitter, Injector, Input } from "@angular/core";
 import { AppComponentBase } from "@shared/common/app-component-base";
 import { ModalDirective } from "ngx-bootstrap";
 import { Table } from "primeng/table";
 import { Paginator, LazyLoadEvent } from "primeng/primeng";
 import { MerchandiseServiceProxy, ContractDetailInput, ContractDetailServiceProxy, MerchandiseForViewDto, MerchandiseInput, MerchandiseDto } from "@shared/service-proxies/service-proxies";
+import { CreateOrEditContractModalComponent } from "./create-or-edit-contract-modal.component";
 
 @Component({
     selector: 'addContractDetailModal',
@@ -37,7 +38,7 @@ export class AddContractDetailModalComponent extends AppComponentBase {
    merchandise: MerchandiseInput = new MerchandiseInput()
 
    listMerType = []
-   listMerchandises = []
+   listMerchandises: MerchandiseDto[] = [];
    listContractDetail = []
    listMerID: MerchandiseDto[] = []
 
@@ -91,9 +92,9 @@ export class AddContractDetailModalComponent extends AppComponentBase {
             this.primengTableHelper.totalRecordsCount = result.totalCount;
             this.primengTableHelper.records = result.items;
             this.listMerchandises = result.items;
-            this.primengTableHelper.hideLoadingIndicator();
             this.savingId.length = result.items.length;
             this.savingId.fill(false);
+            this.primengTableHelper.hideLoadingIndicator();        
         });
    }
 
@@ -119,7 +120,7 @@ export class AddContractDetailModalComponent extends AppComponentBase {
    save(): void {
         this.saving = true;
 
-        //this.listMerID.length = 0;
+        this.listMerID.length = 0;
 
         for (const iterator of this.listMerchandises) {
             if (iterator.isAddContract) {
@@ -127,6 +128,7 @@ export class AddContractDetailModalComponent extends AppComponentBase {
             }    
         }
 
+        //console.log(this.listMerID);
         this.data.emit(this.listMerID);
         this.close();
     }

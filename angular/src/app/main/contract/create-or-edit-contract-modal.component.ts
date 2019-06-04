@@ -3,8 +3,9 @@ import { AppComponentBase } from "@shared/common/app-component-base";
 import { ModalDirective } from "ngx-bootstrap";
 import { Table } from "primeng/table";
 import { Paginator, LazyLoadEvent } from "primeng/primeng";
-import { ContractInput, ContractServiceProxy, ContractDetailServiceProxy, ProductInput } from "@shared/service-proxies/service-proxies";
+import { ContractInput, ContractServiceProxy, ContractDetailServiceProxy, ProductInput, BidServiceProxy, BidForViewDto, VendorServiceProxy, VendorForViewDto } from "@shared/service-proxies/service-proxies";
 import { AddContractDetailModalComponent } from "./add-contract-detail-modal-component";
+import { SelectBidModalComponent } from "./select-bid-modal.component";
 
 @Component({
     selector: 'createOrEditContractModal',
@@ -19,7 +20,9 @@ export class CreateOrEditContractModalComponent extends AppComponentBase {
     @ViewChild('dateInput') dateInput: ElementRef;
     @ViewChild('dataTable') dataTable: Table;
     @ViewChild('paginator') paginator: Paginator;
+
     @ViewChild('addContractDetailModal') addContractDetailModal: AddContractDetailModalComponent;
+    @ViewChild('selectBidModal') selectBidModal: SelectBidModalComponent;
 
     /**
     * @Output dùng để public event cho component khác xử lý
@@ -27,9 +30,20 @@ export class CreateOrEditContractModalComponent extends AppComponentBase {
    @Output() modalSave: EventEmitter<any> = new EventEmitter<any>();
 
    saving = false;
-   id = 0;
+   contractId?: number | null | undefined;
+   bidName: string;
+   bidderId: number;
+   bidderCode: string;
+   bidderName: string;
+   bidderPhone: string;
+   bidderAddress: string;
+   bidderContact: string;
 
-   listContractDetail = []
+   totalPrice = 0;
+   
+   listContractDetail = [];
+   listMerchandiseID: number[] = [];
+   prices: number[] = [];
 
     contract: ContractInput = new ContractInput();
     products: ProductInput[] = [];
@@ -37,13 +51,16 @@ export class CreateOrEditContractModalComponent extends AppComponentBase {
     constructor(
         injector: Injector,
         private _contractService: ContractServiceProxy,
-        private _contractDetailService: ContractDetailServiceProxy
+        private _contractDetailService: ContractDetailServiceProxy,
+        private _bidService: BidServiceProxy,
+        private _vendorService: VendorServiceProxy
     ) {
         super(injector);
     }
 
     show(contractId?: number | null | undefined): void {
         this.saving = false;
+        this.contractId = contractId;
 
         this._contractService.getContractForEdit(contractId).subscribe(result => {
             this.contract = result;
@@ -54,13 +71,25 @@ export class CreateOrEditContractModalComponent extends AppComponentBase {
             date.add(tz, 'm');
             this.contract.deliveryTime = date.format('YYYY-MM-DD');
 
+            var moment2 = require('moment');
+            var contractWarrantyExpireDate = moment2(result.contractWarrantyExpireDate);
+            var tz = contractWarrantyExpireDate.utcOffset();
+            contractWarrantyExpireDate.add(tz, 'm');
+            this.contract.contractWarrantyExpireDate = contractWarrantyExpireDate.format('YYYY-MM-DD');
+
+            var moment3 = require('moment');
+            var warrantyGuaranteeExpireDate = moment3(result.warrantyGuaranteeExpireDate);
+            var tz = warrantyGuaranteeExpireDate.utcOffset();
+            warrantyGuaranteeExpireDate.add(tz, 'm');
+            this.contract.warrantyGuaranteeExpireDate = warrantyGuaranteeExpireDate.format('YYYY-MM-DD');
+
             this.modal.show();
         })
 
-        this.reloadListContractDetail(0, null);
+        this.reloadListContractDetail(contractId, null);
     }
 
-    getListMerchandises(event?: LazyLoadEvent) {
+    getListMerchandises() {
         if (!this.paginator || !this.dataTable) {
             return;
         }
@@ -73,7 +102,7 @@ export class CreateOrEditContractModalComponent extends AppComponentBase {
     }
 
     passToProducts() {
-       // this.products.length = 0;
+        this.products.length = 0;
 
         this.addContractDetailModal.listMerID.forEach(element => {
             let input: ProductInput = new ProductInput();
@@ -86,10 +115,12 @@ export class CreateOrEditContractModalComponent extends AppComponentBase {
             input.note = "";
 
             this.products.push(input);
+            this.listMerchandiseID.push(element.id);
         });
 
         this.contract.products = this.products;
-        console.log(this.contract.products);
+        //console.log(this.addContractDetailModal.listMerID)
+        //console.log(this.contract.products);
     }
 
     loadListMerchandise() {
@@ -105,7 +136,7 @@ export class CreateOrEditContractModalComponent extends AppComponentBase {
 
         this.primengTableHelper.showLoadingIndicator();
 
-        this.reloadListContractDetail(0, event);
+        this.reloadListContractDetail(this.contractId, event);
     }   
 
     reloadListContractDetail(contractDetailID, event: LazyLoadEvent) {
@@ -115,6 +146,11 @@ export class CreateOrEditContractModalComponent extends AppComponentBase {
             this.primengTableHelper.getSkipCount(this.paginator, event),
         ).subscribe(result => {
             this.primengTableHelper.totalRecordsCount = result.totalCount;
+            this.prices.length = result.totalCount;
+            result.items.forEach(item => {
+                this.prices[result.items.indexOf(item)] = item.price;
+            });
+            console.log(this.prices);
             this.primengTableHelper.records = result.items;
             this.primengTableHelper.hideLoadingIndicator();
         })
@@ -122,19 +158,25 @@ export class CreateOrEditContractModalComponent extends AppComponentBase {
 
     addContractDetail() {
         this.addContractDetailModal.show();
-        // for (const item of this.listContractDetail) {
-        //     this._contractDetailService.deleteContractDetail(item.id).subscribe(result => {
-        //         //this.notify.info(this.l('SaveSuccessfully'));
-        //     })
-        // }
     }
 
     save(): void {
         let input = this.contract;
         var moment = require('moment');
         input.deliveryTime = moment(input.deliveryTime);
+        input.contractWarrantyExpireDate = moment(input.contractWarrantyExpireDate);
+        input.warrantyGuaranteeExpireDate = moment(input.warrantyGuaranteeExpireDate);
+
         this.saving = true;
+
+        this.addContractDetailModal.listMerchandises.forEach(item => {
+            item.isAddContract = false;
+        })
+        
+        this.addContractDetailModal.isSelectAll = false;
+
         this._contractService.createOrEditContract(input).subscribe(result => {
+            console.log(this.prices);
             this.notify.info(this.l('SavedSuccessfully'));
             this.close();
         })
@@ -142,6 +184,44 @@ export class CreateOrEditContractModalComponent extends AppComponentBase {
     
     reloadPage(): void {
         this.paginator.changePage(this.paginator.getPage());
+    }
+
+    reloadBid(bidId: number): void {
+        if (bidId != 0){
+            this.contract.briefcaseID = bidId;
+             
+            this._bidService.getBidForView(bidId).subscribe(result => {
+                this.bidName = result.name;
+                this.bidderId = result.bidderID;
+
+                this._vendorService.getVendorForView(result.bidderID).subscribe(vendor => {
+                    this.bidderCode = vendor.code;
+                    this.bidderName = vendor.name;
+                    this.bidderPhone = vendor.phoneNumber;
+                    this.bidderAddress = vendor.address;
+                    this.bidderContact = vendor.contact;
+                });
+            });     
+        }
+        else
+        {
+            this.bidName = "";
+            this.bidderCode = "";
+            this.bidderName = "";
+            this.bidderPhone = "";
+            this.bidderAddress = "";
+            this.bidderContact = "";
+        }
+    }
+
+    deleteContract(id: number) {
+        this.addContractDetailModal.listMerID = this.addContractDetailModal.listMerID.filter(x => x.id != id);
+        this.addContractDetailModal.listMerchandises.forEach(item => {
+            if (item.id == id) {
+                item.isAddContract = false;
+            }
+        })
+        this.getListMerchandises();
     }
 
     close(): void {
