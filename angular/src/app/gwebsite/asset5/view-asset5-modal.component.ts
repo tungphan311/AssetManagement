@@ -22,7 +22,7 @@ export class ViewAsset5ModalComponent extends AppComponentBase {
     }
 
     show(asset5Id?: number | null | undefined): void {
-        this._asset5Service.getAsset5ForView(asset5Id).subscribe(result => {
+        this._asset5Service.getCustomerForView(asset5Id).subscribe(result => {
             this.asset5 = result;
             this.modal.show();
         })
