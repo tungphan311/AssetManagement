@@ -24,7 +24,8 @@ namespace GSoft.AbpZeroTemplate.Web.Startup
                 .UseKestrel(opt => opt.AddServerHeader = false)
                 .UseContentRoot(Directory.GetCurrentDirectory())
                 .UseIISIntegration()
-                .UseStartup<Startup>();
+                .UseStartup<Startup>()
+				.UseUrls("http://localhost:22742/");
         }
     }
 }
