@@ -150,7 +150,7 @@
                                             <input type="checkbox" checked onclick="return false;">
                                         </span>
                                         <span title="{{record.isAssigned}}" *ngIf="!getAssignState(vendor.code,record.code)">
-                                            <input type="checkbox" onclick="addToAssignmentTable(vendor.code,record.code);">
+                                            <input type="checkbox" (change)="addToAssignmentTable(vendor.code,record.code);">
                                         </span>
                                     </td>
                                     <td>
