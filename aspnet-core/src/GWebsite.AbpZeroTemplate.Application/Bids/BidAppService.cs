@@ -89,7 +89,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Bids
             // filter by Category
             if (filter.Category != null)
             {
-                query = query.Where(x => x.Category.ToLower().Equals(filter.Category.ToLower()));
+                query = query.Where(x => x.Category.ToLower().Contains(filter.Category.ToLower()));
             }
 
             // filter by Date 

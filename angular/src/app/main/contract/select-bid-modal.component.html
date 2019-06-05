@@ -109,11 +109,11 @@
                                             </td>  
                                             <td>
                                                 <span class="ui-column-title">Hình thức thầu</span>
-                                                <span title="{{record.biddingForm}}">{{truncateString(dateFormat(record.biddingForm))}}</span>
+                                                <span title="{{record.biddingForm}}">{{truncateString(record.biddingForm)}}</span>
                                             </td>  
                                             <td>
                                                 <span class="ui-column-title">Mã ĐV trúng thầu</span>
-                                                <span title="{{record.bidderID}}">{{truncateString(dateFormat(record.bidderID))}}</span>
+                                                <span title="{{record.bidderID}}">{{truncateString(record.bidderID)}}</span>
                                             </td>  
                                             <td> 
                                                 <button (click)="save(record.id)" class="btn btn-primary"><i class="fa fa-plus"></i>Xác nhận</button>
