@@ -59,7 +59,7 @@ export class SelectVendorModalComponent extends AppComponentBase {
     }
 
     reloadList(vendorId, vendorName, event?: LazyLoadEvent) {
-        this._vendorService.getVendorsByFilter(vendorId,vendorName,0,"False", this.primengTableHelper.getSorting(this.dataTable),
+        this._vendorService.getVendorsByFilter(vendorId,vendorName,0,"True", this.primengTableHelper.getSorting(this.dataTable),
             this.primengTableHelper.getMaxResultCount(this.paginator, event),
             this.primengTableHelper.getSkipCount(this.paginator, event),
         ).subscribe(result => {

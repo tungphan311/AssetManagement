@@ -41,6 +41,7 @@ import { SelectProjectModalComponent } from './bid/select-project-modal.componen
 import { AddBidderModal } from './bid/add-bidder-modal-component';
 import { SelectVendorModalComponent } from './bid/select-vendor-modal.component';
 import { SelectBidModalComponent } from './contract/select-bid-modal.component';
+import { FileUploadComponent } from './contract/file-upload.component';
 
 
 @NgModule({
@@ -75,7 +76,7 @@ import { SelectBidModalComponent } from './contract/select-bid-modal.component';
         MerchandiseTypeComponent, CreateOrEditMerchandiseTypeModalComponent, ViewMerchandiseTypeModalComponent,
         VendorComponent, CreateOrEditVendorModalComponent, ViewVendorModalComponent,
         ContractComponent, CreateOrEditContractModalComponent, ViewContractModalComponent,
-        AddContractDetailModalComponent, SelectBidModalComponent,
+        AddContractDetailModalComponent, SelectBidModalComponent, FileUploadComponent,
         VendorTypeComponent, CreateOrEditVendorTypeModalComponent, ViewVendorTypeModalComponent,
         ProjectComponent, CreateOrEditProjectModalComponent, ViewProjectModalComponent,
         AssignmentTableComponent, CreateOrEditAssignmentTableModalComponent, ViewAssignmentTableModalComponent,

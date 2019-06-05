@@ -83,7 +83,7 @@ export class BidComponent extends AppComponentBase implements AfterViewInit, OnI
             this.primengTableHelper.getMaxResultCount(this.paginator, event),
             this.primengTableHelper.getSkipCount(this.paginator, event),
         ).subscribe(result => {
-            if(bidVendorCode!=null)
+            if(bidVendorCode!=null&&bidVendorCode!='')
             {
                 //lọc theo mã đơn vị trúng thầu
                 this._vendorService.getVendorsByFilter(bidVendorCode,null,0,null,null,999,0).subscribe(vendorResult=>{

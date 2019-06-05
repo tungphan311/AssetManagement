@@ -40,6 +40,8 @@ export class CreateOrEditContractModalComponent extends AppComponentBase {
    bidderContact: string;
 
    totalPrice = 0;
+
+   fileToUpLoad: File = null;
    
    listContractDetail = [];
    listMerchandiseID: number[] = [];
