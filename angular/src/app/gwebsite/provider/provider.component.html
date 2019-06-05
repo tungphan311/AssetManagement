@@ -4,15 +4,15 @@
         <div class="d-flex align-items-center">
             <div class="mr-auto col-xs-6">
                 <h3 class="m-subheader__title m-subheader__title--separator">
-                    <span>{{l("Provider")}}</span>
+                    <span>{{l("Nhà Cung Cấp")}}</span>
                 </h3>
                 <span class="m-section__sub">
-                    {{l("ProviderInfo")}}
+                    {{l("Danh Sách Nhà Cung Cấp")}}
                 </span>
             </div>
             <div class="col-xs-6 text-right">
                 <button (click)="createProvider()" *ngIf="isGranted('Pages.Administration.Provider.Create')"
-                    class="btn btn-primary"><i class="fa fa-plus"></i> {{l("CreateNewProvider")}}</button>
+                    class="btn btn-primary"><i class="fa fa-plus"></i> {{l("Thêm Nhà Cung Cấp")}}</button>
             </div>
         </div>
     </div>
@@ -29,7 +29,7 @@
                             <div class="col-sm-12">
                                 <div class="input-group">
                                     <input [(ngModel)]="providerName" name="providerName" autoFocus class="form-control"
-                                        placeholder="Nhập tên sản phẩm" type="text">
+                                        placeholder="Nhập Tên Nhà Cung Cấp" type="text">
                                     <span class="input-group-btn">
                                         <button (click)="applyFilters()" class="btn btn-primary" type="submit"><i
                                                 class="icon-refresh"></i>
@@ -41,7 +41,7 @@
                     </div>
                 </form>
 
-               
+
 
                 <div class="row align-items-center">
                     <!--<Primeng-TurboTable-Start>-->
@@ -51,66 +51,66 @@
                             [responsive]="primengTableHelper.isResponsive">
                             <ng-template pTemplate="header">
                                 <tr>
-                                    <th pSortableColumn="name">
-                                        ID
-                                        <p-sortIcon field="name"></p-sortIcon>
-                                    </th>                                                      
-                                    <th pSortableColumn="description">
-                                        Name
-                                        <p-sortIcon field="description"></p-sortIcon>
+                                    <th pSortableColumn="Id">
+                                        STT
+                                        <p-sortIcon field="Id"></p-sortIcon>
                                     </th>
-                                    <th pSortableColumn="image">
-                                       Email
-                                        
-                                    </th> 
-                                    <th pSortableColumn="providerCategoryId">
-                                        Phone Number
-                                    </th> 
-                                    <th pSortableColumn="providerDetail">
-                                       Address
-                                    </th> 
-                                    <th pSortableColumn="providerDetail">
-                                        Info
-                                     </th> 
-                                    
+                                    <th pSortableColumn="providerCode">
+                                        Mã
+                                        <p-sortIcon field="providerCode"></p-sortIcon>
+                                    </th>
+                                    <th pSortableColumn="name">
+                                        Tên
+                                        <p-sortIcon field="name"></p-sortIcon>
+                                    </th>
+                                    <th pSortableColumn="email">
+                                        Email
+                                        <p-sortIcon field="email"></p-sortIcon>
+                                    </th>
+                                    <th pSortableColumn="phoneNumber">
+                                        Điện Thoại
+                                        <p-sortIcon field="phoneNumber"></p-sortIcon>
+                                    </th>
+                                    <th pSortableColumn="address">
+                                        Địa Chỉ
+                                        <p-sortIcon field="address"></p-sortIcon>   
+                                    </th>
+                                    <th pSortableColumn="more">
+                                        Action
+                                    </th>
+
                                 </tr>
                             </ng-template>
                             <ng-template pTemplate="body" let-record="$implicit">
                                 <tr>
                                     <td>
-                                        <span class="ui-column-title">Tên sản phẩm</span>
+                                        <span class="ui-column-title">STT </span>
+                                        <span title="{{record.id}}">{{truncateString(record.id)}}</span>
+                                    </td>
+                                    <td>
+                                        <span class="ui-column-title">Mã</span>
+                                        <span title="{{record.providerCode}}">{{truncateString(record.providerCode)}}</span>
+                                    </td>
+                                    <td>
+                                        <span class="ui-column-title">Tên</span>
                                         <span title="{{record.name}}">{{truncateString(record.name)}}</span>
                                     </td>
                                     <td>
-                                        <span class="ui-column-title">Giá dự kiến </span>
-                                        <span title="{{record.expectedPrice}}">{{truncateString(record.expectedPrice)}}</span>
-                                    </td>
-                                    <td>
-                                        <span class="ui-column-title">Giá hiện tại</span>
-                                        <span title="{{record.currentPrice}}">{{truncateString(record.currentPrice)}}</span>
-                                    </td>
-                                    <td>
-                                        <span class="ui-column-title">Miêu tả</span>
-                                        <span title="{{record.description}}">{{truncateString(record.description)}}</span>
-                                    </td>
-                                    <td>
-                                        <span class="ui-column-title">Hình ảnh</span>      
-                                        <a href="{{record.image}}" target="_blank" ><img src="{{record.image}}" width="100" height="100"/></a>
+                                        <span class="ui-column-title">Email</span>
+                                        <span title="{{record.email}}">{{truncateString(record.email)}}</span>
 
                                     </td>
                                     <td>
-                                        <span class="ui-column-title">Id danh mục</span>      
-                                        <span title="{{record.providerCategoryId}}">{{truncateString(record.providerCategoryId)}}</span>
-
+                                        <span class="ui-column-title">Điện Thoại</span>
+                                        <span
+                                            title="{{record.phoneNumber}}">{{truncateString(record.phoneNumber)}}</span>
                                     </td>
+
                                     <td>
-                                        <span class="ui-column-title">Chi tiết</span>      
-                                        <span title="{{record.providerDetail}}">{{truncateString(record.providerDetail)}}</span>
+                                        <span class="ui-column-title">Địa Chỉ</span>
+                                        <span title="{{record.address}}">{{truncateString(record.address)}}</span>
 
                                     </td>
-
-
-
                                     <td>
                                         <button
                                             class="btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill"

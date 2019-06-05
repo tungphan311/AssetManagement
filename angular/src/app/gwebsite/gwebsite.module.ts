@@ -34,10 +34,10 @@ import { BidComponent } from './bid/bid.component';
 import { ViewBidModalComponent } from './bid/view-bid-modal.component';
 import { CreateOrEditBidModalComponent } from './bid/create-or-edit-bid-modal.component';
 
-//import { ProviderServiceProxy } from '@shared/service-proxies/service-proxies';
-//import { ProviderComponent } from './provider/provider.component';
-//import { ViewProviderModalComponent } from './provider/view-provider-modal.component';
-//import { CreateOrEditProviderModalComponent } from './provider/create-or-edit-provider-modal.component';
+import { ProviderServiceProxy } from '@shared/service-proxies/service-proxies';
+import { ProviderComponent } from './provider/provider.component';
+import { ViewProviderModalComponent } from './provider/view-provider-modal.component';
+import { CreateOrEditProviderModalComponent } from './provider/create-or-edit-provider-modal.component';
 
 import { ContractServiceProxy } from '@shared/service-proxies/service-proxies';
 import { ContractComponent } from './contract/contract.component';
@@ -79,10 +79,15 @@ import {CreateOrEditContractPaymentDetailModalComponent} from './contract-paymen
         ProductComponent, CreateOrEditProductModalComponent, ViewProductModalComponent, ProductForSelectComponent,
         ProjectComponent, CreateOrEditProjectModalComponent, ViewProjectModalComponent,
         BidComponent, CreateOrEditBidModalComponent, ViewBidModalComponent,
+<<<<<<< HEAD
 		//ProviderComponent, CreateOrEditProviderModalComponent, ViewProviderModalComponent,
         ContractComponent, CreateOrEditContractModalComponent, ViewContractModalComponent,
         ProductContractComponent, CreateOrEditProductContractModalComponent,ProductContractItemComponent,
         ContractPaymentDetailComponent,ContractPaymentDetailItem,CreateOrEditContractPaymentDetailModalComponent
+=======
+		ProviderComponent, CreateOrEditProviderModalComponent, ViewProviderModalComponent,
+		ContractComponent, CreateOrEditContractModalComponent, ViewContractModalComponent
+>>>>>>> 1d766b265903486f7ef8e580b4853d9d46357b61
     ],
     providers: [
         DemoModelServiceProxy,
@@ -90,10 +95,15 @@ import {CreateOrEditContractPaymentDetailModalComponent} from './contract-paymen
         ProductServiceProxy,
         ProjectServiceProxy,
         BidServiceProxy,
+<<<<<<< HEAD
 		//ProviderServiceProxy
         ContractServiceProxy,
         ProductContractServiceProxy,
         ContractPaymentDetailServiceProxy
+=======
+		ProviderServiceProxy,
+		ContractServiceProxy
+>>>>>>> 1d766b265903486f7ef8e580b4853d9d46357b61
     ]
 })
 export class GWebsiteModule { }
