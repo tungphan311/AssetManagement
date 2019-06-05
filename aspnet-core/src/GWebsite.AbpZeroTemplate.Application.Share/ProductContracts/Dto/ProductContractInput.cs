@@ -1,4 +1,5 @@
 ﻿using Abp.Domain.Entities;
+using GWebsite.AbpZeroTemplate.Application.Share.Products.Dto;
 using GWebsite.AbpZeroTemplate.Core.Models.Enums;
 using System;
 using System.Collections.Generic;
@@ -14,15 +15,15 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.ProductContracts.Dto
     public class ProductContractInput : Entity<int>
     {
         public int Amount { get; set; }
-        public int Price { get; set; }
+        public decimal? Price { get; set; }
+
         public string Description { get; set; }
 
 
         //FK
         public int ProductId { get; set; }
         public int ContractId { get; set; }
-
-
+        public virtual ProductInput Product { get; set; }
 
     }
 }

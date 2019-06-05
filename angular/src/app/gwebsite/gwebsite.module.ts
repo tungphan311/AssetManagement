@@ -1,4 +1,4 @@
-import { CustomerServiceProxy } from './../../shared/service-proxies/service-proxies';
+import { CustomerServiceProxy, ContractPaymentDetailServiceProxy } from './../../shared/service-proxies/service-proxies';
 import { ViewDemoModelModalComponent } from './demo-model/view-demo-model-modal.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -44,6 +44,15 @@ import { ContractComponent } from './contract/contract.component';
 import { ViewContractModalComponent } from './contract/view-contract-modal.component';
 import { CreateOrEditContractModalComponent } from './contract/create-or-edit-contract-modal.component';
 
+import { ProductContractServiceProxy } from '@shared/service-proxies/service-proxies';
+import { ProductContractComponent } from './product-contract/product-contract.component';
+import { CreateOrEditProductContractModalComponent } from './product-contract/create-or-edit-product-contract-modal.component';
+import {ProductContractItemComponent} from './product-contract/product-contract-item.component'
+import {ProductForSelectComponent} from './product/product-for-select.component'
+
+import {ContractPaymentDetailComponent} from './contract-payment-detail/contract-payment-detail.component'
+import {ContractPaymentDetailItem} from './contract-payment-detail/contract-payment-detail-item.component'
+import {CreateOrEditContractPaymentDetailModalComponent} from './contract-payment-detail/create-or-edit-contract-payment-detail-modal.component'
 @NgModule({
     imports: [
         FormsModule,
@@ -67,11 +76,13 @@ import { CreateOrEditContractModalComponent } from './contract/create-or-edit-co
         MenuClientComponent, CreateOrEditMenuClientModalComponent,
         DemoModelComponent, CreateOrEditDemoModelModalComponent, ViewDemoModelModalComponent,
         CustomerComponent, CreateOrEditCustomerModalComponent, ViewCustomerModalComponent,
-        ProductComponent, CreateOrEditProductModalComponent, ViewProductModalComponent,
+        ProductComponent, CreateOrEditProductModalComponent, ViewProductModalComponent, ProductForSelectComponent,
         ProjectComponent, CreateOrEditProjectModalComponent, ViewProjectModalComponent,
         BidComponent, CreateOrEditBidModalComponent, ViewBidModalComponent,
 		//ProviderComponent, CreateOrEditProviderModalComponent, ViewProviderModalComponent,
-		ContractComponent, CreateOrEditContractModalComponent, ViewContractModalComponent
+        ContractComponent, CreateOrEditContractModalComponent, ViewContractModalComponent,
+        ProductContractComponent, CreateOrEditProductContractModalComponent,ProductContractItemComponent,
+        ContractPaymentDetailComponent,ContractPaymentDetailItem,CreateOrEditContractPaymentDetailModalComponent
     ],
     providers: [
         DemoModelServiceProxy,
@@ -80,7 +91,9 @@ import { CreateOrEditContractModalComponent } from './contract/create-or-edit-co
         ProjectServiceProxy,
         BidServiceProxy,
 		//ProviderServiceProxy
-		ContractServiceProxy
+        ContractServiceProxy,
+        ProductContractServiceProxy,
+        ContractPaymentDetailServiceProxy
     ]
 })
 export class GWebsiteModule { }

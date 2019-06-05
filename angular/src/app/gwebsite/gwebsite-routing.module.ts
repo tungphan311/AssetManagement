@@ -8,7 +8,9 @@ import { ProjectComponent } from './project/project.component';
 import { BidComponent } from './bid/bid.component';
 //import { ProviderComponentComponent } from './provider/provider.component';
 import { ContractComponent, } from './contract/contract.component';
-import {CreateOrEditContractModalComponent} from './contract/create-or-edit-contract-modal.component'
+import {CreateOrEditContractModalComponent} from './contract/create-or-edit-contract-modal.component';
+import{ProductContractComponent} from './product-contract/product-contract.component';
+import {CreateOrEditProductContractModalComponent} from './product-contract/create-or-edit-product-contract-modal.component'
 @NgModule({
     imports: [
         RouterModule.forChild([
@@ -79,6 +81,15 @@ import {CreateOrEditContractModalComponent} from './contract/create-or-edit-cont
                             }
                         ]
                     },
+                ]
+            },
+            {
+                path:'',
+                children:[
+                    {
+                        path:'product-contract',component:ProductContractComponent,
+                        data:{permission:'Pages.Administration.ProductContract'}
+                    }
                 ]
             },
 			 // {

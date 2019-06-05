@@ -1,0 +1,44 @@
+<div [@routerTransition]>
+
+    <div class="m-subheader ">
+        <div class="d-flex align-items-center">
+            <div class="mr-auto col-xs-6">
+                <h3 class="m-subheader__title m-subheader__title--separator">
+                    <span>Chi tiết sản phẩm</span>
+                </h3>
+                <span class="m-section__sub">
+                    Thông tin chi tiết 
+                </span>
+            </div>
+            <div class="col-xs-6 text-right">
+                <button (click)="createProductForSelect()"
+                    type="button"
+                    *ngIf="isGranted('Pages.Administration.ProductContract.Create')" class="btn btn-primary"><i
+                        class="fa fa-plus"></i> {{l("Tìm kiếm sản phẩm")}}</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="m-content">
+        <div class="m-portlet m-portlet--mobile">
+            <div class="m-portlet__body">
+
+                <product-contract-item-component
+                *ngFor='let item of contractInput.productContracts'
+                [pcItem]="item"
+                (deleteElement)="onDeleteItem($event)"
+                (changeTotalPrice)="onChangeTotalProductPrice($event)"
+                ></product-contract-item-component>
+               
+                <div>
+                    <br>
+                    <h5>Tổng giá trị hàng: {{contractInput.totalProductPrice | currency:'VND'}} </h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<product-for-select-component #productforselectmodal (modalSave)="reloadPage()"   
+    (productsValueChange)="display($event)"
+></product-for-select-component>
+

@@ -3,11 +3,16 @@ using Abp.Authorization;
 using Abp.Domain.Repositories;
 using Abp.Linq.Extensions;
 using GWebsite.AbpZeroTemplate.Application;
+using GWebsite.AbpZeroTemplate.Application.Share.ContractPaymentDetails.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.Contracts;
 using GWebsite.AbpZeroTemplate.Application.Share.Contracts.Dto;
+using GWebsite.AbpZeroTemplate.Application.Share.ProductContracts.Dto;
+using GWebsite.AbpZeroTemplate.Application.Share.Products.Dto;
 using GWebsite.AbpZeroTemplate.Core.Authorization;
 using GWebsite.AbpZeroTemplate.Core.Models;
+using GWebsite.AbpZeroTemplate.Web.Core.ProductContracts;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Dynamic.Core;
 
@@ -16,10 +21,15 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Contracts
     public class ContractAppService : GWebsiteAppServiceBase, IContractAppService
     {
         private readonly IRepository<Contract> contractRepository;
-
-        public ContractAppService(IRepository<Contract> contractRepository)
+        private readonly IRepository<ContractPaymentDetail> paymentRepository;
+        private readonly IRepository<ProductContract> productContractRepository;
+        private readonly IRepository<Product> productRepository;
+        public ContractAppService(IRepository<Contract> contractRepository, IRepository<ProductContract> productContractRepository, IRepository<Product> productRepository, IRepository<ContractPaymentDetail> paymentRepository)
         {
             this.contractRepository = contractRepository;
+            this.paymentRepository = paymentRepository;
+            this.productContractRepository = productContractRepository;
+            this.productRepository = productRepository;
         }
 
         #region Public Method
@@ -63,7 +73,27 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Contracts
             {
                 return null;
             }
-            return ObjectMapper.Map<ContractInput>(ContractEntity);
+
+
+            var contractInput = ObjectMapper.Map<ContractInput>(ContractEntity);
+
+            var productContracts = ObjectMapper.Map<List<ProductContractInput>>(productContractRepository.GetAll().Where(x => x.ContractId == ContractEntity.Id && x.IsDelete == false).ToList());
+            if (productContracts.Count() > 0)
+            {
+                for (int i = 0; i < productContracts.Count(); i++)
+                {
+                    var prod = ObjectMapper.Map<ProductInput>(productRepository.FirstOrDefault(x => x.Id == productContracts.ElementAt(i).ProductId && x.IsDelete == false));
+                    if (prod == null) prod = new ProductInput();
+                    productContracts.ElementAt(i).Product = prod;
+                }
+            }
+            contractInput.ProductContracts = (productContracts);
+
+
+            var payments = ObjectMapper.Map<List<ContractPaymentDetailInput>>(paymentRepository.GetAll().Where(x => x.ContractId == ContractEntity.Id && x.IsDelete == false).ToList());
+            contractInput.ContractPaymentDetails = (payments);
+
+            return (contractInput);
         }
 
         public ContractForViewDto GetContractForView(int id)
@@ -113,15 +143,55 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Contracts
         #region Private Method
 
         [AbpAuthorize(GWebsitePermissions.Pages_Administration_Contract_Create)]
-        private void Create(ContractInput ContractInput)
+        private void Create(ContractInput contractInput)
         {
-            System.Console.WriteLine("ContractInput: " + ContractInput.Code.ToString());
+            System.Console.WriteLine("ContractInput: " + contractInput.ToString());
             try
             {
-                var ContractEntity = ObjectMapper.Map<Contract>(ContractInput);
+                var ContractEntity = ObjectMapper.Map<Contract>(contractInput);
                 if (ContractEntity == null) System.Console.WriteLine("null: ");
                 SetAuditInsert(ContractEntity);
-                contractRepository.Insert(ContractEntity);
+                ContractEntity.ProductContracts = null;
+                var contractId = contractRepository.InsertAndGetId(ContractEntity);
+
+                if (contractInput.ProductContracts != null && contractInput.ProductContracts.Count() > 0)
+                {
+                    ContractEntity.ProductContracts = new List<ProductContract>();
+                    foreach (var item in contractInput.ProductContracts)
+                    {
+                        //item.Id = 0;
+                        //item.ContractId = contractId;
+                        //item.Product = null;
+                        var pcItem = new ProductContract();
+                        pcItem.ContractId = contractId;
+                        pcItem.ProductId = item.ProductId;
+                        pcItem.Amount = item.Amount;
+                        pcItem.Price = item.Price;
+                        pcItem.Description = item.Description;
+                        pcItem.Product = null;
+
+                        ContractEntity.ProductContracts.Add(pcItem);
+                    }
+
+                }
+
+                if (contractInput.ContractPaymentDetails != null && contractInput.ContractPaymentDetails.Count() > 0)
+                {
+                    foreach (var item in contractInput.ContractPaymentDetails)
+                    {
+                        var paymentItem = new ContractPaymentDetail();
+                        paymentItem.ContractId = contractId;
+                        paymentItem.InstallmentNumber = item.InstallmentNumber;
+                        paymentItem.ExpectedDate = item.ExpectedDate;
+                        paymentItem.Price = item.Price;
+                        paymentItem.Description = item.Description;
+                        paymentItem.Note = item.Note;
+                        paymentItem.Contract = null;
+
+                        paymentRepository.Insert(paymentItem);
+                    }
+                }
+                contractRepository.Update(ContractEntity);
                 CurrentUnitOfWork.SaveChanges();
             }
             catch (Exception ex)
@@ -132,14 +202,59 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Contracts
         }
 
         [AbpAuthorize(GWebsitePermissions.Pages_Administration_Contract_Edit)]
-        private void Update(ContractInput ContractInput)
+        private void Update(ContractInput contractInput)
         {
-            var ContractEntity = contractRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.Id == ContractInput.Id);
+            var ContractEntity = contractRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.Id == contractInput.Id);
             if (ContractEntity == null)
             {
             }
-            ObjectMapper.Map(ContractInput, ContractEntity);
+            ObjectMapper.Map(contractInput, ContractEntity);
             SetAuditEdit(ContractEntity);
+            ContractEntity.ProductContracts = new List<ProductContract>();
+            //
+            var contractId = ContractEntity.Id;
+
+            productContractRepository.Delete(x => x.ContractId == contractId);
+
+            if (contractInput.ProductContracts != null && contractInput.ProductContracts.Count() > 0)
+            {
+
+                foreach (var item in contractInput.ProductContracts)
+                {
+                    //item.Id = 0;
+                    //item.ContractId = contractId;
+                    //item.Product = null;
+                    var pcItem = new ProductContract();
+                    pcItem.ContractId = contractId;
+                    pcItem.ProductId = item.ProductId;
+                    pcItem.Amount = item.Amount;
+                    pcItem.Price = item.Price;
+                    pcItem.Description = item.Description;
+                    pcItem.Product = null;
+
+                    productContractRepository.Insert(pcItem);
+                }
+
+            }
+
+            paymentRepository.Delete(x => x.ContractId == contractId);
+            if (contractInput.ContractPaymentDetails != null && contractInput.ContractPaymentDetails.Count() > 0)
+            {
+                foreach (var item in contractInput.ContractPaymentDetails)
+                {
+                    var paymentItem = new ContractPaymentDetail();
+                    paymentItem.ContractId = contractId;
+                    paymentItem.InstallmentNumber = item.InstallmentNumber;
+                    paymentItem.ExpectedDate = item.ExpectedDate;
+                    paymentItem.Price = item.Price;
+                    paymentItem.Description = item.Description;
+                    paymentItem.Note = item.Note;
+                    paymentItem.Contract = null;
+
+                    paymentRepository.Insert(paymentItem);
+                }
+            }
+
             contractRepository.Update(ContractEntity);
             CurrentUnitOfWork.SaveChanges();
         }

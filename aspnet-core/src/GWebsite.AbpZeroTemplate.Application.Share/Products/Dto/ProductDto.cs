@@ -12,12 +12,24 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.Products.Dto
     /// </summary>
     public class ProductDto : Entity<int>
     {
+
         public string ProductCode { get; set; }
+
         public string Name { get; set; }
+
         public string ProductName { get; set; }
+
         public decimal ExpectedPrice { get; set; }
+
         public decimal CurrentPrice { get; set; }
-        public string Description { get; set; }
+
+        public decimal VAT { get; set; }
         public string Image { get; set; }
+
+        public string Url { get; set; }
+
+        public string Description { get; set; }
+        public string Content { get; set; }
+        public bool IsActive { get; set; }
     }
 }

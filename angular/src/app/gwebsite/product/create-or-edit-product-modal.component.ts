@@ -39,8 +39,7 @@ export class CreateOrEditProductModalComponent extends AppComponentBase {
 
         this._productService.getProductForEdit(productId).subscribe(result => {
             this.product = result;
-            this.modal.show();
-
+            this.modal.show();            
         })
     }
 

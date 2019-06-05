@@ -1,0 +1,44 @@
+<div [@routerTransition]>
+
+    <div class="m-subheader ">
+        <div class="d-flex align-items-center">
+            <div class="mr-auto col-xs-6">
+                <h3 class="m-subheader__title m-subheader__title--separator">
+                    <span>Chi tiết Thanh toán</span>
+                </h3>
+                <span class="m-section__sub">
+                    Thông tin chi tiết 
+                </span>
+            </div>
+            <div class="col-xs-6 text-right">
+                <button (click)="createContractPaymentDetail()"
+                    type="button"
+                    *ngIf="isGranted('Pages.Administration.ProductContract.Create')" class="btn btn-primary"><i
+                        class="fa fa-plus"></i> {{l("Thêm đợt thanh toán")}}</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="m-content">
+        <div class="m-portlet m-portlet--mobile">
+            <div class="m-portlet__body">
+
+                <contractPaymentDetailItemComponent
+                *ngFor='let item of contractInput.contractPaymentDetails'
+                [cpdItem]="item"
+                (deleteElement)="onDeleteItem($event)"
+                (changeTotalPrice)="onChangeTotalPrice($event)"
+                ></contractPaymentDetailItemComponent>
+               
+                <div>
+                    <br>
+                    <h5>Tổng giá trị thanh toán: {{totalPriceInput | currency:'VND'}} </h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<createOrEditContractPaymentDetailModal #CRUpaymentModal    
+    (modalSave)="addPaymentToList($event)"    
+></createOrEditContractPaymentDetailModal>
+

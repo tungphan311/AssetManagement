@@ -12,7 +12,6 @@ import { Injectable, Inject, Optional, InjectionToken } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams, HttpResponse, HttpResponseBase, HttpErrorResponse } from '@angular/common/http';
 
 import * as moment from 'moment';
-import { stringify } from 'querystring';
 
 export const API_BASE_URL = new InjectionToken<string>('API_BASE_URL');
 
@@ -13217,8 +13216,8 @@ export class BidDto implements IBidDto {
     init(data?: any) {
         if (data) {
             this.code = data["code"];
-            this.fromDate = data["fromDate"] ? moment(data["fromDate"]) : <any>undefined;
-            this.toDate = data["toDate"] ? moment(data["toDate"]) : <any>undefined;
+            this.fromDate = data["fromDate"] ? moment(data["fromDate"].toString()) : <any>undefined;
+            this.toDate = data["toDate"] ? moment(data["toDate"].toString()) : <any>undefined;
             this.status = data["status"];
             this.biddingForm = data["biddingForm"];
             this.cautionMoney = data["cautionMoney"];
@@ -13239,10 +13238,10 @@ export class BidDto implements IBidDto {
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
         data["code"] = this.code;
-        data["fromDate"] = this.fromDate ? this.fromDate : <any>undefined;
-        data["toDate"] = this.toDate ? this.toDate : <any>undefined;
+        data["fromDate"] = this.fromDate ? this.fromDate.toISOString() : <any>undefined;
+        data["toDate"] = this.toDate ? this.toDate.toISOString() : <any>undefined;
         data["status"] = this.status;
-        data["biddingForm"] = this.biddingForm ;
+        data["biddingForm"] = this.biddingForm;
         data["cautionMoney"] = this.cautionMoney;
         data["attachmentFile"] = this.attachmentFile;
         data["projectId"] = this.projectId;
@@ -13340,8 +13339,8 @@ export class BidInput implements IBidInput {
     init(data?: any) {
         if (data) {
             this.code = data["code"];
-            this.fromDate = data["fromDate"] ? moment(data["fromDate"]) : <any>undefined;
-            this.toDate = data["toDate"] ? moment(data["toDate"]) : <any>undefined;
+            this.fromDate = data["fromDate"] ? moment(data["fromDate"].toString()) : <any>undefined;
+            this.toDate = data["toDate"] ? moment(data["toDate"].toString()) : <any>undefined;
             this.status = data["status"];
             this.biddingForm = data["biddingForm"];
             this.cautionMoney = data["cautionMoney"];
@@ -13361,8 +13360,8 @@ export class BidInput implements IBidInput {
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
         data["code"] = this.code;
-        data["fromDate"] = this.fromDate ? this.fromDate : <any>undefined;
-        data["toDate"] = this.toDate ? this.toDate : <any>undefined;
+        data["fromDate"] = this.fromDate ? this.fromDate.toISOString() : <any>undefined;
+        data["toDate"] = this.toDate ? this.toDate.toISOString() : <any>undefined;
         data["status"] = this.status;
         data["biddingForm"] = this.biddingForm;
         data["cautionMoney"] = this.cautionMoney;
@@ -13408,8 +13407,8 @@ export class BidForViewDto implements IBidForViewDto {
     init(data?: any) {
         if (data) {
             this.code = data["code"];
-            this.fromDate = data["fromDate"] ? moment(data["fromDate"]) : <any>undefined;
-            this.toDate = data["toDate"] ? moment(data["toDate"]) : <any>undefined;
+            this.fromDate = data["fromDate"] ? moment(data["fromDate"].toString()) : <any>undefined;
+            this.toDate = data["toDate"] ? moment(data["toDate"].toString()) : <any>undefined;
             this.status = data["status"];
             this.biddingForm = data["biddingForm"];
             this.cautionMoney = data["cautionMoney"];
@@ -13429,10 +13428,10 @@ export class BidForViewDto implements IBidForViewDto {
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
         data["code"] = this.code;
-        data["fromDate"] = this.fromDate ? this.fromDate : <any>undefined;
-        data["toDate"] = this.toDate ? this.toDate : <any>undefined;
+        data["fromDate"] = this.fromDate ? this.fromDate.toISOString() : <any>undefined;
+        data["toDate"] = this.toDate ? this.toDate.toISOString() : <any>undefined;
         data["status"] = this.status;
-        data["biddingForm"] = this.biddingForm ;
+        data["biddingForm"] = this.biddingForm;
         data["cautionMoney"] = this.cautionMoney;
         data["attachmentFile"] = this.attachmentFile;
         data["projectId"] = this.projectId;
@@ -14503,6 +14502,7 @@ export class ContractDto implements IContractDto {
     bid!: BidDto | undefined;
     providerId!: number | undefined;
     provider!: ProviderDto | undefined;
+    productContracts!: ProductContractDto[] | undefined;
     id!: number | undefined;
 
     constructor(data?: IContractDto) {
@@ -14524,15 +14524,15 @@ export class ContractDto implements IContractDto {
             this.contractGuaranteeForm = data["contractGuaranteeForm"];
             this.contractCertificateNumber = data["contractCertificateNumber"];
             this.contractCertificateEndDate = data["contractCertificateEndDate"] ? moment(data["contractCertificateEndDate"].toString()) : <any>undefined;
-            this.contractCertificatePrice = data["contractCertificatePrice"] ? moment(data["contractCertificatePrice"].toString()) : <any>undefined;
-            this.contractCertificatePricePercent = data["contractCertificatePricePercent"] ? moment(data["contractCertificatePricePercent"].toString()) : <any>undefined;
+            this.contractCertificatePrice = data["contractCertificatePrice"];
+            this.contractCertificatePricePercent = data["contractCertificatePricePercent"];
             this.contractGuaranteeBankName = data["contractGuaranteeBankName"];
             this.contractGuaranteeAttachmentFile = data["contractGuaranteeAttachmentFile"];
             this.warrantyGuaranteeForm = data["warrantyGuaranteeForm"];
             this.warrantyCertificateNumber = data["warrantyCertificateNumber"];
             this.warrantyCertificateEndDate = data["warrantyCertificateEndDate"] ? moment(data["warrantyCertificateEndDate"].toString()) : <any>undefined;
-            this.warrantyCertificatePrice = data["warrantyCertificatePrice"] ? moment(data["warrantyCertificatePrice"].toString()) : <any>undefined;
-            this.warrantyCertificatePricePercent = data["warrantyCertificatePricePercent"] ? moment(data["warrantyCertificatePricePercent"].toString()) : <any>undefined;
+            this.warrantyCertificatePrice = data["warrantyCertificatePrice"];
+            this.warrantyCertificatePricePercent = data["warrantyCertificatePricePercent"];
             this.warrantyGuaranteeBankName = data["warrantyGuaranteeBankName"];
             this.warrantyGuaranteeAttachmentFile = data["warrantyGuaranteeAttachmentFile"];
             this.totalProductPrice = data["totalProductPrice"];
@@ -14541,6 +14541,11 @@ export class ContractDto implements IContractDto {
             this.bid = data["bid"] ? BidDto.fromJS(data["bid"]) : <any>undefined;
             this.providerId = data["providerId"];
             this.provider = data["provider"] ? ProviderDto.fromJS(data["provider"]) : <any>undefined;
+            if (data["productContracts"] && data["productContracts"].constructor === Array) {
+                this.productContracts = [];
+                for (let item of data["productContracts"])
+                    this.productContracts.push(ProductContractDto.fromJS(item));
+            }
             this.id = data["id"];
         }
     }
@@ -14561,16 +14566,16 @@ export class ContractDto implements IContractDto {
         data["note"] = this.note;
         data["contractGuaranteeForm"] = this.contractGuaranteeForm;
         data["contractCertificateNumber"] = this.contractCertificateNumber;
-        data["contractCertificateEndDate"] = this.contractCertificateEndDate ? this.contractCertificateEndDate.toISOString() : <any>undefined;
-        data["contractCertificatePrice"] = this.contractCertificatePrice ? this.contractCertificatePrice : <any>undefined;
-        data["contractCertificatePricePercent"] = this.contractCertificatePricePercent ? this.contractCertificatePricePercent : <any>undefined;
+        data["contractCertificateEndDate"] = this.contractCertificateEndDate ? this.contractCertificateEndDate : <any>undefined;
+        data["contractCertificatePrice"] = this.contractCertificatePrice;
+        data["contractCertificatePricePercent"] = this.contractCertificatePricePercent;
         data["contractGuaranteeBankName"] = this.contractGuaranteeBankName;
         data["contractGuaranteeAttachmentFile"] = this.contractGuaranteeAttachmentFile;
         data["warrantyGuaranteeForm"] = this.warrantyGuaranteeForm;
         data["warrantyCertificateNumber"] = this.warrantyCertificateNumber;
-        data["warrantyCertificateEndDate"] = this.warrantyCertificateEndDate ? this.warrantyCertificateEndDate.toISOString() : <any>undefined;
-        data["warrantyCertificatePrice"] = this.warrantyCertificatePrice ? this.warrantyCertificatePrice : <any>undefined;
-        data["warrantyCertificatePricePercent"] = this.warrantyCertificatePricePercent ? this.warrantyCertificatePricePercent : <any>undefined;
+        data["warrantyCertificateEndDate"] = this.warrantyCertificateEndDate ? this.warrantyCertificateEndDate : <any>undefined;
+        data["warrantyCertificatePrice"] = this.warrantyCertificatePrice;
+        data["warrantyCertificatePricePercent"] = this.warrantyCertificatePricePercent;
         data["warrantyGuaranteeBankName"] = this.warrantyGuaranteeBankName;
         data["warrantyGuaranteeAttachmentFile"] = this.warrantyGuaranteeAttachmentFile;
         data["totalProductPrice"] = this.totalProductPrice;
@@ -14579,6 +14584,11 @@ export class ContractDto implements IContractDto {
         data["bid"] = this.bid ? this.bid.toJSON() : <any>undefined;
         data["providerId"] = this.providerId;
         data["provider"] = this.provider ? this.provider.toJSON() : <any>undefined;
+        if (this.productContracts && this.productContracts.constructor === Array) {
+            data["productContracts"] = [];
+            for (let item of this.productContracts)
+                data["productContracts"].push(item.toJSON());
+        }
         data["id"] = this.id;
         return data; 
     }
@@ -14610,6 +14620,151 @@ export interface IContractDto {
     bid: BidDto | undefined;
     providerId: number | undefined;
     provider: ProviderDto | undefined;
+    productContracts: ProductContractDto[] | undefined;
+    id: number | undefined;
+}
+
+export class ProductContractDto implements IProductContractDto {
+    amount!: number | undefined;
+    price!: number | undefined;
+    description!: string | undefined;
+    productId!: number | undefined;
+    product!: ProductDto | undefined;
+    contractId!: number | undefined;
+    contract!: ContractDto | undefined;
+    id!: number | undefined;
+
+    constructor(data?: IProductContractDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.amount = data["amount"];
+            this.price = data["price"];
+            this.description = data["description"];
+            this.productId = data["productId"];
+            this.product = data["product"] ? ProductDto.fromJS(data["product"]) : <any>undefined;
+            this.contractId = data["contractId"];
+            this.contract = data["contract"] ? ContractDto.fromJS(data["contract"]) : <any>undefined;
+            this.id = data["id"];
+        }
+    }
+
+    static fromJS(data: any): ProductContractDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new ProductContractDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["amount"] = this.amount;
+        data["price"] = this.price;
+        data["description"] = this.description;
+        data["productId"] = this.productId;
+        data["product"] = this.product ? this.product.toJSON() : <any>undefined;
+        data["contractId"] = this.contractId;
+        data["contract"] = this.contract ? this.contract.toJSON() : <any>undefined;
+        data["id"] = this.id;
+        return data; 
+    }
+}
+
+export interface IProductContractDto {
+    amount: number | undefined;
+    price: number | undefined;
+    description: string | undefined;
+    productId: number | undefined;
+    product: ProductDto | undefined;
+    contractId: number | undefined;
+    contract: ContractDto | undefined;
+    id: number | undefined;
+}
+
+export class ProductDto implements IProductDto {
+    productCode!: string | undefined;
+    name!: string | undefined;
+    productName!: string | undefined;
+    expectedPrice!: number | undefined;
+    currentPrice!: number | undefined;
+    vat!: number | undefined;
+    image!: string | undefined;
+    url!: string | undefined;
+    description!: string | undefined;
+    content!: string | undefined;
+    isActive!: boolean | undefined;
+    id!: number | undefined;
+
+    constructor(data?: IProductDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.productCode = data["productCode"];
+            this.name = data["name"];
+            this.productName = data["productName"];
+            this.expectedPrice = data["expectedPrice"];
+            this.currentPrice = data["currentPrice"];
+            this.vat = data["vat"];
+            this.image = data["image"];
+            this.url = data["url"];
+            this.description = data["description"];
+            this.content = data["content"];
+            this.isActive = data["isActive"];
+            this.id = data["id"];
+        }
+    }
+
+    static fromJS(data: any): ProductDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new ProductDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["productCode"] = this.productCode;
+        data["name"] = this.name;
+        data["productName"] = this.productName;
+        data["expectedPrice"] = this.expectedPrice;
+        data["currentPrice"] = this.currentPrice;
+        data["vat"] = this.vat;
+        data["image"] = this.image;
+        data["url"] = this.url;
+        data["description"] = this.description;
+        data["content"] = this.content;
+        data["isActive"] = this.isActive;
+        data["id"] = this.id;
+        return data; 
+    }
+}
+
+export interface IProductDto {
+    productCode: string | undefined;
+    name: string | undefined;
+    productName: string | undefined;
+    expectedPrice: number | undefined;
+    currentPrice: number | undefined;
+    vat: number | undefined;
+    image: string | undefined;
+    url: string | undefined;
+    description: string | undefined;
+    content: string | undefined;
+    isActive: boolean | undefined;
     id: number | undefined;
 }
 
@@ -14637,6 +14792,8 @@ export class ContractInput implements IContractInput {
     totalPrice!: number | undefined;
     bidId!: number | undefined;
     providerId!: number | undefined;
+    productContracts!: ProductContractInput[] | undefined;
+    contractPaymentDetails!: ContractPaymentDetailInput[] | undefined;
     id!: number | undefined;
 
     constructor(data?: IContractInput) {
@@ -14658,21 +14815,31 @@ export class ContractInput implements IContractInput {
             this.contractGuaranteeForm = data["contractGuaranteeForm"];
             this.contractCertificateNumber = data["contractCertificateNumber"];
             this.contractCertificateEndDate = data["contractCertificateEndDate"] ? moment(data["contractCertificateEndDate"].toString()) : <any>undefined;
-            this.contractCertificatePrice = data["contractCertificatePrice"] ? moment(data["contractCertificatePrice"].toString()) : <any>undefined;
-            this.contractCertificatePricePercent = data["contractCertificatePricePercent"] ? moment(data["contractCertificatePricePercent"].toString()) : <any>undefined;
+            this.contractCertificatePrice = data["contractCertificatePrice"];
+            this.contractCertificatePricePercent = data["contractCertificatePricePercent"];
             this.contractGuaranteeBankName = data["contractGuaranteeBankName"];
             this.contractGuaranteeAttachmentFile = data["contractGuaranteeAttachmentFile"];
             this.warrantyGuaranteeForm = data["warrantyGuaranteeForm"];
             this.warrantyCertificateNumber = data["warrantyCertificateNumber"];
             this.warrantyCertificateEndDate = data["warrantyCertificateEndDate"] ? moment(data["warrantyCertificateEndDate"].toString()) : <any>undefined;
-            this.warrantyCertificatePrice = data["warrantyCertificatePrice"] ? moment(data["warrantyCertificatePrice"].toString()) : <any>undefined;
-            this.warrantyCertificatePricePercent = data["warrantyCertificatePricePercent"] ? moment(data["warrantyCertificatePricePercent"].toString()) : <any>undefined;
+            this.warrantyCertificatePrice = data["warrantyCertificatePrice"];
+            this.warrantyCertificatePricePercent = data["warrantyCertificatePricePercent"];
             this.warrantyGuaranteeBankName = data["warrantyGuaranteeBankName"];
             this.warrantyGuaranteeAttachmentFile = data["warrantyGuaranteeAttachmentFile"];
             this.totalProductPrice = data["totalProductPrice"];
             this.totalPrice = data["totalPrice"];
             this.bidId = data["bidId"];
             this.providerId = data["providerId"];
+            if (data["productContracts"] && data["productContracts"].constructor === Array) {
+                this.productContracts = [];
+                for (let item of data["productContracts"])
+                    this.productContracts.push(ProductContractInput.fromJS(item));
+            }
+            if (data["contractPaymentDetails"] && data["contractPaymentDetails"].constructor === Array) {
+                this.contractPaymentDetails = [];
+                for (let item of data["contractPaymentDetails"])
+                    this.contractPaymentDetails.push(ContractPaymentDetailInput.fromJS(item));
+            }
             this.id = data["id"];
         }
     }
@@ -14688,27 +14855,37 @@ export class ContractInput implements IContractInput {
         data = typeof data === 'object' ? data : {};
         data["code"] = this.code;
         data["name"] = this.name;
-        data["contractCreatedDate"] = this.contractCreatedDate ? this.contractCreatedDate : <any>undefined;
+        data["contractCreatedDate"] = this.contractCreatedDate ? this.contractCreatedDate.toISOString() : <any>undefined;
         data["status"] = this.status;
         data["note"] = this.note;
         data["contractGuaranteeForm"] = this.contractGuaranteeForm;
         data["contractCertificateNumber"] = this.contractCertificateNumber;
         data["contractCertificateEndDate"] = this.contractCertificateEndDate ? this.contractCertificateEndDate : <any>undefined;
-        data["contractCertificatePrice"] = this.contractCertificatePrice ? this.contractCertificatePrice : <any>undefined;
-        data["contractCertificatePricePercent"] = this.contractCertificatePricePercent ? this.contractCertificatePricePercent : <any>undefined;
+        data["contractCertificatePrice"] = this.contractCertificatePrice;
+        data["contractCertificatePricePercent"] = this.contractCertificatePricePercent;
         data["contractGuaranteeBankName"] = this.contractGuaranteeBankName;
         data["contractGuaranteeAttachmentFile"] = this.contractGuaranteeAttachmentFile;
         data["warrantyGuaranteeForm"] = this.warrantyGuaranteeForm;
         data["warrantyCertificateNumber"] = this.warrantyCertificateNumber;
         data["warrantyCertificateEndDate"] = this.warrantyCertificateEndDate ? this.warrantyCertificateEndDate : <any>undefined;
-        data["warrantyCertificatePrice"] = this.warrantyCertificatePrice ? this.warrantyCertificatePrice : <any>undefined;
-        data["warrantyCertificatePricePercent"] = this.warrantyCertificatePricePercent ? this.warrantyCertificatePricePercent : <any>undefined;
+        data["warrantyCertificatePrice"] = this.warrantyCertificatePrice;
+        data["warrantyCertificatePricePercent"] = this.warrantyCertificatePricePercent;
         data["warrantyGuaranteeBankName"] = this.warrantyGuaranteeBankName;
         data["warrantyGuaranteeAttachmentFile"] = this.warrantyGuaranteeAttachmentFile;
         data["totalProductPrice"] = this.totalProductPrice;
         data["totalPrice"] = this.totalPrice;
         data["bidId"] = this.bidId;
         data["providerId"] = this.providerId;
+        if (this.productContracts && this.productContracts.constructor === Array) {
+            data["productContracts"] = [];
+            for (let item of this.productContracts)
+                data["productContracts"].push(item.toJSON());
+        }
+        if (this.contractPaymentDetails && this.contractPaymentDetails.constructor === Array) {
+            data["contractPaymentDetails"] = [];
+            for (let item of this.contractPaymentDetails)
+                data["contractPaymentDetails"].push(item.toJSON());
+        }
         data["id"] = this.id;
         return data; 
     }
@@ -14723,14 +14900,14 @@ export interface IContractInput {
     contractGuaranteeForm: ContractInputContractGuaranteeForm | undefined;
     contractCertificateNumber: string | undefined;
     contractCertificateEndDate: moment.Moment | undefined;
-    contractCertificatePrice: number| undefined;
+    contractCertificatePrice: number | undefined;
     contractCertificatePricePercent: number | undefined;
     contractGuaranteeBankName: string | undefined;
     contractGuaranteeAttachmentFile: string | undefined;
     warrantyGuaranteeForm: ContractInputWarrantyGuaranteeForm | undefined;
     warrantyCertificateNumber: string | undefined;
     warrantyCertificateEndDate: moment.Moment | undefined;
-    warrantyCertificatePrice:number | undefined;
+    warrantyCertificatePrice: number | undefined;
     warrantyCertificatePricePercent: number | undefined;
     warrantyGuaranteeBankName: string | undefined;
     warrantyGuaranteeAttachmentFile: string | undefined;
@@ -14738,11 +14915,200 @@ export interface IContractInput {
     totalPrice: number | undefined;
     bidId: number | undefined;
     providerId: number | undefined;
+    productContracts: ProductContractInput[] | undefined;
+    contractPaymentDetails: ContractPaymentDetailInput[] | undefined;
+    id: number | undefined;
+}
+
+export class ProductContractInput implements IProductContractInput {
+    amount!: number | undefined;
+    price!: number | undefined;
+    description!: string | undefined;
+    productId!: number | undefined;
+    contractId!: number | undefined;
+    product!: ProductInput | undefined;
+    id!: number | undefined;
+
+    constructor(data?: IProductContractInput) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.amount = data["amount"];
+            this.price = data["price"];
+            this.description = data["description"];
+            this.productId = data["productId"];
+            this.contractId = data["contractId"];
+            this.product = data["product"] ? ProductInput.fromJS(data["product"]) : <any>undefined;
+            this.id = data["id"];
+        }
+    }
+
+    static fromJS(data: any): ProductContractInput {
+        data = typeof data === 'object' ? data : {};
+        let result = new ProductContractInput();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["amount"] = this.amount;
+        data["price"] = this.price;
+        data["description"] = this.description;
+        data["productId"] = this.productId;
+        data["contractId"] = this.contractId;
+        data["product"] = this.product ? this.product.toJSON() : <any>undefined;
+        data["id"] = this.id;
+        return data; 
+    }
+}
+
+export interface IProductContractInput {
+    amount: number | undefined;
+    price: number | undefined;
+    description: string | undefined;
+    productId: number | undefined;
+    contractId: number | undefined;
+    product: ProductInput | undefined;
+    id: number | undefined;
+}
+
+export class ContractPaymentDetailInput implements IContractPaymentDetailInput {
+    installmentNumber!: number | undefined;
+    expectedDate!: moment.Moment | undefined;
+    percent!: number | undefined;
+    price!: number | undefined;
+    description!: string | undefined;
+    note!: string | undefined;
+    contractId!: number | undefined;
+    id!: number | undefined;
+
+    constructor(data?: IContractPaymentDetailInput) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.installmentNumber = data["installmentNumber"];
+            this.expectedDate = data["expectedDate"] ? moment(data["expectedDate"].toString()) : <any>undefined;
+            this.percent = data["percent"];
+            this.price = data["price"];
+            this.description = data["description"];
+            this.note = data["note"];
+            this.contractId = data["contractId"];
+            this.id = data["id"];
+        }
+    }
+
+    static fromJS(data: any): ContractPaymentDetailInput {
+        data = typeof data === 'object' ? data : {};
+        let result = new ContractPaymentDetailInput();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["installmentNumber"] = this.installmentNumber;
+        data["expectedDate"] = this.expectedDate ? this.expectedDate : <any>undefined;
+        data["percent"] = this.percent;
+        data["price"] = this.price;
+        data["description"] = this.description;
+        data["note"] = this.note;
+        data["contractId"] = this.contractId;
+        data["id"] = this.id;
+        return data; 
+    }
+}
+
+export interface IContractPaymentDetailInput {
+    installmentNumber: number | undefined;
+    expectedDate: moment.Moment | undefined;
+    percent: number | undefined;
+    price: number | undefined;
+    description: string | undefined;
+    note: string | undefined;
+    contractId: number | undefined;
+    id: number | undefined;
+}
+
+export class ProductInput implements IProductInput {
+    productCode!: string | undefined;
+    name!: string | undefined;
+    productName!: string | undefined;
+    expectedPrice!: number | undefined;
+    currentPrice!: number | undefined;
+    description!: string | undefined;
+    image!: string | undefined;
+    id!: number | undefined;
+
+    constructor(data?: IProductInput) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.productCode = data["productCode"];
+            this.name = data["name"];
+            this.productName = data["productName"];
+            this.expectedPrice = data["expectedPrice"];
+            this.currentPrice = data["currentPrice"];
+            this.description = data["description"];
+            this.image = data["image"];
+            this.id = data["id"];
+        }
+    }
+
+    static fromJS(data: any): ProductInput {
+        data = typeof data === 'object' ? data : {};
+        let result = new ProductInput();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["productCode"] = this.productCode;
+        data["name"] = this.name;
+        data["productName"] = this.productName;
+        data["expectedPrice"] = this.expectedPrice;
+        data["currentPrice"] = this.currentPrice;
+        data["description"] = this.description;
+        data["image"] = this.image;
+        data["id"] = this.id;
+        return data; 
+    }
+}
+
+export interface IProductInput {
+    productCode: string | undefined;
+    name: string | undefined;
+    productName: string | undefined;
+    expectedPrice: number | undefined;
+    currentPrice: number | undefined;
+    description: string | undefined;
+    image: string | undefined;
     id: number | undefined;
 }
 
 export class ContractForViewDto implements IContractForViewDto {
-    id:number | undefined;
     code!: string | undefined;
     name!: string | undefined;
     contractCreatedDate!: moment.Moment | undefined;
@@ -14758,7 +15124,7 @@ export class ContractForViewDto implements IContractForViewDto {
     warrantyGuaranteeForm!: ContractForViewDtoWarrantyGuaranteeForm | undefined;
     warrantyCertificateNumber!: string | undefined;
     warrantyCertificateEndDate!: moment.Moment | undefined;
-    warrantyCertificatePrice!:number | undefined;
+    warrantyCertificatePrice!: number | undefined;
     warrantyCertificatePricePercent!: number | undefined;
     warrantyGuaranteeBankName!: string | undefined;
     warrantyGuaranteeAttachmentFile!: string | undefined;
@@ -14768,6 +15134,8 @@ export class ContractForViewDto implements IContractForViewDto {
     bid!: BidDto | undefined;
     providerId!: number | undefined;
     provider!: ProviderDto | undefined;
+    productContracts!: ProductContractForViewDto[] | undefined;
+    id!: number | undefined;
 
     constructor(data?: IContractForViewDto) {
         if (data) {
@@ -14788,15 +15156,15 @@ export class ContractForViewDto implements IContractForViewDto {
             this.contractGuaranteeForm = data["contractGuaranteeForm"];
             this.contractCertificateNumber = data["contractCertificateNumber"];
             this.contractCertificateEndDate = data["contractCertificateEndDate"] ? moment(data["contractCertificateEndDate"].toString()) : <any>undefined;
-            this.contractCertificatePrice = data["contractCertificatePrice"] ? moment(data["contractCertificatePrice"].toString()) : <any>undefined;
-            this.contractCertificatePricePercent = data["contractCertificatePricePercent"] ? moment(data["contractCertificatePricePercent"].toString()) : <any>undefined;
+            this.contractCertificatePrice = data["contractCertificatePrice"];
+            this.contractCertificatePricePercent = data["contractCertificatePricePercent"];
             this.contractGuaranteeBankName = data["contractGuaranteeBankName"];
             this.contractGuaranteeAttachmentFile = data["contractGuaranteeAttachmentFile"];
             this.warrantyGuaranteeForm = data["warrantyGuaranteeForm"];
             this.warrantyCertificateNumber = data["warrantyCertificateNumber"];
             this.warrantyCertificateEndDate = data["warrantyCertificateEndDate"] ? moment(data["warrantyCertificateEndDate"].toString()) : <any>undefined;
-            this.warrantyCertificatePrice = data["warrantyCertificatePrice"] ? moment(data["warrantyCertificatePrice"].toString()) : <any>undefined;
-            this.warrantyCertificatePricePercent = data["warrantyCertificatePricePercent"] ? moment(data["warrantyCertificatePricePercent"].toString()) : <any>undefined;
+            this.warrantyCertificatePrice = data["warrantyCertificatePrice"];
+            this.warrantyCertificatePricePercent = data["warrantyCertificatePricePercent"];
             this.warrantyGuaranteeBankName = data["warrantyGuaranteeBankName"];
             this.warrantyGuaranteeAttachmentFile = data["warrantyGuaranteeAttachmentFile"];
             this.totalProductPrice = data["totalProductPrice"];
@@ -14805,6 +15173,12 @@ export class ContractForViewDto implements IContractForViewDto {
             this.bid = data["bid"] ? BidDto.fromJS(data["bid"]) : <any>undefined;
             this.providerId = data["providerId"];
             this.provider = data["provider"] ? ProviderDto.fromJS(data["provider"]) : <any>undefined;
+            if (data["productContracts"] && data["productContracts"].constructor === Array) {
+                this.productContracts = [];
+                for (let item of data["productContracts"])
+                    this.productContracts.push(ProductContractForViewDto.fromJS(item));
+            }
+            this.id = data["id"];
         }
     }
 
@@ -14819,21 +15193,21 @@ export class ContractForViewDto implements IContractForViewDto {
         data = typeof data === 'object' ? data : {};
         data["code"] = this.code;
         data["name"] = this.name;
-        data["contractCreatedDate"] = this.contractCreatedDate ? this.contractCreatedDate : <any>undefined;
+        data["contractCreatedDate"] = this.contractCreatedDate ? this.contractCreatedDate.toISOString() : <any>undefined;
         data["status"] = this.status;
         data["note"] = this.note;
         data["contractGuaranteeForm"] = this.contractGuaranteeForm;
         data["contractCertificateNumber"] = this.contractCertificateNumber;
         data["contractCertificateEndDate"] = this.contractCertificateEndDate ? this.contractCertificateEndDate : <any>undefined;
-        data["contractCertificatePrice"] = this.contractCertificatePrice ? this.contractCertificatePrice : <any>undefined;
-        data["contractCertificatePricePercent"] = this.contractCertificatePricePercent ? this.contractCertificatePricePercent : <any>undefined;
+        data["contractCertificatePrice"] = this.contractCertificatePrice;
+        data["contractCertificatePricePercent"] = this.contractCertificatePricePercent;
         data["contractGuaranteeBankName"] = this.contractGuaranteeBankName;
         data["contractGuaranteeAttachmentFile"] = this.contractGuaranteeAttachmentFile;
         data["warrantyGuaranteeForm"] = this.warrantyGuaranteeForm;
         data["warrantyCertificateNumber"] = this.warrantyCertificateNumber;
         data["warrantyCertificateEndDate"] = this.warrantyCertificateEndDate ? this.warrantyCertificateEndDate : <any>undefined;
-        data["warrantyCertificatePrice"] = this.warrantyCertificatePrice ? this.warrantyCertificatePrice : <any>undefined;
-        data["warrantyCertificatePricePercent"] = this.warrantyCertificatePricePercent ? this.warrantyCertificatePricePercent : <any>undefined;
+        data["warrantyCertificatePrice"] = this.warrantyCertificatePrice;
+        data["warrantyCertificatePricePercent"] = this.warrantyCertificatePricePercent;
         data["warrantyGuaranteeBankName"] = this.warrantyGuaranteeBankName;
         data["warrantyGuaranteeAttachmentFile"] = this.warrantyGuaranteeAttachmentFile;
         data["totalProductPrice"] = this.totalProductPrice;
@@ -14842,12 +15216,17 @@ export class ContractForViewDto implements IContractForViewDto {
         data["bid"] = this.bid ? this.bid.toJSON() : <any>undefined;
         data["providerId"] = this.providerId;
         data["provider"] = this.provider ? this.provider.toJSON() : <any>undefined;
+        if (this.productContracts && this.productContracts.constructor === Array) {
+            data["productContracts"] = [];
+            for (let item of this.productContracts)
+                data["productContracts"].push(item.toJSON());
+        }
+        data["id"] = this.id;
         return data; 
     }
 }
 
 export interface IContractForViewDto {
-    id:number | undefined;
     code: string | undefined;
     name: string | undefined;
     contractCreatedDate: moment.Moment | undefined;
@@ -14873,6 +15252,68 @@ export interface IContractForViewDto {
     bid: BidDto | undefined;
     providerId: number | undefined;
     provider: ProviderDto | undefined;
+    productContracts: ProductContractForViewDto[] | undefined;
+    id: number | undefined;
+}
+
+export class ProductContractForViewDto implements IProductContractForViewDto {
+    amount!: number | undefined;
+    price!: number | undefined;
+    description!: string | undefined;
+    productId!: number | undefined;
+    product!: ProductDto | undefined;
+    contractId!: number | undefined;
+    contract!: ContractDto | undefined;
+
+    constructor(data?: IProductContractForViewDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.amount = data["amount"];
+            this.price = data["price"];
+            this.description = data["description"];
+            this.productId = data["productId"];
+            this.product = data["product"] ? ProductDto.fromJS(data["product"]) : <any>undefined;
+            this.contractId = data["contractId"];
+            this.contract = data["contract"] ? ContractDto.fromJS(data["contract"]) : <any>undefined;
+        }
+    }
+
+    static fromJS(data: any): ProductContractForViewDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new ProductContractForViewDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["amount"] = this.amount;
+        data["price"] = this.price;
+        data["description"] = this.description;
+        data["productId"] = this.productId;
+        data["product"] = this.product ? this.product.toJSON() : <any>undefined;
+        data["contractId"] = this.contractId;
+        data["contract"] = this.contract ? this.contract.toJSON() : <any>undefined;
+        return data; 
+    }
+}
+
+export interface IProductContractForViewDto {
+    amount: number | undefined;
+    price: number | undefined;
+    description: string | undefined;
+    productId: number | undefined;
+    product: ProductDto | undefined;
+    contractId: number | undefined;
+    contract: ContractDto | undefined;
 }
 
 export class PagedResultDtoOfContractPaymentDetailDto implements IPagedResultDtoOfContractPaymentDetailDto {
@@ -14988,70 +15429,6 @@ export interface IContractPaymentDetailDto {
     note: string | undefined;
     contractId: number | undefined;
     contract: ContractDto | undefined;
-    id: number | undefined;
-}
-
-export class ContractPaymentDetailInput implements IContractPaymentDetailInput {
-    installmentNumber!: number | undefined;
-    expectedDate!: moment.Moment | undefined;
-    percent!: number | undefined;
-    price!: number | undefined;
-    description!: string | undefined;
-    note!: string | undefined;
-    contractId!: number | undefined;
-    id!: number | undefined;
-
-    constructor(data?: IContractPaymentDetailInput) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(data?: any) {
-        if (data) {
-            this.installmentNumber = data["installmentNumber"];
-            this.expectedDate = data["expectedDate"] ? moment(data["expectedDate"].toString()) : <any>undefined;
-            this.percent = data["percent"];
-            this.price = data["price"];
-            this.description = data["description"];
-            this.note = data["note"];
-            this.contractId = data["contractId"];
-            this.id = data["id"];
-        }
-    }
-
-    static fromJS(data: any): ContractPaymentDetailInput {
-        data = typeof data === 'object' ? data : {};
-        let result = new ContractPaymentDetailInput();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["installmentNumber"] = this.installmentNumber;
-        data["expectedDate"] = this.expectedDate ? this.expectedDate : <any>undefined;
-        data["percent"] = this.percent;
-        data["price"] = this.price;
-        data["description"] = this.description;
-        data["note"] = this.note;
-        data["contractId"] = this.contractId;
-        data["id"] = this.id;
-        return data; 
-    }
-}
-
-export interface IContractPaymentDetailInput {
-    installmentNumber: number | undefined;
-    expectedDate: moment.Moment | undefined;
-    percent: number | undefined;
-    price: number | undefined;
-    description: string | undefined;
-    note: string | undefined;
-    contractId: number | undefined;
     id: number | undefined;
 }
 
@@ -16422,9 +16799,9 @@ export class HostDashboardData implements IHostDashboardData {
         data["maxRecentTenantsShownCount"] = this.maxRecentTenantsShownCount;
         data["subscriptionEndAlertDayCount"] = this.subscriptionEndAlertDayCount;
         data["recentTenantsDayCount"] = this.recentTenantsDayCount;
-        data["subscriptionEndDateStart"] = this.subscriptionEndDateStart ? this.subscriptionEndDateStart : <any>undefined;
-        data["subscriptionEndDateEnd"] = this.subscriptionEndDateEnd ? this.subscriptionEndDateEnd : <any>undefined;
-        data["tenantCreationStartDate"] = this.tenantCreationStartDate ? this.tenantCreationStartDate : <any>undefined;
+        data["subscriptionEndDateStart"] = this.subscriptionEndDateStart ? this.subscriptionEndDateStart.toISOString() : <any>undefined;
+        data["subscriptionEndDateEnd"] = this.subscriptionEndDateEnd ? this.subscriptionEndDateEnd.toISOString() : <any>undefined;
+        data["tenantCreationStartDate"] = this.tenantCreationStartDate ? this.tenantCreationStartDate.toISOString() : <any>undefined;
         return data; 
     }
 }
@@ -19925,134 +20302,6 @@ export interface IPagedResultDtoOfProductDto {
     items: ProductDto[] | undefined;
 }
 
-export class ProductDto implements IProductDto {
-    productCode!: string | undefined;
-    name!: string | undefined;
-    productName!: string | undefined;
-    expectedPrice!: number | undefined;
-    currentPrice!: number | undefined;
-    description!: string | undefined;
-    image!: string | undefined;
-    id!: number | undefined;
-
-    constructor(data?: IProductDto) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(data?: any) {
-        if (data) {
-            this.productCode = data["productCode"];
-            this.name = data["name"];
-            this.productName = data["productName"];
-            this.expectedPrice = data["expectedPrice"];
-            this.currentPrice = data["currentPrice"];
-            this.description = data["description"];
-            this.image = data["image"];
-            this.id = data["id"];
-        }
-    }
-
-    static fromJS(data: any): ProductDto {
-        data = typeof data === 'object' ? data : {};
-        let result = new ProductDto();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["productCode"] = this.productCode;
-        data["name"] = this.name;
-        data["productName"] = this.productName;
-        data["expectedPrice"] = this.expectedPrice;
-        data["currentPrice"] = this.currentPrice;
-        data["description"] = this.description;
-        data["image"] = this.image;
-        data["id"] = this.id;
-        return data; 
-    }
-}
-
-export interface IProductDto {
-    productCode: string | undefined;
-    name: string | undefined;
-    productName: string | undefined;
-    expectedPrice: number | undefined;
-    currentPrice: number | undefined;
-    description: string | undefined;
-    image: string | undefined;
-    id: number | undefined;
-}
-
-export class ProductInput implements IProductInput {
-    productCode!: string | undefined;
-    name!: string | undefined;
-    productName!: string | undefined;
-    expectedPrice!: number | undefined;
-    currentPrice!: number | undefined;
-    description!: string | undefined;
-    image!: string | undefined;
-    id!: number | undefined;
-
-    constructor(data?: IProductInput) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(data?: any) {
-        if (data) {
-            this.productCode = data["productCode"];
-            this.name = data["name"];
-            this.productName = data["productName"];
-            this.expectedPrice = data["expectedPrice"];
-            this.currentPrice = data["currentPrice"];
-            this.description = data["description"];
-            this.image = data["image"];
-            this.id = data["id"];
-        }
-    }
-
-    static fromJS(data: any): ProductInput {
-        data = typeof data === 'object' ? data : {};
-        let result = new ProductInput();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["productCode"] = this.productCode;
-        data["name"] = this.name;
-        data["productName"] = this.productName;
-        data["expectedPrice"] = this.expectedPrice;
-        data["currentPrice"] = this.currentPrice;
-        data["description"] = this.description;
-        data["image"] = this.image;
-        data["id"] = this.id;
-        return data; 
-    }
-}
-
-export interface IProductInput {
-    productCode: string | undefined;
-    name: string | undefined;
-    productName: string | undefined;
-    expectedPrice: number | undefined;
-    currentPrice: number | undefined;
-    description: string | undefined;
-    image: string | undefined;
-    id: number | undefined;
-}
-
 export class ProductForViewDto implements IProductForViewDto {
     productCode!: string | undefined;
     name!: string | undefined;
@@ -20159,186 +20408,6 @@ export class PagedResultDtoOfProductContractDto implements IPagedResultDtoOfProd
 export interface IPagedResultDtoOfProductContractDto {
     totalCount: number | undefined;
     items: ProductContractDto[] | undefined;
-}
-
-export class ProductContractDto implements IProductContractDto {
-    amount!: number | undefined;
-    price!: number | undefined;
-    description!: string | undefined;
-    productId!: number | undefined;
-    product!: ProductDto | undefined;
-    contractId!: number | undefined;
-    contract!: ContractDto | undefined;
-    id!: number | undefined;
-
-    constructor(data?: IProductContractDto) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(data?: any) {
-        if (data) {
-            this.amount = data["amount"];
-            this.price = data["price"];
-            this.description = data["description"];
-            this.productId = data["productId"];
-            this.product = data["product"] ? ProductDto.fromJS(data["product"]) : <any>undefined;
-            this.contractId = data["contractId"];
-            this.contract = data["contract"] ? ContractDto.fromJS(data["contract"]) : <any>undefined;
-            this.id = data["id"];
-        }
-    }
-
-    static fromJS(data: any): ProductContractDto {
-        data = typeof data === 'object' ? data : {};
-        let result = new ProductContractDto();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["amount"] = this.amount;
-        data["price"] = this.price;
-        data["description"] = this.description;
-        data["productId"] = this.productId;
-        data["product"] = this.product ? this.product.toJSON() : <any>undefined;
-        data["contractId"] = this.contractId;
-        data["contract"] = this.contract ? this.contract.toJSON() : <any>undefined;
-        data["id"] = this.id;
-        return data; 
-    }
-}
-
-export interface IProductContractDto {
-    amount: number | undefined;
-    price: number | undefined;
-    description: string | undefined;
-    productId: number | undefined;
-    product: ProductDto | undefined;
-    contractId: number | undefined;
-    contract: ContractDto | undefined;
-    id: number | undefined;
-}
-
-export class ProductContractInput implements IProductContractInput {
-    amount!: number | undefined;
-    price!: number | undefined;
-    description!: string | undefined;
-    productId!: number | undefined;
-    contractId!: number | undefined;
-    id!: number | undefined;
-
-    constructor(data?: IProductContractInput) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(data?: any) {
-        if (data) {
-            this.amount = data["amount"];
-            this.price = data["price"];
-            this.description = data["description"];
-            this.productId = data["productId"];
-            this.contractId = data["contractId"];
-            this.id = data["id"];
-        }
-    }
-
-    static fromJS(data: any): ProductContractInput {
-        data = typeof data === 'object' ? data : {};
-        let result = new ProductContractInput();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["amount"] = this.amount;
-        data["price"] = this.price;
-        data["description"] = this.description;
-        data["productId"] = this.productId;
-        data["contractId"] = this.contractId;
-        data["id"] = this.id;
-        return data; 
-    }
-}
-
-export interface IProductContractInput {
-    amount: number | undefined;
-    price: number | undefined;
-    description: string | undefined;
-    productId: number | undefined;
-    contractId: number | undefined;
-    id: number | undefined;
-}
-
-export class ProductContractForViewDto implements IProductContractForViewDto {
-    amount!: number | undefined;
-    price!: number | undefined;
-    description!: string | undefined;
-    productId!: number | undefined;
-    product!: ProductDto | undefined;
-    contractId!: number | undefined;
-    contract!: ContractDto | undefined;
-
-    constructor(data?: IProductContractForViewDto) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(data?: any) {
-        if (data) {
-            this.amount = data["amount"];
-            this.price = data["price"];
-            this.description = data["description"];
-            this.productId = data["productId"];
-            this.product = data["product"] ? ProductDto.fromJS(data["product"]) : <any>undefined;
-            this.contractId = data["contractId"];
-            this.contract = data["contract"] ? ContractDto.fromJS(data["contract"]) : <any>undefined;
-        }
-    }
-
-    static fromJS(data: any): ProductContractForViewDto {
-        data = typeof data === 'object' ? data : {};
-        let result = new ProductContractForViewDto();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["amount"] = this.amount;
-        data["price"] = this.price;
-        data["description"] = this.description;
-        data["productId"] = this.productId;
-        data["product"] = this.product ? this.product.toJSON() : <any>undefined;
-        data["contractId"] = this.contractId;
-        data["contract"] = this.contract ? this.contract.toJSON() : <any>undefined;
-        return data; 
-    }
-}
-
-export interface IProductContractForViewDto {
-    amount: number | undefined;
-    price: number | undefined;
-    description: string | undefined;
-    productId: number | undefined;
-    product: ProductDto | undefined;
-    contractId: number | undefined;
-    contract: ContractDto | undefined;
 }
 
 export class ProductProviderInput implements IProductProviderInput {

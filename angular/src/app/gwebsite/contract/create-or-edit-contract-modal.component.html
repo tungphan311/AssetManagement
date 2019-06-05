@@ -5,7 +5,7 @@
             <form #editForm="ngForm" novalidate (ngSubmit)="save()">
                 <div class="modal-header">
                     <h4 class="modal-title">
-                        <span *ngIf="contract.id">Cập nhật hợp đồng: {{contract.code}}</span>
+                        <span *ngIf="contract.id">Cập nhật hợp đồng: {{contract.id}}</span>
                         <span *ngIf="!contract.id">Tạo mới hợp đồng</span>
                     </h4>
                     <button type="button" class="close" (click)="close()" [attr.aria-label]="l('Close')">
@@ -13,6 +13,20 @@
                     </button>
                 </div>
                 <div class="modal-body">
+                    <div class="card" style="background-color:aqua">
+                        <h5 class="card-title">Chi tiết sản phẩm</h5>
+                    </div>
+                    <productContractComponent #viewContractModal [contractInput]="contract"></productContractComponent>
+                    <br>
+                    <div class="card" style="background-color:aqua">
+                        <h5 class="card-title">Chi tiết thanh toán</h5>
+                    </div>
+                    <contractPaymentDetailComponent #contractPaymentDetailComponent [contractInput]='contract'
+                    [totalPriceInput]="contract.totalPrice"    
+                    (newItemAdded)='addPaymentItemToList($event)'></contractPaymentDetailComponent>
+                    <!-- <productContractComponent #viewContractModal
+                        [contractInput]="contract"
+                    ></productContractComponent> -->
                     <!--Contract Information-->
                     <section class="card">
                         <h5 class="card-title">Thông tin hợp đồng</h5>
@@ -93,39 +107,40 @@
                                 <div class="col-sm-4">
                                     <label>Số chứng thư bảo lãnh</label>
                                     <input class=" form-control" type="text" name="contractCertificateNumber"
-                                    [(ngModel)]="contract.contractCertificateNumber">
+                                        [(ngModel)]="contract.contractCertificateNumber">
                                 </div>
                                 <div class="col-sm-4">
                                     <label>Ngày hết hạn chứng thư</label>
                                     <input #fromdateInput="ngModel" class="form-control"
                                         [ngModel]="contract.contractCertificateEndDate | date:'yyyy-MM-dd'"
-                                        (ngModelChange)="contract.contractCertificateEndDate = $event" type="date" name="CertificateEndDate" />
+                                        (ngModelChange)="contract.contractCertificateEndDate = $event" type="date"
+                                        name="CertificateEndDate" />
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-sm-6">
                                     <label>Tỷ lệ</label>
                                     <input class=" form-control" type="text" name="contractCertificatePricePercent"
-                                    [(ngModel)]="contract.contractCertificatePricePercent">
+                                        [(ngModel)]="contract.contractCertificatePricePercent">
                                 </div>
                                 <div class="col-sm-6">
                                     <label>Số tiền</label>
                                     <input class=" form-control" type="text" name="contractCertificatePrice"
-                                    [(ngModel)]="contract.contractCertificatePrice">
+                                        [(ngModel)]="contract.contractCertificatePrice">
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-sm-12">
                                     <label>Ngân hàng bảo lãnh</label>
                                     <input class=" form-control" type="text" name="contractGuaranteeBankName"
-                                    [(ngModel)]="contract.contractGuaranteeBankName">
+                                        [(ngModel)]="contract.contractGuaranteeBankName">
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-sm-12">
                                     <label>File đính kèm</label>
                                     <input class=" form-control" type="text" name="contractGuaranteeAttachmentFile"
-                                    [(ngModel)]="contract.contractGuaranteeAttachmentFile">
+                                        [(ngModel)]="contract.contractGuaranteeAttachmentFile">
                                     <button class="btn btn-primary" type="button">Upload</button>
                                 </div>
                             </div>
@@ -134,59 +149,62 @@
 
                     <!--Warranty Guarantee-->
                     <div class="card">
-                            <h5 class="card-title">Bảo lãnh bảo hành</h5>
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-sm-4">
-                                        <label>Hình thức</label>
-                                        <select #contractCombobox class="form-control" name="warrantyGuaranteeForm"
-                                            [(ngModel)]="contract.warrantyGuaranteeForm" jq-plugin="selectpicker" required>
-                                            <option disabled>-Chọn Hình Thức bão lãnh-</option>
-                                            <option value="1">Tiền mặt</option>
-                                            <option value="2">Chứng thư</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <label>Số chứng thư bảo lãnh</label>
-                                        <input class=" form-control" type="text" name="warrantyCertificateNumber"
+                        <h5 class="card-title">Bảo lãnh bảo hành</h5>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <label>Hình thức</label>
+                                    <select #contractCombobox class="form-control" name="warrantyGuaranteeForm"
+                                        [(ngModel)]="contract.warrantyGuaranteeForm" jq-plugin="selectpicker" required>
+                                        <option disabled>-Chọn Hình Thức bão lãnh-</option>
+                                        <option value="1">Tiền mặt</option>
+                                        <option value="2">Chứng thư</option>
+                                    </select>
+                                </div>
+                                <div class="col-sm-4">
+                                    <label>Số chứng thư bảo lãnh</label>
+                                    <input class=" form-control" type="text" name="warrantyCertificateNumber"
                                         [(ngModel)]="contract.warrantyCertificateNumber">
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <label>Ngày hết hạn chứng thư</label>
-                                        <input #fromdateInput="ngModel" class="form-control"
-                                            [ngModel]="contract.warrantyCertificateEndDate | date:'yyyy-MM-dd'"
-                                            (ngModelChange)="contract.warrantyCertificateEndDate = $event" type="date" name="CertificateEndDate" />
-                                    </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <label>Tỷ lệ</label>
-                                        <input class=" form-control" type="text" name="warrantyCertificatePricePercent"
+                                <div class="col-sm-4">
+                                    <label>Ngày hết hạn chứng thư</label>
+                                    <input #fromdateInput="ngModel" class="form-control"
+                                        [ngModel]="contract.warrantyCertificateEndDate | date:'yyyy-MM-dd'"
+                                        (ngModelChange)="contract.warrantyCertificateEndDate = $event" type="date"
+                                        name="CertificateEndDate" />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <label>Tỷ lệ</label>
+                                    <input class=" form-control" type="text" name="warrantyCertificatePricePercent"
                                         [(ngModel)]="contract.warrantyCertificatePricePercent">
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label>Số tiền</label>
-                                        <input class=" form-control" type="text" name="warrantyCertificatePrice"
+                                </div>
+                                <div class="col-sm-6">
+                                    <label>Số tiền</label>
+                                    <input class=" form-control" type="text" name="warrantyCertificatePrice"
                                         [(ngModel)]="contract.warrantyCertificatePrice">
-                                    </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-sm-12">
-                                        <label>Ngân hàng bảo lãnh</label>
-                                        <input class=" form-control" type="text" name="warrantyGuaranteeBankName"
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <label>Ngân hàng bảo lãnh</label>
+                                    <input class=" form-control" type="text" name="warrantyGuaranteeBankName"
                                         [(ngModel)]="contract.warrantyGuaranteeBankName">
-                                    </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-sm-12">
-                                        <label>File đính kèm</label>
-                                        <input class=" form-control" type="text" name="warrantyGuaranteeAttachmentFile"
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <label>File đính kèm</label>
+                                    <input class=" form-control" type="text" name="warrantyGuaranteeAttachmentFile"
                                         [(ngModel)]="contract.warrantyGuaranteeAttachmentFile">
-                                        <button class="btn btn-primary" type="button">Upload</button>
-                                    </div>
+                                    <button class="btn btn-primary" type="button">Upload</button>
                                 </div>
                             </div>
                         </div>
+                    </div>
+                    <br>
+                    <!--Product Contract-->
 
                 </div>
                 <!--End modal body-->

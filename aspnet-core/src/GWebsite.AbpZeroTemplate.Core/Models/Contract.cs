@@ -12,6 +12,11 @@ namespace GWebsite.AbpZeroTemplate.Core.Models
 {
     public class Contract : FullAuditModel
     {
+        public Contract()
+        {
+            ProductContracts = new List<ProductContract>();
+        }
+
         [Column(TypeName = "varchar(50)")]
         public string Code { get; set; }
         [StringLength(200)]
@@ -58,5 +63,8 @@ namespace GWebsite.AbpZeroTemplate.Core.Models
         public int? ProviderId { get; set; }
         [ForeignKey("ProviderId")]
         public virtual Provider Provider { get; set; }
+
+        //
+        public virtual ICollection<ProductContract> ProductContracts { get; set; }        
     }
 }

@@ -14,16 +14,16 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.ProductContracts.Dto
     public class ProductContractForViewDto
     {
         public int Amount { get; set; }
-        public int Price { get; set; }
+        public decimal? Price { get; set; }
         public string Description { get; set; }
 
 
         //FK
         public int ProductId { get; set; }
-        public virtual ProductDto Product { get; set; }
+        public ProductDto Product { get; set; }
 
         public int ContractId { get; set; }
-        public virtual ContractDto Contract { get; set; }
+        public ContractDto Contract { get; set; }
 
     }
 }

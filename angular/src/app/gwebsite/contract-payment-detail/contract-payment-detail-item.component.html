@@ -1,0 +1,34 @@
+<div class="card">
+    <form #itemForm="ngForm" novalidate >
+        <button class="close" type="button" aria-label="Close" style="background-color: tomato" (click)="onDeleteItem()">
+            <span
+                class="float-sm-right" aria-hidden="true">×</span></button>
+        <h4 class="card-title px-2 "></h4>
+
+        <div class="card-body">
+            <div class="row">              
+               
+                    <div class="col-sm-2">
+                    <h5>Đợt thanh toán: </h5>
+                    <span  >{{cpdItem.installmentNumber}}</span>
+                </div>
+                <div class="col-sm-3">
+                    <h5>Ngày dự kiến: </h5>
+                    <span>{{cpdItem.expectedDate }}</span>
+                </div>
+                <div class="col-sm-2">
+                    <h5>Phần trăm: </h5>
+                    <span  >{{cpdItem.percent }}</span>
+                </div>
+                <div class="col-sm-3">
+                    <h5>Tổng giá: </h5>
+                    <span  >{{cpdItem.price | currency:'VND'}}</span>
+                </div>
+                <div class="col-sm-2">
+                    <h5>Diễn giải: </h5>
+                    <span  >{{cpdItem.description }}</span>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

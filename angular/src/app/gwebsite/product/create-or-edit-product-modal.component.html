@@ -53,7 +53,7 @@
                         <label>Image*</label>
                         <input #addressInput="ngModel" class="form-control" type="textbox" name="Image" 
                             placeholder="Vui lòng nhập Url của Ảnh" type="text"
-                            [(ngModel)]="product.image" required maxlength="64" 
+                            [(ngModel)]="product.image" 
                             >
                         <validation-messages [formCtrl]="imageInput"></validation-messages>
                     </div>

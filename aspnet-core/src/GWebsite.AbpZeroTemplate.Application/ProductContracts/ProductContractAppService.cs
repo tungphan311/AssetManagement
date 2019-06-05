@@ -80,6 +80,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.ProductContracts
 
         public PagedResultDto<ProductContractDto> GetProductContracts(ProductContractFilter input)
         {
+            Console.WriteLine("Contract Id Recieved: " + input.ContractId.ToString());
             var query = productContractRepository.GetAll()/*.Where(x => !x.IsDelete);*/;
 
             // filter by value
@@ -108,14 +109,23 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.ProductContracts
         #region Private Method
 
         [AbpAuthorize(GWebsitePermissions.Pages_Administration_ProductContract_Create)]
-        private void Create(ProductContractInput ProductContractInput)
+        private void Create(ProductContractInput productContractInput)
         {
             try
             {
-                var ProductContractEntity = ObjectMapper.Map<ProductContract>(ProductContractInput);
-                if (ProductContractEntity == null) System.Console.WriteLine("null: ");
+                var productContractEntity = ObjectMapper.Map<ProductContract>(productContractInput);
+                if (productContractEntity == null) System.Console.WriteLine("null: ");
                 //SetAuditInsert(ProductContractEntity);
-                productContractRepository.Insert(ProductContractEntity);
+                //var contractId = productContractRepository.InsertAndGetId(productContractEntity);
+                //foreach (var productItem in productContractInput.Products)
+                //{
+                //    // insert
+
+                //}
+                //var sumProduct = productContractInput.Products.Sum(x => x.Quantity);
+                // var contract = productContractRepository.Get(productContractEntity);
+                //   productContractRepository.Update(productContractEntity);
+                productContractRepository.Insert(productContractEntity);
                 CurrentUnitOfWork.SaveChanges();
             }
             catch (Exception ex)

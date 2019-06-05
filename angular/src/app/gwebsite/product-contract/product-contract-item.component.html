@@ -1,0 +1,28 @@
+<div class="card">
+    <form #itemForm="ngForm" novalidate >
+        <button class="close" type="button" aria-label="Close" style="background-color: tomato" (click)="onDeleteItem()">
+            <span
+                class="float-sm-right" aria-hidden="true">×</span></button>
+        <h4 class="card-title px-2 ">{{pcItem.product.name}}</h4>
+
+        <div class="card-body">
+            <div class="row">
+                <img class="col-sm-3" style="height:80px"
+                    src="{{pcItem.product.image}}" alt="card image">
+               
+                    <div class="col-sm-3">
+                    <h5>Giá hiện tại: </h5>
+                    <span  >{{pcItem.product.currentPrice | currency:'VND'}}</span>
+                </div>
+                <div class="col-sm-4">
+                    <h5>Số lượng: </h5><input (change)="onDataChange($event)"   type="number" name="quality" min="1" value="{{pcItem.amount}}" required>
+                </div>
+                <div class="col-sm-2">
+                    <h5>Tổng giá bán: </h5>
+                    <span>{{pcItem.price | currency:'VND'}}</span>
+                </div>
+
+            </div>
+        </div>
+    </form>
+</div>

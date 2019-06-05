@@ -46,6 +46,7 @@ export class CreateOrEditProjectModalComponent extends AppComponentBase {
 
     save(): void {
         let input = this.project;
+        console.log(input)
         this.saving = true;
         this._projectService.createOrEditProject(input).subscribe(result => {
             this.notify.info(this.l('SavedSuccessfully'));

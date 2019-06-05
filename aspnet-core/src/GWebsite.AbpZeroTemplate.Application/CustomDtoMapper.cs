@@ -38,6 +38,7 @@ namespace GWebsite.AbpZeroTemplate.Applications
 
             // Product
             configuration.CreateMap<Product, ProductDto>();
+            configuration.CreateMap<ProductDto, Product>();
             configuration.CreateMap<ProductInput, Product>();
             configuration.CreateMap<Product, ProductInput>();
             configuration.CreateMap<Product, ProductForViewDto>();

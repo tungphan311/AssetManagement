@@ -1,5 +1,6 @@
 ﻿using Abp.Domain.Entities;
 using GWebsite.AbpZeroTemplate.Application.Share.Bids.Dto;
+using GWebsite.AbpZeroTemplate.Application.Share.ProductContracts.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.Providers.Dto;
 using GWebsite.AbpZeroTemplate.Core.Models.Enums;
 using GWebsite.AbpZeroTemplate.Core.Models.Enums.Base;
@@ -13,6 +14,10 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.Contracts.Dto
 {
     public class ContractForViewDto : Entity<int>
     {
+        public ContractForViewDto()
+        {
+            ProductContracts = new List<ProductContractForViewDto>();
+        }
         public string Code { get; set; }
 
         public string Name { get; set; }
@@ -56,5 +61,6 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.Contracts.Dto
         public BidDto Bid { get; set; }
         public int? ProviderId { get; set; }
         public ProviderDto Provider { get; set; }
+        public virtual ICollection<ProductContractForViewDto> ProductContracts { get; set; }
     }
 }

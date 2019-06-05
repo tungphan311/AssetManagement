@@ -1929,28 +1929,6 @@ namespace GSoft.AbpZeroTemplate.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("BlankField0");
-
-                    b.Property<int>("BlankField1");
-
-                    b.Property<string>("BlankField10");
-
-                    b.Property<int>("BlankField2");
-
-                    b.Property<decimal>("BlankField3");
-
-                    b.Property<decimal>("BlankField4");
-
-                    b.Property<decimal>("BlankField5");
-
-                    b.Property<string>("BlankField6");
-
-                    b.Property<string>("BlankField7");
-
-                    b.Property<string>("BlankField8");
-
-                    b.Property<string>("BlankField9");
-
                     b.Property<string>("Content");
 
                     b.Property<string>("CreatedBy");
@@ -2012,7 +1990,7 @@ namespace GSoft.AbpZeroTemplate.Migrations
 
                     b.Property<bool>("IsDelete");
 
-                    b.Property<int>("Price");
+                    b.Property<decimal?>("Price");
 
                     b.Property<int>("ProductId");
 
@@ -2449,7 +2427,7 @@ namespace GSoft.AbpZeroTemplate.Migrations
             modelBuilder.Entity("GWebsite.AbpZeroTemplate.Core.Models.ProductContract", b =>
                 {
                     b.HasOne("GWebsite.AbpZeroTemplate.Core.Models.Contract", "Contract")
-                        .WithMany()
+                        .WithMany("ProductContracts")
                         .HasForeignKey("ContractId")
                         .OnDelete(DeleteBehavior.Cascade);
 

@@ -41,18 +41,5 @@ namespace GWebsite.AbpZeroTemplate.Core.Models
         public string Content { get; set; }
         public bool IsActive { get; set; }
 
-
-        //Blank Field
-        public int BlankField0 { get; set; }
-        public int BlankField1 { get; set; }
-        public int BlankField2 { get; set; }
-        public decimal BlankField3 { get; set; }
-        public decimal BlankField4 { get; set; }
-        public decimal BlankField5 { get; set; }
-        public string BlankField6 { get; set; }
-        public string BlankField7 { get; set; }
-        public string BlankField8 { get; set; }
-        public string BlankField9 { get; set; }
-        public string BlankField10 { get; set; }
     }
 }

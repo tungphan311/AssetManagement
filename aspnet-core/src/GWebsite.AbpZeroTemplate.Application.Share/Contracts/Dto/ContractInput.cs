@@ -1,4 +1,6 @@
 ﻿using Abp.Domain.Entities;
+using GWebsite.AbpZeroTemplate.Application.Share.ContractPaymentDetails.Dto;
+using GWebsite.AbpZeroTemplate.Application.Share.ProductContracts.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.Projects.Dto;
 using GWebsite.AbpZeroTemplate.Core.Models.Enums;
 using GWebsite.AbpZeroTemplate.Core.Models.Enums.Base;
@@ -15,7 +17,11 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.Contracts.Dto
     /// </summary>
     public class ContractInput : Entity<int>
     {
-
+        public ContractInput()
+        {
+            ProductContracts = new List<ProductContractInput>();
+            ContractPaymentDetails = new List<ContractPaymentDetailInput>();
+        }
         public string Code { get; set; }
 
         public string Name { get; set; }
@@ -59,6 +65,7 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.Contracts.Dto
 
         public int? ProviderId { get; set; }
 
-
+        public virtual ICollection<ProductContractInput> ProductContracts { get; set; }
+        public List<ContractPaymentDetailInput> ContractPaymentDetails { get; set; }
     }
 }

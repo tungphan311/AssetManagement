@@ -48,6 +48,7 @@ export class CreateOrEditBidModalComponent extends AppComponentBase {
 
     save(): void {
         let input = this.bid;
+        console.log(input)
         this.saving = true;
         this._bidService.createOrEditBid(input).subscribe(result => {
             this.notify.info(this.l('SavedSuccessfully'));

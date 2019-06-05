@@ -90,11 +90,11 @@
                                         </td>
                                     <td>
                                         <span class="ui-column-title">Giá dự kiến </span>
-                                        <span title="{{record.expectedPrice}}">{{truncateString(record.expectedPrice)}}</span>
+                                        <span title="{{record.expectedPrice}}">{{truncateString(record.expectedPrice | currency:'VND')}}</span>
                                     </td>
                                     <td>
                                         <span class="ui-column-title">Giá hiện tại</span>
-                                        <span title="{{record.currentPrice}}">{{truncateString(record.currentPrice)}}</span>
+                                        <span title="{{record.currentPrice}}">{{truncateString(record.currentPrice | currency:'VND')}}</span>
                                     </td>
                                     <td>
                                         <span class="ui-column-title">Miêu tả</span>
