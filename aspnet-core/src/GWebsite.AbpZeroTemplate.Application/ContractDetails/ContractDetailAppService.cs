@@ -62,11 +62,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.ContractDetails
         {
             var query = contractdetailRepository.GetAll().Where(x => !x.IsDelete);
 
-            // filter by value
-            if (input.ContractID != 0)
-            {
-                query = query.Where(x => x.ContractID == input.ContractID);
-            }
+            query = query.Where(x => x.ContractID == input.ContractID);
 
             var totalCount = query.Count();
 

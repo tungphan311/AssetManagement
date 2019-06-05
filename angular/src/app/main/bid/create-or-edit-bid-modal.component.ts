@@ -353,7 +353,7 @@ export class CreateOrEditBidModalComponent extends AppComponentBase {
             else
             {
                 //lấy bid vừa tạo ở trên, cách này chỉ dùng tạm vì không biết cách nào khác
-                this._bidService.getBidsByFilter(input.name,null,null,null,null,0,null,999,0).subscribe(result=>{
+                this._bidService.getBidsByFilter(input.name,null,null,null,"All",0,null,999,0).subscribe(result=>{
                     if(result.totalCount==1){
                         for (const iterator of this.bidderList) 
                         {

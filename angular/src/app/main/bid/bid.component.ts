@@ -115,7 +115,7 @@ export class BidComponent extends AppComponentBase implements AfterViewInit, OnI
             this.bidStart=params['start']||'';
             this.bidEnd=params['end']||'';
             this.bidForm=params['form']||'All';
-            this.bidVendorCode=params['vendorcode']||'';
+            this.bidVendorCode = params['vendorcode']||'';
             this.reloadList(this.bidName,this.bidCategory,this.bidStart,this.bidEnd,this.bidForm,this.bidVendorCode, null)
         });
     }

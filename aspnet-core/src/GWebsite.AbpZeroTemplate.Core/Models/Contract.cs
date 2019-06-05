@@ -33,6 +33,5 @@ namespace GWebsite.AbpZeroTemplate.Core.Models
         public string WarrantyGuaranteeBank { get; set; }
         public string WarrantyGuaranteeFile { get; set; }
 
-        public ContractDetail[] Merchandises { get; set; }
     }
 }
