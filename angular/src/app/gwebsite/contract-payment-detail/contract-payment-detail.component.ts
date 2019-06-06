@@ -27,6 +27,7 @@ export class ContractPaymentDetailComponent extends AppComponentBase implements 
     // ContractPaymentDetails : ContractPaymentDetailInput[];
     @Input('contractInput') contractInput:ContractInput
     @Input()totalPriceInput:number;
+    @Input()sumProductPrice:number;
     @Output() newItemAdded = new EventEmitter();
     /**
      * tạo các biến dể filters

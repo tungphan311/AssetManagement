@@ -79,15 +79,12 @@ import {CreateOrEditContractPaymentDetailModalComponent} from './contract-paymen
         ProductComponent, CreateOrEditProductModalComponent, ViewProductModalComponent, ProductForSelectComponent,
         ProjectComponent, CreateOrEditProjectModalComponent, ViewProjectModalComponent,
         BidComponent, CreateOrEditBidModalComponent, ViewBidModalComponent,
-<<<<<<< HEAD
-		//ProviderComponent, CreateOrEditProviderModalComponent, ViewProviderModalComponent,
+
+        ProviderComponent, CreateOrEditProviderModalComponent, ViewProviderModalComponent,
         ContractComponent, CreateOrEditContractModalComponent, ViewContractModalComponent,
         ProductContractComponent, CreateOrEditProductContractModalComponent,ProductContractItemComponent,
         ContractPaymentDetailComponent,ContractPaymentDetailItem,CreateOrEditContractPaymentDetailModalComponent
-=======
-		ProviderComponent, CreateOrEditProviderModalComponent, ViewProviderModalComponent,
-		ContractComponent, CreateOrEditContractModalComponent, ViewContractModalComponent
->>>>>>> 1d766b265903486f7ef8e580b4853d9d46357b61
+
     ],
     providers: [
         DemoModelServiceProxy,
@@ -95,15 +92,11 @@ import {CreateOrEditContractPaymentDetailModalComponent} from './contract-paymen
         ProductServiceProxy,
         ProjectServiceProxy,
         BidServiceProxy,
-<<<<<<< HEAD
-		//ProviderServiceProxy
+		ProviderServiceProxy,
         ContractServiceProxy,
         ProductContractServiceProxy,
         ContractPaymentDetailServiceProxy
-=======
-		ProviderServiceProxy,
-		ContractServiceProxy
->>>>>>> 1d766b265903486f7ef8e580b4853d9d46357b61
+
     ]
 })
 export class GWebsiteModule { }

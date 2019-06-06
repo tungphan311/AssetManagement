@@ -20,7 +20,7 @@ export class CreateOrEditContractPaymentDetailModalComponent extends AppComponen
      * @Output dùng để public event cho component khác xử lý
      */
     @Output() modalSave: EventEmitter<any> = new EventEmitter<any>();
-   
+   @Input()totalProductPriceInput:number;
 
     saving = false;
 
@@ -35,7 +35,10 @@ export class CreateOrEditContractPaymentDetailModalComponent extends AppComponen
         super(injector);
     }
 
-
+    calculateMoneyByPercent(){
+        console.log(this.totalProductPriceInput)
+        this.contractPaymentDetail.price= this.totalProductPriceInput?this.totalProductPriceInput*this.contractPaymentDetail.percent/100:0
+    }
     show(contractPaymentDetailId?: number | null | undefined): void {
         this.saving = false;
 

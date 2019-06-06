@@ -83,7 +83,7 @@ import {CreateOrEditProductContractModalComponent} from './product-contract/crea
                     },
                 ]
             },
-<<<<<<< HEAD
+
             {
                 path:'',
                 children:[
@@ -93,16 +93,7 @@ import {CreateOrEditProductContractModalComponent} from './product-contract/crea
                     }
                 ]
             },
-			 // {
-            //     path: '',
-            //     children: [
-            //         {
-            //             path: 'provider', component: ProviderComponent,
-            //             data: { permission: 'Pages.Administration.Provider' }
-            //         },
-            //     ]
-            // },   
-=======
+		
 			 {
                 path: '',
                 children: [
@@ -112,7 +103,7 @@ import {CreateOrEditProductContractModalComponent} from './product-contract/crea
                     },
                 ]
             },   
->>>>>>> 1d766b265903486f7ef8e580b4853d9d46357b61
+
 		   			
         ])
         

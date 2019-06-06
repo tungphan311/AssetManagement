@@ -22,7 +22,8 @@
                         <h5 class="card-title">Chi tiết thanh toán</h5>
                     </div>
                     <contractPaymentDetailComponent #contractPaymentDetailComponent [contractInput]='contract'
-                    [totalPriceInput]="contract.totalPrice"    
+                    [totalPriceInput]="contract.totalPrice"   
+                    [sumProductPrice]="contract.totalProductPrice" 
                     (newItemAdded)='addPaymentItemToList($event)'></contractPaymentDetailComponent>
                     <!-- <productContractComponent #viewContractModal
                         [contractInput]="contract"

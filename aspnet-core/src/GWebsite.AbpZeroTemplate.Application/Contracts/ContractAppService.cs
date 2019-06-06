@@ -179,11 +179,13 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Contracts
                 {
                     foreach (var item in contractInput.ContractPaymentDetails)
                     {
+
                         var paymentItem = new ContractPaymentDetail();
                         paymentItem.ContractId = contractId;
                         paymentItem.InstallmentNumber = item.InstallmentNumber;
                         paymentItem.ExpectedDate = item.ExpectedDate;
                         paymentItem.Price = item.Price;
+                        paymentItem.Percent = item.Percent;
                         paymentItem.Description = item.Description;
                         paymentItem.Note = item.Note;
                         paymentItem.Contract = null;

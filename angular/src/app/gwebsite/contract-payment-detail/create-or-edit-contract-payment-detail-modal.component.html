@@ -30,13 +30,18 @@
                     <div class="form-group">
                         <label>Phần trăm (%) </label>
                         <input #codeInput="ngModel" class="form-control" type="number" name="percent"
-                            [(ngModel)]="contractPaymentDetail.percent"  >
+                            [(ngModel)]="contractPaymentDetail.percent"    
+                            (change)="calculateMoneyByPercent()"                                          
+                            >
+                            
                         <validation-messages [formCtrl]="percentInput"></validation-messages>
                     </div>
                     <div class="form-group">
                         <label>Số tiền </label>
                         <input #codeInput="ngModel" class="form-control" type="number" name="number"
-                            [(ngModel)]="contractPaymentDetail.price"  >
+                            [ngModel]="contractPaymentDetail.price" 
+                            [attr.disabled]="true"          
+                            >
                         <validation-messages [formCtrl]="percentInput"></validation-messages>
                     </div>
                     <div class="form-group">
