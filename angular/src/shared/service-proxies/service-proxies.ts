@@ -14299,6 +14299,7 @@ export class BidInput implements IBidInput {
     biddingForm!: string | undefined;
     totalPrice!: number | undefined;
     bidderID!: number | undefined;
+    bidders!: BidderInput[] | undefined;
     id!: number | undefined;
 
     constructor(data?: IBidInput) {
@@ -14321,6 +14322,11 @@ export class BidInput implements IBidInput {
             this.biddingForm = data["biddingForm"];
             this.totalPrice = data["totalPrice"];
             this.bidderID = data["bidderID"];
+            if (data["bidders"] && data["bidders"].constructor === Array) {
+                this.bidders = [];
+                for (let item of data["bidders"])
+                    this.bidders.push(BidderInput.fromJS(item));
+            }
             this.id = data["id"];
         }
     }
@@ -14343,6 +14349,11 @@ export class BidInput implements IBidInput {
         data["biddingForm"] = this.biddingForm;
         data["totalPrice"] = this.totalPrice;
         data["bidderID"] = this.bidderID;
+        if (this.bidders && this.bidders.constructor === Array) {
+            data["bidders"] = [];
+            for (let item of this.bidders)
+                data["bidders"].push(item.toJSON());
+        }
         data["id"] = this.id;
         return data; 
     }
@@ -14358,6 +14369,75 @@ export interface IBidInput {
     biddingForm: string | undefined;
     totalPrice: number | undefined;
     bidderID: number | undefined;
+    bidders: BidderInput[] | undefined;
+    id: number | undefined;
+}
+
+export class BidderInput implements IBidderInput {
+    vendorId!: number | undefined;
+    applyDay!: moment.Moment | undefined;
+    offerPrice!: number | undefined;
+    guaranteeMethod!: string | undefined;
+    guaranteeExpired!: moment.Moment | undefined;
+    certificateNumber!: number | undefined;
+    note!: string | undefined;
+    bidID!: number | undefined;
+    id!: number | undefined;
+
+    constructor(data?: IBidderInput) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.vendorId = data["vendorId"];
+            this.applyDay = data["applyDay"] ? moment(data["applyDay"].toString()) : <any>undefined;
+            this.offerPrice = data["offerPrice"];
+            this.guaranteeMethod = data["guaranteeMethod"];
+            this.guaranteeExpired = data["guaranteeExpired"] ? moment(data["guaranteeExpired"].toString()) : <any>undefined;
+            this.certificateNumber = data["certificateNumber"];
+            this.note = data["note"];
+            this.bidID = data["bidID"];
+            this.id = data["id"];
+        }
+    }
+
+    static fromJS(data: any): BidderInput {
+        data = typeof data === 'object' ? data : {};
+        let result = new BidderInput();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["vendorId"] = this.vendorId;
+        data["applyDay"] = this.applyDay ? this.applyDay.toISOString() : <any>undefined;
+        data["offerPrice"] = this.offerPrice;
+        data["guaranteeMethod"] = this.guaranteeMethod;
+        data["guaranteeExpired"] = this.guaranteeExpired ? this.guaranteeExpired.toISOString() : <any>undefined;
+        data["certificateNumber"] = this.certificateNumber;
+        data["note"] = this.note;
+        data["bidID"] = this.bidID;
+        data["id"] = this.id;
+        return data; 
+    }
+}
+
+export interface IBidderInput {
+    vendorId: number | undefined;
+    applyDay: moment.Moment | undefined;
+    offerPrice: number | undefined;
+    guaranteeMethod: string | undefined;
+    guaranteeExpired: moment.Moment | undefined;
+    certificateNumber: number | undefined;
+    note: string | undefined;
+    bidID: number | undefined;
     id: number | undefined;
 }
 
@@ -14534,74 +14614,6 @@ export class BidderDto implements IBidderDto {
 }
 
 export interface IBidderDto {
-    vendorId: number | undefined;
-    applyDay: moment.Moment | undefined;
-    offerPrice: number | undefined;
-    guaranteeMethod: string | undefined;
-    guaranteeExpired: moment.Moment | undefined;
-    certificateNumber: number | undefined;
-    note: string | undefined;
-    bidID: number | undefined;
-    id: number | undefined;
-}
-
-export class BidderInput implements IBidderInput {
-    vendorId!: number | undefined;
-    applyDay!: moment.Moment | undefined;
-    offerPrice!: number | undefined;
-    guaranteeMethod!: string | undefined;
-    guaranteeExpired!: moment.Moment | undefined;
-    certificateNumber!: number | undefined;
-    note!: string | undefined;
-    bidID!: number | undefined;
-    id!: number | undefined;
-
-    constructor(data?: IBidderInput) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(data?: any) {
-        if (data) {
-            this.vendorId = data["vendorId"];
-            this.applyDay = data["applyDay"] ? moment(data["applyDay"].toString()) : <any>undefined;
-            this.offerPrice = data["offerPrice"];
-            this.guaranteeMethod = data["guaranteeMethod"];
-            this.guaranteeExpired = data["guaranteeExpired"] ? moment(data["guaranteeExpired"].toString()) : <any>undefined;
-            this.certificateNumber = data["certificateNumber"];
-            this.note = data["note"];
-            this.bidID = data["bidID"];
-            this.id = data["id"];
-        }
-    }
-
-    static fromJS(data: any): BidderInput {
-        data = typeof data === 'object' ? data : {};
-        let result = new BidderInput();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["vendorId"] = this.vendorId;
-        data["applyDay"] = this.applyDay ? this.applyDay.toISOString() : <any>undefined;
-        data["offerPrice"] = this.offerPrice;
-        data["guaranteeMethod"] = this.guaranteeMethod;
-        data["guaranteeExpired"] = this.guaranteeExpired ? this.guaranteeExpired.toISOString() : <any>undefined;
-        data["certificateNumber"] = this.certificateNumber;
-        data["note"] = this.note;
-        data["bidID"] = this.bidID;
-        data["id"] = this.id;
-        return data; 
-    }
-}
-
-export interface IBidderInput {
     vendorId: number | undefined;
     applyDay: moment.Moment | undefined;
     offerPrice: number | undefined;

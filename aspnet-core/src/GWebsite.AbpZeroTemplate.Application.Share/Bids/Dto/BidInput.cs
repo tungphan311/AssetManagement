@@ -1,4 +1,5 @@
 ﻿using Abp.Domain.Entities;
+using GWebsite.AbpZeroTemplate.Application.Share.Bidders.Dto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,5 +27,7 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.Bids.Dto
         public double TotalPrice { get; set; }
 
         public int BidderID { get; set; }
+
+        public List<BidderInput> Bidders { get; set; }
     }
 }

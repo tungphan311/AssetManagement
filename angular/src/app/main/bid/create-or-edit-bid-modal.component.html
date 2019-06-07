@@ -94,7 +94,7 @@
                                     </p-paginator>
                                 </div>
                                 <div class="col-xs-6 align-items-right">
-                                    <button [disabled]="saving" type="button" (click)="addBidder(0)" *ngIf="('Pages.Administration.Bid.Create')"
+                                    <button [disabled]="saving" type="button" (click)="addBidder()" *ngIf="('Pages.Administration.Bid.Create')"
                                         class="btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill">
                                         <i class="fa fa-plus"></i>
                                     </button>
@@ -102,53 +102,74 @@
                             </div>  
                             <p-table #dataTable (onLazyLoad)="getBidders($event)" [value]="primengTableHelper.records"
                                 rows="{{primengTableHelper.defaultRecordsCountPerPage}}" [paginator]="false" [lazy]="true"
-                                [responsive]="primengTableHelper.isResponsive">
+                                [responsive]="primengTableHelper.isResponsive" [scrollable]="true">
                                 <ng-template pTemplate="header">
                                     <tr>
-                                        <th pSortableColumn="isSelected">
+                                        <th pSortableColumn="isSelected" style="width: 100px; text-align: center;">
                                             DV trúng thầu
                                             <p-sortIcon field="isSelected"></p-sortIcon>
                                         </th>
-                                        <th pSortableColumn="code">
+                                        <th pSortableColumn="code" style="width: 150px; text-align: center;">
                                             Mã DV
                                             <p-sortIcon field="code"></p-sortIcon>
                                         </th>
-                                        <th pSortableColumn="name">
+                                        <th pSortableColumn="name" style="width: 150px; text-align: center;">
                                             Tên DV
                                             <p-sortIcon field="name"></p-sortIcon>
                                         </th>
-                                        <th pSortableColumn="offerPrice">
+                                        <th style="width: 150px; text-align: center;">Ngày nộp HS thầu</th>
+                                        <th pSortableColumn="offerPrice" style="width: 150px; text-align: center;">
                                             Giá chào thầu
                                             <p-sortIcon field="offerPrice"></p-sortIcon>
-                                        </th>                                 
-                                        <th>Chỉnh sửa</th>
+                                        </th>    
+                                        <th style="width: 150px; text-align: center;">Hình thức bảo lãnh</th>
+                                        <th style="width: 150px; text-align: center;">Ngày hết hạn BL</th>
+                                        <th style="width: 150px; text-align: center;">Số chứng từ</th>
+                                        <th style="width: 150px; text-align: center;">Ghi chú</th>                      
+                                        <th style="width: 100px; text-align: center;">Xóa</th>
                                     </tr>
                                 </ng-template>
-                                <ng-template pTemplate="body" let-record="$implicit">
-                                    <tr>
-                                        <td>
+                                <ng-template pTemplate="body" let-record="$implicit" let-i="rowIndex">
+                                    <tr>                                   
+                                        <td style="width: 100px; text-align: center;">
                                                 <span class="ui-column-title">DV trúng thầu</span>
                                                 <div class="radio">
                                                         <input type="radio" id="{{record.vendorCode}}" name="radio" [(ngModel)]="selectedVendorID" [value]="record.bidder.vendorId" />          
                                                 </div>
                                         </td>
-                                        <td>
+                                        <td style="width: 150px; text-align: center;">
                                             <span class="ui-column-title">Mã DV</span>
                                             <span class="Code">{{truncateString(record.vendorCode)}}</span>
                                         </td>
-                                        <td>
+                                        <td style="width: 150px; text-align: center;">
                                             <span class="ui-column-title">Tên DV</span>
                                             <span class="Name">{{truncateString(record.vendorName)}}</span>
                                         </td>
-                                        <td>
-                                            <span class="ui-column-title">Giá chào thầu</span>
-                                            <span class="Name">{{truncateString(record.bidder.offerPrice)}}</span>
+                                        <td style="width: 150px; text-align: center;">
+                                            <span class="ui-column-title">Ngày nộp HS thầu</span>
+                                            <input type="date" class="form-control" [(ngModel)]="record.bidder.applyDay" name="ApplyDay">
                                         </td>
-                                        <td>
-                                            <button type="button" class="btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill"
-                                                (click)="addBidder(record.bidder.vendorId)" title="{{l('Edit')}}">
-                                            <i class="fa fa-edit" [attr.aria-label]="l('Edit')"></i>
-                                            </button>
+                                        <td style="width: 150px; text-align: center;">
+                                            <span class="ui-column-title">Giá chào thầu</span>
+                                            <input type="text" class="form-control" [(ngModel)]="record.bidder.offerPrice" name="OfferPrice">
+                                        </td>
+                                        <td style="width: 150px; text-align: center;">
+                                            <span class="ui-column-title">Hình thức bảo lãnh</span>
+                                            <input type="text" class="form-control" [(ngModel)]="record.bidder.guaranteeMethod" name="GuaranteeMethod">
+                                        </td>
+                                        <td style="width: 150px; text-align: center;">
+                                            <span class="ui-column-title">Ngày hết hạn BL</span>
+                                            <input type="date" class="form-control" [(ngModel)]="record.bidder.guaranteeExpired" name="guaranteeExpired">
+                                        </td>
+                                        <td style="width: 150px; text-align: center;">
+                                            <span class="ui-column-title">Số chứng từ</span>
+                                            <input type="text" class="form-control" [(ngModel)]="record.bidder.certificateNumber" name="certificateNumber">
+                                        </td>
+                                        <td style="width: 150px; text-align: center;">
+                                                <span class="ui-column-title">Ghi chú</span>
+                                                <input type="text" class="form-control" [(ngModel)]="record.bidder.note" name="note">
+                                            </td>
+                                        <td style="width: 100px; text-align: center;">
                                             <button type="button" class="btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill"
                                                 (click)="deleteBidder(record.bidder.vendorId)" title="{{l('Delete')}}">
                                             <i class="fa fa-times" [attr.aria-label]="l('Delete')"></i>
@@ -173,5 +194,5 @@
     </div>
 </div>
 <selectProjectModal #selectProjectModal (modalSave)="reloadProject($event)"></selectProjectModal>
-<addBidderModal #addBidderModal (modalSave1)="addBiddertoList($event)"></addBidderModal>
+<selectVendorModal #selectVendorModal (modalSave)="addBiddertoList($event)"></selectVendorModal>
 </div>
