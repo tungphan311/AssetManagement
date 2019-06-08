@@ -15486,7 +15486,7 @@ export class ContractInput implements IContractInput {
     warrantyGuaranteeAmount!: number | undefined;
     warrantyGuaranteeBank!: string | undefined;
     warrantyGuaranteeFile!: string | undefined;
-    products!: ProductInput[] | undefined;
+    products!: ContractDetailInput[] | undefined;
     id!: number | undefined;
 
     constructor(data?: IContractInput) {
@@ -15523,7 +15523,7 @@ export class ContractInput implements IContractInput {
             if (data["products"] && data["products"].constructor === Array) {
                 this.products = [];
                 for (let item of data["products"])
-                    this.products.push(ProductInput.fromJS(item));
+                    this.products.push(ContractDetailInput.fromJS(item));
             }
             this.id = data["id"];
         }
@@ -15589,21 +15589,21 @@ export interface IContractInput {
     warrantyGuaranteeAmount: number | undefined;
     warrantyGuaranteeBank: string | undefined;
     warrantyGuaranteeFile: string | undefined;
-    products: ProductInput[] | undefined;
+    products: ContractDetailInput[] | undefined;
     id: number | undefined;
 }
 
-export class ProductInput implements IProductInput {
-    merchandiseID!: number | undefined;
+export class ContractDetailInput implements IContractDetailInput {
+    contractID!: number | undefined;
+    merchID!: number | undefined;
     merCode!: string | undefined;
     merName!: string | undefined;
     quantity!: number | undefined;
     price!: number | undefined;
-    total!: number | undefined;
     note!: string | undefined;
     id!: number | undefined;
 
-    constructor(data?: IProductInput) {
+    constructor(data?: IContractDetailInput) {
         if (data) {
             for (var property in data) {
                 if (data.hasOwnProperty(property))
@@ -15614,45 +15614,45 @@ export class ProductInput implements IProductInput {
 
     init(data?: any) {
         if (data) {
-            this.merchandiseID = data["merchandiseID"];
+            this.contractID = data["contractID"];
+            this.merchID = data["merchID"];
             this.merCode = data["merCode"];
             this.merName = data["merName"];
             this.quantity = data["quantity"];
             this.price = data["price"];
-            this.total = data["total"];
             this.note = data["note"];
             this.id = data["id"];
         }
     }
 
-    static fromJS(data: any): ProductInput {
+    static fromJS(data: any): ContractDetailInput {
         data = typeof data === 'object' ? data : {};
-        let result = new ProductInput();
+        let result = new ContractDetailInput();
         result.init(data);
         return result;
     }
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
-        data["merchandiseID"] = this.merchandiseID;
+        data["contractID"] = this.contractID;
+        data["merchID"] = this.merchID;
         data["merCode"] = this.merCode;
         data["merName"] = this.merName;
         data["quantity"] = this.quantity;
         data["price"] = this.price;
-        data["total"] = this.total;
         data["note"] = this.note;
         data["id"] = this.id;
         return data; 
     }
 }
 
-export interface IProductInput {
-    merchandiseID: number | undefined;
+export interface IContractDetailInput {
+    contractID: number | undefined;
+    merchID: number | undefined;
     merCode: string | undefined;
     merName: string | undefined;
     quantity: number | undefined;
     price: number | undefined;
-    total: number | undefined;
     note: string | undefined;
     id: number | undefined;
 }
@@ -15871,70 +15871,6 @@ export class ContractDetailDto implements IContractDetailDto {
 }
 
 export interface IContractDetailDto {
-    contractID: number | undefined;
-    merchID: number | undefined;
-    merCode: string | undefined;
-    merName: string | undefined;
-    quantity: number | undefined;
-    price: number | undefined;
-    note: string | undefined;
-    id: number | undefined;
-}
-
-export class ContractDetailInput implements IContractDetailInput {
-    contractID!: number | undefined;
-    merchID!: number | undefined;
-    merCode!: string | undefined;
-    merName!: string | undefined;
-    quantity!: number | undefined;
-    price!: number | undefined;
-    note!: string | undefined;
-    id!: number | undefined;
-
-    constructor(data?: IContractDetailInput) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(data?: any) {
-        if (data) {
-            this.contractID = data["contractID"];
-            this.merchID = data["merchID"];
-            this.merCode = data["merCode"];
-            this.merName = data["merName"];
-            this.quantity = data["quantity"];
-            this.price = data["price"];
-            this.note = data["note"];
-            this.id = data["id"];
-        }
-    }
-
-    static fromJS(data: any): ContractDetailInput {
-        data = typeof data === 'object' ? data : {};
-        let result = new ContractDetailInput();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["contractID"] = this.contractID;
-        data["merchID"] = this.merchID;
-        data["merCode"] = this.merCode;
-        data["merName"] = this.merName;
-        data["quantity"] = this.quantity;
-        data["price"] = this.price;
-        data["note"] = this.note;
-        data["id"] = this.id;
-        return data; 
-    }
-}
-
-export interface IContractDetailInput {
     contractID: number | undefined;
     merchID: number | undefined;
     merCode: string | undefined;

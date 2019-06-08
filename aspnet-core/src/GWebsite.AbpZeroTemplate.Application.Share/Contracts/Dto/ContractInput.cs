@@ -61,6 +61,6 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.Contracts.Dto
         public string WarrantyGuaranteeBank { get; set; }
         public string WarrantyGuaranteeFile { get; set; }
 
-        public ProductInput[] Products { get; set; }
+        public List<ContractDetailInput> Products { get; set; }
     }
 }

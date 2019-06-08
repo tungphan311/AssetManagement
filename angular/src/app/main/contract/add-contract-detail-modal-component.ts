@@ -22,6 +22,7 @@ export class AddContractDetailModalComponent extends AppComponentBase {
     /**
     * @Output dùng để public event cho component khác xử lý
     */
+   @Input() merchandises: ContractDetailInput[];
    @Output('listMerchandises') data: EventEmitter<any[]> = new EventEmitter<any[]>();
    @Output() modalSave: EventEmitter<any> = new EventEmitter<any>();
 
@@ -89,7 +90,13 @@ export class AddContractDetailModalComponent extends AppComponentBase {
             this.primengTableHelper.getMaxResultCount(this.paginator, event),
             this.primengTableHelper.getSkipCount(this.paginator, event),
         ).subscribe(result => {
-            this.primengTableHelper.totalRecordsCount = result.totalCount;
+            if (this.merchandises != null) {
+                this.merchandises.forEach(item => {
+                    result.items = result.items.filter(x => x.id != item.merchID);
+                });
+            }
+            
+            this.primengTableHelper.totalRecordsCount = result.items.length;
             this.primengTableHelper.records = result.items;
             this.listMerchandises = result.items;
             this.savingId.length = result.items.length;
@@ -100,6 +107,7 @@ export class AddContractDetailModalComponent extends AppComponentBase {
 
    applyFilters(): void {
        this.reloadList(this.merID, this.merName, this.typeID, null);
+       this.isSelectAll = false;
 
        if (this.paginator.getPage() !== 0) {
            this.paginator.changePage(0);
@@ -113,6 +121,10 @@ export class AddContractDetailModalComponent extends AppComponentBase {
        this._contractDetailService.getContractDetailsByFilter(0, null, 999, 0).subscribe(result => {
             this.listContractDetail = result.items;
         });
+
+        this.applyFilters();
+
+        console.log(this.merchandises);
 
        this.addContractModal.show();
    }

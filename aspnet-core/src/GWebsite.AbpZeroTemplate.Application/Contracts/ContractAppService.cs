@@ -48,6 +48,16 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Contracts
             {
                 contractEntity.IsDelete = true;
                 contractRepository.Update(contractEntity);
+
+                // xoá ContractDetail ứng với contract này
+                var detailList = detailRepository.GetAll().Where(x => !x.IsDelete).Where(x => x.ContractID == id);
+                foreach(var detail in detailList)
+                {
+                    detail.IsDelete = true;
+                    SetAuditEdit(detail);
+                    detailRepository.Update(detail);
+                }
+
                 CurrentUnitOfWork.SaveChanges();
             }
         }
@@ -59,7 +69,12 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Contracts
             {
                 return null;
             }
-            return ObjectMapper.Map<ContractInput>(contractEntity);
+
+            var contractInput = ObjectMapper.Map<ContractInput>(contractEntity);
+            var detailList = detailRepository.GetAll().Where(x => !x.IsDelete).Where(x => x.ContractID == id);
+            contractInput.Products = detailList.Select(x => ObjectMapper.Map<ContractDetailInput>(x)).ToList();
+
+            return contractInput;
         }
 
         public ContractForViewDto GetContractForView(int id)
@@ -139,8 +154,8 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Contracts
             foreach (var product in contractInput.Products)
             {
                 // insert vo bang ProductContract co productId va contractId
-                ContractDetailInput detailInput = new ContractDetailInput(id, product.Id, product.MerCode, product.MerName, product.Quantity, product.Price, product.Note);
-                var detailEntity = ObjectMapper.Map<ContractDetail>(detailInput);
+                product.ContractID = id;
+                var detailEntity = ObjectMapper.Map<ContractDetail>(product);
                 SetAuditInsert(detailEntity);
                 detailRepository.Insert(detailEntity);
             }
@@ -158,6 +173,60 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Contracts
             ObjectMapper.Map(contractInput, contractEntity);
             SetAuditEdit(contractEntity);
             contractRepository.Update(contractEntity);
+
+            if (contractInput.Products == null)
+            {
+                // nếu input rỗng thì xoá hết detail đang có của contract
+                var detailList = detailRepository.GetAll().Where(x => x.ContractID == contractInput.Id);
+
+                foreach(var detail in detailList)
+                {
+                    detail.IsDelete = true;
+                    SetAuditEdit(detail);
+                    detailRepository.Update(detail);
+                }
+                return;
+            }
+            else
+            {
+                // update list contract detail
+                var detailList = detailRepository.GetAll().Where(x => !x.IsDelete).Where(x => x.ContractID == contractInput.Id);
+                
+                foreach(var detail in detailList)
+                {
+                    if (!(contractInput.Products.Exists(x => x.MerchID == detail.MerchID)))
+                    {
+                        // nếu không tại trong list input thì xoá đi
+                        detail.IsDelete = true;
+                        SetAuditEdit(detail);
+                        detailRepository.Update(detail);
+                    }
+                }
+
+                // update contract detail
+                foreach(var product in contractInput.Products)
+                {
+                    var detailEntity = detailList.SingleOrDefault(x => x.MerchID == product.MerchID);
+                    if (detailEntity == null)
+                    {
+                        // nếu chưa tồn tại thì thêm 
+                        detailEntity = ObjectMapper.Map<ContractDetail>(product);
+                        detailEntity.ContractID = contractEntity.Id;
+                        SetAuditInsert(detailEntity);
+                        detailRepository.Insert(detailEntity);
+                    }
+                    else
+                    {
+                        // nếu có thì sẽ update
+                        product.ContractID = detailEntity.Id;
+                        ObjectMapper.Map(product, detailEntity);
+                        detailEntity.ContractID = contractEntity.Id;
+                        SetAuditEdit(detailEntity);
+                        detailRepository.Update(detailEntity);
+                    }
+                }
+            }
+
             CurrentUnitOfWork.SaveChanges();
         }
 

@@ -3,7 +3,7 @@ import { AppComponentBase } from "@shared/common/app-component-base";
 import { ModalDirective } from "ngx-bootstrap";
 import { Table } from "primeng/table";
 import { Paginator, LazyLoadEvent } from "primeng/primeng";
-import { ContractInput, ContractServiceProxy, ContractDetailServiceProxy, ProductInput, BidServiceProxy, BidForViewDto, VendorServiceProxy, VendorForViewDto } from "@shared/service-proxies/service-proxies";
+import { ContractInput, ContractServiceProxy, ContractDetailServiceProxy, BidServiceProxy, BidForViewDto, VendorServiceProxy, VendorForViewDto, ContractDetailInput, ContractDetailDto } from "@shared/service-proxies/service-proxies";
 import { AddContractDetailModalComponent } from "./add-contract-detail-modal-component";
 import { SelectBidModalComponent } from "./select-bid-modal.component";
 
@@ -45,10 +45,10 @@ export class CreateOrEditContractModalComponent extends AppComponentBase {
    
    listContractDetail = [];
    listMerchandiseID: number[] = [];
-   prices: number[] = [];
 
     contract: ContractInput = new ContractInput();
-    products: ProductInput[] = [];
+    products: ContractDetailInput[] = [];
+    contractDetails: ContractDetailDto[] = [];
 
     constructor(
         injector: Injector,
@@ -104,25 +104,20 @@ export class CreateOrEditContractModalComponent extends AppComponentBase {
     }
 
     passToProducts() {
-        this.products.length = 0;
-
         this.addContractDetailModal.listMerID.forEach(element => {
-            let input: ProductInput = new ProductInput();
-            input.merchandiseID = element.id;
+            let input: ContractDetailInput = new ContractDetailInput();
+            input.merchID = element.id;
             input.merCode = element.code;
             input.merName = element.name;
             input.quantity = 1;
             input.price = element.price;
-            input.total = input.quantity * input.price;
+            //input.total = input.quantity * input.price;
             input.note = "";
 
-            this.products.push(input);
-            this.listMerchandiseID.push(element.id);
+            this.contract.products.push(input);
         });
 
-        this.contract.products = this.products;
-        //console.log(this.addContractDetailModal.listMerID)
-        //console.log(this.contract.products);
+        this.addContractDetailModal.listMerID.length = 0;
     }
 
     loadListMerchandise() {
@@ -148,12 +143,8 @@ export class CreateOrEditContractModalComponent extends AppComponentBase {
             this.primengTableHelper.getSkipCount(this.paginator, event),
         ).subscribe(result => {
             this.primengTableHelper.totalRecordsCount = result.totalCount;
-            this.prices.length = result.totalCount;
-            result.items.forEach(item => {
-                this.prices[result.items.indexOf(item)] = item.price;
-            });
-            console.log(this.prices);
             this.primengTableHelper.records = result.items;
+            this.contractDetails = result.items;
             this.primengTableHelper.hideLoadingIndicator();
         })
     }
@@ -164,6 +155,8 @@ export class CreateOrEditContractModalComponent extends AppComponentBase {
 
     save(): void {
         let input = this.contract;
+        input.products = this.primengTableHelper.records;
+        
         var moment = require('moment');
         input.deliveryTime = moment(input.deliveryTime);
         input.contractWarrantyExpireDate = moment(input.contractWarrantyExpireDate);
@@ -178,7 +171,6 @@ export class CreateOrEditContractModalComponent extends AppComponentBase {
         this.addContractDetailModal.isSelectAll = false;
 
         this._contractService.createOrEditContract(input).subscribe(result => {
-            console.log(this.prices);
             this.notify.info(this.l('SavedSuccessfully'));
             this.close();
         })
@@ -216,15 +208,21 @@ export class CreateOrEditContractModalComponent extends AppComponentBase {
         }
     }
 
-    deleteContract(id: number) {
-        this.addContractDetailModal.listMerID = this.addContractDetailModal.listMerID.filter(x => x.id != id);
-        this.addContractDetailModal.listMerchandises.forEach(item => {
-            if (item.id == id) {
-                item.isAddContract = false;
-            }
-        })
-        this.getListMerchandises();
-    }
+    // isExist(id: number): boolean {
+    //     this.contractDetails.forEach(item => {
+    //         if (item.merchID == id) {
+    //             return true;
+    //         }
+    //     })
+
+    //     return false;
+    // }
+
+    // deleteContract(id: number) {
+    //     // this.addContractDetailModal.listMerID = this.addContractDetailModal.listMerID.filter(x => x.id != id);
+    //         this.contract.products = this.contract.products.filter(x => x.id != id);
+    //         this.loadListMerchandise();  
+    // }
 
     close(): void {
         this.modal.hide();
