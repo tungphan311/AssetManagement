@@ -20,17 +20,17 @@
                         </h4>
                     </nav>
                     <div class="form-group row margin-top-15">
-                        <div class="col-xs-5 margin-right-20 margin-left-20">
+                        <div class="margin-right-20 margin-left-20" style="width: 30%">
                             <label for="ex1">Số hợp đồng *</label>
                             <input #contractIDInput="ngModel" class="form-control" id="ex1" type="text" name="ContractID" [(ngModel)]="contract.contractID" required maxlength="64">
                             <validation-messages [formCtrl]="contractIDInput"></validation-messages>
                         </div>
-                        <div class="col-xs-5 margin-right-20">
+                        <div class="margin-right-20" style="width: 30%">
                             <label for="ex2">Tên hợp đồng *</label>
                             <input #nameInput="ngModel" class="form-control" id="ex2" type="text" name="Name" [(ngModel)]="contract.name" required maxlength="64">
                             <validation-messages [formCtrl]="nameInput"></validation-messages>
                         </div>
-                        <div class="col-xs-4">
+                        <div style="width: 30%">
                             <label for="ex3">Ngày giao hàng *</label>
                             <input #dateInput="ngModel" class="form-control" id="ex3" type="date" name="DeliveryTime" [(ngModel)]="contract.deliveryTime" required>
                             <validation-messages [formCtrl]="dateInput"></validation-messages>
@@ -114,11 +114,10 @@
                                 <input type="text" class="form-control" name="ContractWarrantyBank" [(ngModel)]="contract.contractWarrantyBank">   
                             </div>  
                             <div class="form-group margin-left-20">
-                                <label>File đính kèm</label>
-                                <div class="input-group">
-                                    <input type="file" class="form-control" name="ContactWarrantyFile">
-                                    <!-- <demo-ui-file-upload #demoUiFileUpload></demo-ui-file-upload> -->
-                                </div>         
+                                <!-- <label for="file">File đính kèm</label>
+                                <input type="file" id="file" class="form-control" name="ContactWarrantyFile" (change)="handleFileInput($event.target.files)"> -->
+                                <label>Tệp đính kèm</label>
+                                <app-upload></app-upload>
                             </div>
                         </fieldset>
                     </form>

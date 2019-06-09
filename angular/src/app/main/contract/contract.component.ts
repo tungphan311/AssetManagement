@@ -3,7 +3,7 @@ import { appModuleAnimation } from "@shared/animations/routerTransition";
 import { AppComponentBase } from "@shared/common/app-component-base";
 import { Table } from "primeng/table";
 import { Paginator, LazyLoadEvent } from "primeng/primeng";
-import { ContractServiceProxy } from "@shared/service-proxies/service-proxies";
+import { ContractServiceProxy, BidServiceProxy, BidInput, BidDto, VendorServiceProxy, VendorDto } from "@shared/service-proxies/service-proxies";
 import { ActivatedRoute, Params } from "@angular/router";
 import { CreateOrEditContractModalComponent } from "./create-or-edit-contract-modal.component";
 import { ViewContractModalComponent } from "./view-contract-modal.component";
@@ -27,13 +27,17 @@ export class ContractComponent extends AppComponentBase implements AfterViewInit
     briefCaseID: number
     vendorID: number
 
-    listBid = []
-    listVendor = []
+    listBid: BidDto[] = []
+    listVendor: VendorDto[] = []
+
+    bid: BidInput;
 
     constructor(
         injector: Injector,
         private _contractService: ContractServiceProxy,
         private _activatedRoute: ActivatedRoute,
+        private _bidService: BidServiceProxy,
+        private _vendorService: VendorServiceProxy
     ) {
         super(injector);
     }
@@ -78,6 +82,14 @@ export class ContractComponent extends AppComponentBase implements AfterViewInit
             this.primengTableHelper.records = result.items;
             this.primengTableHelper.hideLoadingIndicator();
         });
+
+        this._bidService.getBidsByFilter(null, null, null, null, 'All', 0, null, 999, 0).subscribe(result => {
+            this.listBid = result.items;
+        });
+
+        this._vendorService.getVendorsByFilter(null, null, 0, null, null, 999, 0).subscribe(result => {
+            this.listVendor = result.items;
+        })
     }
 
     init(): void {
@@ -89,6 +101,28 @@ export class ContractComponent extends AppComponentBase implements AfterViewInit
             this.vendorID = params['vendorID'] || 0;
             this.reloadList(this.contractID, this.contractName, this.deliveryTime , this.briefCaseID, this.vendorID, null);
         });
+    }
+
+    getBidNameFromId(id: number): any {
+        for(const item of this.listBid) {
+            if (item.id == id) {
+                return item.name;
+            }
+        }
+        return "Chưa có mã gói thầu";
+    }
+
+    getVendorName(id: number): any {
+        for (const item of this.listBid) {
+            if (item.id == id) {
+                for (const vendor of this.listVendor) {
+                    if (vendor.id == item.bidderID) {
+                        return vendor.name;
+                    }
+                }
+            }
+        }
+        return "Chưa có nhà cung cấp";
     }
 
     reloadPage(): void {
@@ -113,6 +147,14 @@ export class ContractComponent extends AppComponentBase implements AfterViewInit
 
     createContract() {
         this.createOrEditModal.show();
+    }
+
+    dateFormat(date): string {
+        var moment = require('moment');
+        var _date = moment(date);
+        var tz = _date.utcOffset();
+        _date.add(tz, 'm');
+        return _date.format('DD/MM/YYYY');
     }
 
     /**

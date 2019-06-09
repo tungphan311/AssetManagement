@@ -800,5 +800,6 @@
       <text name="MerchandiseDetail">Detail</text>
       <text name="MerchandisePrice">Price</text>
       <text name="Bid">Bid</text>
+      <text name="PO">PO</text>
     </texts>
 </localizationDictionary>

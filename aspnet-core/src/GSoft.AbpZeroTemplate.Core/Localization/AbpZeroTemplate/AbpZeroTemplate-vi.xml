@@ -808,6 +808,7 @@
     <text name="MerchandiseDetail">Thông tin chi tiết</text>
     <text name="MerchandisePrice">Giá tham khảo</text>
     <text name="Project">Quản lý dự án</text>
-    <text name="Bid">Quản lý hồ sơ thầu</text>    
+    <text name="Bid">Quản lý hồ sơ thầu</text>
+    <text name="PO">Quản lý PO</text>
   </texts>
 </localizationDictionary>

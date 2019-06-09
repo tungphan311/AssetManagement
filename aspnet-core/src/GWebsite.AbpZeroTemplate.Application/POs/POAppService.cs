@@ -80,10 +80,10 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.POs
                 query = query.Where(x => x.POID == input.POID);
             }
 
-            if (input.CreateDay != null)
-            {
-                query = query.Where(x => x.CreateDay.DayOfYear >= input.CreateDay.DayOfYear);
-            }
+            //if (input.CreateDay != null)
+            //{
+            //    query = query.Where(x => x.CreateDay.DayOfYear >= input.CreateDay.DayOfYear);
+            //}
 
             if (input.OrderName != null)
             {

@@ -35,6 +35,8 @@ import { HeaderNotificationsComponent } from './shared/layout/notifications/head
 import { NotificationSettingsModalComponent } from './shared/layout/notifications/notification-settings-modal.component';
 import { NotificationsComponent } from './shared/layout/notifications/notifications.component';
 import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { RouterModule } from '@angular/router';
+import { FileUploadComponent } from './main/contract/file-upload.component';
 
 @NgModule({
     declarations: [
@@ -76,7 +78,7 @@ import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform
         PrimeNgFileUploadModule,
         ProgressBarModule,
         BrowserAnimationsModule,
-        NoopAnimationsModule
+        NoopAnimationsModule   
     ],
     providers: [
         ImpersonationService,

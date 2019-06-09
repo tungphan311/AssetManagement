@@ -9,6 +9,8 @@ import { ContractComponent } from './contract/contract.component';
 import { AssignmentTableComponent } from './assignment-table/assignment-table.component';
 import { ProjectComponent } from './project/project.component';
 import { BidComponent } from './bid/bid.component';
+import { POCOmponent } from './po/po.component';
+import { FileUploadComponent } from './contract/file-upload.component';
 
 @NgModule({
     imports: [
@@ -16,13 +18,48 @@ import { BidComponent } from './bid/bid.component';
             {
                 path: '',
                 children: [
-                    { path: 'dashboard', component: DashboardComponent, data: { permission: 'Pages.Tenant.Dashboard' } },
-                    { path: 'merchandise', component: MerchandiseComponent, data: { permission: 'Pages.Administration.Merchandise' } },
-                    { path: 'merchandise-type', component: MerchandiseTypeComponent, data: { permission: 'Pages.Administration.MerchandiseType' } },
-                    { path: 'vendor', component: VendorComponent, data: { permission: 'Pages.Administration.Vendor' } },
-                    { path: 'vendortype', component: VendorTypeComponent, data: { permission: 'Pages.Administration.VendorType' } },
-                    { path: 'project', component: ProjectComponent, data: { permission: 'Pages.Administration.Project' } },
-                    { path: 'bid', component: BidComponent, data: { permission: 'Pages.Administration.Bid' } },
+                    { 
+                        path: 'dashboard', component: DashboardComponent, 
+                        data: { 
+                            permission: 'Pages.Tenant.Dashboard' 
+                        } 
+                    },
+                    { 
+                        path: 'merchandise', component: MerchandiseComponent, 
+                        data: { 
+                            permission: 'Pages.Administration.Merchandise' 
+                        } 
+                    },
+                    { 
+                        path: 'merchandise-type', component: MerchandiseTypeComponent, 
+                        data: { 
+                            permission: 'Pages.Administration.MerchandiseType' 
+                        } 
+                    },
+                    { 
+                        path: 'vendor', component: VendorComponent, 
+                        data: { 
+                            permission: 'Pages.Administration.Vendor' 
+                        } 
+                    },
+                    { 
+                        path: 'vendortype', component: VendorTypeComponent, 
+                        data: { 
+                            permission: 'Pages.Administration.VendorType' 
+                        } 
+                    },
+                    { 
+                        path: 'project', component: ProjectComponent, 
+                        data: { 
+                            permission: 'Pages.Administration.Project' 
+                        } 
+                    },
+                    { 
+                        path: 'bid', component: BidComponent, 
+                        data: { 
+                            permission: 'Pages.Administration.Bid' 
+                        }
+                    },
                     { 
                         path: 'contract', component: ContractComponent,
                         data: {
@@ -34,6 +71,12 @@ import { BidComponent } from './bid/bid.component';
                         data: {
                             permission: 'Pages.Administration.AssignmentTable'
                         },
+                    },
+                    {
+                        path: 'PO', component: POCOmponent,
+                        data: {
+                            permission: 'Pages.Administration.PO'
+                        }
                     },
                 ]
             }

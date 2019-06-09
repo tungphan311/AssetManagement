@@ -43,21 +43,20 @@ export class ViewContractModalComponent extends AppComponentBase {
         this._contractService.getContractForView(contractId).subscribe(result => {
             this.contract = result;
             this.reloadListContractDetail(contractId, null);
-            this.modal.show();
-        })
-
-        this._bidService.getBidForView(this.contract.briefcaseID).subscribe(result => {
-            this.bidName = result.name;
-            this.bidderId = result.bidderID;
-
-            this._vendorService.getVendorForView(result.bidderID).subscribe(vendor => {
-                this.bidderCode = vendor.code;
-                this.bidderName = vendor.name;
-                this.bidderPhone = vendor.phoneNumber;
-                this.bidderAddress = vendor.address;
-                this.bidderContact = vendor.contact;
+            this._bidService.getBidForView(result.briefcaseID).subscribe(bid => {
+                this.bidName = bid.name;
+                this.bidderId = bid.bidderID;
+    
+                this._vendorService.getVendorForView(bid.bidderID).subscribe(vendor => {
+                    this.bidderCode = vendor.code;
+                    this.bidderName = vendor.name;
+                    this.bidderPhone = vendor.phoneNumber;
+                    this.bidderAddress = vendor.address;
+                    this.bidderContact = vendor.contact;
+                });
             });
-        });
+            this.modal.show();
+        })     
     }
 
     getContractDetails(event?: LazyLoadEvent) {

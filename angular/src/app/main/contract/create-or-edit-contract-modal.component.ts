@@ -6,6 +6,7 @@ import { Paginator, LazyLoadEvent } from "primeng/primeng";
 import { ContractInput, ContractServiceProxy, ContractDetailServiceProxy, BidServiceProxy, BidForViewDto, VendorServiceProxy, VendorForViewDto, ContractDetailInput, ContractDetailDto } from "@shared/service-proxies/service-proxies";
 import { AddContractDetailModalComponent } from "./add-contract-detail-modal-component";
 import { SelectBidModalComponent } from "./select-bid-modal.component";
+import { HttpClient, HttpRequest, HttpEventType } from "@angular/common/http";
 
 @Component({
     selector: 'createOrEditContractModal',
@@ -39,6 +40,9 @@ export class CreateOrEditContractModalComponent extends AppComponentBase {
    bidderAddress: string;
    bidderContact: string;
 
+   progress: number;
+   mess: string;
+
    totalPrice = 0;
 
    fileToUpLoad: File = null;
@@ -55,7 +59,8 @@ export class CreateOrEditContractModalComponent extends AppComponentBase {
         private _contractService: ContractServiceProxy,
         private _contractDetailService: ContractDetailServiceProxy,
         private _bidService: BidServiceProxy,
-        private _vendorService: VendorServiceProxy
+        private _vendorService: VendorServiceProxy,
+        private http: HttpClient
     ) {
         super(injector);
     }
@@ -85,10 +90,37 @@ export class CreateOrEditContractModalComponent extends AppComponentBase {
             warrantyGuaranteeExpireDate.add(tz, 'm');
             this.contract.warrantyGuaranteeExpireDate = warrantyGuaranteeExpireDate.format('YYYY-MM-DD');
 
+            this.reloadBid(result.briefcaseID);
+
             this.modal.show();
         })
 
         this.reloadListContractDetail(contractId, null);
+    }
+
+    upload(files) {
+        if (files.length == 0) {
+            return;
+        }
+
+        const formData = new FormData();
+
+        for (let file of files) {
+            formData.append(file.name, file);
+        }
+
+        const uploadReq = new HttpRequest('POST', `api/upload`, formData, {
+            reportProgress: true,
+        });
+
+        this.http.request(uploadReq).subscribe(event => {
+            if (event.type === HttpEventType.UploadProgress) {
+                this.progress = Math.round(100 * event.loaded / event.total);
+            }
+            else if (event.type === HttpEventType.Response) {
+                this.mess = event.body.toString();
+            }
+        });
     }
 
     getListMerchandises() {
@@ -142,7 +174,7 @@ export class CreateOrEditContractModalComponent extends AppComponentBase {
             this.primengTableHelper.getMaxResultCount(this.paginator, event),
             this.primengTableHelper.getSkipCount(this.paginator, event),
         ).subscribe(result => {
-            this.primengTableHelper.totalRecordsCount = result.totalCount;
+            this.primengTableHelper.totalRecordsCount = result.items.length;
             this.primengTableHelper.records = result.items;
             this.contractDetails = result.items;
             this.primengTableHelper.hideLoadingIndicator();
@@ -169,6 +201,8 @@ export class CreateOrEditContractModalComponent extends AppComponentBase {
         })
         
         this.addContractDetailModal.isSelectAll = false;
+
+        this.emptyField();
 
         this._contractService.createOrEditContract(input).subscribe(result => {
             this.notify.info(this.l('SavedSuccessfully'));
@@ -199,13 +233,17 @@ export class CreateOrEditContractModalComponent extends AppComponentBase {
         }
         else
         {
-            this.bidName = "";
-            this.bidderCode = "";
-            this.bidderName = "";
-            this.bidderPhone = "";
-            this.bidderAddress = "";
-            this.bidderContact = "";
+            this.emptyField();
         }
+    }
+
+    emptyField(): void {
+        this.bidName = "";
+        this.bidderCode = "";
+        this.bidderName = "";
+        this.bidderPhone = "";
+        this.bidderAddress = "";
+        this.bidderContact = "";
     }
 
     // isExist(id: number): boolean {
@@ -224,7 +262,12 @@ export class CreateOrEditContractModalComponent extends AppComponentBase {
     //         this.loadListMerchandise();  
     // }
 
+    handleFileInput(files: FileList) {
+        this.fileToUpLoad = files.item(0);
+    }
+
     close(): void {
+        this.emptyField();
         this.modal.hide();
         this.modalSave.emit(null);
     }
