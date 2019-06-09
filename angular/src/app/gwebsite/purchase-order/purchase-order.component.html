@@ -1,0 +1,26 @@
+<div [@routerTransition]>
+
+    <div class="m-subheader ">
+        <div class="d-flex align-items-center">
+            <div class="mr-auto col-xs-6">
+                <h3 class="m-subheader__title m-subheader__title--separator">
+                    <span>{{l("Phiếu gọi hàng")}}</span>
+                </h3>
+                <span class="m-section__sub">
+                    {{l("Thông tin phiếu gọi hàng")}}
+                </span>
+            </div>
+            <div class="col-xs-6 text-right">
+                <button (click)="createPurchaseOrder()" *ngIf="isGranted('Pages.Administration.PurchaseOrder.Create')"
+                    type="button"
+                    class="btn btn-primary"><i class="fa fa-plus"></i> {{l("Tạo PO")}}</button>
+            </div>
+        </div>
+    </div>
+<div class="custom-font" style="font-family: 'Times New Roman', Times, serif">
+    <router-outlet></router-outlet>
+</div>
+
+
+    
+</div>

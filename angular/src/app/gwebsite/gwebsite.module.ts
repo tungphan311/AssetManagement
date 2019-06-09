@@ -1,4 +1,4 @@
-import { CustomerServiceProxy, ContractPaymentDetailServiceProxy } from './../../shared/service-proxies/service-proxies';
+import { CustomerServiceProxy, ContractPaymentDetailServiceProxy, PurchaseOrderServiceProxy } from './../../shared/service-proxies/service-proxies';
 import { ViewDemoModelModalComponent } from './demo-model/view-demo-model-modal.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -53,6 +53,12 @@ import {ProductForSelectComponent} from './product/product-for-select.component'
 import {ContractPaymentDetailComponent} from './contract-payment-detail/contract-payment-detail.component'
 import {ContractPaymentDetailItem} from './contract-payment-detail/contract-payment-detail-item.component'
 import {CreateOrEditContractPaymentDetailModalComponent} from './contract-payment-detail/create-or-edit-contract-payment-detail-modal.component'
+
+import {PurchaseOrderComponent} from './purchase-order/purchase-order.component'
+import {CreateOrEditPurchaseOrderComponent} from './purchase-order/purchase-order-create-or-edit.component'
+import {PurchaseOrderSearchComponent} from './purchase-order/purchase-order-search.component'
+import { PurchaseProductDetailComponent } from './purchase-product-detail/purchase-product-detail.component';
+
 @NgModule({
     imports: [
         FormsModule,
@@ -83,7 +89,11 @@ import {CreateOrEditContractPaymentDetailModalComponent} from './contract-paymen
         ProviderComponent, CreateOrEditProviderModalComponent, ViewProviderModalComponent,
         ContractComponent, CreateOrEditContractModalComponent, ViewContractModalComponent,
         ProductContractComponent, CreateOrEditProductContractModalComponent,ProductContractItemComponent,
-        ContractPaymentDetailComponent,ContractPaymentDetailItem,CreateOrEditContractPaymentDetailModalComponent
+        ContractPaymentDetailComponent,ContractPaymentDetailItem,CreateOrEditContractPaymentDetailModalComponent,
+
+        PurchaseOrderComponent,CreateOrEditPurchaseOrderComponent,PurchaseOrderSearchComponent,
+        
+        PurchaseProductDetailComponent
 
     ],
     providers: [
@@ -95,8 +105,8 @@ import {CreateOrEditContractPaymentDetailModalComponent} from './contract-paymen
 		ProviderServiceProxy,
         ContractServiceProxy,
         ProductContractServiceProxy,
-        ContractPaymentDetailServiceProxy
-
+        ContractPaymentDetailServiceProxy,
+        PurchaseOrderServiceProxy
     ]
 })
 export class GWebsiteModule { }

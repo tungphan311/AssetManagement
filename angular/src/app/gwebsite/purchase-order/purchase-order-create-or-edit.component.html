@@ -1,0 +1,148 @@
+<div class="ml-4">
+    <h4>
+        <span *ngIf="purchaseOrder.id">CẬP NHẬT PO: {{purchaseOrder.name}}</span>
+        <span *ngIf="!purchaseOrder.id">TẠO MỚI PO</span>
+    </h4>
+</div>
+
+<div class="m-content">
+    <div class="m-portlet m-portlet--mobile">
+        <div class="m-portlet__body">
+            <form #createOrEditForm="ngForm" novalidate (ngSubmit)="save()">
+                <div class="m-form m-form--label-align-right " id="TextsFilterForm" style="font-size: 16px">
+                    <!--Begin Detail PO-->
+                    <div class="card" style="background-color:rgb(30, 113, 180)">
+                            <h5 class="card-title px-2 mt-2" style="color: white">THÔNG TIN CHI TIẾT</h5>
+                        </div>
+                    <div class="card">
+                        <h5 class="card-title px-2"> </h5>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <label>Số PO</label>
+                                    <input class=" form-control" type="text" name="purchaseOrderCode"
+                                        [(ngModel)]="purchaseOrder.code">
+                                </div>
+                                <div class="col-sm-4">
+                                    <label>Ngày gọi hàng</label>
+                                    <input #dateInput="ngModel" class="form-control"
+                                        [ngModel]="purchaseOrder.purchaseOrderDate | date:'yyyy-MM-dd'"
+                                        (ngModelChange)="purchaseOrder.purchaseOrderDate = $event" type="date"
+                                        name="purchaseOrderDate" />
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class=" col-sm-6">
+                                    <label> Tên đơn hàng </label>
+                                    <input class=" form-control" type="text" name="purchaseOrderName"
+                                        [(ngModel)]="purchaseOrder.Name">
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class=" col-sm-4">
+                                    <label>Số tờ trình </label>
+                                    <input class=" form-control" type="text" name="purchaseOrderName"
+                                        [(ngModel)]="purchaseOrder.Name">
+                                </div>
+                                <div class="col-sm-4">
+                                    <label>Ngày nhận tờ trình</label>
+                                    <input #dateInput="ngModel" class="form-control"
+                                        [ngModel]="purchaseOrder.reportRecievedDate | date:'yyyy-MM-dd'"
+                                        (ngModelChange)="purchaseOrder.reportRecievedDate = $event" type="date"
+                                        name="reportRecievedDate" />
+                                </div>
+                                <div class="col-sm-4">
+                                    <label>Ngày duyệt tờ trình</label>
+                                    <input #dateInput="ngModel" class="form-control"
+                                        [ngModel]="purchaseOrder.reportApprovalDate | date:'yyyy-MM-dd'"
+                                        (ngModelChange)="purchaseOrder.reportApprovalDate = $event" type="date"
+                                        name="reportApprovalDate" />
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <label class="">Số hợp đồng</label>
+                                    <div class="row">
+                                        <input class=" form-control col-sm-8 mr-2 ml-2" type="text"
+                                            name="purchaseOrderName" [attr.disabled]="true"
+                                            [(ngModel)]="purchaseOrder.contract.code">
+                                        <button class="col-sm-2 btn btn-primary"
+                                            style="size: 15px; background: black; color: white" type="button">...
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <label>Tổng giá trị hợp đồng</label>
+                                    <input class=" form-control" [attr.disabled]="true" type="number"
+                                        name="contractTotalProductPrice"
+                                        [ngModel]="purchaseOrder.contract.totalProductPrice">
+                                </div>
+                                <div class="col-sm-4">
+                                    <label>Tổng giá trị đã thưc hiện</label>
+                                    <input class=" form-control" type="number" name="contractTotalPrice"
+                                        [attr.disabled]="true" [ngModel]="purchaseOrder.contract.totalPrice">
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <label>Nội dung hợp đồng</label>
+                                    <input class=" form-control" [attr.disabled]="true" type="number"
+                                        name="contractTotalProductPrice">
+                                </div>
+                                <div class="col-sm-6">
+                                    <label>File đính kèm</label>
+                                    <div class="row">
+                                        <input class="form-control col-sm-6" type="text" name="AttachmentFile"
+                                            [(ngModel)]="purchaseOrder.attachmentFile">
+                                        <button type="button" class="col-sm-3 btn btn-primary">Upload</button>
+                                        <button type="button" class="col-sm-2 btn btn-danger">X</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <label class="">Mã nhà cung cấp</label>
+                                    <div class="row">
+                                        <input class=" form-control col-sm-8 mr-2 ml-2" type="text" name="ProviderCode"
+                                            [attr.disabled]="true" [(ngModel)]="purchaseOrder.provider.code">
+                                        <button class="col-sm-2 btn btn-primary"
+                                            style="size: 15px; background: black; color: white" type="button">...
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <label>Tên nhà cung cấp</label>
+                                    <input class="form-control" type="text" name="ProviderName" [attr.disabled]="true"
+                                        [(ngModel)]="purchaseOrder.provider.name">
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-8">
+                                    <label>Địa chỉ</label>
+                                    <input class="form-control" type="text" name="ProviderAddress"
+                                        [attr.disabled]="true" [(ngModel)]="purchaseOrder.provider.address">
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <br>
+                    <!--End Detail PO-->
+
+                    <!-- Begin Purchase Product Detail -->
+                    <purchase-product-detail-component
+                    [purchaseOrderRecieved]="purchaseOrder"
+                    ></purchase-product-detail-component>
+                    <br>
+                    <!-- End Purchase Product Detail-->
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -10,7 +10,10 @@ import { ProviderComponent } from './provider/provider.component';
 import { ContractComponent, } from './contract/contract.component';
 import {CreateOrEditContractModalComponent} from './contract/create-or-edit-contract-modal.component';
 import{ProductContractComponent} from './product-contract/product-contract.component';
+import {PurchaseOrderComponent} from './purchase-order/purchase-order.component'
 import {CreateOrEditProductContractModalComponent} from './product-contract/create-or-edit-product-contract-modal.component'
+import { CreateOrEditPurchaseOrderComponent } from './purchase-order/purchase-order-create-or-edit.component';
+import { PurchaseOrderSearchComponent } from './purchase-order/purchase-order-search.component';
 @NgModule({
     imports: [
         RouterModule.forChild([
@@ -103,7 +106,25 @@ import {CreateOrEditProductContractModalComponent} from './product-contract/crea
                     },
                 ]
             },   
-
+            {
+                path: '',
+                children: [
+                    {
+                        path: 'purchase-order', component: PurchaseOrderComponent,
+                        data: { permission: 'Pages.Administration.PurchaseOrder' },
+                        children:[
+                            {
+                                path:'create',component:CreateOrEditPurchaseOrderComponent,
+                                data:{permission:'Pages.Administration.PurchaseOrder.Create'}
+                            },
+                            {
+                                path:'',component:PurchaseOrderSearchComponent,
+                                data:{permission:'Pages.Administration.PurchaseOrder'}
+                            }
+                        ]
+                    },
+                ]
+            },   
 		   			
         ])
         

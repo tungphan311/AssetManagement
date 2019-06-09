@@ -2134,6 +2134,8 @@ namespace GSoft.AbpZeroTemplate.Migrations
 
                     b.Property<DateTime?>("CreatedDate");
 
+                    b.Property<bool>("IsApproval");
+
                     b.Property<bool>("IsDelete");
 
                     b.Property<bool?>("IsIndependentUnit");
@@ -2183,13 +2185,25 @@ namespace GSoft.AbpZeroTemplate.Migrations
 
                     b.Property<DateTime?>("CreatedDate");
 
+                    b.Property<string>("Description")
+                        .HasMaxLength(500);
+
+                    b.Property<int?>("InstallmentNumber");
+
                     b.Property<bool>("IsDelete");
+
+                    b.Property<string>("Note")
+                        .HasMaxLength(500);
 
                     b.Property<decimal?>("PaidMoney");
 
                     b.Property<DateTime?>("PaymentDate");
 
                     b.Property<decimal?>("PaymentMoney");
+
+                    b.Property<decimal?>("Percent");
+
+                    b.Property<decimal?>("Price");
 
                     b.Property<int>("PurchaseOrderId");
 
@@ -2210,7 +2224,19 @@ namespace GSoft.AbpZeroTemplate.Migrations
 
                     b.Property<int>("Amount");
 
+                    b.Property<string>("ContactAddress")
+                        .HasMaxLength(256);
+
+                    b.Property<string>("ContactName")
+                        .HasMaxLength(100);
+
+                    b.Property<string>("ContactPhoneNumber")
+                        .HasMaxLength(100);
+
                     b.Property<int?>("ContractId");
+
+                    b.Property<string>("Description")
+                        .HasMaxLength(500);
 
                     b.Property<bool>("IsInProject");
 

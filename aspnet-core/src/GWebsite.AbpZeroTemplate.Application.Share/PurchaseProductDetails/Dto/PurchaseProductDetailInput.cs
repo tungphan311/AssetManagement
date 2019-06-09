@@ -14,6 +14,10 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.PurchaseProductDetails.Dto
 {
     public class PurchaseProductDetailInput : Entity<int>
     {
+        public PurchaseProductDetailInput()
+        {
+            IsInProject = false;
+        }
         public string ProductCategory { get; set; }
 
         public int Amount { get; set; }
@@ -21,11 +25,20 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.PurchaseProductDetails.Dto
         public decimal? VAT_Percent { get; set; }
         public decimal? VAT { get; set; }
         public bool IsInProject { get; set; }
+        [StringLength(100)]
+        public string ContactName { get; set; }
+        [StringLength(100)]
+        public string ContactPhoneNumber { get; set; }
+        [StringLength(256)]
+        public string ContactAddress { get; set; }
+        [StringLength(500)]
+        public string Description { get; set; }
         [StringLength(500)]
         public string Note { get; set; }
 
         //FK
         public int ProductId { get; set; }
+        public ProductInput Product { get; set; }
         public int PurchaseOrderId { get; set; }
         public int? UnitId { get; set; }
         public int? ContractId { get; set; }

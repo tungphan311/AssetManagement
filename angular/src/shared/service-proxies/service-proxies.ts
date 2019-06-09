@@ -8877,6 +8877,295 @@ export class ProviderServiceProxy {
 }
 
 @Injectable()
+export class PurchaseOrderServiceProxy {
+    private http: HttpClient;
+    private baseUrl: string;
+    protected jsonParseReviver: ((key: string, value: any) => any) | undefined = undefined;
+
+    constructor(@Inject(HttpClient) http: HttpClient, @Optional() @Inject(API_BASE_URL) baseUrl?: string) {
+        this.http = http;
+        this.baseUrl = baseUrl ? baseUrl : "";
+    }
+
+    /**
+     * @name (optional) 
+     * @sorting (optional) 
+     * @maxResultCount (optional) 
+     * @skipCount (optional) 
+     * @return Success
+     */
+    getPurchaseOrdersByFilter(name: string | null | undefined, sorting: string | null | undefined, maxResultCount: number | null | undefined, skipCount: number | null | undefined): Observable<PagedResultDtoOfPurchaseOrderDto> {
+        let url_ = this.baseUrl + "/api/PurchaseOrder/GetPurchaseOrdersByFilter?";
+        if (name !== undefined)
+            url_ += "Name=" + encodeURIComponent("" + name) + "&"; 
+        if (sorting !== undefined)
+            url_ += "Sorting=" + encodeURIComponent("" + sorting) + "&"; 
+        if (maxResultCount !== undefined)
+            url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&"; 
+        if (skipCount !== undefined)
+            url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetPurchaseOrdersByFilter(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetPurchaseOrdersByFilter(<any>response_);
+                } catch (e) {
+                    return <Observable<PagedResultDtoOfPurchaseOrderDto>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<PagedResultDtoOfPurchaseOrderDto>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetPurchaseOrdersByFilter(response: HttpResponseBase): Observable<PagedResultDtoOfPurchaseOrderDto> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 ? PagedResultDtoOfPurchaseOrderDto.fromJS(resultData200) : new PagedResultDtoOfPurchaseOrderDto();
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<PagedResultDtoOfPurchaseOrderDto>(<any>null);
+    }
+
+    /**
+     * @id (optional) 
+     * @return Success
+     */
+    getPurchaseOrderForEdit(id: number | null | undefined): Observable<PurchaseOrderInput> {
+        let url_ = this.baseUrl + "/api/PurchaseOrder/GetPurchaseOrderForEdit?";
+        if (id !== undefined)
+            url_ += "id=" + encodeURIComponent("" + id) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetPurchaseOrderForEdit(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetPurchaseOrderForEdit(<any>response_);
+                } catch (e) {
+                    return <Observable<PurchaseOrderInput>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<PurchaseOrderInput>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetPurchaseOrderForEdit(response: HttpResponseBase): Observable<PurchaseOrderInput> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 ? PurchaseOrderInput.fromJS(resultData200) : new PurchaseOrderInput();
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<PurchaseOrderInput>(<any>null);
+    }
+
+    /**
+     * @input (optional) 
+     * @return Success
+     */
+    createOrEditPurchaseOrder(input: PurchaseOrderInput | null | undefined): Observable<void> {
+        let url_ = this.baseUrl + "/api/PurchaseOrder/CreateOrEditPurchaseOrder";
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(input);
+
+        let options_ : any = {
+            body: content_,
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+            })
+        };
+
+        return this.http.request("post", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processCreateOrEditPurchaseOrder(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processCreateOrEditPurchaseOrder(<any>response_);
+                } catch (e) {
+                    return <Observable<void>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<void>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processCreateOrEditPurchaseOrder(response: HttpResponseBase): Observable<void> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return _observableOf<void>(<any>null);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<void>(<any>null);
+    }
+
+    /**
+     * @return Success
+     */
+    deletePurchaseOrder(id: number): Observable<void> {
+        let url_ = this.baseUrl + "/api/PurchaseOrder/DeletePurchaseOrder/{id}";
+        if (id === undefined || id === null)
+            throw new Error("The parameter 'id' must be defined.");
+        url_ = url_.replace("{id}", encodeURIComponent("" + id)); 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+            })
+        };
+
+        return this.http.request("delete", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processDeletePurchaseOrder(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processDeletePurchaseOrder(<any>response_);
+                } catch (e) {
+                    return <Observable<void>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<void>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processDeletePurchaseOrder(response: HttpResponseBase): Observable<void> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return _observableOf<void>(<any>null);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<void>(<any>null);
+    }
+
+    /**
+     * @id (optional) 
+     * @return Success
+     */
+    getPurchaseOrderForView(id: number | null | undefined): Observable<PurchaseOrderForViewDto> {
+        let url_ = this.baseUrl + "/api/PurchaseOrder/GetPurchaseOrderForView?";
+        if (id !== undefined)
+            url_ += "id=" + encodeURIComponent("" + id) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetPurchaseOrderForView(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetPurchaseOrderForView(<any>response_);
+                } catch (e) {
+                    return <Observable<PurchaseOrderForViewDto>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<PurchaseOrderForViewDto>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetPurchaseOrderForView(response: HttpResponseBase): Observable<PurchaseOrderForViewDto> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 ? PurchaseOrderForViewDto.fromJS(resultData200) : new PurchaseOrderForViewDto();
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<PurchaseOrderForViewDto>(<any>null);
+    }
+}
+
+@Injectable()
 export class RoleServiceProxy {
     private http: HttpClient;
     private baseUrl: string;
@@ -21106,6 +21395,590 @@ export interface IProviderForViewDto {
     info: string | undefined;
 }
 
+export class PagedResultDtoOfPurchaseOrderDto implements IPagedResultDtoOfPurchaseOrderDto {
+    totalCount!: number | undefined;
+    items!: PurchaseOrderDto[] | undefined;
+
+    constructor(data?: IPagedResultDtoOfPurchaseOrderDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.totalCount = data["totalCount"];
+            if (data["items"] && data["items"].constructor === Array) {
+                this.items = [];
+                for (let item of data["items"])
+                    this.items.push(PurchaseOrderDto.fromJS(item));
+            }
+        }
+    }
+
+    static fromJS(data: any): PagedResultDtoOfPurchaseOrderDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new PagedResultDtoOfPurchaseOrderDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["totalCount"] = this.totalCount;
+        if (this.items && this.items.constructor === Array) {
+            data["items"] = [];
+            for (let item of this.items)
+                data["items"].push(item.toJSON());
+        }
+        return data; 
+    }
+}
+
+export interface IPagedResultDtoOfPurchaseOrderDto {
+    totalCount: number | undefined;
+    items: PurchaseOrderDto[] | undefined;
+}
+
+export class PurchaseOrderDto implements IPurchaseOrderDto {
+    code!: string | undefined;
+    name!: string | undefined;
+    purchaseOrderDate!: moment.Moment | undefined;
+    orderDate!: moment.Moment | undefined;
+    area!: PurchaseOrderDtoArea | undefined;
+    unitId!: number | undefined;
+    unitCode!: string | undefined;
+    transactionOfficeName!: string | undefined;
+    isIndependentUnit!: boolean | undefined;
+    reportCode!: string | undefined;
+    reportRecievedDate!: moment.Moment | undefined;
+    reportApprovalDate!: moment.Moment | undefined;
+    attachmentFile!: string | undefined;
+    totalPrice!: number | undefined;
+    isApproval!: boolean | undefined;
+    contractId!: number | undefined;
+    contract!: ContractDto | undefined;
+    providerId!: number | undefined;
+    provider!: ProviderDto | undefined;
+    id!: number | undefined;
+
+    constructor(data?: IPurchaseOrderDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.code = data["code"];
+            this.name = data["name"];
+            this.purchaseOrderDate = data["purchaseOrderDate"] ? moment(data["purchaseOrderDate"].toString()) : <any>undefined;
+            this.orderDate = data["orderDate"] ? moment(data["orderDate"].toString()) : <any>undefined;
+            this.area = data["area"];
+            this.unitId = data["unitId"];
+            this.unitCode = data["unitCode"];
+            this.transactionOfficeName = data["transactionOfficeName"];
+            this.isIndependentUnit = data["isIndependentUnit"];
+            this.reportCode = data["reportCode"];
+            this.reportRecievedDate = data["reportRecievedDate"] ? moment(data["reportRecievedDate"].toString()) : <any>undefined;
+            this.reportApprovalDate = data["reportApprovalDate"] ? moment(data["reportApprovalDate"].toString()) : <any>undefined;
+            this.attachmentFile = data["attachmentFile"];
+            this.totalPrice = data["totalPrice"];
+            this.isApproval = data["isApproval"];
+            this.contractId = data["contractId"];
+            this.contract = data["contract"] ? ContractDto.fromJS(data["contract"]) : <any>undefined;
+            this.providerId = data["providerId"];
+            this.provider = data["provider"] ? ProviderDto.fromJS(data["provider"]) : <any>undefined;
+            this.id = data["id"];
+        }
+    }
+
+    static fromJS(data: any): PurchaseOrderDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new PurchaseOrderDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["code"] = this.code;
+        data["name"] = this.name;
+        data["purchaseOrderDate"] = this.purchaseOrderDate ? this.purchaseOrderDate : <any>undefined;
+        data["orderDate"] = this.orderDate ? this.orderDate : <any>undefined;
+        data["area"] = this.area;
+        data["unitId"] = this.unitId;
+        data["unitCode"] = this.unitCode;
+        data["transactionOfficeName"] = this.transactionOfficeName;
+        data["isIndependentUnit"] = this.isIndependentUnit;
+        data["reportCode"] = this.reportCode;
+        data["reportRecievedDate"] = this.reportRecievedDate ? this.reportRecievedDate : <any>undefined;
+        data["reportApprovalDate"] = this.reportApprovalDate ? this.reportApprovalDate : <any>undefined;
+        data["attachmentFile"] = this.attachmentFile;
+        data["totalPrice"] = this.totalPrice;
+        data["isApproval"] = this.isApproval;
+        data["contractId"] = this.contractId;
+        data["contract"] = this.contract ? this.contract.toJSON() : <any>undefined;
+        data["providerId"] = this.providerId;
+        data["provider"] = this.provider ? this.provider.toJSON() : <any>undefined;
+        data["id"] = this.id;
+        return data; 
+    }
+}
+
+export interface IPurchaseOrderDto {
+    code: string | undefined;
+    name: string | undefined;
+    purchaseOrderDate: moment.Moment | undefined;
+    orderDate: moment.Moment | undefined;
+    area: PurchaseOrderDtoArea | undefined;
+    unitId: number | undefined;
+    unitCode: string | undefined;
+    transactionOfficeName: string | undefined;
+    isIndependentUnit: boolean | undefined;
+    reportCode: string | undefined;
+    reportRecievedDate: moment.Moment | undefined;
+    reportApprovalDate: moment.Moment | undefined;
+    attachmentFile: string | undefined;
+    totalPrice: number | undefined;
+    isApproval: boolean | undefined;
+    contractId: number | undefined;
+    contract: ContractDto | undefined;
+    providerId: number | undefined;
+    provider: ProviderDto | undefined;
+    id: number | undefined;
+}
+
+export class PurchaseOrderInput implements IPurchaseOrderInput {
+    code!: string | undefined;
+    name!: string | undefined;
+    purchaseOrderDate!: moment.Moment | undefined;
+    orderDate!: moment.Moment | undefined;
+    area!: PurchaseOrderInputArea | undefined;
+    unitId!: number | undefined;
+    unitCode!: string | undefined;
+    transactionOfficeName!: string | undefined;
+    isIndependentUnit!: boolean | undefined;
+    reportCode!: string | undefined;
+    reportRecievedDate!: moment.Moment | undefined;
+    reportApprovalDate!: moment.Moment | undefined;
+    attachmentFile!: string | undefined;
+    totalPrice!: number | undefined;
+    isApproval!: boolean | undefined;
+    contractId!: number | undefined;
+    contract!: ContractInput | undefined;
+    providerId!: number | undefined;
+    provider!: ProviderInput | undefined;
+    purchasePaymentHistories!: PurchasePaymentHistoryInput[] | undefined;
+    purchaseProductDetails!: PurchaseProductDetailInput[] | undefined;
+    id!: number | undefined;
+
+    constructor(data?: IPurchaseOrderInput) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.code = data["code"];
+            this.name = data["name"];
+            this.purchaseOrderDate = data["purchaseOrderDate"] ? moment(data["purchaseOrderDate"].toString()) : <any>undefined;
+            this.orderDate = data["orderDate"] ? moment(data["orderDate"].toString()) : <any>undefined;
+            this.area = data["area"];
+            this.unitId = data["unitId"];
+            this.unitCode = data["unitCode"];
+            this.transactionOfficeName = data["transactionOfficeName"];
+            this.isIndependentUnit = data["isIndependentUnit"];
+            this.reportCode = data["reportCode"];
+            this.reportRecievedDate = data["reportRecievedDate"] ? moment(data["reportRecievedDate"].toString()) : <any>undefined;
+            this.reportApprovalDate = data["reportApprovalDate"] ? moment(data["reportApprovalDate"].toString()) : <any>undefined;
+            this.attachmentFile = data["attachmentFile"];
+            this.totalPrice = data["totalPrice"];
+            this.isApproval = data["isApproval"];
+            this.contractId = data["contractId"];
+            this.contract = data["contract"] ? ContractInput.fromJS(data["contract"]) : <any>undefined;
+            this.providerId = data["providerId"];
+            this.provider = data["provider"] ? ProviderInput.fromJS(data["provider"]) : <any>undefined;
+            if (data["purchasePaymentHistories"] && data["purchasePaymentHistories"].constructor === Array) {
+                this.purchasePaymentHistories = [];
+                for (let item of data["purchasePaymentHistories"])
+                    this.purchasePaymentHistories.push(PurchasePaymentHistoryInput.fromJS(item));
+            }
+            if (data["purchaseProductDetails"] && data["purchaseProductDetails"].constructor === Array) {
+                this.purchaseProductDetails = [];
+                for (let item of data["purchaseProductDetails"])
+                    this.purchaseProductDetails.push(PurchaseProductDetailInput.fromJS(item));
+            }
+            this.id = data["id"];
+        }
+    }
+
+    static fromJS(data: any): PurchaseOrderInput {
+        data = typeof data === 'object' ? data : {};
+        let result = new PurchaseOrderInput();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["code"] = this.code;
+        data["name"] = this.name;
+        data["purchaseOrderDate"] = this.purchaseOrderDate ? this.purchaseOrderDate : <any>undefined;
+        data["orderDate"] = this.orderDate ? this.orderDate : <any>undefined;
+        data["area"] = this.area;
+        data["unitId"] = this.unitId;
+        data["unitCode"] = this.unitCode;
+        data["transactionOfficeName"] = this.transactionOfficeName;
+        data["isIndependentUnit"] = this.isIndependentUnit;
+        data["reportCode"] = this.reportCode;
+        data["reportRecievedDate"] = this.reportRecievedDate ? this.reportRecievedDate : <any>undefined;
+        data["reportApprovalDate"] = this.reportApprovalDate ? this.reportApprovalDate : <any>undefined;
+        data["attachmentFile"] = this.attachmentFile;
+        data["totalPrice"] = this.totalPrice;
+        data["isApproval"] = this.isApproval;
+        data["contractId"] = this.contractId;
+        data["contract"] = this.contract ? this.contract.toJSON() : <any>undefined;
+        data["providerId"] = this.providerId;
+        data["provider"] = this.provider ? this.provider.toJSON() : <any>undefined;
+        if (this.purchasePaymentHistories && this.purchasePaymentHistories.constructor === Array) {
+            data["purchasePaymentHistories"] = [];
+            for (let item of this.purchasePaymentHistories)
+                data["purchasePaymentHistories"].push(item.toJSON());
+        }
+        if (this.purchaseProductDetails && this.purchaseProductDetails.constructor === Array) {
+            data["purchaseProductDetails"] = [];
+            for (let item of this.purchaseProductDetails)
+                data["purchaseProductDetails"].push(item.toJSON());
+        }
+        data["id"] = this.id;
+        return data; 
+    }
+}
+
+export interface IPurchaseOrderInput {
+    code: string | undefined;
+    name: string | undefined;
+    purchaseOrderDate: moment.Moment | undefined;
+    orderDate: moment.Moment | undefined;
+    area: PurchaseOrderInputArea | undefined;
+    unitId: number | undefined;
+    unitCode: string | undefined;
+    transactionOfficeName: string | undefined;
+    isIndependentUnit: boolean | undefined;
+    reportCode: string | undefined;
+    reportRecievedDate: moment.Moment | undefined;
+    reportApprovalDate: moment.Moment | undefined;
+    attachmentFile: string | undefined;
+    totalPrice: number | undefined;
+    isApproval: boolean | undefined;
+    contractId: number | undefined;
+    contract: ContractInput | undefined;
+    providerId: number | undefined;
+    provider: ProviderInput | undefined;
+    purchasePaymentHistories: PurchasePaymentHistoryInput[] | undefined;
+    purchaseProductDetails: PurchaseProductDetailInput[] | undefined;
+    id: number | undefined;
+}
+
+export class PurchasePaymentHistoryInput implements IPurchasePaymentHistoryInput {
+    installmentNumber!: number | undefined;
+    paymentDate!: moment.Moment | undefined;
+    percent!: number | undefined;
+    price!: number | undefined;
+    description!: string | undefined;
+    note!: string | undefined;
+    paymentMoney!: number | undefined;
+    paidMoney!: number | undefined;
+    purchaseOrderId!: number | undefined;
+    id!: number | undefined;
+
+    constructor(data?: IPurchasePaymentHistoryInput) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.installmentNumber = data["installmentNumber"];
+            this.paymentDate = data["paymentDate"] ? moment(data["paymentDate"].toString()) : <any>undefined;
+            this.percent = data["percent"];
+            this.price = data["price"];
+            this.description = data["description"];
+            this.note = data["note"];
+            this.paymentMoney = data["paymentMoney"];
+            this.paidMoney = data["paidMoney"];
+            this.purchaseOrderId = data["purchaseOrderId"];
+            this.id = data["id"];
+        }
+    }
+
+    static fromJS(data: any): PurchasePaymentHistoryInput {
+        data = typeof data === 'object' ? data : {};
+        let result = new PurchasePaymentHistoryInput();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["installmentNumber"] = this.installmentNumber;
+        data["paymentDate"] = this.paymentDate ? this.paymentDate : <any>undefined;
+        data["percent"] = this.percent;
+        data["price"] = this.price;
+        data["description"] = this.description;
+        data["note"] = this.note;
+        data["paymentMoney"] = this.paymentMoney;
+        data["paidMoney"] = this.paidMoney;
+        data["purchaseOrderId"] = this.purchaseOrderId;
+        data["id"] = this.id;
+        return data; 
+    }
+}
+
+export interface IPurchasePaymentHistoryInput {
+    installmentNumber: number | undefined;
+    paymentDate: moment.Moment | undefined;
+    percent: number | undefined;
+    price: number | undefined;
+    description: string | undefined;
+    note: string | undefined;
+    paymentMoney: number | undefined;
+    paidMoney: number | undefined;
+    purchaseOrderId: number | undefined;
+    id: number | undefined;
+}
+
+export class PurchaseProductDetailInput implements IPurchaseProductDetailInput {
+    productCategory!: string | undefined;
+    amount!: number | undefined;
+    price!: number | undefined;
+    vaT_Percent!: number | undefined;
+    vat!: number | undefined;
+    isInProject!: boolean | undefined;
+    contactName!: string | undefined;
+    contactPhoneNumber!: string | undefined;
+    contactAddress!: string | undefined;
+    description!: string | undefined;
+    note!: string | undefined;
+    productId!: number | undefined;
+    product!: ProductInput | undefined;
+    purchaseOrderId!: number | undefined;
+    unitId!: number | undefined;
+    contractId!: number | undefined;
+    projectId!: number | undefined;
+    id!: number | undefined;
+
+    constructor(data?: IPurchaseProductDetailInput) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.productCategory = data["productCategory"];
+            this.amount = data["amount"];
+            this.price = data["price"];
+            this.vaT_Percent = data["vaT_Percent"];
+            this.vat = data["vat"];
+            this.isInProject = data["isInProject"];
+            this.contactName = data["contactName"];
+            this.contactPhoneNumber = data["contactPhoneNumber"];
+            this.contactAddress = data["contactAddress"];
+            this.description = data["description"];
+            this.note = data["note"];
+            this.productId = data["productId"];
+            this.product = data["product"] ? ProductInput.fromJS(data["product"]) : <any>undefined;
+            this.purchaseOrderId = data["purchaseOrderId"];
+            this.unitId = data["unitId"];
+            this.contractId = data["contractId"];
+            this.projectId = data["projectId"];
+            this.id = data["id"];
+        }
+    }
+
+    static fromJS(data: any): PurchaseProductDetailInput {
+        data = typeof data === 'object' ? data : {};
+        let result = new PurchaseProductDetailInput();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["productCategory"] = this.productCategory;
+        data["amount"] = this.amount;
+        data["price"] = this.price;
+        data["vaT_Percent"] = this.vaT_Percent;
+        data["vat"] = this.vat;
+        data["isInProject"] = this.isInProject;
+        data["contactName"] = this.contactName;
+        data["contactPhoneNumber"] = this.contactPhoneNumber;
+        data["contactAddress"] = this.contactAddress;
+        data["description"] = this.description;
+        data["note"] = this.note;
+        data["productId"] = this.productId;
+        data["product"] = this.product ? this.product.toJSON() : <any>undefined;
+        data["purchaseOrderId"] = this.purchaseOrderId;
+        data["unitId"] = this.unitId;
+        data["contractId"] = this.contractId;
+        data["projectId"] = this.projectId;
+        data["id"] = this.id;
+        return data; 
+    }
+}
+
+export interface IPurchaseProductDetailInput {
+    productCategory: string | undefined;
+    amount: number | undefined;
+    price: number | undefined;
+    vaT_Percent: number | undefined;
+    vat: number | undefined;
+    isInProject: boolean | undefined;
+    contactName: string | undefined;
+    contactPhoneNumber: string | undefined;
+    contactAddress: string | undefined;
+    description: string | undefined;
+    note: string | undefined;
+    productId: number | undefined;
+    product: ProductInput | undefined;
+    purchaseOrderId: number | undefined;
+    unitId: number | undefined;
+    contractId: number | undefined;
+    projectId: number | undefined;
+    id: number | undefined;
+}
+
+export class PurchaseOrderForViewDto implements IPurchaseOrderForViewDto {
+    code!: string | undefined;
+    name!: string | undefined;
+    purchaseOrderDate!: moment.Moment | undefined;
+    orderDate!: moment.Moment | undefined;
+    area!: PurchaseOrderForViewDtoArea | undefined;
+    unitId!: number | undefined;
+    unitCode!: string | undefined;
+    transactionOfficeName!: string | undefined;
+    isIndependentUnit!: boolean | undefined;
+    reportCode!: string | undefined;
+    reportRecievedDate!: moment.Moment | undefined;
+    reportApprovalDate!: moment.Moment | undefined;
+    attachmentFile!: string | undefined;
+    totalPrice!: number | undefined;
+    isApproval!: boolean | undefined;
+    contractId!: number | undefined;
+    contract!: ContractForViewDto | undefined;
+    providerId!: number | undefined;
+    provider!: ProviderForViewDto | undefined;
+    id!: number | undefined;
+
+    constructor(data?: IPurchaseOrderForViewDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.code = data["code"];
+            this.name = data["name"];
+            this.purchaseOrderDate = data["purchaseOrderDate"] ? moment(data["purchaseOrderDate"].toString()) : <any>undefined;
+            this.orderDate = data["orderDate"] ? moment(data["orderDate"].toString()) : <any>undefined;
+            this.area = data["area"];
+            this.unitId = data["unitId"];
+            this.unitCode = data["unitCode"];
+            this.transactionOfficeName = data["transactionOfficeName"];
+            this.isIndependentUnit = data["isIndependentUnit"];
+            this.reportCode = data["reportCode"];
+            this.reportRecievedDate = data["reportRecievedDate"] ? moment(data["reportRecievedDate"].toString()) : <any>undefined;
+            this.reportApprovalDate = data["reportApprovalDate"] ? moment(data["reportApprovalDate"].toString()) : <any>undefined;
+            this.attachmentFile = data["attachmentFile"];
+            this.totalPrice = data["totalPrice"];
+            this.isApproval = data["isApproval"];
+            this.contractId = data["contractId"];
+            this.contract = data["contract"] ? ContractForViewDto.fromJS(data["contract"]) : <any>undefined;
+            this.providerId = data["providerId"];
+            this.provider = data["provider"] ? ProviderForViewDto.fromJS(data["provider"]) : <any>undefined;
+            this.id = data["id"];
+        }
+    }
+
+    static fromJS(data: any): PurchaseOrderForViewDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new PurchaseOrderForViewDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["code"] = this.code;
+        data["name"] = this.name;
+        data["purchaseOrderDate"] = this.purchaseOrderDate ? this.purchaseOrderDate : <any>undefined;
+        data["orderDate"] = this.orderDate ? this.orderDate : <any>undefined;
+        data["area"] = this.area;
+        data["unitId"] = this.unitId;
+        data["unitCode"] = this.unitCode;
+        data["transactionOfficeName"] = this.transactionOfficeName;
+        data["isIndependentUnit"] = this.isIndependentUnit;
+        data["reportCode"] = this.reportCode;
+        data["reportRecievedDate"] = this.reportRecievedDate ? this.reportRecievedDate : <any>undefined;
+        data["reportApprovalDate"] = this.reportApprovalDate ? this.reportApprovalDate : <any>undefined;
+        data["attachmentFile"] = this.attachmentFile;
+        data["totalPrice"] = this.totalPrice;
+        data["isApproval"] = this.isApproval;
+        data["contractId"] = this.contractId;
+        data["contract"] = this.contract ? this.contract.toJSON() : <any>undefined;
+        data["providerId"] = this.providerId;
+        data["provider"] = this.provider ? this.provider.toJSON() : <any>undefined;
+        data["id"] = this.id;
+        return data; 
+    }
+}
+
+export interface IPurchaseOrderForViewDto {
+    code: string | undefined;
+    name: string | undefined;
+    purchaseOrderDate: moment.Moment | undefined;
+    orderDate: moment.Moment | undefined;
+    area: PurchaseOrderForViewDtoArea | undefined;
+    unitId: number | undefined;
+    unitCode: string | undefined;
+    transactionOfficeName: string | undefined;
+    isIndependentUnit: boolean | undefined;
+    reportCode: string | undefined;
+    reportRecievedDate: moment.Moment | undefined;
+    reportApprovalDate: moment.Moment | undefined;
+    attachmentFile: string | undefined;
+    totalPrice: number | undefined;
+    isApproval: boolean | undefined;
+    contractId: number | undefined;
+    contract: ContractForViewDto | undefined;
+    providerId: number | undefined;
+    provider: ProviderForViewDto | undefined;
+    id: number | undefined;
+}
+
 export class ListResultDtoOfRoleListDto implements IListResultDtoOfRoleListDto {
     items!: RoleListDto[] | undefined;
 
@@ -25113,6 +25986,24 @@ export enum ExecutePaymentDtoEditionPaymentType {
 export enum ExecutePaymentDtoPaymentPeriodType {
     _30 = 30, 
     _365 = 365, 
+}
+
+export enum PurchaseOrderDtoArea {
+    _0 = 0, 
+    _1 = 1, 
+    _2 = 2, 
+}
+
+export enum PurchaseOrderInputArea {
+    _0 = 0, 
+    _1 = 1, 
+    _2 = 2, 
+}
+
+export enum PurchaseOrderForViewDtoArea {
+    _0 = 0, 
+    _1 = 1, 
+    _2 = 2, 
 }
 
 export enum TenantLoginInfoDtoPaymentPeriodType {

@@ -28,9 +28,9 @@ export class AppNavigationService {
             [
                 new AppMenuItem('Danh sách Hợp đồng', 'Pages.Administration.Contract', 'flaticon-menu-1', '/app/gwebsite/contract'),
                 // new AppMenuItem('Tạo mới hợp đồng', 'Pages.Administration.Contract.Create', 'flaticon-menu-1', '/app/gwebsite/contract/createcontract')
-            ]
-            // [new AppMenuItem('Tạo mới hợp đồng', 'Pages.Administration.Contract.Create', 'flaticon-menu-1', '/app/gwebsite/contract/createcontract')]
-            ),
+            ]),
+
+            new AppMenuItem('Phiếu gọi hàng', 'Pages.Administration.PurchaseOrder', 'flaticon-menu-1', '/app/gwebsite/purchase-order'),
 
             ]),
             new AppMenuItem('Systems', '', 'flaticon-layers', '', [

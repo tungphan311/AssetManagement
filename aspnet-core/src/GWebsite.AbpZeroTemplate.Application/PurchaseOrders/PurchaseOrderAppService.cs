@@ -109,6 +109,16 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.PurchaseOrders
                     Console.WriteLine("PurchaseOrder with id=" + id.ToString() + " is null");
                     return null;
                 }
+                var purchaseProductDetails = ObjectMapper.Map<List<PurchaseProductDetailInput>>(purchaseProductDetailRepository.GetAll().Where(x => x.ContractId == purchaseOrderEntity.Id /*&& x.IsDelete == false*/).ToList());
+                if (purchaseProductDetails.Count() > 0)
+                {
+                    for (int i = 0; i < purchaseProductDetails.Count(); i++)
+                    {
+                        var prod = ObjectMapper.Map<ProductInput>(productRepository.FirstOrDefault(x => x.Id == purchaseProductDetails.ElementAt(i).ProductId && x.IsDelete == false));
+                        if (prod == null) prod = new ProductInput();
+                        purchaseProductDetails.ElementAt(i).Product = prod;
+                    }
+                }
                 return ObjectMapper.Map<PurchaseOrderForViewDto>(purchaseOrderEntity);
             }
             catch (Exception e) { Console.WriteLine("Exception PurchaseOrder for View: " + e.ToString()); return null; }
