@@ -11,6 +11,9 @@ using GWebsite.AbpZeroTemplate.Application.Share.ProductProviders.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.Products.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.Projects.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.Providers.Dto;
+using GWebsite.AbpZeroTemplate.Application.Share.PurchaseOrders.Dto;
+using GWebsite.AbpZeroTemplate.Application.Share.PurchasePaymentHistories.Dto;
+using GWebsite.AbpZeroTemplate.Application.Share.PurchaseProductDetails.Dto;
 using GWebsite.AbpZeroTemplate.Core.Models;
 
 namespace GWebsite.AbpZeroTemplate.Applications
@@ -88,6 +91,22 @@ namespace GWebsite.AbpZeroTemplate.Applications
             configuration.CreateMap<ProductContractInput, ProductContract>();
             configuration.CreateMap<ProductContract, ProductContractInput>();
             configuration.CreateMap<ProductContract, ProductContractForViewDto>();
+
+            // PurchaseOrder
+            configuration.CreateMap<PurchaseOrder, PurchaseOrderDto>();
+            configuration.CreateMap<PurchaseOrderInput, PurchaseOrder>();
+            configuration.CreateMap<PurchaseOrder, PurchaseOrderInput>();
+            configuration.CreateMap<PurchaseOrder, PurchaseOrderForViewDto>();
+
+            // PurchasePaymentHistory
+            configuration.CreateMap<PurchasePaymentHistory, PurchasePaymentHistoryDto>();
+            configuration.CreateMap<PurchasePaymentHistoryInput, PurchasePaymentHistory>();
+            configuration.CreateMap<PurchasePaymentHistory, PurchasePaymentHistoryInput>();
+
+            // PurchaseProductDetail
+            configuration.CreateMap<PurchaseProductDetail, PurchaseProductDetailDto>();
+            configuration.CreateMap<PurchaseProductDetailInput, PurchaseProductDetail>();
+            configuration.CreateMap<PurchaseProductDetail, PurchaseProductDetailInput>();
         }
     }
 }

@@ -69,5 +69,21 @@
         public const string Pages_Administration_ProductContract_Edit = "Pages.Administration.ProductContract.Edit";
         public const string Pages_Administration_ProductContract_Delete = "Pages.Administration.ProductContract.Delete";
 
+        public const string Pages_Administration_PurchaseOrder = "Pages.Administration.PurchaseOrder";
+        public const string Pages_Administration_PurchaseOrder_Create = "Pages.Administration.PurchaseOrder.Create";
+        public const string Pages_Administration_PurchaseOrder_Edit = "Pages.Administration.PurchaseOrder.Edit";
+        public const string Pages_Administration_PurchaseOrder_Delete = "Pages.Administration.PurchaseOrder.Delete";
+
+        public const string Pages_Administration_PurchaseProductDetail = "Pages.Administration.PurchaseProductDetail";
+        public const string Pages_Administration_PurchaseProductDetail_Create = "Pages.Administration.PurchaseProductDetail.Create";
+        public const string Pages_Administration_PurchaseProductDetail_Edit = "Pages.Administration.PurchaseProductDetail.Edit";
+        public const string Pages_Administration_PurchaseProductDetail_Delete = "Pages.Administration.PurchaseProductDetail.Delete";
+
+        public const string Pages_Administration_PurchasePaymentHistory = "Pages.Administration.PurchasePaymentHistory";
+        public const string Pages_Administration_PurchasePaymentHistory_Create = "Pages.Administration.PurchasePaymentHistory.Create";
+        public const string Pages_Administration_PurchasePaymentHistory_Edit = "Pages.Administration.PurchasePaymentHistory.Edit";
+        public const string Pages_Administration_PurchasePaymentHistory_Delete = "Pages.Administration.PurchasePaymentHistory.Delete";
+
+
     }
 }

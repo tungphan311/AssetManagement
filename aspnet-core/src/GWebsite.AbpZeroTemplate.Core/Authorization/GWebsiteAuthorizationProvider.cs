@@ -91,6 +91,21 @@ namespace GWebsite.AbpZeroTemplate.Core.Authorization
             productContract.CreateChildPermission(GWebsitePermissions.Pages_Administration_ProductContract_Create, L("CreatingNewProductContract"));
             productContract.CreateChildPermission(GWebsitePermissions.Pages_Administration_ProductContract_Edit, L("EditingProductContract"));
             productContract.CreateChildPermission(GWebsitePermissions.Pages_Administration_ProductContract_Delete, L("DeletingProductContract"));
+
+            var purchaseOrder = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_PurchaseOrder, L("PurchaseOrder"));
+            purchaseOrder.CreateChildPermission(GWebsitePermissions.Pages_Administration_PurchaseOrder_Create, L("CreatingNewPurchaseOrder"));
+            purchaseOrder.CreateChildPermission(GWebsitePermissions.Pages_Administration_PurchaseOrder_Edit, L("EditingPurchaseOrder"));
+            purchaseOrder.CreateChildPermission(GWebsitePermissions.Pages_Administration_PurchaseOrder_Delete, L("DeletingPurchaseOrder"));
+
+            var purchaseProductDetail = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_PurchaseProductDetail, L("PurchaseProductDetail"));
+            purchaseProductDetail.CreateChildPermission(GWebsitePermissions.Pages_Administration_PurchaseProductDetail_Create, L("CreatingNewPurchaseProductDetail"));
+            purchaseProductDetail.CreateChildPermission(GWebsitePermissions.Pages_Administration_PurchaseProductDetail_Edit, L("EditingPurchaseProductDetail"));
+            purchaseProductDetail.CreateChildPermission(GWebsitePermissions.Pages_Administration_PurchaseProductDetail_Delete, L("DeletingPurchaseProductDetail"));
+
+            var purchasePaymentHistory = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_PurchasePaymentHistory, L("PurchasePaymentHistory"));
+            purchasePaymentHistory.CreateChildPermission(GWebsitePermissions.Pages_Administration_PurchasePaymentHistory_Create, L("CreatingNewPurchasePaymentHistory"));
+            purchasePaymentHistory.CreateChildPermission(GWebsitePermissions.Pages_Administration_PurchasePaymentHistory_Edit, L("EditingPurchasePaymentHistory"));
+            purchasePaymentHistory.CreateChildPermission(GWebsitePermissions.Pages_Administration_PurchasePaymentHistory_Delete, L("DeletingPurchasePaymentHistory"));
         }
 
         private static ILocalizableString L(string name)
