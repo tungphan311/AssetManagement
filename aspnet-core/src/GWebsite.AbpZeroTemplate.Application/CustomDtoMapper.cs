@@ -6,7 +6,6 @@ using GWebsite.AbpZeroTemplate.Application.Share.ContractPayments.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.Customers.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.DemoModels.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.MenuClients.Dto;
-using GWebsite.AbpZeroTemplate.Application.Share.Merchandises;
 using GWebsite.AbpZeroTemplate.Application.Share.Merchandises.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.MerchandiseTypes.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.Vendors.Dto;
@@ -17,7 +16,6 @@ using GWebsite.AbpZeroTemplate.Application.Share.AssignmentTables.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.Bids.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.Bidders.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.POs.Dto;
-using GWebsite.AbpZeroTemplate.Application.Share.Files.Dto;
 
 namespace GWebsite.AbpZeroTemplate.Applications
 {

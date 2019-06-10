@@ -15,7 +15,7 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.POs.Dto
 
         public DateTime ApproveReportDay { get; set; }
 
-        public int POID { get; set; }
+        public string POID { get; set; }
 
         public DateTime CreateDay { get; set; }
 
