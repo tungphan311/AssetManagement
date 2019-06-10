@@ -68,5 +68,10 @@
         public const string Pages_Administration_Bidder_Create = "Pages.Administration.Bidder.Create";
         public const string Pages_Administration_Bidder_Edit = "Pages.Administration.Bidder.Edit";
         public const string Pages_Administration_Bidder_Delete = "Pages.Administration.Bidder.Delete";
+
+        public const string Pages_Administration_PO = "Pages.Administration.PO";
+        public const string Pages_Administration_PO_Create = "Pages.Administration.PO.Create";
+        public const string Pages_Administration_PO_Edit = "Pages.Administration.PO.Edit";
+        public const string Pages_Administration_PO_Delete = "Pages.Administration.PO.Delete";
     }
 }

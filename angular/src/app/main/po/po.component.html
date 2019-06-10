@@ -7,7 +7,7 @@
                     </h3>
                 </div>
                 <div class="col-xs-6 text-right">
-                    <button (click)="createContract()" *ngIf="isGranted('Pages.Administration.Contract.Create')"
+                    <button (click)="createPO()" *ngIf="isGranted('Pages.Administration.Contract.Create')"
                         class="btn btn-primary"><i class="fa fa-plus"></i>CreateNewContract</button>
                 </div>
             </div>
@@ -20,29 +20,26 @@
                             <div class="row align-items-center m--margin-bottom-10">
                                 <div class="input-group">
                                     <div class="form-group" style="width: 15%; margin-left: 10px;">
-                                        <label>Số hợp đồng</label>
-                                        <input [(ngModel)]="contractID" name="contractID" autofocus class="form-control" placeholder="Nhập mã hợp đồng" type="text">
+                                        <label>Mã PO</label>
+                                        <input [(ngModel)]="POId" name="POId" autofocus class="form-control" placeholder="Nhập mã PO" type="text">
                                     </div>
                                     <div class="form-group" style="width: 25%; margin-left: 10px;">
-                                        <label>Tên hợp đồng</label>
-                                        <input [(ngModel)]="contractName" name="contractName" autoFocus class="form-control" placeholder="Nhập tên hợp đồng" type="text">
+                                        <label>Tên đơn hàng</label>
+                                        <input [(ngModel)]="orderName" name="orderName" autoFocus class="form-control" placeholder="Nhập tên đơn hàng" type="text">
                                     </div>
                                     <div class="form-group" style="width: 15%; margin-left: 10px;">
-                                        <label>Ngày hợp đồng</label>
-                                        <input [(ngModel)]="createDate" name="createDate" autofocus class="form-control" type="date">
+                                        <label>Số hợp đồng</label>
+                                        <input [(ngModel)]="contractID" name="contractID" autofocus class="form-control" type="text">
                                     </div>   
                                     <div class="form-group" style="width: 15%; margin-left: 10px;">
-                                        <label>Mã gói thầu</label>
-                                        <select [(ngModel)]="briefCaseID" name="briefCaseID" autofocus class="form-control">
-                                            <option value="0" selected="selected">--NULL--</option>
-                                            <option *ngFor="let item of listBid" value="{{item.id}}">{{item.name}}</option>
-                                        </select>
+                                        <label>Mã NCC</label>
+                                        <input [(ngModel)]="vendorId" name="vendorId" autofocus class="form-control" placeholder="Nhập mã nhà cung cấp" type="text">
                                     </div>       
                                     <div class="form-group" style="width: 25%; margin-left: 10px;">
-                                        <label>Nhà cung cấp</label>
-                                        <select [(ngModel)]="vendorID" name="vendorID" autofocus class="form-control">
-                                            <option value="0" selected="selected">Tất cả</option>
-                                            <option *ngFor="let item of listVendor" value="{{item.id}}">{{item.name}}</option>
+                                        <label>Loại PO</label>
+                                        <select [(ngModel)]="type" name="Type" autofocus class="form-control">
+                                            <option value="in" selected="selected">Trong kế hoạch</option>
+                                            <option value="out">Ngoài kế hoạch</option>
                                         </select>   
                                     </div>     
                                     <span class="align-items-bottom">
@@ -57,29 +54,33 @@
                     <div class="row align-items-center">
                         <!--<Primeng-TurboTable-Start>-->
                         <div class="primeng-datatable-container" [busyIf]="primengTableHelper.isLoading">
-                            <p-table #dataTable (onLazyLoad)="getContracts($event)" [value]="primengTableHelper.records"
+                            <p-table #dataTable (onLazyLoad)="getPOs($event)" [value]="primengTableHelper.records"
                                 rows="{{primengTableHelper.defaultRecordsCountPerPage}}" [paginator]="false" [lazy]="true"
                                 [responsive]="primengTableHelper.isResponsive">
                                 <ng-template pTemplate="header">
                                     <tr>
                                         <th pSortableColumn="contractID">
-                                            Số hợp đồng
+                                            Số TT
                                             <p-sortIcon field="contractID"></p-sortIcon>
                                         </th>
                                         <th pSortableColumn="name">
-                                            Tên hợp đồng
+                                            Mã PO
                                             <p-sortIcon field="name"></p-sortIcon>
                                         </th>
                                         <th pSortableColumn="briefCaseID">
-                                            Mã gói thầu
+                                            Tên đơn hàng
                                             <p-sortIcon field="briefCaseID"></p-sortIcon>
                                         </th>
                                         <th pSortableColumn="deliveryTime">
-                                            Ngày giao hàng
+                                            Số hợp đồng
                                             <p-sortIcon field="deliveryTime"></p-sortIcon>
                                         </th>
                                         <th pSortableColumn="vendorID">
-                                            Nhà cung cấp
+                                            Ngày đặt hàng
+                                            <p-sortIcon field="vendorID"></p-sortIcon>
+                                        </th>
+                                        <th pSortableColumn="vendorID">
+                                            Tổng số tiền
                                             <p-sortIcon field="vendorID"></p-sortIcon>
                                         </th>
                                         <th>{{l('Edit')}}</th>
@@ -88,24 +89,28 @@
                                 <ng-template pTemplate="body" let-record="$implicit" >
                                     <tr>
                                         <td>
+                                            <span class="ui-column-title">Số TT</span>
+                                            <span title="{{record.reportID}}">{{truncateString(record.reportID)}}</span>
+                                        </td>
+                                        <td>
+                                            <span class="ui-column-title">Mã PO</span>
+                                            <span title="{{record.pOID}}">{{truncateString(record.pOID)}}</span>
+                                        </td>
+                                        <td>
+                                            <span class="ui-column-title">Tên đơn hàng</span>
+                                            <span title="{{record.orderName}}">{{getBidNameFromId(record.orderName)}}</span>
+                                        </td>
+                                        <td>
                                             <span class="ui-column-title">Số hợp đồng</span>
                                             <span title="{{record.contractID}}">{{truncateString(record.contractID)}}</span>
                                         </td>
                                         <td>
-                                            <span class="ui-column-title">Tên hợp đồng</span>
-                                            <span title="{{record.name}}">{{truncateString(record.name)}}</span>
+                                            <span class="ui-column-title">Ngày đặt hàng</span>
+                                            <span title="{{record.vendorID}}">{{truncateString(record.contractID)}}</span>
                                         </td>
                                         <td>
-                                            <span class="ui-column-title">Mã gói thầu</span>
-                                            <span title="{{record.briefcaseID}}">{{getBidNameFromId(record.briefcaseID)}}</span>
-                                        </td>
-                                        <td>
-                                            <span class="ui-column-title">Ngày giao hàng</span>
-                                            <span title="createDay">{{truncateString(dateFormat(record.deliveryTime))}}</span>
-                                        </td>
-                                        <td>
-                                            <span class="ui-column-title">Nhà cung cấp</span>
-                                            <span title="{{record.vendorID}}">{{getVendorName(record.briefcaseID)}}</span>
+                                            <span class="ui-column-title">Tổng số tiền</span>
+                                            <span title="{{record.vendorID}}">{{truncateString(record.contractID)}}</span>
                                         </td>
                                         <td>
                                             <button
@@ -148,6 +153,6 @@
                 </div>
             </div>      
         </div>
-        <createOrEditContractModal #createOrEditModal (modalSave)="reloadPage()"></createOrEditContractModal>
+        <createOrEditPOModal #createOrEditModal (modalSave)="reloadPage()"></createOrEditPOModal>
         <viewContractModal #viewContractModal></viewContractModal>
     </div>

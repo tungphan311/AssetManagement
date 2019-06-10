@@ -44,6 +44,7 @@ import { SelectBidModalComponent } from './contract/select-bid-modal.component';
 import { FileUploadComponent } from './contract/file-upload.component';
 import { POCOmponent } from './po/po.component';
 import { RouterModule } from '@angular/router';
+import { CreateOrEditPOModalComponent } from './po/create-or-edit-po-modal.component';
 
 
 @NgModule({
@@ -84,7 +85,7 @@ import { RouterModule } from '@angular/router';
         AssignmentTableComponent, CreateOrEditAssignmentTableModalComponent, ViewAssignmentTableModalComponent,
         BidComponent, CreateOrEditBidModalComponent, ViewBidModalComponent, SelectProjectModalComponent, AddBidderModal, SelectVendorModalComponent,
         CreateMerchandiseModalComponent,
-        POCOmponent,
+        POCOmponent, CreateOrEditPOModalComponent
     ],
     providers: [
         

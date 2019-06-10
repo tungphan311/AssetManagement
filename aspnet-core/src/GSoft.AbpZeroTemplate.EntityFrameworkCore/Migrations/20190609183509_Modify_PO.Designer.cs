@@ -4,14 +4,16 @@ using GSoft.AbpZeroTemplate.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace GSoft.AbpZeroTemplate.Migrations
 {
     [DbContext(typeof(AbpZeroTemplateDbContext))]
-    partial class AbpZeroTemplateDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190609183509_Modify_PO")]
+    partial class Modify_PO
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -1582,14 +1584,6 @@ namespace GSoft.AbpZeroTemplate.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Attachment1");
-
-                    b.Property<string>("Attachment2");
-
-                    b.Property<string>("Attachment3");
-
-                    b.Property<string>("Attachment4");
-
                     b.Property<DateTime>("BeginDay");
 
                     b.Property<int>("BidderID");
@@ -1607,8 +1601,6 @@ namespace GSoft.AbpZeroTemplate.Migrations
                     b.Property<bool>("IsDelete");
 
                     b.Property<string>("Name");
-
-                    b.Property<double>("Percent");
 
                     b.Property<int>("ProjectId");
 
@@ -1633,8 +1625,6 @@ namespace GSoft.AbpZeroTemplate.Migrations
 
                     b.Property<DateTime>("ApplyDay");
 
-                    b.Property<string>("Attachment");
-
                     b.Property<int>("BidID");
 
                     b.Property<int>("CertificateNumber");
@@ -1642,8 +1632,6 @@ namespace GSoft.AbpZeroTemplate.Migrations
                     b.Property<string>("CreatedBy");
 
                     b.Property<DateTime?>("CreatedDate");
-
-                    b.Property<string>("GuaranteeBank");
 
                     b.Property<DateTime>("GuaranteeExpired");
 
