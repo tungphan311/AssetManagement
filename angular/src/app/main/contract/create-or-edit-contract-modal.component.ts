@@ -72,6 +72,10 @@ export class CreateOrEditContractModalComponent extends AppComponentBase {
         this._contractService.getContractForEdit(contractId).subscribe(result => {
             this.contract = result;
 
+            if (contractId == null || contractId == undefined) {
+                this.contract.products = [];
+            }
+
             var moment = require('moment');
             var date = moment(result.deliveryTime);
             var tz = date.utcOffset();
@@ -136,6 +140,7 @@ export class CreateOrEditContractModalComponent extends AppComponentBase {
     }
 
     passToProducts() {
+        console.log(this.contract.products);
         this.addContractDetailModal.listMerID.forEach(element => {
             let input: ContractDetailInput = new ContractDetailInput();
             input.merchID = element.id;
