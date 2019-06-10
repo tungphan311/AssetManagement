@@ -14,5 +14,6 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.Products.Dto
     {
         public string Name { get; set; }
         public string ProductName { get; set; }
+        public int? ContractId { get; set; }
     }
 }

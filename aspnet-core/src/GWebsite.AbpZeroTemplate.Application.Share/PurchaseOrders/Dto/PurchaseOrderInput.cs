@@ -43,6 +43,7 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.PurchaseOrders.Dto
         public string AttachmentFile { get; set; }
 
         public decimal? TotalPrice { get; set; }
+        public decimal? TotalMoneyPaid { get; set; }
         public bool IsApproval { get; set; }
         //FK
         public int? ContractId { get; set; }

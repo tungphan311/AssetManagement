@@ -4,7 +4,9 @@
     </div>
 </div>
 <div class="text-right">
-    <button type="button" class="mt-2 btn btn-primary">Thêm hàng hóa</button>
+    <button type="button" class="mt-2 btn btn-primary"
+    (click)="show()"
+    >Thêm hàng hóa</button>
 </div>
 <br>
 <div class="card">
@@ -103,11 +105,10 @@
 
                         </td>
 
-
                         <td>
 
                             <button class="btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill"
-                                (click)="deleteContract(record.id)" title="{{l('Delete')}}">
+                                (click)="deleteDetail(record.id)" title="{{l('Delete')}}">
                                 <i class="fa fa-times" [attr.aria-label]="l('Delete')"></i>
                             </button>
                         </td>
@@ -118,6 +119,9 @@
         </div>
         <!--<Primeng-TurboTable-End>-->
 
-
     </div>
 </div>
+
+<!--beginmodal-->
+<purchase-product-selection-modal #purchaseProductSelectionModal></purchase-product-selection-modal>
+<!--end modal-->

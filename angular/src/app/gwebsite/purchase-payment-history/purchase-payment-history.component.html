@@ -1,0 +1,90 @@
+<div class="card" style="background-color:rgb(30, 113, 180)">
+        <div class="card-title px-2 mt-2 row" style="color: white">
+            <h5 class="col-sm-8">LỊCH SỬ THANH TOÁN</h5>
+        </div>
+    </div>
+    <div class="text-right">
+        <button type="button" class="mt-2 btn btn-primary"
+        (click)="addNewPayment()">Thêm đợt thanh toán</button>
+    </div>
+    <br>
+    <div class="card">
+        <h5 class="card-title px-2"> </h5>
+        <div class="card-body">
+            <!--<Primeng-TurboTable-Start>-->
+            <div class="primeng-datatable-container">
+                <p-table [value]="purchaseOrderRecieved.purchasePaymentHistories">
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th pSortableColumn="nstallmentNumber">
+                                Đợt
+                                <p-sortIcon field="installmentNumber"></p-sortIcon>
+                            </th>
+                            <th pSortableColumn="percent">
+                                %
+                                <p-sortIcon field="percent"></p-sortIcon>
+                            </th>
+                            <th pSortableColumn="price">
+                                Số tiền
+                                <p-sortIcon field="price"></p-sortIcon>
+                            </th>
+                            <th pSortableColumn="description">
+                               Diễn giải
+                                <p-sortIcon field="description"></p-sortIcon>
+                            </th>
+                            
+    
+    
+                            <th>{{l('Edit')}}</th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-record="$implicit">
+                        <tr>
+                            <td>                               
+                                <!-- <span title="{{record.installmentNumber}}">{{truncateString(record.name)}}</span> -->
+                                <input type="number"
+                                [(ngModel)]="record.installmentNumber"
+                              
+                                >  <!-- value="{{record.installmentNumber}}" -->
+                            </td>
+                            <td>                               
+                                <!-- <span title="{{record.percent}}">{{truncateString(record.percent)}}</span> -->
+                                <input type="number"
+                                [ngModel]="record.percent"
+                                (change)="updatePrice(record)">
+    
+                            </td>
+    
+                            <td>                                
+                                <!-- <span title="{{record.price}}">{{truncateString(record.price)}}</span> -->
+                                <input type="number" [attr.disabled]="true"
+                                [(ngModel)]="record.price">
+                            </td>
+                            <td>                               
+                                <!-- <span title="{{record.description}}">{{truncateString(record.description)}}</span> -->
+                                <input type="text"
+                                [(ngModel)]="record.description">
+                            </td>          
+                            <td>
+
+                                    <button class="btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill"
+                                    type="button"    
+                                    (click)="deletePayment(record)" title="{{l('Delete')}}">
+                                        <i class="fa fa-times" [attr.aria-label]="l('Delete')"></i>
+                                    </button>
+                                </td>                 
+                        </tr>
+                    </ng-template>
+                </p-table>
+                
+            </div>
+            <div class="primeng-paging-container">                       
+                    <span class="total-records-count">
+                        {{l('TotalRecordsCount', primengTableHelper.totalRecordsCount)}}
+                    </span>
+                </div>
+            <!--<Primeng-TurboTable-End>-->
+    
+    
+        </div>
+    </div>

@@ -58,6 +58,8 @@ import {PurchaseOrderComponent} from './purchase-order/purchase-order.component'
 import {CreateOrEditPurchaseOrderComponent} from './purchase-order/purchase-order-create-or-edit.component'
 import {PurchaseOrderSearchComponent} from './purchase-order/purchase-order-search.component'
 import { PurchaseProductDetailComponent } from './purchase-product-detail/purchase-product-detail.component';
+import { PurchasePaymentHistoryComponent } from './purchase-payment-history/purchase-payment-history.component';
+import { PurchaseProductSelectionModalComponent } from './purchase-product-detail/purchase-product-selection-modal.component';
 
 @NgModule({
     imports: [
@@ -93,7 +95,8 @@ import { PurchaseProductDetailComponent } from './purchase-product-detail/purcha
 
         PurchaseOrderComponent,CreateOrEditPurchaseOrderComponent,PurchaseOrderSearchComponent,
         
-        PurchaseProductDetailComponent
+        PurchaseProductDetailComponent,PurchaseProductSelectionModalComponent,
+        PurchasePaymentHistoryComponent
 
     ],
     providers: [

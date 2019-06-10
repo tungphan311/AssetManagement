@@ -1,34 +1,33 @@
-import { ViewProductModalComponent } from './view-product-modal.component';
-import { AfterViewInit, Component, ElementRef, Injector, OnInit, ViewChild, Output,EventEmitter, Input } from '@angular/core';
-import { ActivatedRoute, Params, Router } from '@angular/router';
-import { appModuleAnimation } from '@shared/animations/routerTransition';
+import { Component, ElementRef, EventEmitter, Injector, Output, ViewChild,Input } from '@angular/core';
 import { AppComponentBase } from '@shared/common/app-component-base';
-import * as _ from 'lodash';
-import { LazyLoadEvent } from 'primeng/components/common/lazyloadevent';
-import { Paginator } from 'primeng/components/paginator/paginator';
-import { Table } from 'primeng/components/table/table';
-import { ProductServiceProxy, ProductContractInput,ProductDto, ProductInput } from '@shared/service-proxies/service-proxies';
 import { ModalDirective } from 'ngx-bootstrap';
-import { CreateOrEditProductModalComponent } from './create-or-edit-product-modal.component';
+import { ProductContractServiceProxy, ProductContractInput, ProductServiceProxy, ProductInput } from '@shared/service-proxies/service-proxies';
+import { ActivatedRoute, Params } from '@angular/router';
+import { LazyLoadEvent, Paginator } from 'primeng/primeng';
+import { Table } from 'primeng/table';
+
 
 @Component({
-    selector:'product-for-select-component',
-    templateUrl: './product-for-select.component.html',
-    animations: [appModuleAnimation()],
-    
+    selector: 'purchase-product-selection-modal',
+    templateUrl: './purchase-product-selection-modal.component.html'
 })
-export class ProductForSelectComponent extends AppComponentBase implements AfterViewInit, OnInit {
+export class PurchaseProductSelectionModalComponent extends AppComponentBase {
 
-    /**
-     * @ViewChild là dùng get control và call thuộc tính, functions của control đó
-     */
+
     @ViewChild('dataTable') dataTable: Table;
     @ViewChild('paginator') paginator: Paginator;
     @ViewChild('createOrEditModal') modal: ModalDirective;
+  
 
     /**
-     * tạo các biến dể filters
+     * @Output dùng để public event cho component khác xử lý
      */
+    @Output() modalSave: EventEmitter<any> = new EventEmitter<any>();
+
+    saving = false;
+
+    productContract: ProductContractInput = new ProductContractInput();
+
     productName: string;
     productContracts: ProductContractInput[];
 
@@ -83,7 +82,7 @@ export class ProductForSelectComponent extends AppComponentBase implements After
 
     reloadList(productName, event?: LazyLoadEvent) {
         if(!this.allowLoad) return
-        this.primengTableHelper.isLoading=true
+        
         this._productService.getProductsByFilter(productName, productName,this.contractId, this.primengTableHelper.getSorting(this.dataTable),
             this.primengTableHelper.getMaxResultCount(this.paginator, event),
             this.primengTableHelper.getSkipCount(this.paginator, event),
@@ -92,7 +91,7 @@ export class ProductForSelectComponent extends AppComponentBase implements After
             this.primengTableHelper.records = result.items;
             this.primengTableHelper.hideLoadingIndicator();
         });
-        this.primengTableHelper.isLoading=false
+       
     }
 
 
@@ -117,7 +116,7 @@ export class ProductForSelectComponent extends AppComponentBase implements After
             this.paginator.changePage(0);
             return;
         }
-        this.allowLoad=true;
+       
     }
 
     //hàm show view create MenuClient
@@ -145,26 +144,26 @@ export class ProductForSelectComponent extends AppComponentBase implements After
 
     }  
 
-    show(productId?: number | null | undefined): void {
-        //console.log("show funct active")
-        window.scroll(0,0);
-        this.modal.show();
+    show(productContractId?: number | null | undefined): void {
+        this.saving = false;
+
+            //console.log("show modal")
+       
+            this.modal.show();       
+    }
+
+    save(): void {
+        let input = this.productContract;
+        this.saving = true;
+        this.modal.hide();
 
     }
 
     close(): void {
         this.modal.hide();
-        this.allowLoad=false
+        this.modalSave.emit(null);
     }
-    save():void{
-        this.allowLoad=false
-        this.productsValueChange.emit(this.productContracts)
-        this.close()
-    }
-    /**
-     * Tạo pipe thay vì tạo từng hàm truncate như thế này
-     * @param text
-     */
+
     truncateString(text): string {
         return abp.utils.truncateStringWithPostfix(text, 32, '...');
     }

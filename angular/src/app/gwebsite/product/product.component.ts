@@ -73,7 +73,7 @@ export class ProductComponent extends AppComponentBase implements AfterViewInit,
     }
 
     reloadList(productName, event?: LazyLoadEvent) {
-        this._productService.getProductsByFilter(productName,productName, this.primengTableHelper.getSorting(this.dataTable),
+        this._productService.getProductsByFilter(productName,productName, null,this.primengTableHelper.getSorting(this.dataTable),
         this.primengTableHelper.getMaxResultCount(this.paginator, event),
         this.primengTableHelper.getSkipCount(this.paginator, event),
     ).subscribe(result => {

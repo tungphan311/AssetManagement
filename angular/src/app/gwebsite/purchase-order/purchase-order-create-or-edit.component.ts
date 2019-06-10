@@ -45,5 +45,10 @@ export class CreateOrEditPurchaseOrderComponent extends AppComponentBase impleme
     ngAfterViewInit(): void {
        
     }
+    testDataDisplay(arr){
+       
+    }
+    save(){
 
+    }
 }

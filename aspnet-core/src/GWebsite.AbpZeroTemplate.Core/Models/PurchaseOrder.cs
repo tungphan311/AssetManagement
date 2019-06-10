@@ -38,6 +38,7 @@ namespace GWebsite.AbpZeroTemplate.Core.Models
         public string AttachmentFile { get; set; }
 
         public decimal? TotalPrice { get; set; }
+        public decimal? TotalMoneyPaid { get; set; }
         public bool IsApproval { get; set; }
         //FK
         public int? ContractId { get; set; }

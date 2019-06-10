@@ -141,7 +141,17 @@
                     ></purchase-product-detail-component>
                     <br>
                     <!-- End Purchase Product Detail-->
+
+                     <!-- Begin Purchase Payment History -->
+                     <purchase-payment-history-component
+                     [purchaseOrderRecieved]="purchaseOrder"
+                     (onDeleteElement)="testDataDisplay($event)"
+                     ></purchase-payment-history-component>
+                     <br>
+                     <!-- End Purchase Payment History-->
+
                 </div>
+                <button type="submit" class="btn btn-primary" (click)="save()">Save</button>
             </form>
         </div>
     </div>

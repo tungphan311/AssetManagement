@@ -10,6 +10,7 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.PurchasePaymentHistories.Dt
 {
     public class PurchasePaymentHistoryInput : Entity<int>
     {
+
         public int? InstallmentNumber { get; set; }
         public DateTime? PaymentDate { get; set; }
         public decimal? Percent { get; set; }

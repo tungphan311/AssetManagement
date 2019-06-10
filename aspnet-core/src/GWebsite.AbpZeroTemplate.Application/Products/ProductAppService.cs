@@ -16,10 +16,12 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Products
     public class ProductAppService : GWebsiteAppServiceBase, IProductAppService
     {
         private readonly IRepository<Product> productRepository;
+        private readonly IRepository<ProductContract> productContractRepository;
 
-        public ProductAppService(IRepository<Product> productRepository)
+        public ProductAppService(IRepository<Product> productRepository, IRepository<ProductContract> productContractRepository)
         {
             this.productRepository = productRepository;
+            this.productContractRepository = productContractRepository;
         }
 
         #region Public Method
@@ -81,6 +83,18 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Products
             if (input.Name != null)
             {
                 query = query.Where(x => x.Name.ToLower().StartsWith(input.Name));
+            }
+
+            if (input.ContractId != null)
+            {
+                var pcItems = productContractRepository.GetAll().Where(x => x.ContractId == input.ContractId);
+                if (pcItems != null && pcItems.Count() > 0)
+                {
+                    foreach (var element in pcItems)
+                    {
+                        query.Where(x => x.Id == element.Id);
+                    }
+                }
             }
 
             var totalCount = query.Count();
