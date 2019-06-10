@@ -16,6 +16,7 @@ namespace GWebsite.AbpZeroTemplate.Core.Models
         public int BriefcaseID { get; set; }
         public int VendorID { get; set; } // luu id cua don vi trung thau vao day
         public string Note { get; set; }  
+        public float TotalPrice { get; set; }
 
         public string ContractWarrantyType { get; set; }
         public string ContractWarrantyID { get; set; }

@@ -4,6 +4,7 @@ using Abp.Domain.Repositories;
 using Abp.Linq.Extensions;
 using GWebsite.AbpZeroTemplate.Application;
 using GWebsite.AbpZeroTemplate.Application.Share.ContractDetails.Dto;
+using GWebsite.AbpZeroTemplate.Application.Share.ContractPayments.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.Contracts;
 using GWebsite.AbpZeroTemplate.Application.Share.Contracts.Dto;
 using GWebsite.AbpZeroTemplate.Core.Authorization;
@@ -20,11 +21,13 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Contracts
     {
         private readonly IRepository<Contract> contractRepository;
         private readonly IRepository<ContractDetail> detailRepository;
+        private readonly IRepository<ContractPayment> paymentRepository;
 
-        public ContractAppService(IRepository<Contract> contractRepository, IRepository<ContractDetail> detailRepository)
+        public ContractAppService(IRepository<Contract> contractRepository, IRepository<ContractDetail> detailRepository, IRepository<ContractPayment> paymentRepository)
         {
             this.contractRepository = contractRepository;
             this.detailRepository = detailRepository;
+            this.paymentRepository = paymentRepository;
         }
 
         #region Public Method
@@ -58,6 +61,15 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Contracts
                     detailRepository.Update(detail);
                 }
 
+                // xoá contract payment ứng với contract này
+                var paymentList = paymentRepository.GetAll().Where(x => !x.IsDelete && x.ContractID == id);
+                foreach(var payment in paymentList)
+                {
+                    payment.IsDelete = true;
+                    SetAuditEdit(payment);
+                    paymentRepository.Update(payment);
+                }
+
                 CurrentUnitOfWork.SaveChanges();
             }
         }
@@ -73,6 +85,9 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Contracts
             var contractInput = ObjectMapper.Map<ContractInput>(contractEntity);
             var detailList = detailRepository.GetAll().Where(x => !x.IsDelete).Where(x => x.ContractID == id);
             contractInput.Products = detailList.Select(x => ObjectMapper.Map<ContractDetailInput>(x)).ToList();
+
+            var paymentList = paymentRepository.GetAll().Where(x => !x.IsDelete && x.ContractID == id);
+            contractInput.Payments = paymentList.Select(x => ObjectMapper.Map<ContractPaymentInput>(x)).ToList();
 
             return contractInput;
         }
@@ -160,6 +175,14 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Contracts
                 detailRepository.Insert(detailEntity);
             }
 
+            foreach (var payment in contractInput.Payments)
+            {
+                payment.ContractID = id;
+                var paymentEntity = ObjectMapper.Map<ContractPayment>(payment);
+                SetAuditInsert(paymentEntity);
+                paymentRepository.Insert(paymentEntity);
+            }
+
             CurrentUnitOfWork.SaveChanges();
         }
 
@@ -179,20 +202,19 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Contracts
                 // nếu input rỗng thì xoá hết detail đang có của contract
                 var detailList = detailRepository.GetAll().Where(x => x.ContractID == contractInput.Id);
 
-                foreach(var detail in detailList)
+                foreach (var detail in detailList)
                 {
                     detail.IsDelete = true;
                     SetAuditEdit(detail);
                     detailRepository.Update(detail);
                 }
-                return;
             }
             else
             {
                 // update list contract detail
                 var detailList = detailRepository.GetAll().Where(x => !x.IsDelete).Where(x => x.ContractID == contractInput.Id);
-                
-                foreach(var detail in detailList)
+
+                foreach (var detail in detailList)
                 {
                     if (!(contractInput.Products.Exists(x => x.MerchID == detail.MerchID)))
                     {
@@ -204,7 +226,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Contracts
                 }
 
                 // update contract detail
-                foreach(var product in contractInput.Products)
+                foreach (var product in contractInput.Products)
                 {
                     var detailEntity = detailList.SingleOrDefault(x => x.MerchID == product.MerchID);
                     if (detailEntity == null)
@@ -227,6 +249,27 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Contracts
                 }
             }
 
+            // xoá hết payment đang có trước 
+            var paymentList = paymentRepository.GetAll().Where(x => !x.IsDelete && x.ContractID == contractInput.Id);
+
+            foreach (var payment in paymentList)
+            {
+                payment.IsDelete = true;
+                SetAuditEdit(payment);
+                paymentRepository.Update(payment);
+            }
+
+            if (contractInput.Payments != null)
+            {
+                foreach(var payment in contractInput.Payments)
+                {
+                    payment.ContractID = contractInput.Id;
+                    var paymentEntity = ObjectMapper.Map<ContractPayment>(payment);
+                    SetAuditInsert(paymentEntity);
+                    paymentRepository.Insert(paymentEntity);
+                }
+            }
+ 
             CurrentUnitOfWork.SaveChanges();
         }
 

@@ -106,3 +106,38 @@ table {
     content: counter(tableCount);
     counter-increment: tableCount;
 }
+
+
+.custom-table>table {
+    min-width: 100%!important;
+}
+
+.custom-table {
+    width: 100%;
+    margin-top: 15px;
+}
+
+.custom-table>table td,.custom-table>table th {
+    border: solid 1px;
+    padding: 3px;
+}
+
+
+.custom-table table th {
+    background: #e6e6e6;
+    border-bottom-width: 2px;
+}
+
+.custom-table table th>span {
+    display: block;
+}
+
+.custom-table{
+    overflow:auto;
+}
+
+img.custom-img {
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}

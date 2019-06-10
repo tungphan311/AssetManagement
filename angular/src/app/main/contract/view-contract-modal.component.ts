@@ -27,6 +27,9 @@ export class ViewContractModalComponent extends AppComponentBase {
     bidderAddress: string;
     bidderContact: string;
 
+    viewFirstFile = false;
+    viewSecondFile = false;
+
     constructor(
         injector: Injector,
         private _contractService: ContractServiceProxy,
@@ -91,6 +94,8 @@ export class ViewContractModalComponent extends AppComponentBase {
     }
 
     close() : void{
+        this.viewFirstFile = false;
+        this.viewSecondFile = false;
         this.modal.hide();
     }
 }
