@@ -92,6 +92,7 @@ export class SelectVendorModalComponent extends AppComponentBase {
                 this.listVendor.push(obj);
             }
             this.checkAll();
+            
             this.primengTableHelper.totalRecordsCount = result.items.length;
             this.primengTableHelper.records = this.listVendor;          
             this.primengTableHelper.hideLoadingIndicator();
@@ -137,6 +138,9 @@ export class SelectVendorModalComponent extends AppComponentBase {
         this.saving = false;
         while (this.selectedIDs.length>0)
             this.selectedIDs.pop();
+        while (this.listVendor.length>0)
+            this.listVendor.pop();
+        this.isSelectAll = false;
         for (const id of selectedIDs)        
             this.selectedIDs.push(id);
         this.getVendors();

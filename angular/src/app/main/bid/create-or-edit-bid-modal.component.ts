@@ -12,6 +12,7 @@ import * as moment from 'moment';
 import { projection } from '@angular/core/src/render3/instructions';
 import { variable } from '@angular/compiler/src/output/output_ast';
 import { bootloader } from '@angularclass/hmr';
+import { observable, of as _observableOf } from 'rxjs';
 
 @Component({
     selector: 'createOrEditBidModal',
@@ -66,6 +67,9 @@ export class CreateOrEditBidModalComponent extends AppComponentBase {
     }   
 
     reloadListBidders(event: LazyLoadEvent) {
+        
+        const temp = _observableOf(this.bidderList); 
+    
             if (this.bidderList.length>0){
             this.primengTableHelper.totalRecordsCount = this.bidderList.length;
             this.primengTableHelper.records = this.bidderList;
@@ -99,10 +103,12 @@ export class CreateOrEditBidModalComponent extends AppComponentBase {
                             vendorCode:result.code
                         }; 
                         this.bidderList.push(obj);
+                        //code chữa cháy
+                        this.getBidders();
                     })
                 }
         }
-        this.getBidders();
+        
     }
     deleteBidder(bidderID:number){
          if (bidderID!=0&&bidderID!=null&&bidderID!=undefined)
@@ -179,14 +185,14 @@ export class CreateOrEditBidModalComponent extends AppComponentBase {
                             }         
                             //-                             
                             this.bidderList.push(obj);
+                            //code chữa cháy
+                            this.getBidders(null);
                         })
-                        
                     }                  
-                
             }
             //----
         })
-        this.getBidders(null);
+        //this.getBidders(null);
         this.modal.show();
         
         
@@ -251,8 +257,6 @@ export class CreateOrEditBidModalComponent extends AppComponentBase {
             
             this.close();
         })
-        
-        
     }        
 
 

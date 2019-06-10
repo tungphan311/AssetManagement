@@ -11513,66 +11513,6 @@ export class UiCustomizationSettingsServiceProxy {
 }
 
 @Injectable()
-export class UploadServiceProxy {
-    private http: HttpClient;
-    private baseUrl: string;
-    protected jsonParseReviver: ((key: string, value: any) => any) | undefined = undefined;
-
-    constructor(@Inject(HttpClient) http: HttpClient, @Optional() @Inject(API_BASE_URL) baseUrl?: string) {
-        this.http = http;
-        this.baseUrl = baseUrl ? baseUrl : "";
-    }
-
-    /**
-     * @return Success
-     */
-    uploadFile(): Observable<void> {
-        let url_ = this.baseUrl + "/api/Upload/UploadFile";
-        url_ = url_.replace(/[?&]$/, "");
-
-        let options_ : any = {
-            observe: "response",
-            responseType: "blob",
-            headers: new HttpHeaders({
-                "Content-Type": "application/json", 
-            })
-        };
-
-        return this.http.request("post", url_, options_).pipe(_observableMergeMap((response_ : any) => {
-            return this.processUploadFile(response_);
-        })).pipe(_observableCatch((response_: any) => {
-            if (response_ instanceof HttpResponseBase) {
-                try {
-                    return this.processUploadFile(<any>response_);
-                } catch (e) {
-                    return <Observable<void>><any>_observableThrow(e);
-                }
-            } else
-                return <Observable<void>><any>_observableThrow(response_);
-        }));
-    }
-
-    protected processUploadFile(response: HttpResponseBase): Observable<void> {
-        const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
-            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
-
-        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
-        if (status === 200) {
-            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
-            return _observableOf<void>(<any>null);
-            }));
-        } else if (status !== 200 && status !== 204) {
-            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-            }));
-        }
-        return _observableOf<void>(<any>null);
-    }
-}
-
-@Injectable()
 export class UserServiceProxy {
     private http: HttpClient;
     private baseUrl: string;
@@ -14286,6 +14226,11 @@ export class BidDto implements IBidDto {
     endReceivingRecords!: moment.Moment | undefined;
     biddingForm!: string | undefined;
     totalPrice!: number | undefined;
+    percent!: number | undefined;
+    attachment1!: string | undefined;
+    attachment2!: string | undefined;
+    attachment3!: string | undefined;
+    attachment4!: string | undefined;
     bidderID!: number | undefined;
     id!: number | undefined;
 
@@ -14308,6 +14253,11 @@ export class BidDto implements IBidDto {
             this.endReceivingRecords = data["endReceivingRecords"] ? moment(data["endReceivingRecords"].toString()) : <any>undefined;
             this.biddingForm = data["biddingForm"];
             this.totalPrice = data["totalPrice"];
+            this.percent = data["percent"];
+            this.attachment1 = data["attachment1"];
+            this.attachment2 = data["attachment2"];
+            this.attachment3 = data["attachment3"];
+            this.attachment4 = data["attachment4"];
             this.bidderID = data["bidderID"];
             this.id = data["id"];
         }
@@ -14330,6 +14280,11 @@ export class BidDto implements IBidDto {
         data["endReceivingRecords"] = this.endReceivingRecords ? this.endReceivingRecords.toISOString() : <any>undefined;
         data["biddingForm"] = this.biddingForm;
         data["totalPrice"] = this.totalPrice;
+        data["percent"] = this.percent;
+        data["attachment1"] = this.attachment1;
+        data["attachment2"] = this.attachment2;
+        data["attachment3"] = this.attachment3;
+        data["attachment4"] = this.attachment4;
         data["bidderID"] = this.bidderID;
         data["id"] = this.id;
         return data; 
@@ -14345,6 +14300,11 @@ export interface IBidDto {
     endReceivingRecords: moment.Moment | undefined;
     biddingForm: string | undefined;
     totalPrice: number | undefined;
+    percent: number | undefined;
+    attachment1: string | undefined;
+    attachment2: string | undefined;
+    attachment3: string | undefined;
+    attachment4: string | undefined;
     bidderID: number | undefined;
     id: number | undefined;
 }
@@ -14358,6 +14318,11 @@ export class BidInput implements IBidInput {
     endReceivingRecords!: moment.Moment | undefined;
     biddingForm!: string | undefined;
     totalPrice!: number | undefined;
+    percent!: number | undefined;
+    attachment1!: string | undefined;
+    attachment2!: string | undefined;
+    attachment3!: string | undefined;
+    attachment4!: string | undefined;
     bidderID!: number | undefined;
     bidders!: BidderInput[] | undefined;
     id!: number | undefined;
@@ -14381,6 +14346,11 @@ export class BidInput implements IBidInput {
             this.endReceivingRecords = data["endReceivingRecords"] ? moment(data["endReceivingRecords"].toString()) : <any>undefined;
             this.biddingForm = data["biddingForm"];
             this.totalPrice = data["totalPrice"];
+            this.percent = data["percent"];
+            this.attachment1 = data["attachment1"];
+            this.attachment2 = data["attachment2"];
+            this.attachment3 = data["attachment3"];
+            this.attachment4 = data["attachment4"];
             this.bidderID = data["bidderID"];
             if (data["bidders"] && data["bidders"].constructor === Array) {
                 this.bidders = [];
@@ -14408,6 +14378,11 @@ export class BidInput implements IBidInput {
         data["endReceivingRecords"] = this.endReceivingRecords ? this.endReceivingRecords.toISOString() : <any>undefined;
         data["biddingForm"] = this.biddingForm;
         data["totalPrice"] = this.totalPrice;
+        data["percent"] = this.percent;
+        data["attachment1"] = this.attachment1;
+        data["attachment2"] = this.attachment2;
+        data["attachment3"] = this.attachment3;
+        data["attachment4"] = this.attachment4;
         data["bidderID"] = this.bidderID;
         if (this.bidders && this.bidders.constructor === Array) {
             data["bidders"] = [];
@@ -14428,6 +14403,11 @@ export interface IBidInput {
     endReceivingRecords: moment.Moment | undefined;
     biddingForm: string | undefined;
     totalPrice: number | undefined;
+    percent: number | undefined;
+    attachment1: string | undefined;
+    attachment2: string | undefined;
+    attachment3: string | undefined;
+    attachment4: string | undefined;
     bidderID: number | undefined;
     bidders: BidderInput[] | undefined;
     id: number | undefined;
@@ -14439,7 +14419,9 @@ export class BidderInput implements IBidderInput {
     offerPrice!: number | undefined;
     guaranteeMethod!: string | undefined;
     guaranteeExpired!: moment.Moment | undefined;
+    guaranteeBank!: string | undefined;
     certificateNumber!: number | undefined;
+    attachment!: string | undefined;
     note!: string | undefined;
     bidID!: number | undefined;
     id!: number | undefined;
@@ -14460,7 +14442,9 @@ export class BidderInput implements IBidderInput {
             this.offerPrice = data["offerPrice"];
             this.guaranteeMethod = data["guaranteeMethod"];
             this.guaranteeExpired = data["guaranteeExpired"] ? moment(data["guaranteeExpired"].toString()) : <any>undefined;
+            this.guaranteeBank = data["guaranteeBank"];
             this.certificateNumber = data["certificateNumber"];
+            this.attachment = data["attachment"];
             this.note = data["note"];
             this.bidID = data["bidID"];
             this.id = data["id"];
@@ -14481,7 +14465,9 @@ export class BidderInput implements IBidderInput {
         data["offerPrice"] = this.offerPrice;
         data["guaranteeMethod"] = this.guaranteeMethod;
         data["guaranteeExpired"] = this.guaranteeExpired ? this.guaranteeExpired.toISOString() : <any>undefined;
+        data["guaranteeBank"] = this.guaranteeBank;
         data["certificateNumber"] = this.certificateNumber;
+        data["attachment"] = this.attachment;
         data["note"] = this.note;
         data["bidID"] = this.bidID;
         data["id"] = this.id;
@@ -14495,7 +14481,9 @@ export interface IBidderInput {
     offerPrice: number | undefined;
     guaranteeMethod: string | undefined;
     guaranteeExpired: moment.Moment | undefined;
+    guaranteeBank: string | undefined;
     certificateNumber: number | undefined;
+    attachment: string | undefined;
     note: string | undefined;
     bidID: number | undefined;
     id: number | undefined;
@@ -14510,6 +14498,11 @@ export class BidForViewDto implements IBidForViewDto {
     endReceivingRecords!: moment.Moment | undefined;
     biddingForm!: string | undefined;
     totalPrice!: number | undefined;
+    percent!: number | undefined;
+    attachment1!: string | undefined;
+    attachment2!: string | undefined;
+    attachment3!: string | undefined;
+    attachment4!: string | undefined;
     bidderID!: number | undefined;
 
     constructor(data?: IBidForViewDto) {
@@ -14531,6 +14524,11 @@ export class BidForViewDto implements IBidForViewDto {
             this.endReceivingRecords = data["endReceivingRecords"] ? moment(data["endReceivingRecords"].toString()) : <any>undefined;
             this.biddingForm = data["biddingForm"];
             this.totalPrice = data["totalPrice"];
+            this.percent = data["percent"];
+            this.attachment1 = data["attachment1"];
+            this.attachment2 = data["attachment2"];
+            this.attachment3 = data["attachment3"];
+            this.attachment4 = data["attachment4"];
             this.bidderID = data["bidderID"];
         }
     }
@@ -14552,6 +14550,11 @@ export class BidForViewDto implements IBidForViewDto {
         data["endReceivingRecords"] = this.endReceivingRecords ? this.endReceivingRecords.toISOString() : <any>undefined;
         data["biddingForm"] = this.biddingForm;
         data["totalPrice"] = this.totalPrice;
+        data["percent"] = this.percent;
+        data["attachment1"] = this.attachment1;
+        data["attachment2"] = this.attachment2;
+        data["attachment3"] = this.attachment3;
+        data["attachment4"] = this.attachment4;
         data["bidderID"] = this.bidderID;
         return data; 
     }
@@ -14566,6 +14569,11 @@ export interface IBidForViewDto {
     endReceivingRecords: moment.Moment | undefined;
     biddingForm: string | undefined;
     totalPrice: number | undefined;
+    percent: number | undefined;
+    attachment1: string | undefined;
+    attachment2: string | undefined;
+    attachment3: string | undefined;
+    attachment4: string | undefined;
     bidderID: number | undefined;
 }
 
@@ -14623,7 +14631,9 @@ export class BidderDto implements IBidderDto {
     offerPrice!: number | undefined;
     guaranteeMethod!: string | undefined;
     guaranteeExpired!: moment.Moment | undefined;
+    guaranteeBank!: string | undefined;
     certificateNumber!: number | undefined;
+    attachment!: string | undefined;
     note!: string | undefined;
     bidID!: number | undefined;
     id!: number | undefined;
@@ -14644,7 +14654,9 @@ export class BidderDto implements IBidderDto {
             this.offerPrice = data["offerPrice"];
             this.guaranteeMethod = data["guaranteeMethod"];
             this.guaranteeExpired = data["guaranteeExpired"] ? moment(data["guaranteeExpired"].toString()) : <any>undefined;
+            this.guaranteeBank = data["guaranteeBank"];
             this.certificateNumber = data["certificateNumber"];
+            this.attachment = data["attachment"];
             this.note = data["note"];
             this.bidID = data["bidID"];
             this.id = data["id"];
@@ -14665,7 +14677,9 @@ export class BidderDto implements IBidderDto {
         data["offerPrice"] = this.offerPrice;
         data["guaranteeMethod"] = this.guaranteeMethod;
         data["guaranteeExpired"] = this.guaranteeExpired ? this.guaranteeExpired.toISOString() : <any>undefined;
+        data["guaranteeBank"] = this.guaranteeBank;
         data["certificateNumber"] = this.certificateNumber;
+        data["attachment"] = this.attachment;
         data["note"] = this.note;
         data["bidID"] = this.bidID;
         data["id"] = this.id;
@@ -14679,7 +14693,9 @@ export interface IBidderDto {
     offerPrice: number | undefined;
     guaranteeMethod: string | undefined;
     guaranteeExpired: moment.Moment | undefined;
+    guaranteeBank: string | undefined;
     certificateNumber: number | undefined;
+    attachment: string | undefined;
     note: string | undefined;
     bidID: number | undefined;
     id: number | undefined;
@@ -14691,7 +14707,9 @@ export class BidderForViewDto implements IBidderForViewDto {
     offerPrice!: number | undefined;
     guaranteeMethod!: string | undefined;
     guaranteeExpired!: moment.Moment | undefined;
+    guaranteeBank!: string | undefined;
     certificateNumber!: number | undefined;
+    attachment!: string | undefined;
     note!: string | undefined;
     bidID!: number | undefined;
 
@@ -14711,7 +14729,9 @@ export class BidderForViewDto implements IBidderForViewDto {
             this.offerPrice = data["offerPrice"];
             this.guaranteeMethod = data["guaranteeMethod"];
             this.guaranteeExpired = data["guaranteeExpired"] ? moment(data["guaranteeExpired"].toString()) : <any>undefined;
+            this.guaranteeBank = data["guaranteeBank"];
             this.certificateNumber = data["certificateNumber"];
+            this.attachment = data["attachment"];
             this.note = data["note"];
             this.bidID = data["bidID"];
         }
@@ -14731,7 +14751,9 @@ export class BidderForViewDto implements IBidderForViewDto {
         data["offerPrice"] = this.offerPrice;
         data["guaranteeMethod"] = this.guaranteeMethod;
         data["guaranteeExpired"] = this.guaranteeExpired ? this.guaranteeExpired.toISOString() : <any>undefined;
+        data["guaranteeBank"] = this.guaranteeBank;
         data["certificateNumber"] = this.certificateNumber;
+        data["attachment"] = this.attachment;
         data["note"] = this.note;
         data["bidID"] = this.bidID;
         return data; 
@@ -14744,7 +14766,9 @@ export interface IBidderForViewDto {
     offerPrice: number | undefined;
     guaranteeMethod: string | undefined;
     guaranteeExpired: moment.Moment | undefined;
+    guaranteeBank: string | undefined;
     certificateNumber: number | undefined;
+    attachment: string | undefined;
     note: string | undefined;
     bidID: number | undefined;
 }

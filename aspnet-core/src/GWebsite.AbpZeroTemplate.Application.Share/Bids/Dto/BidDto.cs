@@ -26,6 +26,16 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.Bids.Dto
 
         public double TotalPrice { get; set; }
 
+        public double Percent { get; set; }
+
+        public string Attachment1 { get; set; }
+
+        public string Attachment2 { get; set; }
+
+        public string Attachment3 { get; set; }
+
+        public string Attachment4 { get; set; }
+
         public int BidderID { get; set; }
     }
 }
