@@ -20,6 +20,11 @@ namespace GWebsite.AbpZeroTemplate.Application.Controllers
         {
             return detailAssetRentAppService.GetDetailAssetRent(detailAssetRentFilter);
         }
+        [HttpGet]
+        public PagedResultDto<DetailAssetRentDto> GetDetailAssetRentByFilterId(DetailAssetRentFilterById detailAssetRentFilterById)
+        {
+            return detailAssetRentAppService.GetDetailAssetRentById(detailAssetRentFilterById);
+        }
 
         [HttpGet]
         public DetailAssetRentInput GetDetailAssetRentForEdit(int id)

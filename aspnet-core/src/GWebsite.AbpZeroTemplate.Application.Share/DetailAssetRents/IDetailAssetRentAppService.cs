@@ -14,6 +14,7 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.DetailAssetRents
         DetailAssetRentInput GetDetailAssetRentForEdit(int id);
         void DeleteDetailAssetRent(int id);
         PagedResultDto<DetailAssetRentDto> GetDetailAssetRent(DetailAssetRentFilter input);
+        PagedResultDto<DetailAssetRentDto> GetDetailAssetRentById(DetailAssetRentFilterById input);
         DetailAssetRentForView GetDetailAssetRentForView(int id);
     }
 }

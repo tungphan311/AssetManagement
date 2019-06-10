@@ -5,7 +5,7 @@ import { DemoModelComponent } from "./demo-model/demo-model.component";
 import { CustomerComponent } from "./customer/customer.component";
 import { AssetComponent } from "./asset/asset.component";
 import { AssetRentComponent } from "./assetrent/assetrent.component";
-import { DetailAssetRentComponent } from "./detailassetrent/detailassetrent.component";
+import { DetailAssetRentComponent } from "./assetrent/detailassetrent.component";
 
 @NgModule({
     imports: [

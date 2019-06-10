@@ -15,6 +15,7 @@ import { Paginator } from "primeng/components/paginator/paginator";
 import { Table } from "primeng/components/table/table";
 import { AssetRentServiceProxy } from "@shared/service-proxies/service-proxies";
 import { CreateAssetRentModalComponent } from "./create-assetrent-modal.component";
+import { create } from "domain";
 @Component({
     templateUrl: "./assetrent.component.html",
     animations: [appModuleAnimation()]
@@ -63,7 +64,7 @@ export class AssetRentComponent extends AppComponentBase
      * Hàm get danh sách AssetRent
      * @param event
      */
-    getAsssetsRent(event?: LazyLoadEvent) {
+    getAssetsRent(event?: LazyLoadEvent) {
         if (!this.paginator || !this.dataTable) {
             return;
         }
@@ -75,7 +76,7 @@ export class AssetRentComponent extends AppComponentBase
          * mặc định ban đầu lấy hết dữ liệu nên dữ liệu filter = null
          */
 
-        this.reloadList(null, event);
+        this.reloadList(null, null, event);
     }
 
     reloadList(assetName, rentBy, event?: LazyLoadEvent) {
@@ -107,7 +108,8 @@ export class AssetRentComponent extends AppComponentBase
         //get params từ url để thực hiện filter
         this._activatedRoute.params.subscribe((params: Params) => {
             this.assetName = params["nameAsset"] || "";
-            this.reloadList(this.assetName, null);
+            this.rentBy = params["rentBy"] || "";
+            this.reloadList(this.assetName, this.rentBy, null);
         });
     }
 
@@ -117,7 +119,7 @@ export class AssetRentComponent extends AppComponentBase
 
     applyFilters(): void {
         //truyền params lên url thông qua router
-        this.reloadList(this.assetName, null);
+        this.reloadList(this.assetName, this.rentBy, null);
 
         if (this.paginator.getPage() !== 0) {
             this.paginator.changePage(0);

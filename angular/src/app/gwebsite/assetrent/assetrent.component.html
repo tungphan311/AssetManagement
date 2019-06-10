@@ -82,14 +82,17 @@
                         >
                             <ng-template pTemplate="header">
                                 <tr>
+                                    <th pSortableColumn="rentBy">
+                                        Người thuê
+                                        <p-sortIcon
+                                            field="nameAsset"
+                                        ></p-sortIcon>
+                                    </th>
                                     <th pSortableColumn="nameAsset">
                                         Tên tài sản
                                         <p-sortIcon
                                             field="nameAsset"
                                         ></p-sortIcon>
-                                    </th>
-                                    <th pSortableColumn="rentBy">
-                                        Người thuê
                                     </th>
                                     <th pSortableColumn="numberRent">
                                         Số lượng thuê ?
@@ -113,18 +116,18 @@
                                 <tr>
                                     <td>
                                         <span class="ui-column-title"
-                                            >Tên tài sản</span
-                                        >
-                                        <span title="{{ record.nameAsset }}">{{
-                                            truncateString(record.nameAsset)
-                                        }}</span>
-                                    </td>
-                                    <td>
-                                        <span class="ui-column-title"
                                             >Người Thuê</span
                                         >
                                         <span title="{{ record.rentBy }}">{{
                                             truncateString(record.rentBy)
+                                        }}</span>
+                                    </td>
+                                    <td>
+                                        <span class="ui-column-title"
+                                            >Tên tài sản</span
+                                        >
+                                        <span title="{{ record.nameAsset }}">{{
+                                            truncateString(record.nameAsset)
                                         }}</span>
                                     </td>
                                     <td>
@@ -208,7 +211,7 @@
                                     primengTableHelper.defaultRecordsCountPerPage
                                 }}"
                                 #paginator
-                                (onPageChange)="getAssetsRents($event)"
+                                (onPageChange)="getAssetsRent($event)"
                                 [totalRecords]="
                                     primengTableHelper.totalRecordsCount
                                 "
