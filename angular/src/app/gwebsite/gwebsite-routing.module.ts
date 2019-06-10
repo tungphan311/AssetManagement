@@ -118,6 +118,10 @@ import { PurchaseOrderSearchComponent } from './purchase-order/purchase-order-se
                                 data:{permission:'Pages.Administration.PurchaseOrder.Create'}
                             },
                             {
+                                path:'edit/:id',component:CreateOrEditPurchaseOrderComponent,
+                                data:{permission:'Pages.Administration.PurchaseOrder.Edit'}
+                            },
+                            {
                                 path:'',component:PurchaseOrderSearchComponent,
                                 data:{permission:'Pages.Administration.PurchaseOrder'}
                             }

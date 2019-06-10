@@ -26,6 +26,7 @@
                                 <div class="col-sm-4">
                                     <label>Ngày gọi hàng</label>
                                     <input #dateInput="ngModel" class="form-control"
+                                       
                                         [ngModel]="purchaseOrder.purchaseOrderDate | date:'yyyy-MM-dd'"
                                         (ngModelChange)="purchaseOrder.purchaseOrderDate = $event" type="date"
                                         name="purchaseOrderDate" />
@@ -35,27 +36,28 @@
                             <div class="row">
                                 <div class=" col-sm-6">
                                     <label> Tên đơn hàng </label>
-                                    <input class=" form-control" type="text" name="purchaseOrderName"
-                                        [(ngModel)]="purchaseOrder.Name">
+                                    <input class=" form-control" type="text" name="purchaseOrderName" 
+                                        [(ngModel)]="purchaseOrder.name">
                                 </div>
                             </div>
 
                             <div class="row">
                                 <div class=" col-sm-4">
                                     <label>Số tờ trình </label>
-                                    <input class=" form-control" type="text" name="purchaseOrderName"
-                                        [(ngModel)]="purchaseOrder.Name">
+                                    <input class=" form-control" type="text" name="reportCode"
+                                        [(ngModel)]="purchaseOrder.reportCode">
                                 </div>
                                 <div class="col-sm-4">
                                     <label>Ngày nhận tờ trình</label>
                                     <input #dateInput="ngModel" class="form-control"
+                                 
                                         [ngModel]="purchaseOrder.reportRecievedDate | date:'yyyy-MM-dd'"
                                         (ngModelChange)="purchaseOrder.reportRecievedDate = $event" type="date"
                                         name="reportRecievedDate" />
                                 </div>
                                 <div class="col-sm-4">
                                     <label>Ngày duyệt tờ trình</label>
-                                    <input #dateInput="ngModel" class="form-control"
+                                    <input #dateInput="ngModel" class="form-control"  
                                         [ngModel]="purchaseOrder.reportApprovalDate | date:'yyyy-MM-dd'"
                                         (ngModelChange)="purchaseOrder.reportApprovalDate = $event" type="date"
                                         name="reportApprovalDate" />
@@ -67,7 +69,8 @@
                                     <label class="">Số hợp đồng</label>
                                     <div class="row">
                                         <input class=" form-control col-sm-8 mr-2 ml-2" type="text"
-                                            name="purchaseOrderName" [attr.disabled]="true"
+                                            name="contractCode" [attr.disabled]="true"
+                                           
                                             [(ngModel)]="purchaseOrder.contract.code">
                                         <button class="col-sm-2 btn btn-primary"
                                             style="size: 15px; background: black; color: white" type="button">...
@@ -77,13 +80,14 @@
                                 <div class="col-sm-4">
                                     <label>Tổng giá trị hợp đồng</label>
                                     <input class=" form-control" [attr.disabled]="true" type="number"
+                                    
                                         name="contractTotalProductPrice"
-                                        [ngModel]="purchaseOrder.contract.totalProductPrice">
+                                        [(ngModel)]="purchaseOrder.contract.totalProductPrice">
                                 </div>
                                 <div class="col-sm-4">
                                     <label>Tổng giá trị đã thưc hiện</label>
-                                    <input class=" form-control" type="number" name="contractTotalPrice"
-                                        [attr.disabled]="true" [ngModel]="purchaseOrder.contract.totalPrice">
+                                    <input class=" form-control" type="number" name="contractTotalPrice"  
+                                        [attr.disabled]="true" [(ngModel)]="purchaseOrder.contract.totalPrice">
                                 </div>
                             </div>
 
@@ -108,7 +112,7 @@
                                 <div class="col-sm-4">
                                     <label class="">Mã nhà cung cấp</label>
                                     <div class="row">
-                                        <input class=" form-control col-sm-8 mr-2 ml-2" type="text" name="ProviderCode"
+                                        <input class=" form-control col-sm-8 mr-2 ml-2" type="text" name="ProviderCode" 
                                             [attr.disabled]="true" [(ngModel)]="purchaseOrder.provider.code">
                                         <button class="col-sm-2 btn btn-primary"
                                             style="size: 15px; background: black; color: white" type="button">...
@@ -117,7 +121,7 @@
                                 </div>
                                 <div class="col-sm-4">
                                     <label>Tên nhà cung cấp</label>
-                                    <input class="form-control" type="text" name="ProviderName" [attr.disabled]="true"
+                                    <input class="form-control" type="text" name="ProviderName" [attr.disabled]="true" 
                                         [(ngModel)]="purchaseOrder.provider.name">
                                 </div>
                             </div>
@@ -125,7 +129,7 @@
                             <div class="row">
                                 <div class="col-sm-8">
                                     <label>Địa chỉ</label>
-                                    <input class="form-control" type="text" name="ProviderAddress"
+                                    <input class="form-control" type="text" name="ProviderAddress" 
                                         [attr.disabled]="true" [(ngModel)]="purchaseOrder.provider.address">
                                 </div>
                             </div>
@@ -138,6 +142,7 @@
                     <!-- Begin Purchase Product Detail -->
                     <purchase-product-detail-component
                     [purchaseOrderRecieved]="purchaseOrder"
+                    (updateTotalPrice)="updateProductTotalPrice($event)"
                     ></purchase-product-detail-component>
                     <br>
                     <!-- End Purchase Product Detail-->
@@ -151,7 +156,7 @@
                      <!-- End Purchase Payment History-->
 
                 </div>
-                <button type="submit" class="btn btn-primary" (click)="save()">Save</button>
+                <button type="submit" class="btn btn-primary" >Save</button>
             </form>
         </div>
     </div>

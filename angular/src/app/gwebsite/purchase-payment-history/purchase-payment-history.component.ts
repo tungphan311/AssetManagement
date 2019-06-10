@@ -58,22 +58,35 @@ export class PurchasePaymentHistoryComponent extends AppComponentBase implements
        if (index !== -1) {
         this.purchaseOrderRecieved.purchasePaymentHistories.splice(index, 1);
       }       
-      let totalMoneyPaid = this.purchaseOrderRecieved.purchasePaymentHistories.reduce((total,item)=>total+item.price,0)            
-        if(!totalMoneyPaid) totalMoneyPaid=0
-        this.purchaseOrderRecieved.totalMoneyPaid=totalMoneyPaid
-      this.primengTableHelper.totalRecordsCount = this.purchaseOrderRecieved.totalMoneyPaid;
+      this.calculateTotalPaidMoney()
 
       this.onDeleteElement.emit(this.purchaseOrderRecieved.purchasePaymentHistories)
       
     }
-    updatePrice(payment){
+
+calculateTotalPaidMoney(){
+    let totalMoneyPaid = this.purchaseOrderRecieved.purchasePaymentHistories.reduce((total,item)=>total+item.price,0)            
+    if(!totalMoneyPaid) totalMoneyPaid=0
+    this.purchaseOrderRecieved.totalMoneyPaid=totalMoneyPaid
+  this.primengTableHelper.totalRecordsCount = this.purchaseOrderRecieved.totalMoneyPaid;
+
+}
+
+    updatePrice(payment,e){
+        let percent = e.target.value
+        if(percent<=0 ) return
+
+
         if(payment){
-            payment.price=payment.percent*this.purchaseOrderRecieved.totalPrice
+            payment.percent = percent
+            payment.price=payment.percent*this.purchaseOrderRecieved.totalPrice/100
         }
-        let totalMoneyPaid = this.purchaseOrderRecieved.purchasePaymentHistories.reduce((total,item)=>total+item.price,0)            
-        if(!totalMoneyPaid) totalMoneyPaid=0
-        this.purchaseOrderRecieved.totalMoneyPaid=totalMoneyPaid
-        this.primengTableHelper.totalRecordsCount = this.purchaseOrderRecieved.totalMoneyPaid;
+        this.calculateTotalPaidMoney()
+    }
+
+    updatePercent(){
+
+        this.calculateTotalPaidMoney()
     }
     /**
     * Tạo pipe thay vì tạo từng hàm truncate như thế này

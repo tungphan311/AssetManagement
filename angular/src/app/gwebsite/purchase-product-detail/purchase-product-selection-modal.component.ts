@@ -1,7 +1,7 @@
 import { Component, ElementRef, EventEmitter, Injector, Output, ViewChild,Input } from '@angular/core';
 import { AppComponentBase } from '@shared/common/app-component-base';
 import { ModalDirective } from 'ngx-bootstrap';
-import { ProductContractServiceProxy, ProductContractInput, ProductServiceProxy, ProductInput } from '@shared/service-proxies/service-proxies';
+import { ProductContractServiceProxy, ProductContractInput, ProductServiceProxy, ProductInput, PurchaseProductDetailInput, PurchaseOrderInput } from '@shared/service-proxies/service-proxies';
 import { ActivatedRoute, Params } from '@angular/router';
 import { LazyLoadEvent, Paginator } from 'primeng/primeng';
 import { Table } from 'primeng/table';
@@ -22,18 +22,18 @@ export class PurchaseProductSelectionModalComponent extends AppComponentBase {
     /**
      * @Output dùng để public event cho component khác xử lý
      */
-    @Output() modalSave: EventEmitter<any> = new EventEmitter<any>();
+    
+    
 
     saving = false;
 
-    productContract: ProductContractInput = new ProductContractInput();
-
+  
     productName: string;
-    productContracts: ProductContractInput[];
+    purchaseProductDetails: PurchaseProductDetailInput[];
 
     @Output() productsValueChange = new EventEmitter();
     @Input() contractId:number|null;
-
+    @Input() purchaseOrderRecieved: PurchaseOrderInput
 
     allowLoad:boolean
 
@@ -127,17 +127,17 @@ export class PurchaseProductSelectionModalComponent extends AppComponentBase {
     onItemChecked(record:ProductInput|null,e){
        // this.products=[...this.products,item ]
        if(e.target.checked){
-        let newProductContract = new ProductContractInput();
+        let newProductContract = new PurchaseProductDetailInput();
         newProductContract.productId=record.id
         newProductContract.product=record;
         newProductContract.amount=1;
         newProductContract.price = record.currentPrice;
 
-        const tempProductContracts = this.productContracts!=null?this.productContracts:[];
-        this.productContracts=[...tempProductContracts,newProductContract ]
+        const tempProductContracts = this.purchaseProductDetails!=null?this.purchaseProductDetails:[];
+        this.purchaseProductDetails=[...tempProductContracts,newProductContract ]
       
        }else{
-        this.productContracts=this.productContracts? this.productContracts.filter(e=>e.product.id!=record.id) :[]
+        this.purchaseProductDetails=this.purchaseProductDetails? this.purchaseProductDetails.filter(e=>e.product.id!=record.id) :[]
       
        }
     
@@ -153,15 +153,23 @@ export class PurchaseProductSelectionModalComponent extends AppComponentBase {
     }
 
     save(): void {
-        let input = this.productContract;
+        let input = this.purchaseProductDetails;
         this.saving = true;
+
+       this.purchaseOrderRecieved.purchaseProductDetails=[...this.purchaseProductDetails]
+        
+       let totalProductPrice = this.purchaseOrderRecieved.purchaseProductDetails.reduce((total,item)=>total+item.price,0)            
+       if(!totalProductPrice) totalProductPrice=0
+       this.purchaseOrderRecieved.totalPrice=totalProductPrice
+
+
         this.modal.hide();
 
     }
 
     close(): void {
         this.modal.hide();
-        this.modalSave.emit(null);
+       
     }
 
     truncateString(text): string {

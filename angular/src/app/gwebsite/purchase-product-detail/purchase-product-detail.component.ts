@@ -8,7 +8,12 @@ import { PurchaseProductSelectionModalComponent } from './purchase-product-selec
 
 @Component({
     selector: 'purchase-product-detail-component',
-    templateUrl: './purchase-product-detail.component.html'
+    templateUrl: './purchase-product-detail.component.html',
+    styles: [`
+    .input-inside-table {     
+      width: 100%;
+    }
+  `]
 
 })
 export class PurchaseProductDetailComponent extends AppComponentBase implements AfterViewInit, OnInit {
@@ -24,7 +29,7 @@ export class PurchaseProductDetailComponent extends AppComponentBase implements 
     /**
      * @Output dùng để public event cho component khác xử lý
      */
-    @Output() modalSave: EventEmitter<any> = new EventEmitter<any>();
+    @Output() updateTotalPrice: EventEmitter<any> = new EventEmitter<any>();
 
     saving = false;
 
@@ -45,6 +50,35 @@ export class PurchaseProductDetailComponent extends AppComponentBase implements 
     ngAfterViewInit(): void {
 
     }
+
+    deleteDetail(object) {
+        let index = this.purchaseOrderRecieved.purchaseProductDetails.indexOf(object)
+        if (index !== -1) {
+            this.purchaseOrderRecieved.purchaseProductDetails.splice(index, 1);
+        }
+
+        this.calculateSumTotalPrice()
+
+
+    }
+
+    calculateSumTotalPrice() {
+        let totalProductPrice = this.purchaseOrderRecieved.purchaseProductDetails.reduce((total, item) => total + item.price, 0)
+        if (!totalProductPrice) totalProductPrice = 0
+        this.purchaseOrderRecieved.totalPrice = totalProductPrice
+        //this.primengTableHelper.totalRecordsCount = this.purchaseOrderRecieved.totalPrice;
+        this.updateTotalPrice.emit(totalProductPrice)
+    }
+
+    updateAmount(item, event) {
+        let amount = (event.target.value)
+        if (amount <= 0 || amount == undefined) {amount = 1;}
+        item.amount = amount
+
+        item.price = amount * item.price
+      
+        this.calculateSumTotalPrice()
+    }
     /**
     * Tạo pipe thay vì tạo từng hàm truncate như thế này
     * @param text
@@ -54,7 +88,7 @@ export class PurchaseProductDetailComponent extends AppComponentBase implements 
 
     }
 
-    show(){
+    show() {
         this.purchaseProductSelectionModal.show();
     }
 

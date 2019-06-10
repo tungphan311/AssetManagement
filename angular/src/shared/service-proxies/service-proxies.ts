@@ -13150,7 +13150,7 @@ export class AuditLogListDto implements IAuditLogListDto {
         data["serviceName"] = this.serviceName;
         data["methodName"] = this.methodName;
         data["parameters"] = this.parameters;
-        data["executionTime"] = this.executionTime ? this.executionTime.toISOString() : <any>undefined;
+        data["executionTime"] = this.executionTime ? this.executionTime : <any>undefined;
         data["executionDuration"] = this.executionDuration;
         data["clientIpAddress"] = this.clientIpAddress;
         data["clientName"] = this.clientName;
@@ -13355,7 +13355,7 @@ export class EntityChangeListDto implements IEntityChangeListDto {
         data = typeof data === 'object' ? data : {};
         data["userId"] = this.userId;
         data["userName"] = this.userName;
-        data["changeTime"] = this.changeTime ? this.changeTime.toISOString() : <any>undefined;
+        data["changeTime"] = this.changeTime ? this.changeTime : <any>undefined;
         data["entityTypeFullName"] = this.entityTypeFullName;
         data["changeType"] = this.changeType;
         data["changeTypeName"] = this.changeTypeName;
@@ -13530,8 +13530,8 @@ export class BidDto implements IBidDto {
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
         data["code"] = this.code;
-        data["fromDate"] = this.fromDate ? this.fromDate.toISOString() : <any>undefined;
-        data["toDate"] = this.toDate ? this.toDate.toISOString() : <any>undefined;
+        data["fromDate"] = this.fromDate ? this.fromDate : <any>undefined;
+        data["toDate"] = this.toDate ? this.toDate : <any>undefined;
         data["status"] = this.status;
         data["biddingForm"] = this.biddingForm;
         data["cautionMoney"] = this.cautionMoney;
@@ -13593,7 +13593,7 @@ export class ProjectDto implements IProjectDto {
         data = typeof data === 'object' ? data : {};
         data["name"] = this.name;
         data["activityType"] = this.activityType;
-        data["projectCreatedDate"] = this.projectCreatedDate ? this.projectCreatedDate.toISOString() : <any>undefined;
+        data["projectCreatedDate"] = this.projectCreatedDate ? this.projectCreatedDate : <any>undefined;
         data["isActive"] = this.isActive;
         data["id"] = this.id;
         return data; 
@@ -13652,8 +13652,8 @@ export class BidInput implements IBidInput {
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
         data["code"] = this.code;
-        data["fromDate"] = this.fromDate ? this.fromDate.toISOString() : <any>undefined;
-        data["toDate"] = this.toDate ? this.toDate.toISOString() : <any>undefined;
+        data["fromDate"] = this.fromDate ? this.fromDate : <any>undefined;
+        data["toDate"] = this.toDate ? this.toDate : <any>undefined;
         data["status"] = this.status;
         data["biddingForm"] = this.biddingForm;
         data["cautionMoney"] = this.cautionMoney;
@@ -13720,8 +13720,8 @@ export class BidForViewDto implements IBidForViewDto {
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
         data["code"] = this.code;
-        data["fromDate"] = this.fromDate ? this.fromDate.toISOString() : <any>undefined;
-        data["toDate"] = this.toDate ? this.toDate.toISOString() : <any>undefined;
+        data["fromDate"] = this.fromDate ? this.fromDate : <any>undefined;
+        data["toDate"] = this.toDate ? this.toDate : <any>undefined;
         data["status"] = this.status;
         data["biddingForm"] = this.biddingForm;
         data["cautionMoney"] = this.cautionMoney;
@@ -13846,11 +13846,11 @@ export class BidDetailDto implements IBidDetailDto {
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
         data["isAccepted"] = this.isAccepted;
-        data["biddingCreatedDate"] = this.biddingCreatedDate ? this.biddingCreatedDate.toISOString() : <any>undefined;
+        data["biddingCreatedDate"] = this.biddingCreatedDate ? this.biddingCreatedDate : <any>undefined;
         data["attachmentFile"] = this.attachmentFile;
         data["bidPrice"] = this.bidPrice;
         data["guaranteeForm"] = this.guaranteeForm;
-        data["guaranteeEndDate"] = this.guaranteeEndDate ? this.guaranteeEndDate.toISOString() : <any>undefined;
+        data["guaranteeEndDate"] = this.guaranteeEndDate ? this.guaranteeEndDate : <any>undefined;
         data["certificateNumber"] = this.certificateNumber;
         data["bankName"] = this.bankName;
         data["note"] = this.note;
@@ -13994,11 +13994,11 @@ export class BidDetailInput implements IBidDetailInput {
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
         data["isAccepted"] = this.isAccepted;
-        data["biddingCreatedDate"] = this.biddingCreatedDate ? this.biddingCreatedDate.toISOString() : <any>undefined;
+        data["biddingCreatedDate"] = this.biddingCreatedDate ? this.biddingCreatedDate : <any>undefined;
         data["attachmentFile"] = this.attachmentFile;
         data["bidPrice"] = this.bidPrice;
         data["guaranteeForm"] = this.guaranteeForm;
-        data["guaranteeEndDate"] = this.guaranteeEndDate ? this.guaranteeEndDate.toISOString() : <any>undefined;
+        data["guaranteeEndDate"] = this.guaranteeEndDate ? this.guaranteeEndDate : <any>undefined;
         data["certificateNumber"] = this.certificateNumber;
         data["bankName"] = this.bankName;
         data["note"] = this.note;
@@ -14076,11 +14076,11 @@ export class BidDetailForViewDto implements IBidDetailForViewDto {
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
         data["isAccepted"] = this.isAccepted;
-        data["biddingCreatedDate"] = this.biddingCreatedDate ? this.biddingCreatedDate.toISOString() : <any>undefined;
+        data["biddingCreatedDate"] = this.biddingCreatedDate ? this.biddingCreatedDate : <any>undefined;
         data["attachmentFile"] = this.attachmentFile;
         data["bidPrice"] = this.bidPrice;
         data["guaranteeForm"] = this.guaranteeForm;
-        data["guaranteeEndDate"] = this.guaranteeEndDate ? this.guaranteeEndDate.toISOString() : <any>undefined;
+        data["guaranteeEndDate"] = this.guaranteeEndDate ? this.guaranteeEndDate : <any>undefined;
         data["certificateNumber"] = this.certificateNumber;
         data["bankName"] = this.bankName;
         data["note"] = this.note;
@@ -14257,7 +14257,7 @@ export class GetUserChatFriendsWithSettingsOutput implements IGetUserChatFriends
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
-        data["serverTime"] = this.serverTime ? this.serverTime.toISOString() : <any>undefined;
+        data["serverTime"] = this.serverTime ? this.serverTime : <any>undefined;
         if (this.friends && this.friends.constructor === Array) {
             data["friends"] = [];
             for (let item of this.friends)
@@ -14435,7 +14435,7 @@ export class ChatMessageDto implements IChatMessageDto {
         data["readState"] = this.readState;
         data["receiverReadState"] = this.receiverReadState;
         data["message"] = this.message;
-        data["creationTime"] = this.creationTime ? this.creationTime.toISOString() : <any>undefined;
+        data["creationTime"] = this.creationTime ? this.creationTime : <any>undefined;
         data["sharedMessageId"] = this.sharedMessageId;
         data["id"] = this.id;
         return data; 
@@ -14853,19 +14853,19 @@ export class ContractDto implements IContractDto {
         data = typeof data === 'object' ? data : {};
         data["code"] = this.code;
         data["name"] = this.name;
-        data["contractCreatedDate"] = this.contractCreatedDate ? this.contractCreatedDate.toISOString() : <any>undefined;
+        data["contractCreatedDate"] = this.contractCreatedDate ? this.contractCreatedDate : <any>undefined;
         data["status"] = this.status;
         data["note"] = this.note;
         data["contractGuaranteeForm"] = this.contractGuaranteeForm;
         data["contractCertificateNumber"] = this.contractCertificateNumber;
-        data["contractCertificateEndDate"] = this.contractCertificateEndDate ? this.contractCertificateEndDate.toISOString() : <any>undefined;
+        data["contractCertificateEndDate"] = this.contractCertificateEndDate ? this.contractCertificateEndDate : <any>undefined;
         data["contractCertificatePrice"] = this.contractCertificatePrice;
         data["contractCertificatePricePercent"] = this.contractCertificatePricePercent;
         data["contractGuaranteeBankName"] = this.contractGuaranteeBankName;
         data["contractGuaranteeAttachmentFile"] = this.contractGuaranteeAttachmentFile;
         data["warrantyGuaranteeForm"] = this.warrantyGuaranteeForm;
         data["warrantyCertificateNumber"] = this.warrantyCertificateNumber;
-        data["warrantyCertificateEndDate"] = this.warrantyCertificateEndDate ? this.warrantyCertificateEndDate.toISOString() : <any>undefined;
+        data["warrantyCertificateEndDate"] = this.warrantyCertificateEndDate ? this.warrantyCertificateEndDate : <any>undefined;
         data["warrantyCertificatePrice"] = this.warrantyCertificatePrice;
         data["warrantyCertificatePricePercent"] = this.warrantyCertificatePricePercent;
         data["warrantyGuaranteeBankName"] = this.warrantyGuaranteeBankName;
@@ -15147,19 +15147,19 @@ export class ContractInput implements IContractInput {
         data = typeof data === 'object' ? data : {};
         data["code"] = this.code;
         data["name"] = this.name;
-        data["contractCreatedDate"] = this.contractCreatedDate ? this.contractCreatedDate.toISOString() : <any>undefined;
+        data["contractCreatedDate"] = this.contractCreatedDate ? this.contractCreatedDate : <any>undefined;
         data["status"] = this.status;
         data["note"] = this.note;
         data["contractGuaranteeForm"] = this.contractGuaranteeForm;
         data["contractCertificateNumber"] = this.contractCertificateNumber;
-        data["contractCertificateEndDate"] = this.contractCertificateEndDate ? this.contractCertificateEndDate.toISOString() : <any>undefined;
+        data["contractCertificateEndDate"] = this.contractCertificateEndDate ? this.contractCertificateEndDate : <any>undefined;
         data["contractCertificatePrice"] = this.contractCertificatePrice;
         data["contractCertificatePricePercent"] = this.contractCertificatePricePercent;
         data["contractGuaranteeBankName"] = this.contractGuaranteeBankName;
         data["contractGuaranteeAttachmentFile"] = this.contractGuaranteeAttachmentFile;
         data["warrantyGuaranteeForm"] = this.warrantyGuaranteeForm;
         data["warrantyCertificateNumber"] = this.warrantyCertificateNumber;
-        data["warrantyCertificateEndDate"] = this.warrantyCertificateEndDate ? this.warrantyCertificateEndDate.toISOString() : <any>undefined;
+        data["warrantyCertificateEndDate"] = this.warrantyCertificateEndDate ? this.warrantyCertificateEndDate : <any>undefined;
         data["warrantyCertificatePrice"] = this.warrantyCertificatePrice;
         data["warrantyCertificatePricePercent"] = this.warrantyCertificatePricePercent;
         data["warrantyGuaranteeBankName"] = this.warrantyGuaranteeBankName;
@@ -15314,7 +15314,7 @@ export class ContractPaymentDetailInput implements IContractPaymentDetailInput {
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
         data["installmentNumber"] = this.installmentNumber;
-        data["expectedDate"] = this.expectedDate ? this.expectedDate.toISOString() : <any>undefined;
+        data["expectedDate"] = this.expectedDate ? this.expectedDate : <any>undefined;
         data["percent"] = this.percent;
         data["price"] = this.price;
         data["description"] = this.description;
@@ -15485,19 +15485,19 @@ export class ContractForViewDto implements IContractForViewDto {
         data = typeof data === 'object' ? data : {};
         data["code"] = this.code;
         data["name"] = this.name;
-        data["contractCreatedDate"] = this.contractCreatedDate ? this.contractCreatedDate.toISOString() : <any>undefined;
+        data["contractCreatedDate"] = this.contractCreatedDate ? this.contractCreatedDate : <any>undefined;
         data["status"] = this.status;
         data["note"] = this.note;
         data["contractGuaranteeForm"] = this.contractGuaranteeForm;
         data["contractCertificateNumber"] = this.contractCertificateNumber;
-        data["contractCertificateEndDate"] = this.contractCertificateEndDate ? this.contractCertificateEndDate.toISOString() : <any>undefined;
+        data["contractCertificateEndDate"] = this.contractCertificateEndDate ? this.contractCertificateEndDate : <any>undefined;
         data["contractCertificatePrice"] = this.contractCertificatePrice;
         data["contractCertificatePricePercent"] = this.contractCertificatePricePercent;
         data["contractGuaranteeBankName"] = this.contractGuaranteeBankName;
         data["contractGuaranteeAttachmentFile"] = this.contractGuaranteeAttachmentFile;
         data["warrantyGuaranteeForm"] = this.warrantyGuaranteeForm;
         data["warrantyCertificateNumber"] = this.warrantyCertificateNumber;
-        data["warrantyCertificateEndDate"] = this.warrantyCertificateEndDate ? this.warrantyCertificateEndDate.toISOString() : <any>undefined;
+        data["warrantyCertificateEndDate"] = this.warrantyCertificateEndDate ? this.warrantyCertificateEndDate : <any>undefined;
         data["warrantyCertificatePrice"] = this.warrantyCertificatePrice;
         data["warrantyCertificatePricePercent"] = this.warrantyCertificatePricePercent;
         data["warrantyGuaranteeBankName"] = this.warrantyGuaranteeBankName;
@@ -15700,7 +15700,7 @@ export class ContractPaymentDetailDto implements IContractPaymentDetailDto {
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
         data["installmentNumber"] = this.installmentNumber;
-        data["expectedDate"] = this.expectedDate ? this.expectedDate.toISOString() : <any>undefined;
+        data["expectedDate"] = this.expectedDate ? this.expectedDate : <any>undefined;
         data["percent"] = this.percent;
         data["price"] = this.price;
         data["description"] = this.description;
@@ -15766,7 +15766,7 @@ export class ContractPaymentDetailForViewDto implements IContractPaymentDetailFo
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
         data["installmentNumber"] = this.installmentNumber;
-        data["expectedDate"] = this.expectedDate ? this.expectedDate.toISOString() : <any>undefined;
+        data["expectedDate"] = this.expectedDate ? this.expectedDate : <any>undefined;
         data["percent"] = this.percent;
         data["price"] = this.price;
         data["description"] = this.description;
@@ -16355,7 +16355,7 @@ export class EditionListDto implements IEditionListDto {
         data = typeof data === 'object' ? data : {};
         data["name"] = this.name;
         data["displayName"] = this.displayName;
-        data["creationTime"] = this.creationTime ? this.creationTime.toISOString() : <any>undefined;
+        data["creationTime"] = this.creationTime ? this.creationTime : <any>undefined;
         data["id"] = this.id;
         return data; 
     }
@@ -17091,9 +17091,9 @@ export class HostDashboardData implements IHostDashboardData {
         data["maxRecentTenantsShownCount"] = this.maxRecentTenantsShownCount;
         data["subscriptionEndAlertDayCount"] = this.subscriptionEndAlertDayCount;
         data["recentTenantsDayCount"] = this.recentTenantsDayCount;
-        data["subscriptionEndDateStart"] = this.subscriptionEndDateStart ? this.subscriptionEndDateStart.toISOString() : <any>undefined;
-        data["subscriptionEndDateEnd"] = this.subscriptionEndDateEnd ? this.subscriptionEndDateEnd.toISOString() : <any>undefined;
-        data["tenantCreationStartDate"] = this.tenantCreationStartDate ? this.tenantCreationStartDate.toISOString() : <any>undefined;
+        data["subscriptionEndDateStart"] = this.subscriptionEndDateStart ? this.subscriptionEndDateStart : <any>undefined;
+        data["subscriptionEndDateEnd"] = this.subscriptionEndDateEnd ? this.subscriptionEndDateEnd : <any>undefined;
+        data["tenantCreationStartDate"] = this.tenantCreationStartDate ? this.tenantCreationStartDate : <any>undefined;
         return data; 
     }
 }
@@ -17148,7 +17148,7 @@ export class IncomeStastistic implements IIncomeStastistic {
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
         data["label"] = this.label;
-        data["date"] = this.date ? this.date.toISOString() : <any>undefined;
+        data["date"] = this.date ? this.date : <any>undefined;
         data["amount"] = this.amount;
         return data; 
     }
@@ -17273,7 +17273,7 @@ export class RecentTenant implements IRecentTenant {
         data = typeof data === 'object' ? data : {};
         data["id"] = this.id;
         data["name"] = this.name;
-        data["creationTime"] = this.creationTime ? this.creationTime.toISOString() : <any>undefined;
+        data["creationTime"] = this.creationTime ? this.creationTime : <any>undefined;
         return data; 
     }
 }
@@ -18153,7 +18153,7 @@ export class InvoiceDto implements IInvoiceDto {
         data["amount"] = this.amount;
         data["editionDisplayName"] = this.editionDisplayName;
         data["invoiceNo"] = this.invoiceNo;
-        data["invoiceDate"] = this.invoiceDate ? this.invoiceDate.toISOString() : <any>undefined;
+        data["invoiceDate"] = this.invoiceDate ? this.invoiceDate : <any>undefined;
         data["tenantLegalName"] = this.tenantLegalName;
         if (this.tenantAddress && this.tenantAddress.constructor === Array) {
             data["tenantAddress"] = [];
@@ -18325,10 +18325,10 @@ export class ApplicationLanguageListDto implements IApplicationLanguageListDto {
         data["isDisabled"] = this.isDisabled;
         data["isDeleted"] = this.isDeleted;
         data["deleterUserId"] = this.deleterUserId;
-        data["deletionTime"] = this.deletionTime ? this.deletionTime.toISOString() : <any>undefined;
-        data["lastModificationTime"] = this.lastModificationTime ? this.lastModificationTime.toISOString() : <any>undefined;
+        data["deletionTime"] = this.deletionTime ? this.deletionTime : <any>undefined;
+        data["lastModificationTime"] = this.lastModificationTime ? this.lastModificationTime : <any>undefined;
         data["lastModifierUserId"] = this.lastModifierUserId;
-        data["creationTime"] = this.creationTime ? this.creationTime.toISOString() : <any>undefined;
+        data["creationTime"] = this.creationTime ? this.creationTime : <any>undefined;
         data["creatorUserId"] = this.creatorUserId;
         data["id"] = this.id;
         return data; 
@@ -18952,9 +18952,9 @@ export class MenuClientListDto implements IMenuClientListDto {
         data["image"] = this.image;
         data["homeFlag"] = this.homeFlag;
         data["status"] = this.status;
-        data["createdDate"] = this.createdDate ? this.createdDate.toISOString() : <any>undefined;
+        data["createdDate"] = this.createdDate ? this.createdDate : <any>undefined;
         data["createdBy"] = this.createdBy;
-        data["updatedDate"] = this.updatedDate ? this.updatedDate.toISOString() : <any>undefined;
+        data["updatedDate"] = this.updatedDate ? this.updatedDate : <any>undefined;
         data["updatedBy"] = this.updatedBy;
         data["id"] = this.id;
         return data; 
@@ -19352,7 +19352,7 @@ export class TenantNotification implements ITenantNotification {
             }
         }
         data["severity"] = this.severity;
-        data["creationTime"] = this.creationTime ? this.creationTime.toISOString() : <any>undefined;
+        data["creationTime"] = this.creationTime ? this.creationTime : <any>undefined;
         data["id"] = this.id;
         return data; 
     }
@@ -19733,9 +19733,9 @@ export class OrganizationUnitDto implements IOrganizationUnitDto {
         data["code"] = this.code;
         data["displayName"] = this.displayName;
         data["memberCount"] = this.memberCount;
-        data["lastModificationTime"] = this.lastModificationTime ? this.lastModificationTime.toISOString() : <any>undefined;
+        data["lastModificationTime"] = this.lastModificationTime ? this.lastModificationTime : <any>undefined;
         data["lastModifierUserId"] = this.lastModifierUserId;
-        data["creationTime"] = this.creationTime ? this.creationTime.toISOString() : <any>undefined;
+        data["creationTime"] = this.creationTime ? this.creationTime : <any>undefined;
         data["creatorUserId"] = this.creatorUserId;
         data["id"] = this.id;
         return data; 
@@ -19846,7 +19846,7 @@ export class OrganizationUnitUserListDto implements IOrganizationUnitUserListDto
         data["userName"] = this.userName;
         data["emailAddress"] = this.emailAddress;
         data["profilePictureId"] = this.profilePictureId;
-        data["addedTime"] = this.addedTime ? this.addedTime.toISOString() : <any>undefined;
+        data["addedTime"] = this.addedTime ? this.addedTime : <any>undefined;
         data["id"] = this.id;
         return data; 
     }
@@ -20418,9 +20418,9 @@ export class SubscriptionPaymentListDto implements ISubscriptionPaymentListDto {
         data["editionDisplayName"] = this.editionDisplayName;
         data["tenantId"] = this.tenantId;
         data["invoiceNo"] = this.invoiceNo;
-        data["lastModificationTime"] = this.lastModificationTime ? this.lastModificationTime.toISOString() : <any>undefined;
+        data["lastModificationTime"] = this.lastModificationTime ? this.lastModificationTime : <any>undefined;
         data["lastModifierUserId"] = this.lastModifierUserId;
-        data["creationTime"] = this.creationTime ? this.creationTime.toISOString() : <any>undefined;
+        data["creationTime"] = this.creationTime ? this.creationTime : <any>undefined;
         data["creatorUserId"] = this.creatorUserId;
         data["id"] = this.id;
         return data; 
@@ -21163,7 +21163,7 @@ export class ProjectInput implements IProjectInput {
         data = typeof data === 'object' ? data : {};
         data["name"] = this.name;
         data["activityType"] = this.activityType;
-        data["projectCreatedDate"] = this.projectCreatedDate ? this.projectCreatedDate.toISOString() : <any>undefined;
+        data["projectCreatedDate"] = this.projectCreatedDate ? this.projectCreatedDate : <any>undefined;
         data["isActive"] = this.isActive;
         data["id"] = this.id;
         return data; 
@@ -21215,7 +21215,7 @@ export class ProjectForViewDto implements IProjectForViewDto {
         data = typeof data === 'object' ? data : {};
         data["name"] = this.name;
         data["activityType"] = this.activityType;
-        data["projectCreatedDate"] = this.projectCreatedDate ? this.projectCreatedDate.toISOString() : <any>undefined;
+        data["projectCreatedDate"] = this.projectCreatedDate ? this.projectCreatedDate : <any>undefined;
         data["isActive"] = this.isActive;
         data["id"] = this.id;
         return data; 
@@ -21515,16 +21515,16 @@ export class PurchaseOrderDto implements IPurchaseOrderDto {
         data = typeof data === 'object' ? data : {};
         data["code"] = this.code;
         data["name"] = this.name;
-        data["purchaseOrderDate"] = this.purchaseOrderDate ? this.purchaseOrderDate.toISOString() : <any>undefined;
-        data["orderDate"] = this.orderDate ? this.orderDate.toISOString() : <any>undefined;
+        data["purchaseOrderDate"] = this.purchaseOrderDate ? this.purchaseOrderDate : <any>undefined;
+        data["orderDate"] = this.orderDate ? this.orderDate : <any>undefined;
         data["area"] = this.area;
         data["unitId"] = this.unitId;
         data["unitCode"] = this.unitCode;
         data["transactionOfficeName"] = this.transactionOfficeName;
         data["isIndependentUnit"] = this.isIndependentUnit;
         data["reportCode"] = this.reportCode;
-        data["reportRecievedDate"] = this.reportRecievedDate ? this.reportRecievedDate.toISOString() : <any>undefined;
-        data["reportApprovalDate"] = this.reportApprovalDate ? this.reportApprovalDate.toISOString() : <any>undefined;
+        data["reportRecievedDate"] = this.reportRecievedDate ? this.reportRecievedDate : <any>undefined;
+        data["reportApprovalDate"] = this.reportApprovalDate ? this.reportApprovalDate : <any>undefined;
         data["attachmentFile"] = this.attachmentFile;
         data["totalPrice"] = this.totalPrice;
         data["totalMoneyPaid"] = this.totalMoneyPaid;
@@ -21643,16 +21643,16 @@ export class PurchaseOrderInput implements IPurchaseOrderInput {
         data = typeof data === 'object' ? data : {};
         data["code"] = this.code;
         data["name"] = this.name;
-        data["purchaseOrderDate"] = this.purchaseOrderDate ? this.purchaseOrderDate.toISOString() : <any>undefined;
-        data["orderDate"] = this.orderDate ? this.orderDate.toISOString() : <any>undefined;
+        data["purchaseOrderDate"] = this.purchaseOrderDate ? this.purchaseOrderDate : <any>undefined;
+        data["orderDate"] = this.orderDate ? this.orderDate : <any>undefined;
         data["area"] = this.area;
         data["unitId"] = this.unitId;
         data["unitCode"] = this.unitCode;
         data["transactionOfficeName"] = this.transactionOfficeName;
         data["isIndependentUnit"] = this.isIndependentUnit;
         data["reportCode"] = this.reportCode;
-        data["reportRecievedDate"] = this.reportRecievedDate ? this.reportRecievedDate.toISOString() : <any>undefined;
-        data["reportApprovalDate"] = this.reportApprovalDate ? this.reportApprovalDate.toISOString() : <any>undefined;
+        data["reportRecievedDate"] = this.reportRecievedDate ? this.reportRecievedDate : <any>undefined;
+        data["reportApprovalDate"] = this.reportApprovalDate ? this.reportApprovalDate : <any>undefined;
         data["attachmentFile"] = this.attachmentFile;
         data["totalPrice"] = this.totalPrice;
         data["totalMoneyPaid"] = this.totalMoneyPaid;
@@ -21748,7 +21748,7 @@ export class PurchasePaymentHistoryInput implements IPurchasePaymentHistoryInput
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
         data["installmentNumber"] = this.installmentNumber;
-        data["paymentDate"] = this.paymentDate ? this.paymentDate.toISOString() : <any>undefined;
+        data["paymentDate"] = this.paymentDate ? this.paymentDate : <any>undefined;
         data["percent"] = this.percent;
         data["price"] = this.price;
         data["description"] = this.description;
@@ -21947,16 +21947,16 @@ export class PurchaseOrderForViewDto implements IPurchaseOrderForViewDto {
         data = typeof data === 'object' ? data : {};
         data["code"] = this.code;
         data["name"] = this.name;
-        data["purchaseOrderDate"] = this.purchaseOrderDate ? this.purchaseOrderDate.toISOString() : <any>undefined;
-        data["orderDate"] = this.orderDate ? this.orderDate.toISOString() : <any>undefined;
+        data["purchaseOrderDate"] = this.purchaseOrderDate ? this.purchaseOrderDate : <any>undefined;
+        data["orderDate"] = this.orderDate ? this.orderDate : <any>undefined;
         data["area"] = this.area;
         data["unitId"] = this.unitId;
         data["unitCode"] = this.unitCode;
         data["transactionOfficeName"] = this.transactionOfficeName;
         data["isIndependentUnit"] = this.isIndependentUnit;
         data["reportCode"] = this.reportCode;
-        data["reportRecievedDate"] = this.reportRecievedDate ? this.reportRecievedDate.toISOString() : <any>undefined;
-        data["reportApprovalDate"] = this.reportApprovalDate ? this.reportApprovalDate.toISOString() : <any>undefined;
+        data["reportRecievedDate"] = this.reportRecievedDate ? this.reportRecievedDate : <any>undefined;
+        data["reportApprovalDate"] = this.reportApprovalDate ? this.reportApprovalDate : <any>undefined;
         data["attachmentFile"] = this.attachmentFile;
         data["totalPrice"] = this.totalPrice;
         data["totalMoneyPaid"] = this.totalMoneyPaid;
@@ -22079,7 +22079,7 @@ export class RoleListDto implements IRoleListDto {
         data["displayName"] = this.displayName;
         data["isStatic"] = this.isStatic;
         data["isDefault"] = this.isDefault;
-        data["creationTime"] = this.creationTime ? this.creationTime.toISOString() : <any>undefined;
+        data["creationTime"] = this.creationTime ? this.creationTime : <any>undefined;
         data["id"] = this.id;
         return data; 
     }
@@ -22458,10 +22458,10 @@ export class TenantLoginInfoDto implements ITenantLoginInfoDto {
         data["logoId"] = this.logoId;
         data["logoFileType"] = this.logoFileType;
         data["customCssId"] = this.customCssId;
-        data["subscriptionEndDateUtc"] = this.subscriptionEndDateUtc ? this.subscriptionEndDateUtc.toISOString() : <any>undefined;
+        data["subscriptionEndDateUtc"] = this.subscriptionEndDateUtc ? this.subscriptionEndDateUtc : <any>undefined;
         data["isInTrialPeriod"] = this.isInTrialPeriod;
         data["edition"] = this.edition ? this.edition.toJSON() : <any>undefined;
-        data["creationTime"] = this.creationTime ? this.creationTime.toISOString() : <any>undefined;
+        data["creationTime"] = this.creationTime ? this.creationTime : <any>undefined;
         data["paymentPeriodType"] = this.paymentPeriodType;
         data["subscriptionDateString"] = this.subscriptionDateString;
         data["creationTimeString"] = this.creationTimeString;
@@ -22524,7 +22524,7 @@ export class ApplicationInfoDto implements IApplicationInfoDto {
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
         data["version"] = this.version;
-        data["releaseDate"] = this.releaseDate ? this.releaseDate.toISOString() : <any>undefined;
+        data["releaseDate"] = this.releaseDate ? this.releaseDate : <any>undefined;
         if (this.features) {
             data["features"] = {};
             for (let key in this.features) {
@@ -22744,8 +22744,8 @@ export class TenantListDto implements ITenantListDto {
         data["editionDisplayName"] = this.editionDisplayName;
         data["connectionString"] = this.connectionString;
         data["isActive"] = this.isActive;
-        data["creationTime"] = this.creationTime ? this.creationTime.toISOString() : <any>undefined;
-        data["subscriptionEndDateUtc"] = this.subscriptionEndDateUtc ? this.subscriptionEndDateUtc.toISOString() : <any>undefined;
+        data["creationTime"] = this.creationTime ? this.creationTime : <any>undefined;
+        data["subscriptionEndDateUtc"] = this.subscriptionEndDateUtc ? this.subscriptionEndDateUtc : <any>undefined;
         data["editionId"] = this.editionId;
         data["isInTrialPeriod"] = this.isInTrialPeriod;
         data["id"] = this.id;
@@ -22822,7 +22822,7 @@ export class CreateTenantInput implements ICreateTenantInput {
         data["sendActivationEmail"] = this.sendActivationEmail;
         data["editionId"] = this.editionId;
         data["isActive"] = this.isActive;
-        data["subscriptionEndDateUtc"] = this.subscriptionEndDateUtc ? this.subscriptionEndDateUtc.toISOString() : <any>undefined;
+        data["subscriptionEndDateUtc"] = this.subscriptionEndDateUtc ? this.subscriptionEndDateUtc : <any>undefined;
         data["isInTrialPeriod"] = this.isInTrialPeriod;
         return data; 
     }
@@ -22888,7 +22888,7 @@ export class TenantEditDto implements ITenantEditDto {
         data["connectionString"] = this.connectionString;
         data["editionId"] = this.editionId;
         data["isActive"] = this.isActive;
-        data["subscriptionEndDateUtc"] = this.subscriptionEndDateUtc ? this.subscriptionEndDateUtc.toISOString() : <any>undefined;
+        data["subscriptionEndDateUtc"] = this.subscriptionEndDateUtc ? this.subscriptionEndDateUtc : <any>undefined;
         data["isInTrialPeriod"] = this.isInTrialPeriod;
         data["id"] = this.id;
         return data; 
@@ -24874,9 +24874,9 @@ export class UserListDto implements IUserListDto {
             for (let item of this.roles)
                 data["roles"].push(item.toJSON());
         }
-        data["lastLoginTime"] = this.lastLoginTime ? this.lastLoginTime.toISOString() : <any>undefined;
+        data["lastLoginTime"] = this.lastLoginTime ? this.lastLoginTime : <any>undefined;
         data["isActive"] = this.isActive;
-        data["creationTime"] = this.creationTime ? this.creationTime.toISOString() : <any>undefined;
+        data["creationTime"] = this.creationTime ? this.creationTime : <any>undefined;
         data["id"] = this.id;
         return data; 
     }
@@ -25482,7 +25482,7 @@ export class LinkedUserDto implements ILinkedUserDto {
         data["tenantId"] = this.tenantId;
         data["tenancyName"] = this.tenancyName;
         data["username"] = this.username;
-        data["lastLoginTime"] = this.lastLoginTime ? this.lastLoginTime.toISOString() : <any>undefined;
+        data["lastLoginTime"] = this.lastLoginTime ? this.lastLoginTime : <any>undefined;
         data["id"] = this.id;
         return data; 
     }
@@ -25669,7 +25669,7 @@ export class UserLoginAttemptDto implements IUserLoginAttemptDto {
         data["clientName"] = this.clientName;
         data["browserInfo"] = this.browserInfo;
         data["result"] = this.result;
-        data["creationTime"] = this.creationTime ? this.creationTime.toISOString() : <any>undefined;
+        data["creationTime"] = this.creationTime ? this.creationTime : <any>undefined;
         return data; 
     }
 }

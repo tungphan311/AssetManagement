@@ -21,37 +21,41 @@
                             Tên hàng hóa
                             <p-sortIcon field="name"></p-sortIcon>
                         </th>
-                        <th pSortableColumn="name">
+                        <th pSortableColumn="productName">
                             Tên thực tế
-                            <p-sortIcon field="name"></p-sortIcon>
+                            <p-sortIcon field="productName"></p-sortIcon>
                         </th>
-                        <th pSortableColumn="code">
+                        <th pSortableColumn="catelog">
                             Loaị hàng hóa
-                            <p-sortIcon field="code"></p-sortIcon>
+                            <p-sortIcon field="catelog"></p-sortIcon>
                         </th>
-                        <th pSortableColumn="bidId">
+                        <th pSortableColumn="currentPrice">
+                            Gía hiện tại
+                            <p-sortIcon field="currentPrice"></p-sortIcon>
+                        </th>
+                        <th pSortableColumn="amount">
                             Số lượng
-                            <p-sortIcon field="bidId"></p-sortIcon>
+                            <p-sortIcon field="amount"></p-sortIcon>
                         </th>
-                        <th pSortableColumn="name">
-                            Đơn giá
-                            <p-sortIcon field="name"></p-sortIcon>
+                        <th pSortableColumn="price">
+                            Tổng giá trị
+                            <p-sortIcon field="price"></p-sortIcon>
                         </th>
-                        <th pSortableColumn="name">
+                        <th pSortableColumn="contactAddress">
                             Địa chỉ nhận
-                            <p-sortIcon field="name"></p-sortIcon>
+                            <p-sortIcon field="contactAddress"></p-sortIcon>
                         </th>
-                        <th pSortableColumn="name">
+                        <th pSortableColumn="contactName">
                             Người liên hệ
-                            <p-sortIcon field="name"></p-sortIcon>
+                            <p-sortIcon field="contactName"></p-sortIcon>
                         </th>
-                        <th pSortableColumn="name">
+                        <th pSortableColumn="phoneNumber">
                             Số điện thoại
-                            <p-sortIcon field="name"></p-sortIcon>
+                            <p-sortIcon field="phoneNumber"></p-sortIcon>
                         </th>
-                        <th pSortableColumn="name">
+                        <th pSortableColumn="description">
                             Diễn giải
-                            <p-sortIcon field="name"></p-sortIcon>
+                            <p-sortIcon field="description"></p-sortIcon>
                         </th>
 
 
@@ -61,54 +65,67 @@
                 <ng-template pTemplate="body" let-record="$implicit">
                     <tr>
                         <td>
-                            <span class="ui-column-title">Tên hàng hóa</span>
-                            <span title="{{record.product.name}}">{{truncateString(record.product.name)}}</span>
+                            <span title="{{record.product.name }}">{{truncateString(record.product.name)}}</span>
                         </td>
                         <td>
-                            <span class="ui-column-title">Tên thực tế</span>
                             <span title="{{record.product.productName}}">{{truncateString(record.product.productName)}}</span>
-
+                            
                         </td>
 
                         <td>
-                            <span class="ui-column-title">Loaị hàng hóa</span>
-                            <span title="{{record.productCategory}}">{{truncateString(record.productCategory)}}</span>
+                            <!-- <span title="{{record.productCategory}}">{{truncateString(record.productCategory)}}</span> -->
+                            <input type="text" class="input-inside-table"
+                            *ngIf="record.productCategory"
+                            [(ngModel)]="record.productCategory"
+                            >
                         </td>
                         <td>
-                            <span class="ui-column-title">Số lượng</span>
-                            <span title="{{record.amount}}">{{truncateString(record.amount)}}</span>
-
+                            <span title="{{record.product.currentPrice | currency:'VND'}}">{{truncateString(record.product.currentPrice) | currency:'VND'}}</span>                         
+                            
                         </td>
                         <td>
-                            <span class="ui-column-title"> Đơn giá</span>
-                            <span title="{{record.price}}">{{truncateString(record.price)}}</span>
-
+                            <!-- <span title="{{record.amount}}">{{truncateString(record.amount)}}</span> -->
+                            <input type="number" class="input-inside-table" *ngIf="record.amount"
+                            [ngModel]="record.amount"
+                            (change)="updateAmount(record,$event)"
+                            >
                         </td>
                         <td>
-                            <span class="ui-column-title"> Địa chỉ nhận</span>
-                            <span title="{{record.contactAddress}}">{{truncateString(record.contactAddress)}}</span>
-
+                            <!-- <span title="{{record.price }}">{{truncateString(record.price) | currency:'VND'}}</span> -->
+                            <input type="text" class="input-inside-table" [attr.disabled]="true"
+                            *ngIf="record.price"
+                            [ngModel]="record.price | currency:'VND'">
                         </td>
                         <td>
-                            <span class="ui-column-title"> Người liên hệ</span>
-                            <span title="{{record.contactName}}">{{truncateString(record.contactName)}}</span>
-
+                            <!-- <span title="{{record.contactAddress}}">{{truncateString(record.contactAddress)}}</span> -->
+                            <input type="text" class="input-inside-table"
+                            *ngIf="record.contactAddress"
+                            [(ngModel)]="record.contactAddress"
+                            >
                         </td>
                         <td>
-                            <span class="ui-column-title">Số điện thoại</span>
-                            <span title="{{record.contactPhoneNumber}}">{{truncateString(record.contactPhoneNumber)}}</span>
-
+                            <!-- <span title="{{record.contactName}}">{{truncateString(record.contactName)}}</span> -->
+                            <input type="text" class="input-inside-table"
+                            *ngIf="record.contactName"
+                            [(ngModel)]="record.contactName">
                         </td>
                         <td>
-                            <span class="ui-column-title"> Diễn giải</span>
-                            <span title="{{record.description}}">{{truncateString(record.description)}}</span>
-
+                            <!-- <span title="{{record.contactPhoneNumber}}">{{truncateString(record.contactPhoneNumber)}}</span> -->
+                            <input type="text" class="input-inside-table"
+                            *ngIf="record.contactPhoneNumber"
+                            [(ngModel)]="record.contactPhoneNumber">
+                        </td>
+                        <td>
+                            <!-- <span title="{{record.description}}">{{truncateString(record.description)}}</span> -->
+                            <input type="text" class="input-inside-table"
+                            *ngIf="record.description"
+                            [(ngModel)]="record.description">
                         </td>
 
                         <td>
 
                             <button class="btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill"
-                                (click)="deleteDetail(record.id)" title="{{l('Delete')}}">
+                                (click)="deleteDetail(record)" title="{{l('Delete')}}">
                                 <i class="fa fa-times" [attr.aria-label]="l('Delete')"></i>
                             </button>
                         </td>
@@ -117,11 +134,18 @@
             </p-table>
 
         </div>
+      
+            <div class="primeng-paging-container">                       
+                <span class="total-records-count">
+                   Tổng tiền hàng: {{ purchaseOrderRecieved.totalPrice | currency:'VND'}}
+                </span>
+            </div>
         <!--<Primeng-TurboTable-End>-->
-
     </div>
 </div>
 
 <!--beginmodal-->
-<purchase-product-selection-modal #purchaseProductSelectionModal></purchase-product-selection-modal>
+<purchase-product-selection-modal #purchaseProductSelectionModal
+    [purchaseOrderRecieved]="purchaseOrderRecieved"
+></purchase-product-selection-modal>
 <!--end modal-->

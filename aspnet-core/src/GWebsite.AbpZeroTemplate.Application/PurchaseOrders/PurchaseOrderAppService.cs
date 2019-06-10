@@ -13,6 +13,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Dynamic.Core;
 using GWebsite.AbpZeroTemplate.Application.Share.PurchaseProductDetails.Dto;
+using GWebsite.AbpZeroTemplate.Application.Share.Contracts.Dto;
+using GWebsite.AbpZeroTemplate.Application.Share.Providers.Dto;
 
 namespace GWebsite.AbpZeroTemplate.Web.Core.PurchaseOrders
 {
@@ -22,12 +24,20 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.PurchaseOrders
         private readonly IRepository<PurchasePaymentHistory> paymentRepository;
         private readonly IRepository<PurchaseProductDetail> purchaseProductDetailRepository;
         private readonly IRepository<Product> productRepository;
-        public PurchaseOrderAppService(IRepository<PurchaseOrder> purchaseOrderRepository, IRepository<PurchaseProductDetail> purchaseProductDetailRepository, IRepository<Product> productRepository, IRepository<PurchasePaymentHistory> paymentRepository)
+        private readonly IRepository<Provider> providerRepository;
+        private readonly IRepository<Contract> contractRepository;
+
+        public PurchaseOrderAppService(IRepository<PurchaseOrder> purchaseOrderRepository,
+            IRepository<PurchaseProductDetail> purchaseProductDetailRepository,
+            IRepository<Product> productRepository, IRepository<PurchasePaymentHistory> paymentRepository,
+            IRepository<Provider> providerRepository, IRepository<Contract> contractRepository)
         {
             this.purchaseOrderRepository = purchaseOrderRepository;
             this.paymentRepository = paymentRepository;
             this.purchaseProductDetailRepository = purchaseProductDetailRepository;
             this.productRepository = productRepository;
+            this.providerRepository = providerRepository;
+            this.contractRepository = contractRepository;
         }
 
         #region Public Method
@@ -77,26 +87,43 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.PurchaseOrders
             }
 
 
-            var PurchaseOrderInput = ObjectMapper.Map<PurchaseOrderInput>(purchaseOrderEntity);
+
+
+            var purchaseOrderInput = ObjectMapper.Map<PurchaseOrderInput>(purchaseOrderEntity);
 
             var purchaseProductDetails = ObjectMapper.Map<List<PurchaseProductDetailInput>>(purchaseProductDetailRepository.GetAll().Where(x => x.PurchaseOrderId == purchaseOrderEntity.Id /*&& x.IsDelete == false*/).ToList());
-            //if (purchaseProductDetails.Count() > 0)
-            //{
-            //    for (int i = 0; i < purchaseProductDetails.Count(); i++)
-            //    {
-            //        var prod = ObjectMapper.Map<ProductInput>(productRepository.FirstOrDefault(x => x.Id == purchaseProductDetails.ElementAt(i).ProductId && x.IsDelete == false));
-            //        if (prod == null) prod = new ProductInput();
-            //        purchaseProductDetails.ElementAt(i).Product = prod;
-            //    }
-            //}
+            if (purchaseProductDetails != null && purchaseProductDetails.Count() > 0)
+            {
+                for (int i = 0; i < purchaseProductDetails.Count(); i++)
+                {
+                    var prod = ObjectMapper.Map<ProductInput>(productRepository.FirstOrDefault(x => x.Id == purchaseProductDetails.ElementAt(i).ProductId && x.IsDelete == false));
+                    if (prod == null) prod = new ProductInput();
+                    purchaseProductDetails.ElementAt(i).Product = prod;
+                }
+            }
+
+
+            if (purchaseOrderInput.ContractId != null)
+            {
+                purchaseOrderInput.Contract = ObjectMapper.Map<ContractInput>(contractRepository.GetAll().Where(X => X.IsDelete == false).FirstOrDefault(x => x.Id == purchaseOrderInput.ContractId));
+            }
+
+
+            if (purchaseOrderInput.ProviderId != null)
+            {
+                purchaseOrderInput.Provider = ObjectMapper.Map<ProviderInput>(providerRepository.GetAll().Where(X => X.IsDelete == false).FirstOrDefault(x => x.Id == purchaseOrderInput.ProviderId));
+            }
+
+
+
             if (purchaseProductDetails == null) purchaseProductDetails = new List<PurchaseProductDetailInput>();
-            PurchaseOrderInput.PurchaseProductDetails = (purchaseProductDetails);
+            purchaseOrderInput.PurchaseProductDetails = (purchaseProductDetails);
 
 
             var payments = ObjectMapper.Map<List<PurchasePaymentHistoryInput>>(paymentRepository.GetAll().Where(x => x.PurchaseOrderId == purchaseOrderEntity.Id && x.IsDelete == false).ToList());
-            PurchaseOrderInput.PurchasePaymentHistories = (payments);
+            purchaseOrderInput.PurchasePaymentHistories = (payments);
 
-            return (PurchaseOrderInput);
+            return (purchaseOrderInput);
         }
 
         public PurchaseOrderForViewDto GetPurchaseOrderForView(int id)
@@ -189,11 +216,12 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.PurchaseOrders
                     foreach (var item in purchaseOrderInput.PurchasePaymentHistories)
                     {
 
-                        var paymentItem = new PurchasePaymentHistory();
+                        var paymentItem = ObjectMapper.Map<PurchasePaymentHistory>(item);
                         paymentItem.PurchaseOrderId = purchaseOrderId;
-                        paymentItem.PaymentDate = item.PaymentDate;
-                        paymentItem.PaymentMoney = item.PaymentMoney;
-                        paymentItem.PaidMoney = item.PaidMoney;
+                        //paymentItem.PurchaseOrderId = purchaseOrderId;
+                        //paymentItem.PaymentDate = item.PaymentDate;
+                        //paymentItem.PaymentMoney = item.PaymentMoney;
+                        //paymentItem.PaidMoney = item.PaidMoney;
                         SetAuditInsert(paymentItem);
 
                         paymentRepository.Insert(paymentItem);
@@ -245,10 +273,11 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.PurchaseOrders
             {
                 foreach (var item in purchaseOrderInput.PurchasePaymentHistories)
                 {
-                    var paymentItem = new PurchasePaymentHistory();
-                    paymentItem.PaymentDate = item.PaymentDate;
-                    paymentItem.PaymentMoney = item.PaymentMoney;
-                    paymentItem.PaidMoney = item.PaidMoney;
+                    var paymentItem = ObjectMapper.Map<PurchasePaymentHistory>(item);
+                    paymentItem.PurchaseOrderId = PurchaseOrderId;
+                    //paymentItem.PaymentDate = item.PaymentDate;
+                    //paymentItem.PaymentMoney = item.PaymentMoney;
+                    //paymentItem.PaidMoney = item.PaidMoney;
                     SetAuditInsert(paymentItem);
 
                     paymentRepository.Insert(paymentItem);

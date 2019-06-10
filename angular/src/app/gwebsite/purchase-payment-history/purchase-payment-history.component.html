@@ -51,14 +51,14 @@
                                 <!-- <span title="{{record.percent}}">{{truncateString(record.percent)}}</span> -->
                                 <input type="number"
                                 [ngModel]="record.percent"
-                                (change)="updatePrice(record)">
+                                (change)="updatePrice(record,$event)">
     
                             </td>
     
                             <td>                                
-                                <!-- <span title="{{record.price}}">{{truncateString(record.price)}}</span> -->
+                              <!-- <span title="{{record.price}}">{{truncateString(record.price | currency:'VND')}}</span> -->
                                 <input type="number" [attr.disabled]="true"
-                                [(ngModel)]="record.price">
+                                [ngModel]="record.price |currency:'VND'">
                             </td>
                             <td>                               
                                 <!-- <span title="{{record.description}}">{{truncateString(record.description)}}</span> -->
@@ -80,7 +80,7 @@
             </div>
             <div class="primeng-paging-container">                       
                     <span class="total-records-count">
-                        {{l('TotalRecordsCount', primengTableHelper.totalRecordsCount)}}
+                       Tổng tiền thanh toán: {{purchaseOrderRecieved.totalMoneyPaid | currency:'VND'}}
                     </span>
                 </div>
             <!--<Primeng-TurboTable-End>-->

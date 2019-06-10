@@ -36,6 +36,7 @@ export class PurchaseOrderComponent extends AppComponentBase implements AfterVie
         private route:ActivatedRoute
     ) {
         super(injector);
+       
     }
 
     /**
@@ -50,6 +51,7 @@ export class PurchaseOrderComponent extends AppComponentBase implements AfterVie
     ngAfterViewInit(): void {        
     }
 
+   
     createPurchaseOrder = ()=>{
         this.router.navigate(['create'],{relativeTo:this.route})
     }

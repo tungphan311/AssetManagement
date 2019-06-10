@@ -85,22 +85,19 @@
 
                                 </td>
                                 <td>
+                                    <a [routerLink]="['../edit',record.id]">
                                     <button
                                         class="btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill"
-                                        (click)="createOrEditModal.show(record.id)" title="{{l('Edit')}}">
+                                      
+                                        title="{{l('Edit')}}">
                                         <i class="fa fa-edit" [attr.aria-label]="l('Edit')"></i>
-                                    </button>
+                                    </button>  </a>
+                                    <!-- (click)="editPurchaseOrder(record.id)"  -->
 
                                     <button
                                         class="btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill"
                                         (click)="deletePurchaseOrder(record.id)" title="{{l('Delete')}}">
                                         <i class="fa fa-times" [attr.aria-label]="l('Delete')"></i>
-                                    </button>
-
-                                    <button
-                                        class="btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill"
-                                        (click)="viewPurchaseOrderModal.show(record.id)" title="{{l('View')}}">
-                                        <i class="fa fa-eye" [attr.aria-label]="l('View')"></i>
                                     </button>
                                 </td>
                             </tr>
