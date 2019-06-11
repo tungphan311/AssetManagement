@@ -18,7 +18,11 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.Bidders.Dto
 
         public DateTime GuaranteeExpired { get; set; }
 
+        public string GuaranteeBank { get; set; }
+
         public int CertificateNumber { get; set; }
+
+        public string Attachment { get; set; }
 
         public string Note { get; set; }
 

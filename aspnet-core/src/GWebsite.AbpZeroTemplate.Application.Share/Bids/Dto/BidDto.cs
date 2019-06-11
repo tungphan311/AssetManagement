@@ -1,4 +1,5 @@
 ﻿using Abp.Domain.Entities;
+using GWebsite.AbpZeroTemplate.Application.Share.Bidders.Dto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,6 +25,16 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.Bids.Dto
         public string BiddingForm { get; set; }
 
         public double TotalPrice { get; set; }
+
+        public double Percent { get; set; }
+
+        public string Attachment1 { get; set; }
+
+        public string Attachment2 { get; set; }
+
+        public string Attachment3 { get; set; }
+
+        public string Attachment4 { get; set; }
 
         public int BidderID { get; set; }
     }

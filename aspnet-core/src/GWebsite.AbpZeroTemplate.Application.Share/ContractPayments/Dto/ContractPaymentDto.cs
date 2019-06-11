@@ -14,5 +14,6 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.ContractPayments.Dto
         public DateTime PaymentDate { get; set; }
         public float Percent { get; set; }
         public float Amount { get; set; }
+        public string Note { get; set; }
     }
 }

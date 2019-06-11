@@ -4,6 +4,7 @@ using Abp.Domain.Repositories;
 using Abp.Linq.Extensions;
 using GWebsite.AbpZeroTemplate.Application;
 using GWebsite.AbpZeroTemplate.Application.Share.ContractDetails.Dto;
+using GWebsite.AbpZeroTemplate.Application.Share.ContractPayments.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.Contracts;
 using GWebsite.AbpZeroTemplate.Application.Share.Contracts.Dto;
 using GWebsite.AbpZeroTemplate.Core.Authorization;
@@ -20,11 +21,13 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Contracts
     {
         private readonly IRepository<Contract> contractRepository;
         private readonly IRepository<ContractDetail> detailRepository;
+        private readonly IRepository<ContractPayment> paymentRepository;
 
-        public ContractAppService(IRepository<Contract> contractRepository, IRepository<ContractDetail> detailRepository)
+        public ContractAppService(IRepository<Contract> contractRepository, IRepository<ContractDetail> detailRepository, IRepository<ContractPayment> paymentRepository)
         {
             this.contractRepository = contractRepository;
             this.detailRepository = detailRepository;
+            this.paymentRepository = paymentRepository;
         }
 
         #region Public Method
@@ -48,6 +51,25 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Contracts
             {
                 contractEntity.IsDelete = true;
                 contractRepository.Update(contractEntity);
+
+                // xoá ContractDetail ứng với contract này
+                var detailList = detailRepository.GetAll().Where(x => !x.IsDelete).Where(x => x.ContractID == id);
+                foreach(var detail in detailList)
+                {
+                    detail.IsDelete = true;
+                    SetAuditEdit(detail);
+                    detailRepository.Update(detail);
+                }
+
+                // xoá contract payment ứng với contract này
+                var paymentList = paymentRepository.GetAll().Where(x => !x.IsDelete && x.ContractID == id);
+                foreach(var payment in paymentList)
+                {
+                    payment.IsDelete = true;
+                    SetAuditEdit(payment);
+                    paymentRepository.Update(payment);
+                }
+
                 CurrentUnitOfWork.SaveChanges();
             }
         }
@@ -59,7 +81,15 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Contracts
             {
                 return null;
             }
-            return ObjectMapper.Map<ContractInput>(contractEntity);
+
+            var contractInput = ObjectMapper.Map<ContractInput>(contractEntity);
+            var detailList = detailRepository.GetAll().Where(x => !x.IsDelete).Where(x => x.ContractID == id);
+            contractInput.Products = detailList.Select(x => ObjectMapper.Map<ContractDetailInput>(x)).ToList();
+
+            var paymentList = paymentRepository.GetAll().Where(x => !x.IsDelete && x.ContractID == id);
+            contractInput.Payments = paymentList.Select(x => ObjectMapper.Map<ContractPaymentInput>(x)).ToList();
+
+            return contractInput;
         }
 
         public ContractForViewDto GetContractForView(int id)
@@ -139,10 +169,18 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Contracts
             foreach (var product in contractInput.Products)
             {
                 // insert vo bang ProductContract co productId va contractId
-                ContractDetailInput detailInput = new ContractDetailInput(id, product.Id, product.MerCode, product.MerName, product.Quantity, product.Price, product.Note);
-                var detailEntity = ObjectMapper.Map<ContractDetail>(detailInput);
+                product.ContractID = id;
+                var detailEntity = ObjectMapper.Map<ContractDetail>(product);
                 SetAuditInsert(detailEntity);
                 detailRepository.Insert(detailEntity);
+            }
+
+            foreach (var payment in contractInput.Payments)
+            {
+                payment.ContractID = id;
+                var paymentEntity = ObjectMapper.Map<ContractPayment>(payment);
+                SetAuditInsert(paymentEntity);
+                paymentRepository.Insert(paymentEntity);
             }
 
             CurrentUnitOfWork.SaveChanges();
@@ -158,6 +196,80 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Contracts
             ObjectMapper.Map(contractInput, contractEntity);
             SetAuditEdit(contractEntity);
             contractRepository.Update(contractEntity);
+
+            if (contractInput.Products == null)
+            {
+                // nếu input rỗng thì xoá hết detail đang có của contract
+                var detailList = detailRepository.GetAll().Where(x => x.ContractID == contractInput.Id);
+
+                foreach (var detail in detailList)
+                {
+                    detail.IsDelete = true;
+                    SetAuditEdit(detail);
+                    detailRepository.Update(detail);
+                }
+            }
+            else
+            {
+                // update list contract detail
+                var detailList = detailRepository.GetAll().Where(x => !x.IsDelete).Where(x => x.ContractID == contractInput.Id);
+
+                foreach (var detail in detailList)
+                {
+                    if (!(contractInput.Products.Exists(x => x.MerchID == detail.MerchID)))
+                    {
+                        // nếu không tại trong list input thì xoá đi
+                        detail.IsDelete = true;
+                        SetAuditEdit(detail);
+                        detailRepository.Update(detail);
+                    }
+                }
+
+                // update contract detail
+                foreach (var product in contractInput.Products)
+                {
+                    var detailEntity = detailList.SingleOrDefault(x => x.MerchID == product.MerchID);
+                    if (detailEntity == null)
+                    {
+                        // nếu chưa tồn tại thì thêm 
+                        detailEntity = ObjectMapper.Map<ContractDetail>(product);
+                        detailEntity.ContractID = contractEntity.Id;
+                        SetAuditInsert(detailEntity);
+                        detailRepository.Insert(detailEntity);
+                    }
+                    else
+                    {
+                        // nếu có thì sẽ update
+                        product.ContractID = detailEntity.Id;
+                        ObjectMapper.Map(product, detailEntity);
+                        detailEntity.ContractID = contractEntity.Id;
+                        SetAuditEdit(detailEntity);
+                        detailRepository.Update(detailEntity);
+                    }
+                }
+            }
+
+            // xoá hết payment đang có trước 
+            var paymentList = paymentRepository.GetAll().Where(x => !x.IsDelete && x.ContractID == contractInput.Id);
+
+            foreach (var payment in paymentList)
+            {
+                payment.IsDelete = true;
+                SetAuditEdit(payment);
+                paymentRepository.Update(payment);
+            }
+
+            if (contractInput.Payments != null)
+            {
+                foreach(var payment in contractInput.Payments)
+                {
+                    payment.ContractID = contractInput.Id;
+                    var paymentEntity = ObjectMapper.Map<ContractPayment>(payment);
+                    SetAuditInsert(paymentEntity);
+                    paymentRepository.Insert(paymentEntity);
+                }
+            }
+ 
             CurrentUnitOfWork.SaveChanges();
         }
 

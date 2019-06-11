@@ -1,5 +1,6 @@
 ﻿using Abp.Domain.Entities;
 using GWebsite.AbpZeroTemplate.Application.Share.ContractDetails.Dto;
+using GWebsite.AbpZeroTemplate.Application.Share.ContractPayments.Dto;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -9,33 +10,6 @@ using System.Threading.Tasks;
 
 namespace GWebsite.AbpZeroTemplate.Application.Share.Contracts.Dto
 {
-    public class ProductInput : Entity<int>
-    {
-        public ProductInput(int merID, string merCode, string merName, int quantity, float price, string note)
-        {
-            MerchandiseID = merID;
-            MerCode = merCode;
-            MerName = merName;
-            Quantity = quantity;
-            Price = price;
-            Note = note;
-        }
-
-        public int MerchandiseID { get; set; }
-
-        public string MerCode { get; set; }
-
-        public string MerName { get; set; }
-
-        public int Quantity { get; set; }
-
-        public float Price { get; set; }
-
-        public float Total { get; set; }
-
-        public string Note { get; set; }
-    }
-
     public class ContractInput : Entity<int>
     {
         public string ContractID { get; set; }
@@ -44,6 +18,7 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.Contracts.Dto
         public int BriefcaseID { get; set; }
         public int VendorID { get; set; }
         public string Note { get; set; }
+        public float TotalPrice { get; set; }
 
         public string ContractWarrantyType { get; set; }
         public string ContractWarrantyID { get; set; }
@@ -61,6 +36,7 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.Contracts.Dto
         public string WarrantyGuaranteeBank { get; set; }
         public string WarrantyGuaranteeFile { get; set; }
 
-        public ProductInput[] Products { get; set; }
+        public List<ContractDetailInput> Products { get; set; }
+        public List<ContractPaymentInput> Payments { get; set; }
     }
 }

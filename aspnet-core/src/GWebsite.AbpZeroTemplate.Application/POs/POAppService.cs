@@ -20,10 +20,14 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.POs
     public class POAppService : GWebsiteAppServiceBase, IPOAppService
     {
         private readonly IRepository<PO> poRepository;
+        private readonly IRepository<Vendor> vendorRepository;
+        private readonly IRepository<Contract> contractRepository;
 
-        public POAppService(IRepository<PO> repository)
+        public POAppService(IRepository<PO> repository, IRepository<Vendor> vendorRepository, IRepository<Contract> contractRepository)
         {
             poRepository = repository;
+            this.vendorRepository = vendorRepository;
+            this.contractRepository = contractRepository;
         }
 
         #region public method
@@ -74,15 +78,12 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.POs
         public PagedResultDto<PODto> GetPOs(POFilter input)
         {
             var query = poRepository.GetAll().Where(x => !x.IsDelete);
+            var contract = contractRepository.GetAll().Where(x => !x.IsDelete);
+            var vendor = vendorRepository.GetAll().Where(x => !x.IsDelete);
 
-            if (input.POID != 0)
+            if (input.POID != null)
             {
-                query = query.Where(x => x.POID == input.POID);
-            }
-
-            if (input.CreateDay != null)
-            {
-                query = query.Where(x => x.CreateDay.DayOfYear >= input.CreateDay.DayOfYear);
+                query = query.Where(x => x.POID.ToLower().Contains(input.POID.ToLower()));
             }
 
             if (input.OrderName != null)
@@ -90,9 +91,27 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.POs
                 query = query.Where(x => x.OrderName.ToLower().Contains(input.OrderName.ToLower()));
             }
 
-            if (input.ContractID != 0)
+            if (input.ContractID != null)
             {
-                query = query.Where(x => x.ContractID == input.ContractID);
+                var contracts = contract.Where(x => x.Name.ToLower().Contains(input.ContractID.ToLower())).ToList();
+
+                query = query.Where(x => isExist(contracts, x.ContractID));
+            }
+
+            if (input.VendorID != null)
+            {
+                var vendors = vendor.Where(x => x.Name.ToLower().Contains(input.VendorID.ToLower())).ToList();
+
+                query = query.Where(x => isVendorExist(vendors, x.VendorID));
+            }
+
+            if (input.Type == "in")
+            {
+                query = query.Where(x => x.ContractID != 0);
+            }
+            else if (input.Type == "out")
+            {
+                query = query.Where(x => x.ContractID == 0);
             }
 
             var totalCount = query.Count();
@@ -137,6 +156,31 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.POs
             SetAuditEdit(entity);
             poRepository.Update(entity);
             CurrentUnitOfWork.SaveChanges();
+        }
+
+        private bool isExist(List<Contract> contracts, int id)
+        {
+            foreach(var contract in contracts)
+            {
+                if (contract.Id == id)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        private bool isVendorExist(List<Vendor> vendors, int id)
+        {
+            foreach (var vendor in vendors)
+            {
+                if (vendor.Id == id)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
         #endregion

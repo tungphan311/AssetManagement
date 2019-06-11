@@ -61,30 +61,28 @@
                                                 {{l("PhoneNumber")}}
                                                 <p-sortIcon field="phonenumber"></p-sortIcon>
                                             </th>
-                                            <th>Chọn</th>                            
+                                            <th style="text-align: center"><input type="checkbox" [(ngModel)]="isSelectAll" (change)="selectAll()"></th>                            
                                         </tr>
                                     </ng-template>
                                     <ng-template pTemplate="body" let-record="$implicit">
                                         <tr>
                                             <td>
                                                 <span class="ui-column-title">{{l("VendorCode")}}</span>
-                                                <span title="{{record.code}}">{{truncateString(record.code)}}</span>
+                                                <span title="{{record.code}}">{{truncateString(record.vendor.code)}}</span>
                                             </td>
                                             <td>
                                                 <span class="ui-column-title"> {{l("VendorName")}}</span>
-                                                <span title="{{record.name}}">{{truncateString(record.name)}}</span>
+                                                <span title="{{record.name}}">{{truncateString(record.vendor.name)}}</span>
                                             </td>
                                             <td>
                                                 <span class="ui-column-title">{{l("Address")}}</span>
-                                                <span title="{{record.address}}">{{truncateString(record.address)}}</span>
+                                                <span title="{{record.address}}">{{truncateString(record.vendor.address)}}</span>
                                             </td>
                                             <td>
                                                 <span class="ui-column-title">{{l("PhoneNumber")}}</span>
-                                                <span title="{{record.phoneNumber}}">{{truncateString(record.phoneNumber)}}</span>
+                                                <span title="{{record.phoneNumber}}">{{truncateString(record.vendor.phoneNumber)}}</span>
                                             </td>
-                                            <td> 
-                                                    <button (click)="save(record.id)" class="btn btn-primary"><i class="fa fa-plus"></i>Xác nhận</button>
-                                            </td>                           
+                                            <td><input #isSelectedInput="ngModel" class="form-control" type="checkbox" name="isSelectedInput" [(ngModel)]="record.isSelected"(change)="checkAll()"></td>                 
                                         </tr>
                                     </ng-template>
                                 </p-table>
@@ -107,6 +105,14 @@
                     </div>
                 </div>
             </div>
+            <div class="modal-footer">
+                    <button [disabled]="saving" type="button" class="btn btn-default"
+                        (click)="close(0)">{{l("Cancel")}}</button>
+                    <button type="button" class="btn btn-primary" [buttonBusy]="saving" [busyText]="l('SavingWithThreeDot')" (click)="save()">
+                                <i class="fa fa-save"></i>
+                                <span>{{l("Save")}}</span>
+                    </button>
+                </div>
         </div>
     </div>
 </div>
