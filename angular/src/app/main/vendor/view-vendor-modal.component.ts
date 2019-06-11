@@ -1,4 +1,4 @@
-import { VendorForViewDto, MerchandiseInput, AssignmentTableServiceProxy, AssignmentTableForViewDto, AssignmentTableInput, VendorInput, ProductInput } from './../../../shared/service-proxies/service-proxies';
+import { VendorForViewDto, MerchandiseInput, AssignmentTableServiceProxy, AssignmentTableForViewDto, AssignmentTableInput, VendorInput } from './../../../shared/service-proxies/service-proxies';
 import { AppComponentBase } from "@shared/common/app-component-base";
 import { AfterViewInit, Injector, Component, ViewChild,OnInit, EventEmitter, Output } from "@angular/core";
 import { VendorServiceProxy, VendorTypeServiceProxy, MerchandiseServiceProxy, MerchandiseTypeServiceProxy } from "@shared/service-proxies/service-proxies";
@@ -8,7 +8,6 @@ import { Paginator } from 'primeng/components/paginator/paginator';
 import { Table } from 'primeng/components/table/table';
 import { CreateMerchandiseModalComponent } from "./create-merchandise-modal.component";
 import { AddContractDetailModalComponent } from '../contract/add-contract-detail-modal-component';
-import { element } from '@angular/core/src/render3/instructions';
 
 @Component({
     selector: 'viewVendorModal',
@@ -36,7 +35,7 @@ export class ViewVendorModalComponent extends AppComponentBase {
     vendortypeList: any[];
     mertypeList: any[];
     asssignmentTableList: any[];
-    products: ProductInput[] = [];
+    //products: ProductInput[] = [];
     listMerchandiseID = [];
     merchlist=[];
 
@@ -84,25 +83,25 @@ export class ViewVendorModalComponent extends AppComponentBase {
     }
 
     passToProducts() {
-        this.products.length = 0;
+        // this.products.length = 0;
 
-        this.addContractDetailModal.listMerID.forEach(element => {
-            let input: ProductInput = new ProductInput();
+        // this.addContractDetailModal.listMerID.forEach(element => {
+        //     let input: ProductInput = new ProductInput();
         
-                input.merchandiseID = element.id;
-                input.merCode = element.code;
-                input.merName = element.name;
-                input.price = element.price;
-                input.unit = element.unit;
-                input.note = element.note;
-                input.info = element.info;
-                input.isActive=element.isActive;
-                if (this.getAssignState(this.vendorId,element.id) == true)
-                {
-                    this.products.push(input);
-                    this.listMerchandiseID.push(element.id);
-                }
-        });
+        //         input.merchandiseID = element.id;
+        //         input.merCode = element.code;
+        //         input.merName = element.name;
+        //         input.price = element.price;
+        //         input.unit = element.unit;
+        //         input.note = element.note;
+        //         input.info = element.info;
+        //         input.isActive=element.isActive;
+        //         if (this.getAssignState(this.vendorId,element.id) == true)
+        //         {
+        //             this.products.push(input);
+        //             this.listMerchandiseID.push(element.id);
+        //         }
+        // });
 
         //console.log(this.addContractDetailModal.listMerID)
         //console.log(this.contract.products);
@@ -142,8 +141,8 @@ export class ViewVendorModalComponent extends AppComponentBase {
 }
 
     loadListMerchandise() {
-        this.primengTableHelper.totalRecordsCount = this.products.length;
-        this.primengTableHelper.records = this.products;
+        // this.primengTableHelper.totalRecordsCount = this.products.length;
+        // this.primengTableHelper.records = this.products;
         this.primengTableHelper.hideLoadingIndicator();
     }
 

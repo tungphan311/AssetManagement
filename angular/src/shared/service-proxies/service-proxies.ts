@@ -9070,24 +9070,27 @@ export class POServiceProxy {
 
     /**
      * @pOID (optional) 
-     * @createDay (optional) 
      * @orderName (optional) 
      * @contractID (optional) 
+     * @vendorID (optional) 
+     * @type (optional) 
      * @sorting (optional) 
      * @maxResultCount (optional) 
      * @skipCount (optional) 
      * @return Success
      */
-    getPOByFilter(pOID: number | null | undefined, createDay: moment.Moment | null | undefined, orderName: string | null | undefined, contractID: number | null | undefined, sorting: string | null | undefined, maxResultCount: number | null | undefined, skipCount: number | null | undefined): Observable<PagedResultDtoOfPODto> {
+    getPOByFilter(pOID: string | null | undefined, orderName: string | null | undefined, contractID: string | null | undefined, vendorID: string | null | undefined, type: string | null | undefined, sorting: string | null | undefined, maxResultCount: number | null | undefined, skipCount: number | null | undefined): Observable<PagedResultDtoOfPODto> {
         let url_ = this.baseUrl + "/api/PO/GetPOByFilter?";
         if (pOID !== undefined)
             url_ += "POID=" + encodeURIComponent("" + pOID) + "&"; 
-        if (createDay !== undefined)
-            url_ += "CreateDay=" + encodeURIComponent(createDay ? "" + createDay.toJSON() : "") + "&"; 
         if (orderName !== undefined)
             url_ += "OrderName=" + encodeURIComponent("" + orderName) + "&"; 
         if (contractID !== undefined)
             url_ += "ContractID=" + encodeURIComponent("" + contractID) + "&"; 
+        if (vendorID !== undefined)
+            url_ += "VendorID=" + encodeURIComponent("" + vendorID) + "&"; 
+        if (type !== undefined)
+            url_ += "Type=" + encodeURIComponent("" + type) + "&"; 
         if (sorting !== undefined)
             url_ += "Sorting=" + encodeURIComponent("" + sorting) + "&"; 
         if (maxResultCount !== undefined)
@@ -17484,9 +17487,6 @@ export class ContractDetailInput implements IContractDetailInput {
     price!: number | undefined;
     note!: string | undefined;
     id!: number | undefined;
-    unit: string;
-    info: string;
-    isActive: boolean;
 
     constructor(data?: IContractDetailInput) {
         if (data) {
