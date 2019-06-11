@@ -60,7 +60,8 @@ import { WebApiServiceProxy } from "./webapi.service";
         ApiServiceProxies.CustomerServiceProxy,
         ApiServiceProxies.AssetServiceProxy,
         ApiServiceProxies.AssetRentServiceProxy,
-        ApiServiceProxies.DetailAssetRentServiceProxy
+        ApiServiceProxies.DetailAssetRentServiceProxy,
+        ApiServiceProxies.VehicleServiceProxy
     ]
 })
 export class ServiceProxyModule {}

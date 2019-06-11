@@ -11,3 +11,16 @@ E:\Nam 3\HKII\CNPMCS\Zero\aspnet-core\src\GSoft.AbpZeroTemplate.Core\obj\Debug\n
 E:\Nam 3\HKII\CNPMCS\Zero\aspnet-core\src\GSoft.AbpZeroTemplate.Core\obj\Debug\netcoreapp2.1\GSoft.AbpZeroTemplate.Core.csproj.CopyComplete
 E:\Nam 3\HKII\CNPMCS\Zero\aspnet-core\src\GSoft.AbpZeroTemplate.Core\obj\Debug\netcoreapp2.1\GSoft.AbpZeroTemplate.Core.dll
 E:\Nam 3\HKII\CNPMCS\Zero\aspnet-core\src\GSoft.AbpZeroTemplate.Core\obj\Debug\netcoreapp2.1\GSoft.AbpZeroTemplate.Core.pdb
+F:\Dev\AssetManagement\aspnet-core\src\GSoft.AbpZeroTemplate.Core\bin\Debug\netcoreapp2.1\GSoft.AbpZeroTemplate.Core.deps.json
+F:\Dev\AssetManagement\aspnet-core\src\GSoft.AbpZeroTemplate.Core\bin\Debug\netcoreapp2.1\GSoft.AbpZeroTemplate.Core.dll
+F:\Dev\AssetManagement\aspnet-core\src\GSoft.AbpZeroTemplate.Core\bin\Debug\netcoreapp2.1\GSoft.AbpZeroTemplate.Core.pdb
+F:\Dev\AssetManagement\aspnet-core\src\GSoft.AbpZeroTemplate.Core\bin\Debug\netcoreapp2.1\GSoft.AbpZeroTemplate.Core.Shared.dll
+F:\Dev\AssetManagement\aspnet-core\src\GSoft.AbpZeroTemplate.Core\bin\Debug\netcoreapp2.1\GSoft.AbpZeroTemplate.Core.Shared.pdb
+F:\Dev\AssetManagement\aspnet-core\src\GSoft.AbpZeroTemplate.Core\obj\Debug\netcoreapp2.1\GSoft.AbpZeroTemplate.Core.csprojAssemblyReference.cache
+F:\Dev\AssetManagement\aspnet-core\src\GSoft.AbpZeroTemplate.Core\obj\Debug\netcoreapp2.1\GSoft.AbpZeroTemplate.Core.csproj.CoreCompileInputs.cache
+F:\Dev\AssetManagement\aspnet-core\src\GSoft.AbpZeroTemplate.Core\obj\Debug\netcoreapp2.1\UserSecretsAssemblyInfo.cs
+F:\Dev\AssetManagement\aspnet-core\src\GSoft.AbpZeroTemplate.Core\obj\Debug\netcoreapp2.1\GSoft.AbpZeroTemplate.Core.AssemblyInfoInputs.cache
+F:\Dev\AssetManagement\aspnet-core\src\GSoft.AbpZeroTemplate.Core\obj\Debug\netcoreapp2.1\GSoft.AbpZeroTemplate.Core.AssemblyInfo.cs
+F:\Dev\AssetManagement\aspnet-core\src\GSoft.AbpZeroTemplate.Core\obj\Debug\netcoreapp2.1\GSoft.AbpZeroTemplate.Core.csproj.CopyComplete
+F:\Dev\AssetManagement\aspnet-core\src\GSoft.AbpZeroTemplate.Core\obj\Debug\netcoreapp2.1\GSoft.AbpZeroTemplate.Core.dll
+F:\Dev\AssetManagement\aspnet-core\src\GSoft.AbpZeroTemplate.Core\obj\Debug\netcoreapp2.1\GSoft.AbpZeroTemplate.Core.pdb

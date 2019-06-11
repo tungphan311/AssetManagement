@@ -29,3 +29,34 @@ E:\Nam 3\HKII\CNPMCS\Zero\aspnet-core\src\GSoft.AbpZeroTemplate.Application\obj\
 E:\Nam 3\HKII\CNPMCS\Zero\aspnet-core\src\GSoft.AbpZeroTemplate.Application\obj\Debug\netcoreapp2.1\GSoft.AbpZeroTemplate.Application.csproj.CopyComplete
 E:\Nam 3\HKII\CNPMCS\Zero\aspnet-core\src\GSoft.AbpZeroTemplate.Application\obj\Debug\netcoreapp2.1\GSoft.AbpZeroTemplate.Application.dll
 E:\Nam 3\HKII\CNPMCS\Zero\aspnet-core\src\GSoft.AbpZeroTemplate.Application\obj\Debug\netcoreapp2.1\GSoft.AbpZeroTemplate.Application.pdb
+F:\Dev\AssetManagement\aspnet-core\src\GSoft.AbpZeroTemplate.Application\bin\Debug\netcoreapp2.1\GSoft.AbpZeroTemplate.Application.deps.json
+F:\Dev\AssetManagement\aspnet-core\src\GSoft.AbpZeroTemplate.Application\bin\Debug\netcoreapp2.1\GSoft.AbpZeroTemplate.Application.dll
+F:\Dev\AssetManagement\aspnet-core\src\GSoft.AbpZeroTemplate.Application\bin\Debug\netcoreapp2.1\GSoft.AbpZeroTemplate.Application.pdb
+F:\Dev\AssetManagement\aspnet-core\src\GSoft.AbpZeroTemplate.Application\bin\Debug\netcoreapp2.1\GSoft.AbpZeroTemplate.Application.Shared.dll
+F:\Dev\AssetManagement\aspnet-core\src\GSoft.AbpZeroTemplate.Application\bin\Debug\netcoreapp2.1\GSoft.AbpZeroTemplate.Core.dll
+F:\Dev\AssetManagement\aspnet-core\src\GSoft.AbpZeroTemplate.Application\bin\Debug\netcoreapp2.1\GSoft.AbpZeroTemplate.Core.Shared.dll
+F:\Dev\AssetManagement\aspnet-core\src\GSoft.AbpZeroTemplate.Application\bin\Debug\netcoreapp2.1\GSoft.AbpZeroTemplate.EntityFrameworkCore.dll
+F:\Dev\AssetManagement\aspnet-core\src\GSoft.AbpZeroTemplate.Application\bin\Debug\netcoreapp2.1\GWebsite.AbpZeroTemplate.Application.dll
+F:\Dev\AssetManagement\aspnet-core\src\GSoft.AbpZeroTemplate.Application\bin\Debug\netcoreapp2.1\GWebsite.AbpZeroTemplate.Application.Share.dll
+F:\Dev\AssetManagement\aspnet-core\src\GSoft.AbpZeroTemplate.Application\bin\Debug\netcoreapp2.1\GWebsite.AbpZeroTemplate.Core.dll
+F:\Dev\AssetManagement\aspnet-core\src\GSoft.AbpZeroTemplate.Application\bin\Debug\netcoreapp2.1\GWebsite.AbpZeroTemplate.EntityFrameworkCore.dll
+F:\Dev\AssetManagement\aspnet-core\src\GSoft.AbpZeroTemplate.Application\bin\Debug\netcoreapp2.1\GSoft.AbpZeroTemplate.Core.pdb
+F:\Dev\AssetManagement\aspnet-core\src\GSoft.AbpZeroTemplate.Application\bin\Debug\netcoreapp2.1\GSoft.AbpZeroTemplate.EntityFrameworkCore.pdb
+F:\Dev\AssetManagement\aspnet-core\src\GSoft.AbpZeroTemplate.Application\bin\Debug\netcoreapp2.1\GSoft.AbpZeroTemplate.EntityFrameworkCore.dll.config
+F:\Dev\AssetManagement\aspnet-core\src\GSoft.AbpZeroTemplate.Application\bin\Debug\netcoreapp2.1\GWebsite.AbpZeroTemplate.Application.pdb
+F:\Dev\AssetManagement\aspnet-core\src\GSoft.AbpZeroTemplate.Application\bin\Debug\netcoreapp2.1\GWebsite.AbpZeroTemplate.Application.dll.config
+F:\Dev\AssetManagement\aspnet-core\src\GSoft.AbpZeroTemplate.Application\bin\Debug\netcoreapp2.1\GWebsite.AbpZeroTemplate.Application.Share.pdb
+F:\Dev\AssetManagement\aspnet-core\src\GSoft.AbpZeroTemplate.Application\bin\Debug\netcoreapp2.1\GWebsite.AbpZeroTemplate.Application.Share.dll.config
+F:\Dev\AssetManagement\aspnet-core\src\GSoft.AbpZeroTemplate.Application\bin\Debug\netcoreapp2.1\GWebsite.AbpZeroTemplate.Core.pdb
+F:\Dev\AssetManagement\aspnet-core\src\GSoft.AbpZeroTemplate.Application\bin\Debug\netcoreapp2.1\GWebsite.AbpZeroTemplate.Core.dll.config
+F:\Dev\AssetManagement\aspnet-core\src\GSoft.AbpZeroTemplate.Application\bin\Debug\netcoreapp2.1\GWebsite.AbpZeroTemplate.EntityFrameworkCore.pdb
+F:\Dev\AssetManagement\aspnet-core\src\GSoft.AbpZeroTemplate.Application\bin\Debug\netcoreapp2.1\GWebsite.AbpZeroTemplate.EntityFrameworkCore.dll.config
+F:\Dev\AssetManagement\aspnet-core\src\GSoft.AbpZeroTemplate.Application\bin\Debug\netcoreapp2.1\GSoft.AbpZeroTemplate.Application.Shared.pdb
+F:\Dev\AssetManagement\aspnet-core\src\GSoft.AbpZeroTemplate.Application\bin\Debug\netcoreapp2.1\GSoft.AbpZeroTemplate.Core.Shared.pdb
+F:\Dev\AssetManagement\aspnet-core\src\GSoft.AbpZeroTemplate.Application\obj\Debug\netcoreapp2.1\GSoft.AbpZeroTemplate.Application.csprojAssemblyReference.cache
+F:\Dev\AssetManagement\aspnet-core\src\GSoft.AbpZeroTemplate.Application\obj\Debug\netcoreapp2.1\GSoft.AbpZeroTemplate.Application.csproj.CoreCompileInputs.cache
+F:\Dev\AssetManagement\aspnet-core\src\GSoft.AbpZeroTemplate.Application\obj\Debug\netcoreapp2.1\GSoft.AbpZeroTemplate.Application.AssemblyInfoInputs.cache
+F:\Dev\AssetManagement\aspnet-core\src\GSoft.AbpZeroTemplate.Application\obj\Debug\netcoreapp2.1\GSoft.AbpZeroTemplate.Application.AssemblyInfo.cs
+F:\Dev\AssetManagement\aspnet-core\src\GSoft.AbpZeroTemplate.Application\obj\Debug\netcoreapp2.1\GSoft.AbpZeroTemplate.Application.csproj.CopyComplete
+F:\Dev\AssetManagement\aspnet-core\src\GSoft.AbpZeroTemplate.Application\obj\Debug\netcoreapp2.1\GSoft.AbpZeroTemplate.Application.dll
+F:\Dev\AssetManagement\aspnet-core\src\GSoft.AbpZeroTemplate.Application\obj\Debug\netcoreapp2.1\GSoft.AbpZeroTemplate.Application.pdb

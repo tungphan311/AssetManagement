@@ -14,3 +14,19 @@ E:\Nam 3\HKII\CNPMCS\Zero\aspnet-core\test\GSoft.AbpZeroTemplate.ConsoleApiClien
 E:\Nam 3\HKII\CNPMCS\Zero\aspnet-core\test\GSoft.AbpZeroTemplate.ConsoleApiClient\obj\Debug\netcoreapp2.1\GSoft.AbpZeroTemplate.ConsoleApiClient.csproj.CopyComplete
 E:\Nam 3\HKII\CNPMCS\Zero\aspnet-core\test\GSoft.AbpZeroTemplate.ConsoleApiClient\obj\Debug\netcoreapp2.1\GSoft.AbpZeroTemplate.ConsoleApiClient.dll
 E:\Nam 3\HKII\CNPMCS\Zero\aspnet-core\test\GSoft.AbpZeroTemplate.ConsoleApiClient\obj\Debug\netcoreapp2.1\GSoft.AbpZeroTemplate.ConsoleApiClient.pdb
+F:\Dev\AssetManagement\aspnet-core\test\GSoft.AbpZeroTemplate.ConsoleApiClient\bin\Debug\netcoreapp2.1\GSoft.AbpZeroTemplate.ConsoleApiClient.deps.json
+F:\Dev\AssetManagement\aspnet-core\test\GSoft.AbpZeroTemplate.ConsoleApiClient\bin\Debug\netcoreapp2.1\GSoft.AbpZeroTemplate.ConsoleApiClient.runtimeconfig.json
+F:\Dev\AssetManagement\aspnet-core\test\GSoft.AbpZeroTemplate.ConsoleApiClient\bin\Debug\netcoreapp2.1\GSoft.AbpZeroTemplate.ConsoleApiClient.runtimeconfig.dev.json
+F:\Dev\AssetManagement\aspnet-core\test\GSoft.AbpZeroTemplate.ConsoleApiClient\bin\Debug\netcoreapp2.1\GSoft.AbpZeroTemplate.ConsoleApiClient.dll
+F:\Dev\AssetManagement\aspnet-core\test\GSoft.AbpZeroTemplate.ConsoleApiClient\bin\Debug\netcoreapp2.1\GSoft.AbpZeroTemplate.ConsoleApiClient.pdb
+F:\Dev\AssetManagement\aspnet-core\test\GSoft.AbpZeroTemplate.ConsoleApiClient\bin\Debug\netcoreapp2.1\GSoft.AbpZeroTemplate.Application.Shared.dll
+F:\Dev\AssetManagement\aspnet-core\test\GSoft.AbpZeroTemplate.ConsoleApiClient\bin\Debug\netcoreapp2.1\GSoft.AbpZeroTemplate.Core.Shared.dll
+F:\Dev\AssetManagement\aspnet-core\test\GSoft.AbpZeroTemplate.ConsoleApiClient\bin\Debug\netcoreapp2.1\GSoft.AbpZeroTemplate.Application.Shared.pdb
+F:\Dev\AssetManagement\aspnet-core\test\GSoft.AbpZeroTemplate.ConsoleApiClient\bin\Debug\netcoreapp2.1\GSoft.AbpZeroTemplate.Core.Shared.pdb
+F:\Dev\AssetManagement\aspnet-core\test\GSoft.AbpZeroTemplate.ConsoleApiClient\obj\Debug\netcoreapp2.1\GSoft.AbpZeroTemplate.ConsoleApiClient.csprojAssemblyReference.cache
+F:\Dev\AssetManagement\aspnet-core\test\GSoft.AbpZeroTemplate.ConsoleApiClient\obj\Debug\netcoreapp2.1\GSoft.AbpZeroTemplate.ConsoleApiClient.csproj.CoreCompileInputs.cache
+F:\Dev\AssetManagement\aspnet-core\test\GSoft.AbpZeroTemplate.ConsoleApiClient\obj\Debug\netcoreapp2.1\GSoft.AbpZeroTemplate.ConsoleApiClient.AssemblyInfoInputs.cache
+F:\Dev\AssetManagement\aspnet-core\test\GSoft.AbpZeroTemplate.ConsoleApiClient\obj\Debug\netcoreapp2.1\GSoft.AbpZeroTemplate.ConsoleApiClient.AssemblyInfo.cs
+F:\Dev\AssetManagement\aspnet-core\test\GSoft.AbpZeroTemplate.ConsoleApiClient\obj\Debug\netcoreapp2.1\GSoft.AbpZeroTemplate.ConsoleApiClient.csproj.CopyComplete
+F:\Dev\AssetManagement\aspnet-core\test\GSoft.AbpZeroTemplate.ConsoleApiClient\obj\Debug\netcoreapp2.1\GSoft.AbpZeroTemplate.ConsoleApiClient.dll
+F:\Dev\AssetManagement\aspnet-core\test\GSoft.AbpZeroTemplate.ConsoleApiClient\obj\Debug\netcoreapp2.1\GSoft.AbpZeroTemplate.ConsoleApiClient.pdb

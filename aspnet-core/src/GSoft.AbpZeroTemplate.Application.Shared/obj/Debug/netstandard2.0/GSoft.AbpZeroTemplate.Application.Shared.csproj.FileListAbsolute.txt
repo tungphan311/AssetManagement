@@ -10,3 +10,15 @@ E:\Nam 3\HKII\CNPMCS\Zero\aspnet-core\src\GSoft.AbpZeroTemplate.Application.Shar
 E:\Nam 3\HKII\CNPMCS\Zero\aspnet-core\src\GSoft.AbpZeroTemplate.Application.Shared\obj\Debug\netstandard2.0\GSoft.AbpZeroTemplate.Application.Shared.csproj.CopyComplete
 E:\Nam 3\HKII\CNPMCS\Zero\aspnet-core\src\GSoft.AbpZeroTemplate.Application.Shared\obj\Debug\netstandard2.0\GSoft.AbpZeroTemplate.Application.Shared.dll
 E:\Nam 3\HKII\CNPMCS\Zero\aspnet-core\src\GSoft.AbpZeroTemplate.Application.Shared\obj\Debug\netstandard2.0\GSoft.AbpZeroTemplate.Application.Shared.pdb
+F:\Dev\AssetManagement\aspnet-core\src\GSoft.AbpZeroTemplate.Application.Shared\bin\Debug\netstandard2.0\GSoft.AbpZeroTemplate.Application.Shared.deps.json
+F:\Dev\AssetManagement\aspnet-core\src\GSoft.AbpZeroTemplate.Application.Shared\bin\Debug\netstandard2.0\GSoft.AbpZeroTemplate.Application.Shared.dll
+F:\Dev\AssetManagement\aspnet-core\src\GSoft.AbpZeroTemplate.Application.Shared\bin\Debug\netstandard2.0\GSoft.AbpZeroTemplate.Application.Shared.pdb
+F:\Dev\AssetManagement\aspnet-core\src\GSoft.AbpZeroTemplate.Application.Shared\bin\Debug\netstandard2.0\GSoft.AbpZeroTemplate.Core.Shared.dll
+F:\Dev\AssetManagement\aspnet-core\src\GSoft.AbpZeroTemplate.Application.Shared\bin\Debug\netstandard2.0\GSoft.AbpZeroTemplate.Core.Shared.pdb
+F:\Dev\AssetManagement\aspnet-core\src\GSoft.AbpZeroTemplate.Application.Shared\obj\Debug\netstandard2.0\GSoft.AbpZeroTemplate.Application.Shared.csprojAssemblyReference.cache
+F:\Dev\AssetManagement\aspnet-core\src\GSoft.AbpZeroTemplate.Application.Shared\obj\Debug\netstandard2.0\GSoft.AbpZeroTemplate.Application.Shared.csproj.CoreCompileInputs.cache
+F:\Dev\AssetManagement\aspnet-core\src\GSoft.AbpZeroTemplate.Application.Shared\obj\Debug\netstandard2.0\GSoft.AbpZeroTemplate.Application.Shared.AssemblyInfoInputs.cache
+F:\Dev\AssetManagement\aspnet-core\src\GSoft.AbpZeroTemplate.Application.Shared\obj\Debug\netstandard2.0\GSoft.AbpZeroTemplate.Application.Shared.AssemblyInfo.cs
+F:\Dev\AssetManagement\aspnet-core\src\GSoft.AbpZeroTemplate.Application.Shared\obj\Debug\netstandard2.0\GSoft.AbpZeroTemplate.Application.Shared.csproj.CopyComplete
+F:\Dev\AssetManagement\aspnet-core\src\GSoft.AbpZeroTemplate.Application.Shared\obj\Debug\netstandard2.0\GSoft.AbpZeroTemplate.Application.Shared.dll
+F:\Dev\AssetManagement\aspnet-core\src\GSoft.AbpZeroTemplate.Application.Shared\obj\Debug\netstandard2.0\GSoft.AbpZeroTemplate.Application.Shared.pdb

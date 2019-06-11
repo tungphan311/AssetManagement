@@ -40,3 +40,45 @@ E:\Nam 3\HKII\CNPMCS\Zero\aspnet-core\test\GSoft.AbpZeroTemplate.Tests\obj\Debug
 E:\Nam 3\HKII\CNPMCS\Zero\aspnet-core\test\GSoft.AbpZeroTemplate.Tests\obj\Debug\netcoreapp2.1\GSoft.AbpZeroTemplate.Tests.csproj.CopyComplete
 E:\Nam 3\HKII\CNPMCS\Zero\aspnet-core\test\GSoft.AbpZeroTemplate.Tests\obj\Debug\netcoreapp2.1\GSoft.AbpZeroTemplate.Tests.dll
 E:\Nam 3\HKII\CNPMCS\Zero\aspnet-core\test\GSoft.AbpZeroTemplate.Tests\obj\Debug\netcoreapp2.1\GSoft.AbpZeroTemplate.Tests.pdb
+F:\Dev\AssetManagement\aspnet-core\test\GSoft.AbpZeroTemplate.Tests\bin\Debug\netcoreapp2.1\xunit.runner.visualstudio.dotnetcore.testadapter.dll
+F:\Dev\AssetManagement\aspnet-core\test\GSoft.AbpZeroTemplate.Tests\bin\Debug\netcoreapp2.1\xunit.runner.reporters.netcoreapp10.dll
+F:\Dev\AssetManagement\aspnet-core\test\GSoft.AbpZeroTemplate.Tests\bin\Debug\netcoreapp2.1\xunit.runner.utility.netcoreapp10.dll
+F:\Dev\AssetManagement\aspnet-core\test\GSoft.AbpZeroTemplate.Tests\bin\Debug\netcoreapp2.1\sqlite3.dll
+F:\Dev\AssetManagement\aspnet-core\test\GSoft.AbpZeroTemplate.Tests\bin\Debug\netcoreapp2.1\appsettings.json
+F:\Dev\AssetManagement\aspnet-core\test\GSoft.AbpZeroTemplate.Tests\bin\Debug\netcoreapp2.1\GSoft.AbpZeroTemplate.Tests.dll.config
+F:\Dev\AssetManagement\aspnet-core\test\GSoft.AbpZeroTemplate.Tests\bin\Debug\netcoreapp2.1\GSoft.AbpZeroTemplate.Tests.deps.json
+F:\Dev\AssetManagement\aspnet-core\test\GSoft.AbpZeroTemplate.Tests\bin\Debug\netcoreapp2.1\GSoft.AbpZeroTemplate.Tests.runtimeconfig.json
+F:\Dev\AssetManagement\aspnet-core\test\GSoft.AbpZeroTemplate.Tests\bin\Debug\netcoreapp2.1\GSoft.AbpZeroTemplate.Tests.runtimeconfig.dev.json
+F:\Dev\AssetManagement\aspnet-core\test\GSoft.AbpZeroTemplate.Tests\bin\Debug\netcoreapp2.1\GSoft.AbpZeroTemplate.Tests.dll
+F:\Dev\AssetManagement\aspnet-core\test\GSoft.AbpZeroTemplate.Tests\bin\Debug\netcoreapp2.1\GSoft.AbpZeroTemplate.Tests.pdb
+F:\Dev\AssetManagement\aspnet-core\test\GSoft.AbpZeroTemplate.Tests\bin\Debug\netcoreapp2.1\GSoft.AbpZeroTemplate.Application.dll
+F:\Dev\AssetManagement\aspnet-core\test\GSoft.AbpZeroTemplate.Tests\bin\Debug\netcoreapp2.1\GSoft.AbpZeroTemplate.Application.Shared.dll
+F:\Dev\AssetManagement\aspnet-core\test\GSoft.AbpZeroTemplate.Tests\bin\Debug\netcoreapp2.1\GSoft.AbpZeroTemplate.Core.dll
+F:\Dev\AssetManagement\aspnet-core\test\GSoft.AbpZeroTemplate.Tests\bin\Debug\netcoreapp2.1\GSoft.AbpZeroTemplate.Core.Shared.dll
+F:\Dev\AssetManagement\aspnet-core\test\GSoft.AbpZeroTemplate.Tests\bin\Debug\netcoreapp2.1\GSoft.AbpZeroTemplate.EntityFrameworkCore.dll
+F:\Dev\AssetManagement\aspnet-core\test\GSoft.AbpZeroTemplate.Tests\bin\Debug\netcoreapp2.1\GWebsite.AbpZeroTemplate.Application.dll
+F:\Dev\AssetManagement\aspnet-core\test\GSoft.AbpZeroTemplate.Tests\bin\Debug\netcoreapp2.1\GWebsite.AbpZeroTemplate.Application.Share.dll
+F:\Dev\AssetManagement\aspnet-core\test\GSoft.AbpZeroTemplate.Tests\bin\Debug\netcoreapp2.1\GWebsite.AbpZeroTemplate.Core.dll
+F:\Dev\AssetManagement\aspnet-core\test\GSoft.AbpZeroTemplate.Tests\bin\Debug\netcoreapp2.1\GWebsite.AbpZeroTemplate.EntityFrameworkCore.dll
+F:\Dev\AssetManagement\aspnet-core\test\GSoft.AbpZeroTemplate.Tests\bin\Debug\netcoreapp2.1\GSoft.AbpZeroTemplate.Application.pdb
+F:\Dev\AssetManagement\aspnet-core\test\GSoft.AbpZeroTemplate.Tests\bin\Debug\netcoreapp2.1\GSoft.AbpZeroTemplate.EntityFrameworkCore.pdb
+F:\Dev\AssetManagement\aspnet-core\test\GSoft.AbpZeroTemplate.Tests\bin\Debug\netcoreapp2.1\GSoft.AbpZeroTemplate.EntityFrameworkCore.dll.config
+F:\Dev\AssetManagement\aspnet-core\test\GSoft.AbpZeroTemplate.Tests\bin\Debug\netcoreapp2.1\GSoft.AbpZeroTemplate.Core.pdb
+F:\Dev\AssetManagement\aspnet-core\test\GSoft.AbpZeroTemplate.Tests\bin\Debug\netcoreapp2.1\GWebsite.AbpZeroTemplate.Application.pdb
+F:\Dev\AssetManagement\aspnet-core\test\GSoft.AbpZeroTemplate.Tests\bin\Debug\netcoreapp2.1\GWebsite.AbpZeroTemplate.Application.dll.config
+F:\Dev\AssetManagement\aspnet-core\test\GSoft.AbpZeroTemplate.Tests\bin\Debug\netcoreapp2.1\GWebsite.AbpZeroTemplate.Application.Share.pdb
+F:\Dev\AssetManagement\aspnet-core\test\GSoft.AbpZeroTemplate.Tests\bin\Debug\netcoreapp2.1\GWebsite.AbpZeroTemplate.Application.Share.dll.config
+F:\Dev\AssetManagement\aspnet-core\test\GSoft.AbpZeroTemplate.Tests\bin\Debug\netcoreapp2.1\GWebsite.AbpZeroTemplate.Core.pdb
+F:\Dev\AssetManagement\aspnet-core\test\GSoft.AbpZeroTemplate.Tests\bin\Debug\netcoreapp2.1\GWebsite.AbpZeroTemplate.Core.dll.config
+F:\Dev\AssetManagement\aspnet-core\test\GSoft.AbpZeroTemplate.Tests\bin\Debug\netcoreapp2.1\GWebsite.AbpZeroTemplate.EntityFrameworkCore.pdb
+F:\Dev\AssetManagement\aspnet-core\test\GSoft.AbpZeroTemplate.Tests\bin\Debug\netcoreapp2.1\GWebsite.AbpZeroTemplate.EntityFrameworkCore.dll.config
+F:\Dev\AssetManagement\aspnet-core\test\GSoft.AbpZeroTemplate.Tests\bin\Debug\netcoreapp2.1\GSoft.AbpZeroTemplate.Application.Shared.pdb
+F:\Dev\AssetManagement\aspnet-core\test\GSoft.AbpZeroTemplate.Tests\bin\Debug\netcoreapp2.1\GSoft.AbpZeroTemplate.Core.Shared.pdb
+F:\Dev\AssetManagement\aspnet-core\test\GSoft.AbpZeroTemplate.Tests\obj\Debug\netcoreapp2.1\GSoft.AbpZeroTemplate.Tests.csprojAssemblyReference.cache
+F:\Dev\AssetManagement\aspnet-core\test\GSoft.AbpZeroTemplate.Tests\obj\Debug\netcoreapp2.1\GSoft.AbpZeroTemplate.Tests.dll.config
+F:\Dev\AssetManagement\aspnet-core\test\GSoft.AbpZeroTemplate.Tests\obj\Debug\netcoreapp2.1\GSoft.AbpZeroTemplate.Tests.csproj.CoreCompileInputs.cache
+F:\Dev\AssetManagement\aspnet-core\test\GSoft.AbpZeroTemplate.Tests\obj\Debug\netcoreapp2.1\GSoft.AbpZeroTemplate.Tests.AssemblyInfoInputs.cache
+F:\Dev\AssetManagement\aspnet-core\test\GSoft.AbpZeroTemplate.Tests\obj\Debug\netcoreapp2.1\GSoft.AbpZeroTemplate.Tests.AssemblyInfo.cs
+F:\Dev\AssetManagement\aspnet-core\test\GSoft.AbpZeroTemplate.Tests\obj\Debug\netcoreapp2.1\GSoft.AbpZeroTemplate.Tests.csproj.CopyComplete
+F:\Dev\AssetManagement\aspnet-core\test\GSoft.AbpZeroTemplate.Tests\obj\Debug\netcoreapp2.1\GSoft.AbpZeroTemplate.Tests.dll
+F:\Dev\AssetManagement\aspnet-core\test\GSoft.AbpZeroTemplate.Tests\obj\Debug\netcoreapp2.1\GSoft.AbpZeroTemplate.Tests.pdb

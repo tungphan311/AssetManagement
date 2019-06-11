@@ -27,3 +27,32 @@ E:\Nam 3\HKII\CNPMCS\Zero\aspnet-core\src\GSoft.AbpZeroTemplate.Migrator\obj\Deb
 E:\Nam 3\HKII\CNPMCS\Zero\aspnet-core\src\GSoft.AbpZeroTemplate.Migrator\obj\Debug\netcoreapp2.1\GSoft.AbpZeroTemplate.Migrator.csproj.CopyComplete
 E:\Nam 3\HKII\CNPMCS\Zero\aspnet-core\src\GSoft.AbpZeroTemplate.Migrator\obj\Debug\netcoreapp2.1\GSoft.AbpZeroTemplate.Migrator.dll
 E:\Nam 3\HKII\CNPMCS\Zero\aspnet-core\src\GSoft.AbpZeroTemplate.Migrator\obj\Debug\netcoreapp2.1\GSoft.AbpZeroTemplate.Migrator.pdb
+F:\Dev\AssetManagement\aspnet-core\src\GSoft.AbpZeroTemplate.Migrator\bin\Debug\netcoreapp2.1\appsettings.json
+F:\Dev\AssetManagement\aspnet-core\src\GSoft.AbpZeroTemplate.Migrator\bin\Debug\netcoreapp2.1\log4net.config
+F:\Dev\AssetManagement\aspnet-core\src\GSoft.AbpZeroTemplate.Migrator\bin\Debug\netcoreapp2.1\GSoft.AbpZeroTemplate.Migrator.dll.config
+F:\Dev\AssetManagement\aspnet-core\src\GSoft.AbpZeroTemplate.Migrator\bin\Debug\netcoreapp2.1\GSoft.AbpZeroTemplate.Migrator.deps.json
+F:\Dev\AssetManagement\aspnet-core\src\GSoft.AbpZeroTemplate.Migrator\bin\Debug\netcoreapp2.1\GSoft.AbpZeroTemplate.Migrator.runtimeconfig.json
+F:\Dev\AssetManagement\aspnet-core\src\GSoft.AbpZeroTemplate.Migrator\bin\Debug\netcoreapp2.1\GSoft.AbpZeroTemplate.Migrator.runtimeconfig.dev.json
+F:\Dev\AssetManagement\aspnet-core\src\GSoft.AbpZeroTemplate.Migrator\bin\Debug\netcoreapp2.1\GSoft.AbpZeroTemplate.Migrator.dll
+F:\Dev\AssetManagement\aspnet-core\src\GSoft.AbpZeroTemplate.Migrator\bin\Debug\netcoreapp2.1\GSoft.AbpZeroTemplate.Migrator.pdb
+F:\Dev\AssetManagement\aspnet-core\src\GSoft.AbpZeroTemplate.Migrator\bin\Debug\netcoreapp2.1\GSoft.AbpZeroTemplate.Core.dll
+F:\Dev\AssetManagement\aspnet-core\src\GSoft.AbpZeroTemplate.Migrator\bin\Debug\netcoreapp2.1\GSoft.AbpZeroTemplate.Core.Shared.dll
+F:\Dev\AssetManagement\aspnet-core\src\GSoft.AbpZeroTemplate.Migrator\bin\Debug\netcoreapp2.1\GSoft.AbpZeroTemplate.EntityFrameworkCore.dll
+F:\Dev\AssetManagement\aspnet-core\src\GSoft.AbpZeroTemplate.Migrator\bin\Debug\netcoreapp2.1\GWebsite.AbpZeroTemplate.Core.dll
+F:\Dev\AssetManagement\aspnet-core\src\GSoft.AbpZeroTemplate.Migrator\bin\Debug\netcoreapp2.1\GWebsite.AbpZeroTemplate.EntityFrameworkCore.dll
+F:\Dev\AssetManagement\aspnet-core\src\GSoft.AbpZeroTemplate.Migrator\bin\Debug\netcoreapp2.1\GSoft.AbpZeroTemplate.EntityFrameworkCore.pdb
+F:\Dev\AssetManagement\aspnet-core\src\GSoft.AbpZeroTemplate.Migrator\bin\Debug\netcoreapp2.1\GSoft.AbpZeroTemplate.EntityFrameworkCore.dll.config
+F:\Dev\AssetManagement\aspnet-core\src\GSoft.AbpZeroTemplate.Migrator\bin\Debug\netcoreapp2.1\GSoft.AbpZeroTemplate.Core.pdb
+F:\Dev\AssetManagement\aspnet-core\src\GSoft.AbpZeroTemplate.Migrator\bin\Debug\netcoreapp2.1\GWebsite.AbpZeroTemplate.Core.pdb
+F:\Dev\AssetManagement\aspnet-core\src\GSoft.AbpZeroTemplate.Migrator\bin\Debug\netcoreapp2.1\GWebsite.AbpZeroTemplate.Core.dll.config
+F:\Dev\AssetManagement\aspnet-core\src\GSoft.AbpZeroTemplate.Migrator\bin\Debug\netcoreapp2.1\GWebsite.AbpZeroTemplate.EntityFrameworkCore.pdb
+F:\Dev\AssetManagement\aspnet-core\src\GSoft.AbpZeroTemplate.Migrator\bin\Debug\netcoreapp2.1\GWebsite.AbpZeroTemplate.EntityFrameworkCore.dll.config
+F:\Dev\AssetManagement\aspnet-core\src\GSoft.AbpZeroTemplate.Migrator\bin\Debug\netcoreapp2.1\GSoft.AbpZeroTemplate.Core.Shared.pdb
+F:\Dev\AssetManagement\aspnet-core\src\GSoft.AbpZeroTemplate.Migrator\obj\Debug\netcoreapp2.1\GSoft.AbpZeroTemplate.Migrator.csprojAssemblyReference.cache
+F:\Dev\AssetManagement\aspnet-core\src\GSoft.AbpZeroTemplate.Migrator\obj\Debug\netcoreapp2.1\GSoft.AbpZeroTemplate.Migrator.dll.config
+F:\Dev\AssetManagement\aspnet-core\src\GSoft.AbpZeroTemplate.Migrator\obj\Debug\netcoreapp2.1\GSoft.AbpZeroTemplate.Migrator.csproj.CoreCompileInputs.cache
+F:\Dev\AssetManagement\aspnet-core\src\GSoft.AbpZeroTemplate.Migrator\obj\Debug\netcoreapp2.1\GSoft.AbpZeroTemplate.Migrator.AssemblyInfoInputs.cache
+F:\Dev\AssetManagement\aspnet-core\src\GSoft.AbpZeroTemplate.Migrator\obj\Debug\netcoreapp2.1\GSoft.AbpZeroTemplate.Migrator.AssemblyInfo.cs
+F:\Dev\AssetManagement\aspnet-core\src\GSoft.AbpZeroTemplate.Migrator\obj\Debug\netcoreapp2.1\GSoft.AbpZeroTemplate.Migrator.csproj.CopyComplete
+F:\Dev\AssetManagement\aspnet-core\src\GSoft.AbpZeroTemplate.Migrator\obj\Debug\netcoreapp2.1\GSoft.AbpZeroTemplate.Migrator.dll
+F:\Dev\AssetManagement\aspnet-core\src\GSoft.AbpZeroTemplate.Migrator\obj\Debug\netcoreapp2.1\GSoft.AbpZeroTemplate.Migrator.pdb
