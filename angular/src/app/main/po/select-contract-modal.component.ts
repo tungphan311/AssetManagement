@@ -93,7 +93,26 @@ export class SelectContractModalComponent extends AppComponentBase {
             return;
         }
     }
-
+    getVendorName(id: number): any {
+        for (const item of this.listBid) {
+            if (item.id == id) {
+                for (const vendor of this.listVendor) {
+                    if (vendor.id == item.bidderID) {
+                        return vendor.name;
+                    }
+                }
+            }
+        }
+        return "Chưa có nhà cung cấp";
+    }
+    getBidNameFromId(id: number): any {
+        for(const item of this.listBid) {
+            if (item.id == id) {
+                return item.name;
+            }
+        }
+        return "Chưa có mã gói thầu";
+    }
     /**
      * Tạo pipe thay vì tạo từng hàm truncate như thế này
      * @param text
@@ -111,7 +130,6 @@ export class SelectContractModalComponent extends AppComponentBase {
     }
     show(): void {
         this.saving = false;
-        this.notify.info(this.l('SavedSuccessfully'));
         this.selectContractModal.show();
     }
 

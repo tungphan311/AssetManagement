@@ -45,16 +45,18 @@ export class CreateOrEditVendorModalComponent extends AppComponentBase {
         ).subscribe(result => {
             this.vendortypeList = result.items;
         });
-
+        this.vendor.typeID = 0;
         this._vendorService.getVendorForEdit(vendorId).subscribe(result => {
             this.vendor = result;
+            if (this.vendor.typeID==null||this.vendor.typeID==undefined)
+                this.vendor.typeID=0;
             this.modal.show();
-
         })
     }
 
     save(): void {
         let input = this.vendor;
+        input.merchandises = [];
         this.saving = true;
         this._vendorService.createOrEditVendor(input).subscribe(result => {
             this.notify.info(this.l('SavedSuccessfully'));

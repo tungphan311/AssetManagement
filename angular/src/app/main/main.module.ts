@@ -53,7 +53,9 @@ import { ViewRetailModalComponent } from './retail/view-retail-modal.component';
 import { RetailPaymentComponent } from './retail-payment/retail-payment.component';
 import { CreateOrEditRetailPaymentModalComponent } from './retail-payment/create-or-edit-retail-payment-modal.component';
 import { ViewRetailPaymentModalComponent } from './retail-payment/view-retail-payment-modal.component';
+import { AddMerchandiseToPOComponent } from './po/add-merchandise-to-po.component';
 
+import { AddVendorModalComponent } from './po/add-vendor-modal.component';
 
 @NgModule({
     imports: [
@@ -97,6 +99,7 @@ import { ViewRetailPaymentModalComponent } from './retail-payment/view-retail-pa
         POCOmponent, CreateOrEditPOModalComponent, SelectContractModalComponent,
         RetailComponent, CreateOrEditRetailModalComponent, ViewRetailModalComponent,
         RetailPaymentComponent, ViewRetailPaymentModalComponent, CreateOrEditRetailPaymentModalComponent,
+        AddMerchandiseToPOComponent, AddVendorModalComponent
     ],
     providers: [
         

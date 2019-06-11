@@ -43,9 +43,11 @@ export class CreateOrEditMerchandiseModalComponent extends AppComponentBase {
 
     show(merchandiseId?: number | null | undefined): void {
         this.saving = false;
-
+        this.merchandise.typeID=0;
         this._merchandiseService.getMerchandiseForEdit(merchandiseId).subscribe(result => {
             this.merchandise = result;
+            if (this.merchandise.typeID==null||this.merchandise.typeID==undefined)
+                this.merchandise.typeID=0;
             this.modal.show();
         })
 

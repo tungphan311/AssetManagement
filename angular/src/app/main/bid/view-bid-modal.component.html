@@ -1,29 +1,193 @@
-<div bsModal #viewModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="viewModal"
-    aria-hidden="true" [config]="{backdrop: 'static'}">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title">
-                    <span *ngIf="bid.id">{{l("EditBid")}}: {{bid.name}}</span>
-                    <span *ngIf="!bid.id">{{l("CreateNewBid")}}</span>
-                </h4>
-                <button type="button" class="close" (click)="close()" [attr.aria-label]="l('Close')">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="form-group">
-                    <label>Tên gói thầu</label>
-                    <p>{{bid.name}}</p>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button [disabled]="saving" type="button" class="btn btn-default"
-                    (click)="close()">{{l("Cancel")}}</button>
-                <button type="submit" class="btn btn-primary" [buttonBusy]="saving"
-                    [busyText]="l('SavingWithThreeDot')"><i class="fa fa-save"></i>
-                    <span>{{l("Save")}}</span></button>
+<div [@routerTransition]>
+    <div bsModal #viewBidModal="bs-modal" class="modal fade" tabindex="-1" role="dialog"
+        aria-labelledby="viewBidModal" aria-hidden="true" [config]="{backdrop: 'static'}">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">
+                            <span>Thông tin gói thầu</span>
+                        </h4>
+                        <button type="button" class="close" (click)="close()" [attr.aria-label]="l('Close')">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">                   
+                        <div class="form-group row margin-top-15">
+                            <div class="col-xs-5 margin-right-20 margin-left-20">
+                                <label for="ex1">Mã HS thầu *</label>
+                                <input class="form-control" id="ex1" type="text" name="Name" value="{{bid.name}}" readonly>
+                    
+                            </div>
+                            <div class="col-xs-5 margin-right-20">
+                                <label for="ex2">Hạng mục thầu *</label>
+                                <input class="form-control" id="ex2" type="text" name="Category" value="{{bid.category}}" readonly>
+                            </div>
+                            <div class="col-xs-4">
+                                <label for="ex3">Mã dự án *</label>
+                                <div class="input-group col-xs-4">
+                                    <input class="form-control" type="text" name="ProjectCode" value="{{projectCode}}" readonly>                               
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-xs-4 margin-right-20 margin-left-20">
+                                <label for="ex4">Ngày mở thầu *</label>
+                                <input class="form-control" id="ex4" type="text" name="BeginDay"value="{{dateFormat(bid.beginDay)}}" readonly>
+                                <validation-messages [formCtrl]="beginDayInput"></validation-messages>
+                            </div>  
+                            <div class="col-xs-4 margin-right-20">
+                                <label for="ex5">Ngày nhận HS thầu *</label>
+                                <input class="form-control" id="ex5" type="text" name="StartReceivingRecords" value="{{dateFormat(bid.startReceivingRecords)}}" readonly>
+                            </div>  
+                            <div class="col-xs-4">
+                                <label for="ex6">Ngày hết hạn nộp HS thầu *</label>
+                                <input  class="form-control" id="ex6" type="text" name="EndReceivingRecords" value="{{dateFormat(bid.endReceivingRecords)}}" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-xs-5 margin-left-20">
+                                <label for="ex7">Hình thức thầu *</label>
+                                <select id="ex7" name="BiddingForm" class="form-control" value="{{bid.biddingForm}}" readonly>
+                                    <option value="Đấu thầu">Đấu thầu</option>
+                                    <option value="Chỉ định">Chỉ định</option>
+                                </select>
+                            </div>
+                        </div>
+                        <form #tempf1="ngForm" class="margin-top-15">
+                            <fieldset style="border: solid; border-width: thin">
+                                <legend visible="true" style="width:auto; margin-left: 10px;">Bảo lãnh dự thầu</legend>
+                                <div class="form-group row">
+                                    <div class="col-xs-4 margin-left-40">
+                                        <label for="ex8">Số tiền *</label>
+                                        <input  class="form-control" id="ex8" type="text" name="TotalPrice" value="{{bid.totalPrice}}" readonly>
+                                    </div>  
+                                    <div class="col-xs-4 margin-left-40">
+                                        <label for="ex9">Phần trăm *</label>
+                                        <input class="form-control" id="ex9" type="text" name="Percent" value="{{bid.percent}}" readonly="64">
+                                    </div> 
+                                </div>    
+                            </fieldset>
+                        </form>
+                        <form class="margin-top-15">
+                            <fieldset style="border: solid; border-width: thin">
+                                <legend visible="true" style="width:auto; margin-left: 10px;">File đính kèm</legend>
+                                <div class="form-group row margin-left-40"><a href="{{bid.attachment1}}" target="_blank">File đính kèm 1</a></div> 
+                                <div class="form-group row margin-left-40"><a href="{{bid.attachment2}}" target="_blank">File đính kèm 2</a></div>
+                                <div class="form-group row margin-left-40"><a href="{{bid.attachment3}}" target="_blank">File đính kèm 3</a></div>
+                                <div class="form-group row margin-left-40"><a href="{{bid.attachment4}}" target="_blank">File đính kèm 4</a></div>                      
+                            </fieldset>
+                        </form>
+                     <nav class="navbar navbar-expand-sm navbar-light margin-top-15" style="background-color: #e3f2fd;">
+                            <h4 class="modal-title">
+                                <i class="fa fa-table"></i>
+                                <span>Danh sách DV tham gia thầu</span>
+                            </h4>
+                        </nav>  
+                        <div class="row align-items-center">
+                            <!--<Primeng-TurboTable-Start>-->
+                            <div class="primeng-datatable-container" [busyIf]="primengTableHelper.isLoading">
+                                <div class="d-flex align-items-center">
+                                    <div class="primeng-paging-container">
+                                        <p-paginator rows="{{primengTableHelper.defaultRecordsCountPerPage}}" #paginator
+                                            (onPageChange)="getBidders($event)"
+                                            [totalRecords]="primengTableHelper.totalRecordsCount"
+                                            [rowsPerPageOptions]="primengTableHelper.predefinedRecordsCountPerPage">
+                                        </p-paginator>
+                                    </div>
+                                </div>  
+                                <p-table #dataTable (onLazyLoad)="getBidders($event)" [value]="primengTableHelper.records"
+                                    rows="{{primengTableHelper.defaultRecordsCountPerPage}}" [paginator]="false" [lazy]="true"
+                                    [responsive]="primengTableHelper.isResponsive" [scrollable]="true">
+                                    <ng-template pTemplate="header">
+                                        <tr>
+                                            <th pSortableColumn="isSelected" style="width: 100px; text-align: center;">
+                                                DV trúng thầu
+                                                <p-sortIcon field="isSelected"></p-sortIcon>
+                                            </th>
+                                            <th pSortableColumn="code" style="width: 150px; text-align: center;">
+                                                Mã DV
+                                                <p-sortIcon field="code"></p-sortIcon>
+                                            </th>
+                                            <th pSortableColumn="name" style="width: 150px; text-align: center;">
+                                                Tên DV
+                                                <p-sortIcon field="name"></p-sortIcon>
+                                            </th>
+                                            <th style="width: 150px; text-align: center;">Ngày nộp HS thầu</th>
+                                            <th pSortableColumn="offerPrice" style="width: 150px; text-align: center;">
+                                                Giá chào thầu
+                                                <p-sortIcon field="offerPrice"></p-sortIcon>
+                                            </th>    
+                                            <th style="width: 150px; text-align: center;">Hình thức bảo lãnh</th>
+                                            <th style="width: 150px; text-align: center;">Ngày hết hạn BL</th>
+                                            <th style="width: 150px; text-align: center;">Ngân hàng</th>
+                                            <th style="width: 150px; text-align: center;">Số chứng từ</th>
+                                            <th style="width: 150px; text-align: center;">File đính kèm</th>
+                                            <th style="width: 150px; text-align: center;">Ghi chú</th>                      
+            
+                                        </tr>
+                                    </ng-template>
+                                    <ng-template pTemplate="body" let-record="$implicit" let-i="rowIndex">
+                                        <tr>                                   
+                                            <td style="width: 100px; text-align: center;">
+                                                    <span class="ui-column-title">DV trúng thầu</span>
+                                                    <div class="radio">
+                                                            <input type="radio" id="{{record.vendorCode}}" name="radio" [(ngModel)]="selectedVendorID" [value]="record.bidder.vendorId" readonly />          
+                                                    </div>
+                                            </td>
+                                            <td style="width: 150px; text-align: center;">
+                                                <span class="ui-column-title">Mã DV</span>
+                                                <span class="Code">{{truncateString(record.vendorCode)}}</span>
+                                            </td>
+                                            <td style="width: 150px; text-align: center;">
+                                                <span class="ui-column-title">Tên DV</span>
+                                                <span class="Name">{{truncateString(record.vendorName)}}</span>
+                                            </td>
+                                            <td style="width: 150px; text-align: center;">
+                                                <span class="ui-column-title">Ngày nộp HS thầu</span>
+                                                <span class="applyDay">{{truncateString(dateFormat(record.bidder.applyDay))}}</span>
+                                            </td>
+                                            <td style="width: 150px; text-align: center;">
+                                                <span class="ui-column-title">Giá chào thầu</span>
+                                                <span class="offerPrice">{{truncateString(record.bidder.offerPrice)}}</span>
+                                            </td>
+                                            <td style="width: 150px; text-align: center;">
+                                                <span class="ui-column-title">Hình thức bảo lãnh</span>
+                                                <span class="guaranteeMethod">{{truncateString(record.bidder.guaranteeMethod)}}</span>
+                                            </td>
+                                            <td style="width: 150px; text-align: center;">
+                                                <span class="ui-column-title">Ngày hết hạn BL</span>
+                                                <span class="guaranteeExpired">{{truncateString(dateFormat(record.bidder.guaranteeExpired))}}</span>
+                                            </td>
+                                            <td style="width: 150px; text-align: center;">
+                                                <span class="ui-column-title">Ngân hàng</span>
+                                                <span class="guaranteeBank">{{truncateString(record.bidder.guaranteeBank)}}</span>
+                                            </td>
+                                            <td style="width: 150px; text-align: center;">
+                                                <span class="ui-column-title">Số chứng từ</span>
+                                                <span class="certificateNumber">{{truncateString(record.bidder.certificateNumber)}}</span>
+                                            </td>
+                                            <td style="width: 150px; text-align: center;">
+                                                <span class="ui-column-title">File đính kèm</span>                                  
+                                                <a href="{{record.bidder.attachment}}" target="_blank">File đính kèm</a> 
+                                            </td>                                          
+                                            <td style="width: 150px; text-align: center;">
+                                                    <span class="ui-column-title">Ghi chú</span>
+                                                    <span class="note">{{truncateString(record.bidder.note)}}</span>
+                                                </td>
+                                        </tr>
+                                    </ng-template>
+                                </p-table>
+                            </div>
+                            <!--<Primeng-TurboTable-End>-->
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button [disabled]="saving" type="button" class="btn btn-default"
+                            (click)="close()">{{l("Cancel")}}</button>
+                       
+                    </div>
+                
             </div>
         </div>
     </div>
-</div>
+    </div>
