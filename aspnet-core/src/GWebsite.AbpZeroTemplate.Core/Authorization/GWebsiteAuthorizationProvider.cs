@@ -95,6 +95,16 @@ namespace GWebsite.AbpZeroTemplate.Core.Authorization
             PO.CreateChildPermission(GWebsitePermissions.Pages_Administration_PO_Create, L("CreateNewPO"));
             PO.CreateChildPermission(GWebsitePermissions.Pages_Administration_PO_Edit, L("EditingPO"));
             PO.CreateChildPermission(GWebsitePermissions.Pages_Administration_PO_Delete, L("DeletingPO"));
+
+            var Retail = pages.CreateChildPermission(GWebsitePermissions.Pages_Administration_Retail, L("Retail"));
+            Retail.CreateChildPermission(GWebsitePermissions.Pages_Administration_Retail_Create, L("CreateNewRetail"));
+            Retail.CreateChildPermission(GWebsitePermissions.Pages_Administration_Retail_Edit, L("EditingRetail"));
+            Retail.CreateChildPermission(GWebsitePermissions.Pages_Administration_Retail_Delete, L("DeletingRetail"));
+
+            var RetailPayment = pages.CreateChildPermission(GWebsitePermissions.Pages_Administration_RetailPayment, L("RetailPayment"));
+            RetailPayment.CreateChildPermission(GWebsitePermissions.Pages_Administration_RetailPayment_Create, L("CreateNewRetailPayment"));
+            RetailPayment.CreateChildPermission(GWebsitePermissions.Pages_Administration_RetailPayment_Edit, L("EditingRetailPayment"));
+            RetailPayment.CreateChildPermission(GWebsitePermissions.Pages_Administration_RetailPayment_Delete, L("DeletingRetailPayment"));
         }
 
         private static ILocalizableString L(string name)

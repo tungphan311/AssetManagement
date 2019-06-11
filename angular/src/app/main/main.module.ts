@@ -48,6 +48,11 @@ import { CreateOrEditPOModalComponent } from './po/create-or-edit-po-modal.compo
 import { SelectContractModalComponent } from './po/select-contract-modal.component';
 import { RetailComponent } from './retail/retail.component';
 import { AddMerchandiseModalComponent } from './vendor/add-merchandise-modal.component';
+import { CreateOrEditRetailModalComponent } from './retail/create-or-edit-retail-modal.component';
+import { ViewRetailModalComponent } from './retail/view-retail-modal.component';
+import { RetailPaymentComponent } from './retail-payment/retail-payment.component';
+import { CreateOrEditRetailPaymentModalComponent } from './retail-payment/create-or-edit-retail-payment-modal.component';
+import { ViewRetailPaymentModalComponent } from './retail-payment/view-retail-payment-modal.component';
 
 
 @NgModule({
@@ -89,7 +94,9 @@ import { AddMerchandiseModalComponent } from './vendor/add-merchandise-modal.com
         AssignmentTableComponent, CreateOrEditAssignmentTableModalComponent, ViewAssignmentTableModalComponent,
         BidComponent, CreateOrEditBidModalComponent, ViewBidModalComponent, SelectProjectModalComponent, AddBidderModal, SelectVendorModalComponent,
         CreateMerchandiseModalComponent,
-        POCOmponent, CreateOrEditPOModalComponent, SelectContractModalComponent
+        POCOmponent, CreateOrEditPOModalComponent, SelectContractModalComponent,
+        RetailComponent, CreateOrEditRetailModalComponent, ViewRetailModalComponent,
+        RetailPaymentComponent, ViewRetailPaymentModalComponent, CreateOrEditRetailPaymentModalComponent,
     ],
     providers: [
         

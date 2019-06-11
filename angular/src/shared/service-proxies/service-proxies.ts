@@ -9136,6 +9136,584 @@ export class ProjectServiceProxy {
 }
 
 @Injectable()
+export class RetailServiceProxy {
+    private http: HttpClient;
+    private baseUrl: string;
+    protected jsonParseReviver: ((key: string, value: any) => any) | undefined = undefined;
+
+    constructor(@Inject(HttpClient) http: HttpClient, @Optional() @Inject(API_BASE_URL) baseUrl?: string) {
+        this.http = http;
+        this.baseUrl = baseUrl ? baseUrl : "";
+    }
+
+    /**
+     * @merchandiseID (optional) 
+     * @vendorID (optional) 
+     * @sorting (optional) 
+     * @maxResultCount (optional) 
+     * @skipCount (optional) 
+     * @return Success
+     */
+    getRetailsByFilter(merchandiseID: number | null | undefined, vendorID: number | null | undefined, sorting: string | null | undefined, maxResultCount: number | null | undefined, skipCount: number | null | undefined): Observable<PagedResultDtoOfRetailDto> {
+        let url_ = this.baseUrl + "/api/Retail/GetRetailsByFilter?";
+        if (merchandiseID !== undefined)
+            url_ += "MerchandiseID=" + encodeURIComponent("" + merchandiseID) + "&"; 
+        if (vendorID !== undefined)
+            url_ += "VendorID=" + encodeURIComponent("" + vendorID) + "&"; 
+        if (sorting !== undefined)
+            url_ += "Sorting=" + encodeURIComponent("" + sorting) + "&"; 
+        if (maxResultCount !== undefined)
+            url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&"; 
+        if (skipCount !== undefined)
+            url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetRetailsByFilter(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetRetailsByFilter(<any>response_);
+                } catch (e) {
+                    return <Observable<PagedResultDtoOfRetailDto>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<PagedResultDtoOfRetailDto>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetRetailsByFilter(response: HttpResponseBase): Observable<PagedResultDtoOfRetailDto> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 ? PagedResultDtoOfRetailDto.fromJS(resultData200) : new PagedResultDtoOfRetailDto();
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<PagedResultDtoOfRetailDto>(<any>null);
+    }
+
+    /**
+     * @id (optional) 
+     * @return Success
+     */
+    getRetailForEdit(id: number | null | undefined): Observable<RetailInput> {
+        let url_ = this.baseUrl + "/api/Retail/GetRetailForEdit?";
+        if (id !== undefined)
+            url_ += "id=" + encodeURIComponent("" + id) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetRetailForEdit(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetRetailForEdit(<any>response_);
+                } catch (e) {
+                    return <Observable<RetailInput>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<RetailInput>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetRetailForEdit(response: HttpResponseBase): Observable<RetailInput> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 ? RetailInput.fromJS(resultData200) : new RetailInput();
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<RetailInput>(<any>null);
+    }
+
+    /**
+     * @input (optional) 
+     * @return Success
+     */
+    createOrEditRetail(input: RetailInput | null | undefined): Observable<void> {
+        let url_ = this.baseUrl + "/api/Retail/CreateOrEditRetail";
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(input);
+
+        let options_ : any = {
+            body: content_,
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+            })
+        };
+
+        return this.http.request("post", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processCreateOrEditRetail(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processCreateOrEditRetail(<any>response_);
+                } catch (e) {
+                    return <Observable<void>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<void>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processCreateOrEditRetail(response: HttpResponseBase): Observable<void> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return _observableOf<void>(<any>null);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<void>(<any>null);
+    }
+
+    /**
+     * @return Success
+     */
+    deleteRetail(id: number): Observable<void> {
+        let url_ = this.baseUrl + "/api/Retail/DeleteRetail/{id}";
+        if (id === undefined || id === null)
+            throw new Error("The parameter 'id' must be defined.");
+        url_ = url_.replace("{id}", encodeURIComponent("" + id)); 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+            })
+        };
+
+        return this.http.request("delete", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processDeleteRetail(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processDeleteRetail(<any>response_);
+                } catch (e) {
+                    return <Observable<void>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<void>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processDeleteRetail(response: HttpResponseBase): Observable<void> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return _observableOf<void>(<any>null);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<void>(<any>null);
+    }
+
+    /**
+     * @id (optional) 
+     * @return Success
+     */
+    getRetailForView(id: number | null | undefined): Observable<RetailForViewDto> {
+        let url_ = this.baseUrl + "/api/Retail/GetRetailForView?";
+        if (id !== undefined)
+            url_ += "id=" + encodeURIComponent("" + id) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetRetailForView(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetRetailForView(<any>response_);
+                } catch (e) {
+                    return <Observable<RetailForViewDto>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<RetailForViewDto>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetRetailForView(response: HttpResponseBase): Observable<RetailForViewDto> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 ? RetailForViewDto.fromJS(resultData200) : new RetailForViewDto();
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<RetailForViewDto>(<any>null);
+    }
+}
+
+@Injectable()
+export class RetailPaymentServiceProxy {
+    private http: HttpClient;
+    private baseUrl: string;
+    protected jsonParseReviver: ((key: string, value: any) => any) | undefined = undefined;
+
+    constructor(@Inject(HttpClient) http: HttpClient, @Optional() @Inject(API_BASE_URL) baseUrl?: string) {
+        this.http = http;
+        this.baseUrl = baseUrl ? baseUrl : "";
+    }
+
+    /**
+     * @sorting (optional) 
+     * @maxResultCount (optional) 
+     * @skipCount (optional) 
+     * @return Success
+     */
+    getRetailPaymentsByFilter(sorting: string | null | undefined, maxResultCount: number | null | undefined, skipCount: number | null | undefined): Observable<PagedResultDtoOfRetailPaymentDto> {
+        let url_ = this.baseUrl + "/api/RetailPayment/GetRetailPaymentsByFilter?";
+        if (sorting !== undefined)
+            url_ += "Sorting=" + encodeURIComponent("" + sorting) + "&"; 
+        if (maxResultCount !== undefined)
+            url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&"; 
+        if (skipCount !== undefined)
+            url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetRetailPaymentsByFilter(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetRetailPaymentsByFilter(<any>response_);
+                } catch (e) {
+                    return <Observable<PagedResultDtoOfRetailPaymentDto>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<PagedResultDtoOfRetailPaymentDto>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetRetailPaymentsByFilter(response: HttpResponseBase): Observable<PagedResultDtoOfRetailPaymentDto> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 ? PagedResultDtoOfRetailPaymentDto.fromJS(resultData200) : new PagedResultDtoOfRetailPaymentDto();
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<PagedResultDtoOfRetailPaymentDto>(<any>null);
+    }
+
+    /**
+     * @id (optional) 
+     * @return Success
+     */
+    getRetailPaymentForEdit(id: number | null | undefined): Observable<RetailPaymentInput> {
+        let url_ = this.baseUrl + "/api/RetailPayment/GetRetailPaymentForEdit?";
+        if (id !== undefined)
+            url_ += "id=" + encodeURIComponent("" + id) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetRetailPaymentForEdit(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetRetailPaymentForEdit(<any>response_);
+                } catch (e) {
+                    return <Observable<RetailPaymentInput>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<RetailPaymentInput>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetRetailPaymentForEdit(response: HttpResponseBase): Observable<RetailPaymentInput> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 ? RetailPaymentInput.fromJS(resultData200) : new RetailPaymentInput();
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<RetailPaymentInput>(<any>null);
+    }
+
+    /**
+     * @input (optional) 
+     * @return Success
+     */
+    createOrEditRetailPayment(input: RetailPaymentInput | null | undefined): Observable<void> {
+        let url_ = this.baseUrl + "/api/RetailPayment/CreateOrEditRetailPayment";
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(input);
+
+        let options_ : any = {
+            body: content_,
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+            })
+        };
+
+        return this.http.request("post", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processCreateOrEditRetailPayment(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processCreateOrEditRetailPayment(<any>response_);
+                } catch (e) {
+                    return <Observable<void>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<void>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processCreateOrEditRetailPayment(response: HttpResponseBase): Observable<void> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return _observableOf<void>(<any>null);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<void>(<any>null);
+    }
+
+    /**
+     * @return Success
+     */
+    deleteRetailPayment(id: number): Observable<void> {
+        let url_ = this.baseUrl + "/api/RetailPayment/DeleteRetailPayment/{id}";
+        if (id === undefined || id === null)
+            throw new Error("The parameter 'id' must be defined.");
+        url_ = url_.replace("{id}", encodeURIComponent("" + id)); 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+            })
+        };
+
+        return this.http.request("delete", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processDeleteRetailPayment(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processDeleteRetailPayment(<any>response_);
+                } catch (e) {
+                    return <Observable<void>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<void>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processDeleteRetailPayment(response: HttpResponseBase): Observable<void> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return _observableOf<void>(<any>null);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<void>(<any>null);
+    }
+
+    /**
+     * @id (optional) 
+     * @return Success
+     */
+    getRetailPaymentForView(id: number | null | undefined): Observable<RetailPaymentForViewDto> {
+        let url_ = this.baseUrl + "/api/RetailPayment/GetRetailPaymentForView?";
+        if (id !== undefined)
+            url_ += "id=" + encodeURIComponent("" + id) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetRetailPaymentForView(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetRetailPaymentForView(<any>response_);
+                } catch (e) {
+                    return <Observable<RetailPaymentForViewDto>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<RetailPaymentForViewDto>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetRetailPaymentForView(response: HttpResponseBase): Observable<RetailPaymentForViewDto> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 ? RetailPaymentForViewDto.fromJS(resultData200) : new RetailPaymentForViewDto();
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<RetailPaymentForViewDto>(<any>null);
+    }
+}
+
+@Injectable()
 export class RoleServiceProxy {
     private http: HttpClient;
     private baseUrl: string;
@@ -22172,6 +22750,454 @@ export interface IProjectForViewDto {
     name: string | undefined;
     date: moment.Moment | undefined;
     isActive: boolean | undefined;
+}
+
+export class PagedResultDtoOfRetailDto implements IPagedResultDtoOfRetailDto {
+    totalCount!: number | undefined;
+    items!: RetailDto[] | undefined;
+
+    constructor(data?: IPagedResultDtoOfRetailDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.totalCount = data["totalCount"];
+            if (data["items"] && data["items"].constructor === Array) {
+                this.items = [];
+                for (let item of data["items"])
+                    this.items.push(RetailDto.fromJS(item));
+            }
+        }
+    }
+
+    static fromJS(data: any): PagedResultDtoOfRetailDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new PagedResultDtoOfRetailDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["totalCount"] = this.totalCount;
+        if (this.items && this.items.constructor === Array) {
+            data["items"] = [];
+            for (let item of this.items)
+                data["items"].push(item.toJSON());
+        }
+        return data; 
+    }
+}
+
+export interface IPagedResultDtoOfRetailDto {
+    totalCount: number | undefined;
+    items: RetailDto[] | undefined;
+}
+
+export class RetailDto implements IRetailDto {
+    code!: string | undefined;
+    merchandiseID!: number | undefined;
+    vendorID!: number | undefined;
+    quantity!: number | undefined;
+    price!: number | undefined;
+    boughtQuantity!: number | undefined;
+    total!: number | undefined;
+    id!: number | undefined;
+
+    constructor(data?: IRetailDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.code = data["code"];
+            this.merchandiseID = data["merchandiseID"];
+            this.vendorID = data["vendorID"];
+            this.quantity = data["quantity"];
+            this.price = data["price"];
+            this.boughtQuantity = data["boughtQuantity"];
+            this.total = data["total"];
+            this.id = data["id"];
+        }
+    }
+
+    static fromJS(data: any): RetailDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new RetailDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["code"] = this.code;
+        data["merchandiseID"] = this.merchandiseID;
+        data["vendorID"] = this.vendorID;
+        data["quantity"] = this.quantity;
+        data["price"] = this.price;
+        data["boughtQuantity"] = this.boughtQuantity;
+        data["total"] = this.total;
+        data["id"] = this.id;
+        return data; 
+    }
+}
+
+export interface IRetailDto {
+    code: string | undefined;
+    merchandiseID: number | undefined;
+    vendorID: number | undefined;
+    quantity: number | undefined;
+    price: number | undefined;
+    boughtQuantity: number | undefined;
+    total: number | undefined;
+    id: number | undefined;
+}
+
+export class RetailInput implements IRetailInput {
+    code!: string | undefined;
+    merchandiseID!: number | undefined;
+    vendorID!: number | undefined;
+    quantity!: number | undefined;
+    price!: number | undefined;
+    boughtQuantity!: number | undefined;
+    total!: number | undefined;
+    payments!: RetailPaymentInput[] | undefined;
+    id!: number | undefined;
+
+    constructor(data?: IRetailInput) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.code = data["code"];
+            this.merchandiseID = data["merchandiseID"];
+            this.vendorID = data["vendorID"];
+            this.quantity = data["quantity"];
+            this.price = data["price"];
+            this.boughtQuantity = data["boughtQuantity"];
+            this.total = data["total"];
+            if (data["payments"] && data["payments"].constructor === Array) {
+                this.payments = [];
+                for (let item of data["payments"])
+                    this.payments.push(RetailPaymentInput.fromJS(item));
+            }
+            this.id = data["id"];
+        }
+    }
+
+    static fromJS(data: any): RetailInput {
+        data = typeof data === 'object' ? data : {};
+        let result = new RetailInput();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["code"] = this.code;
+        data["merchandiseID"] = this.merchandiseID;
+        data["vendorID"] = this.vendorID;
+        data["quantity"] = this.quantity;
+        data["price"] = this.price;
+        data["boughtQuantity"] = this.boughtQuantity;
+        data["total"] = this.total;
+        if (this.payments && this.payments.constructor === Array) {
+            data["payments"] = [];
+            for (let item of this.payments)
+                data["payments"].push(item.toJSON());
+        }
+        data["id"] = this.id;
+        return data; 
+    }
+}
+
+export interface IRetailInput {
+    code: string | undefined;
+    merchandiseID: number | undefined;
+    vendorID: number | undefined;
+    quantity: number | undefined;
+    price: number | undefined;
+    boughtQuantity: number | undefined;
+    total: number | undefined;
+    payments: RetailPaymentInput[] | undefined;
+    id: number | undefined;
+}
+
+export class RetailPaymentInput implements IRetailPaymentInput {
+    retailId!: number | undefined;
+    paymentDate!: moment.Moment | undefined;
+    quantity!: number | undefined;
+    note!: string | undefined;
+    id!: number | undefined;
+
+    constructor(data?: IRetailPaymentInput) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.retailId = data["retailId"];
+            this.paymentDate = data["paymentDate"] ? moment(data["paymentDate"].toString()) : <any>undefined;
+            this.quantity = data["quantity"];
+            this.note = data["note"];
+            this.id = data["id"];
+        }
+    }
+
+    static fromJS(data: any): RetailPaymentInput {
+        data = typeof data === 'object' ? data : {};
+        let result = new RetailPaymentInput();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["retailId"] = this.retailId;
+        data["paymentDate"] = this.paymentDate ? this.paymentDate.toISOString() : <any>undefined;
+        data["quantity"] = this.quantity;
+        data["note"] = this.note;
+        data["id"] = this.id;
+        return data; 
+    }
+}
+
+export interface IRetailPaymentInput {
+    retailId: number | undefined;
+    paymentDate: moment.Moment | undefined;
+    quantity: number | undefined;
+    note: string | undefined;
+    id: number | undefined;
+}
+
+export class RetailForViewDto implements IRetailForViewDto {
+    code!: string | undefined;
+    merchandiseID!: number | undefined;
+    vendorID!: number | undefined;
+    quantity!: number | undefined;
+    price!: number | undefined;
+    boughtQuantity!: number | undefined;
+    total!: number | undefined;
+
+    constructor(data?: IRetailForViewDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.code = data["code"];
+            this.merchandiseID = data["merchandiseID"];
+            this.vendorID = data["vendorID"];
+            this.quantity = data["quantity"];
+            this.price = data["price"];
+            this.boughtQuantity = data["boughtQuantity"];
+            this.total = data["total"];
+        }
+    }
+
+    static fromJS(data: any): RetailForViewDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new RetailForViewDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["code"] = this.code;
+        data["merchandiseID"] = this.merchandiseID;
+        data["vendorID"] = this.vendorID;
+        data["quantity"] = this.quantity;
+        data["price"] = this.price;
+        data["boughtQuantity"] = this.boughtQuantity;
+        data["total"] = this.total;
+        return data; 
+    }
+}
+
+export interface IRetailForViewDto {
+    code: string | undefined;
+    merchandiseID: number | undefined;
+    vendorID: number | undefined;
+    quantity: number | undefined;
+    price: number | undefined;
+    boughtQuantity: number | undefined;
+    total: number | undefined;
+}
+
+export class PagedResultDtoOfRetailPaymentDto implements IPagedResultDtoOfRetailPaymentDto {
+    totalCount!: number | undefined;
+    items!: RetailPaymentDto[] | undefined;
+
+    constructor(data?: IPagedResultDtoOfRetailPaymentDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.totalCount = data["totalCount"];
+            if (data["items"] && data["items"].constructor === Array) {
+                this.items = [];
+                for (let item of data["items"])
+                    this.items.push(RetailPaymentDto.fromJS(item));
+            }
+        }
+    }
+
+    static fromJS(data: any): PagedResultDtoOfRetailPaymentDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new PagedResultDtoOfRetailPaymentDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["totalCount"] = this.totalCount;
+        if (this.items && this.items.constructor === Array) {
+            data["items"] = [];
+            for (let item of this.items)
+                data["items"].push(item.toJSON());
+        }
+        return data; 
+    }
+}
+
+export interface IPagedResultDtoOfRetailPaymentDto {
+    totalCount: number | undefined;
+    items: RetailPaymentDto[] | undefined;
+}
+
+export class RetailPaymentDto implements IRetailPaymentDto {
+    retailId!: number | undefined;
+    paymentDate!: moment.Moment | undefined;
+    quantity!: number | undefined;
+    note!: string | undefined;
+    id!: number | undefined;
+
+    constructor(data?: IRetailPaymentDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.retailId = data["retailId"];
+            this.paymentDate = data["paymentDate"] ? moment(data["paymentDate"].toString()) : <any>undefined;
+            this.quantity = data["quantity"];
+            this.note = data["note"];
+            this.id = data["id"];
+        }
+    }
+
+    static fromJS(data: any): RetailPaymentDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new RetailPaymentDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["retailId"] = this.retailId;
+        data["paymentDate"] = this.paymentDate ? this.paymentDate.toISOString() : <any>undefined;
+        data["quantity"] = this.quantity;
+        data["note"] = this.note;
+        data["id"] = this.id;
+        return data; 
+    }
+}
+
+export interface IRetailPaymentDto {
+    retailId: number | undefined;
+    paymentDate: moment.Moment | undefined;
+    quantity: number | undefined;
+    note: string | undefined;
+    id: number | undefined;
+}
+
+export class RetailPaymentForViewDto implements IRetailPaymentForViewDto {
+    retailId!: number | undefined;
+    paymentDate!: moment.Moment | undefined;
+    quantity!: number | undefined;
+    note!: string | undefined;
+
+    constructor(data?: IRetailPaymentForViewDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.retailId = data["retailId"];
+            this.paymentDate = data["paymentDate"] ? moment(data["paymentDate"].toString()) : <any>undefined;
+            this.quantity = data["quantity"];
+            this.note = data["note"];
+        }
+    }
+
+    static fromJS(data: any): RetailPaymentForViewDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new RetailPaymentForViewDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["retailId"] = this.retailId;
+        data["paymentDate"] = this.paymentDate ? this.paymentDate.toISOString() : <any>undefined;
+        data["quantity"] = this.quantity;
+        data["note"] = this.note;
+        return data; 
+    }
+}
+
+export interface IRetailPaymentForViewDto {
+    retailId: number | undefined;
+    paymentDate: moment.Moment | undefined;
+    quantity: number | undefined;
+    note: string | undefined;
 }
 
 export class ListResultDtoOfRoleListDto implements IListResultDtoOfRoleListDto {

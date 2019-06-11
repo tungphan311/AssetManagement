@@ -30,7 +30,6 @@
                         <select id="TypeID" name="TypeID" class="form-control" [(ngModel)]="vendor.typeID">
                             <option *ngFor="let vendortype of vendortypeList" [value]="vendortype.id">{{vendortype.name}}</option>
                         </select>
-                        <validation-messages [formCtrl]="typeIDInput"></validation-messages>
                     </div>
                     <div class="form-group">
                         <label>{{l("EmailAddress")}} *</label>

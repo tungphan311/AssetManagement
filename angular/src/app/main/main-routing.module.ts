@@ -12,6 +12,7 @@ import { BidComponent } from './bid/bid.component';
 import { POCOmponent } from './po/po.component';
 import { FileUploadComponent } from './contract/file-upload.component';
 import { RetailComponent } from './retail/retail.component';
+import { RetailPaymentComponent } from './retail-payment/retail-payment.component';
 
 @NgModule({
     imports: [
@@ -69,12 +70,21 @@ import { RetailComponent } from './retail/retail.component';
                     },
                     {
                         path: 'retail', component: RetailComponent,
+                        data: {
+                            permission: 'Pages.Administration.Retail'
+                        }
                         
                     },
                     {
                         path: 'assignment-table', component: AssignmentTableComponent,
                         data: {
                             permission: 'Pages.Administration.AssignmentTable'
+                        },
+                    },
+                    {
+                        path: 'retail-payment', component: RetailPaymentComponent,
+                        data: {
+                            permission: 'Pages.Administration.RetailPayment'
                         },
                     },
                     {
