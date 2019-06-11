@@ -111,7 +111,6 @@ export class SelectContractModalComponent extends AppComponentBase {
     }
     show(): void {
         this.saving = false;
-        this.notify.info(this.l('SavedSuccessfully'));
         this.selectContractModal.show();
     }
 

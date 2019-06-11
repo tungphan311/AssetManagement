@@ -3,12 +3,12 @@
             <div class="d-flex align-items-center">
                 <div class="mr-auto col-xs-6">
                     <h3 class="m-subheader__title m-subheader__title--separator">
-                        <span>Contract</span>
+                        <span>Phiếu gọi hàng</span>
                     </h3>
                 </div>
                 <div class="col-xs-6 text-right">
-                    <button (click)="createPO()" *ngIf="isGranted('Pages.Administration.Contract.Create')"
-                        class="btn btn-primary"><i class="fa fa-plus"></i>CreateNewContract</button>
+                    <button (click)="createPO()" *ngIf="isGranted('Pages.Administration.PO.Create')"
+                        class="btn btn-primary"><i class="fa fa-plus"></i>Tạo mới phiếu gọi hàng</button>
                 </div>
             </div>
         </div>
