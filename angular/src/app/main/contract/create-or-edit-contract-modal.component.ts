@@ -3,10 +3,12 @@ import { AppComponentBase } from "@shared/common/app-component-base";
 import { ModalDirective } from "ngx-bootstrap";
 import { Table } from "primeng/table";
 import { Paginator, LazyLoadEvent } from "primeng/primeng";
-import { ContractInput, ContractServiceProxy, ContractDetailServiceProxy, BidServiceProxy, BidForViewDto, VendorServiceProxy, VendorForViewDto, ContractDetailInput, ContractDetailDto } from "@shared/service-proxies/service-proxies";
+import { ContractInput, ContractServiceProxy, ContractDetailServiceProxy, BidServiceProxy, BidForViewDto, VendorServiceProxy, VendorForViewDto, ContractDetailInput, ContractDetailDto, ContractPaymentInput, ContractPaymentServiceProxy } from "@shared/service-proxies/service-proxies";
 import { AddContractDetailModalComponent } from "./add-contract-detail-modal-component";
 import { SelectBidModalComponent } from "./select-bid-modal.component";
 import { HttpClient, HttpRequest, HttpEventType } from "@angular/common/http";
+import { finalize } from "rxjs/operators";
+import { NgForm } from "@angular/forms";
 
 @Component({
     selector: 'createOrEditContractModal',
@@ -21,38 +23,43 @@ export class CreateOrEditContractModalComponent extends AppComponentBase {
     @ViewChild('dateInput') dateInput: ElementRef;
     @ViewChild('dataTable') dataTable: Table;
     @ViewChild('paginator') paginator: Paginator;
-
+    @ViewChild('editForm') editForm: NgForm;
     @ViewChild('addContractDetailModal') addContractDetailModal: AddContractDetailModalComponent;
     @ViewChild('selectBidModal') selectBidModal: SelectBidModalComponent;
 
     /**
     * @Output dùng để public event cho component khác xử lý
     */
-   @Output() modalSave: EventEmitter<any> = new EventEmitter<any>();
+    @Output() modalSave: EventEmitter<any> = new EventEmitter<any>();
 
-   saving = false;
-   contractId?: number | null | undefined;
-   bidName: string;
-   bidderId: number;
-   bidderCode: string;
-   bidderName: string;
-   bidderPhone: string;
-   bidderAddress: string;
-   bidderContact: string;
+    saving = false;
+    contractId?: number | null | undefined;
+    bidName: string;
+    bidderId: number;
+    bidderCode: string;
+    bidderName: string;
+    bidderPhone: string;
+    bidderAddress: string;
+    bidderContact: string;
 
-   progress: number;
-   mess: string;
+    progress: number;
+    mess: string;
 
-   totalPrice = 0;
+    totalPrice = 0;
+    index = 1;
 
-   fileToUpLoad: File = null;
-   
-   listContractDetail = [];
-   listMerchandiseID: number[] = [];
+    fileToUpLoad: File = null;
+
+    listContractDetail = [];
+    listMerchandiseID: number[] = [];
+    listPayment: ContractPaymentInput[] = [];
 
     contract: ContractInput = new ContractInput();
     products: ContractDetailInput[] = [];
     contractDetails: ContractDetailDto[] = [];
+
+    imageBase64: string;
+    imageBase: string;
 
     constructor(
         injector: Injector,
@@ -60,7 +67,7 @@ export class CreateOrEditContractModalComponent extends AppComponentBase {
         private _contractDetailService: ContractDetailServiceProxy,
         private _bidService: BidServiceProxy,
         private _vendorService: VendorServiceProxy,
-        private http: HttpClient
+        //private _contractPaymentService: ContractPaymentServiceProxy,
     ) {
         super(injector);
     }
@@ -71,6 +78,24 @@ export class CreateOrEditContractModalComponent extends AppComponentBase {
 
         this._contractService.getContractForEdit(contractId).subscribe(result => {
             this.contract = result;
+
+            if (contractId == null || contractId == undefined) {
+                this.contract.products = [];
+                this.contract.payments = [];
+                this.contract.totalPrice = 0;
+            }
+
+            result.payments.forEach(item => {
+                var momen = require('moment');
+                var day = momen(item.paymentDate);
+                var tz = day.utcOffset();
+                day.add(tz, 'm');
+                item.paymentDate = day.format('YYYY-MM-DD');
+            });
+
+            this.listPayment = result.payments;
+
+            this.index = result.payments.length + 1;
 
             var moment = require('moment');
             var date = moment(result.deliveryTime);
@@ -98,29 +123,20 @@ export class CreateOrEditContractModalComponent extends AppComponentBase {
         this.reloadListContractDetail(contractId, null);
     }
 
-    upload(files) {
-        if (files.length == 0) {
-            return;
+    readImage2($event) {
+        var myReader = new FileReader();
+        myReader.onloadend = (e) => {
+            this.contract.contractWarrantyFile = myReader.result.toString();
         }
+        myReader.readAsDataURL($event.target.files[0]);
+    }
 
-        const formData = new FormData();
-
-        for (let file of files) {
-            formData.append(file.name, file);
+    readImage($event) {
+        var myReader = new FileReader();
+        myReader.onloadend = (e) => {
+            this.contract.warrantyGuaranteeFile = myReader.result.toString();
         }
-
-        const uploadReq = new HttpRequest('POST', `api/upload`, formData, {
-            reportProgress: true,
-        });
-
-        this.http.request(uploadReq).subscribe(event => {
-            if (event.type === HttpEventType.UploadProgress) {
-                this.progress = Math.round(100 * event.loaded / event.total);
-            }
-            else if (event.type === HttpEventType.Response) {
-                this.mess = event.body.toString();
-            }
-        });
+        myReader.readAsDataURL($event.target.files[0]);
     }
 
     getListMerchandises() {
@@ -152,6 +168,16 @@ export class CreateOrEditContractModalComponent extends AppComponentBase {
         this.addContractDetailModal.listMerID.length = 0;
     }
 
+    sumUp(list): number {
+        var sum = 0;
+        list.forEach(element => {
+            sum += element.quantity * element.price;
+        });
+
+        this.contract.totalPrice = sum;
+        return sum;
+    }
+
     loadListMerchandise() {
         this.primengTableHelper.totalRecordsCount = this.contract.products.length;
         this.primengTableHelper.records = this.contract.products;
@@ -166,7 +192,7 @@ export class CreateOrEditContractModalComponent extends AppComponentBase {
         this.primengTableHelper.showLoadingIndicator();
 
         this.reloadListContractDetail(this.contractId, event);
-    }   
+    }
 
     reloadListContractDetail(contractDetailID, event: LazyLoadEvent) {
         this._contractDetailService.getContractDetailsByFilter(contractDetailID,
@@ -188,36 +214,43 @@ export class CreateOrEditContractModalComponent extends AppComponentBase {
     save(): void {
         let input = this.contract;
         input.products = this.primengTableHelper.records;
-        
+        input.payments = this.listPayment;
+
         var moment = require('moment');
         input.deliveryTime = moment(input.deliveryTime);
         input.contractWarrantyExpireDate = moment(input.contractWarrantyExpireDate);
         input.warrantyGuaranteeExpireDate = moment(input.warrantyGuaranteeExpireDate);
+        input.payments.forEach(item => {
+            item.paymentDate = moment(item.paymentDate);
+        })
 
         this.saving = true;
 
         this.addContractDetailModal.listMerchandises.forEach(item => {
             item.isAddContract = false;
         })
-        
+
         this.addContractDetailModal.isSelectAll = false;
 
         this.emptyField();
 
-        this._contractService.createOrEditContract(input).subscribe(result => {
-            this.notify.info(this.l('SavedSuccessfully'));
-            this.close();
-        })
+        this._contractService.createOrEditContract(input)
+            // .pipe(finalize(() => { this.saving = false; }))
+            .subscribe(result => {
+                this.notify.info(this.l('SavedSuccessfully'));
+                this.close();
+            },
+        )
     }
-    
+
     reloadPage(): void {
         this.paginator.changePage(this.paginator.getPage());
     }
 
     reloadBid(bidId: number): void {
-        if (bidId != 0){
+        if (bidId != 0) {
             this.contract.briefcaseID = bidId;
-             
+
             this._bidService.getBidForView(bidId).subscribe(result => {
                 this.bidName = result.name;
                 this.bidderId = result.bidderID;
@@ -229,10 +262,9 @@ export class CreateOrEditContractModalComponent extends AppComponentBase {
                     this.bidderAddress = vendor.address;
                     this.bidderContact = vendor.contact;
                 });
-            });     
+            });
         }
-        else
-        {
+        else {
             this.emptyField();
         }
     }
@@ -244,23 +276,37 @@ export class CreateOrEditContractModalComponent extends AppComponentBase {
         this.bidderPhone = "";
         this.bidderAddress = "";
         this.bidderContact = "";
+        this.index = 0;
+        this.listPayment = [];
     }
 
-    // isExist(id: number): boolean {
-    //     this.contractDetails.forEach(item => {
-    //         if (item.merchID == id) {
-    //             return true;
-    //         }
-    //     })
+    addContractPayment() {
+        var payment: ContractPaymentInput = new ContractPaymentInput();
+        payment.batch = this.index;
+        payment.percent = 0;
+        payment.amount = 0;
+        payment.note = "";
 
-    //     return false;
-    // }
+        var moment3 = require('moment');
+        var date = moment3(payment.paymentDate);
+        var tz = date.utcOffset();
+        date.add(tz, 'm');
+        payment.paymentDate = date.format('YYYY-MM-DD');
 
-    // deleteContract(id: number) {
-    //     // this.addContractDetailModal.listMerID = this.addContractDetailModal.listMerID.filter(x => x.id != id);
-    //         this.contract.products = this.contract.products.filter(x => x.id != id);
-    //         this.loadListMerchandise();  
-    // }
+        this.listPayment.push(payment);
+        this.index += 1;
+    }
+
+    totalPercent(list): boolean {
+        var percent = 0;
+        list.forEach(item => {
+            percent += item.percent;
+        });
+
+        var ans = percent > 100 ? true : false;
+
+        return ans;
+    }
 
     handleFileInput(files: FileList) {
         this.fileToUpLoad = files.item(0);
@@ -269,6 +315,7 @@ export class CreateOrEditContractModalComponent extends AppComponentBase {
     close(): void {
         this.emptyField();
         this.modal.hide();
+        this.editForm.resetForm();
         this.modalSave.emit(null);
     }
 

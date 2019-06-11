@@ -124,8 +124,6 @@ export class AddContractDetailModalComponent extends AppComponentBase {
 
         this.applyFilters();
 
-        console.log(this.merchandises);
-
        this.addContractModal.show();
    }
 

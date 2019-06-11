@@ -810,5 +810,6 @@
     <text name="Project">Quản lý dự án</text>
     <text name="Bid">Quản lý hồ sơ thầu</text>
     <text name="PO">Quản lý PO</text>
+    <text name="Retail">Mua hàng theo hình thức mua lẻ</text>
   </texts>
 </localizationDictionary>

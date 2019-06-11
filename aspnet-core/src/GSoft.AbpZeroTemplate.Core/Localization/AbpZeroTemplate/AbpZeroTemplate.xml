@@ -801,5 +801,6 @@
       <text name="MerchandisePrice">Price</text>
       <text name="Bid">Bid</text>
       <text name="PO">PO</text>
+      <text name="Retail">Retail</text>
     </texts>
 </localizationDictionary>

@@ -125,7 +125,7 @@ export class AssignmentTableComponent extends AppComponentBase implements AfterV
     }
     getMerchName(id: number): any {
         for (const iterator of this.merchlist) {
-            if (iterator.id === id) {
+            if (iterator.id == id) {
                 return iterator.name;
             }
         }

@@ -2,12 +2,12 @@
     aria-labelledby="createOrEditModal" aria-hidden="true" [config]="{backdrop: 'static'}">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
-            <form #editForm="ngForm" novalidate >
+            <form #editForm="ngForm" novalidate>
                 <div class="modal-header">
                     <h4 class="modal-title">
                         <span *ngIf="contract.id">Cập nhật hợp đồng: {{contract.name}}</span>
                         <span *ngIf="!contract.id">Tạo mới hợp đồng</span>
-                    </h4>                 
+                    </h4>
                     <button type="button" class="close" (click)="close()" [attr.aria-label]="l('Close')">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -16,42 +16,46 @@
                     <nav class="navbar navbar-expand-sm navbar-light" style="background-color: #e3f2fd;">
                         <h4 class="modal-title">
                             <i class="fa fa-search"></i>
-                            <span>   Thông tin chi tiết</span>
+                            <span> Thông tin chi tiết</span>
                         </h4>
                     </nav>
                     <div class="form-group row margin-top-15">
                         <div class="margin-right-20 margin-left-20" style="width: 30%">
                             <label for="ex1">Số hợp đồng *</label>
-                            <input #contractIDInput="ngModel" class="form-control" id="ex1" type="text" name="ContractID" [(ngModel)]="contract.contractID" required maxlength="64">
+                            <input #contractIDInput="ngModel" class="form-control" id="ex1" type="text"
+                                name="ContractID" [(ngModel)]="contract.contractID" required maxlength="64">
                             <validation-messages [formCtrl]="contractIDInput"></validation-messages>
                         </div>
                         <div class="margin-right-20" style="width: 30%">
                             <label for="ex2">Tên hợp đồng *</label>
-                            <input #nameInput="ngModel" class="form-control" id="ex2" type="text" name="Name" [(ngModel)]="contract.name" required maxlength="64">
+                            <input #nameInput="ngModel" class="form-control" id="ex2" type="text" name="Name"
+                                [(ngModel)]="contract.name" required maxlength="64">
                             <validation-messages [formCtrl]="nameInput"></validation-messages>
                         </div>
                         <div style="width: 30%">
                             <label for="ex3">Ngày giao hàng *</label>
-                            <input #dateInput="ngModel" class="form-control" id="ex3" type="date" name="DeliveryTime" [(ngModel)]="contract.deliveryTime" required>
+                            <input #dateInput="ngModel" class="form-control" id="ex3" type="date" name="DeliveryTime"
+                                [(ngModel)]="contract.deliveryTime" required>
                             <validation-messages [formCtrl]="dateInput"></validation-messages>
-                        </div>              
+                        </div>
                     </div>
                     <div class="form-group row">
                         <div class="col-xs-4 margin-right-20 margin-left-20">
                             <label>Số hồ sơ</label>
                             <div class="input-group col-xs-4">
-                                <input class="form-control" type="text" name="FileID" [(ngModel)]="bidName" readonly required>
+                                <input class="form-control" type="text" name="FileID" [(ngModel)]="bidName" readonly
+                                    required>
                                 <span class="input-group-btn">
                                     <button class="btn btn-primary" type="button" (click)="selectBidModal.show()">
                                         <i class="fa fa-ellipsis-h"></i>
                                     </button>
                                 </span>
-                            </div>                         
+                            </div>
                         </div>
                         <div class="col-xs-5">
                             <label>Mã đơn vị trúng thầu</label>
                             <input class="form-control" type="text" name="UnitID" [(ngModel)]="bidderCode" readonly>
-                        </div>     
+                        </div>
                     </div>
                     <div class="form-group row">
                         <div class="col-sm-8 margin-right-20">
@@ -61,7 +65,7 @@
                         <div class="col-xs-4">
                             <label>Số điện thoại</label>
                             <input class="form-control" type="text" name="Phone" [(ngModel)]="bidderPhone" readonly>
-                        </div>     
+                        </div>
                     </div>
                     <div class="form-group row">
                         <div class="col-sm-8 margin-right-20">
@@ -71,11 +75,12 @@
                         <div class="col-xs-4">
                             <label>Người liên hệ</label>
                             <input class="form-control" type="text" name="Contact" [(ngModel)]="bidderContact" readonly>
-                        </div>             
+                        </div>
                     </div>
                     <div class="form-group">
                         <label>Ghi chú</label>
-                        <textarea class="form-control" rows="3" type="text" name="Note" [(ngModel)]="contract.note" maxlength="255">
+                        <textarea class="form-control" rows="3" type="text" name="Note" [(ngModel)]="contract.note"
+                            maxlength="255">
 
                         </textarea>
                     </div>
@@ -85,39 +90,46 @@
                             <div class="form-group row">
                                 <div class="col-xs-4 margin-right-20 margin-left-40">
                                     <label>Hình thức</label>
-                                    <select class="form-control" [(ngModel)]="contract.contractWarrantyTypeID" name="ContractWarrantyTypeID">
+                                    <select class="form-control" [(ngModel)]="contract.contractWarrantyType"
+                                        name="ContractWarrantyTypeID">
                                         <option value="1">Hình thức 1</option>
                                         <option value="2">Hình thức 2</option>
                                     </select>
                                 </div>
                                 <div class="col-xs-4 margin-right-20">
                                     <label>Số chứng thư bảo lãnh</label>
-                                    <input type="text" class="form-control" [(ngModel)]="contract.contractWarrantyID" name="ContractWarrantyID">
+                                    <input type="text" class="form-control" [(ngModel)]="contract.contractWarrantyID"
+                                        name="ContractWarrantyID">
                                 </div>
                                 <div class="col-xs-4">
                                     <label>Ngày hết hạn chứng thư</label>
-                                    <input type="date" class="form-control" [(ngModel)]="contract.contractWarrantyExpireDate" name="ContractWarrantyExpireDate">
-                                </div>     
-                            </div>    
+                                    <input type="date" class="form-control"
+                                        [(ngModel)]="contract.contractWarrantyExpireDate"
+                                        name="ContractWarrantyExpireDate">
+                                </div>
+                            </div>
                             <div class="form-group row">
                                 <div class="col-xs-2 margin-right-20 margin-left-40">
                                     <label>Tỷ lệ </label>
-                                    <input type="text" class="form-control" [(ngModel)]="contract.contractWarrantyPercent" name="ContractWarrantyPercent">
+                                    <input type="text" class="form-control"
+                                        [(ngModel)]="contract.contractWarrantyPercent" name="ContractWarrantyPercent">
                                 </div>
                                 <div class="col-xs-2">
                                     <label>Số tiền </label>
-                                    <input type="text" class="form-control" [(ngModel)]="contract.contractWarrantyAmount" value="0" name="ContractWarrantyAmount">
-                                </div>         
-                            </div>  
+                                    <input type="text" class="form-control"
+                                        [(ngModel)]="contract.contractWarrantyAmount" value="0"
+                                        name="ContractWarrantyAmount">
+                                </div>
+                            </div>
                             <div class="form-group col-sm-8 margin-left-15">
-                                <label>Ngân hàng bão lãnh </label>  
-                                <input type="text" class="form-control" name="ContractWarrantyBank" [(ngModel)]="contract.contractWarrantyBank">   
-                            </div>  
+                                <label>Ngân hàng bão lãnh </label>
+                                <input type="text" class="form-control" name="ContractWarrantyBank"
+                                    [(ngModel)]="contract.contractWarrantyBank">
+                            </div>
                             <div class="form-group margin-left-20">
-                                <!-- <label for="file">File đính kèm</label>
-                                <input type="file" id="file" class="form-control" name="ContactWarrantyFile" (change)="handleFileInput($event.target.files)"> -->
-                                <label>Tệp đính kèm</label>
-                                <app-upload></app-upload>
+                                <label for="file">Tệp đính kèm</label>
+                                <input type="file" id="file" class="form-control" name="ContactWarrantyFile" (change)="readImage2($event)" [(ngModel)]="contract.contractWarrantyFile"
+                                    accept="image/x-png,image/jpg,image/jpeg">
                             </div>
                         </fieldset>
                     </form>
@@ -127,45 +139,55 @@
                             <div class="form-group row">
                                 <div class="col-xs-4 margin-right-20 margin-left-40">
                                     <label>Hình thức </label>
-                                    <select class="form-control" [(ngModel)]="contract.warrantyGuaranteeTypeID" name="WarrantyGuaranteeTypeID">
+                                    <select class="form-control" [(ngModel)]="contract.warrantyGuaranteeTypeID"
+                                        name="WarrantyGuaranteeTypeID">
                                         <option value="1">Hình thức 1</option>
                                         <option value="2">Hình thức 2</option>
                                     </select>
                                 </div>
                                 <div class="col-xs-4 margin-right-20">
                                     <label>Số chứng thư bảo lãnh </label>
-                                    <input type="text" class="form-control" [(ngModel)]="contract.warrantyGuaranteeID" name="WarrantyGuaranteeID">
+                                    <input type="text" class="form-control" [(ngModel)]="contract.warrantyGuaranteeID"
+                                        name="WarrantyGuaranteeID">
                                 </div>
                                 <div class="col-xs-4">
                                     <label>Ngày hết hạn chứng thư </label>
-                                    <input type="date" class="form-control" [(ngModel)]="contract.warrantyGuaranteeExpireDate" name="WarrantyGuaranteeExpireDate">
-                                </div>      
-                            </div>    
+                                    <input type="date" class="form-control"
+                                        [(ngModel)]="contract.warrantyGuaranteeExpireDate"
+                                        name="WarrantyGuaranteeExpireDate">
+                                </div>
+                            </div>
                             <div class="form-group row">
                                 <div class="col-xs-2 margin-right-20 margin-left-40">
                                     <label>Tỷ lệ </label>
-                                    <input type="text" class="form-control" [(ngModel)]="contract.warrantyGuaranteePercent" name="WarrantyGuaranteePercent">
+                                    <input type="text" class="form-control"
+                                        [(ngModel)]="contract.warrantyGuaranteePercent" name="WarrantyGuaranteePercent">
                                 </div>
                                 <div class="col-xs-2">
                                     <label>Số tiền </label>
-                                    <input type="text" class="form-control" [(ngModel)]="contract.warrantyGuaranteeAmount" value="0" name="WarrantyGuaranteeAmount">
-                                </div> 
-                            </div>  
+                                    <input type="text" class="form-control"
+                                        [(ngModel)]="contract.warrantyGuaranteeAmount" value="0"
+                                        name="WarrantyGuaranteeAmount">
+                                </div>
+                            </div>
                             <div class="form-group col-sm-8 margin-left-15">
-                                <label>Ngân hàng bão lãnh </label> 
-                                <input type="text" class="form-control" name="WarrantyGuaranteeBank" [(ngModel)]="contract.warrantyGuaranteeBank">   
-                            </div>  
+                                <label>Ngân hàng bão lãnh </label>
+                                <input type="text" class="form-control" name="WarrantyGuaranteeBank"
+                                    [(ngModel)]="contract.warrantyGuaranteeBank">
+                            </div>
                             <div class="form-group margin-left-20">
-                                File đính kèm <input type="file" class="form-control" name="ContactWarrantyFile">
+                                <label>Tệp đính kèm </label> 
+                                <input type="file" class="form-control" (change)="readImage($event)" [(ngModel)]="contract.warrantyGuaranteeFile" name="WarranteeGuaranteeFile" 
+                                    accept="image/x-png,image/jpg,image/jpeg">
                             </div>
                         </fieldset>
-                    </form>   
+                    </form>
                     <nav class="navbar navbar-expand-sm navbar-light margin-top-15" style="background-color: #e3f2fd;">
                         <h4 class="modal-title">
                             <i class="fa fa-table"></i>
-                            <span>   Danh sách hàng hoá</span>
+                            <span> Danh sách hàng hoá</span>
                         </h4>
-                    </nav>  
+                    </nav>
                     <div class="row align-items-center">
                         <!--<Primeng-TurboTable-Start>-->
                         <div class="primeng-datatable-container" [busyIf]="primengTableHelper.isLoading">
@@ -177,16 +199,18 @@
                                         [rowsPerPageOptions]="primengTableHelper.predefinedRecordsCountPerPage">
                                     </p-paginator>
                                 </div>
-                                <div class="col-xs-6 align-items-right">
-                                    <button [disabled]="saving" type="button" (click)="addContractDetail()" *ngIf="('Pages.Administration.ContracDetail.Create')"
+                                <div class="col-xs-6" style="margin-right: 10px; float: right;">
+                                    <button [disabled]="saving" type="button" (click)="addContractDetail()"
+                                        *ngIf="('Pages.Administration.ContracDetail.Create')"
                                         class="btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill">
                                         <i class="fa fa-plus"></i>
                                     </button>
                                 </div>
-                            </div>  
-                            <p-table #dataTable (onLazyLoad)="getContractDetails($event)" [value]="primengTableHelper.records"
-                                rows="{{primengTableHelper.defaultRecordsCountPerPage}}" [paginator]="false" [lazy]="true"
-                                [responsive]="primengTableHelper.isResponsive" [scrollable]="true">
+                            </div>
+                            <p-table #dataTable (onLazyLoad)="getContractDetails($event)"
+                                [value]="primengTableHelper.records"
+                                rows="{{primengTableHelper.defaultRecordsCountPerPage}}" [paginator]="false"
+                                [lazy]="true" [responsive]="primengTableHelper.isResponsive" [scrollable]="true">
                                 <ng-template pTemplate="header">
                                     <tr>
                                         <th pSortableColumn="id" style="width: 150px; text-align: center;">
@@ -223,23 +247,29 @@
                                     <tr>
                                         <td style="width: 150px; text-align: center;">
                                             <span class="ui-column-title">Mã hàng hoá</span>
-                                            <input type="text" class="form-control" [(ngModel)]="record.merCode" name="Code" readonly>
+                                            <input type="text" class="form-control" value="{{record.merCode}}"
+                                                name="Code" readonly>
                                         </td>
                                         <td style="width: 200px; text-align: center;">
                                             <span class="ui-column-title">Tên hàng hoá</span>
-                                            <input type="text" class="form-control" [(ngModel)]="record.merName" name="Name" readonly>
+                                            <input type="text" class="form-control" value="{{record.merName}}"
+                                                name="Name" readonly>
                                         </td>
                                         <td style="width: 200px; text-align: center;">
                                             <span class="ui-column-title">Tên thực tế</span>
-                                            <input type="text" class="form-control" value="{{record.merName}}"  name="RealName" readonly>
+                                            <input type="text" class="form-control" value="{{record.merName}}"
+                                                name="RealName" readonly>
                                         </td>
                                         <td style="width: 100px; text-align: center;">
                                             <span class="ui-column-title">Số lượng</span>
-                                            <input type="text" class="form-control" [(ngModel)]="record.quantity" name="Quantity"> 
+                                            <input type="number" class="form-control"
+                                                (change)="record.quantity = $event.target.value"
+                                                value="{{record.quantity}}" name="Quantity">
                                         </td>
                                         <td style="width: 100px; text-align: center;">
                                             <span class="ui-column-title">Đơn giá</span>
-                                            <input type="text" class="form-control" [(ngModel)]="record.price" name="Price" readonly>
+                                            <input type="text" class="form-control" value="{{record.price}}"
+                                                name="Price" readonly>
                                         </td>
                                         <td style="width: 100px; text-align: center;">
                                             <span class="ui-column-title">Số tiền</span>
@@ -247,21 +277,96 @@
                                         </td>
                                         <td style="width: 400px;">
                                             <span class="ui-column-title">Diễn giải</span>
-                                            <input type="text" class="form-control" [(ngModel)]="record.note" name="Note">
+                                            <input type="text" class="form-control" value="{{record.note}}" 
+                                                (change)="record.note == $event.target.value" name="Note">
                                         </td>
                                     </tr>
                                 </ng-template>
                             </p-table>
-                            <div class="primeng-no-data" style="border: thin solid;" *ngIf="primengTableHelper.totalRecordsCount == 0">
+                            <div class="primeng-no-data" style="border: thin solid;"
+                                *ngIf="primengTableHelper.totalRecordsCount == 0">
                                 {{l('NoData')}}
+                            </div>
+                            <div *ngIf="primengTableHelper.totalRecordsCount > 0" style="margin-top: 10px; text-align: right;">
+                                <span>Tổng giá trị đơn hàng:  </span>
+                                <span>{{sumUp(primengTableHelper.records)}}đ</span>
                             </div>
                         </div>
                         <!--<Primeng-TurboTable-End>-->
                     </div>
+                    <nav class="navbar navbar-expand-sm navbar-light margin-top-15" style="background-color: #e3f2fd;">
+                        <h4 class="modal-title" style="width: 95%;">
+                            <i class="fa fa-table"></i>
+                            <span> Chi tiết thanh toán</span>
+                        </h4>
+                        <div class="col-xs-6" style="margin-right: 10px; float: right;">
+                            <button [disabled]="saving" type="button" (click)="addContractPayment()"
+                                *ngIf="('Pages.Administration.ContractPayment.Create')"
+                                class="btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill">
+                                <i class="fa fa-plus"></i>
+                            </button>
+                        </div>
+                    </nav>
+                    <div class="custom-table">
+                        <table>
+                            <thead>
+                                <th style="width: 5%; text-align: center;">
+                                    <span >
+                                        Đợt
+                                    </span>
+                                </th>
+                                <th style="width: 25%; text-align: center;">
+                                    <span >
+                                        Ngày dự kiến thanh toán
+                                    </span>
+                                </th>
+                                <th style="width: 10%; text-align: center;">
+                                    <span >
+                                        %
+                                    </span>
+                                </th>
+                                <th style="width: 20%; text-align: center;">
+                                    <span >
+                                        Số tiền thanh toán
+                                    </span>
+                                </th>
+                                <th style="width: 40%; text-align: center;">
+                                    <span >
+                                        Diễn giải
+                                    </span>
+                                </th>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let item of listPayment">
+                                    <td>
+                                        <span>{{item.batch}}</span>
+                                    </td>
+                                    <td>
+                                        <input type="date" class="form-control" value={{item.paymentDate}} (change)="item.paymentDate = $event.target.value">
+                                    </td>
+                                    <td>
+                                        <input type="number" class="form-control" value="{{item.percent}}" min="0" max="100" 
+                                            (change)="item.percent = $event.target.value" onkeypress="return event.charCode >= 48;">
+                                    </td>
+                                    <td>
+                                        <span>{{item.percent * contract.totalPrice / 100}}</span>
+                                    </td>
+                                    <td>
+                                        <input type="text" class="form-control" value="{{item.note}}" (change)="item.note = $event.target.value">
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="has-danger" *ngIf="totalPercent(listPayment)" style="margin-top: 5px">
+                            <label>Tổng % của chi tiết thanh toán không được quá 100%</label>
+                        </div>
+                    </div>
                 </div>
                 <div class="modal-footer">
-                    <button [disabled]="saving" type="button" class="btn btn-default" (click)="close()">{{l("Cancel")}}</button>
-                    <button class="btn btn-primary" [buttonBusy]="saving" [busyText]="l('SavingWithThreeDot')" (click)="save()">
+                    <button [disabled]="saving" type="button" class="btn btn-default"
+                        (click)="close()">{{l("Cancel")}}</button>
+                    <button [disabled]="totalPercent(listPayment) || !editForm.form.valid" class="btn btn-primary" [buttonBusy]="saving" [busyText]="l('SavingWithThreeDot')"
+                        (click)="save()">
                         <i class="fa fa-save"></i>
                         <span>{{l("Save")}}</span>
                     </button>
@@ -270,8 +375,8 @@
         </div>
     </div>
     <selectBidModal #selectBidModal (modalSave)="reloadBid($event)"></selectBidModal>
-    <addContractDetailModal #addContractDetailModal 
-        (modalSave)="reloadPage()" (data)="getListMerchandises()" [merchandises]="primengTableHelper.records">
+    <addContractDetailModal #addContractDetailModal (modalSave)="reloadPage()" (data)="getListMerchandises()"
+        [merchandises]="primengTableHelper.records">
 
     </addContractDetailModal>
 </div>

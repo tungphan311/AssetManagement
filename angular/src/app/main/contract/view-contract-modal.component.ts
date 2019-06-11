@@ -27,6 +27,9 @@ export class ViewContractModalComponent extends AppComponentBase {
     bidderAddress: string;
     bidderContact: string;
 
+    viewFirstFile = false;
+    viewSecondFile = false;
+
     constructor(
         injector: Injector,
         private _contractService: ContractServiceProxy,
@@ -76,7 +79,6 @@ export class ViewContractModalComponent extends AppComponentBase {
             this.primengTableHelper.getMaxResultCount(this.paginator, event),
             this.primengTableHelper.getSkipCount(this.paginator, event),
         ).subscribe(result => {
-            console.log(result.items);
             this.primengTableHelper.totalRecordsCount = result.totalCount;
             this.primengTableHelper.records = result.items;
             this.primengTableHelper.hideLoadingIndicator();
@@ -92,6 +94,8 @@ export class ViewContractModalComponent extends AppComponentBase {
     }
 
     close() : void{
+        this.viewFirstFile = false;
+        this.viewSecondFile = false;
         this.modal.hide();
     }
 }

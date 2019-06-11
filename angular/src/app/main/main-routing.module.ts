@@ -11,6 +11,7 @@ import { ProjectComponent } from './project/project.component';
 import { BidComponent } from './bid/bid.component';
 import { POCOmponent } from './po/po.component';
 import { FileUploadComponent } from './contract/file-upload.component';
+import { RetailComponent } from './retail/retail.component';
 
 @NgModule({
     imports: [
@@ -65,6 +66,10 @@ import { FileUploadComponent } from './contract/file-upload.component';
                         data: {
                             permission: 'Pages.Administration.Contract'
                         },
+                    },
+                    {
+                        path: 'retail', component: RetailComponent,
+                        
                     },
                     {
                         path: 'assignment-table', component: AssignmentTableComponent,
