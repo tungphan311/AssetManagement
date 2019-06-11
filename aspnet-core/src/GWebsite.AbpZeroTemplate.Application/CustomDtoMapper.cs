@@ -13,6 +13,7 @@ using GWebsite.AbpZeroTemplate.Application.Share.MerchandiseTypes.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.Vendors.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.VendorTypes.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.Projects.Dto;
+using GWebsite.AbpZeroTemplate.Application.Share.Vehicles.Dto;
 using GWebsite.AbpZeroTemplate.Core.Models;
 using GWebsite.AbpZeroTemplate.Application.Share.AssignmentTables.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.Bids.Dto;
@@ -135,6 +136,12 @@ namespace GWebsite.AbpZeroTemplate.Applications
             configuration.CreateMap<POInput, PO>();
             configuration.CreateMap<PO, POInput>();
             configuration.CreateMap<PO, POForViewDto>();
+
+            // Vehicle
+            configuration.CreateMap<Vehicle, VehicleDto>();
+            configuration.CreateMap<VehicleInput, Vehicle>();
+            configuration.CreateMap<Vehicle, VehicleInput>();
+            configuration.CreateMap<Vehicle, VehicleForViewDto>();
         }
     }
 }

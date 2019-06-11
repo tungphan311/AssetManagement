@@ -39,6 +39,8 @@ namespace GWebsite.AbpZeroTemplate.EntityFrameworkCore
         public virtual DbSet<Asset> Assets { get; set; }
         public virtual DbSet<AsssetRent> AsssetRents { get; set; }
         public virtual DbSet<DetailAssetRent> DetailAssetRents { get; set; }
+        public virtual DbSet<Vehicle> Vehicles { get; set; }
+
         /// <summary>
         /// GPermissions dùng cho bên Gwebsite
         /// </summary>

@@ -20,7 +20,8 @@ export class AppNavigationService {
                 new AppMenuItem("Asset", "Pages.Administration.Asset", "flaticon-menu-1", "/app/gwebsite/asset"),
                 new AppMenuItem("AssetRent", "Pages.Administration.AssetRent", "flaticon-menu-1", "/app/gwebsite/assetrent"),
                 new AppMenuItem("DetailAssetRent", "Pages.Administration.DetailAssetRent", "flaticon-menu-1", "/app/gwebsite/detailassetrent"),
-                new AppMenuItem('QLTS từ khi khai sinh đến thanh lý', 'Pages.Administration.Asset5', 'flaticon-menu-1', '/app/gwebsite/asset5')
+                new AppMenuItem('QLTS từ khi khai sinh đến thanh lý', 'Pages.Administration.Asset5', 'flaticon-menu-1', '/app/gwebsite/asset5'),
+                new AppMenuItem('Vehicle', 'Pages.Administration.Vehicle', 'flaticon-menu-1', '/app/gwebsite/vehicle')
             ]),
             new AppMenuItem("Systems", "", "flaticon-layers", "", [
                 new AppMenuItem(

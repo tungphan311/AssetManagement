@@ -2046,6 +2046,7 @@ namespace GSoft.AbpZeroTemplate.Migrations
                     b.ToTable("MerchandiseTypes");
                 });
 
+
             modelBuilder.Entity("GWebsite.AbpZeroTemplate.Core.Models.Permission", b =>
                 {
                     b.Property<int>("Id")

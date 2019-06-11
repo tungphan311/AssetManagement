@@ -79,18 +79,19 @@
         public const string Pages_Administration_AssetRent_Edit = "Pages.Administration.AssetRent.Edit";
         public const string Pages_Administration_AssetRent_Delete = "Pages.Administration.AssetRent.Delete";
 
-
-
         public const string Pages_Administration_DetailAssetRent = "Pages.Administration.DetailAssetRent";
         public const string Pages_Administration_DetailAssetRent_Create = "Pages.Administration.DetailAssetRent.Create";
         public const string Pages_Administration_DetailAssetRent_Edit = "Pages.Administration.DetailAssetRent.Edit";
         public const string Pages_Administration_DetailAssetRent_Delete = "Pages.Administration.DetailAssetRent.Delete";
 
-
-
         public const string Pages_Administration_PO = "Pages.Administration.PO";
         public const string Pages_Administration_PO_Create = "Pages.Administration.PO.Create";
         public const string Pages_Administration_PO_Edit = "Pages.Administration.PO.Edit";
         public const string Pages_Administration_PO_Delete = "Pages.Administration.PO.Delete";
+
+        public const string Pages_Administration_Vehicle = "Pages.Administration.Vehicle";
+        public const string Pages_Administration_Vehicle_Create = "Pages.Administration.Vehicle.Create";
+        public const string Pages_Administration_Vehicle_Edit = "Pages.Administration.Vehicle.Edit";
+        public const string Pages_Administration_Vehicle_Delete = "Pages.Administration.Vehicle.Delete";
     }
 }

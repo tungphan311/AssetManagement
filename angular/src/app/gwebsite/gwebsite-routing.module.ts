@@ -7,6 +7,7 @@ import { AssetComponent } from "./asset/asset.component";
 import { AssetRentComponent } from "./assetrent/assetrent.component";
 import { DetailAssetRentComponent } from "./detailassetrent/detailassetrent.component";
 import { Asset5Component } from './asset5/asset5.component';
+import { VehicleComponent} from './vehicle/vehicle.component';
 
 @NgModule({
     imports: [
@@ -79,6 +80,15 @@ import { Asset5Component } from './asset5/asset5.component';
                     {
                         path: 'asset5', component: Asset5Component,
                         data: { permission: 'Pages.Administration.Asset5' }
+                    },
+                ]
+            },
+            {
+                path: '',
+                children: [
+                    {
+                        path: 'vehicle', component: VehicleComponent,
+                        data: { permission: 'Pages.Administration.Vehicle' }
                     },
                 ]
             }
