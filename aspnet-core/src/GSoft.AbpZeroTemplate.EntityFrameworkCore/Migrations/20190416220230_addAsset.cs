@@ -8,8 +8,7 @@ namespace GSoft.AbpZeroTemplate.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropTable(
-                name: "ModelDemos");
+
 
             migrationBuilder.CreateTable(
                 name: "Assets",
@@ -35,8 +34,6 @@ namespace GSoft.AbpZeroTemplate.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropTable(
-                name: "Assets");
 
             migrationBuilder.CreateTable(
                 name: "ModelDemos",
