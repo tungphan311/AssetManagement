@@ -73,7 +73,7 @@
                             <div class="form-group row">
                                 <div class="col-xs-4 margin-right-20 margin-left-40">
                                     <label>Hình thức</label>
-                                    <input class="form-control" type="text" value="{{contract.contractWarrantyTypeID}}" name="ContractWarrantyTypeID" readonly>
+                                    <input class="form-control" type="text" value="{{contract.contractWarrantyType}}" name="ContractWarrantyTypeID" readonly>
                                 </div>
                                 <div class="col-xs-4 margin-right-20">
                                     <label>Số chứng thư bảo lãnh</label>
@@ -99,9 +99,12 @@
                                 <input type="text" class="form-control" name="ContractWarrantyBank" value="{{contract.contractWarrantyBank}}" readonly>   
                             </div>  
                             <div class="form-group margin-left-20">
-                                <label>File đính kèm</label>
-                                <div class="input-group">
-                                    <input type="file" class="form-control" name="ContactWarrantyFile" readonly>
+                                <label>Tệp đính kèm</label>
+                                <div class="container">
+                                    <button type="button" class="btn btn-info btn-wide" (click)="viewFirstFile = !viewFirstFile">
+                                        Xem tệp
+                                    </button>
+                                    <img class="custom-img" *ngIf="viewFirstFile" src="{{contract.contractWarrantyFile}}">
                                 </div>         
                             </div>
                         </fieldset>
@@ -138,7 +141,13 @@
                                 <input type="text" class="form-control" name="WarrantyGuaranteeBank" value="{{contract.warrantyGuaranteeBank}}" readonly>
                             </div>  
                             <div class="form-group margin-left-20">
-                                File đính kèm <input type="file" class="form-control" name="ContactWarrantyFile" readonly>
+                                <label>Tệp đính kèm </label> 
+                                <div class="container">
+                                    <button type="button" class="btn btn-info btn-wide" (click)="viewSecondFile = !viewSecondFile">
+                                        Xem tệp
+                                    </button>
+                                    <img class="custom-img" *ngIf="viewSecondFile" src="{{contract.warrantyGuaranteeFile}}">
+                                </div>   
                             </div>
                         </fieldset>
                     </form>   
@@ -154,16 +163,10 @@
                             <div class="d-flex align-items-center">
                                 <div class="primeng-paging-container">
                                     <p-paginator rows="{{primengTableHelper.defaultRecordsCountPerPage}}" #paginator
-                                        (onPageChange)="getListMerchandises()"
+                                        (onPageChange)="getContractDetails()"
                                         [totalRecords]="primengTableHelper.totalRecordsCount"
                                         [rowsPerPageOptions]="primengTableHelper.predefinedRecordsCountPerPage">
                                     </p-paginator>
-                                </div>
-                                <div class="col-xs-6 align-items-right">
-                                    <button [disabled]="saving" type="button" (click)="addContractDetail()" *ngIf="('Pages.Administration.ContracDetail.Create')"
-                                        class="btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill">
-                                        <i class="fa fa-plus"></i>
-                                    </button>
                                 </div>
                             </div>  
                             <p-table #dataTable (onLazyLoad)="getContractDetails($event)" [value]="primengTableHelper.records"

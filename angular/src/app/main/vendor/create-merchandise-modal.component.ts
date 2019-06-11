@@ -1,7 +1,7 @@
 import { Component, ElementRef, EventEmitter, Injector, Output, ViewChild } from '@angular/core';
 import { AppComponentBase } from '@shared/common/app-component-base';
 import { ModalDirective } from 'ngx-bootstrap';
-import { MerchandiseInput, MerchandiseServiceProxy, ComboboxItemDto, MerchandiseTypeServiceProxy } from '@shared/service-proxies/service-proxies';
+import { MerchandiseInput, MerchandiseServiceProxy, ComboboxItemDto, MerchandiseTypeServiceProxy, AssignmentTableInput, AssignmentTableServiceProxy } from '@shared/service-proxies/service-proxies';
 import { Table } from 'primeng/components/table/table';
 import { Paginator } from 'primeng/components/paginator/paginator';
 import { LazyLoadEvent } from 'primeng/primeng';
@@ -28,6 +28,7 @@ export class CreateMerchandiseModalComponent extends AppComponentBase {
     saving = false;
 
     merchandise: MerchandiseInput = new MerchandiseInput();
+    assignmentTableInput: AssignmentTableInput = new AssignmentTableInput();
 
     merchandiseTypes = []
     typeVender = []
@@ -36,6 +37,7 @@ export class CreateMerchandiseModalComponent extends AppComponentBase {
         injector: Injector,
         private _merchandiseService: MerchandiseServiceProxy,
         private _merTypeService: MerchandiseTypeServiceProxy,
+        private _assignmentTableService: AssignmentTableServiceProxy,
     ) {
         super(injector);
     }
@@ -48,11 +50,27 @@ export class CreateMerchandiseModalComponent extends AppComponentBase {
         this._merTypeService.getMerchandiseByFilter(null, null, null, null, 999, 0).subscribe(result => {
             this.merchandiseTypes = result.items
         })
+
+
+    }
+
+        //Thêm item vào bảng gán
+    addToAssignmentTable(venId, merchandiseId): void {
+        this.assignmentTableInput.merchID=merchandiseId;
+        this.assignmentTableInput.vendorID=venId;
+        let input = this.assignmentTableInput;
+        this._assignmentTableService.createOrEditAssignmentTable(input).subscribe(result =>{
+            this.notify.info(this.l('Added to AssignmentTable'));
+            // this.close();
+        })
     }
 
     save(): void {
         let input = this.merchandise;
         this.saving = true;
+
+        this.addToAssignmentTable(this.merchandise.typeVender,this.merchandise.id);
+
         this._merchandiseService.createOrEditMerchandise(input).subscribe(result => {
             this.notify.info(this.l('SavedSuccessfully'));
             this.close();

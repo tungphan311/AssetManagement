@@ -13,17 +13,20 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Linq.Dynamic.Core;
 using Abp.Linq.Extensions;
+using GWebsite.AbpZeroTemplate.Application.Share.Bidders.Dto;
 
 namespace GWebsite.AbpZeroTemplate.Web.Core.Bids
 {
     [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient)]
     public class BidAppService : GWebsiteAppServiceBase, IBidAppService
     {
-        private readonly IRepository<Bid> repository;
+        private readonly IRepository<Bid> bidRepository;
+        private readonly IRepository<Bidder> bidderRepository;
 
-        public BidAppService(IRepository<Bid> repository)
+        public BidAppService(IRepository<Bid> bidRepository,IRepository<Bidder> bidderRepository)
         {
-            this.repository = repository;
+            this.bidRepository = bidRepository;
+            this.bidderRepository = bidderRepository;
         }
 
         #region public method
@@ -42,31 +45,43 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Bids
 
         public void DeleteBid(int id)
         {
-            var entity = repository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.Id == id);
+            var entity = bidRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.Id == id);
 
             if (entity != null)
             {
                 entity.IsDelete = true;
-                repository.Update(entity);
+                bidRepository.Update(entity);
+                //xóa bidder của bid đó 
+                var ListBidders = bidderRepository.GetAll().Where(x => !x.IsDelete).Where(x => x.BidID == entity.Id);          
+                foreach (var bidder in ListBidders)
+                {
+                    bidder.IsDelete = true;
+                    SetAuditEdit(bidder);
+                    bidderRepository.Update(bidder);
+                }
+                //--
                 CurrentUnitOfWork.SaveChanges();
             }
         }
 
         public BidInput GetBidForEdit(int id)
         {
-            var entity = repository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.Id == id);
+            var entity = bidRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.Id == id);
 
             if (entity == null)
             {
                 return null;
             }
+            var bidInput = ObjectMapper.Map<BidInput>(entity);
+            var bidderList = bidderRepository.GetAll().Where(x => !x.IsDelete).Where(x => x.BidID == bidInput.Id);
+            bidInput.Bidders = bidderList.Select(x => ObjectMapper.Map<BidderInput>(x)).ToList();
 
-            return ObjectMapper.Map<BidInput>(entity);
+            return bidInput;
         }
 
         public BidForViewDto GetBidForView(int id)
         {
-            var entity = repository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.Id == id);
+            var entity = bidRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.Id == id);
 
             if (entity == null)
             {
@@ -78,7 +93,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Bids
 
         public PagedResultDto<BidDto> GetBids(BidFilter filter)
         {
-            var query = repository.GetAll().Where(x => !x.IsDelete);
+            var query = bidRepository.GetAll().Where(x => !x.IsDelete);
 
             // filter by Name 
             if (filter.Name != null)
@@ -89,7 +104,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Bids
             // filter by Category
             if (filter.Category != null)
             {
-                query = query.Where(x => x.Category.ToLower().Equals(filter.Category.ToLower()));
+                query = query.Where(x => x.Category.ToLower().Contains(filter.Category.ToLower()));
             }
 
             // filter by Date 
@@ -117,6 +132,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Bids
             }
 
             var totalCount = query.Count();
+          
 
             // sort
             if (!string.IsNullOrWhiteSpace(filter.Sorting))
@@ -126,11 +142,13 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Bids
 
             // paging
             var items = query.PageBy(filter).ToList();
-
+                    
+            var bidDTOList = items.Select(item => ObjectMapper.Map<BidDto>(item)).ToList();
+                      
             // result
             return new PagedResultDto<BidDto>(
                 totalCount,
-                items.Select(item => ObjectMapper.Map<BidDto>(item)).ToList()
+                bidDTOList
             );
         }
 
@@ -143,21 +161,84 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Bids
         {
             var entity = ObjectMapper.Map<Bid>(input);
             SetAuditInsert(entity);
-            repository.Insert(entity);
+            bidRepository.Insert(entity);
+
+            var id = bidRepository.InsertAndGetId(entity);
+
+            foreach (var bidder in input.Bidders)
+            {
+                
+                bidder.BidID = id;
+                var bidderEntity = ObjectMapper.Map<Bidder>(bidder);
+                SetAuditInsert(bidderEntity);
+                bidderRepository.Insert(bidderEntity);
+            }
+
             CurrentUnitOfWork.SaveChanges();
         }
 
         [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient_Edit)]
         private void Update(BidInput input)
         {
-            var entity = repository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.Id == input.Id);
+            var entity = bidRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.Id == input.Id);
             if (entity == null)
             {
-
-            }
+                return; 
+            }                       
             ObjectMapper.Map(input, entity);
             SetAuditEdit(entity);
-            repository.Update(entity);
+            bidRepository.Update(entity);
+            if (input.Bidders == null)
+            {
+                var ListBidders = bidderRepository.GetAll().Where(x => !x.IsDelete).Where(x => x.BidID == input.Id);
+                //nếu danh sách bidder rỗng thì xóa hết bidder của bid đó
+                foreach (var bidder in ListBidders)
+                {                  
+                        bidder.IsDelete = true;
+                        SetAuditEdit(bidder);
+                        bidderRepository.Update(bidder);                   
+                }
+                return;
+            }
+            else
+            {
+                //update bidder here
+                var ListBidders = bidderRepository.GetAll().Where(x => !x.IsDelete).Where(x => x.BidID == input.Id);
+                //xóa bidder cũ
+                foreach (var bidder in ListBidders)
+                {
+                    if (!(input.Bidders.Exists(x => x.VendorId == bidder.VendorId)))
+                    {
+                        //nếu không tồn tại trong list của input thì xóa
+                        bidder.IsDelete = true;
+                        SetAuditEdit(bidder);
+                        bidderRepository.Update(bidder);
+                    }
+                }
+                //sửa hoặc thêm bidder
+                foreach (var bidder in input.Bidders)
+                {
+                    var bidderEntity = ListBidders.SingleOrDefault(x => x.VendorId == bidder.VendorId);
+                    if (bidderEntity == null)
+                    {
+                        //nếu không tồn tại thì thêm
+                        bidderEntity = ObjectMapper.Map<Bidder>(bidder);
+                        bidderEntity.BidID = entity.Id;
+                        SetAuditInsert(bidderEntity);
+                        bidderRepository.Insert(bidderEntity);
+                    }
+                    else
+                    {
+                        //nếu tồn tại thì update
+                        bidder.Id = bidderEntity.Id;//
+                        ObjectMapper.Map(bidder, bidderEntity);
+                        bidderEntity.BidID = entity.Id;
+                        SetAuditEdit(bidderEntity);
+                        bidderRepository.Update(bidderEntity);
+                    }
+                }
+            }
+            //--
             CurrentUnitOfWork.SaveChanges();
         }
 

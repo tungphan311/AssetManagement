@@ -1582,6 +1582,14 @@ namespace GSoft.AbpZeroTemplate.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("Attachment1");
+
+                    b.Property<string>("Attachment2");
+
+                    b.Property<string>("Attachment3");
+
+                    b.Property<string>("Attachment4");
+
                     b.Property<DateTime>("BeginDay");
 
                     b.Property<int>("BidderID");
@@ -1599,6 +1607,8 @@ namespace GSoft.AbpZeroTemplate.Migrations
                     b.Property<bool>("IsDelete");
 
                     b.Property<string>("Name");
+
+                    b.Property<double>("Percent");
 
                     b.Property<int>("ProjectId");
 
@@ -1623,6 +1633,8 @@ namespace GSoft.AbpZeroTemplate.Migrations
 
                     b.Property<DateTime>("ApplyDay");
 
+                    b.Property<string>("Attachment");
+
                     b.Property<int>("BidID");
 
                     b.Property<int>("CertificateNumber");
@@ -1630,6 +1642,8 @@ namespace GSoft.AbpZeroTemplate.Migrations
                     b.Property<string>("CreatedBy");
 
                     b.Property<DateTime?>("CreatedDate");
+
+                    b.Property<string>("GuaranteeBank");
 
                     b.Property<DateTime>("GuaranteeExpired");
 
@@ -1687,6 +1701,8 @@ namespace GSoft.AbpZeroTemplate.Migrations
                     b.Property<string>("Name");
 
                     b.Property<string>("Note");
+
+                    b.Property<float>("TotalPrice");
 
                     b.Property<string>("UpdatedBy");
 
@@ -1765,6 +1781,8 @@ namespace GSoft.AbpZeroTemplate.Migrations
                     b.Property<DateTime?>("CreatedDate");
 
                     b.Property<bool>("IsDelete");
+
+                    b.Property<string>("Note");
 
                     b.Property<DateTime>("PaymentDate");
 
@@ -2079,7 +2097,7 @@ namespace GSoft.AbpZeroTemplate.Migrations
 
                     b.Property<string>("OrderName");
 
-                    b.Property<int>("POID");
+                    b.Property<string>("POID");
 
                     b.Property<DateTime>("ReceiveReportDay");
 

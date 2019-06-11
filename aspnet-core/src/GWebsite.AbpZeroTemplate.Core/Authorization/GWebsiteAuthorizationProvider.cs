@@ -90,6 +90,7 @@ namespace GWebsite.AbpZeroTemplate.Core.Authorization
             bidder.CreateChildPermission(GWebsitePermissions.Pages_Administration_Bidder_Create, L("CreateNewBidder"));
             bidder.CreateChildPermission(GWebsitePermissions.Pages_Administration_Bidder_Edit, L("EditingBidder"));
             bidder.CreateChildPermission(GWebsitePermissions.Pages_Administration_Bidder_Delete, L("DeletingBidder"));
+
             var asset = gwebsite.CreateChildPermission(GWebsitePermissions.Pages_Administration_Asset, L("Asset"));
             asset.CreateChildPermission(GWebsitePermissions.Pages_Administration_Asset_Create, L("CreatingNewAsset"));
             asset.CreateChildPermission(GWebsitePermissions.Pages_Administration_Asset_Edit, L("EditingAsset"));
@@ -105,7 +106,10 @@ namespace GWebsite.AbpZeroTemplate.Core.Authorization
             detailAssetRent.CreateChildPermission(GWebsitePermissions.Pages_Administration_DetailAssetRent_Edit, L("EditingDetailAssetRent"));
             detailAssetRent.CreateChildPermission(GWebsitePermissions.Pages_Administration_DetailAssetRent_Delete, L("DeletingDetailAssetRent"));
 
-
+            var PO = pages.CreateChildPermission(GWebsitePermissions.Pages_Administration_PO, L("PO"));
+            PO.CreateChildPermission(GWebsitePermissions.Pages_Administration_PO_Create, L("CreateNewPO"));
+            PO.CreateChildPermission(GWebsitePermissions.Pages_Administration_PO_Edit, L("EditingPO"));
+            PO.CreateChildPermission(GWebsitePermissions.Pages_Administration_PO_Delete, L("DeletingPO"));
         }
 
         private static ILocalizableString L(string name)

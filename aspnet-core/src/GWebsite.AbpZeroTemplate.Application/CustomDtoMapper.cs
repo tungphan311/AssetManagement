@@ -8,7 +8,6 @@ using GWebsite.AbpZeroTemplate.Application.Share.Assets.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.AssetRents.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.DemoModels.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.MenuClients.Dto;
-using GWebsite.AbpZeroTemplate.Application.Share.Merchandises;
 using GWebsite.AbpZeroTemplate.Application.Share.Merchandises.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.MerchandiseTypes.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.Vendors.Dto;
@@ -18,6 +17,7 @@ using GWebsite.AbpZeroTemplate.Core.Models;
 using GWebsite.AbpZeroTemplate.Application.Share.AssignmentTables.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.Bids.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.Bidders.Dto;
+using GWebsite.AbpZeroTemplate.Application.Share.POs.Dto;
 
 using GWebsite.AbpZeroTemplate.Application.Share.AssetsRents.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.DetailAssetRents.Dto;
@@ -108,6 +108,7 @@ namespace GWebsite.AbpZeroTemplate.Applications
             configuration.CreateMap<BidderInput, Bidder>();
             configuration.CreateMap<Bidder, BidderInput>();
             configuration.CreateMap<Bidder, BidderForViewDto>();
+
             //Asset 
             configuration.CreateMap<Asset, AssetDto>();
             configuration.CreateMap<Asset, AssetFilter>();
@@ -129,7 +130,11 @@ namespace GWebsite.AbpZeroTemplate.Applications
             configuration.CreateMap<DetailAssetRent, DetailAssetRentInput>();
             configuration.CreateMap<DetailAssetRentInput, DetailAssetRent>();
 
-
+            // PO
+            configuration.CreateMap<PO, PODto>();
+            configuration.CreateMap<POInput, PO>();
+            configuration.CreateMap<PO, POInput>();
+            configuration.CreateMap<PO, POForViewDto>();
         }
     }
 }

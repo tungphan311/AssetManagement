@@ -1,0 +1,84 @@
+<div [@routerTransition]>
+<div bsModal #createOrEditModal="bs-modal" class="modal fade" tabindex="-1" role="dialog"
+    aria-labelledby="createOrEditModal" aria-hidden="true" [config]="{backdrop: 'static'}">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <form #editForm="ngForm" novalidate >
+                <div class="modal-header">
+                    <h4 class="modal-title">
+                        <span *ngIf="po.id">Cập nhật Phiếu gọi hàng: {{po.reportID}}</span>
+                        <span *ngIf="!po.id">Tạo mới Phiếu gọi hàng</span>
+                    </h4>                 
+                    <button type="button" class="close" (click)="close()" [attr.aria-label]="l('Close')">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <nav class="navbar navbar-expand-sm navbar-light" style="background-color: #e3f2fd;">
+                        <h4 class="modal-title">
+                            <i class="fa fa-search"></i>
+                            <span>   Thông tin chi tiết</span>
+                        </h4>
+                    </nav>
+                    <div class="form_group row margin-top-15">
+                        <div class="margin-right-20 margin-left-20" style="width: 30%">
+                            <label for="ex1">Mã Po *</label>
+                            <input #poIDInput="ngModel" class="form-control" id="ex1" type="text" name="PoID" [(ngModel)]="po.poid" required maxlength="64">
+                            <validation-messages [formCtrl]="poIDInput"></validation-messages>
+                        </div>
+                        <div class="margin-right-20" style="width: 30%">
+                            <label for="ex2">Tên đơn hàng *</label>
+                            <input #orderNameInput="ngModel" class="form-control" id="ex2" type="text" name="OrderName" [(ngModel)]="po.orderName" required maxlength="64">
+                            <validation-messages [formCtrl]="orderNameInput"></validation-messages>
+                        </div>
+                        <div style="width: 30%">
+                            <label for="ex3">Ngày gọi hàng *</label>
+                            <input #createDayInput="ngModel" class="form-control" id="ex3" type="date" name="CreateDay" [(ngModel)]="po.createDay" required maxlength="64">
+                            <validation-messages [formCtrl]="createDayInput"></validation-messages>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="margin-right-20 margin-left-20" style="width: 30%">
+                            <label for="ex1">Số tờ trình *</label>
+                            <input #reportIDInput="ngModel" class="form-control" id="ex1" type="text" name="ReportID" [(ngModel)]="po.reportID" required maxlength="64">
+                            <validation-messages [formCtrl]="reportIDInput"></validation-messages>
+                        </div>
+                        <div class="margin-right-20" style="width: 30%">
+                            <label for="ex2">Ngày nhận tờ trình *</label>
+                            <input #receiveReportDayInput="ngModel" class="form-control" id="ex2" type="date" name="ReceiveReportDay" [(ngModel)]="po.receiveReportDay" required maxlength="64">
+                            <validation-messages [formCtrl]="receiveReportDayInput"></validation-messages>
+                        </div>
+                        <div style="width: 30%">
+                            <label for="ex3">Ngày duyệt tờ trình *</label>
+                            <input #approveReportDayInput="ngModel" class="form-control" id="ex3" type="date" name="ApproveReportDay" [(ngModel)]="po.approveReportDay" required>
+                            <validation-messages [formCtrl]="approveReportDayInput"></validation-messages>
+                        </div>              
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-xs-4 margin-right-20 margin-left-20">
+                            <label>Số hợp đồng</label>
+                            <div class="input-group col-xs-4">
+                                <input class="form-control" type="text" name="ContractID" [(ngModel)]="contractID" readonly required>
+                                <span class="input-group-btn">
+                                    <button class="btn btn-primary" type="button" (click)="selectContractModal.show()">
+                                        <i class="fa fa-ellipsis-h"></i>
+                                    </button>
+                                </span>
+                            </div>                         
+                        </div>
+                    
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button [disabled]="saving" type="button" class="btn btn-default" (click)="close()">{{l("Cancel")}}</button>
+                    <button class="btn btn-primary" [buttonBusy]="saving" [busyText]="l('SavingWithThreeDot')" (click)="save()">
+                        <i class="fa fa-save"></i>
+                        <span>{{l("Save")}}</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<selectContractModal #selectContractModal (modalSave)="reloadContract($event)"></selectContractModal>
+</div>
