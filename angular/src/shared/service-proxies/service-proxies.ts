@@ -13494,6 +13494,7 @@ export class BidDto implements IBidDto {
     attachmentFile!: string | undefined;
     projectId!: number | undefined;
     project!: ProjectDto | undefined;
+    bidDetails!: BidDetailDto[] | undefined;
     id!: number | undefined;
 
     constructor(data?: IBidDto) {
@@ -13516,6 +13517,11 @@ export class BidDto implements IBidDto {
             this.attachmentFile = data["attachmentFile"];
             this.projectId = data["projectId"];
             this.project = data["project"] ? ProjectDto.fromJS(data["project"]) : <any>undefined;
+            if (data["bidDetails"] && data["bidDetails"].constructor === Array) {
+                this.bidDetails = [];
+                for (let item of data["bidDetails"])
+                    this.bidDetails.push(BidDetailDto.fromJS(item));
+            }
             this.id = data["id"];
         }
     }
@@ -13538,6 +13544,11 @@ export class BidDto implements IBidDto {
         data["attachmentFile"] = this.attachmentFile;
         data["projectId"] = this.projectId;
         data["project"] = this.project ? this.project.toJSON() : <any>undefined;
+        if (this.bidDetails && this.bidDetails.constructor === Array) {
+            data["bidDetails"] = [];
+            for (let item of this.bidDetails)
+                data["bidDetails"].push(item.toJSON());
+        }
         data["id"] = this.id;
         return data; 
     }
@@ -13553,6 +13564,7 @@ export interface IBidDto {
     attachmentFile: string | undefined;
     projectId: number | undefined;
     project: ProjectDto | undefined;
+    bidDetails: BidDetailDto[] | undefined;
     id: number | undefined;
 }
 
@@ -13608,6 +13620,154 @@ export interface IProjectDto {
     id: number | undefined;
 }
 
+export class BidDetailDto implements IBidDetailDto {
+    isAccepted!: boolean | undefined;
+    biddingCreatedDate!: moment.Moment | undefined;
+    attachmentFile!: string | undefined;
+    bidPrice!: number | undefined;
+    guaranteeForm!: BidDetailDtoGuaranteeForm | undefined;
+    guaranteeEndDate!: moment.Moment | undefined;
+    certificateNumber!: string | undefined;
+    bankName!: string | undefined;
+    note!: string | undefined;
+    providerId!: number | undefined;
+    bidId!: number | undefined;
+    provider!: ProviderDto | undefined;
+    id!: number | undefined;
+
+    constructor(data?: IBidDetailDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.isAccepted = data["isAccepted"];
+            this.biddingCreatedDate = data["biddingCreatedDate"] ? moment(data["biddingCreatedDate"].toString()) : <any>undefined;
+            this.attachmentFile = data["attachmentFile"];
+            this.bidPrice = data["bidPrice"];
+            this.guaranteeForm = data["guaranteeForm"];
+            this.guaranteeEndDate = data["guaranteeEndDate"] ? moment(data["guaranteeEndDate"].toString()) : <any>undefined;
+            this.certificateNumber = data["certificateNumber"];
+            this.bankName = data["bankName"];
+            this.note = data["note"];
+            this.providerId = data["providerId"];
+            this.bidId = data["bidId"];
+            this.provider = data["provider"] ? ProviderDto.fromJS(data["provider"]) : <any>undefined;
+            this.id = data["id"];
+        }
+    }
+
+    static fromJS(data: any): BidDetailDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new BidDetailDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["isAccepted"] = this.isAccepted;
+        data["biddingCreatedDate"] = this.biddingCreatedDate ? this.biddingCreatedDate : <any>undefined;
+        data["attachmentFile"] = this.attachmentFile;
+        data["bidPrice"] = this.bidPrice;
+        data["guaranteeForm"] = this.guaranteeForm;
+        data["guaranteeEndDate"] = this.guaranteeEndDate ? this.guaranteeEndDate : <any>undefined;
+        data["certificateNumber"] = this.certificateNumber;
+        data["bankName"] = this.bankName;
+        data["note"] = this.note;
+        data["providerId"] = this.providerId;
+        data["bidId"] = this.bidId;
+        data["provider"] = this.provider ? this.provider.toJSON() : <any>undefined;
+        data["id"] = this.id;
+        return data; 
+    }
+}
+
+export interface IBidDetailDto {
+    isAccepted: boolean | undefined;
+    biddingCreatedDate: moment.Moment | undefined;
+    attachmentFile: string | undefined;
+    bidPrice: number | undefined;
+    guaranteeForm: BidDetailDtoGuaranteeForm | undefined;
+    guaranteeEndDate: moment.Moment | undefined;
+    certificateNumber: string | undefined;
+    bankName: string | undefined;
+    note: string | undefined;
+    providerId: number | undefined;
+    bidId: number | undefined;
+    provider: ProviderDto | undefined;
+    id: number | undefined;
+}
+
+export class ProviderDto implements IProviderDto {
+    name!: string | undefined;
+    providerCode!: string | undefined;
+    email!: string | undefined;
+    phoneNumber!: string | undefined;
+    address!: string | undefined;
+    info!: string | undefined;
+    isActive!: boolean | undefined;
+    id!: number | undefined;
+
+    constructor(data?: IProviderDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.name = data["name"];
+            this.providerCode = data["providerCode"];
+            this.email = data["email"];
+            this.phoneNumber = data["phoneNumber"];
+            this.address = data["address"];
+            this.info = data["info"];
+            this.isActive = data["isActive"];
+            this.id = data["id"];
+        }
+    }
+
+    static fromJS(data: any): ProviderDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new ProviderDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["name"] = this.name;
+        data["providerCode"] = this.providerCode;
+        data["email"] = this.email;
+        data["phoneNumber"] = this.phoneNumber;
+        data["address"] = this.address;
+        data["info"] = this.info;
+        data["isActive"] = this.isActive;
+        data["id"] = this.id;
+        return data; 
+    }
+}
+
+export interface IProviderDto {
+    name: string | undefined;
+    providerCode: string | undefined;
+    email: string | undefined;
+    phoneNumber: string | undefined;
+    address: string | undefined;
+    info: string | undefined;
+    isActive: boolean | undefined;
+    id: number | undefined;
+}
+
 export class BidInput implements IBidInput {
     code!: string | undefined;
     fromDate!: moment.Moment | undefined;
@@ -13617,6 +13777,8 @@ export class BidInput implements IBidInput {
     cautionMoney!: number | undefined;
     attachmentFile!: string | undefined;
     projectId!: number | undefined;
+    project!: ProjectInput | undefined;
+    bidDetails!: BidDetailInput[] | undefined;
     id!: number | undefined;
 
     constructor(data?: IBidInput) {
@@ -13638,6 +13800,12 @@ export class BidInput implements IBidInput {
             this.cautionMoney = data["cautionMoney"];
             this.attachmentFile = data["attachmentFile"];
             this.projectId = data["projectId"];
+            this.project = data["project"] ? ProjectInput.fromJS(data["project"]) : <any>undefined;
+            if (data["bidDetails"] && data["bidDetails"].constructor === Array) {
+                this.bidDetails = [];
+                for (let item of data["bidDetails"])
+                    this.bidDetails.push(BidDetailInput.fromJS(item));
+            }
             this.id = data["id"];
         }
     }
@@ -13659,6 +13827,12 @@ export class BidInput implements IBidInput {
         data["cautionMoney"] = this.cautionMoney;
         data["attachmentFile"] = this.attachmentFile;
         data["projectId"] = this.projectId;
+        data["project"] = this.project ? this.project.toJSON() : <any>undefined;
+        if (this.bidDetails && this.bidDetails.constructor === Array) {
+            data["bidDetails"] = [];
+            for (let item of this.bidDetails)
+                data["bidDetails"].push(item.toJSON());
+        }
         data["id"] = this.id;
         return data; 
     }
@@ -13673,6 +13847,208 @@ export interface IBidInput {
     cautionMoney: number | undefined;
     attachmentFile: string | undefined;
     projectId: number | undefined;
+    project: ProjectInput | undefined;
+    bidDetails: BidDetailInput[] | undefined;
+    id: number | undefined;
+}
+
+export class ProjectInput implements IProjectInput {
+    name!: string | undefined;
+    activityType!: string | undefined;
+    projectCreatedDate!: moment.Moment | undefined;
+    isActive!: boolean | undefined;
+    id!: number | undefined;
+
+    constructor(data?: IProjectInput) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.name = data["name"];
+            this.activityType = data["activityType"];
+            this.projectCreatedDate = data["projectCreatedDate"] ? moment(data["projectCreatedDate"].toString()) : <any>undefined;
+            this.isActive = data["isActive"];
+            this.id = data["id"];
+        }
+    }
+
+    static fromJS(data: any): ProjectInput {
+        data = typeof data === 'object' ? data : {};
+        let result = new ProjectInput();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["name"] = this.name;
+        data["activityType"] = this.activityType;
+        data["projectCreatedDate"] = this.projectCreatedDate ? this.projectCreatedDate : <any>undefined;
+        data["isActive"] = this.isActive;
+        data["id"] = this.id;
+        return data; 
+    }
+}
+
+export interface IProjectInput {
+    name: string | undefined;
+    activityType: string | undefined;
+    projectCreatedDate: moment.Moment | undefined;
+    isActive: boolean | undefined;
+    id: number | undefined;
+}
+
+export class BidDetailInput implements IBidDetailInput {
+    isAccepted!: boolean | undefined;
+    biddingCreatedDate!: moment.Moment | undefined;
+    attachmentFile!: string | undefined;
+    bidPrice!: number | undefined;
+    guaranteeForm!: BidDetailInputGuaranteeForm | undefined;
+    guaranteeEndDate!: moment.Moment | undefined;
+    certificateNumber!: string | undefined;
+    bankName!: string | undefined;
+    note!: string | undefined;
+    providerId!: number | undefined;
+    provider!: ProviderInput | undefined;
+    bidId!: number | undefined;
+    id!: number | undefined;
+
+    constructor(data?: IBidDetailInput) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.isAccepted = data["isAccepted"];
+            this.biddingCreatedDate = data["biddingCreatedDate"] ? moment(data["biddingCreatedDate"].toString()) : <any>undefined;
+            this.attachmentFile = data["attachmentFile"];
+            this.bidPrice = data["bidPrice"];
+            this.guaranteeForm = data["guaranteeForm"];
+            this.guaranteeEndDate = data["guaranteeEndDate"] ? moment(data["guaranteeEndDate"].toString()) : <any>undefined;
+            this.certificateNumber = data["certificateNumber"];
+            this.bankName = data["bankName"];
+            this.note = data["note"];
+            this.providerId = data["providerId"];
+            this.provider = data["provider"] ? ProviderInput.fromJS(data["provider"]) : <any>undefined;
+            this.bidId = data["bidId"];
+            this.id = data["id"];
+        }
+    }
+
+    static fromJS(data: any): BidDetailInput {
+        data = typeof data === 'object' ? data : {};
+        let result = new BidDetailInput();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["isAccepted"] = this.isAccepted;
+        data["biddingCreatedDate"] = this.biddingCreatedDate ? this.biddingCreatedDate : <any>undefined;
+        data["attachmentFile"] = this.attachmentFile;
+        data["bidPrice"] = this.bidPrice;
+        data["guaranteeForm"] = this.guaranteeForm;
+        data["guaranteeEndDate"] = this.guaranteeEndDate ? this.guaranteeEndDate : <any>undefined;
+        data["certificateNumber"] = this.certificateNumber;
+        data["bankName"] = this.bankName;
+        data["note"] = this.note;
+        data["providerId"] = this.providerId;
+        data["provider"] = this.provider ? this.provider.toJSON() : <any>undefined;
+        data["bidId"] = this.bidId;
+        data["id"] = this.id;
+        return data; 
+    }
+}
+
+export interface IBidDetailInput {
+    isAccepted: boolean | undefined;
+    biddingCreatedDate: moment.Moment | undefined;
+    attachmentFile: string | undefined;
+    bidPrice: number | undefined;
+    guaranteeForm: BidDetailInputGuaranteeForm | undefined;
+    guaranteeEndDate: moment.Moment | undefined;
+    certificateNumber: string | undefined;
+    bankName: string | undefined;
+    note: string | undefined;
+    providerId: number | undefined;
+    provider: ProviderInput | undefined;
+    bidId: number | undefined;
+    id: number | undefined;
+}
+
+export class ProviderInput implements IProviderInput {
+    name!: string | undefined;
+    providerCode!: string | undefined;
+    email!: string | undefined;
+    phoneNumber!: string | undefined;
+    address!: string | undefined;
+    info!: string | undefined;
+    isActive!: boolean | undefined;
+    id!: number | undefined;
+
+    constructor(data?: IProviderInput) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.name = data["name"];
+            this.providerCode = data["providerCode"];
+            this.email = data["email"];
+            this.phoneNumber = data["phoneNumber"];
+            this.address = data["address"];
+            this.info = data["info"];
+            this.isActive = data["isActive"];
+            this.id = data["id"];
+        }
+    }
+
+    static fromJS(data: any): ProviderInput {
+        data = typeof data === 'object' ? data : {};
+        let result = new ProviderInput();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["name"] = this.name;
+        data["providerCode"] = this.providerCode;
+        data["email"] = this.email;
+        data["phoneNumber"] = this.phoneNumber;
+        data["address"] = this.address;
+        data["info"] = this.info;
+        data["isActive"] = this.isActive;
+        data["id"] = this.id;
+        return data; 
+    }
+}
+
+export interface IProviderInput {
+    name: string | undefined;
+    providerCode: string | undefined;
+    email: string | undefined;
+    phoneNumber: string | undefined;
+    address: string | undefined;
+    info: string | undefined;
+    isActive: boolean | undefined;
     id: number | undefined;
 }
 
@@ -13790,238 +14166,6 @@ export class PagedResultDtoOfBidDetailDto implements IPagedResultDtoOfBidDetailD
 export interface IPagedResultDtoOfBidDetailDto {
     totalCount: number | undefined;
     items: BidDetailDto[] | undefined;
-}
-
-export class BidDetailDto implements IBidDetailDto {
-    isAccepted!: boolean | undefined;
-    biddingCreatedDate!: moment.Moment | undefined;
-    attachmentFile!: string | undefined;
-    bidPrice!: number | undefined;
-    guaranteeForm!: BidDetailDtoGuaranteeForm | undefined;
-    guaranteeEndDate!: moment.Moment | undefined;
-    certificateNumber!: string | undefined;
-    bankName!: string | undefined;
-    note!: string | undefined;
-    providerId!: number | undefined;
-    bidId!: number | undefined;
-    provider!: ProviderDto | undefined;
-    bid!: BidDto | undefined;
-    id!: number | undefined;
-
-    constructor(data?: IBidDetailDto) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(data?: any) {
-        if (data) {
-            this.isAccepted = data["isAccepted"];
-            this.biddingCreatedDate = data["biddingCreatedDate"] ? moment(data["biddingCreatedDate"].toString()) : <any>undefined;
-            this.attachmentFile = data["attachmentFile"];
-            this.bidPrice = data["bidPrice"];
-            this.guaranteeForm = data["guaranteeForm"];
-            this.guaranteeEndDate = data["guaranteeEndDate"] ? moment(data["guaranteeEndDate"].toString()) : <any>undefined;
-            this.certificateNumber = data["certificateNumber"];
-            this.bankName = data["bankName"];
-            this.note = data["note"];
-            this.providerId = data["providerId"];
-            this.bidId = data["bidId"];
-            this.provider = data["provider"] ? ProviderDto.fromJS(data["provider"]) : <any>undefined;
-            this.bid = data["bid"] ? BidDto.fromJS(data["bid"]) : <any>undefined;
-            this.id = data["id"];
-        }
-    }
-
-    static fromJS(data: any): BidDetailDto {
-        data = typeof data === 'object' ? data : {};
-        let result = new BidDetailDto();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["isAccepted"] = this.isAccepted;
-        data["biddingCreatedDate"] = this.biddingCreatedDate ? this.biddingCreatedDate : <any>undefined;
-        data["attachmentFile"] = this.attachmentFile;
-        data["bidPrice"] = this.bidPrice;
-        data["guaranteeForm"] = this.guaranteeForm;
-        data["guaranteeEndDate"] = this.guaranteeEndDate ? this.guaranteeEndDate : <any>undefined;
-        data["certificateNumber"] = this.certificateNumber;
-        data["bankName"] = this.bankName;
-        data["note"] = this.note;
-        data["providerId"] = this.providerId;
-        data["bidId"] = this.bidId;
-        data["provider"] = this.provider ? this.provider.toJSON() : <any>undefined;
-        data["bid"] = this.bid ? this.bid.toJSON() : <any>undefined;
-        data["id"] = this.id;
-        return data; 
-    }
-}
-
-export interface IBidDetailDto {
-    isAccepted: boolean | undefined;
-    biddingCreatedDate: moment.Moment | undefined;
-    attachmentFile: string | undefined;
-    bidPrice: number | undefined;
-    guaranteeForm: BidDetailDtoGuaranteeForm | undefined;
-    guaranteeEndDate: moment.Moment | undefined;
-    certificateNumber: string | undefined;
-    bankName: string | undefined;
-    note: string | undefined;
-    providerId: number | undefined;
-    bidId: number | undefined;
-    provider: ProviderDto | undefined;
-    bid: BidDto | undefined;
-    id: number | undefined;
-}
-
-export class ProviderDto implements IProviderDto {
-    name!: string | undefined;
-    providerCode!: string | undefined;
-    email!: string | undefined;
-    phoneNumber!: string | undefined;
-    address!: string | undefined;
-    info!: string | undefined;
-    isActive!: boolean | undefined;
-    id!: number | undefined;
-
-    constructor(data?: IProviderDto) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(data?: any) {
-        if (data) {
-            this.name = data["name"];
-            this.providerCode = data["providerCode"];
-            this.email = data["email"];
-            this.phoneNumber = data["phoneNumber"];
-            this.address = data["address"];
-            this.info = data["info"];
-            this.isActive = data["isActive"];
-            this.id = data["id"];
-        }
-    }
-
-    static fromJS(data: any): ProviderDto {
-        data = typeof data === 'object' ? data : {};
-        let result = new ProviderDto();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["name"] = this.name;
-        data["providerCode"] = this.providerCode;
-        data["email"] = this.email;
-        data["phoneNumber"] = this.phoneNumber;
-        data["address"] = this.address;
-        data["info"] = this.info;
-        data["isActive"] = this.isActive;
-        data["id"] = this.id;
-        return data; 
-    }
-}
-
-export interface IProviderDto {
-    name: string | undefined;
-    providerCode: string | undefined;
-    email: string | undefined;
-    phoneNumber: string | undefined;
-    address: string | undefined;
-    info: string | undefined;
-    isActive: boolean | undefined;
-    id: number | undefined;
-}
-
-export class BidDetailInput implements IBidDetailInput {
-    isAccepted!: boolean | undefined;
-    biddingCreatedDate!: moment.Moment | undefined;
-    attachmentFile!: string | undefined;
-    bidPrice!: number | undefined;
-    guaranteeForm!: BidDetailInputGuaranteeForm | undefined;
-    guaranteeEndDate!: moment.Moment | undefined;
-    certificateNumber!: string | undefined;
-    bankName!: string | undefined;
-    note!: string | undefined;
-    providerId!: number | undefined;
-    bidId!: number | undefined;
-    id!: number | undefined;
-
-    constructor(data?: IBidDetailInput) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(data?: any) {
-        if (data) {
-            this.isAccepted = data["isAccepted"];
-            this.biddingCreatedDate = data["biddingCreatedDate"] ? moment(data["biddingCreatedDate"].toString()) : <any>undefined;
-            this.attachmentFile = data["attachmentFile"];
-            this.bidPrice = data["bidPrice"];
-            this.guaranteeForm = data["guaranteeForm"];
-            this.guaranteeEndDate = data["guaranteeEndDate"] ? moment(data["guaranteeEndDate"].toString()) : <any>undefined;
-            this.certificateNumber = data["certificateNumber"];
-            this.bankName = data["bankName"];
-            this.note = data["note"];
-            this.providerId = data["providerId"];
-            this.bidId = data["bidId"];
-            this.id = data["id"];
-        }
-    }
-
-    static fromJS(data: any): BidDetailInput {
-        data = typeof data === 'object' ? data : {};
-        let result = new BidDetailInput();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["isAccepted"] = this.isAccepted;
-        data["biddingCreatedDate"] = this.biddingCreatedDate ? this.biddingCreatedDate : <any>undefined;
-        data["attachmentFile"] = this.attachmentFile;
-        data["bidPrice"] = this.bidPrice;
-        data["guaranteeForm"] = this.guaranteeForm;
-        data["guaranteeEndDate"] = this.guaranteeEndDate ? this.guaranteeEndDate : <any>undefined;
-        data["certificateNumber"] = this.certificateNumber;
-        data["bankName"] = this.bankName;
-        data["note"] = this.note;
-        data["providerId"] = this.providerId;
-        data["bidId"] = this.bidId;
-        data["id"] = this.id;
-        return data; 
-    }
-}
-
-export interface IBidDetailInput {
-    isAccepted: boolean | undefined;
-    biddingCreatedDate: moment.Moment | undefined;
-    attachmentFile: string | undefined;
-    bidPrice: number | undefined;
-    guaranteeForm: BidDetailInputGuaranteeForm | undefined;
-    guaranteeEndDate: moment.Moment | undefined;
-    certificateNumber: string | undefined;
-    bankName: string | undefined;
-    note: string | undefined;
-    providerId: number | undefined;
-    bidId: number | undefined;
-    id: number | undefined;
 }
 
 export class BidDetailForViewDto implements IBidDetailForViewDto {
@@ -21126,58 +21270,6 @@ export interface IPagedResultDtoOfProjectDto {
     items: ProjectDto[] | undefined;
 }
 
-export class ProjectInput implements IProjectInput {
-    name!: string | undefined;
-    activityType!: string | undefined;
-    projectCreatedDate!: moment.Moment | undefined;
-    isActive!: boolean | undefined;
-    id!: number | undefined;
-
-    constructor(data?: IProjectInput) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(data?: any) {
-        if (data) {
-            this.name = data["name"];
-            this.activityType = data["activityType"];
-            this.projectCreatedDate = data["projectCreatedDate"] ? moment(data["projectCreatedDate"].toString()) : <any>undefined;
-            this.isActive = data["isActive"];
-            this.id = data["id"];
-        }
-    }
-
-    static fromJS(data: any): ProjectInput {
-        data = typeof data === 'object' ? data : {};
-        let result = new ProjectInput();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["name"] = this.name;
-        data["activityType"] = this.activityType;
-        data["projectCreatedDate"] = this.projectCreatedDate ? this.projectCreatedDate : <any>undefined;
-        data["isActive"] = this.isActive;
-        data["id"] = this.id;
-        return data; 
-    }
-}
-
-export interface IProjectInput {
-    name: string | undefined;
-    activityType: string | undefined;
-    projectCreatedDate: moment.Moment | undefined;
-    isActive: boolean | undefined;
-    id: number | undefined;
-}
-
 export class ProjectForViewDto implements IProjectForViewDto {
     name!: string | undefined;
     activityType!: string | undefined;
@@ -21276,70 +21368,6 @@ export class PagedResultDtoOfProviderDto implements IPagedResultDtoOfProviderDto
 export interface IPagedResultDtoOfProviderDto {
     totalCount: number | undefined;
     items: ProviderDto[] | undefined;
-}
-
-export class ProviderInput implements IProviderInput {
-    name!: string | undefined;
-    providerCode!: string | undefined;
-    email!: string | undefined;
-    phoneNumber!: string | undefined;
-    address!: string | undefined;
-    info!: string | undefined;
-    isActive!: boolean | undefined;
-    id!: number | undefined;
-
-    constructor(data?: IProviderInput) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(data?: any) {
-        if (data) {
-            this.name = data["name"];
-            this.providerCode = data["providerCode"];
-            this.email = data["email"];
-            this.phoneNumber = data["phoneNumber"];
-            this.address = data["address"];
-            this.info = data["info"];
-            this.isActive = data["isActive"];
-            this.id = data["id"];
-        }
-    }
-
-    static fromJS(data: any): ProviderInput {
-        data = typeof data === 'object' ? data : {};
-        let result = new ProviderInput();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["name"] = this.name;
-        data["providerCode"] = this.providerCode;
-        data["email"] = this.email;
-        data["phoneNumber"] = this.phoneNumber;
-        data["address"] = this.address;
-        data["info"] = this.info;
-        data["isActive"] = this.isActive;
-        data["id"] = this.id;
-        return data; 
-    }
-}
-
-export interface IProviderInput {
-    name: string | undefined;
-    providerCode: string | undefined;
-    email: string | undefined;
-    phoneNumber: string | undefined;
-    address: string | undefined;
-    info: string | undefined;
-    isActive: boolean | undefined;
-    id: number | undefined;
 }
 
 export class ProviderForViewDto implements IProviderForViewDto {
@@ -25801,6 +25829,12 @@ export enum BidDtoBiddingForm {
     _2 = 2, 
 }
 
+export enum BidDetailDtoGuaranteeForm {
+    _0 = 0, 
+    _1 = 1, 
+    _2 = 2, 
+}
+
 export enum BidInputStatus {
     _0 = 0, 
     _1 = 1, 
@@ -25814,6 +25848,12 @@ export enum BidInputBiddingForm {
     _2 = 2, 
 }
 
+export enum BidDetailInputGuaranteeForm {
+    _0 = 0, 
+    _1 = 1, 
+    _2 = 2, 
+}
+
 export enum BidForViewDtoStatus {
     _0 = 0, 
     _1 = 1, 
@@ -25822,18 +25862,6 @@ export enum BidForViewDtoStatus {
 }
 
 export enum BidForViewDtoBiddingForm {
-    _0 = 0, 
-    _1 = 1, 
-    _2 = 2, 
-}
-
-export enum BidDetailDtoGuaranteeForm {
-    _0 = 0, 
-    _1 = 1, 
-    _2 = 2, 
-}
-
-export enum BidDetailInputGuaranteeForm {
     _0 = 0, 
     _1 = 1, 
     _2 = 2, 
