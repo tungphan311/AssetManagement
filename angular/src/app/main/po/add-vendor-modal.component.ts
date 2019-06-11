@@ -6,20 +6,20 @@ import { ModalDirective } from 'ngx-bootstrap';
 import { LazyLoadEvent } from 'primeng/components/common/lazyloadevent';
 import { Paginator } from 'primeng/components/paginator/paginator';
 import { Table } from 'primeng/components/table/table';
-import { ContractServiceProxy,BidServiceProxy,VendorServiceProxy,BidDto,VendorDto } from '@shared/service-proxies/service-proxies';
+import { VendorServiceProxy,VendorTypeServiceProxy, VendorTypeDto } from '@shared/service-proxies/service-proxies';
 
 
 @Component({
-    selector: 'selectContractModal',
-    templateUrl: './select-contract-modal.component.html'
+    selector: 'addVendorModal',
+    templateUrl: './add-vendor-modal.component.html'
 })
 
-export class SelectContractModalComponent extends AppComponentBase {
+export class AddVendorModalComponent extends AppComponentBase {
 
     /**
      * @ViewChild là dùng get control và call thuộc tính, functions của control đó
      */
-    @ViewChild('selectContractModal') selectContractModal: ModalDirective;
+    @ViewChild('addVendorModal') addVendorModal: ModalDirective;
     @ViewChild('dataTable') dataTable: Table;
     @ViewChild('paginator') paginator: Paginator;
     
@@ -31,24 +31,21 @@ export class SelectContractModalComponent extends AppComponentBase {
     /**
      * tạo các biến dể filters
      */
-    contractID: string;
-    contractName: string;
-    contractDate: string;
-    bidID: number;
-    vendorID: number;
-    listBid: BidDto[] = []
-    listVendor: VendorDto[] = []
+    vendorCode:string;
+    vendorName:string;
+    vendorTypeId:number;
+
+    listVendorType: VendorTypeDto[] = [];
 
     constructor(
         injector: Injector,
-        private _contractService: ContractServiceProxy,
-        private _bidService: BidServiceProxy,
-        private _vendorService: VendorServiceProxy
+        private _vendorService: VendorServiceProxy,
+        private _vendorTypeService: VendorTypeServiceProxy
     ) {
         super(injector);
     }
 
-    getContracts(event?: LazyLoadEvent) {
+    getVendors(event?: LazyLoadEvent) {
         if (!this.paginator || !this.dataTable) {
             return;
         }
@@ -59,12 +56,12 @@ export class SelectContractModalComponent extends AppComponentBase {
         /**
          * mặc định ban đầu lấy hết dữ liệu nên dữ liệu filter = null
          */
-        this.reloadList(null, null, null, 0, 0, event);
+        this.reloadList(null, null, 0, event);
 
     }
 
-    reloadList(contractId, contractName, contractDate, bidID,vendorID, event?: LazyLoadEvent) {
-        this._contractService.getContractsByFilter(contractId,contractName,contractDate,bidID,vendorID, this.primengTableHelper.getSorting(this.dataTable),
+    reloadList(vendorCode, vendorName, vendorTypeId, event?: LazyLoadEvent) {
+        this._vendorService.getVendorsByFilter(vendorCode,vendorName,vendorTypeId,"True", this.primengTableHelper.getSorting(this.dataTable),
             this.primengTableHelper.getMaxResultCount(this.paginator, event),
             this.primengTableHelper.getSkipCount(this.paginator, event),
         ).subscribe(result => {
@@ -72,13 +69,9 @@ export class SelectContractModalComponent extends AppComponentBase {
             this.primengTableHelper.records = result.items;
             this.primengTableHelper.hideLoadingIndicator();
         });
-        this._bidService.getBidsByFilter(null, null, null, null, 'All', 0, null, 999, 0).subscribe(result => {
-            this.listBid = result.items;
-        });
-
-        this._vendorService.getVendorsByFilter(null, null, 0, null, null, 999, 0).subscribe(result => {
-            this.listVendor = result.items;
-        })
+        this._vendorTypeService.getVendorTypesByFilter(null,null,null,null,999,0).subscribe(result=>{
+            this.listVendorType = result.items;
+        })    
     }
     reloadPage(): void {
         this.paginator.changePage(this.paginator.getPage());
@@ -86,33 +79,14 @@ export class SelectContractModalComponent extends AppComponentBase {
 
     applyFilters(): void {
         //truyền params lên url thông qua router
-        this.reloadList(this.contractID, this.contractName, this.contractDate,this.bidID,this.vendorID, null);
+        this.reloadList(this.vendorCode, this.vendorName, this.vendorTypeId, null);
 
         if (this.paginator.getPage() !== 0) {
             this.paginator.changePage(0);
             return;
         }
     }
-    getVendorName(id: number): any {
-        for (const item of this.listBid) {
-            if (item.id == id) {
-                for (const vendor of this.listVendor) {
-                    if (vendor.id == item.bidderID) {
-                        return vendor.name;
-                    }
-                }
-            }
-        }
-        return "Chưa có nhà cung cấp";
-    }
-    getBidNameFromId(id: number): any {
-        for(const item of this.listBid) {
-            if (item.id == id) {
-                return item.name;
-            }
-        }
-        return "Chưa có mã gói thầu";
-    }
+
     /**
      * Tạo pipe thay vì tạo từng hàm truncate như thế này
      * @param text
@@ -130,16 +104,21 @@ export class SelectContractModalComponent extends AppComponentBase {
     }
     show(): void {
         this.saving = false;
-        this.selectContractModal.show();
+        this.addVendorModal.show();
     }
 
-    save(contractID:number): void {
+    save(vendorID:number): void {
         this.saving = true;
-        this.close(contractID);          
+        this.close(vendorID);          
     }
-
-    close(contractID?:number|0): void {
-        this.selectContractModal.hide();
-        this.modalSave.emit(contractID);
+    getVendorTypeName(vendorID:number):string{
+        this.listVendorType.filter(x=>x.id=vendorID).forEach(type=>{
+            return type.name;
+        })
+        return "";
+    }
+    close(vendorID?:number|0): void {
+        this.addVendorModal.hide();
+        this.modalSave.emit(vendorID);
     }
 }

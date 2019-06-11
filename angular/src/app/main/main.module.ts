@@ -48,7 +48,7 @@ import { CreateOrEditPOModalComponent } from './po/create-or-edit-po-modal.compo
 import { SelectContractModalComponent } from './po/select-contract-modal.component';
 import { RetailComponent } from './retail/retail.component';
 import { AddMerchandiseModalComponent } from './vendor/add-merchandise-modal.component';
-
+import { AddVendorModalComponent } from './po/add-vendor-modal.component';
 
 @NgModule({
     imports: [
@@ -89,7 +89,7 @@ import { AddMerchandiseModalComponent } from './vendor/add-merchandise-modal.com
         AssignmentTableComponent, CreateOrEditAssignmentTableModalComponent, ViewAssignmentTableModalComponent,
         BidComponent, CreateOrEditBidModalComponent, ViewBidModalComponent, SelectProjectModalComponent, AddBidderModal, SelectVendorModalComponent,
         CreateMerchandiseModalComponent,
-        POCOmponent, CreateOrEditPOModalComponent, SelectContractModalComponent
+        POCOmponent, CreateOrEditPOModalComponent, SelectContractModalComponent, AddVendorModalComponent
     ],
     providers: [
         

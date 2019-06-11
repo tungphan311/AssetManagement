@@ -6,6 +6,7 @@ import { Paginator } from "primeng/primeng";
 import { POServiceProxy, POInput, ContractServiceProxy, VendorServiceProxy } from "@shared/service-proxies/service-proxies";
 import { SelectContractModalComponent } from './select-contract-modal.component';
 import { appModuleAnimation } from "@shared/animations/routerTransition";
+import { AddVendorModalComponent } from "./add-vendor-modal.component";
 
 
 @Component({
@@ -22,6 +23,7 @@ export class CreateOrEditPOModalComponent extends AppComponentBase {
     @ViewChild('dataTable') dataTable: Table;
     @ViewChild('paginator') paginator: Paginator;
     @ViewChild('selectContractModal') selectContractModal: SelectContractModalComponent;
+    @ViewChild('addVendorModal') addVendorModal: AddVendorModalComponent;
 
     @Output() modalSave: EventEmitter<any> = new EventEmitter<any>();
 
@@ -78,5 +80,17 @@ export class CreateOrEditPOModalComponent extends AppComponentBase {
                     })
                 })
         }
+    }
+    reloadVendor(vendorID:number): void {
+        if (vendorID!=0)
+        {
+            this.vendorID = vendorID;
+            this._vendorService.getVendorForView(vendorID).subscribe(result=>{
+                this.vendorCode = result.code;
+                this.vendorName = result.name;
+                this.vendorAddress=result.address;
+            })
+        }
+
     }
 }

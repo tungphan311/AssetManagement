@@ -139,7 +139,7 @@
                             </div>
                             <div class="primeng-paging-container">
                                 <p-paginator rows="{{primengTableHelper.defaultRecordsCountPerPage}}" #paginator
-                                    (onPageChange)="getContracts($event)"
+                                    (onPageChange)="getPOs($event)"
                                     [totalRecords]="primengTableHelper.totalRecordsCount"
                                     [rowsPerPageOptions]="primengTableHelper.predefinedRecordsCountPerPage">
                                 </p-paginator>
