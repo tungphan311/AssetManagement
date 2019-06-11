@@ -63,7 +63,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.DetailAssetRents
 
         public DetailAssetRentForView GetDetailAssetRentForView(int id)
         {
-            var detailAssetRentEntity = detailAssetRentRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.Id == id);
+            var detailAssetRentEntity = detailAssetRentRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.assetRentId == id);
             if (detailAssetRentEntity == null)
             {
                 return null;
@@ -79,6 +79,33 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.DetailAssetRents
             if (input.nameAsset != null || input.rentBy != null)
             {
                 query = query.Where(x => (x.nameAsset.ToLower().Equals(input.nameAsset) || (x.rentBy.ToLower().Equals(input.rentBy))));
+            }
+
+            var totalCount = query.Count();
+
+            // sorting
+            if (!string.IsNullOrWhiteSpace(input.Sorting))
+            {
+                query = query.OrderBy(input.Sorting);
+            }
+
+            // paging
+            var items = query.PageBy(input).ToList();
+
+            // result
+            return new PagedResultDto<DetailAssetRentDto>(
+                totalCount,
+                items.Select(item => ObjectMapper.Map<DetailAssetRentDto>(item)).ToList());
+        }
+
+        public PagedResultDto<DetailAssetRentDto> GetDetailAssetRentById(DetailAssetRentFilterById input)
+        {
+            var query = detailAssetRentRepository.GetAll().Where(x => !x.IsDelete);
+
+            // filter by value
+            if (input.assetRentId != -1 )
+            {
+                query = query.Where(x => (x.assetRentId.Equals(input.assetRentId) ));
             }
 
             var totalCount = query.Count();
@@ -124,6 +151,8 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.DetailAssetRents
             detailAssetRentRepository.Update(detailAssetRentEntity);
             CurrentUnitOfWork.SaveChanges();
         }
+
+      
 
         #endregion
     }

@@ -18468,6 +18468,7 @@ export class DemoModelDto implements IDemoModelDto {
     info!: string | undefined;
     date!: string | undefined;
     id!: number | undefined;
+    items: AssetRentDto[];
 
     constructor(data?: IDemoModelDto) {
         if (data) {

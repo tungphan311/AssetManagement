@@ -76,6 +76,28 @@ export class CreateAssetRentModalComponent extends AppComponentBase
         //             .val()
         //             .toString();
         //     });
+
+        // $(this.dateInput.nativeElement)
+        //     .datetimepicker({
+        //         locale: abp.localization.currentLanguage.name,
+        //         format: "L"
+        //     })
+        //     .on("dp.change", function(e) {
+        //         t.assetrent.dateRent = $(t.dateInput.nativeElement)
+        //             .val()
+        //             .toString();
+        //     });
+        // let t1 = this;
+        // $(this.dateInput.nativeElement)
+        //     .datetimepicker({
+        //         locale: abp.localization.currentLanguage.name,
+        //         format: "L"
+        //     })
+        //     .on("dp.change", function(e) {
+        //         t1.assetrent.datePay = $(t.dateInput.nativeElement)
+        //             .val()
+        //             .toString();
+        //     });
     }
 
     show(assetRentId?: number | null | undefined): void {

@@ -1,9 +1,6 @@
 import { CreateAssetRentModalComponent } from "./assetrent/create-assetrent-modal.component";
 import { ViewAssetRentModalComponent } from "./assetrent/view-assetrent-modal.component";
 import { AssetRentComponent } from "./assetrent/assetrent.component";
-import { CreateDetailAssetRentModalComponent } from "./detailassetrent/create-detailassetrent-modal.component";
-import { ViewDetailAssetRentModalComponent } from "./detailassetrent/view-detailassetrent-modal.component";
-import { DetailAssetRentComponent } from "./detailassetrent/detailassetrent.component";
 import { Asset5Component } from "./asset5/asset5.component";
 import { CreateOrEditAsset5ModalComponent } from "./asset5/create-or-edit-asset5-modal.component";
 import { ViewAsset5ModalComponent } from "./asset5/view-asset5-modal.component";
@@ -33,6 +30,8 @@ import { CreateOrEditVehicleModalComponent} from './vehicle/create-or-edit-vehic
 import { AssetComponent } from "./asset/asset.component";
 import { ViewAssetModalComponent } from "./asset/view-asset-modal.component";
 import { CreateOrEditAssetModalComponent } from "./asset/creat-or-edit-asset-modal.component";
+import { CreateDetailAssetRentModalComponent } from "./assetrent/create-detailassetrent-modal.component";
+import { DetailAssetRentComponent } from "./assetrent/detailassetrent.component";
 
 @NgModule({
     imports: [
@@ -69,8 +68,6 @@ import { CreateOrEditAssetModalComponent } from "./asset/creat-or-edit-asset-mod
         AssetRentComponent,
         ViewAssetRentModalComponent,
         CreateDetailAssetRentModalComponent,
-        DetailAssetRentComponent,
-        ViewDetailAssetRentModalComponent,
         Asset5Component,
         CreateOrEditAsset5ModalComponent,
         ViewAsset5ModalComponent,
@@ -78,6 +75,7 @@ import { CreateOrEditAssetModalComponent } from "./asset/creat-or-edit-asset-mod
         DemoModelComponent, CreateOrEditDemoModelModalComponent, ViewDemoModelModalComponent,
         CustomerComponent, CreateOrEditCustomerModalComponent, ViewCustomerModalComponent,
         VehicleComponent, CreateOrEditVehicleModalComponent, ViewVehicleModalComponent,
+        DetailAssetRentComponent
     ],
     providers: [
         DemoModelServiceProxy,

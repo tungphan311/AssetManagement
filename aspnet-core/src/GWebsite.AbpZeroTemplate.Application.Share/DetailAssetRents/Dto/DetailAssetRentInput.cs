@@ -20,6 +20,7 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.DetailAssetRents.Dto
         public float rate { get; set; }
         public string describe { get; set; }
         public decimal money { get; set; }
+        public int assetRentId { get; set;  }
 
     }
 }
