@@ -44,49 +44,50 @@ export class PurchasePaymentHistoryComponent extends AppComponentBase implements
 
     }
 
-    addNewPayment() {      
-       
+    addNewPayment() {
+
         let newArr = this.purchaseOrderRecieved.purchasePaymentHistories ? this.purchaseOrderRecieved.purchasePaymentHistories : []
-        let item = new PurchasePaymentHistoryInput()        
+        let item = new PurchasePaymentHistoryInput()
         this.purchaseOrderRecieved.purchasePaymentHistories = [...newArr, item]
 
         // this.primengTableHelper.totalRecordsCount = this.purchaseOrderRecieved.totalMoneyPaid;
         // this.primengTableHelper.records = this.purchaseOrderRecieved.purchasePaymentHistories;
     }
-    deletePayment(object){
-       let index = this.purchaseOrderRecieved.purchasePaymentHistories.indexOf(object)
-       if (index !== -1) {
-        this.purchaseOrderRecieved.purchasePaymentHistories.splice(index, 1);
-      }       
-      this.calculateTotalPaidMoney()
+    deletePayment(object) {
+        let index = this.purchaseOrderRecieved.purchasePaymentHistories.indexOf(object)
+        if (index !== -1) {
+            this.purchaseOrderRecieved.purchasePaymentHistories.splice(index, 1);
+        }
+        this.calculateTotalPaidMoney()
 
-      this.onDeleteElement.emit(this.purchaseOrderRecieved.purchasePaymentHistories)
-      
+        this.onDeleteElement.emit(this.purchaseOrderRecieved.purchasePaymentHistories)
+
     }
 
-calculateTotalPaidMoney(){
-    let totalMoneyPaid = this.purchaseOrderRecieved.purchasePaymentHistories.reduce((total,item)=>total+item.price,0)            
-    if(!totalMoneyPaid) totalMoneyPaid=0
-    this.purchaseOrderRecieved.totalMoneyPaid=totalMoneyPaid
-  this.primengTableHelper.totalRecordsCount = this.purchaseOrderRecieved.totalMoneyPaid;
+    calculateTotalPaidMoney() {
+        let totalMoneyPaid = this.purchaseOrderRecieved.purchasePaymentHistories.reduce((total, item) => total + item.price, 0)
+        if (!totalMoneyPaid) totalMoneyPaid = 0
+        this.purchaseOrderRecieved.totalMoneyPaid = totalMoneyPaid
+        this.primengTableHelper.totalRecordsCount = this.purchaseOrderRecieved.totalMoneyPaid;
 
-}
+    }
 
-    updatePrice(payment,e){
+    updatePercent(payment, e) {
         let percent = e.target.value
-        if(percent<=0 ) return
+        if (percent <= 0) return
 
 
-        if(payment){
+        if (payment) {
             payment.percent = percent
-            payment.price=payment.percent*this.purchaseOrderRecieved.totalPrice/100
+            payment.price = payment.percent * this.purchaseOrderRecieved.totalPrice / 100
         }
         this.calculateTotalPaidMoney()
     }
 
-    updatePercent(){
-
-        this.calculateTotalPaidMoney()
+    updatePrice(payment, e) {
+        let price = e.target.value
+        payment.price = price
+        //this.calculateTotalPaidMoney()
     }
     /**
     * Tạo pipe thay vì tạo từng hàm truncate như thế này

@@ -77,7 +77,29 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Products
 
         public PagedResultDto<ProductDto> GetProducts(ProductFilter input)
         {
+            bool IsEmptyItems = false;
             var query = productRepository.GetAll().Where(x => !x.IsDelete);
+
+            //if contractId != null
+            if (input.ContractId != null)
+            {
+                var pcItems = productContractRepository.GetAll().Where(x => x.ContractId == input.ContractId);
+                if (pcItems != null)
+                {
+                    if (pcItems.Count() > 0)
+                    {
+                        foreach (var element in pcItems)
+                        {
+                            query.Where(x => x.Id == element.ProductId);
+                        }
+                    }
+                    else
+                    {
+                        IsEmptyItems = true;
+                    }
+
+                }
+            }
 
             // filter by value
             if (input.Name != null)
@@ -85,17 +107,7 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Products
                 query = query.Where(x => x.Name.ToLower().StartsWith(input.Name));
             }
 
-            if (input.ContractId != null)
-            {
-                var pcItems = productContractRepository.GetAll().Where(x => x.ContractId == input.ContractId);
-                if (pcItems != null && pcItems.Count() > 0)
-                {
-                    foreach (var element in pcItems)
-                    {
-                        query.Where(x => x.Id == element.Id);
-                    }
-                }
-            }
+
 
             var totalCount = query.Count();
 
@@ -107,6 +119,12 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Products
 
             // paging
             var items = query.PageBy(input).ToList();
+
+            if (IsEmptyItems)
+            {
+                items = new System.Collections.Generic.List<Product>();
+                totalCount = 0;
+            }
 
             // result
             return new PagedResultDto<ProductDto>(

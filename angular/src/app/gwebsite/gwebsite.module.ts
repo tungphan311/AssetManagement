@@ -60,6 +60,7 @@ import {PurchaseOrderSearchComponent} from './purchase-order/purchase-order-sear
 import { PurchaseProductDetailComponent } from './purchase-product-detail/purchase-product-detail.component';
 import { PurchasePaymentHistoryComponent } from './purchase-payment-history/purchase-payment-history.component';
 import { PurchaseProductSelectionModalComponent } from './purchase-product-detail/purchase-product-selection-modal.component';
+import { ContractSingleSelectionModalComponent } from './contract/contract-for-single-selection-modal.component';
 
 @NgModule({
     imports: [
@@ -91,7 +92,7 @@ import { PurchaseProductSelectionModalComponent } from './purchase-product-detai
         ProviderComponent, CreateOrEditProviderModalComponent, ViewProviderModalComponent,
         ContractComponent, CreateOrEditContractModalComponent, ViewContractModalComponent,
         ProductContractComponent, CreateOrEditProductContractModalComponent,ProductContractItemComponent,
-        ContractPaymentDetailComponent,ContractPaymentDetailItem,CreateOrEditContractPaymentDetailModalComponent,
+        ContractPaymentDetailComponent,ContractPaymentDetailItem,CreateOrEditContractPaymentDetailModalComponent,ContractSingleSelectionModalComponent,
 
         PurchaseOrderComponent,CreateOrEditPurchaseOrderComponent,PurchaseOrderSearchComponent,
         

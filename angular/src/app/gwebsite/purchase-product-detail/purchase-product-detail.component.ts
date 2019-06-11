@@ -30,6 +30,7 @@ export class PurchaseProductDetailComponent extends AppComponentBase implements 
      * @Output dùng để public event cho component khác xử lý
      */
     @Output() updateTotalPrice: EventEmitter<any> = new EventEmitter<any>();
+    @Output()openContractSelectModalEmit:EventEmitter<any> = new EventEmitter();
 
     saving = false;
 
@@ -89,7 +90,11 @@ export class PurchaseProductDetailComponent extends AppComponentBase implements 
     }
 
     show() {
-        this.purchaseProductSelectionModal.show();
+        this.purchaseProductSelectionModal.show(this.purchaseOrderRecieved);
+    }
+
+    openContractSelectModal(event){
+        this.openContractSelectModalEmit.emit(event)
     }
 
 }

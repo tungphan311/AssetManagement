@@ -1,11 +1,10 @@
-<div bsModal #createOrEditModal="bs-modal" class="modal fade " tabindex="-1" role="dialog"
-style="background: gray"
+<div bsModal #createOrEditModal="bs-modal" class="modal fade " tabindex="-1" role="dialog" style="background: gray"
     aria-labelledby="createOrEditModal" aria-hidden="true" [config]="{backdrop: 'static'}">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title">
-                    <span>Chọn sản phẩm</span>
+                    <span>Chọn hàng hóa</span>
                 </h4>
                 <button type="button" class="close" (click)="close()" [attr.aria-label]="l('Close')">
                     <span aria-hidden="true">&times;</span>
@@ -16,10 +15,10 @@ style="background: gray"
                     <div class="d-flex align-items-center">
                         <div class="mr-auto col-xs-6">
                             <h3 class="m-subheader__title m-subheader__title--separator">
-                                <span>{{l("Product")}}</span>
+                                <span>{{l("Chi tiết hàng hóa")}}</span>
                             </h3>
                             <span class="m-section__sub">
-                                {{l("ProductInfo")}}
+                                {{l("Thêm")}}
                             </span>
                         </div>
                         <div class="col-xs-6 text-right">
@@ -28,14 +27,65 @@ style="background: gray"
                         </div>
                     </div>
                 </div>
+
                 <div class="m-content">
                     <div class="m-portlet m-portlet--mobile">
                         <div class="m-portlet__body">
                             <form autocomplete="off">
                                 <div class="m-form m-form--label-align-right" id="TextsFilterForm">
                                     <div class="row align-items-center m--margin-bottom-10">
+
+                                        <div class="d-flex col-sm-12">
+                                            <div class="form-check col-sm-6">
+                                                <label class="form-check-label">
+                                                    <input type="radio" class="form-check-input" name="optradio"
+                                                    [(ngModel)]="purchaseOrderRecieved.isInProject" [value]="true"
+                                                    >Trong
+                                                    kế hoach 
+                                                    <!-- [(ngModel)]="purchaseOrderRecieved.valid" [value]="true" -->
+
+                                                </label>
+                                            </div>
+                                            <div class="form-check col-sm-6">
+                                                <label class="form-check-label ">
+                                                    <input type="radio" class="form-check-input" name="optradio"
+                                                    [(ngModel)]="purchaseOrderRecieved.isInProject" [value]="false"
+                                                    >Ngoài
+                                                    kế hoạch
+                                                </label>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="col-sm-12 mt-2">
+                                            <div class="row">
+                                            <div class="col-sm-6 input-group">
+                                                <label>Mã kế hoạch</label>
+                                                <input type="text" name="projectName" style="width:50%"
+                                                [attr.disabled]="true"
+                                                >
+                                                <button class=" btn btn-primary"
+                                                    style="size: 15px; background: black; color: white; height: 35px;"
+                                                    type="button">...
+                                                </button>
+                                            </div>
+                                            <div class="col-sm-6 input-group">
+                                                <label>Hợp đồng</label>
+                                                <input type="text" name="contractCode" style="width:50%"
+                                                [(ngModel)]="purchaseOrderRecieved.contract.code"
+                                                [attr.disabled]="true"
+                                                >
+                                                <button class=" btn btn-primary"
+                                                    style="size: 15px; background: black; color: white; height: 35px;"
+                                                    (click)="openContractSelectModal()"
+                                                    type="button">...
+                                                </button>
+                                            </div>
+                                        </div>
+                                        </div>
+                                        <div class="col-sm-12"></div>
                                         <div class="col-sm-12">
-                                            <div class="input-group">
+                                            <div class="input-group mt-5">
                                                 <input [(ngModel)]="productName" name="productName" autoFocus
                                                     class="form-control" placeholder="Nhập tên sản phẩm" type="text">
                                                 <span class="input-group-btn">
@@ -50,9 +100,9 @@ style="background: gray"
                             </form>
                             <div class="row align-items-center">
                                 <!--<Primeng-TurboTable-Start>-->
-                                <div class="primeng-datatable-container" >
+                                <div class="primeng-datatable-container">
                                     <p-table #dataTable (onLazyLoad)="getProducts($event)"
-                                        [value]="primengTableHelper.records"
+                                        [value]="primengTableHelper.records"                                       
                                         rows="{{primengTableHelper.defaultRecordsCountPerPage}}" [paginator]="false"
                                         [lazy]="true" [responsive]="primengTableHelper.isResponsive">
                                         <ng-template pTemplate="header">
@@ -116,7 +166,7 @@ style="background: gray"
                                                     <span class="ui-column-title">Miêu tả</span>
                                                     <span
                                                         title="{{record.description}}">{{truncateString(record.description)}}</span>
-                                                        
+
                                                 </td>
                                                 <td>
                                                     <span class="ui-column-title">Hình ảnh</span>
@@ -127,8 +177,8 @@ style="background: gray"
                                                 <td>
                                                     <input
                                                         class="btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill"
-                                                        (change)="onItemChecked(record,$event)"
-                                                        type="checkbox" title="{{l('Select')}}">
+                                                        (change)="onItemChecked(record,$event)" type="checkbox"
+                                                        title="{{l('Select')}}">
 
                                                 </td>
                                             </tr>
@@ -157,11 +207,10 @@ style="background: gray"
             <div class="modal-footer">
                 <button [disabled]="saving" type="button" class="btn btn-default"
                     (click)="close()">{{l("Cancel")}}</button>
-                <button type="button" class="btn btn-primary" [buttonBusy]="saving"
-                    (click)="save()"
+                <button type="button" class="btn btn-primary" [buttonBusy]="saving" (click)="save()"
                     [busyText]="l('SavingWithThreeDot')"><i class="fa fa-save"></i>
                     <span>{{l("Save")}}</span></button>
-                    <button [disabled]="saving" type="button" class="btn btn-default"
+                <button [disabled]="saving" type="button" class="btn btn-default"
                     (click)="getProducts($event)">{{l("Tìm kiếm")}}</button>
             </div>
         </div>

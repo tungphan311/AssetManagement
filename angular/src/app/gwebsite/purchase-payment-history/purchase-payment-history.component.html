@@ -51,14 +51,16 @@
                                 <!-- <span title="{{record.percent}}">{{truncateString(record.percent)}}</span> -->
                                 <input type="number"
                                 [ngModel]="record.percent"
-                                (change)="updatePrice(record,$event)">
+                                (change)="updatePercent(record,$event)">
     
                             </td>
     
                             <td>                                
                               <!-- <span title="{{record.price}}">{{truncateString(record.price | currency:'VND')}}</span> -->
-                                <input type="number" [attr.disabled]="true"
-                                [ngModel]="record.price |currency:'VND'">
+                                <input type="text" [attr.disabled]="true"
+                             
+                                [ngModel]="record.price | currency:'VND'"
+                                (change)="updatePrice(record,$event)">                                
                             </td>
                             <td>                               
                                 <!-- <span title="{{record.description}}">{{truncateString(record.description)}}</span> -->

@@ -71,12 +71,12 @@
                                 </td>
                                 <td>
                                     <span class="ui-column-title"> Ngày đặt hàng</span>
-                                    <span title="{{record.purchaseOrderDate}}">{{truncateString(record.purchaseOrderDate)}}</span>
+                                    <span title="{{record.purchaseOrderDate}}">{{truncateString(record.purchaseOrderDate) | momentFormat:'L'}}</span>
 
                                 </td>
                                 <td>
                                     <span class="ui-column-title"> Tổng số tiền</span>
-                                    <span title="{{record.totalPrice}}">{{truncateString(record.totalPrice)}}</span>
+                                    <span title="{{record.totalPrice}}">{{truncateString(record.totalPrice) | currency:'VND'}}</span>
 
                                 </td>
                                 <td>

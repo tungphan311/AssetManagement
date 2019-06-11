@@ -12,8 +12,8 @@
                 <div class="m-form m-form--label-align-right " id="TextsFilterForm" style="font-size: 16px">
                     <!--Begin Detail PO-->
                     <div class="card" style="background-color:rgb(30, 113, 180)">
-                            <h5 class="card-title px-2 mt-2" style="color: white">THÔNG TIN CHI TIẾT</h5>
-                        </div>
+                        <h5 class="card-title px-2 mt-2" style="color: white">THÔNG TIN CHI TIẾT</h5>
+                    </div>
                     <div class="card">
                         <h5 class="card-title px-2"> </h5>
                         <div class="card-body">
@@ -26,7 +26,6 @@
                                 <div class="col-sm-4">
                                     <label>Ngày gọi hàng</label>
                                     <input #dateInput="ngModel" class="form-control"
-                                       
                                         [ngModel]="purchaseOrder.purchaseOrderDate | date:'yyyy-MM-dd'"
                                         (ngModelChange)="purchaseOrder.purchaseOrderDate = $event" type="date"
                                         name="purchaseOrderDate" />
@@ -36,7 +35,7 @@
                             <div class="row">
                                 <div class=" col-sm-6">
                                     <label> Tên đơn hàng </label>
-                                    <input class=" form-control" type="text" name="purchaseOrderName" 
+                                    <input class=" form-control" type="text" name="purchaseOrderName"
                                         [(ngModel)]="purchaseOrder.name">
                                 </div>
                             </div>
@@ -50,14 +49,13 @@
                                 <div class="col-sm-4">
                                     <label>Ngày nhận tờ trình</label>
                                     <input #dateInput="ngModel" class="form-control"
-                                 
                                         [ngModel]="purchaseOrder.reportRecievedDate | date:'yyyy-MM-dd'"
                                         (ngModelChange)="purchaseOrder.reportRecievedDate = $event" type="date"
                                         name="reportRecievedDate" />
                                 </div>
                                 <div class="col-sm-4">
                                     <label>Ngày duyệt tờ trình</label>
-                                    <input #dateInput="ngModel" class="form-control"  
+                                    <input #dateInput="ngModel" class="form-control"
                                         [ngModel]="purchaseOrder.reportApprovalDate | date:'yyyy-MM-dd'"
                                         (ngModelChange)="purchaseOrder.reportApprovalDate = $event" type="date"
                                         name="reportApprovalDate" />
@@ -68,26 +66,24 @@
                                 <div class="col-sm-4">
                                     <label class="">Số hợp đồng</label>
                                     <div class="row">
-                                        <input class=" form-control col-sm-8 mr-2 ml-2" type="text"
-                                            name="contractCode" [attr.disabled]="true"
-                                           
-                                            [(ngModel)]="purchaseOrder.contract.code">
-                                        <button class="col-sm-2 btn btn-primary"
+                                        <input class=" form-control col-sm-8 mr-2 ml-2" type="text" name="contractCode"
+                                            [attr.disabled]="true" [(ngModel)]="purchaseOrder.contract.code">
+                                        <button class="col-sm-2 btn btn-primary" (click)="showContractSelectModal()"
                                             style="size: 15px; background: black; color: white" type="button">...
                                         </button>
                                     </div>
                                 </div>
                                 <div class="col-sm-4">
                                     <label>Tổng giá trị hợp đồng</label>
-                                    <input class=" form-control" [attr.disabled]="true" type="number"
-                                    
+                                    <input class=" form-control" [attr.disabled]="true" type="text"
                                         name="contractTotalProductPrice"
-                                        [(ngModel)]="purchaseOrder.contract.totalProductPrice">
+                                        [ngModel]="purchaseOrder.contract.totalProductPrice | currency:'VND'">
                                 </div>
                                 <div class="col-sm-4">
                                     <label>Tổng giá trị đã thưc hiện</label>
-                                    <input class=" form-control" type="number" name="contractTotalPrice"  
-                                        [attr.disabled]="true" [(ngModel)]="purchaseOrder.contract.totalPrice">
+                                    <input class=" form-control" type="text" name="contractTotalPrice"
+                                        [attr.disabled]="true"
+                                        [ngModel]="purchaseOrder.contract.totalPrice | currency:'VND'">
                                 </div>
                             </div>
 
@@ -112,7 +108,7 @@
                                 <div class="col-sm-4">
                                     <label class="">Mã nhà cung cấp</label>
                                     <div class="row">
-                                        <input class=" form-control col-sm-8 mr-2 ml-2" type="text" name="ProviderCode" 
+                                        <input class=" form-control col-sm-8 mr-2 ml-2" type="text" name="ProviderCode"
                                             [attr.disabled]="true" [(ngModel)]="purchaseOrder.provider.code">
                                         <button class="col-sm-2 btn btn-primary"
                                             style="size: 15px; background: black; color: white" type="button">...
@@ -121,7 +117,7 @@
                                 </div>
                                 <div class="col-sm-4">
                                     <label>Tên nhà cung cấp</label>
-                                    <input class="form-control" type="text" name="ProviderName" [attr.disabled]="true" 
+                                    <input class="form-control" type="text" name="ProviderName" [attr.disabled]="true"
                                         [(ngModel)]="purchaseOrder.provider.name">
                                 </div>
                             </div>
@@ -129,35 +125,40 @@
                             <div class="row">
                                 <div class="col-sm-8">
                                     <label>Địa chỉ</label>
-                                    <input class="form-control" type="text" name="ProviderAddress" 
+                                    <input class="form-control" type="text" name="ProviderAddress"
                                         [attr.disabled]="true" [(ngModel)]="purchaseOrder.provider.address">
                                 </div>
                             </div>
 
+                            <div class="inline-group row">
+                                <label class="" for="isApproval">Trạng thái duyệt</label>
+                                <input class="ml-2" type="checkbox" name="isApproval" style="height: 20px"
+                                    [(ngModel)]="purchaseOrder.isApproval">
+
+                            </div>
                         </div>
                     </div>
                     <br>
                     <!--End Detail PO-->
 
                     <!-- Begin Purchase Product Detail -->
-                    <purchase-product-detail-component
-                    [purchaseOrderRecieved]="purchaseOrder"
-                    (updateTotalPrice)="updateProductTotalPrice($event)"
-                    ></purchase-product-detail-component>
+                    <purchase-product-detail-component [(purchaseOrderRecieved)]="purchaseOrder"
+                        (updateTotalPrice)="updateProductTotalPrice($event)"
+                        (openContractSelectModalEmit)="showContractSelectModal()"></purchase-product-detail-component>
                     <br>
                     <!-- End Purchase Product Detail-->
 
-                     <!-- Begin Purchase Payment History -->
-                     <purchase-payment-history-component
-                     [purchaseOrderRecieved]="purchaseOrder"
-                     (onDeleteElement)="testDataDisplay($event)"
-                     ></purchase-payment-history-component>
-                     <br>
-                     <!-- End Purchase Payment History-->
+                    <!-- Begin Purchase Payment History -->
+                    <purchase-payment-history-component [purchaseOrderRecieved]="purchaseOrder"
+                        (onDeleteElement)="testDataDisplay($event)"></purchase-payment-history-component>
+                    <br>
+                    <!-- End Purchase Payment History-->
 
                 </div>
-                <button type="submit" class="btn btn-primary" >Save</button>
+                <button type="submit" class="btn btn-primary">Save</button>
             </form>
         </div>
     </div>
 </div>
+<singleSelectContractModal #ContractSingleSelectionModal (modalSave)="getContractSelected($event)">
+</singleSelectContractModal>

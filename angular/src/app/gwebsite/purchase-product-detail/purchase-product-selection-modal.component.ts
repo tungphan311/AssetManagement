@@ -1,4 +1,4 @@
-import { Component, ElementRef, EventEmitter, Injector, Output, ViewChild,Input } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Injector, Output, ViewChild, Input } from '@angular/core';
 import { AppComponentBase } from '@shared/common/app-component-base';
 import { ModalDirective } from 'ngx-bootstrap';
 import { ProductContractServiceProxy, ProductContractInput, ProductServiceProxy, ProductInput, PurchaseProductDetailInput, PurchaseOrderInput } from '@shared/service-proxies/service-proxies';
@@ -17,25 +17,27 @@ export class PurchaseProductSelectionModalComponent extends AppComponentBase {
     @ViewChild('dataTable') dataTable: Table;
     @ViewChild('paginator') paginator: Paginator;
     @ViewChild('createOrEditModal') modal: ModalDirective;
-  
+
 
     /**
      * @Output dùng để public event cho component khác xử lý
      */
-    
-    
+
+
 
     saving = false;
 
-  
+
     productName: string;
     purchaseProductDetails: PurchaseProductDetailInput[];
 
     @Output() productsValueChange = new EventEmitter();
-    @Input() contractId:number|null;
+    @Output() openContractSelectModalEmit = new EventEmitter
+    @Input() contractId: number | null;
     @Input() purchaseOrderRecieved: PurchaseOrderInput
 
-    allowLoad:boolean
+    allowLoad: boolean
+    contractIdToFind: number | null | undefined
 
     constructor(
         injector: Injector,
@@ -49,15 +51,15 @@ export class PurchaseProductSelectionModalComponent extends AppComponentBase {
      * Hàm xử lý trước khi View được init
      */
     ngOnInit(): void {
-        this.allowLoad=false
-        this.primengTableHelper.isLoading=false
+        this.allowLoad = false
+        this.primengTableHelper.isLoading = false
     }
 
     /**
      * Hàm xử lý sau khi View được init
      */
     ngAfterViewInit(): void {
-       
+
     }
 
     /**
@@ -77,13 +79,18 @@ export class PurchaseProductSelectionModalComponent extends AppComponentBase {
          */
 
         this.reloadList(null, event);
-        this.allowLoad=true
+        this.allowLoad = true
     }
 
     reloadList(productName, event?: LazyLoadEvent) {
-        if(!this.allowLoad) return
-        
-        this._productService.getProductsByFilter(productName, productName,this.contractId, this.primengTableHelper.getSorting(this.dataTable),
+        if (!this.allowLoad) return
+
+        if (this.purchaseOrderRecieved.contractId != null && !this.purchaseOrderRecieved.isInProject)
+            this.contractIdToFind = this.purchaseOrderRecieved.contractId
+        else
+            this.contractIdToFind = null
+    
+        this._productService.getProductsByFilter(productName, productName, this.contractIdToFind, this.primengTableHelper.getSorting(this.dataTable),
             this.primengTableHelper.getMaxResultCount(this.paginator, event),
             this.primengTableHelper.getSkipCount(this.paginator, event),
         ).subscribe(result => {
@@ -91,7 +98,7 @@ export class PurchaseProductSelectionModalComponent extends AppComponentBase {
             this.primengTableHelper.records = result.items;
             this.primengTableHelper.hideLoadingIndicator();
         });
-       
+
     }
 
 
@@ -116,60 +123,70 @@ export class PurchaseProductSelectionModalComponent extends AppComponentBase {
             this.paginator.changePage(0);
             return;
         }
-       
+
     }
+
+    //getContractEmit
 
     //hàm show view create MenuClient
     createProduct() {
 
     }
 
-    onItemChecked(record:ProductInput|null,e){
-       // this.products=[...this.products,item ]
-       if(e.target.checked){
-        let newProductContract = new PurchaseProductDetailInput();
-        newProductContract.productId=record.id
-        newProductContract.product=record;
-        newProductContract.amount=1;
-        newProductContract.price = record.currentPrice;
+    onItemChecked(record: ProductInput | null, e) {
+        // this.products=[...this.products,item ]
+        if (e.target.checked) {
+            let newProductContract = new PurchaseProductDetailInput();
+            newProductContract.productId = record.id
+            newProductContract.product = record;
+            newProductContract.amount = 1;
+            newProductContract.price = record.currentPrice;
 
-        const tempProductContracts = this.purchaseProductDetails!=null?this.purchaseProductDetails:[];
-        this.purchaseProductDetails=[...tempProductContracts,newProductContract ]
-      
-       }else{
-        this.purchaseProductDetails=this.purchaseProductDetails? this.purchaseProductDetails.filter(e=>e.product.id!=record.id) :[]
-      
-       }
-    
+            const tempProductContracts = this.purchaseProductDetails != null ? this.purchaseProductDetails : [];
+            this.purchaseProductDetails = [...tempProductContracts, newProductContract]
 
-    }  
+        } else {
+            this.purchaseProductDetails = this.purchaseProductDetails ? this.purchaseProductDetails.filter(e => e.product.id != record.id) : []
 
-    show(productContractId?: number | null | undefined): void {
+        }
+
+
+    }
+    openContractSelectModal(contract) {
+        this.openContractSelectModalEmit.emit(contract)
+    }
+
+    show(purchaseInput?: PurchaseOrderInput | null | undefined): void {
         this.saving = false;
 
-            //console.log("show modal")
-       
-            this.modal.show();       
+        //console.log("show modal")
+        if (purchaseInput) {
+
+        }
+        this.modal.show();
+        console.log(purchaseInput)
     }
 
     save(): void {
         let input = this.purchaseProductDetails;
         this.saving = true;
 
-       this.purchaseOrderRecieved.purchaseProductDetails=[...this.purchaseProductDetails]
-        
-       let totalProductPrice = this.purchaseOrderRecieved.purchaseProductDetails.reduce((total,item)=>total+item.price,0)            
-       if(!totalProductPrice) totalProductPrice=0
-       this.purchaseOrderRecieved.totalPrice=totalProductPrice
+        if (this.purchaseProductDetails && this.purchaseProductDetails.length > 0) {
+            this.purchaseOrderRecieved.purchaseProductDetails = [...this.purchaseProductDetails]
 
+            let totalProductPrice = this.purchaseOrderRecieved.purchaseProductDetails.reduce((total, item) => total + item.price, 0)
+            if (!totalProductPrice) totalProductPrice = 0
+            this.purchaseOrderRecieved.totalPrice = totalProductPrice
 
+        }
+        console.log(this.purchaseOrderRecieved)
         this.modal.hide();
 
     }
 
     close(): void {
         this.modal.hide();
-       
+
     }
 
     truncateString(text): string {

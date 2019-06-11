@@ -21463,6 +21463,7 @@ export class PurchaseOrderDto implements IPurchaseOrderDto {
     totalPrice!: number | undefined;
     totalMoneyPaid!: number | undefined;
     isApproval!: boolean | undefined;
+    isInProject!: boolean | undefined;
     contractId!: number | undefined;
     contract!: ContractDto | undefined;
     providerId!: number | undefined;
@@ -21496,6 +21497,7 @@ export class PurchaseOrderDto implements IPurchaseOrderDto {
             this.totalPrice = data["totalPrice"];
             this.totalMoneyPaid = data["totalMoneyPaid"];
             this.isApproval = data["isApproval"];
+            this.isInProject = data["isInProject"];
             this.contractId = data["contractId"];
             this.contract = data["contract"] ? ContractDto.fromJS(data["contract"]) : <any>undefined;
             this.providerId = data["providerId"];
@@ -21529,6 +21531,7 @@ export class PurchaseOrderDto implements IPurchaseOrderDto {
         data["totalPrice"] = this.totalPrice;
         data["totalMoneyPaid"] = this.totalMoneyPaid;
         data["isApproval"] = this.isApproval;
+        data["isInProject"] = this.isInProject;
         data["contractId"] = this.contractId;
         data["contract"] = this.contract ? this.contract.toJSON() : <any>undefined;
         data["providerId"] = this.providerId;
@@ -21555,6 +21558,7 @@ export interface IPurchaseOrderDto {
     totalPrice: number | undefined;
     totalMoneyPaid: number | undefined;
     isApproval: boolean | undefined;
+    isInProject: boolean | undefined;
     contractId: number | undefined;
     contract: ContractDto | undefined;
     providerId: number | undefined;
@@ -21579,6 +21583,7 @@ export class PurchaseOrderInput implements IPurchaseOrderInput {
     totalPrice!: number | undefined;
     totalMoneyPaid!: number | undefined;
     isApproval!: boolean | undefined;
+    isInProject!: boolean | undefined;
     contractId!: number | undefined;
     contract!: ContractInput | undefined;
     providerId!: number | undefined;
@@ -21614,6 +21619,7 @@ export class PurchaseOrderInput implements IPurchaseOrderInput {
             this.totalPrice = data["totalPrice"];
             this.totalMoneyPaid = data["totalMoneyPaid"];
             this.isApproval = data["isApproval"];
+            this.isInProject = data["isInProject"];
             this.contractId = data["contractId"];
             this.contract = data["contract"] ? ContractInput.fromJS(data["contract"]) : <any>undefined;
             this.providerId = data["providerId"];
@@ -21657,6 +21663,7 @@ export class PurchaseOrderInput implements IPurchaseOrderInput {
         data["totalPrice"] = this.totalPrice;
         data["totalMoneyPaid"] = this.totalMoneyPaid;
         data["isApproval"] = this.isApproval;
+        data["isInProject"] = this.isInProject;
         data["contractId"] = this.contractId;
         data["contract"] = this.contract ? this.contract.toJSON() : <any>undefined;
         data["providerId"] = this.providerId;
@@ -21693,6 +21700,7 @@ export interface IPurchaseOrderInput {
     totalPrice: number | undefined;
     totalMoneyPaid: number | undefined;
     isApproval: boolean | undefined;
+    isInProject: boolean | undefined;
     contractId: number | undefined;
     contract: ContractInput | undefined;
     providerId: number | undefined;
@@ -21895,6 +21903,7 @@ export class PurchaseOrderForViewDto implements IPurchaseOrderForViewDto {
     totalPrice!: number | undefined;
     totalMoneyPaid!: number | undefined;
     isApproval!: boolean | undefined;
+    isInProject!: boolean | undefined;
     contractId!: number | undefined;
     contract!: ContractForViewDto | undefined;
     providerId!: number | undefined;
@@ -21928,6 +21937,7 @@ export class PurchaseOrderForViewDto implements IPurchaseOrderForViewDto {
             this.totalPrice = data["totalPrice"];
             this.totalMoneyPaid = data["totalMoneyPaid"];
             this.isApproval = data["isApproval"];
+            this.isInProject = data["isInProject"];
             this.contractId = data["contractId"];
             this.contract = data["contract"] ? ContractForViewDto.fromJS(data["contract"]) : <any>undefined;
             this.providerId = data["providerId"];
@@ -21961,6 +21971,7 @@ export class PurchaseOrderForViewDto implements IPurchaseOrderForViewDto {
         data["totalPrice"] = this.totalPrice;
         data["totalMoneyPaid"] = this.totalMoneyPaid;
         data["isApproval"] = this.isApproval;
+        data["isInProject"] = this.isInProject;
         data["contractId"] = this.contractId;
         data["contract"] = this.contract ? this.contract.toJSON() : <any>undefined;
         data["providerId"] = this.providerId;
@@ -21987,6 +21998,7 @@ export interface IPurchaseOrderForViewDto {
     totalPrice: number | undefined;
     totalMoneyPaid: number | undefined;
     isApproval: boolean | undefined;
+    isInProject: boolean | undefined;
     contractId: number | undefined;
     contract: ContractForViewDto | undefined;
     providerId: number | undefined;

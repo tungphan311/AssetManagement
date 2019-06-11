@@ -75,7 +75,7 @@
                         <td>
                             <!-- <span title="{{record.productCategory}}">{{truncateString(record.productCategory)}}</span> -->
                             <input type="text" class="input-inside-table"
-                            *ngIf="record.productCategory"
+                            
                             [(ngModel)]="record.productCategory"
                             >
                         </td>
@@ -91,34 +91,34 @@
                             >
                         </td>
                         <td>
-                            <!-- <span title="{{record.price }}">{{truncateString(record.price) | currency:'VND'}}</span> -->
-                            <input type="text" class="input-inside-table" [attr.disabled]="true"
+                            <span title="{{record.price }}">{{truncateString(record.price) | currency:'VND'}}</span>
+                            <!-- <input type="text" class="input-inside-table" [attr.disabled]="true"
                             *ngIf="record.price"
-                            [ngModel]="record.price | currency:'VND'">
+                            [ngModel]="record.price | currency:'VND'"> -->
                         </td>
                         <td>
                             <!-- <span title="{{record.contactAddress}}">{{truncateString(record.contactAddress)}}</span> -->
                             <input type="text" class="input-inside-table"
-                            *ngIf="record.contactAddress"
+                           
                             [(ngModel)]="record.contactAddress"
                             >
                         </td>
                         <td>
                             <!-- <span title="{{record.contactName}}">{{truncateString(record.contactName)}}</span> -->
                             <input type="text" class="input-inside-table"
-                            *ngIf="record.contactName"
+                           
                             [(ngModel)]="record.contactName">
                         </td>
                         <td>
                             <!-- <span title="{{record.contactPhoneNumber}}">{{truncateString(record.contactPhoneNumber)}}</span> -->
                             <input type="text" class="input-inside-table"
-                            *ngIf="record.contactPhoneNumber"
+                           
                             [(ngModel)]="record.contactPhoneNumber">
                         </td>
                         <td>
                             <!-- <span title="{{record.description}}">{{truncateString(record.description)}}</span> -->
                             <input type="text" class="input-inside-table"
-                            *ngIf="record.description"
+                           
                             [(ngModel)]="record.description">
                         </td>
 
@@ -147,5 +147,6 @@
 <!--beginmodal-->
 <purchase-product-selection-modal #purchaseProductSelectionModal
     [purchaseOrderRecieved]="purchaseOrderRecieved"
+    (openContractSelectModalEmit)="openContractSelectModal($event)"
 ></purchase-product-selection-modal>
 <!--end modal-->

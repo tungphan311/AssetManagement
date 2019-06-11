@@ -3,6 +3,7 @@ import { AppComponentBase } from '@shared/common/app-component-base';
 import { ModalDirective } from 'ngx-bootstrap';
 import { PurchaseOrderServiceProxy, PurchaseOrderInput, ContractInput, ProductProviderInput, ProviderInput } from '@shared/service-proxies/service-proxies';
 import { Router, ActivatedRoute } from '@angular/router';
+import { ContractSingleSelectionModalComponent } from '../contract/contract-for-single-selection-modal.component';
 
 @Component({
     selector: 'createOrEditPurchaseOrder',
@@ -19,6 +20,7 @@ export class CreateOrEditPurchaseOrderComponent extends AppComponentBase impleme
     @ViewChild('purchaseOrderCombobox') PurchaseOrderCombobox: ElementRef;
     @ViewChild('iconCombobox') iconCombobox: ElementRef;
     @ViewChild('dateInput') dateInput: ElementRef;
+    @ViewChild('ContractSingleSelectionModal') viewContractSelectModal: ContractSingleSelectionModalComponent;
 
     /**
      * @Output dùng để public event cho component khác xử lý
@@ -94,5 +96,15 @@ export class CreateOrEditPurchaseOrderComponent extends AppComponentBase impleme
             //this.router.navigate([''],{relativeTo:this.route})
             console.log(this.purchaseOrder)
         })
+    }
+
+    showContractSelectModal(){
+        this.viewContractSelectModal.show()
+    }
+    getContractSelected(contract){
+        if(contract){
+            this.purchaseOrder.contractId = contract.id
+            this.purchaseOrder.contract = contract
+        }
     }
 }

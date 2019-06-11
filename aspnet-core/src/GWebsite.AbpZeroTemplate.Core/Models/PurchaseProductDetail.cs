@@ -17,7 +17,7 @@ namespace GWebsite.AbpZeroTemplate.Core.Models
         public decimal Price { get; set; }
         public decimal? VAT_Percent { get; set; }
         public decimal? VAT { get; set; }
-        public bool IsInProject { get; set; }
+
         [StringLength(100)]
         public string ContactName { get; set; }
         [StringLength(100)]
