@@ -8197,6 +8197,79 @@ export class POServiceProxy {
 }
 
 @Injectable()
+export class POMerchandiseServiceProxy {
+    private http: HttpClient;
+    private baseUrl: string;
+    protected jsonParseReviver: ((key: string, value: any) => any) | undefined = undefined;
+
+    constructor(@Inject(HttpClient) http: HttpClient, @Optional() @Inject(API_BASE_URL) baseUrl?: string) {
+        this.http = http;
+        this.baseUrl = baseUrl ? baseUrl : "";
+    }
+
+    /**
+     * @sorting (optional) 
+     * @maxResultCount (optional) 
+     * @skipCount (optional) 
+     * @return Success
+     */
+    getPOByFilter(sorting: string | null | undefined, maxResultCount: number | null | undefined, skipCount: number | null | undefined): Observable<PagedResultDtoOfPOMerchandiseDto> {
+        let url_ = this.baseUrl + "/api/POMerchandise/GetPOByFilter?";
+        if (sorting !== undefined)
+            url_ += "Sorting=" + encodeURIComponent("" + sorting) + "&"; 
+        if (maxResultCount !== undefined)
+            url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&"; 
+        if (skipCount !== undefined)
+            url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetPOByFilter(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetPOByFilter(<any>response_);
+                } catch (e) {
+                    return <Observable<PagedResultDtoOfPOMerchandiseDto>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<PagedResultDtoOfPOMerchandiseDto>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetPOByFilter(response: HttpResponseBase): Observable<PagedResultDtoOfPOMerchandiseDto> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 ? PagedResultDtoOfPOMerchandiseDto.fromJS(resultData200) : new PagedResultDtoOfPOMerchandiseDto();
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<PagedResultDtoOfPOMerchandiseDto>(<any>null);
+    }
+}
+
+@Injectable()
 export class ProfileServiceProxy {
     private http: HttpClient;
     private baseUrl: string;
@@ -21632,6 +21705,118 @@ export interface IPOForViewDto {
     orderName: string | undefined;
     contractID: number | undefined;
     vendorID: number | undefined;
+}
+
+export class PagedResultDtoOfPOMerchandiseDto implements IPagedResultDtoOfPOMerchandiseDto {
+    totalCount!: number | undefined;
+    items!: POMerchandiseDto[] | undefined;
+
+    constructor(data?: IPagedResultDtoOfPOMerchandiseDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.totalCount = data["totalCount"];
+            if (data["items"] && data["items"].constructor === Array) {
+                this.items = [];
+                for (let item of data["items"])
+                    this.items.push(POMerchandiseDto.fromJS(item));
+            }
+        }
+    }
+
+    static fromJS(data: any): PagedResultDtoOfPOMerchandiseDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new PagedResultDtoOfPOMerchandiseDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["totalCount"] = this.totalCount;
+        if (this.items && this.items.constructor === Array) {
+            data["items"] = [];
+            for (let item of this.items)
+                data["items"].push(item.toJSON());
+        }
+        return data; 
+    }
+}
+
+export interface IPagedResultDtoOfPOMerchandiseDto {
+    totalCount: number | undefined;
+    items: POMerchandiseDto[] | undefined;
+}
+
+export class POMerchandiseDto implements IPOMerchandiseDto {
+    vendorID!: number | undefined;
+    projectID!: number | undefined;
+    merchandiseID!: number | undefined;
+    quantity!: number | undefined;
+    price!: number | undefined;
+    vat!: number | undefined;
+    totalPrice!: number | undefined;
+    id!: number | undefined;
+
+    constructor(data?: IPOMerchandiseDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.vendorID = data["vendorID"];
+            this.projectID = data["projectID"];
+            this.merchandiseID = data["merchandiseID"];
+            this.quantity = data["quantity"];
+            this.price = data["price"];
+            this.vat = data["vat"];
+            this.totalPrice = data["totalPrice"];
+            this.id = data["id"];
+        }
+    }
+
+    static fromJS(data: any): POMerchandiseDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new POMerchandiseDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["vendorID"] = this.vendorID;
+        data["projectID"] = this.projectID;
+        data["merchandiseID"] = this.merchandiseID;
+        data["quantity"] = this.quantity;
+        data["price"] = this.price;
+        data["vat"] = this.vat;
+        data["totalPrice"] = this.totalPrice;
+        data["id"] = this.id;
+        return data; 
+    }
+}
+
+export interface IPOMerchandiseDto {
+    vendorID: number | undefined;
+    projectID: number | undefined;
+    merchandiseID: number | undefined;
+    quantity: number | undefined;
+    price: number | undefined;
+    vat: number | undefined;
+    totalPrice: number | undefined;
+    id: number | undefined;
 }
 
 export class CurrentUserProfileEditDto implements ICurrentUserProfileEditDto {

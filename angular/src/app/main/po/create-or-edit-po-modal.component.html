@@ -125,27 +125,27 @@
                             <thead>
                                 <th style="width: 5%; text-align: center;">
                                     <span >
-                                        Đợt
+                                        STT
                                     </span>
                                 </th>
                                 <th style="width: 25%; text-align: center;">
                                     <span >
-                                        Ngày dự kiến thanh toán
+                                        Mã dự án
                                     </span>
                                 </th>
                                 <th style="width: 13%; text-align: center;">
                                     <span >
-                                        %
+                                        Tên hàng hoá
                                     </span>
                                 </th>
                                 <th style="width: 20%; text-align: center;">
                                     <span >
-                                        Số tiền thanh toán
+                                        Loại hàng hoá
                                     </span>
                                 </th>
                                 <th style="width: 37%; text-align: center;">
                                     <span >
-                                        Diễn giải
+                                        Số lượng 
                                     </span>
                                 </th>
                             </thead>
@@ -173,9 +173,6 @@
                         <div class="no-data" style="border: thin solid" *ngIf="merchandises.length == 0">
                             <label>Không có dữ liệu</label>
                         </div>
-                        <div class="has-danger" *ngIf="totalPercent(listPayment)" style="margin-top: 5px">
-                            <label>Tổng % của chi tiết thanh toán không được quá 100%</label>
-                        </div>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -190,6 +187,6 @@
     </div>
 </div>
 <selectContractModal #selectContractModal (modalSave)="reloadContract($event)"></selectContractModal>
-<addMerchandiseToPO #addMerchandiseToPO></addMerchandiseToPO>
+<addMerchandiseToPO #addMerchandiseToPO (modalSave)="reloadMerchandise($event)"></addMerchandiseToPO>
 <addVendorModal #addVendorModal (modalSave)="reloadVendor($event)"></addVendorModal>
 </div>

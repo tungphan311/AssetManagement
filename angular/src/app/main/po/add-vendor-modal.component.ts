@@ -23,8 +23,6 @@ export class AddVendorModalComponent extends AppComponentBase {
     @ViewChild('dataTable') dataTable: Table;
     @ViewChild('paginator') paginator: Paginator;
     
-
-
     @Output() modalSave: EventEmitter<any> = new EventEmitter<any>();
 
     saving = false;

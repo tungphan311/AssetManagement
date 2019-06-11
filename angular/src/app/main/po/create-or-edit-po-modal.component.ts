@@ -3,12 +3,11 @@ import { AppComponentBase } from "@shared/common/app-component-base";
 import { ModalDirective } from "ngx-bootstrap";
 import { Table } from "primeng/table";
 import { Paginator } from "primeng/primeng";
-import { POServiceProxy, POInput, ContractServiceProxy, VendorServiceProxy } from "@shared/service-proxies/service-proxies";
+import { POServiceProxy, POInput, ContractServiceProxy, VendorServiceProxy, ContractDetailInput } from "@shared/service-proxies/service-proxies";
 import { SelectContractModalComponent } from './select-contract-modal.component';
 import { appModuleAnimation } from "@shared/animations/routerTransition";
 import { AddMerchandiseToPOComponent } from "./add-merchandise-to-po.component";
 import { AddVendorModalComponent } from "./add-vendor-modal.component";
-
 
 @Component({
     selector: 'createOrEditPOModal',
@@ -93,6 +92,10 @@ export class CreateOrEditPOModalComponent extends AppComponentBase {
 
     addMerchandise() {
         this.addMerchandiseToPO.show();
+    }
+
+    reloadMerchandise(listCD:ContractDetailInput[]):void{
+
     }
 
     save(): void {

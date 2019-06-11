@@ -11,6 +11,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Linq.Dynamic.Core;
+using Abp.Linq.Extensions;
 
 namespace GWebsite.AbpZeroTemplate.Web.Core.POMerchandises
 {
@@ -46,9 +48,25 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.POMerchandises
             throw new NotImplementedException();
         }
 
-        public PagedResultDto<POMerchandiseDto> GetPOs(POMerchandiseFilter input)
+        public PagedResultDto<POMerchandiseDto> GetPOMerchandises(POMerchandiseFilter input)
         {
-            throw new NotImplementedException();
+            var query = repository.GetAll().Where(x => !x.IsDelete);
+
+            var totalCount = query.Count();
+
+            // sort
+            if (!string.IsNullOrWhiteSpace(input.Sorting))
+            {
+                query = query.OrderBy(input.Sorting);
+            }
+
+            // paging
+            var items = query.PageBy(input).ToList();
+
+            return new PagedResultDto<POMerchandiseDto>(
+                totalCount,
+                items.Select(item => ObjectMapper.Map<POMerchandiseDto>(item)).ToList()
+            );
         }
 
         #endregion

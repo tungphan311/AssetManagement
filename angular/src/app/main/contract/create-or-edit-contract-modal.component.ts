@@ -34,7 +34,7 @@ export class CreateOrEditContractModalComponent extends AppComponentBase {
 
     saving = false;
     contractId?: number | null | undefined;
-    bidName: string;
+    bidName = "";
     bidderId: number;
     bidderCode: string;
     bidderName: string;
@@ -75,6 +75,7 @@ export class CreateOrEditContractModalComponent extends AppComponentBase {
     show(contractId?: number | null | undefined): void {
         this.saving = false;
         this.contractId = contractId;
+        console.log(this.bidName);
 
         this._contractService.getContractForEdit(contractId).subscribe(result => {
             this.contract = result;
@@ -208,7 +209,12 @@ export class CreateOrEditContractModalComponent extends AppComponentBase {
     }
 
     addContractDetail() {
-        this.addContractDetailModal.show();
+        if (this.bidName == '' || this.bidName == null) {
+            this.notify.warn("Vui lòng chọn số hồ sơ trước");
+        }
+        else {
+            this.addContractDetailModal.show();
+        }
     }
 
     save(): void {

@@ -7,23 +7,44 @@
                     <div class="m-form m-form--label-align-right" id="TextsFilterForm">
                         <div class="row align-items-center m--margin-bottom-10">
                             <div class="col-sm-12">
+                                <form style="text-align: center">
+                                    <label class="radio-inline">
+                                        <input type="radio" name="RadioButton" (click)="selected = 'in'">
+                                        Trong KH
+                                    </label>                               
+                                    <label class="radio-inline" style="margin-left: 50px">
+                                        <input type="radio" name="RadioButton" (click)="selected = 'out'">
+                                        Ngoài KH
+                                    </label>
+                                </form>
                                 <div class="input-group">
-                                    <div class="col-sm-4 form-group">
-                                        <label>Mã hàng hoá</label>
-                                        <input [(ngModel)]="merID" name="merID" autofocus class="form-control" placeholder="Nhập mã hàng hoá" type="text">
+                                    <div style="width: 30%;">
+                                        <label for="ex4">Mã dự án</label>
+                                        <div class="input-group">
+                                            <input class="form-control" id="ex4" type="text" name="projectCode" [(ngModel)]="projectCode" readonly>
+                                            <span class="input-group-btn">
+                                                <button class="btn btn-primary" type="button" (click)="selectProjectModal.show()">
+                                                    <i class="fa fa-ellipsis-h"></i>
+                                                </button>
+                                            </span>
+                                        </div>                                           
                                     </div>
-                                    <div class="col-sm-4 form-group">
-                                        <label>Tên hàng hoá</label>
-                                        <input [(ngModel)]="merName" name="merName" autofocus class="form-control" placeholder="Nhập tên hàng hoá" type="text">
+                                    <div style="width: 30%; margin-left: 40px;">
+                                        <label for="ex3">Tên hợp đồng</label>
+                                        <div class="input-group">
+                                            <input class="form-control" id="ex4" type="text" name="contract" [(ngModel)]="contract" readonly>
+                                            <span class="input-group-btn">
+                                                <button class="btn btn-primary" type="button" (click)="selectContractModal.show()">
+                                                    <i class="fa fa-ellipsis-h"></i>
+                                                </button>
+                                            </span>
+                                        </div>                                           
                                     </div>
-                                    <div class="col-sm-3 form-group">
-                                        <label>Loại hàng hoá</label>
-                                        <select [(ngModel)]="typeID" name="typeID" autofocus class="form-control">
-                                            <option value="0" selected="selected">Tất cả</option>
-                                            <option *ngFor="let item of listMerType" value="{{item.id}}">{{item.name}}</option>
-                                        </select>
-                                    </div>  
                                 </div>
+                                <div class="form-group">
+                                    <label>Tên hàng hoá</label>
+                                    <input [(ngModel)]="merchandise" name="merchandise" autofocus class="form-control" type="text">
+                                </div>  
                             </div>
                         </div>
                     </div>
@@ -31,62 +52,62 @@
                 <div class="row align-items-center">
                     <!--<Primeng-TurboTable-Start>-->
                     <div class="primeng-datatable-container" [busyIf]="primengTableHelper.isLoading">
-                        <p-table #dataTable (onLazyLoad)="getMerchandises($event)" [value]="primengTableHelper.records" 
+                        <p-table #dataTable [value]="primengTableHelper.records" 
                             rows="{{primengTableHelper.defaultRecordsCountPerPage}}" [paginator]="false" [lazy]="true" 
                             [responsive]="primengTableHelper.isResponsive">
                             <ng-template pTemplate="header">
                                 <tr>
-                                    <th pSortableColumn="id">
-                                        Mã hàng hoá
-                                        <p-sortIcon field="id"></p-sortIcon>
-                                    </th>
-                                    <th pSortableColumn="name">
-                                        Tên hàng hoá
-                                        <p-sortIcon field="name"></p-sortIcon>
-                                    </th>
-                                    <th pSortableColumn="price">
-                                        Đơn giá
-                                        <p-sortIcon field="price"></p-sortIcon>
-                                    </th>
-                                    <th pSortableColumn="unit">
-                                        Đơn vị
-                                        <p-sortIcon field="unit"></p-sortIcon>
-                                    </th>
-                                    <th pSortableColumn="vendor">
-                                        Nhà cung cấp
-                                        <p-sortIcon field="vendor"></p-sortIcon>
+                                    <th>
+                                        Tên hợp đồng
                                     </th>
                                     <th>
-                                        <input type="checkbox" [(ngModel)]="isSelectAll" (change)="selectAll(primengTableHelper.records)">
+                                        Tên hàng hoá
+                                    </th>
+                                    <th>
+                                        Số lượng
+                                    </th>
+                                    <th>
+                                        SL đã mua
+                                    </th>
+                                    <th>
+                                        Số lượng còn lại
+                                    </th>
+                                    <th>
+                                        Đơn giá
+                                    </th>
+                                    <th>
+                                        <input type="checkbox" onclick="return false;">
                                     </th>
                                 </tr>
                             </ng-template>
                             <ng-template pTemplate="body" let-record="$implicit">
                                 <tr>
                                     <td>
-                                        <span class="ui-column-title">Mã hàng hoá</span>
-                                        <span title="{{record.code}}">{{truncateString(record.code)}}</span>
+                                        <span class="ui-column-title">Tên dự án</span>
+                                        <span title="{{record.contractID}}">{{getContractName(record.contractID)}}</span>
                                     </td>
                                     <td>
                                         <span class="ui-column-title">Tên hàng hoá</span>
-                                        <span title="{{record.name}}">{{truncateString(record.name)}}</span>
+                                        <span title="{{record.merName}}">{{truncateString(record.merName)}}</span>
+                                    </td>
+                                    <td>
+                                        <span class="ui-column-title">Số lượng</span>
+                                        <span title="{{record.quantity}}">{{truncateString(record.quantity)}}</span>
+                                    </td>
+                                    <td>
+                                        <span class="ui-column-title">SL đã mua</span>
+                                        <span title="{{record.quantity}}">{{truncateString(0)}}</span>
+                                    </td>
+                                    <td>
+                                        <span class="ui-column-title">Số lượng còn lại</span>
+                                        <span title="{{record.quantity}}">{{truncateString(record.quantity)}}</span>
                                     </td>
                                     <td>
                                         <span class="ui-column-title">Đơn giá</span>
                                         <span title="{{record.price}}">{{truncateString(record.price)}}</span>
                                     </td>
                                     <td>
-                                        <span class="ui-column-title">Đơn vị</span>
-                                        <span title="{{record.unit}}">{{truncateString(record.unit)}}</span>
-                                    </td>
-                                    <td>
-                                        <span class="ui-column-title">Nhà cung cấp</span>
-                                        <span title="{{record.typeVender}}">{{truncateString(record.typeVender)}}</span>
-                                    </td>
-                                    <td>    
-                                        <span title="{{record.isAddContract}}" id="record.id">
-                                            <input type="checkbox" [(ngModel)]="record.isAddContract" (change)="selectItem(record.id)">
-                                        </span>             
+                                        <input class="form-control" type="checkbox" name="isSelectedInput" (change)="selectcdID($event,record.id)">
                                     </td>
                                 </tr>
                             </ng-template>
@@ -121,4 +142,6 @@
             </div>
         </div>
     </div>
+    <selectProjectModal #selectProjectModal (modalSave)="reloadProject($event)"></selectProjectModal>
+    <selectContractModal #selectContractModal (modalSave)="reloadContract($event)"></selectContractModal>
 </div>

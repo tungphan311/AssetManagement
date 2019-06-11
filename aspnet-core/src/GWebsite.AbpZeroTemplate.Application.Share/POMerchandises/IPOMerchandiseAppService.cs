@@ -14,7 +14,7 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.POMerchandises
         void CreateOrEditPOMerchandise(POMerchandiseInput input);
         POMerchandiseInput GetPOMerchandiseForEdit(int id);
         void DeletePOMerchandise(int id);
-        PagedResultDto<POMerchandiseDto> GetPOs(POMerchandiseFilter input);
+        PagedResultDto<POMerchandiseDto> GetPOMerchandises(POMerchandiseFilter input);
         POMerchandiseForViewDto GetPOMerchandiseForView(int id);
     }
 }
