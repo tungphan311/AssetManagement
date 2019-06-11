@@ -17,13 +17,11 @@ namespace GWebsite.AbpZeroTemplate.Core.Models
         public DateTime ToDate { get; set; }
         public Status Status { get; set; }
         public BiddingForm BiddingForm { get; set; }
-        [Column(TypeName = "varchar(50)")]
-        public string ProjectCode { get; set; }
+
         public decimal CautionMoney { get; set; }
         public string AttachmentFile { get; set; }
 
         public int? ProjectId { get; set; }
-        [ForeignKey("ProjectId")]
-        public virtual Project Project { get; set; }
+
     }
 }

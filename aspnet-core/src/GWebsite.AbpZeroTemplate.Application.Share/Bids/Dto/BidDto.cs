@@ -1,4 +1,5 @@
 ﻿using Abp.Domain.Entities;
+using GWebsite.AbpZeroTemplate.Application.Share.BidDetails.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.Projects.Dto;
 using GWebsite.AbpZeroTemplate.Core.Models.Enums;
 using GWebsite.AbpZeroTemplate.Core.Models.Enums.Base;
@@ -12,6 +13,11 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.Bids.Dto
 {
     public class BidDto : Entity<int>
     {
+        public BidDto()
+        {
+            BidDetails = new List<BidDetailDto>();
+            Project = new ProjectDto();
+        }
         public string Code { get; set; }
         public DateTime FromDate { get; set; }
         public DateTime ToDate { get; set; }
@@ -22,5 +28,7 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.Bids.Dto
         public string AttachmentFile { get; set; }
         public int? ProjectId { get; set; }
         public ProjectDto Project { get; set; }
+
+        public List<BidDetailDto> BidDetails { get; set; }
     }
 }

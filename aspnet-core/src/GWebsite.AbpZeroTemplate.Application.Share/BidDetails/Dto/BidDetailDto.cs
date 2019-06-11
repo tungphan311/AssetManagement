@@ -15,6 +15,11 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.BidDetails.Dto
     /// </summary>
     public class BidDetailDto : Entity<int>
     {
+
+        public BidDetailDto()
+        {
+            Provider = new ProviderDto();
+        }
         public bool IsAccepted { get; set; }
         public DateTime? BiddingCreatedDate { get; set; }
         public string AttachmentFile { get; set; }
@@ -27,6 +32,6 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.BidDetails.Dto
         public int ProviderId { get; set; }
         public int BidId { get; set; }
         public ProviderDto Provider { get; set; }
-        public BidDto Bid { get; set; }
+
     }
 }

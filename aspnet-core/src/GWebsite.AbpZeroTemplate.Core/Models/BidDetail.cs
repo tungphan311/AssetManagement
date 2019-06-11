@@ -28,10 +28,8 @@ namespace GWebsite.AbpZeroTemplate.Core.Models
 
 
         public int ProviderId { get; set; }
-        [ForeignKey("ProviderId")]
-        public Provider Provider { get; set; }
+
         public int BidId { get; set; }
-        [ForeignKey("BidId")]
-        public Bid Bid { get; set; }
+
     }
 }

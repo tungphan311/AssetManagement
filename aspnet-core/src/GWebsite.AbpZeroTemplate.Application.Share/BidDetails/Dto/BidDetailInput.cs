@@ -1,4 +1,5 @@
 ﻿using Abp.Domain.Entities;
+using GWebsite.AbpZeroTemplate.Application.Share.Providers.Dto;
 using GWebsite.AbpZeroTemplate.Core.Models.Enums;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,10 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.BidDetails.Dto
     /// </summary>
     public class BidDetailInput : Entity<int>
     {
+        public BidDetailInput()
+        {
+            Provider = new ProviderInput();
+        }
         public bool IsAccepted { get; set; }
         public DateTime? BiddingCreatedDate { get; set; }
         public string AttachmentFile { get; set; }
@@ -23,6 +28,7 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.BidDetails.Dto
         public string BankName { get; set; }
         public string Note { get; set; }
         public int ProviderId { get; set; }
+        public ProviderInput Provider { get; set; }
         public int BidId { get; set; }
 
     }
