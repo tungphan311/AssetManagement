@@ -46,6 +46,7 @@ import { POCOmponent } from './po/po.component';
 import { RouterModule } from '@angular/router';
 import { CreateOrEditPOModalComponent } from './po/create-or-edit-po-modal.component';
 import { RetailComponent } from './retail/retail.component';
+import { AddMerchandiseModalComponent } from './vendor/add-merchandise-modal.component';
 
 
 @NgModule({
@@ -78,7 +79,7 @@ import { RetailComponent } from './retail/retail.component';
         DashboardComponent,
         MerchandiseComponent, CreateOrEditMerchandiseModalComponent, ViewMerchandiseModalComponent,
         MerchandiseTypeComponent, CreateOrEditMerchandiseTypeModalComponent, ViewMerchandiseTypeModalComponent,
-        VendorComponent, CreateOrEditVendorModalComponent, ViewVendorModalComponent,
+        VendorComponent, CreateOrEditVendorModalComponent, ViewVendorModalComponent, AddMerchandiseModalComponent,
         ContractComponent, CreateOrEditContractModalComponent, ViewContractModalComponent,
         AddContractDetailModalComponent, SelectBidModalComponent, FileUploadComponent,
         RetailComponent,
