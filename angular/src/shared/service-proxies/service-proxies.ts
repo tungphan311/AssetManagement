@@ -15590,6 +15590,9 @@ export class ProductInput implements IProductInput {
     total!: number | undefined;
     note!: string | undefined;
     id!: number | undefined;
+    unit: string;
+    info: string;
+    isActive: boolean;
 
     constructor(data?: IProductInput) {
         if (data) {
