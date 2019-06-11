@@ -85,6 +85,14 @@ export class CreateOrEditContractModalComponent extends AppComponentBase {
                 this.contract.totalPrice = 0;
             }
 
+            result.payments.forEach(item => {
+                var momen = require('moment');
+                var day = momen(item.paymentDate);
+                var tz = day.utcOffset();
+                day.add(tz, 'm');
+                item.paymentDate = day.format('YYYY-MM-DD');
+            });
+
             this.listPayment = result.payments;
 
             this.index = result.payments.length + 1;
@@ -229,7 +237,6 @@ export class CreateOrEditContractModalComponent extends AppComponentBase {
         this._contractService.createOrEditContract(input)
             // .pipe(finalize(() => { this.saving = false; }))
             .subscribe(result => {
-                this.editForm.resetForm();
                 this.notify.info(this.l('SavedSuccessfully'));
                 this.close();
             },
@@ -270,6 +277,7 @@ export class CreateOrEditContractModalComponent extends AppComponentBase {
         this.bidderAddress = "";
         this.bidderContact = "";
         this.index = 0;
+        this.listPayment = [];
     }
 
     addContractPayment() {
