@@ -26,16 +26,10 @@
                     <div class="form-group">
                         <label>Loại hàng hoá *</label>
                         <select #typeIDInput="ngModel" class="form-control" [(ngModel)]="merchandise.typeID" name="typeID" required>
+                            <option selected value = "0">Chọn loại hàng hóa</option>
                             <option *ngFor="let item of merchandiseTypes" [value]="item.id">{{item.name}}</option>
                         </select>
                         <validation-messages [formCtrl]="typeIDInput"></validation-messages>
-                    </div>
-                    <div class="form-group">
-                        <label>Mã nhà cung cấp *</label>
-                        <select #typeVenderInput="ngModel" class="form-control" [(ngModel)]="merchandise.typeVender" name="typeVender" required>
-                            <option *ngFor="let item of typeVender" [value]="item.id">{{item.name}}</option>
-                        </select>
-                        <validation-messages [formCtrl]="typeVenderInput"></validation-messages>
                     </div>
                     <div class="form-group">
                         <label>Giá *</label>
@@ -56,20 +50,18 @@
                         <validation-messages [formCtrl]="infoInput"></validation-messages>
                     </div>
                     <div class="form-group">
-                        <label>Hoạt động *</label>
+                        <label>Hoạt động</label>
                         <input #isActiveInput="ngModel" class="form-control" type="checkbox" name="IsActive" [(ngModel)]="merchandise.isActive">
-                        <validation-messages [formCtrl]="isActiveInput"></validation-messages>
                     </div>
                     <div class="form-group">
-                        <label>Ghi chú *</label>
+                        <label>Ghi chú</label>
                         <input #noteInput="ngModel" class="form-control" type="text" name="Note"
-                            [(ngModel)]="merchandise.note" required maxlength="255">
-                        <validation-messages [formCtrl]="noteInput"></validation-messages>
+                            [(ngModel)]="merchandise.note" maxlength="255">              
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button [disabled]="saving" type="button" class="btn btn-default" (click)="close()">{{l("Cancel")}}</button>
-                    <button type="submit" class="btn btn-primary" [buttonBusy]="saving" [busyText]="l('SavingWithThreeDot')">
+                    <button [disabled]="!editForm.form.valid||merchandise.typeID==0" type="submit" class="btn btn-primary" [buttonBusy]="saving" [busyText]="l('SavingWithThreeDot')">
                         <i class="fa fa-save"></i>
                         <span>{{l("Save")}}</span>
                     </button>

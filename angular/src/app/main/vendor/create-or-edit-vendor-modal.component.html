@@ -14,7 +14,7 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        <label>{{l("VendorCode")}} *</label>
+                        <label>Mã nhà cung cấp *</label>
                         <input #codeInput="ngModel" class="form-control" type="text" name="Code"
                                [(ngModel)]="vendor.code" required maxlength="64">
                         <validation-messages [formCtrl]="codeInput"></validation-messages>
@@ -28,6 +28,7 @@
                     <div class="form-group">
                         <label>{{l("VendorTypeID")}} *</label>
                         <select id="TypeID" name="TypeID" class="form-control" [(ngModel)]="vendor.typeID">
+                            <option selected value="0">Chọn nhà cung cấp</option>
                             <option *ngFor="let vendortype of vendortypeList" [value]="vendortype.id">{{vendortype.name}}</option>
                         </select>
                         <validation-messages [formCtrl]="typeIDInput"></validation-messages>
@@ -45,7 +46,7 @@
                         <validation-messages [formCtrl]="addressInput"></validation-messages>
                     </div>
                     <div class="form-group">
-                        <label>{{l("TIN")}} *</label>
+                        <label>Mã số thuế *</label>
                         <input #tinInput="ngModel" class="form-control" type="text" name="TIN"
                                [(ngModel)]="vendor.tin" required maxlength="64">
                         <validation-messages [formCtrl]="tinInput"></validation-messages>
@@ -63,7 +64,7 @@
                         <validation-messages [formCtrl]="contactInput"></validation-messages>
                     </div>
                     <div class="form-group">
-                        <label>{{l("IsActive")}} *</label>
+                        <label>{{l("IsActive")}}</label>
                         <input #isActiveInput="ngModel" class="form-control" type="checkbox" name="IsActive" [(ngModel)]="vendor.isActive">
                         <validation-messages [formCtrl]="isActiveInput"></validation-messages>
                     </div>
@@ -76,7 +77,7 @@
                 <div class="modal-footer">
                     <button [disabled]="saving" type="button" class="btn btn-default"
                         (click)="close()">{{l("Cancel")}}</button>
-                    <button type="submit" class="btn btn-primary" [buttonBusy]="saving"
+                    <button type="submit" [disabled]="!editForm.form.valid||vendor.typeID==0" class="btn btn-primary" [buttonBusy]="saving"
                         [busyText]="l('SavingWithThreeDot')"><i class="fa fa-save"></i>
                         <span>{{l("Save")}}</span></button>
                 </div>

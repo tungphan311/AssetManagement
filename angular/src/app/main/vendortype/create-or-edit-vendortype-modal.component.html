@@ -14,7 +14,7 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        <label>{{l("VendorTypeCode")}} *</label>
+                        <label>Mã loại nhà cung cấp *</label>
                         <input #codeInput="ngModel" class="form-control" type="text" name="code"
                                [(ngModel)]="vendortype.code" required maxlength="64">
                         <validation-messages [formCtrl]="codeInput"></validation-messages>
@@ -27,23 +27,23 @@
                     </div>
                     <div class="form-group">
                         <p>
-                            Hoạt động *:
+                            Hoạt động:
                             <span>
-                                <input #isActiveInput="ngModel" class="form-control" type="checkbox" name="IsActive" [(ngModel)]="vendortype.isActive" required>
+                                <input #isActiveInput="ngModel" class="form-control" type="checkbox" name="IsActive" [(ngModel)]="vendortype.isActive">
                             </span>
                         </p>
                     </div>
                     <div class="form-group">
-                        <label>{{l("Note")}} *</label>
+                        <label>{{l("Note")}}</label>
                         <input #noteInput="ngModel" class="form-control" type="text" name="Note"
-                               [(ngModel)]="vendortype.note" required maxlength="64">
+                               [(ngModel)]="vendortype.note" maxlength="64">
                         <validation-messages [formCtrl]="noteInput"></validation-messages>
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button [disabled]="saving" type="button" class="btn btn-default"
                         (click)="close()">{{l("Cancel")}}</button>
-                    <button type="submit" class="btn btn-primary" [buttonBusy]="saving"
+                    <button type="submit" [disabled]="!editForm.form.valid" class="btn btn-primary" [buttonBusy]="saving"
                         [busyText]="l('SavingWithThreeDot')"><i class="fa fa-save"></i>
                         <span>{{l("Save")}}</span></button>
                 </div>
