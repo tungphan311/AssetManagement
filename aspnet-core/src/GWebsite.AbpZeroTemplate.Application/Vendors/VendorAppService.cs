@@ -3,6 +3,7 @@ using Abp.Authorization;
 using Abp.Domain.Repositories;
 using Abp.Linq.Extensions;
 using GWebsite.AbpZeroTemplate.Application;
+using GWebsite.AbpZeroTemplate.Application.Share.AssignmentTables.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.Vendors;
 using GWebsite.AbpZeroTemplate.Application.Share.Vendors.Dto;
 using GWebsite.AbpZeroTemplate.Core.Authorization;
@@ -16,10 +17,12 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Vendors
     public class VendorAppService : GWebsiteAppServiceBase, IVendorAppService
     {
         private readonly IRepository<Vendor> vendorRepository;
+        private readonly IRepository<AssignmentTable> assignmentTableRepository;
 
-        public VendorAppService(IRepository<Vendor> vendorRepository)
+        public VendorAppService(IRepository<Vendor> vendorRepository, IRepository<AssignmentTable> assignmentTableRepository)
         {
             this.vendorRepository = vendorRepository;
+            this.assignmentTableRepository = assignmentTableRepository; 
         }
 
         #region Public Method
@@ -43,6 +46,15 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Vendors
             {
                 vendorEntity.IsDelete = true;
                 vendorRepository.Update(vendorEntity);
+
+                //Xoá bảng gán tương ứng với vendor này
+                var assignmentList = assignmentTableRepository.GetAll().Where(x => !x.IsDelete && x.VendorID == id);
+                foreach (var assignment in assignmentList)
+                {
+                    assignment.IsDelete = true;
+                    SetAuditEdit(assignment);
+                    assignmentTableRepository.Update(assignment);
+                }
                 CurrentUnitOfWork.SaveChanges();
             }
         }
@@ -54,7 +66,12 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Vendors
             {
                 return null;
             }
-            return ObjectMapper.Map<VendorInput>(vendorEntity);
+            var vendorInput = ObjectMapper.Map<VendorInput>(vendorEntity);
+            var assignmentTableList = assignmentTableRepository.GetAll().Where(x => x.IsDelete).Where(x => x.VendorID == id);
+            vendorInput.Merchandises = assignmentTableList.Select(x => x.VendorID).ToList();
+
+            return vendorInput;
+
         }
 
         public VendorForViewDto GetVendorForView(int id)
@@ -128,7 +145,18 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Vendors
         {
             var vendorEntity = ObjectMapper.Map<Vendor>(vendorInput);
             SetAuditInsert(vendorEntity);
-            vendorRepository.Insert(vendorEntity);
+            
+            var id = vendorRepository.InsertAndGetId(vendorEntity);
+            
+            foreach (var merchandise in vendorInput.Merchandises)
+            {
+                var assignmentInput = new AssignmentTable();
+                assignmentInput.VendorID = id;
+                assignmentInput.MerchID = merchandise;
+                SetAuditInsert(assignmentInput);
+                assignmentTableRepository.Insert(assignmentInput);
+            }
+
             CurrentUnitOfWork.SaveChanges();
         }
 
@@ -142,6 +170,28 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Vendors
             ObjectMapper.Map(vendorInput, vendorEntity);
             SetAuditEdit(vendorEntity);
             vendorRepository.Update(vendorEntity);
+
+            var assignList = assignmentTableRepository.GetAll().Where(x => !x.IsDelete && x.VendorID == vendorInput.Id);
+
+            foreach (var assign in assignList)
+            {
+                assign.IsDelete = true;
+                SetAuditEdit(assign);
+                assignmentTableRepository.Update(assign);
+            }
+
+            if (vendorInput.Merchandises != null)
+            {
+                foreach (var merchandise in vendorInput.Merchandises)
+                {
+                    var assignmentInput = new AssignmentTable();
+                    assignmentInput.VendorID = vendorInput.Id;
+                    assignmentInput.MerchID = merchandise;
+                    SetAuditInsert(assignmentInput);
+                    assignmentTableRepository.Insert(assignmentInput);
+                }
+            }
+
             CurrentUnitOfWork.SaveChanges();
         }
 
