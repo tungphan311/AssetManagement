@@ -78,7 +78,7 @@
                             <div class="input-group col-xs-4">
                                 <input class="form-control" id="ex6" type="text" name="VendorCode" [(ngModel)]="vendorCode" readonly required>
                                 <span class="input-group-btn">
-                                    <button [disabled]="contractID.length>0" class="btn btn-primary" type="button" (click)="selectContractModal.show()">
+                                    <button [disabled]="contractID.length>0" class="btn btn-primary" type="button" (click)="addVendorModal.show()">
                                         <i class="fa fa-ellipsis-h"></i>
                                     </button>
                                 </span>
@@ -191,4 +191,5 @@
 </div>
 <selectContractModal #selectContractModal (modalSave)="reloadContract($event)"></selectContractModal>
 <addMerchandiseToPO #addMerchandiseToPO></addMerchandiseToPO>
+<addVendorModal #addVendorModal (modalSave)="reloadVendor($event)"></addVendorModal>
 </div>

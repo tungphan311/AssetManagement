@@ -7,6 +7,7 @@ import { POServiceProxy, POInput, ContractServiceProxy, VendorServiceProxy } fro
 import { SelectContractModalComponent } from './select-contract-modal.component';
 import { appModuleAnimation } from "@shared/animations/routerTransition";
 import { AddMerchandiseToPOComponent } from "./add-merchandise-to-po.component";
+import { AddVendorModalComponent } from "./add-vendor-modal.component";
 
 
 @Component({
@@ -24,6 +25,7 @@ export class CreateOrEditPOModalComponent extends AppComponentBase {
     @ViewChild('paginator') paginator: Paginator;
     @ViewChild('selectContractModal') selectContractModal: SelectContractModalComponent;
     @ViewChild('addMerchandiseToPO') addMerchandiseToPO: AddMerchandiseToPOComponent;
+    @ViewChild('addVendorModal') addVendorModal: AddVendorModalComponent;
 
     @Output() modalSave: EventEmitter<any> = new EventEmitter<any>();
 
@@ -94,6 +96,19 @@ export class CreateOrEditPOModalComponent extends AppComponentBase {
     }
 
     save(): void {
+
+    }
+
+    reloadVendor(vendorID:number): void {
+        if (vendorID!=0)
+        {
+            this.vendorID = vendorID;
+            this._vendorService.getVendorForView(vendorID).subscribe(result=>{
+                this.vendorCode = result.code;
+                this.vendorName = result.name;
+                this.vendorAddress=result.address;
+            })
+        }
 
     }
 }

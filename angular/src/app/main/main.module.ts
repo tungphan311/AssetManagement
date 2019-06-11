@@ -50,6 +50,7 @@ import { RetailComponent } from './retail/retail.component';
 import { AddMerchandiseModalComponent } from './vendor/add-merchandise-modal.component';
 import { AddMerchandiseToPOComponent } from './po/add-merchandise-to-po.component';
 
+import { AddVendorModalComponent } from './po/add-vendor-modal.component';
 
 @NgModule({
     imports: [
@@ -91,7 +92,7 @@ import { AddMerchandiseToPOComponent } from './po/add-merchandise-to-po.componen
         BidComponent, CreateOrEditBidModalComponent, ViewBidModalComponent, SelectProjectModalComponent, AddBidderModal, SelectVendorModalComponent,
         CreateMerchandiseModalComponent,
         POCOmponent, CreateOrEditPOModalComponent, SelectContractModalComponent,
-        AddMerchandiseToPOComponent
+        AddMerchandiseToPOComponent, AddVendorModalComponent
     ],
     providers: [
         
