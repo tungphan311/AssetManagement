@@ -1,4 +1,5 @@
 ﻿using Abp.Domain.Entities;
+using GWebsite.AbpZeroTemplate.Application.Share.POPayments.Dto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,5 +25,7 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.POs.Dto
         public int ContractID { get; set; }
 
         public int VendorID { get; set; }
+
+        public List<POPaymentInput> Payments { get; set; }
     }
 }
