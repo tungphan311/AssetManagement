@@ -65,7 +65,7 @@
                             </select>
                         </div>
                     </div>
-                    <form class="margin-top-15">
+                    <form #tempf1="ngForm" class="margin-top-15">
                         <fieldset style="border: solid; border-width: thin">
                             <legend visible="true" style="width:auto; margin-left: 10px;">Bảo lãnh dự thầu</legend>
                             <div class="form-group row">
@@ -210,7 +210,7 @@
                 <div class="modal-footer">
                     <button [disabled]="saving" type="button" class="btn btn-default"
                         (click)="close()">{{l("Cancel")}}</button>
-                    <button type="submit" class="btn btn-primary" [buttonBusy]="saving"
+                    <button [disabled]="!editForm.form.valid||!tempf1.form.valid" type="submit" class="btn btn-primary" [buttonBusy]="saving"
                         [busyText]="l('SavingWithThreeDot')"><i class="fa fa-save"></i>
                         <span>{{l("Save")}}</span></button>
                 </div>
