@@ -572,6 +572,584 @@ export class AccountServiceProxy {
 }
 
 @Injectable()
+export class AssetServiceProxy {
+    private http: HttpClient;
+    private baseUrl: string;
+    protected jsonParseReviver: ((key: string, value: any) => any) | undefined = undefined;
+
+    constructor(@Inject(HttpClient) http: HttpClient, @Optional() @Inject(API_BASE_URL) baseUrl?: string) {
+        this.http = http;
+        this.baseUrl = baseUrl ? baseUrl : "";
+    }
+
+    /**
+     * @assetName (optional) 
+     * @sorting (optional) 
+     * @maxResultCount (optional) 
+     * @skipCount (optional) 
+     * @return Success
+     */
+    getAssetsByFilter(assetName: string | null | undefined, sorting: string | null | undefined, maxResultCount: number | null | undefined, skipCount: number | null | undefined): Observable<PagedResultDtoOfAssetDto> {
+        let url_ = this.baseUrl + "/api/Asset/GetAssetsByFilter?";
+        if (assetName !== undefined)
+            url_ += "AssetName=" + encodeURIComponent("" + assetName) + "&"; 
+        if (sorting !== undefined)
+            url_ += "Sorting=" + encodeURIComponent("" + sorting) + "&"; 
+        if (maxResultCount !== undefined)
+            url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&"; 
+        if (skipCount !== undefined)
+            url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetAssetsByFilter(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetAssetsByFilter(<any>response_);
+                } catch (e) {
+                    return <Observable<PagedResultDtoOfAssetDto>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<PagedResultDtoOfAssetDto>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetAssetsByFilter(response: HttpResponseBase): Observable<PagedResultDtoOfAssetDto> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 ? PagedResultDtoOfAssetDto.fromJS(resultData200) : new PagedResultDtoOfAssetDto();
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<PagedResultDtoOfAssetDto>(<any>null);
+    }
+
+    /**
+     * @id (optional) 
+     * @return Success
+     */
+    getAssetForEdit(id: number | null | undefined): Observable<AssetInput> {
+        let url_ = this.baseUrl + "/api/Asset/GetAssetForEdit?";
+        if (id !== undefined)
+            url_ += "id=" + encodeURIComponent("" + id) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetAssetForEdit(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetAssetForEdit(<any>response_);
+                } catch (e) {
+                    return <Observable<AssetInput>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<AssetInput>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetAssetForEdit(response: HttpResponseBase): Observable<AssetInput> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 ? AssetInput.fromJS(resultData200) : new AssetInput();
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<AssetInput>(<any>null);
+    }
+
+    /**
+     * @input (optional) 
+     * @return Success
+     */
+    createOrEditAsset(input: AssetInput | null | undefined): Observable<void> {
+        let url_ = this.baseUrl + "/api/Asset/CreateOrEditAsset";
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(input);
+
+        let options_ : any = {
+            body: content_,
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+            })
+        };
+
+        return this.http.request("post", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processCreateOrEditAsset(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processCreateOrEditAsset(<any>response_);
+                } catch (e) {
+                    return <Observable<void>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<void>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processCreateOrEditAsset(response: HttpResponseBase): Observable<void> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return _observableOf<void>(<any>null);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<void>(<any>null);
+    }
+
+    /**
+     * @return Success
+     */
+    deleteAsset(id: number): Observable<void> {
+        let url_ = this.baseUrl + "/api/Asset/DeleteAsset/{id}";
+        if (id === undefined || id === null)
+            throw new Error("The parameter 'id' must be defined.");
+        url_ = url_.replace("{id}", encodeURIComponent("" + id)); 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+            })
+        };
+
+        return this.http.request("delete", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processDeleteAsset(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processDeleteAsset(<any>response_);
+                } catch (e) {
+                    return <Observable<void>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<void>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processDeleteAsset(response: HttpResponseBase): Observable<void> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return _observableOf<void>(<any>null);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<void>(<any>null);
+    }
+
+    /**
+     * @id (optional) 
+     * @return Success
+     */
+    getAssetForView(id: number | null | undefined): Observable<AssetForViewDto> {
+        let url_ = this.baseUrl + "/api/Asset/GetAssetForView?";
+        if (id !== undefined)
+            url_ += "id=" + encodeURIComponent("" + id) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetAssetForView(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetAssetForView(<any>response_);
+                } catch (e) {
+                    return <Observable<AssetForViewDto>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<AssetForViewDto>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetAssetForView(response: HttpResponseBase): Observable<AssetForViewDto> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 ? AssetForViewDto.fromJS(resultData200) : new AssetForViewDto();
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<AssetForViewDto>(<any>null);
+    }
+}
+
+@Injectable()
+export class AttachedDeviceServiceProxy {
+    private http: HttpClient;
+    private baseUrl: string;
+    protected jsonParseReviver: ((key: string, value: any) => any) | undefined = undefined;
+
+    constructor(@Inject(HttpClient) http: HttpClient, @Optional() @Inject(API_BASE_URL) baseUrl?: string) {
+        this.http = http;
+        this.baseUrl = baseUrl ? baseUrl : "";
+    }
+
+    /**
+     * @plateNumber (optional) 
+     * @sorting (optional) 
+     * @maxResultCount (optional) 
+     * @skipCount (optional) 
+     * @return Success
+     */
+    getAttachedDevicesByFilter(plateNumber: string | null | undefined, sorting: string | null | undefined, maxResultCount: number | null | undefined, skipCount: number | null | undefined): Observable<PagedResultDtoOfAttachedDeviceDto> {
+        let url_ = this.baseUrl + "/api/AttachedDevice/GetAttachedDevicesByFilter?";
+        if (plateNumber !== undefined)
+            url_ += "PlateNumber=" + encodeURIComponent("" + plateNumber) + "&"; 
+        if (sorting !== undefined)
+            url_ += "Sorting=" + encodeURIComponent("" + sorting) + "&"; 
+        if (maxResultCount !== undefined)
+            url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&"; 
+        if (skipCount !== undefined)
+            url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetAttachedDevicesByFilter(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetAttachedDevicesByFilter(<any>response_);
+                } catch (e) {
+                    return <Observable<PagedResultDtoOfAttachedDeviceDto>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<PagedResultDtoOfAttachedDeviceDto>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetAttachedDevicesByFilter(response: HttpResponseBase): Observable<PagedResultDtoOfAttachedDeviceDto> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 ? PagedResultDtoOfAttachedDeviceDto.fromJS(resultData200) : new PagedResultDtoOfAttachedDeviceDto();
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<PagedResultDtoOfAttachedDeviceDto>(<any>null);
+    }
+
+    /**
+     * @id (optional) 
+     * @return Success
+     */
+    getAttachedDeviceForEdit(id: number | null | undefined): Observable<AttachedDeviceInput> {
+        let url_ = this.baseUrl + "/api/AttachedDevice/GetAttachedDeviceForEdit?";
+        if (id !== undefined)
+            url_ += "id=" + encodeURIComponent("" + id) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetAttachedDeviceForEdit(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetAttachedDeviceForEdit(<any>response_);
+                } catch (e) {
+                    return <Observable<AttachedDeviceInput>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<AttachedDeviceInput>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetAttachedDeviceForEdit(response: HttpResponseBase): Observable<AttachedDeviceInput> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 ? AttachedDeviceInput.fromJS(resultData200) : new AttachedDeviceInput();
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<AttachedDeviceInput>(<any>null);
+    }
+
+    /**
+     * @input (optional) 
+     * @return Success
+     */
+    createOrEditAttachedDevice(input: AttachedDeviceInput | null | undefined): Observable<void> {
+        let url_ = this.baseUrl + "/api/AttachedDevice/CreateOrEditAttachedDevice";
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(input);
+
+        let options_ : any = {
+            body: content_,
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+            })
+        };
+
+        return this.http.request("post", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processCreateOrEditAttachedDevice(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processCreateOrEditAttachedDevice(<any>response_);
+                } catch (e) {
+                    return <Observable<void>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<void>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processCreateOrEditAttachedDevice(response: HttpResponseBase): Observable<void> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return _observableOf<void>(<any>null);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<void>(<any>null);
+    }
+
+    /**
+     * @return Success
+     */
+    deleteAttachedDevice(id: number): Observable<void> {
+        let url_ = this.baseUrl + "/api/AttachedDevice/DeleteAttachedDevice/{id}";
+        if (id === undefined || id === null)
+            throw new Error("The parameter 'id' must be defined.");
+        url_ = url_.replace("{id}", encodeURIComponent("" + id)); 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+            })
+        };
+
+        return this.http.request("delete", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processDeleteAttachedDevice(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processDeleteAttachedDevice(<any>response_);
+                } catch (e) {
+                    return <Observable<void>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<void>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processDeleteAttachedDevice(response: HttpResponseBase): Observable<void> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return _observableOf<void>(<any>null);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<void>(<any>null);
+    }
+
+    /**
+     * @id (optional) 
+     * @return Success
+     */
+    getAttachedDeviceForView(id: number | null | undefined): Observable<AttachedDeviceForViewDto> {
+        let url_ = this.baseUrl + "/api/AttachedDevice/GetAttachedDeviceForView?";
+        if (id !== undefined)
+            url_ += "id=" + encodeURIComponent("" + id) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetAttachedDeviceForView(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetAttachedDeviceForView(<any>response_);
+                } catch (e) {
+                    return <Observable<AttachedDeviceForViewDto>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<AttachedDeviceForViewDto>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetAttachedDeviceForView(response: HttpResponseBase): Observable<AttachedDeviceForViewDto> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 ? AttachedDeviceForViewDto.fromJS(resultData200) : new AttachedDeviceForViewDto();
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<AttachedDeviceForViewDto>(<any>null);
+    }
+}
+
+@Injectable()
 export class AuditLogServiceProxy {
     private http: HttpClient;
     private baseUrl: string;
@@ -6290,6 +6868,295 @@ export class ProfileServiceProxy {
 }
 
 @Injectable()
+export class RoadChargesServiceProxy {
+    private http: HttpClient;
+    private baseUrl: string;
+    protected jsonParseReviver: ((key: string, value: any) => any) | undefined = undefined;
+
+    constructor(@Inject(HttpClient) http: HttpClient, @Optional() @Inject(API_BASE_URL) baseUrl?: string) {
+        this.http = http;
+        this.baseUrl = baseUrl ? baseUrl : "";
+    }
+
+    /**
+     * @plateNumber (optional) 
+     * @sorting (optional) 
+     * @maxResultCount (optional) 
+     * @skipCount (optional) 
+     * @return Success
+     */
+    getRoadChargessByFilter(plateNumber: string | null | undefined, sorting: string | null | undefined, maxResultCount: number | null | undefined, skipCount: number | null | undefined): Observable<PagedResultDtoOfRoadChargesDto> {
+        let url_ = this.baseUrl + "/api/RoadCharges/GetRoadChargessByFilter?";
+        if (plateNumber !== undefined)
+            url_ += "PlateNumber=" + encodeURIComponent("" + plateNumber) + "&"; 
+        if (sorting !== undefined)
+            url_ += "Sorting=" + encodeURIComponent("" + sorting) + "&"; 
+        if (maxResultCount !== undefined)
+            url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&"; 
+        if (skipCount !== undefined)
+            url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetRoadChargessByFilter(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetRoadChargessByFilter(<any>response_);
+                } catch (e) {
+                    return <Observable<PagedResultDtoOfRoadChargesDto>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<PagedResultDtoOfRoadChargesDto>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetRoadChargessByFilter(response: HttpResponseBase): Observable<PagedResultDtoOfRoadChargesDto> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 ? PagedResultDtoOfRoadChargesDto.fromJS(resultData200) : new PagedResultDtoOfRoadChargesDto();
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<PagedResultDtoOfRoadChargesDto>(<any>null);
+    }
+
+    /**
+     * @id (optional) 
+     * @return Success
+     */
+    getRoadChargesForEdit(id: number | null | undefined): Observable<RoadChargesInput> {
+        let url_ = this.baseUrl + "/api/RoadCharges/GetRoadChargesForEdit?";
+        if (id !== undefined)
+            url_ += "id=" + encodeURIComponent("" + id) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetRoadChargesForEdit(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetRoadChargesForEdit(<any>response_);
+                } catch (e) {
+                    return <Observable<RoadChargesInput>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<RoadChargesInput>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetRoadChargesForEdit(response: HttpResponseBase): Observable<RoadChargesInput> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 ? RoadChargesInput.fromJS(resultData200) : new RoadChargesInput();
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<RoadChargesInput>(<any>null);
+    }
+
+    /**
+     * @input (optional) 
+     * @return Success
+     */
+    createOrEditRoadCharges(input: RoadChargesInput | null | undefined): Observable<void> {
+        let url_ = this.baseUrl + "/api/RoadCharges/CreateOrEditRoadCharges";
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(input);
+
+        let options_ : any = {
+            body: content_,
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+            })
+        };
+
+        return this.http.request("post", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processCreateOrEditRoadCharges(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processCreateOrEditRoadCharges(<any>response_);
+                } catch (e) {
+                    return <Observable<void>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<void>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processCreateOrEditRoadCharges(response: HttpResponseBase): Observable<void> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return _observableOf<void>(<any>null);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<void>(<any>null);
+    }
+
+    /**
+     * @return Success
+     */
+    deleteRoadCharges(id: number): Observable<void> {
+        let url_ = this.baseUrl + "/api/RoadCharges/DeleteRoadCharges/{id}";
+        if (id === undefined || id === null)
+            throw new Error("The parameter 'id' must be defined.");
+        url_ = url_.replace("{id}", encodeURIComponent("" + id)); 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+            })
+        };
+
+        return this.http.request("delete", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processDeleteRoadCharges(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processDeleteRoadCharges(<any>response_);
+                } catch (e) {
+                    return <Observable<void>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<void>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processDeleteRoadCharges(response: HttpResponseBase): Observable<void> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return _observableOf<void>(<any>null);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<void>(<any>null);
+    }
+
+    /**
+     * @id (optional) 
+     * @return Success
+     */
+    getRoadChargesForView(id: number | null | undefined): Observable<RoadChargesForViewDto> {
+        let url_ = this.baseUrl + "/api/RoadCharges/GetRoadChargesForView?";
+        if (id !== undefined)
+            url_ += "id=" + encodeURIComponent("" + id) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetRoadChargesForView(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetRoadChargesForView(<any>response_);
+                } catch (e) {
+                    return <Observable<RoadChargesForViewDto>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<RoadChargesForViewDto>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetRoadChargesForView(response: HttpResponseBase): Observable<RoadChargesForViewDto> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 ? RoadChargesForViewDto.fromJS(resultData200) : new RoadChargesForViewDto();
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<RoadChargesForViewDto>(<any>null);
+    }
+}
+
+@Injectable()
 export class RoleServiceProxy {
     private http: HttpClient;
     private baseUrl: string;
@@ -9596,6 +10463,61 @@ export class VehicleServiceProxy {
     }
 
     /**
+     * @assetId (optional) 
+     * @return Success
+     */
+    getVehicleByAssetForEdit(assetId: string | null | undefined): Observable<VehicleInput> {
+        let url_ = this.baseUrl + "/api/Vehicle/GetVehicleByAssetForEdit?";
+        if (assetId !== undefined)
+            url_ += "assetId=" + encodeURIComponent("" + assetId) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetVehicleByAssetForEdit(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetVehicleByAssetForEdit(<any>response_);
+                } catch (e) {
+                    return <Observable<VehicleInput>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<VehicleInput>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetVehicleByAssetForEdit(response: HttpResponseBase): Observable<VehicleInput> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 ? VehicleInput.fromJS(resultData200) : new VehicleInput();
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<VehicleInput>(<any>null);
+    }
+
+    /**
      * @input (optional) 
      * @return Success
      */
@@ -9751,6 +10673,2073 @@ export class VehicleServiceProxy {
             }));
         }
         return _observableOf<VehicleForViewDto>(<any>null);
+    }
+}
+
+@Injectable()
+export class VehicleInsurranceServiceProxy {
+    private http: HttpClient;
+    private baseUrl: string;
+    protected jsonParseReviver: ((key: string, value: any) => any) | undefined = undefined;
+
+    constructor(@Inject(HttpClient) http: HttpClient, @Optional() @Inject(API_BASE_URL) baseUrl?: string) {
+        this.http = http;
+        this.baseUrl = baseUrl ? baseUrl : "";
+    }
+
+    /**
+     * @plateNumber (optional) 
+     * @sorting (optional) 
+     * @maxResultCount (optional) 
+     * @skipCount (optional) 
+     * @return Success
+     */
+    getVehicleInsurrancesByFilter(plateNumber: string | null | undefined, sorting: string | null | undefined, maxResultCount: number | null | undefined, skipCount: number | null | undefined): Observable<PagedResultDtoOfVehicleInsurranceDto> {
+        let url_ = this.baseUrl + "/api/VehicleInsurrance/GetVehicleInsurrancesByFilter?";
+        if (plateNumber !== undefined)
+            url_ += "PlateNumber=" + encodeURIComponent("" + plateNumber) + "&"; 
+        if (sorting !== undefined)
+            url_ += "Sorting=" + encodeURIComponent("" + sorting) + "&"; 
+        if (maxResultCount !== undefined)
+            url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&"; 
+        if (skipCount !== undefined)
+            url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetVehicleInsurrancesByFilter(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetVehicleInsurrancesByFilter(<any>response_);
+                } catch (e) {
+                    return <Observable<PagedResultDtoOfVehicleInsurranceDto>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<PagedResultDtoOfVehicleInsurranceDto>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetVehicleInsurrancesByFilter(response: HttpResponseBase): Observable<PagedResultDtoOfVehicleInsurranceDto> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 ? PagedResultDtoOfVehicleInsurranceDto.fromJS(resultData200) : new PagedResultDtoOfVehicleInsurranceDto();
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<PagedResultDtoOfVehicleInsurranceDto>(<any>null);
+    }
+
+    /**
+     * @id (optional) 
+     * @return Success
+     */
+    getVehicleInsurranceForEdit(id: number | null | undefined): Observable<VehicleInsurranceInput> {
+        let url_ = this.baseUrl + "/api/VehicleInsurrance/GetVehicleInsurranceForEdit?";
+        if (id !== undefined)
+            url_ += "id=" + encodeURIComponent("" + id) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetVehicleInsurranceForEdit(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetVehicleInsurranceForEdit(<any>response_);
+                } catch (e) {
+                    return <Observable<VehicleInsurranceInput>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<VehicleInsurranceInput>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetVehicleInsurranceForEdit(response: HttpResponseBase): Observable<VehicleInsurranceInput> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 ? VehicleInsurranceInput.fromJS(resultData200) : new VehicleInsurranceInput();
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<VehicleInsurranceInput>(<any>null);
+    }
+
+    /**
+     * @input (optional) 
+     * @return Success
+     */
+    createOrEditVehicleInsurrance(input: VehicleInsurranceInput | null | undefined): Observable<void> {
+        let url_ = this.baseUrl + "/api/VehicleInsurrance/CreateOrEditVehicleInsurrance";
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(input);
+
+        let options_ : any = {
+            body: content_,
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+            })
+        };
+
+        return this.http.request("post", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processCreateOrEditVehicleInsurrance(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processCreateOrEditVehicleInsurrance(<any>response_);
+                } catch (e) {
+                    return <Observable<void>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<void>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processCreateOrEditVehicleInsurrance(response: HttpResponseBase): Observable<void> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return _observableOf<void>(<any>null);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<void>(<any>null);
+    }
+
+    /**
+     * @return Success
+     */
+    deleteVehicleInsurrance(id: number): Observable<void> {
+        let url_ = this.baseUrl + "/api/VehicleInsurrance/DeleteVehicleInsurrance/{id}";
+        if (id === undefined || id === null)
+            throw new Error("The parameter 'id' must be defined.");
+        url_ = url_.replace("{id}", encodeURIComponent("" + id)); 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+            })
+        };
+
+        return this.http.request("delete", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processDeleteVehicleInsurrance(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processDeleteVehicleInsurrance(<any>response_);
+                } catch (e) {
+                    return <Observable<void>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<void>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processDeleteVehicleInsurrance(response: HttpResponseBase): Observable<void> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return _observableOf<void>(<any>null);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<void>(<any>null);
+    }
+
+    /**
+     * @id (optional) 
+     * @return Success
+     */
+    getVehicleInsurranceForView(id: number | null | undefined): Observable<VehicleInsurranceForViewDto> {
+        let url_ = this.baseUrl + "/api/VehicleInsurrance/GetVehicleInsurranceForView?";
+        if (id !== undefined)
+            url_ += "id=" + encodeURIComponent("" + id) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetVehicleInsurranceForView(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetVehicleInsurranceForView(<any>response_);
+                } catch (e) {
+                    return <Observable<VehicleInsurranceForViewDto>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<VehicleInsurranceForViewDto>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetVehicleInsurranceForView(response: HttpResponseBase): Observable<VehicleInsurranceForViewDto> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 ? VehicleInsurranceForViewDto.fromJS(resultData200) : new VehicleInsurranceForViewDto();
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<VehicleInsurranceForViewDto>(<any>null);
+    }
+
+    /**
+     * @plateNumber (optional) 
+     * @return Success
+     */
+    getVehicleInsurranceNumber(plateNumber: string | null | undefined): Observable<number> {
+        let url_ = this.baseUrl + "/api/VehicleInsurrance/GetVehicleInsurranceNumber?";
+        if (plateNumber !== undefined)
+            url_ += "plateNumber=" + encodeURIComponent("" + plateNumber) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetVehicleInsurranceNumber(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetVehicleInsurranceNumber(<any>response_);
+                } catch (e) {
+                    return <Observable<number>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<number>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetVehicleInsurranceNumber(response: HttpResponseBase): Observable<number> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 !== undefined ? resultData200 : <any>null;
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<number>(<any>null);
+    }
+}
+
+@Injectable()
+export class VehicleMaintenanceServiceProxy {
+    private http: HttpClient;
+    private baseUrl: string;
+    protected jsonParseReviver: ((key: string, value: any) => any) | undefined = undefined;
+
+    constructor(@Inject(HttpClient) http: HttpClient, @Optional() @Inject(API_BASE_URL) baseUrl?: string) {
+        this.http = http;
+        this.baseUrl = baseUrl ? baseUrl : "";
+    }
+
+    /**
+     * @plateNumber (optional) 
+     * @sorting (optional) 
+     * @maxResultCount (optional) 
+     * @skipCount (optional) 
+     * @return Success
+     */
+    getVehicleMaintenancesByFilter(plateNumber: string | null | undefined, sorting: string | null | undefined, maxResultCount: number | null | undefined, skipCount: number | null | undefined): Observable<PagedResultDtoOfVehicleMaintenanceDto> {
+        let url_ = this.baseUrl + "/api/VehicleMaintenance/GetVehicleMaintenancesByFilter?";
+        if (plateNumber !== undefined)
+            url_ += "PlateNumber=" + encodeURIComponent("" + plateNumber) + "&"; 
+        if (sorting !== undefined)
+            url_ += "Sorting=" + encodeURIComponent("" + sorting) + "&"; 
+        if (maxResultCount !== undefined)
+            url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&"; 
+        if (skipCount !== undefined)
+            url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetVehicleMaintenancesByFilter(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetVehicleMaintenancesByFilter(<any>response_);
+                } catch (e) {
+                    return <Observable<PagedResultDtoOfVehicleMaintenanceDto>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<PagedResultDtoOfVehicleMaintenanceDto>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetVehicleMaintenancesByFilter(response: HttpResponseBase): Observable<PagedResultDtoOfVehicleMaintenanceDto> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 ? PagedResultDtoOfVehicleMaintenanceDto.fromJS(resultData200) : new PagedResultDtoOfVehicleMaintenanceDto();
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<PagedResultDtoOfVehicleMaintenanceDto>(<any>null);
+    }
+
+    /**
+     * @id (optional) 
+     * @return Success
+     */
+    getVehicleMaintenanceForEdit(id: number | null | undefined): Observable<VehicleMaintenanceInput> {
+        let url_ = this.baseUrl + "/api/VehicleMaintenance/GetVehicleMaintenanceForEdit?";
+        if (id !== undefined)
+            url_ += "id=" + encodeURIComponent("" + id) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetVehicleMaintenanceForEdit(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetVehicleMaintenanceForEdit(<any>response_);
+                } catch (e) {
+                    return <Observable<VehicleMaintenanceInput>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<VehicleMaintenanceInput>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetVehicleMaintenanceForEdit(response: HttpResponseBase): Observable<VehicleMaintenanceInput> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 ? VehicleMaintenanceInput.fromJS(resultData200) : new VehicleMaintenanceInput();
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<VehicleMaintenanceInput>(<any>null);
+    }
+
+    /**
+     * @input (optional) 
+     * @return Success
+     */
+    createOrEditVehicleMaintenance(input: VehicleMaintenanceInput | null | undefined): Observable<void> {
+        let url_ = this.baseUrl + "/api/VehicleMaintenance/CreateOrEditVehicleMaintenance";
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(input);
+
+        let options_ : any = {
+            body: content_,
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+            })
+        };
+
+        return this.http.request("post", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processCreateOrEditVehicleMaintenance(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processCreateOrEditVehicleMaintenance(<any>response_);
+                } catch (e) {
+                    return <Observable<void>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<void>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processCreateOrEditVehicleMaintenance(response: HttpResponseBase): Observable<void> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return _observableOf<void>(<any>null);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<void>(<any>null);
+    }
+
+    /**
+     * @return Success
+     */
+    deleteVehicleMaintenance(id: number): Observable<void> {
+        let url_ = this.baseUrl + "/api/VehicleMaintenance/DeleteVehicleMaintenance/{id}";
+        if (id === undefined || id === null)
+            throw new Error("The parameter 'id' must be defined.");
+        url_ = url_.replace("{id}", encodeURIComponent("" + id)); 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+            })
+        };
+
+        return this.http.request("delete", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processDeleteVehicleMaintenance(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processDeleteVehicleMaintenance(<any>response_);
+                } catch (e) {
+                    return <Observable<void>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<void>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processDeleteVehicleMaintenance(response: HttpResponseBase): Observable<void> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return _observableOf<void>(<any>null);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<void>(<any>null);
+    }
+
+    /**
+     * @id (optional) 
+     * @return Success
+     */
+    getVehicleMaintenanceForView(id: number | null | undefined): Observable<VehicleMaintenanceForViewDto> {
+        let url_ = this.baseUrl + "/api/VehicleMaintenance/GetVehicleMaintenanceForView?";
+        if (id !== undefined)
+            url_ += "id=" + encodeURIComponent("" + id) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetVehicleMaintenanceForView(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetVehicleMaintenanceForView(<any>response_);
+                } catch (e) {
+                    return <Observable<VehicleMaintenanceForViewDto>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<VehicleMaintenanceForViewDto>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetVehicleMaintenanceForView(response: HttpResponseBase): Observable<VehicleMaintenanceForViewDto> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 ? VehicleMaintenanceForViewDto.fromJS(resultData200) : new VehicleMaintenanceForViewDto();
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<VehicleMaintenanceForViewDto>(<any>null);
+    }
+
+    /**
+     * @plateNumber (optional) 
+     * @return Success
+     */
+    getVehicleMaintenanceNumber(plateNumber: string | null | undefined): Observable<number> {
+        let url_ = this.baseUrl + "/api/VehicleMaintenance/GetVehicleMaintenanceNumber?";
+        if (plateNumber !== undefined)
+            url_ += "plateNumber=" + encodeURIComponent("" + plateNumber) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetVehicleMaintenanceNumber(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetVehicleMaintenanceNumber(<any>response_);
+                } catch (e) {
+                    return <Observable<number>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<number>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetVehicleMaintenanceNumber(response: HttpResponseBase): Observable<number> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 !== undefined ? resultData200 : <any>null;
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<number>(<any>null);
+    }
+}
+
+@Injectable()
+export class VehicleModelServiceProxy {
+    private http: HttpClient;
+    private baseUrl: string;
+    protected jsonParseReviver: ((key: string, value: any) => any) | undefined = undefined;
+
+    constructor(@Inject(HttpClient) http: HttpClient, @Optional() @Inject(API_BASE_URL) baseUrl?: string) {
+        this.http = http;
+        this.baseUrl = baseUrl ? baseUrl : "";
+    }
+
+    /**
+     * @model (optional) 
+     * @sorting (optional) 
+     * @maxResultCount (optional) 
+     * @skipCount (optional) 
+     * @return Success
+     */
+    getVehicleModelsByFilter(model: string | null | undefined, sorting: string | null | undefined, maxResultCount: number | null | undefined, skipCount: number | null | undefined): Observable<PagedResultDtoOfVehicleModelDto> {
+        let url_ = this.baseUrl + "/api/VehicleModel/GetVehicleModelsByFilter?";
+        if (model !== undefined)
+            url_ += "Model=" + encodeURIComponent("" + model) + "&"; 
+        if (sorting !== undefined)
+            url_ += "Sorting=" + encodeURIComponent("" + sorting) + "&"; 
+        if (maxResultCount !== undefined)
+            url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&"; 
+        if (skipCount !== undefined)
+            url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetVehicleModelsByFilter(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetVehicleModelsByFilter(<any>response_);
+                } catch (e) {
+                    return <Observable<PagedResultDtoOfVehicleModelDto>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<PagedResultDtoOfVehicleModelDto>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetVehicleModelsByFilter(response: HttpResponseBase): Observable<PagedResultDtoOfVehicleModelDto> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 ? PagedResultDtoOfVehicleModelDto.fromJS(resultData200) : new PagedResultDtoOfVehicleModelDto();
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<PagedResultDtoOfVehicleModelDto>(<any>null);
+    }
+
+    /**
+     * @return Success
+     */
+    getVehicleModels(): Observable<PagedResultDtoOfVehicleModelDto> {
+        let url_ = this.baseUrl + "/api/VehicleModel/GetVehicleModels";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetVehicleModels(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetVehicleModels(<any>response_);
+                } catch (e) {
+                    return <Observable<PagedResultDtoOfVehicleModelDto>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<PagedResultDtoOfVehicleModelDto>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetVehicleModels(response: HttpResponseBase): Observable<PagedResultDtoOfVehicleModelDto> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 ? PagedResultDtoOfVehicleModelDto.fromJS(resultData200) : new PagedResultDtoOfVehicleModelDto();
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<PagedResultDtoOfVehicleModelDto>(<any>null);
+    }
+
+    /**
+     * @id (optional) 
+     * @return Success
+     */
+    getVehicleModelForEdit(id: number | null | undefined): Observable<VehicleModelInput> {
+        let url_ = this.baseUrl + "/api/VehicleModel/GetVehicleModelForEdit?";
+        if (id !== undefined)
+            url_ += "id=" + encodeURIComponent("" + id) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetVehicleModelForEdit(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetVehicleModelForEdit(<any>response_);
+                } catch (e) {
+                    return <Observable<VehicleModelInput>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<VehicleModelInput>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetVehicleModelForEdit(response: HttpResponseBase): Observable<VehicleModelInput> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 ? VehicleModelInput.fromJS(resultData200) : new VehicleModelInput();
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<VehicleModelInput>(<any>null);
+    }
+
+    /**
+     * @input (optional) 
+     * @return Success
+     */
+    createOrEditVehicleModel(input: VehicleModelInput | null | undefined): Observable<void> {
+        let url_ = this.baseUrl + "/api/VehicleModel/CreateOrEditVehicleModel";
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(input);
+
+        let options_ : any = {
+            body: content_,
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+            })
+        };
+
+        return this.http.request("post", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processCreateOrEditVehicleModel(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processCreateOrEditVehicleModel(<any>response_);
+                } catch (e) {
+                    return <Observable<void>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<void>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processCreateOrEditVehicleModel(response: HttpResponseBase): Observable<void> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return _observableOf<void>(<any>null);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<void>(<any>null);
+    }
+
+    /**
+     * @return Success
+     */
+    deleteVehicleModel(id: number): Observable<void> {
+        let url_ = this.baseUrl + "/api/VehicleModel/DeleteVehicleModel/{id}";
+        if (id === undefined || id === null)
+            throw new Error("The parameter 'id' must be defined.");
+        url_ = url_.replace("{id}", encodeURIComponent("" + id)); 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+            })
+        };
+
+        return this.http.request("delete", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processDeleteVehicleModel(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processDeleteVehicleModel(<any>response_);
+                } catch (e) {
+                    return <Observable<void>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<void>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processDeleteVehicleModel(response: HttpResponseBase): Observable<void> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return _observableOf<void>(<any>null);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<void>(<any>null);
+    }
+
+    /**
+     * @id (optional) 
+     * @return Success
+     */
+    getVehicleModelForView(id: number | null | undefined): Observable<VehicleModelForViewDto> {
+        let url_ = this.baseUrl + "/api/VehicleModel/GetVehicleModelForView?";
+        if (id !== undefined)
+            url_ += "id=" + encodeURIComponent("" + id) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetVehicleModelForView(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetVehicleModelForView(<any>response_);
+                } catch (e) {
+                    return <Observable<VehicleModelForViewDto>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<VehicleModelForViewDto>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetVehicleModelForView(response: HttpResponseBase): Observable<VehicleModelForViewDto> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 ? VehicleModelForViewDto.fromJS(resultData200) : new VehicleModelForViewDto();
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<VehicleModelForViewDto>(<any>null);
+    }
+}
+
+@Injectable()
+export class VehicleOperationServiceProxy {
+    private http: HttpClient;
+    private baseUrl: string;
+    protected jsonParseReviver: ((key: string, value: any) => any) | undefined = undefined;
+
+    constructor(@Inject(HttpClient) http: HttpClient, @Optional() @Inject(API_BASE_URL) baseUrl?: string) {
+        this.http = http;
+        this.baseUrl = baseUrl ? baseUrl : "";
+    }
+
+    /**
+     * @plateNumber (optional) 
+     * @sorting (optional) 
+     * @maxResultCount (optional) 
+     * @skipCount (optional) 
+     * @return Success
+     */
+    getVehicleOperationsByFilter(plateNumber: string | null | undefined, sorting: string | null | undefined, maxResultCount: number | null | undefined, skipCount: number | null | undefined): Observable<PagedResultDtoOfVehicleOperationDto> {
+        let url_ = this.baseUrl + "/api/VehicleOperation/GetVehicleOperationsByFilter?";
+        if (plateNumber !== undefined)
+            url_ += "PlateNumber=" + encodeURIComponent("" + plateNumber) + "&"; 
+        if (sorting !== undefined)
+            url_ += "Sorting=" + encodeURIComponent("" + sorting) + "&"; 
+        if (maxResultCount !== undefined)
+            url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&"; 
+        if (skipCount !== undefined)
+            url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetVehicleOperationsByFilter(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetVehicleOperationsByFilter(<any>response_);
+                } catch (e) {
+                    return <Observable<PagedResultDtoOfVehicleOperationDto>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<PagedResultDtoOfVehicleOperationDto>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetVehicleOperationsByFilter(response: HttpResponseBase): Observable<PagedResultDtoOfVehicleOperationDto> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 ? PagedResultDtoOfVehicleOperationDto.fromJS(resultData200) : new PagedResultDtoOfVehicleOperationDto();
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<PagedResultDtoOfVehicleOperationDto>(<any>null);
+    }
+
+    /**
+     * @id (optional) 
+     * @return Success
+     */
+    getVehicleOperationForEdit(id: number | null | undefined): Observable<VehicleOperationInput> {
+        let url_ = this.baseUrl + "/api/VehicleOperation/GetVehicleOperationForEdit?";
+        if (id !== undefined)
+            url_ += "id=" + encodeURIComponent("" + id) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetVehicleOperationForEdit(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetVehicleOperationForEdit(<any>response_);
+                } catch (e) {
+                    return <Observable<VehicleOperationInput>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<VehicleOperationInput>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetVehicleOperationForEdit(response: HttpResponseBase): Observable<VehicleOperationInput> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 ? VehicleOperationInput.fromJS(resultData200) : new VehicleOperationInput();
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<VehicleOperationInput>(<any>null);
+    }
+
+    /**
+     * @input (optional) 
+     * @return Success
+     */
+    createOrEditVehicleOperation(input: VehicleOperationInput | null | undefined): Observable<void> {
+        let url_ = this.baseUrl + "/api/VehicleOperation/CreateOrEditVehicleOperation";
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(input);
+
+        let options_ : any = {
+            body: content_,
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+            })
+        };
+
+        return this.http.request("post", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processCreateOrEditVehicleOperation(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processCreateOrEditVehicleOperation(<any>response_);
+                } catch (e) {
+                    return <Observable<void>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<void>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processCreateOrEditVehicleOperation(response: HttpResponseBase): Observable<void> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return _observableOf<void>(<any>null);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<void>(<any>null);
+    }
+
+    /**
+     * @return Success
+     */
+    deleteVehicleOperation(id: number): Observable<void> {
+        let url_ = this.baseUrl + "/api/VehicleOperation/DeleteVehicleOperation/{id}";
+        if (id === undefined || id === null)
+            throw new Error("The parameter 'id' must be defined.");
+        url_ = url_.replace("{id}", encodeURIComponent("" + id)); 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+            })
+        };
+
+        return this.http.request("delete", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processDeleteVehicleOperation(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processDeleteVehicleOperation(<any>response_);
+                } catch (e) {
+                    return <Observable<void>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<void>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processDeleteVehicleOperation(response: HttpResponseBase): Observable<void> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return _observableOf<void>(<any>null);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<void>(<any>null);
+    }
+
+    /**
+     * @id (optional) 
+     * @return Success
+     */
+    getVehicleOperationForView(id: number | null | undefined): Observable<VehicleOperationForViewDto> {
+        let url_ = this.baseUrl + "/api/VehicleOperation/GetVehicleOperationForView?";
+        if (id !== undefined)
+            url_ += "id=" + encodeURIComponent("" + id) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetVehicleOperationForView(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetVehicleOperationForView(<any>response_);
+                } catch (e) {
+                    return <Observable<VehicleOperationForViewDto>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<VehicleOperationForViewDto>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetVehicleOperationForView(response: HttpResponseBase): Observable<VehicleOperationForViewDto> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 ? VehicleOperationForViewDto.fromJS(resultData200) : new VehicleOperationForViewDto();
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<VehicleOperationForViewDto>(<any>null);
+    }
+
+    /**
+     * @currentKm (optional) 
+     * @id (optional) 
+     * @plateNumber (optional) 
+     * @return Success
+     */
+    getLatestVehicleIndex(currentKm: number | null | undefined, id: number | null | undefined, plateNumber: string | null | undefined): Observable<number> {
+        let url_ = this.baseUrl + "/api/VehicleOperation/GetLatestVehicleIndex?";
+        if (currentKm !== undefined)
+            url_ += "currentKm=" + encodeURIComponent("" + currentKm) + "&"; 
+        if (id !== undefined)
+            url_ += "id=" + encodeURIComponent("" + id) + "&"; 
+        if (plateNumber !== undefined)
+            url_ += "plateNumber=" + encodeURIComponent("" + plateNumber) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetLatestVehicleIndex(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetLatestVehicleIndex(<any>response_);
+                } catch (e) {
+                    return <Observable<number>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<number>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetLatestVehicleIndex(response: HttpResponseBase): Observable<number> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 !== undefined ? resultData200 : <any>null;
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<number>(<any>null);
+    }
+}
+
+@Injectable()
+export class VehicleRegistryServiceProxy {
+    private http: HttpClient;
+    private baseUrl: string;
+    protected jsonParseReviver: ((key: string, value: any) => any) | undefined = undefined;
+
+    constructor(@Inject(HttpClient) http: HttpClient, @Optional() @Inject(API_BASE_URL) baseUrl?: string) {
+        this.http = http;
+        this.baseUrl = baseUrl ? baseUrl : "";
+    }
+
+    /**
+     * @plateNumber (optional) 
+     * @sorting (optional) 
+     * @maxResultCount (optional) 
+     * @skipCount (optional) 
+     * @return Success
+     */
+    getVehicleRegistriesByFilter(plateNumber: string | null | undefined, sorting: string | null | undefined, maxResultCount: number | null | undefined, skipCount: number | null | undefined): Observable<PagedResultDtoOfVehicleRegistryDto> {
+        let url_ = this.baseUrl + "/api/VehicleRegistry/GetVehicleRegistriesByFilter?";
+        if (plateNumber !== undefined)
+            url_ += "PlateNumber=" + encodeURIComponent("" + plateNumber) + "&"; 
+        if (sorting !== undefined)
+            url_ += "Sorting=" + encodeURIComponent("" + sorting) + "&"; 
+        if (maxResultCount !== undefined)
+            url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&"; 
+        if (skipCount !== undefined)
+            url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetVehicleRegistriesByFilter(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetVehicleRegistriesByFilter(<any>response_);
+                } catch (e) {
+                    return <Observable<PagedResultDtoOfVehicleRegistryDto>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<PagedResultDtoOfVehicleRegistryDto>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetVehicleRegistriesByFilter(response: HttpResponseBase): Observable<PagedResultDtoOfVehicleRegistryDto> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 ? PagedResultDtoOfVehicleRegistryDto.fromJS(resultData200) : new PagedResultDtoOfVehicleRegistryDto();
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<PagedResultDtoOfVehicleRegistryDto>(<any>null);
+    }
+
+    /**
+     * @id (optional) 
+     * @return Success
+     */
+    getVehicleRegistryForEdit(id: number | null | undefined): Observable<VehicleRegistryInput> {
+        let url_ = this.baseUrl + "/api/VehicleRegistry/GetVehicleRegistryForEdit?";
+        if (id !== undefined)
+            url_ += "id=" + encodeURIComponent("" + id) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetVehicleRegistryForEdit(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetVehicleRegistryForEdit(<any>response_);
+                } catch (e) {
+                    return <Observable<VehicleRegistryInput>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<VehicleRegistryInput>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetVehicleRegistryForEdit(response: HttpResponseBase): Observable<VehicleRegistryInput> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 ? VehicleRegistryInput.fromJS(resultData200) : new VehicleRegistryInput();
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<VehicleRegistryInput>(<any>null);
+    }
+
+    /**
+     * @input (optional) 
+     * @return Success
+     */
+    createOrEditVehicleRegistry(input: VehicleRegistryInput | null | undefined): Observable<void> {
+        let url_ = this.baseUrl + "/api/VehicleRegistry/CreateOrEditVehicleRegistry";
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(input);
+
+        let options_ : any = {
+            body: content_,
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+            })
+        };
+
+        return this.http.request("post", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processCreateOrEditVehicleRegistry(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processCreateOrEditVehicleRegistry(<any>response_);
+                } catch (e) {
+                    return <Observable<void>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<void>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processCreateOrEditVehicleRegistry(response: HttpResponseBase): Observable<void> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return _observableOf<void>(<any>null);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<void>(<any>null);
+    }
+
+    /**
+     * @return Success
+     */
+    deleteVehicleRegistry(id: number): Observable<void> {
+        let url_ = this.baseUrl + "/api/VehicleRegistry/DeleteVehicleRegistry/{id}";
+        if (id === undefined || id === null)
+            throw new Error("The parameter 'id' must be defined.");
+        url_ = url_.replace("{id}", encodeURIComponent("" + id)); 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+            })
+        };
+
+        return this.http.request("delete", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processDeleteVehicleRegistry(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processDeleteVehicleRegistry(<any>response_);
+                } catch (e) {
+                    return <Observable<void>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<void>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processDeleteVehicleRegistry(response: HttpResponseBase): Observable<void> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return _observableOf<void>(<any>null);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<void>(<any>null);
+    }
+
+    /**
+     * @id (optional) 
+     * @return Success
+     */
+    getVehicleRegistryForView(id: number | null | undefined): Observable<VehicleRegistryForViewDto> {
+        let url_ = this.baseUrl + "/api/VehicleRegistry/GetVehicleRegistryForView?";
+        if (id !== undefined)
+            url_ += "id=" + encodeURIComponent("" + id) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetVehicleRegistryForView(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetVehicleRegistryForView(<any>response_);
+                } catch (e) {
+                    return <Observable<VehicleRegistryForViewDto>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<VehicleRegistryForViewDto>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetVehicleRegistryForView(response: HttpResponseBase): Observable<VehicleRegistryForViewDto> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 ? VehicleRegistryForViewDto.fromJS(resultData200) : new VehicleRegistryForViewDto();
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<VehicleRegistryForViewDto>(<any>null);
+    }
+
+    /**
+     * @plateNumber (optional) 
+     * @return Success
+     */
+    getVehicleRegistryNumber(plateNumber: string | null | undefined): Observable<number> {
+        let url_ = this.baseUrl + "/api/VehicleRegistry/GetVehicleRegistryNumber?";
+        if (plateNumber !== undefined)
+            url_ += "plateNumber=" + encodeURIComponent("" + plateNumber) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetVehicleRegistryNumber(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetVehicleRegistryNumber(<any>response_);
+                } catch (e) {
+                    return <Observable<number>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<number>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetVehicleRegistryNumber(response: HttpResponseBase): Observable<number> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 !== undefined ? resultData200 : <any>null;
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<number>(<any>null);
+    }
+}
+
+@Injectable()
+export class VehicleRepairServiceProxy {
+    private http: HttpClient;
+    private baseUrl: string;
+    protected jsonParseReviver: ((key: string, value: any) => any) | undefined = undefined;
+
+    constructor(@Inject(HttpClient) http: HttpClient, @Optional() @Inject(API_BASE_URL) baseUrl?: string) {
+        this.http = http;
+        this.baseUrl = baseUrl ? baseUrl : "";
+    }
+
+    /**
+     * @assetId (optional) 
+     * @sorting (optional) 
+     * @maxResultCount (optional) 
+     * @skipCount (optional) 
+     * @return Success
+     */
+    getVehicleRepairsByFilter(assetId: string | null | undefined, sorting: string | null | undefined, maxResultCount: number | null | undefined, skipCount: number | null | undefined): Observable<PagedResultDtoOfVehicleRepairDto> {
+        let url_ = this.baseUrl + "/api/VehicleRepair/GetVehicleRepairsByFilter?";
+        if (assetId !== undefined)
+            url_ += "AssetId=" + encodeURIComponent("" + assetId) + "&"; 
+        if (sorting !== undefined)
+            url_ += "Sorting=" + encodeURIComponent("" + sorting) + "&"; 
+        if (maxResultCount !== undefined)
+            url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&"; 
+        if (skipCount !== undefined)
+            url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetVehicleRepairsByFilter(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetVehicleRepairsByFilter(<any>response_);
+                } catch (e) {
+                    return <Observable<PagedResultDtoOfVehicleRepairDto>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<PagedResultDtoOfVehicleRepairDto>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetVehicleRepairsByFilter(response: HttpResponseBase): Observable<PagedResultDtoOfVehicleRepairDto> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 ? PagedResultDtoOfVehicleRepairDto.fromJS(resultData200) : new PagedResultDtoOfVehicleRepairDto();
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<PagedResultDtoOfVehicleRepairDto>(<any>null);
+    }
+
+    /**
+     * @id (optional) 
+     * @return Success
+     */
+    getVehicleRepairForEdit(id: number | null | undefined): Observable<VehicleRepairInput> {
+        let url_ = this.baseUrl + "/api/VehicleRepair/GetVehicleRepairForEdit?";
+        if (id !== undefined)
+            url_ += "id=" + encodeURIComponent("" + id) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetVehicleRepairForEdit(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetVehicleRepairForEdit(<any>response_);
+                } catch (e) {
+                    return <Observable<VehicleRepairInput>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<VehicleRepairInput>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetVehicleRepairForEdit(response: HttpResponseBase): Observable<VehicleRepairInput> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 ? VehicleRepairInput.fromJS(resultData200) : new VehicleRepairInput();
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<VehicleRepairInput>(<any>null);
+    }
+
+    /**
+     * @input (optional) 
+     * @return Success
+     */
+    createOrEditVehicleRepair(input: VehicleRepairInput | null | undefined): Observable<void> {
+        let url_ = this.baseUrl + "/api/VehicleRepair/CreateOrEditVehicleRepair";
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(input);
+
+        let options_ : any = {
+            body: content_,
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+            })
+        };
+
+        return this.http.request("post", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processCreateOrEditVehicleRepair(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processCreateOrEditVehicleRepair(<any>response_);
+                } catch (e) {
+                    return <Observable<void>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<void>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processCreateOrEditVehicleRepair(response: HttpResponseBase): Observable<void> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return _observableOf<void>(<any>null);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<void>(<any>null);
+    }
+
+    /**
+     * @return Success
+     */
+    deleteVehicleRepair(id: number): Observable<void> {
+        let url_ = this.baseUrl + "/api/VehicleRepair/DeleteVehicleRepair/{id}";
+        if (id === undefined || id === null)
+            throw new Error("The parameter 'id' must be defined.");
+        url_ = url_.replace("{id}", encodeURIComponent("" + id)); 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+            })
+        };
+
+        return this.http.request("delete", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processDeleteVehicleRepair(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processDeleteVehicleRepair(<any>response_);
+                } catch (e) {
+                    return <Observable<void>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<void>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processDeleteVehicleRepair(response: HttpResponseBase): Observable<void> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return _observableOf<void>(<any>null);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<void>(<any>null);
+    }
+
+    /**
+     * @id (optional) 
+     * @return Success
+     */
+    getVehicleRepairForView(id: number | null | undefined): Observable<VehicleRepairForViewDto> {
+        let url_ = this.baseUrl + "/api/VehicleRepair/GetVehicleRepairForView?";
+        if (id !== undefined)
+            url_ += "id=" + encodeURIComponent("" + id) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetVehicleRepairForView(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetVehicleRepairForView(<any>response_);
+                } catch (e) {
+                    return <Observable<VehicleRepairForViewDto>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<VehicleRepairForViewDto>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetVehicleRepairForView(response: HttpResponseBase): Observable<VehicleRepairForViewDto> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 ? VehicleRepairForViewDto.fromJS(resultData200) : new VehicleRepairForViewDto();
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<VehicleRepairForViewDto>(<any>null);
+    }
+
+    /**
+     * @assetId (optional) 
+     * @return Success
+     */
+    getVehicleRepairByAssetForEdit(assetId: string | null | undefined): Observable<VehicleRepairInput> {
+        let url_ = this.baseUrl + "/api/VehicleRepair/GetVehicleRepairByAssetForEdit?";
+        if (assetId !== undefined)
+            url_ += "assetId=" + encodeURIComponent("" + assetId) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json", 
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetVehicleRepairByAssetForEdit(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetVehicleRepairByAssetForEdit(<any>response_);
+                } catch (e) {
+                    return <Observable<VehicleRepairInput>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<VehicleRepairInput>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetVehicleRepairByAssetForEdit(response: HttpResponseBase): Observable<VehicleRepairInput> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 ? VehicleRepairInput.fromJS(resultData200) : new VehicleRepairInput();
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<VehicleRepairInput>(<any>null);
     }
 }
 
@@ -10450,6 +13439,382 @@ export interface ISwitchToLinkedAccountOutput {
     tenancyName: string | undefined;
 }
 
+export class PagedResultDtoOfAssetDto implements IPagedResultDtoOfAssetDto {
+    totalCount!: number | undefined;
+    items!: AssetDto[] | undefined;
+
+    constructor(data?: IPagedResultDtoOfAssetDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.totalCount = data["totalCount"];
+            if (data["items"] && data["items"].constructor === Array) {
+                this.items = [];
+                for (let item of data["items"])
+                    this.items.push(AssetDto.fromJS(item));
+            }
+        }
+    }
+
+    static fromJS(data: any): PagedResultDtoOfAssetDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new PagedResultDtoOfAssetDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["totalCount"] = this.totalCount;
+        if (this.items && this.items.constructor === Array) {
+            data["items"] = [];
+            for (let item of this.items)
+                data["items"].push(item.toJSON());
+        }
+        return data; 
+    }
+}
+
+export interface IPagedResultDtoOfAssetDto {
+    totalCount: number | undefined;
+    items: AssetDto[] | undefined;
+}
+
+export class AssetDto implements IAssetDto {
+    assetId!: string | undefined;
+    assetName!: string | undefined;
+    id!: number | undefined;
+
+    constructor(data?: IAssetDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.assetId = data["assetId"];
+            this.assetName = data["assetName"];
+            this.id = data["id"];
+        }
+    }
+
+    static fromJS(data: any): AssetDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new AssetDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["assetId"] = this.assetId;
+        data["assetName"] = this.assetName;
+        data["id"] = this.id;
+        return data; 
+    }
+}
+
+export interface IAssetDto {
+    assetId: string | undefined;
+    assetName: string | undefined;
+    id: number | undefined;
+}
+
+export class AssetInput implements IAssetInput {
+    assetId!: string | undefined;
+    assetName!: string | undefined;
+    id!: number | undefined;
+
+    constructor(data?: IAssetInput) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.assetId = data["assetId"];
+            this.assetName = data["assetName"];
+            this.id = data["id"];
+        }
+    }
+
+    static fromJS(data: any): AssetInput {
+        data = typeof data === 'object' ? data : {};
+        let result = new AssetInput();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["assetId"] = this.assetId;
+        data["assetName"] = this.assetName;
+        data["id"] = this.id;
+        return data; 
+    }
+}
+
+export interface IAssetInput {
+    assetId: string | undefined;
+    assetName: string | undefined;
+    id: number | undefined;
+}
+
+export class AssetForViewDto implements IAssetForViewDto {
+    assetId!: string | undefined;
+    assetName!: string | undefined;
+
+    constructor(data?: IAssetForViewDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.assetId = data["assetId"];
+            this.assetName = data["assetName"];
+        }
+    }
+
+    static fromJS(data: any): AssetForViewDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new AssetForViewDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["assetId"] = this.assetId;
+        data["assetName"] = this.assetName;
+        return data; 
+    }
+}
+
+export interface IAssetForViewDto {
+    assetId: string | undefined;
+    assetName: string | undefined;
+}
+
+export class PagedResultDtoOfAttachedDeviceDto implements IPagedResultDtoOfAttachedDeviceDto {
+    totalCount!: number | undefined;
+    items!: AttachedDeviceDto[] | undefined;
+
+    constructor(data?: IPagedResultDtoOfAttachedDeviceDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.totalCount = data["totalCount"];
+            if (data["items"] && data["items"].constructor === Array) {
+                this.items = [];
+                for (let item of data["items"])
+                    this.items.push(AttachedDeviceDto.fromJS(item));
+            }
+        }
+    }
+
+    static fromJS(data: any): PagedResultDtoOfAttachedDeviceDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new PagedResultDtoOfAttachedDeviceDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["totalCount"] = this.totalCount;
+        if (this.items && this.items.constructor === Array) {
+            data["items"] = [];
+            for (let item of this.items)
+                data["items"].push(item.toJSON());
+        }
+        return data; 
+    }
+}
+
+export interface IPagedResultDtoOfAttachedDeviceDto {
+    totalCount: number | undefined;
+    items: AttachedDeviceDto[] | undefined;
+}
+
+export class AttachedDeviceDto implements IAttachedDeviceDto {
+    plateNumber!: string | undefined;
+    name!: string | undefined;
+    amount!: string | undefined;
+    explain!: string | undefined;
+    id!: number | undefined;
+
+    constructor(data?: IAttachedDeviceDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.plateNumber = data["plateNumber"];
+            this.name = data["name"];
+            this.amount = data["amount"];
+            this.explain = data["explain"];
+            this.id = data["id"];
+        }
+    }
+
+    static fromJS(data: any): AttachedDeviceDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new AttachedDeviceDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["plateNumber"] = this.plateNumber;
+        data["name"] = this.name;
+        data["amount"] = this.amount;
+        data["explain"] = this.explain;
+        data["id"] = this.id;
+        return data; 
+    }
+}
+
+export interface IAttachedDeviceDto {
+    plateNumber: string | undefined;
+    name: string | undefined;
+    amount: string | undefined;
+    explain: string | undefined;
+    id: number | undefined;
+}
+
+export class AttachedDeviceInput implements IAttachedDeviceInput {
+    plateNumber!: string | undefined;
+    name!: string | undefined;
+    amount!: number | undefined;
+    explain!: string | undefined;
+    id!: number | undefined;
+
+    constructor(data?: IAttachedDeviceInput) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.plateNumber = data["plateNumber"];
+            this.name = data["name"];
+            this.amount = data["amount"];
+            this.explain = data["explain"];
+            this.id = data["id"];
+        }
+    }
+
+    static fromJS(data: any): AttachedDeviceInput {
+        data = typeof data === 'object' ? data : {};
+        let result = new AttachedDeviceInput();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["plateNumber"] = this.plateNumber;
+        data["name"] = this.name;
+        data["amount"] = this.amount;
+        data["explain"] = this.explain;
+        data["id"] = this.id;
+        return data; 
+    }
+}
+
+export interface IAttachedDeviceInput {
+    plateNumber: string | undefined;
+    name: string | undefined;
+    amount: number | undefined;
+    explain: string | undefined;
+    id: number | undefined;
+}
+
+export class AttachedDeviceForViewDto implements IAttachedDeviceForViewDto {
+    plateNumber!: string | undefined;
+    name!: string | undefined;
+    amount!: number | undefined;
+    explain!: string | undefined;
+
+    constructor(data?: IAttachedDeviceForViewDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.plateNumber = data["plateNumber"];
+            this.name = data["name"];
+            this.amount = data["amount"];
+            this.explain = data["explain"];
+        }
+    }
+
+    static fromJS(data: any): AttachedDeviceForViewDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new AttachedDeviceForViewDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["plateNumber"] = this.plateNumber;
+        data["name"] = this.name;
+        data["amount"] = this.amount;
+        data["explain"] = this.explain;
+        return data; 
+    }
+}
+
+export interface IAttachedDeviceForViewDto {
+    plateNumber: string | undefined;
+    name: string | undefined;
+    amount: number | undefined;
+    explain: string | undefined;
+}
+
 export class PagedResultDtoOfAuditLogListDto implements IPagedResultDtoOfAuditLogListDto {
     totalCount!: number | undefined;
     items!: AuditLogListDto[] | undefined;
@@ -10533,7 +13898,7 @@ export class AuditLogListDto implements IAuditLogListDto {
             this.serviceName = data["serviceName"];
             this.methodName = data["methodName"];
             this.parameters = data["parameters"];
-            this.executionTime = data["executionTime"] ? moment(data["executionTime"].toString()) : <any>undefined;
+            this.executionTime = data["executionTime"] ? moment(data["executionTime"]) : <any>undefined;
             this.executionDuration = data["executionDuration"];
             this.clientIpAddress = data["clientIpAddress"];
             this.clientName = data["clientName"];
@@ -10560,7 +13925,7 @@ export class AuditLogListDto implements IAuditLogListDto {
         data["serviceName"] = this.serviceName;
         data["methodName"] = this.methodName;
         data["parameters"] = this.parameters;
-        data["executionTime"] = this.executionTime ? this.executionTime.toISOString() : <any>undefined;
+        data["executionTime"] = this.executionTime ? this.executionTime : <any>undefined;
         data["executionDuration"] = this.executionDuration;
         data["clientIpAddress"] = this.clientIpAddress;
         data["clientName"] = this.clientName;
@@ -10745,7 +14110,7 @@ export class EntityChangeListDto implements IEntityChangeListDto {
         if (data) {
             this.userId = data["userId"];
             this.userName = data["userName"];
-            this.changeTime = data["changeTime"] ? moment(data["changeTime"].toString()) : <any>undefined;
+            this.changeTime = data["changeTime"] ? moment(data["changeTime"]) : <any>undefined;
             this.entityTypeFullName = data["entityTypeFullName"];
             this.changeType = data["changeType"];
             this.changeTypeName = data["changeTypeName"];
@@ -10765,7 +14130,7 @@ export class EntityChangeListDto implements IEntityChangeListDto {
         data = typeof data === 'object' ? data : {};
         data["userId"] = this.userId;
         data["userName"] = this.userName;
-        data["changeTime"] = this.changeTime ? this.changeTime.toISOString() : <any>undefined;
+        data["changeTime"] = this.changeTime ? this.changeTime : <any>undefined;
         data["entityTypeFullName"] = this.entityTypeFullName;
         data["changeType"] = this.changeType;
         data["changeTypeName"] = this.changeTypeName;
@@ -10977,7 +14342,7 @@ export class GetUserChatFriendsWithSettingsOutput implements IGetUserChatFriends
 
     init(data?: any) {
         if (data) {
-            this.serverTime = data["serverTime"] ? moment(data["serverTime"].toString()) : <any>undefined;
+            this.serverTime = data["serverTime"] ? moment(data["serverTime"]) : <any>undefined;
             if (data["friends"] && data["friends"].constructor === Array) {
                 this.friends = [];
                 for (let item of data["friends"])
@@ -10995,7 +14360,7 @@ export class GetUserChatFriendsWithSettingsOutput implements IGetUserChatFriends
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
-        data["serverTime"] = this.serverTime ? this.serverTime.toISOString() : <any>undefined;
+        data["serverTime"] = this.serverTime ? this.serverTime : <any>undefined;
         if (this.friends && this.friends.constructor === Array) {
             data["friends"] = [];
             for (let item of this.friends)
@@ -11150,7 +14515,7 @@ export class ChatMessageDto implements IChatMessageDto {
             this.readState = data["readState"];
             this.receiverReadState = data["receiverReadState"];
             this.message = data["message"];
-            this.creationTime = data["creationTime"] ? moment(data["creationTime"].toString()) : <any>undefined;
+            this.creationTime = data["creationTime"] ? moment(data["creationTime"]) : <any>undefined;
             this.sharedMessageId = data["sharedMessageId"];
             this.id = data["id"];
         }
@@ -11173,7 +14538,7 @@ export class ChatMessageDto implements IChatMessageDto {
         data["readState"] = this.readState;
         data["receiverReadState"] = this.receiverReadState;
         data["message"] = this.message;
-        data["creationTime"] = this.creationTime ? this.creationTime.toISOString() : <any>undefined;
+        data["creationTime"] = this.creationTime ? this.creationTime : <any>undefined;
         data["sharedMessageId"] = this.sharedMessageId;
         data["id"] = this.id;
         return data; 
@@ -12009,7 +15374,7 @@ export class EditionListDto implements IEditionListDto {
         if (data) {
             this.name = data["name"];
             this.displayName = data["displayName"];
-            this.creationTime = data["creationTime"] ? moment(data["creationTime"].toString()) : <any>undefined;
+            this.creationTime = data["creationTime"] ? moment(data["creationTime"]) : <any>undefined;
             this.id = data["id"];
         }
     }
@@ -12025,7 +15390,7 @@ export class EditionListDto implements IEditionListDto {
         data = typeof data === 'object' ? data : {};
         data["name"] = this.name;
         data["displayName"] = this.displayName;
-        data["creationTime"] = this.creationTime ? this.creationTime.toISOString() : <any>undefined;
+        data["creationTime"] = this.creationTime ? this.creationTime : <any>undefined;
         data["id"] = this.id;
         return data; 
     }
@@ -12718,9 +16083,9 @@ export class HostDashboardData implements IHostDashboardData {
             this.maxRecentTenantsShownCount = data["maxRecentTenantsShownCount"];
             this.subscriptionEndAlertDayCount = data["subscriptionEndAlertDayCount"];
             this.recentTenantsDayCount = data["recentTenantsDayCount"];
-            this.subscriptionEndDateStart = data["subscriptionEndDateStart"] ? moment(data["subscriptionEndDateStart"].toString()) : <any>undefined;
-            this.subscriptionEndDateEnd = data["subscriptionEndDateEnd"] ? moment(data["subscriptionEndDateEnd"].toString()) : <any>undefined;
-            this.tenantCreationStartDate = data["tenantCreationStartDate"] ? moment(data["tenantCreationStartDate"].toString()) : <any>undefined;
+            this.subscriptionEndDateStart = data["subscriptionEndDateStart"] ? moment(data["subscriptionEndDateStart"]) : <any>undefined;
+            this.subscriptionEndDateEnd = data["subscriptionEndDateEnd"] ? moment(data["subscriptionEndDateEnd"]) : <any>undefined;
+            this.tenantCreationStartDate = data["tenantCreationStartDate"] ? moment(data["tenantCreationStartDate"]) : <any>undefined;
         }
     }
 
@@ -12761,9 +16126,9 @@ export class HostDashboardData implements IHostDashboardData {
         data["maxRecentTenantsShownCount"] = this.maxRecentTenantsShownCount;
         data["subscriptionEndAlertDayCount"] = this.subscriptionEndAlertDayCount;
         data["recentTenantsDayCount"] = this.recentTenantsDayCount;
-        data["subscriptionEndDateStart"] = this.subscriptionEndDateStart ? this.subscriptionEndDateStart.toISOString() : <any>undefined;
-        data["subscriptionEndDateEnd"] = this.subscriptionEndDateEnd ? this.subscriptionEndDateEnd.toISOString() : <any>undefined;
-        data["tenantCreationStartDate"] = this.tenantCreationStartDate ? this.tenantCreationStartDate.toISOString() : <any>undefined;
+        data["subscriptionEndDateStart"] = this.subscriptionEndDateStart ? this.subscriptionEndDateStart : <any>undefined;
+        data["subscriptionEndDateEnd"] = this.subscriptionEndDateEnd ? this.subscriptionEndDateEnd : <any>undefined;
+        data["tenantCreationStartDate"] = this.tenantCreationStartDate ? this.tenantCreationStartDate : <any>undefined;
         return data; 
     }
 }
@@ -12803,7 +16168,7 @@ export class IncomeStastistic implements IIncomeStastistic {
     init(data?: any) {
         if (data) {
             this.label = data["label"];
-            this.date = data["date"] ? moment(data["date"].toString()) : <any>undefined;
+            this.date = data["date"] ? moment(data["date"]) : <any>undefined;
             this.amount = data["amount"];
         }
     }
@@ -12818,7 +16183,7 @@ export class IncomeStastistic implements IIncomeStastistic {
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
         data["label"] = this.label;
-        data["date"] = this.date ? this.date.toISOString() : <any>undefined;
+        data["date"] = this.date ? this.date : <any>undefined;
         data["amount"] = this.amount;
         return data; 
     }
@@ -12928,7 +16293,7 @@ export class RecentTenant implements IRecentTenant {
         if (data) {
             this.id = data["id"];
             this.name = data["name"];
-            this.creationTime = data["creationTime"] ? moment(data["creationTime"].toString()) : <any>undefined;
+            this.creationTime = data["creationTime"] ? moment(data["creationTime"]) : <any>undefined;
         }
     }
 
@@ -12943,7 +16308,7 @@ export class RecentTenant implements IRecentTenant {
         data = typeof data === 'object' ? data : {};
         data["id"] = this.id;
         data["name"] = this.name;
-        data["creationTime"] = this.creationTime ? this.creationTime.toISOString() : <any>undefined;
+        data["creationTime"] = this.creationTime ? this.creationTime : <any>undefined;
         return data; 
     }
 }
@@ -13794,7 +17159,7 @@ export class InvoiceDto implements IInvoiceDto {
             this.amount = data["amount"];
             this.editionDisplayName = data["editionDisplayName"];
             this.invoiceNo = data["invoiceNo"];
-            this.invoiceDate = data["invoiceDate"] ? moment(data["invoiceDate"].toString()) : <any>undefined;
+            this.invoiceDate = data["invoiceDate"] ? moment(data["invoiceDate"]) : <any>undefined;
             this.tenantLegalName = data["tenantLegalName"];
             if (data["tenantAddress"] && data["tenantAddress"].constructor === Array) {
                 this.tenantAddress = [];
@@ -13823,7 +17188,7 @@ export class InvoiceDto implements IInvoiceDto {
         data["amount"] = this.amount;
         data["editionDisplayName"] = this.editionDisplayName;
         data["invoiceNo"] = this.invoiceNo;
-        data["invoiceDate"] = this.invoiceDate ? this.invoiceDate.toISOString() : <any>undefined;
+        data["invoiceDate"] = this.invoiceDate ? this.invoiceDate : <any>undefined;
         data["tenantLegalName"] = this.tenantLegalName;
         if (this.tenantAddress && this.tenantAddress.constructor === Array) {
             data["tenantAddress"] = [];
@@ -13970,10 +17335,10 @@ export class ApplicationLanguageListDto implements IApplicationLanguageListDto {
             this.isDisabled = data["isDisabled"];
             this.isDeleted = data["isDeleted"];
             this.deleterUserId = data["deleterUserId"];
-            this.deletionTime = data["deletionTime"] ? moment(data["deletionTime"].toString()) : <any>undefined;
-            this.lastModificationTime = data["lastModificationTime"] ? moment(data["lastModificationTime"].toString()) : <any>undefined;
+            this.deletionTime = data["deletionTime"] ? moment(data["deletionTime"]) : <any>undefined;
+            this.lastModificationTime = data["lastModificationTime"] ? moment(data["lastModificationTime"]) : <any>undefined;
             this.lastModifierUserId = data["lastModifierUserId"];
-            this.creationTime = data["creationTime"] ? moment(data["creationTime"].toString()) : <any>undefined;
+            this.creationTime = data["creationTime"] ? moment(data["creationTime"]) : <any>undefined;
             this.creatorUserId = data["creatorUserId"];
             this.id = data["id"];
         }
@@ -13995,10 +17360,10 @@ export class ApplicationLanguageListDto implements IApplicationLanguageListDto {
         data["isDisabled"] = this.isDisabled;
         data["isDeleted"] = this.isDeleted;
         data["deleterUserId"] = this.deleterUserId;
-        data["deletionTime"] = this.deletionTime ? this.deletionTime.toISOString() : <any>undefined;
-        data["lastModificationTime"] = this.lastModificationTime ? this.lastModificationTime.toISOString() : <any>undefined;
+        data["deletionTime"] = this.deletionTime ? this.deletionTime : <any>undefined;
+        data["lastModificationTime"] = this.lastModificationTime ? this.lastModificationTime : <any>undefined;
         data["lastModifierUserId"] = this.lastModifierUserId;
-        data["creationTime"] = this.creationTime ? this.creationTime.toISOString() : <any>undefined;
+        data["creationTime"] = this.creationTime ? this.creationTime : <any>undefined;
         data["creatorUserId"] = this.creatorUserId;
         data["id"] = this.id;
         return data; 
@@ -14596,9 +17961,9 @@ export class MenuClientListDto implements IMenuClientListDto {
             this.image = data["image"];
             this.homeFlag = data["homeFlag"];
             this.status = data["status"];
-            this.createdDate = data["createdDate"] ? moment(data["createdDate"].toString()) : <any>undefined;
+            this.createdDate = data["createdDate"] ? moment(data["createdDate"]) : <any>undefined;
             this.createdBy = data["createdBy"];
-            this.updatedDate = data["updatedDate"] ? moment(data["updatedDate"].toString()) : <any>undefined;
+            this.updatedDate = data["updatedDate"] ? moment(data["updatedDate"]) : <any>undefined;
             this.updatedBy = data["updatedBy"];
             this.id = data["id"];
         }
@@ -14622,9 +17987,9 @@ export class MenuClientListDto implements IMenuClientListDto {
         data["image"] = this.image;
         data["homeFlag"] = this.homeFlag;
         data["status"] = this.status;
-        data["createdDate"] = this.createdDate ? this.createdDate.toISOString() : <any>undefined;
+        data["createdDate"] = this.createdDate ? this.createdDate : <any>undefined;
         data["createdBy"] = this.createdBy;
-        data["updatedDate"] = this.updatedDate ? this.updatedDate.toISOString() : <any>undefined;
+        data["updatedDate"] = this.updatedDate ? this.updatedDate : <any>undefined;
         data["updatedBy"] = this.updatedBy;
         data["id"] = this.id;
         return data; 
@@ -14995,7 +18360,7 @@ export class TenantNotification implements ITenantNotification {
                 }
             }
             this.severity = data["severity"];
-            this.creationTime = data["creationTime"] ? moment(data["creationTime"].toString()) : <any>undefined;
+            this.creationTime = data["creationTime"] ? moment(data["creationTime"]) : <any>undefined;
             this.id = data["id"];
         }
     }
@@ -15022,7 +18387,7 @@ export class TenantNotification implements ITenantNotification {
             }
         }
         data["severity"] = this.severity;
-        data["creationTime"] = this.creationTime ? this.creationTime.toISOString() : <any>undefined;
+        data["creationTime"] = this.creationTime ? this.creationTime : <any>undefined;
         data["id"] = this.id;
         return data; 
     }
@@ -15382,9 +18747,9 @@ export class OrganizationUnitDto implements IOrganizationUnitDto {
             this.code = data["code"];
             this.displayName = data["displayName"];
             this.memberCount = data["memberCount"];
-            this.lastModificationTime = data["lastModificationTime"] ? moment(data["lastModificationTime"].toString()) : <any>undefined;
+            this.lastModificationTime = data["lastModificationTime"] ? moment(data["lastModificationTime"]) : <any>undefined;
             this.lastModifierUserId = data["lastModifierUserId"];
-            this.creationTime = data["creationTime"] ? moment(data["creationTime"].toString()) : <any>undefined;
+            this.creationTime = data["creationTime"] ? moment(data["creationTime"]) : <any>undefined;
             this.creatorUserId = data["creatorUserId"];
             this.id = data["id"];
         }
@@ -15403,9 +18768,9 @@ export class OrganizationUnitDto implements IOrganizationUnitDto {
         data["code"] = this.code;
         data["displayName"] = this.displayName;
         data["memberCount"] = this.memberCount;
-        data["lastModificationTime"] = this.lastModificationTime ? this.lastModificationTime.toISOString() : <any>undefined;
+        data["lastModificationTime"] = this.lastModificationTime ? this.lastModificationTime : <any>undefined;
         data["lastModifierUserId"] = this.lastModifierUserId;
-        data["creationTime"] = this.creationTime ? this.creationTime.toISOString() : <any>undefined;
+        data["creationTime"] = this.creationTime ? this.creationTime : <any>undefined;
         data["creatorUserId"] = this.creatorUserId;
         data["id"] = this.id;
         return data; 
@@ -15497,7 +18862,7 @@ export class OrganizationUnitUserListDto implements IOrganizationUnitUserListDto
             this.userName = data["userName"];
             this.emailAddress = data["emailAddress"];
             this.profilePictureId = data["profilePictureId"];
-            this.addedTime = data["addedTime"] ? moment(data["addedTime"].toString()) : <any>undefined;
+            this.addedTime = data["addedTime"] ? moment(data["addedTime"]) : <any>undefined;
             this.id = data["id"];
         }
     }
@@ -15516,7 +18881,7 @@ export class OrganizationUnitUserListDto implements IOrganizationUnitUserListDto
         data["userName"] = this.userName;
         data["emailAddress"] = this.emailAddress;
         data["profilePictureId"] = this.profilePictureId;
-        data["addedTime"] = this.addedTime ? this.addedTime.toISOString() : <any>undefined;
+        data["addedTime"] = this.addedTime ? this.addedTime : <any>undefined;
         data["id"] = this.id;
         return data; 
     }
@@ -16060,9 +19425,9 @@ export class SubscriptionPaymentListDto implements ISubscriptionPaymentListDto {
             this.editionDisplayName = data["editionDisplayName"];
             this.tenantId = data["tenantId"];
             this.invoiceNo = data["invoiceNo"];
-            this.lastModificationTime = data["lastModificationTime"] ? moment(data["lastModificationTime"].toString()) : <any>undefined;
+            this.lastModificationTime = data["lastModificationTime"] ? moment(data["lastModificationTime"]) : <any>undefined;
             this.lastModifierUserId = data["lastModifierUserId"];
-            this.creationTime = data["creationTime"] ? moment(data["creationTime"].toString()) : <any>undefined;
+            this.creationTime = data["creationTime"] ? moment(data["creationTime"]) : <any>undefined;
             this.creatorUserId = data["creatorUserId"];
             this.id = data["id"];
         }
@@ -16088,9 +19453,9 @@ export class SubscriptionPaymentListDto implements ISubscriptionPaymentListDto {
         data["editionDisplayName"] = this.editionDisplayName;
         data["tenantId"] = this.tenantId;
         data["invoiceNo"] = this.invoiceNo;
-        data["lastModificationTime"] = this.lastModificationTime ? this.lastModificationTime.toISOString() : <any>undefined;
+        data["lastModificationTime"] = this.lastModificationTime ? this.lastModificationTime : <any>undefined;
         data["lastModifierUserId"] = this.lastModifierUserId;
-        data["creationTime"] = this.creationTime ? this.creationTime.toISOString() : <any>undefined;
+        data["creationTime"] = this.creationTime ? this.creationTime : <any>undefined;
         data["creatorUserId"] = this.creatorUserId;
         data["id"] = this.id;
         return data; 
@@ -16556,6 +19921,242 @@ export interface IChangeUserLanguageDto {
     languageName: string;
 }
 
+export class PagedResultDtoOfRoadChargesDto implements IPagedResultDtoOfRoadChargesDto {
+    totalCount!: number | undefined;
+    items!: RoadChargesDto[] | undefined;
+
+    constructor(data?: IPagedResultDtoOfRoadChargesDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.totalCount = data["totalCount"];
+            if (data["items"] && data["items"].constructor === Array) {
+                this.items = [];
+                for (let item of data["items"])
+                    this.items.push(RoadChargesDto.fromJS(item));
+            }
+        }
+    }
+
+    static fromJS(data: any): PagedResultDtoOfRoadChargesDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new PagedResultDtoOfRoadChargesDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["totalCount"] = this.totalCount;
+        if (this.items && this.items.constructor === Array) {
+            data["items"] = [];
+            for (let item of this.items)
+                data["items"].push(item.toJSON());
+        }
+        return data; 
+    }
+}
+
+export interface IPagedResultDtoOfRoadChargesDto {
+    totalCount: number | undefined;
+    items: RoadChargesDto[] | undefined;
+}
+
+export class RoadChargesDto implements IRoadChargesDto {
+    plateNumber!: string | undefined;
+    date!: moment.Moment | undefined;
+    type!: string | undefined;
+    expirationDate!: moment.Moment | undefined;
+    moneyAmount!: number | undefined;
+    feeUnit!: string | undefined;
+    note!: string | undefined;
+    id!: number | undefined;
+
+    constructor(data?: IRoadChargesDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.plateNumber = data["plateNumber"];
+            this.date = data["date"] ? moment(data["date"]) : <any>undefined;
+            this.type = data["type"];
+            this.expirationDate = data["expirationDate"] ? moment(data["expirationDate"]) : <any>undefined;
+            this.moneyAmount = data["moneyAmount"];
+            this.feeUnit = data["feeUnit"];
+            this.note = data["note"];
+            this.id = data["id"];
+        }
+    }
+
+    static fromJS(data: any): RoadChargesDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new RoadChargesDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["plateNumber"] = this.plateNumber;
+        data["date"] = this.date ? this.date : <any>undefined;
+        data["type"] = this.type;
+        data["expirationDate"] = this.expirationDate ? this.expirationDate : <any>undefined;
+        data["moneyAmount"] = this.moneyAmount;
+        data["feeUnit"] = this.feeUnit;
+        data["note"] = this.note;
+        data["id"] = this.id;
+        return data; 
+    }
+}
+
+export interface IRoadChargesDto {
+    plateNumber: string | undefined;
+    date: moment.Moment | undefined;
+    type: string | undefined;
+    expirationDate: moment.Moment | undefined;
+    moneyAmount: number | undefined;
+    feeUnit: string | undefined;
+    note: string | undefined;
+    id: number | undefined;
+}
+
+export class RoadChargesInput implements IRoadChargesInput {
+    plateNumber!: string | undefined;
+    date!: moment.Moment | undefined;
+    type!: string | undefined;
+    expirationDate!: moment.Moment | undefined;
+    moneyAmount!: number | undefined;
+    feeUnit!: string | undefined;
+    note!: string | undefined;
+    id!: number | undefined;
+
+    constructor(data?: IRoadChargesInput) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.plateNumber = data["plateNumber"];
+            this.date = data["date"] ? moment(data["date"]) : <any>undefined;
+            this.type = data["type"];
+            this.expirationDate = data["expirationDate"] ? moment(data["expirationDate"]) : <any>undefined;
+            this.moneyAmount = data["moneyAmount"];
+            this.feeUnit = data["feeUnit"];
+            this.note = data["note"];
+            this.id = data["id"];
+        }
+    }
+
+    static fromJS(data: any): RoadChargesInput {
+        data = typeof data === 'object' ? data : {};
+        let result = new RoadChargesInput();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["plateNumber"] = this.plateNumber;
+        data["date"] = this.date ? this.date : <any>undefined;
+        data["type"] = this.type;
+        data["expirationDate"] = this.expirationDate ? this.expirationDate : <any>undefined;
+        data["moneyAmount"] = this.moneyAmount;
+        data["feeUnit"] = this.feeUnit;
+        data["note"] = this.note;
+        data["id"] = this.id;
+        return data; 
+    }
+}
+
+export interface IRoadChargesInput {
+    plateNumber: string | undefined;
+    date: moment.Moment | undefined;
+    type: string | undefined;
+    expirationDate: moment.Moment | undefined;
+    moneyAmount: number | undefined;
+    feeUnit: string | undefined;
+    note: string | undefined;
+    id: number | undefined;
+}
+
+export class RoadChargesForViewDto implements IRoadChargesForViewDto {
+    plateNumber!: string | undefined;
+    date!: moment.Moment | undefined;
+    type!: string | undefined;
+    expirationDate!: moment.Moment | undefined;
+    moneyAmount!: number | undefined;
+    feeUnit!: string | undefined;
+    note!: string | undefined;
+
+    constructor(data?: IRoadChargesForViewDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.plateNumber = data["plateNumber"];
+            this.date = data["date"] ? moment(data["date"]) : <any>undefined;
+            this.type = data["type"];
+            this.expirationDate = data["expirationDate"] ? moment(data["expirationDate"]) : <any>undefined;
+            this.moneyAmount = data["moneyAmount"];
+            this.feeUnit = data["feeUnit"];
+            this.note = data["note"];
+        }
+    }
+
+    static fromJS(data: any): RoadChargesForViewDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new RoadChargesForViewDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["plateNumber"] = this.plateNumber;
+        data["date"] = this.date ? this.date : <any>undefined;
+        data["type"] = this.type;
+        data["expirationDate"] = this.expirationDate ? this.expirationDate : <any>undefined;
+        data["moneyAmount"] = this.moneyAmount;
+        data["feeUnit"] = this.feeUnit;
+        data["note"] = this.note;
+        return data; 
+    }
+}
+
+export interface IRoadChargesForViewDto {
+    plateNumber: string | undefined;
+    date: moment.Moment | undefined;
+    type: string | undefined;
+    expirationDate: moment.Moment | undefined;
+    moneyAmount: number | undefined;
+    feeUnit: string | undefined;
+    note: string | undefined;
+}
+
 export class ListResultDtoOfRoleListDto implements IListResultDtoOfRoleListDto {
     items!: RoleListDto[] | undefined;
 
@@ -16623,7 +20224,7 @@ export class RoleListDto implements IRoleListDto {
             this.displayName = data["displayName"];
             this.isStatic = data["isStatic"];
             this.isDefault = data["isDefault"];
-            this.creationTime = data["creationTime"] ? moment(data["creationTime"].toString()) : <any>undefined;
+            this.creationTime = data["creationTime"] ? moment(data["creationTime"]) : <any>undefined;
             this.id = data["id"];
         }
     }
@@ -16641,7 +20242,7 @@ export class RoleListDto implements IRoleListDto {
         data["displayName"] = this.displayName;
         data["isStatic"] = this.isStatic;
         data["isDefault"] = this.isDefault;
-        data["creationTime"] = this.creationTime ? this.creationTime.toISOString() : <any>undefined;
+        data["creationTime"] = this.creationTime ? this.creationTime : <any>undefined;
         data["id"] = this.id;
         return data; 
     }
@@ -16995,10 +20596,10 @@ export class TenantLoginInfoDto implements ITenantLoginInfoDto {
             this.logoId = data["logoId"];
             this.logoFileType = data["logoFileType"];
             this.customCssId = data["customCssId"];
-            this.subscriptionEndDateUtc = data["subscriptionEndDateUtc"] ? moment(data["subscriptionEndDateUtc"].toString()) : <any>undefined;
+            this.subscriptionEndDateUtc = data["subscriptionEndDateUtc"] ? moment(data["subscriptionEndDateUtc"]) : <any>undefined;
             this.isInTrialPeriod = data["isInTrialPeriod"];
             this.edition = data["edition"] ? EditionInfoDto.fromJS(data["edition"]) : <any>undefined;
-            this.creationTime = data["creationTime"] ? moment(data["creationTime"].toString()) : <any>undefined;
+            this.creationTime = data["creationTime"] ? moment(data["creationTime"]) : <any>undefined;
             this.paymentPeriodType = data["paymentPeriodType"];
             this.subscriptionDateString = data["subscriptionDateString"];
             this.creationTimeString = data["creationTimeString"];
@@ -17020,10 +20621,10 @@ export class TenantLoginInfoDto implements ITenantLoginInfoDto {
         data["logoId"] = this.logoId;
         data["logoFileType"] = this.logoFileType;
         data["customCssId"] = this.customCssId;
-        data["subscriptionEndDateUtc"] = this.subscriptionEndDateUtc ? this.subscriptionEndDateUtc.toISOString() : <any>undefined;
+        data["subscriptionEndDateUtc"] = this.subscriptionEndDateUtc ? this.subscriptionEndDateUtc : <any>undefined;
         data["isInTrialPeriod"] = this.isInTrialPeriod;
         data["edition"] = this.edition ? this.edition.toJSON() : <any>undefined;
-        data["creationTime"] = this.creationTime ? this.creationTime.toISOString() : <any>undefined;
+        data["creationTime"] = this.creationTime ? this.creationTime : <any>undefined;
         data["paymentPeriodType"] = this.paymentPeriodType;
         data["subscriptionDateString"] = this.subscriptionDateString;
         data["creationTimeString"] = this.creationTimeString;
@@ -17065,7 +20666,7 @@ export class ApplicationInfoDto implements IApplicationInfoDto {
     init(data?: any) {
         if (data) {
             this.version = data["version"];
-            this.releaseDate = data["releaseDate"] ? moment(data["releaseDate"].toString()) : <any>undefined;
+            this.releaseDate = data["releaseDate"] ? moment(data["releaseDate"]) : <any>undefined;
             if (data["features"]) {
                 this.features = {};
                 for (let key in data["features"]) {
@@ -17086,7 +20687,7 @@ export class ApplicationInfoDto implements IApplicationInfoDto {
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
         data["version"] = this.version;
-        data["releaseDate"] = this.releaseDate ? this.releaseDate.toISOString() : <any>undefined;
+        data["releaseDate"] = this.releaseDate ? this.releaseDate : <any>undefined;
         if (this.features) {
             data["features"] = {};
             for (let key in this.features) {
@@ -17284,8 +20885,8 @@ export class TenantListDto implements ITenantListDto {
             this.editionDisplayName = data["editionDisplayName"];
             this.connectionString = data["connectionString"];
             this.isActive = data["isActive"];
-            this.creationTime = data["creationTime"] ? moment(data["creationTime"].toString()) : <any>undefined;
-            this.subscriptionEndDateUtc = data["subscriptionEndDateUtc"] ? moment(data["subscriptionEndDateUtc"].toString()) : <any>undefined;
+            this.creationTime = data["creationTime"] ? moment(data["creationTime"]) : <any>undefined;
+            this.subscriptionEndDateUtc = data["subscriptionEndDateUtc"] ? moment(data["subscriptionEndDateUtc"]) : <any>undefined;
             this.editionId = data["editionId"];
             this.isInTrialPeriod = data["isInTrialPeriod"];
             this.id = data["id"];
@@ -17306,8 +20907,8 @@ export class TenantListDto implements ITenantListDto {
         data["editionDisplayName"] = this.editionDisplayName;
         data["connectionString"] = this.connectionString;
         data["isActive"] = this.isActive;
-        data["creationTime"] = this.creationTime ? this.creationTime.toISOString() : <any>undefined;
-        data["subscriptionEndDateUtc"] = this.subscriptionEndDateUtc ? this.subscriptionEndDateUtc.toISOString() : <any>undefined;
+        data["creationTime"] = this.creationTime ? this.creationTime : <any>undefined;
+        data["subscriptionEndDateUtc"] = this.subscriptionEndDateUtc ? this.subscriptionEndDateUtc : <any>undefined;
         data["editionId"] = this.editionId;
         data["isInTrialPeriod"] = this.isInTrialPeriod;
         data["id"] = this.id;
@@ -17361,7 +20962,7 @@ export class CreateTenantInput implements ICreateTenantInput {
             this.sendActivationEmail = data["sendActivationEmail"];
             this.editionId = data["editionId"];
             this.isActive = data["isActive"];
-            this.subscriptionEndDateUtc = data["subscriptionEndDateUtc"] ? moment(data["subscriptionEndDateUtc"].toString()) : <any>undefined;
+            this.subscriptionEndDateUtc = data["subscriptionEndDateUtc"] ? moment(data["subscriptionEndDateUtc"]) : <any>undefined;
             this.isInTrialPeriod = data["isInTrialPeriod"];
         }
     }
@@ -17384,7 +20985,7 @@ export class CreateTenantInput implements ICreateTenantInput {
         data["sendActivationEmail"] = this.sendActivationEmail;
         data["editionId"] = this.editionId;
         data["isActive"] = this.isActive;
-        data["subscriptionEndDateUtc"] = this.subscriptionEndDateUtc ? this.subscriptionEndDateUtc.toISOString() : <any>undefined;
+        data["subscriptionEndDateUtc"] = this.subscriptionEndDateUtc ? this.subscriptionEndDateUtc : <any>undefined;
         data["isInTrialPeriod"] = this.isInTrialPeriod;
         return data; 
     }
@@ -17430,7 +21031,7 @@ export class TenantEditDto implements ITenantEditDto {
             this.connectionString = data["connectionString"];
             this.editionId = data["editionId"];
             this.isActive = data["isActive"];
-            this.subscriptionEndDateUtc = data["subscriptionEndDateUtc"] ? moment(data["subscriptionEndDateUtc"].toString()) : <any>undefined;
+            this.subscriptionEndDateUtc = data["subscriptionEndDateUtc"] ? moment(data["subscriptionEndDateUtc"]) : <any>undefined;
             this.isInTrialPeriod = data["isInTrialPeriod"];
             this.id = data["id"];
         }
@@ -17450,7 +21051,7 @@ export class TenantEditDto implements ITenantEditDto {
         data["connectionString"] = this.connectionString;
         data["editionId"] = this.editionId;
         data["isActive"] = this.isActive;
-        data["subscriptionEndDateUtc"] = this.subscriptionEndDateUtc ? this.subscriptionEndDateUtc.toISOString() : <any>undefined;
+        data["subscriptionEndDateUtc"] = this.subscriptionEndDateUtc ? this.subscriptionEndDateUtc : <any>undefined;
         data["isInTrialPeriod"] = this.isInTrialPeriod;
         data["id"] = this.id;
         return data; 
@@ -19408,9 +23009,9 @@ export class UserListDto implements IUserListDto {
                 for (let item of data["roles"])
                     this.roles.push(UserListRoleDto.fromJS(item));
             }
-            this.lastLoginTime = data["lastLoginTime"] ? moment(data["lastLoginTime"].toString()) : <any>undefined;
+            this.lastLoginTime = data["lastLoginTime"] ? moment(data["lastLoginTime"]) : <any>undefined;
             this.isActive = data["isActive"];
-            this.creationTime = data["creationTime"] ? moment(data["creationTime"].toString()) : <any>undefined;
+            this.creationTime = data["creationTime"] ? moment(data["creationTime"]) : <any>undefined;
             this.id = data["id"];
         }
     }
@@ -19436,9 +23037,9 @@ export class UserListDto implements IUserListDto {
             for (let item of this.roles)
                 data["roles"].push(item.toJSON());
         }
-        data["lastLoginTime"] = this.lastLoginTime ? this.lastLoginTime.toISOString() : <any>undefined;
+        data["lastLoginTime"] = this.lastLoginTime ? this.lastLoginTime : <any>undefined;
         data["isActive"] = this.isActive;
-        data["creationTime"] = this.creationTime ? this.creationTime.toISOString() : <any>undefined;
+        data["creationTime"] = this.creationTime ? this.creationTime : <any>undefined;
         data["id"] = this.id;
         return data; 
     }
@@ -20027,7 +23628,7 @@ export class LinkedUserDto implements ILinkedUserDto {
             this.tenantId = data["tenantId"];
             this.tenancyName = data["tenancyName"];
             this.username = data["username"];
-            this.lastLoginTime = data["lastLoginTime"] ? moment(data["lastLoginTime"].toString()) : <any>undefined;
+            this.lastLoginTime = data["lastLoginTime"] ? moment(data["lastLoginTime"]) : <any>undefined;
             this.id = data["id"];
         }
     }
@@ -20044,7 +23645,7 @@ export class LinkedUserDto implements ILinkedUserDto {
         data["tenantId"] = this.tenantId;
         data["tenancyName"] = this.tenancyName;
         data["username"] = this.username;
-        data["lastLoginTime"] = this.lastLoginTime ? this.lastLoginTime.toISOString() : <any>undefined;
+        data["lastLoginTime"] = this.lastLoginTime ? this.lastLoginTime : <any>undefined;
         data["id"] = this.id;
         return data; 
     }
@@ -20212,7 +23813,7 @@ export class UserLoginAttemptDto implements IUserLoginAttemptDto {
             this.clientName = data["clientName"];
             this.browserInfo = data["browserInfo"];
             this.result = data["result"];
-            this.creationTime = data["creationTime"] ? moment(data["creationTime"].toString()) : <any>undefined;
+            this.creationTime = data["creationTime"] ? moment(data["creationTime"]) : <any>undefined;
         }
     }
 
@@ -20231,7 +23832,7 @@ export class UserLoginAttemptDto implements IUserLoginAttemptDto {
         data["clientName"] = this.clientName;
         data["browserInfo"] = this.browserInfo;
         data["result"] = this.result;
-        data["creationTime"] = this.creationTime ? this.creationTime.toISOString() : <any>undefined;
+        data["creationTime"] = this.creationTime ? this.creationTime : <any>undefined;
         return data; 
     }
 }
@@ -20295,6 +23896,7 @@ export interface IPagedResultDtoOfVehicleDto {
 }
 
 export class VehicleDto implements IVehicleDto {
+    assetId!: string | undefined;
     plateNumber!: string | undefined;
     type!: string | undefined;
     model!: string | undefined;
@@ -20314,11 +23916,12 @@ export class VehicleDto implements IVehicleDto {
 
     init(data?: any) {
         if (data) {
+            this.assetId = data["assetId"];
             this.plateNumber = data["plateNumber"];
             this.type = data["type"];
             this.model = data["model"];
             this.unitUsed = data["unitUsed"];
-            this.registrationDate = data["registrationDate"] ? moment(data["registrationDate"].toString()) : <any>undefined;
+            this.registrationDate = data["registrationDate"] ? moment(data["registrationDate"]) : <any>undefined;
             this.specialVehicle = data["specialVehicle"];
             this.id = data["id"];
         }
@@ -20333,11 +23936,12 @@ export class VehicleDto implements IVehicleDto {
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
+        data["assetId"] = this.assetId;
         data["plateNumber"] = this.plateNumber;
         data["type"] = this.type;
         data["model"] = this.model;
         data["unitUsed"] = this.unitUsed;
-        data["registrationDate"] = this.registrationDate ? this.registrationDate.toISOString() : <any>undefined;
+        data["registrationDate"] = this.registrationDate ? this.registrationDate : <any>undefined;
         data["specialVehicle"] = this.specialVehicle;
         data["id"] = this.id;
         return data; 
@@ -20345,6 +23949,7 @@ export class VehicleDto implements IVehicleDto {
 }
 
 export interface IVehicleDto {
+    assetId: string | undefined;
     plateNumber: string | undefined;
     type: string | undefined;
     model: string | undefined;
@@ -20355,6 +23960,7 @@ export interface IVehicleDto {
 }
 
 export class VehicleInput implements IVehicleInput {
+    assetId!: string | undefined;
     plateNumber!: string | undefined;
     countryOfManufacture!: string | undefined;
     type!: string | undefined;
@@ -20391,6 +23997,7 @@ export class VehicleInput implements IVehicleInput {
 
     init(data?: any) {
         if (data) {
+            this.assetId = data["assetId"];
             this.plateNumber = data["plateNumber"];
             this.countryOfManufacture = data["countryOfManufacture"];
             this.type = data["type"];
@@ -20402,7 +24009,7 @@ export class VehicleInput implements IVehicleInput {
             this.unitUsed = data["unitUsed"];
             this.ownerName = data["ownerName"];
             this.usePurpose = data["usePurpose"];
-            this.registrationDate = data["registrationDate"] ? moment(data["registrationDate"].toString()) : <any>undefined;
+            this.registrationDate = data["registrationDate"] ? moment(data["registrationDate"]) : <any>undefined;
             this.engineNumber = data["engineNumber"];
             this.ribNumber = data["ribNumber"];
             this.tireSize = data["tireSize"];
@@ -20427,6 +24034,7 @@ export class VehicleInput implements IVehicleInput {
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
+        data["assetId"] = this.assetId;
         data["plateNumber"] = this.plateNumber;
         data["countryOfManufacture"] = this.countryOfManufacture;
         data["type"] = this.type;
@@ -20438,7 +24046,7 @@ export class VehicleInput implements IVehicleInput {
         data["unitUsed"] = this.unitUsed;
         data["ownerName"] = this.ownerName;
         data["usePurpose"] = this.usePurpose;
-        data["registrationDate"] = this.registrationDate ? this.registrationDate.toISOString() : <any>undefined;
+        data["registrationDate"] = this.registrationDate ? this.registrationDate : <any>undefined;
         data["engineNumber"] = this.engineNumber;
         data["ribNumber"] = this.ribNumber;
         data["tireSize"] = this.tireSize;
@@ -20456,6 +24064,7 @@ export class VehicleInput implements IVehicleInput {
 }
 
 export interface IVehicleInput {
+    assetId: string | undefined;
     plateNumber: string | undefined;
     countryOfManufacture: string | undefined;
     type: string | undefined;
@@ -20483,6 +24092,7 @@ export interface IVehicleInput {
 }
 
 export class VehicleForViewDto implements IVehicleForViewDto {
+    assetId!: string | undefined;
     plateNumber!: string | undefined;
     countryOfManufacture!: string | undefined;
     type!: string | undefined;
@@ -20518,6 +24128,7 @@ export class VehicleForViewDto implements IVehicleForViewDto {
 
     init(data?: any) {
         if (data) {
+            this.assetId = data["assetId"];
             this.plateNumber = data["plateNumber"];
             this.countryOfManufacture = data["countryOfManufacture"];
             this.type = data["type"];
@@ -20529,7 +24140,7 @@ export class VehicleForViewDto implements IVehicleForViewDto {
             this.unitUsed = data["unitUsed"];
             this.ownerName = data["ownerName"];
             this.usePurpose = data["usePurpose"];
-            this.registrationDate = data["registrationDate"] ? moment(data["registrationDate"].toString()) : <any>undefined;
+            this.registrationDate = data["registrationDate"] ? moment(data["registrationDate"]) : <any>undefined;
             this.engineNumber = data["engineNumber"];
             this.ribNumber = data["ribNumber"];
             this.tireSize = data["tireSize"];
@@ -20553,6 +24164,7 @@ export class VehicleForViewDto implements IVehicleForViewDto {
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
+        data["assetId"] = this.assetId;
         data["plateNumber"] = this.plateNumber;
         data["countryOfManufacture"] = this.countryOfManufacture;
         data["type"] = this.type;
@@ -20564,7 +24176,7 @@ export class VehicleForViewDto implements IVehicleForViewDto {
         data["unitUsed"] = this.unitUsed;
         data["ownerName"] = this.ownerName;
         data["usePurpose"] = this.usePurpose;
-        data["registrationDate"] = this.registrationDate ? this.registrationDate.toISOString() : <any>undefined;
+        data["registrationDate"] = this.registrationDate ? this.registrationDate : <any>undefined;
         data["engineNumber"] = this.engineNumber;
         data["ribNumber"] = this.ribNumber;
         data["tireSize"] = this.tireSize;
@@ -20581,6 +24193,7 @@ export class VehicleForViewDto implements IVehicleForViewDto {
 }
 
 export interface IVehicleForViewDto {
+    assetId: string | undefined;
     plateNumber: string | undefined;
     countryOfManufacture: string | undefined;
     type: string | undefined;
@@ -20604,6 +24217,1626 @@ export interface IVehicleForViewDto {
     height: number | undefined;
     horizontalLength: number | undefined;
     specialVehicle: boolean | undefined;
+}
+
+export class PagedResultDtoOfVehicleInsurranceDto implements IPagedResultDtoOfVehicleInsurranceDto {
+    totalCount!: number | undefined;
+    items!: VehicleInsurranceDto[] | undefined;
+
+    constructor(data?: IPagedResultDtoOfVehicleInsurranceDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.totalCount = data["totalCount"];
+            if (data["items"] && data["items"].constructor === Array) {
+                this.items = [];
+                for (let item of data["items"])
+                    this.items.push(VehicleInsurranceDto.fromJS(item));
+            }
+        }
+    }
+
+    static fromJS(data: any): PagedResultDtoOfVehicleInsurranceDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new PagedResultDtoOfVehicleInsurranceDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["totalCount"] = this.totalCount;
+        if (this.items && this.items.constructor === Array) {
+            data["items"] = [];
+            for (let item of this.items)
+                data["items"].push(item.toJSON());
+        }
+        return data; 
+    }
+}
+
+export interface IPagedResultDtoOfVehicleInsurranceDto {
+    totalCount: number | undefined;
+    items: VehicleInsurranceDto[] | undefined;
+}
+
+export class VehicleInsurranceDto implements IVehicleInsurranceDto {
+    plateNumber!: string | undefined;
+    date!: moment.Moment | undefined;
+    expirationDate!: moment.Moment | undefined;
+    type!: string | undefined;
+    insurranceNumber!: number | undefined;
+    insurranceDuration!: number | undefined;
+    insurranceUnit!: string | undefined;
+    moneyAmount!: number | undefined;
+    id!: number | undefined;
+
+    constructor(data?: IVehicleInsurranceDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.plateNumber = data["plateNumber"];
+            this.date = data["date"] ? moment(data["date"]) : <any>undefined;
+            this.expirationDate = data["expirationDate"] ? moment(data["expirationDate"]) : <any>undefined;
+            this.type = data["type"];
+            this.insurranceNumber = data["insurranceNumber"];
+            this.insurranceDuration = data["insurranceDuration"];
+            this.insurranceUnit = data["insurranceUnit"];
+            this.moneyAmount = data["moneyAmount"];
+            this.id = data["id"];
+        }
+    }
+
+    static fromJS(data: any): VehicleInsurranceDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new VehicleInsurranceDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["plateNumber"] = this.plateNumber;
+        data["date"] = this.date ? this.date : <any>undefined;
+        data["expirationDate"] = this.expirationDate ? this.expirationDate : <any>undefined;
+        data["type"] = this.type;
+        data["insurranceNumber"] = this.insurranceNumber;
+        data["insurranceDuration"] = this.insurranceDuration;
+        data["insurranceUnit"] = this.insurranceUnit;
+        data["moneyAmount"] = this.moneyAmount;
+        data["id"] = this.id;
+        return data; 
+    }
+}
+
+export interface IVehicleInsurranceDto {
+    plateNumber: string | undefined;
+    date: moment.Moment | undefined;
+    expirationDate: moment.Moment | undefined;
+    type: string | undefined;
+    insurranceNumber: number | undefined;
+    insurranceDuration: number | undefined;
+    insurranceUnit: string | undefined;
+    moneyAmount: number | undefined;
+    id: number | undefined;
+}
+
+export class VehicleInsurranceInput implements IVehicleInsurranceInput {
+    plateNumber!: string | undefined;
+    date!: moment.Moment | undefined;
+    expirationDate!: moment.Moment | undefined;
+    type!: string | undefined;
+    insurranceNumber!: number | undefined;
+    insurranceDuration!: number | undefined;
+    insurranceUnit!: string | undefined;
+    moneyAmount!: number | undefined;
+    id!: number | undefined;
+
+    constructor(data?: IVehicleInsurranceInput) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.plateNumber = data["plateNumber"];
+            this.date = data["date"] ? moment(data["date"]) : <any>undefined;
+            this.expirationDate = data["expirationDate"] ? moment(data["expirationDate"]) : <any>undefined;
+            this.type = data["type"];
+            this.insurranceNumber = data["insurranceNumber"];
+            this.insurranceDuration = data["insurranceDuration"];
+            this.insurranceUnit = data["insurranceUnit"];
+            this.moneyAmount = data["moneyAmount"];
+            this.id = data["id"];
+        }
+    }
+
+    static fromJS(data: any): VehicleInsurranceInput {
+        data = typeof data === 'object' ? data : {};
+        let result = new VehicleInsurranceInput();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["plateNumber"] = this.plateNumber;
+        data["date"] = this.date ? this.date : <any>undefined;
+        data["expirationDate"] = this.expirationDate ? this.expirationDate : <any>undefined;
+        data["type"] = this.type;
+        data["insurranceNumber"] = this.insurranceNumber;
+        data["insurranceDuration"] = this.insurranceDuration;
+        data["insurranceUnit"] = this.insurranceUnit;
+        data["moneyAmount"] = this.moneyAmount;
+        data["id"] = this.id;
+        return data; 
+    }
+}
+
+export interface IVehicleInsurranceInput {
+    plateNumber: string | undefined;
+    date: moment.Moment | undefined;
+    expirationDate: moment.Moment | undefined;
+    type: string | undefined;
+    insurranceNumber: number | undefined;
+    insurranceDuration: number | undefined;
+    insurranceUnit: string | undefined;
+    moneyAmount: number | undefined;
+    id: number | undefined;
+}
+
+export class VehicleInsurranceForViewDto implements IVehicleInsurranceForViewDto {
+    plateNumber!: string | undefined;
+    date!: moment.Moment | undefined;
+    expirationDate!: moment.Moment | undefined;
+    type!: string | undefined;
+    insurranceNumber!: number | undefined;
+    insurranceDuration!: number | undefined;
+    insurranceUnit!: string | undefined;
+    moneyAmount!: number | undefined;
+
+    constructor(data?: IVehicleInsurranceForViewDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.plateNumber = data["plateNumber"];
+            this.date = data["date"] ? moment(data["date"]) : <any>undefined;
+            this.expirationDate = data["expirationDate"] ? moment(data["expirationDate"]) : <any>undefined;
+            this.type = data["type"];
+            this.insurranceNumber = data["insurranceNumber"];
+            this.insurranceDuration = data["insurranceDuration"];
+            this.insurranceUnit = data["insurranceUnit"];
+            this.moneyAmount = data["moneyAmount"];
+        }
+    }
+
+    static fromJS(data: any): VehicleInsurranceForViewDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new VehicleInsurranceForViewDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["plateNumber"] = this.plateNumber;
+        data["date"] = this.date ? this.date : <any>undefined;
+        data["expirationDate"] = this.expirationDate ? this.expirationDate : <any>undefined;
+        data["type"] = this.type;
+        data["insurranceNumber"] = this.insurranceNumber;
+        data["insurranceDuration"] = this.insurranceDuration;
+        data["insurranceUnit"] = this.insurranceUnit;
+        data["moneyAmount"] = this.moneyAmount;
+        return data; 
+    }
+}
+
+export interface IVehicleInsurranceForViewDto {
+    plateNumber: string | undefined;
+    date: moment.Moment | undefined;
+    expirationDate: moment.Moment | undefined;
+    type: string | undefined;
+    insurranceNumber: number | undefined;
+    insurranceDuration: number | undefined;
+    insurranceUnit: string | undefined;
+    moneyAmount: number | undefined;
+}
+
+export class PagedResultDtoOfVehicleMaintenanceDto implements IPagedResultDtoOfVehicleMaintenanceDto {
+    totalCount!: number | undefined;
+    items!: VehicleMaintenanceDto[] | undefined;
+
+    constructor(data?: IPagedResultDtoOfVehicleMaintenanceDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.totalCount = data["totalCount"];
+            if (data["items"] && data["items"].constructor === Array) {
+                this.items = [];
+                for (let item of data["items"])
+                    this.items.push(VehicleMaintenanceDto.fromJS(item));
+            }
+        }
+    }
+
+    static fromJS(data: any): PagedResultDtoOfVehicleMaintenanceDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new PagedResultDtoOfVehicleMaintenanceDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["totalCount"] = this.totalCount;
+        if (this.items && this.items.constructor === Array) {
+            data["items"] = [];
+            for (let item of this.items)
+                data["items"].push(item.toJSON());
+        }
+        return data; 
+    }
+}
+
+export interface IPagedResultDtoOfVehicleMaintenanceDto {
+    totalCount: number | undefined;
+    items: VehicleMaintenanceDto[] | undefined;
+}
+
+export class VehicleMaintenanceDto implements IVehicleMaintenanceDto {
+    plateNumber!: string | undefined;
+    date!: moment.Moment | undefined;
+    nextMaintenanceDate!: moment.Moment | undefined;
+    moneyAmount!: number | undefined;
+    numberMaintenanceTimes!: number | undefined;
+    maintenanceCategories!: string | undefined;
+    note!: string | undefined;
+    maintenanceUnit!: string | undefined;
+    id!: number | undefined;
+
+    constructor(data?: IVehicleMaintenanceDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.plateNumber = data["plateNumber"];
+            this.date = data["date"] ? moment(data["date"]) : <any>undefined;
+            this.nextMaintenanceDate = data["nextMaintenanceDate"] ? moment(data["nextMaintenanceDate"]) : <any>undefined;
+            this.moneyAmount = data["moneyAmount"];
+            this.numberMaintenanceTimes = data["numberMaintenanceTimes"];
+            this.maintenanceCategories = data["maintenanceCategories"];
+            this.note = data["note"];
+            this.maintenanceUnit = data["maintenanceUnit"];
+            this.id = data["id"];
+        }
+    }
+
+    static fromJS(data: any): VehicleMaintenanceDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new VehicleMaintenanceDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["plateNumber"] = this.plateNumber;
+        data["date"] = this.date ? this.date : <any>undefined;
+        data["nextMaintenanceDate"] = this.nextMaintenanceDate ? this.nextMaintenanceDate : <any>undefined;
+        data["moneyAmount"] = this.moneyAmount;
+        data["numberMaintenanceTimes"] = this.numberMaintenanceTimes;
+        data["maintenanceCategories"] = this.maintenanceCategories;
+        data["note"] = this.note;
+        data["maintenanceUnit"] = this.maintenanceUnit;
+        data["id"] = this.id;
+        return data; 
+    }
+}
+
+export interface IVehicleMaintenanceDto {
+    plateNumber: string | undefined;
+    date: moment.Moment | undefined;
+    nextMaintenanceDate: moment.Moment | undefined;
+    moneyAmount: number | undefined;
+    numberMaintenanceTimes: number | undefined;
+    maintenanceCategories: string | undefined;
+    note: string | undefined;
+    maintenanceUnit: string | undefined;
+    id: number | undefined;
+}
+
+export class VehicleMaintenanceInput implements IVehicleMaintenanceInput {
+    plateNumber!: string | undefined;
+    date!: moment.Moment | undefined;
+    nextMaintenanceDate!: moment.Moment | undefined;
+    moneyAmount!: number | undefined;
+    numberMaintenanceTimes!: number | undefined;
+    maintenanceCategories!: string | undefined;
+    note!: string | undefined;
+    maintenanceUnit!: string | undefined;
+    id!: number | undefined;
+
+    constructor(data?: IVehicleMaintenanceInput) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.plateNumber = data["plateNumber"];
+            this.date = data["date"] ? moment(data["date"]) : <any>undefined;
+            this.nextMaintenanceDate = data["nextMaintenanceDate"] ? moment(data["nextMaintenanceDate"]) : <any>undefined;
+            this.moneyAmount = data["moneyAmount"];
+            this.numberMaintenanceTimes = data["numberMaintenanceTimes"];
+            this.maintenanceCategories = data["maintenanceCategories"];
+            this.note = data["note"];
+            this.maintenanceUnit = data["maintenanceUnit"];
+            this.id = data["id"];
+        }
+    }
+
+    static fromJS(data: any): VehicleMaintenanceInput {
+        data = typeof data === 'object' ? data : {};
+        let result = new VehicleMaintenanceInput();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["plateNumber"] = this.plateNumber;
+        data["date"] = this.date ? this.date : <any>undefined;
+        data["nextMaintenanceDate"] = this.nextMaintenanceDate ? this.nextMaintenanceDate : <any>undefined;
+        data["moneyAmount"] = this.moneyAmount;
+        data["numberMaintenanceTimes"] = this.numberMaintenanceTimes;
+        data["maintenanceCategories"] = this.maintenanceCategories;
+        data["note"] = this.note;
+        data["maintenanceUnit"] = this.maintenanceUnit;
+        data["id"] = this.id;
+        return data; 
+    }
+}
+
+export interface IVehicleMaintenanceInput {
+    plateNumber: string | undefined;
+    date: moment.Moment | undefined;
+    nextMaintenanceDate: moment.Moment | undefined;
+    moneyAmount: number | undefined;
+    numberMaintenanceTimes: number | undefined;
+    maintenanceCategories: string | undefined;
+    note: string | undefined;
+    maintenanceUnit: string | undefined;
+    id: number | undefined;
+}
+
+export class VehicleMaintenanceForViewDto implements IVehicleMaintenanceForViewDto {
+    plateNumber!: string | undefined;
+    date!: moment.Moment | undefined;
+    nextMaintenanceDate!: moment.Moment | undefined;
+    moneyAmount!: number | undefined;
+    numberMaintenanceTimes!: number | undefined;
+    maintenanceCategories!: string | undefined;
+    note!: string | undefined;
+    maintenanceUnit!: string | undefined;
+
+    constructor(data?: IVehicleMaintenanceForViewDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.plateNumber = data["plateNumber"];
+            this.date = data["date"] ? moment(data["date"]) : <any>undefined;
+            this.nextMaintenanceDate = data["nextMaintenanceDate"] ? moment(data["nextMaintenanceDate"]) : <any>undefined;
+            this.moneyAmount = data["moneyAmount"];
+            this.numberMaintenanceTimes = data["numberMaintenanceTimes"];
+            this.maintenanceCategories = data["maintenanceCategories"];
+            this.note = data["note"];
+            this.maintenanceUnit = data["maintenanceUnit"];
+        }
+    }
+
+    static fromJS(data: any): VehicleMaintenanceForViewDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new VehicleMaintenanceForViewDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["plateNumber"] = this.plateNumber;
+        data["date"] = this.date ? this.date : <any>undefined;
+        data["nextMaintenanceDate"] = this.nextMaintenanceDate ? this.nextMaintenanceDate : <any>undefined;
+        data["moneyAmount"] = this.moneyAmount;
+        data["numberMaintenanceTimes"] = this.numberMaintenanceTimes;
+        data["maintenanceCategories"] = this.maintenanceCategories;
+        data["note"] = this.note;
+        data["maintenanceUnit"] = this.maintenanceUnit;
+        return data; 
+    }
+}
+
+export interface IVehicleMaintenanceForViewDto {
+    plateNumber: string | undefined;
+    date: moment.Moment | undefined;
+    nextMaintenanceDate: moment.Moment | undefined;
+    moneyAmount: number | undefined;
+    numberMaintenanceTimes: number | undefined;
+    maintenanceCategories: string | undefined;
+    note: string | undefined;
+    maintenanceUnit: string | undefined;
+}
+
+export class PagedResultDtoOfVehicleModelDto implements IPagedResultDtoOfVehicleModelDto {
+    totalCount!: number | undefined;
+    items!: VehicleModelDto[] | undefined;
+
+    constructor(data?: IPagedResultDtoOfVehicleModelDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.totalCount = data["totalCount"];
+            if (data["items"] && data["items"].constructor === Array) {
+                this.items = [];
+                for (let item of data["items"])
+                    this.items.push(VehicleModelDto.fromJS(item));
+            }
+        }
+    }
+
+    static fromJS(data: any): PagedResultDtoOfVehicleModelDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new PagedResultDtoOfVehicleModelDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["totalCount"] = this.totalCount;
+        if (this.items && this.items.constructor === Array) {
+            data["items"] = [];
+            for (let item of this.items)
+                data["items"].push(item.toJSON());
+        }
+        return data; 
+    }
+}
+
+export interface IPagedResultDtoOfVehicleModelDto {
+    totalCount: number | undefined;
+    items: VehicleModelDto[] | undefined;
+}
+
+export class VehicleModelDto implements IVehicleModelDto {
+    model!: string | undefined;
+    type!: string | undefined;
+    manufacturer!: string | undefined;
+    tireSize!: string | undefined;
+    fuelType!: string | undefined;
+    engineType!: string | undefined;
+    gearboxType!: string | undefined;
+    fuelNorms!: number | undefined;
+    engineVolume!: number | undefined;
+    length!: number | undefined;
+    height!: number | undefined;
+    horizontalLength!: number | undefined;
+    id!: number | undefined;
+
+    constructor(data?: IVehicleModelDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.model = data["model"];
+            this.type = data["type"];
+            this.manufacturer = data["manufacturer"];
+            this.tireSize = data["tireSize"];
+            this.fuelType = data["fuelType"];
+            this.engineType = data["engineType"];
+            this.gearboxType = data["gearboxType"];
+            this.fuelNorms = data["fuelNorms"];
+            this.engineVolume = data["engineVolume"];
+            this.length = data["length"];
+            this.height = data["height"];
+            this.horizontalLength = data["horizontalLength"];
+            this.id = data["id"];
+        }
+    }
+
+    static fromJS(data: any): VehicleModelDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new VehicleModelDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["model"] = this.model;
+        data["type"] = this.type;
+        data["manufacturer"] = this.manufacturer;
+        data["tireSize"] = this.tireSize;
+        data["fuelType"] = this.fuelType;
+        data["engineType"] = this.engineType;
+        data["gearboxType"] = this.gearboxType;
+        data["fuelNorms"] = this.fuelNorms;
+        data["engineVolume"] = this.engineVolume;
+        data["length"] = this.length;
+        data["height"] = this.height;
+        data["horizontalLength"] = this.horizontalLength;
+        data["id"] = this.id;
+        return data; 
+    }
+}
+
+export interface IVehicleModelDto {
+    model: string | undefined;
+    type: string | undefined;
+    manufacturer: string | undefined;
+    tireSize: string | undefined;
+    fuelType: string | undefined;
+    engineType: string | undefined;
+    gearboxType: string | undefined;
+    fuelNorms: number | undefined;
+    engineVolume: number | undefined;
+    length: number | undefined;
+    height: number | undefined;
+    horizontalLength: number | undefined;
+    id: number | undefined;
+}
+
+export class VehicleModelInput implements IVehicleModelInput {
+    model!: string | undefined;
+    type!: string | undefined;
+    manufacturer!: string | undefined;
+    tireSize!: string | undefined;
+    fuelType!: string | undefined;
+    engineType!: string | undefined;
+    gearboxType!: string | undefined;
+    fuelNorms!: number | undefined;
+    engineVolume!: number | undefined;
+    length!: number | undefined;
+    height!: number | undefined;
+    horizontalLength!: number | undefined;
+    id!: number | undefined;
+
+    constructor(data?: IVehicleModelInput) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.model = data["model"];
+            this.type = data["type"];
+            this.manufacturer = data["manufacturer"];
+            this.tireSize = data["tireSize"];
+            this.fuelType = data["fuelType"];
+            this.engineType = data["engineType"];
+            this.gearboxType = data["gearboxType"];
+            this.fuelNorms = data["fuelNorms"];
+            this.engineVolume = data["engineVolume"];
+            this.length = data["length"];
+            this.height = data["height"];
+            this.horizontalLength = data["horizontalLength"];
+            this.id = data["id"];
+        }
+    }
+
+    static fromJS(data: any): VehicleModelInput {
+        data = typeof data === 'object' ? data : {};
+        let result = new VehicleModelInput();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["model"] = this.model;
+        data["type"] = this.type;
+        data["manufacturer"] = this.manufacturer;
+        data["tireSize"] = this.tireSize;
+        data["fuelType"] = this.fuelType;
+        data["engineType"] = this.engineType;
+        data["gearboxType"] = this.gearboxType;
+        data["fuelNorms"] = this.fuelNorms;
+        data["engineVolume"] = this.engineVolume;
+        data["length"] = this.length;
+        data["height"] = this.height;
+        data["horizontalLength"] = this.horizontalLength;
+        data["id"] = this.id;
+        return data; 
+    }
+}
+
+export interface IVehicleModelInput {
+    model: string | undefined;
+    type: string | undefined;
+    manufacturer: string | undefined;
+    tireSize: string | undefined;
+    fuelType: string | undefined;
+    engineType: string | undefined;
+    gearboxType: string | undefined;
+    fuelNorms: number | undefined;
+    engineVolume: number | undefined;
+    length: number | undefined;
+    height: number | undefined;
+    horizontalLength: number | undefined;
+    id: number | undefined;
+}
+
+export class VehicleModelForViewDto implements IVehicleModelForViewDto {
+    model!: string | undefined;
+    type!: string | undefined;
+    manufacturer!: string | undefined;
+    tireSize!: string | undefined;
+    fuelType!: string | undefined;
+    engineType!: string | undefined;
+    gearboxType!: string | undefined;
+    fuelNorms!: number | undefined;
+    engineVolume!: number | undefined;
+    length!: number | undefined;
+    height!: number | undefined;
+    horizontalLength!: number | undefined;
+
+    constructor(data?: IVehicleModelForViewDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.model = data["model"];
+            this.type = data["type"];
+            this.manufacturer = data["manufacturer"];
+            this.tireSize = data["tireSize"];
+            this.fuelType = data["fuelType"];
+            this.engineType = data["engineType"];
+            this.gearboxType = data["gearboxType"];
+            this.fuelNorms = data["fuelNorms"];
+            this.engineVolume = data["engineVolume"];
+            this.length = data["length"];
+            this.height = data["height"];
+            this.horizontalLength = data["horizontalLength"];
+        }
+    }
+
+    static fromJS(data: any): VehicleModelForViewDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new VehicleModelForViewDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["model"] = this.model;
+        data["type"] = this.type;
+        data["manufacturer"] = this.manufacturer;
+        data["tireSize"] = this.tireSize;
+        data["fuelType"] = this.fuelType;
+        data["engineType"] = this.engineType;
+        data["gearboxType"] = this.gearboxType;
+        data["fuelNorms"] = this.fuelNorms;
+        data["engineVolume"] = this.engineVolume;
+        data["length"] = this.length;
+        data["height"] = this.height;
+        data["horizontalLength"] = this.horizontalLength;
+        return data; 
+    }
+}
+
+export interface IVehicleModelForViewDto {
+    model: string | undefined;
+    type: string | undefined;
+    manufacturer: string | undefined;
+    tireSize: string | undefined;
+    fuelType: string | undefined;
+    engineType: string | undefined;
+    gearboxType: string | undefined;
+    fuelNorms: number | undefined;
+    engineVolume: number | undefined;
+    length: number | undefined;
+    height: number | undefined;
+    horizontalLength: number | undefined;
+}
+
+export class PagedResultDtoOfVehicleOperationDto implements IPagedResultDtoOfVehicleOperationDto {
+    totalCount!: number | undefined;
+    items!: VehicleOperationDto[] | undefined;
+
+    constructor(data?: IPagedResultDtoOfVehicleOperationDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.totalCount = data["totalCount"];
+            if (data["items"] && data["items"].constructor === Array) {
+                this.items = [];
+                for (let item of data["items"])
+                    this.items.push(VehicleOperationDto.fromJS(item));
+            }
+        }
+    }
+
+    static fromJS(data: any): PagedResultDtoOfVehicleOperationDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new PagedResultDtoOfVehicleOperationDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["totalCount"] = this.totalCount;
+        if (this.items && this.items.constructor === Array) {
+            data["items"] = [];
+            for (let item of this.items)
+                data["items"].push(item.toJSON());
+        }
+        return data; 
+    }
+}
+
+export interface IPagedResultDtoOfVehicleOperationDto {
+    totalCount: number | undefined;
+    items: VehicleOperationDto[] | undefined;
+}
+
+export class VehicleOperationDto implements IVehicleOperationDto {
+    plateNumber!: string | undefined;
+    date!: moment.Moment | undefined;
+    vehicleIndex!: number | undefined;
+    kmGone!: number | undefined;
+    fuelNorm!: number | undefined;
+    realConsumption!: number | undefined;
+    note!: string | undefined;
+    id!: number | undefined;
+
+    constructor(data?: IVehicleOperationDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.plateNumber = data["plateNumber"];
+            this.date = data["date"] ? moment(data["date"]) : <any>undefined;
+            this.vehicleIndex = data["vehicleIndex"];
+            this.kmGone = data["kmGone"];
+            this.fuelNorm = data["fuelNorm"];
+            this.realConsumption = data["realConsumption"];
+            this.note = data["note"];
+            this.id = data["id"];
+        }
+    }
+
+    static fromJS(data: any): VehicleOperationDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new VehicleOperationDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["plateNumber"] = this.plateNumber;
+        data["date"] = this.date ? this.date : <any>undefined;
+        data["vehicleIndex"] = this.vehicleIndex;
+        data["kmGone"] = this.kmGone;
+        data["fuelNorm"] = this.fuelNorm;
+        data["realConsumption"] = this.realConsumption;
+        data["note"] = this.note;
+        data["id"] = this.id;
+        return data; 
+    }
+}
+
+export interface IVehicleOperationDto {
+    plateNumber: string | undefined;
+    date: moment.Moment | undefined;
+    vehicleIndex: number | undefined;
+    kmGone: number | undefined;
+    fuelNorm: number | undefined;
+    realConsumption: number | undefined;
+    note: string | undefined;
+    id: number | undefined;
+}
+
+export class VehicleOperationInput implements IVehicleOperationInput {
+    plateNumber!: string | undefined;
+    date!: moment.Moment | undefined;
+    vehicleIndex!: number | undefined;
+    kmGone!: number | undefined;
+    fuelNorm!: number | undefined;
+    realConsumption!: number | undefined;
+    note!: string | undefined;
+    id!: number | undefined;
+
+    constructor(data?: IVehicleOperationInput) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.plateNumber = data["plateNumber"];
+            this.date = data["date"] ? moment(data["date"]) : <any>undefined;
+            this.vehicleIndex = data["vehicleIndex"];
+            this.kmGone = data["kmGone"];
+            this.fuelNorm = data["fuelNorm"];
+            this.realConsumption = data["realConsumption"];
+            this.note = data["note"];
+            this.id = data["id"];
+        }
+    }
+
+    static fromJS(data: any): VehicleOperationInput {
+        data = typeof data === 'object' ? data : {};
+        let result = new VehicleOperationInput();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["plateNumber"] = this.plateNumber;
+        data["date"] = this.date ? this.date : <any>undefined;
+        data["vehicleIndex"] = this.vehicleIndex;
+        data["kmGone"] = this.kmGone;
+        data["fuelNorm"] = this.fuelNorm;
+        data["realConsumption"] = this.realConsumption;
+        data["note"] = this.note;
+        data["id"] = this.id;
+        return data; 
+    }
+}
+
+export interface IVehicleOperationInput {
+    plateNumber: string | undefined;
+    date: moment.Moment | undefined;
+    vehicleIndex: number | undefined;
+    kmGone: number | undefined;
+    fuelNorm: number | undefined;
+    realConsumption: number | undefined;
+    note: string | undefined;
+    id: number | undefined;
+}
+
+export class VehicleOperationForViewDto implements IVehicleOperationForViewDto {
+    plateNumber!: string | undefined;
+    date!: moment.Moment | undefined;
+    vehicleIndex!: number | undefined;
+    kmGone!: number | undefined;
+    fuelNorm!: number | undefined;
+    realConsumption!: number | undefined;
+    note!: string | undefined;
+
+    constructor(data?: IVehicleOperationForViewDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.plateNumber = data["plateNumber"];
+            this.date = data["date"] ? moment(data["date"]) : <any>undefined;
+            this.vehicleIndex = data["vehicleIndex"];
+            this.kmGone = data["kmGone"];
+            this.fuelNorm = data["fuelNorm"];
+            this.realConsumption = data["realConsumption"];
+            this.note = data["note"];
+        }
+    }
+
+    static fromJS(data: any): VehicleOperationForViewDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new VehicleOperationForViewDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["plateNumber"] = this.plateNumber;
+        data["date"] = this.date ? this.date : <any>undefined;
+        data["vehicleIndex"] = this.vehicleIndex;
+        data["kmGone"] = this.kmGone;
+        data["fuelNorm"] = this.fuelNorm;
+        data["realConsumption"] = this.realConsumption;
+        data["note"] = this.note;
+        return data; 
+    }
+}
+
+export interface IVehicleOperationForViewDto {
+    plateNumber: string | undefined;
+    date: moment.Moment | undefined;
+    vehicleIndex: number | undefined;
+    kmGone: number | undefined;
+    fuelNorm: number | undefined;
+    realConsumption: number | undefined;
+    note: string | undefined;
+}
+
+export class PagedResultDtoOfVehicleRegistryDto implements IPagedResultDtoOfVehicleRegistryDto {
+    totalCount!: number | undefined;
+    items!: VehicleRegistryDto[] | undefined;
+
+    constructor(data?: IPagedResultDtoOfVehicleRegistryDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.totalCount = data["totalCount"];
+            if (data["items"] && data["items"].constructor === Array) {
+                this.items = [];
+                for (let item of data["items"])
+                    this.items.push(VehicleRegistryDto.fromJS(item));
+            }
+        }
+    }
+
+    static fromJS(data: any): PagedResultDtoOfVehicleRegistryDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new PagedResultDtoOfVehicleRegistryDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["totalCount"] = this.totalCount;
+        if (this.items && this.items.constructor === Array) {
+            data["items"] = [];
+            for (let item of this.items)
+                data["items"].push(item.toJSON());
+        }
+        return data; 
+    }
+}
+
+export interface IPagedResultDtoOfVehicleRegistryDto {
+    totalCount: number | undefined;
+    items: VehicleRegistryDto[] | undefined;
+}
+
+export class VehicleRegistryDto implements IVehicleRegistryDto {
+    plateNumber!: string | undefined;
+    date!: moment.Moment | undefined;
+    expirationDate!: moment.Moment | undefined;
+    registerNumber!: number | undefined;
+    registerDuration!: number | undefined;
+    registerUnit!: string | undefined;
+    note!: string | undefined;
+    id!: number | undefined;
+
+    constructor(data?: IVehicleRegistryDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.plateNumber = data["plateNumber"];
+            this.date = data["date"] ? moment(data["date"]) : <any>undefined;
+            this.expirationDate = data["expirationDate"] ? moment(data["expirationDate"]) : <any>undefined;
+            this.registerNumber = data["registerNumber"];
+            this.registerDuration = data["registerDuration"];
+            this.registerUnit = data["registerUnit"];
+            this.note = data["note"];
+            this.id = data["id"];
+        }
+    }
+
+    static fromJS(data: any): VehicleRegistryDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new VehicleRegistryDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["plateNumber"] = this.plateNumber;
+        data["date"] = this.date ? this.date : <any>undefined;
+        data["expirationDate"] = this.expirationDate ? this.expirationDate : <any>undefined;
+        data["registerNumber"] = this.registerNumber;
+        data["registerDuration"] = this.registerDuration;
+        data["registerUnit"] = this.registerUnit;
+        data["note"] = this.note;
+        data["id"] = this.id;
+        return data; 
+    }
+}
+
+export interface IVehicleRegistryDto {
+    plateNumber: string | undefined;
+    date: moment.Moment | undefined;
+    expirationDate: moment.Moment | undefined;
+    registerNumber: number | undefined;
+    registerDuration: number | undefined;
+    registerUnit: string | undefined;
+    note: string | undefined;
+    id: number | undefined;
+}
+
+export class VehicleRegistryInput implements IVehicleRegistryInput {
+    plateNumber!: string | undefined;
+    date!: moment.Moment | undefined;
+    expirationDate!: moment.Moment | undefined;
+    registerNumber!: number | undefined;
+    registerDuration!: number | undefined;
+    registerUnit!: string | undefined;
+    note!: string | undefined;
+    id!: number | undefined;
+
+    constructor(data?: IVehicleRegistryInput) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.plateNumber = data["plateNumber"];
+            this.date = data["date"] ? moment(data["date"]) : <any>undefined;
+            this.expirationDate = data["expirationDate"] ? moment(data["expirationDate"]) : <any>undefined;
+            this.registerNumber = data["registerNumber"];
+            this.registerDuration = data["registerDuration"];
+            this.registerUnit = data["registerUnit"];
+            this.note = data["note"];
+            this.id = data["id"];
+        }
+    }
+
+    static fromJS(data: any): VehicleRegistryInput {
+        data = typeof data === 'object' ? data : {};
+        let result = new VehicleRegistryInput();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["plateNumber"] = this.plateNumber;
+        data["date"] = this.date ? this.date : <any>undefined;
+        data["expirationDate"] = this.expirationDate ? this.expirationDate : <any>undefined;
+        data["registerNumber"] = this.registerNumber;
+        data["registerDuration"] = this.registerDuration;
+        data["registerUnit"] = this.registerUnit;
+        data["note"] = this.note;
+        data["id"] = this.id;
+        return data; 
+    }
+}
+
+export interface IVehicleRegistryInput {
+    plateNumber: string | undefined;
+    date: moment.Moment | undefined;
+    expirationDate: moment.Moment | undefined;
+    registerNumber: number | undefined;
+    registerDuration: number | undefined;
+    registerUnit: string | undefined;
+    note: string | undefined;
+    id: number | undefined;
+}
+
+export class VehicleRegistryForViewDto implements IVehicleRegistryForViewDto {
+    plateNumber!: string | undefined;
+    date!: moment.Moment | undefined;
+    expirationDate!: moment.Moment | undefined;
+    registerNumber!: number | undefined;
+    registerDuration!: number | undefined;
+    registerUnit!: string | undefined;
+    note!: string | undefined;
+
+    constructor(data?: IVehicleRegistryForViewDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.plateNumber = data["plateNumber"];
+            this.date = data["date"] ? moment(data["date"]) : <any>undefined;
+            this.expirationDate = data["expirationDate"] ? moment(data["expirationDate"]) : <any>undefined;
+            this.registerNumber = data["registerNumber"];
+            this.registerDuration = data["registerDuration"];
+            this.registerUnit = data["registerUnit"];
+            this.note = data["note"];
+        }
+    }
+
+    static fromJS(data: any): VehicleRegistryForViewDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new VehicleRegistryForViewDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["plateNumber"] = this.plateNumber;
+        data["date"] = this.date ? this.date : <any>undefined;
+        data["expirationDate"] = this.expirationDate ? this.expirationDate : <any>undefined;
+        data["registerNumber"] = this.registerNumber;
+        data["registerDuration"] = this.registerDuration;
+        data["registerUnit"] = this.registerUnit;
+        data["note"] = this.note;
+        return data; 
+    }
+}
+
+export interface IVehicleRegistryForViewDto {
+    plateNumber: string | undefined;
+    date: moment.Moment | undefined;
+    expirationDate: moment.Moment | undefined;
+    registerNumber: number | undefined;
+    registerDuration: number | undefined;
+    registerUnit: string | undefined;
+    note: string | undefined;
+}
+
+export class PagedResultDtoOfVehicleRepairDto implements IPagedResultDtoOfVehicleRepairDto {
+    totalCount!: number | undefined;
+    items!: VehicleRepairDto[] | undefined;
+
+    constructor(data?: IPagedResultDtoOfVehicleRepairDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.totalCount = data["totalCount"];
+            if (data["items"] && data["items"].constructor === Array) {
+                this.items = [];
+                for (let item of data["items"])
+                    this.items.push(VehicleRepairDto.fromJS(item));
+            }
+        }
+    }
+
+    static fromJS(data: any): PagedResultDtoOfVehicleRepairDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new PagedResultDtoOfVehicleRepairDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["totalCount"] = this.totalCount;
+        if (this.items && this.items.constructor === Array) {
+            data["items"] = [];
+            for (let item of this.items)
+                data["items"].push(item.toJSON());
+        }
+        return data; 
+    }
+}
+
+export interface IPagedResultDtoOfVehicleRepairDto {
+    totalCount: number | undefined;
+    items: VehicleRepairDto[] | undefined;
+}
+
+export class VehicleRepairDto implements IVehicleRepairDto {
+    assetId!: string | undefined;
+    assetName!: string | undefined;
+    date!: moment.Moment | undefined;
+    expectedCompletionDate!: moment.Moment | undefined;
+    expectedRepairUnit!: string | undefined;
+    proposedUnit!: string | undefined;
+    expectedRepairCost!: number | undefined;
+    proposer!: string | undefined;
+    staffInCharge!: string | undefined;
+    expectedRepairContent!: string | undefined;
+    status!: string | undefined;
+    note1!: string | undefined;
+    completionDate!: moment.Moment | undefined;
+    repairUnit!: string | undefined;
+    repairCosts!: number | undefined;
+    repairContent!: string | undefined;
+    note2!: string | undefined;
+    id!: number | undefined;
+
+    constructor(data?: IVehicleRepairDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.assetId = data["assetId"];
+            this.assetName = data["assetName"];
+            this.date = data["date"] ? moment(data["date"]) : <any>undefined;
+            this.expectedCompletionDate = data["expectedCompletionDate"] ? moment(data["expectedCompletionDate"]) : <any>undefined;
+            this.expectedRepairUnit = data["expectedRepairUnit"];
+            this.proposedUnit = data["proposedUnit"];
+            this.expectedRepairCost = data["expectedRepairCost"];
+            this.proposer = data["proposer"];
+            this.staffInCharge = data["staffInCharge"];
+            this.expectedRepairContent = data["expectedRepairContent"];
+            this.status = data["status"];
+            this.note1 = data["note1"];
+            this.completionDate = data["completionDate"] ? moment(data["completionDate"]) : <any>undefined;
+            this.repairUnit = data["repairUnit"];
+            this.repairCosts = data["repairCosts"];
+            this.repairContent = data["repairContent"];
+            this.note2 = data["note2"];
+            this.id = data["id"];
+        }
+    }
+
+    static fromJS(data: any): VehicleRepairDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new VehicleRepairDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["assetId"] = this.assetId;
+        data["assetName"] = this.assetName;
+        data["date"] = this.date ? this.date : <any>undefined;
+        data["expectedCompletionDate"] = this.expectedCompletionDate ? this.expectedCompletionDate : <any>undefined;
+        data["expectedRepairUnit"] = this.expectedRepairUnit;
+        data["proposedUnit"] = this.proposedUnit;
+        data["expectedRepairCost"] = this.expectedRepairCost;
+        data["proposer"] = this.proposer;
+        data["staffInCharge"] = this.staffInCharge;
+        data["expectedRepairContent"] = this.expectedRepairContent;
+        data["status"] = this.status;
+        data["note1"] = this.note1;
+        data["completionDate"] = this.completionDate ? this.completionDate : <any>undefined;
+        data["repairUnit"] = this.repairUnit;
+        data["repairCosts"] = this.repairCosts;
+        data["repairContent"] = this.repairContent;
+        data["note2"] = this.note2;
+        data["id"] = this.id;
+        return data; 
+    }
+}
+
+export interface IVehicleRepairDto {
+    assetId: string | undefined;
+    assetName: string | undefined;
+    date: moment.Moment | undefined;
+    expectedCompletionDate: moment.Moment | undefined;
+    expectedRepairUnit: string | undefined;
+    proposedUnit: string | undefined;
+    expectedRepairCost: number | undefined;
+    proposer: string | undefined;
+    staffInCharge: string | undefined;
+    expectedRepairContent: string | undefined;
+    status: string | undefined;
+    note1: string | undefined;
+    completionDate: moment.Moment | undefined;
+    repairUnit: string | undefined;
+    repairCosts: number | undefined;
+    repairContent: string | undefined;
+    note2: string | undefined;
+    id: number | undefined;
+}
+
+export class VehicleRepairInput implements IVehicleRepairInput {
+    assetId!: string | undefined;
+    assetName!: string | undefined;
+    date!: moment.Moment | undefined;
+    expectedCompletionDate!: moment.Moment | undefined;
+    expectedRepairUnit!: string | undefined;
+    proposedUnit!: string | undefined;
+    expectedRepairCost!: number | undefined;
+    proposer!: string | undefined;
+    staffInCharge!: string | undefined;
+    expectedRepairContent!: string | undefined;
+    status!: string | undefined;
+    note1!: string | undefined;
+    completionDate!: moment.Moment | undefined;
+    repairUnit!: string | undefined;
+    repairCosts!: number | undefined;
+    repairContent!: string | undefined;
+    note2!: string | undefined;
+    id!: number | undefined;
+
+    constructor(data?: IVehicleRepairInput) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.assetId = data["assetId"];
+            this.assetName = data["assetName"];
+            this.date = data["date"] ? moment(data["date"]) : <any>undefined;
+            this.expectedCompletionDate = data["expectedCompletionDate"] ? moment(data["expectedCompletionDate"]) : <any>undefined;
+            this.expectedRepairUnit = data["expectedRepairUnit"];
+            this.proposedUnit = data["proposedUnit"];
+            this.expectedRepairCost = data["expectedRepairCost"];
+            this.proposer = data["proposer"];
+            this.staffInCharge = data["staffInCharge"];
+            this.expectedRepairContent = data["expectedRepairContent"];
+            this.status = data["status"];
+            this.note1 = data["note1"];
+            this.completionDate = data["completionDate"] ? moment(data["completionDate"]) : <any>undefined;
+            this.repairUnit = data["repairUnit"];
+            this.repairCosts = data["repairCosts"];
+            this.repairContent = data["repairContent"];
+            this.note2 = data["note2"];
+            this.id = data["id"];
+        }
+    }
+
+    static fromJS(data: any): VehicleRepairInput {
+        data = typeof data === 'object' ? data : {};
+        let result = new VehicleRepairInput();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["assetId"] = this.assetId;
+        data["assetName"] = this.assetName;
+        data["date"] = this.date ? this.date : <any>undefined;
+        data["expectedCompletionDate"] = this.expectedCompletionDate ? this.expectedCompletionDate : <any>undefined;
+        data["expectedRepairUnit"] = this.expectedRepairUnit;
+        data["proposedUnit"] = this.proposedUnit;
+        data["expectedRepairCost"] = this.expectedRepairCost;
+        data["proposer"] = this.proposer;
+        data["staffInCharge"] = this.staffInCharge;
+        data["expectedRepairContent"] = this.expectedRepairContent;
+        data["status"] = this.status;
+        data["note1"] = this.note1;
+        data["completionDate"] = this.completionDate ? this.completionDate : <any>undefined;
+        data["repairUnit"] = this.repairUnit;
+        data["repairCosts"] = this.repairCosts;
+        data["repairContent"] = this.repairContent;
+        data["note2"] = this.note2;
+        data["id"] = this.id;
+        return data; 
+    }
+}
+
+export interface IVehicleRepairInput {
+    assetId: string | undefined;
+    assetName: string | undefined;
+    date: moment.Moment | undefined;
+    expectedCompletionDate: moment.Moment | undefined;
+    expectedRepairUnit: string | undefined;
+    proposedUnit: string | undefined;
+    expectedRepairCost: number | undefined;
+    proposer: string | undefined;
+    staffInCharge: string | undefined;
+    expectedRepairContent: string | undefined;
+    status: string | undefined;
+    note1: string | undefined;
+    completionDate: moment.Moment | undefined;
+    repairUnit: string | undefined;
+    repairCosts: number | undefined;
+    repairContent: string | undefined;
+    note2: string | undefined;
+    id: number | undefined;
+}
+
+export class VehicleRepairForViewDto implements IVehicleRepairForViewDto {
+    assetId!: string | undefined;
+    assetName!: string | undefined;
+    date!: moment.Moment | undefined;
+    expectedCompletionDate!: moment.Moment | undefined;
+    expectedRepairUnit!: string | undefined;
+    proposedUnit!: string | undefined;
+    expectedRepairCost!: number | undefined;
+    proposer!: string | undefined;
+    staffInCharge!: string | undefined;
+    expectedRepairContent!: string | undefined;
+    status!: string | undefined;
+    note1!: string | undefined;
+    completionDate!: moment.Moment | undefined;
+    repairUnit!: string | undefined;
+    repairCosts!: number | undefined;
+    repairContent!: string | undefined;
+    note2!: string | undefined;
+
+    constructor(data?: IVehicleRepairForViewDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.assetId = data["assetId"];
+            this.assetName = data["assetName"];
+            this.date = data["date"] ? moment(data["date"]) : <any>undefined;
+            this.expectedCompletionDate = data["expectedCompletionDate"] ? moment(data["expectedCompletionDate"]) : <any>undefined;
+            this.expectedRepairUnit = data["expectedRepairUnit"];
+            this.proposedUnit = data["proposedUnit"];
+            this.expectedRepairCost = data["expectedRepairCost"];
+            this.proposer = data["proposer"];
+            this.staffInCharge = data["staffInCharge"];
+            this.expectedRepairContent = data["expectedRepairContent"];
+            this.status = data["status"];
+            this.note1 = data["note1"];
+            this.completionDate = data["completionDate"] ? moment(data["completionDate"]) : <any>undefined;
+            this.repairUnit = data["repairUnit"];
+            this.repairCosts = data["repairCosts"];
+            this.repairContent = data["repairContent"];
+            this.note2 = data["note2"];
+        }
+    }
+
+    static fromJS(data: any): VehicleRepairForViewDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new VehicleRepairForViewDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["assetId"] = this.assetId;
+        data["assetName"] = this.assetName;
+        data["date"] = this.date ? this.date : <any>undefined;
+        data["expectedCompletionDate"] = this.expectedCompletionDate ? this.expectedCompletionDate : <any>undefined;
+        data["expectedRepairUnit"] = this.expectedRepairUnit;
+        data["proposedUnit"] = this.proposedUnit;
+        data["expectedRepairCost"] = this.expectedRepairCost;
+        data["proposer"] = this.proposer;
+        data["staffInCharge"] = this.staffInCharge;
+        data["expectedRepairContent"] = this.expectedRepairContent;
+        data["status"] = this.status;
+        data["note1"] = this.note1;
+        data["completionDate"] = this.completionDate ? this.completionDate : <any>undefined;
+        data["repairUnit"] = this.repairUnit;
+        data["repairCosts"] = this.repairCosts;
+        data["repairContent"] = this.repairContent;
+        data["note2"] = this.note2;
+        return data; 
+    }
+}
+
+export interface IVehicleRepairForViewDto {
+    assetId: string | undefined;
+    assetName: string | undefined;
+    date: moment.Moment | undefined;
+    expectedCompletionDate: moment.Moment | undefined;
+    expectedRepairUnit: string | undefined;
+    proposedUnit: string | undefined;
+    expectedRepairCost: number | undefined;
+    proposer: string | undefined;
+    staffInCharge: string | undefined;
+    expectedRepairContent: string | undefined;
+    status: string | undefined;
+    note1: string | undefined;
+    completionDate: moment.Moment | undefined;
+    repairUnit: string | undefined;
+    repairCosts: number | undefined;
+    repairContent: string | undefined;
+    note2: string | undefined;
 }
 
 export class GetLatestWebLogsOutput implements IGetLatestWebLogsOutput {

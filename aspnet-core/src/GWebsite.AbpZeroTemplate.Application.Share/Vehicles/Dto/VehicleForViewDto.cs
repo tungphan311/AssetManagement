@@ -7,6 +7,7 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.Vehicles.Dto
     /// </summary>
     public class VehicleForViewDto
     {
+        public string AssetId { get; set; }
         public string PlateNumber { get; set; }
         public string CountryOfManufacture { get; set; }
         public string Type { get; set; }

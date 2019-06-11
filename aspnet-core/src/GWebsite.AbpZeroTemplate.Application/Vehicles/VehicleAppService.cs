@@ -56,6 +56,15 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Vehicles
             }
             return ObjectMapper.Map<VehicleInput>(vehicleEntity);
         }
+        public VehicleInput GetVehicleByAssetForEdit(string assetId)
+        {
+            var vehicleEntity = vehicleRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.AssetId == assetId);
+            if (vehicleEntity == null)
+            {
+                return null;
+            }
+            return ObjectMapper.Map<VehicleInput>(vehicleEntity);
+        }
 
         public VehicleForViewDto GetVehicleForView(int id)
         {

@@ -20,7 +20,16 @@ export class AppNavigationService {
                 new AppMenuItem('MenuClient', 'Pages.Administration.MenuClient', 'flaticon-menu-1', '/app/gwebsite/menu-client'),
                 new AppMenuItem('DemoModel', 'Pages.Administration.DemoModel', 'flaticon-menu-1', '/app/gwebsite/demo-model'),
                 new AppMenuItem('Customer', 'Pages.Administration.Customer', 'flaticon-menu-1', '/app/gwebsite/customer'),
-                new AppMenuItem('Vehicle', 'Pages.Administration.Vehicle', 'flaticon-menu-1', '/app/gwebsite/vehicle')
+                new AppMenuItem('Asset', 'Pages.Administration.Asset', 'flaticon-menu-1', '/app/gwebsite/asset'),
+                new AppMenuItem('Vehicle Model Category', 'Pages.Administration.VehicleModel', 'flaticon-menu-1', '/app/gwebsite/vehicle-model'),
+                new AppMenuItem('Vehicle Info', 'Pages.Administration.Vehicle', 'flaticon-menu-1', '/app/gwebsite/vehicle-info'),
+                new AppMenuItem('Vehicle Operation', 'Pages.Administration.VehicleOperation', 'flaticon-menu-1', '/app/gwebsite/vehicle-operation'),
+                new AppMenuItem('Road Charges', 'Pages.Administration.RoadCharges', 'flaticon-menu-1', '/app/gwebsite/road-charges'),
+                new AppMenuItem('Vehicle Registry', 'Pages.Administration.VehicleRegistry', 'flaticon-menu-1', '/app/gwebsite/vehicle-registry'),
+                new AppMenuItem('Vehicle Insurrance', 'Pages.Administration.VehicleInsurrance', 'flaticon-menu-1', '/app/gwebsite/vehicle-insurrance'),
+                new AppMenuItem('Vehicle Maintenance', 'Pages.Administration.VehicleMaintenance', 'flaticon-menu-1', '/app/gwebsite/vehicle-maintenance'),
+                new AppMenuItem('Vehicle Repair', 'Pages.Administration.VehicleRepair', 'flaticon-menu-1', '/app/gwebsite/vehicle-repair'),
+                new AppMenuItem('Vehicle', 'Pages.Administration.Vehicle', 'flaticon-menu-1', '/app/gwebsite/vehicle'),
             ]),
             new AppMenuItem('Systems', '', 'flaticon-layers', '', [
                 new AppMenuItem('OrganizationUnits', 'Pages.Administration.OrganizationUnits', 'flaticon-map', '/app/admin/organization-units'),

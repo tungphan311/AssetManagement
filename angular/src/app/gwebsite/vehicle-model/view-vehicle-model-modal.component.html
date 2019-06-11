@@ -1,0 +1,73 @@
+<div bsModal #viewModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="viewModal"
+    aria-hidden="true" [config]="{backdrop: 'static'}">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">
+                    <span *ngIf="vehicleModel.id">{{l("EditVehicleModel")}}: {{vehicleModel.name}}</span>
+                    <span *ngIf="!vehicleModel.id">{{l("CreateNewVehicleModel")}}</span>
+                </h4>
+                <button type="button" class="close" (click)="close()" [attr.aria-label]="l('Close')">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label><strong>Model</strong></label>
+                    <p>{{vehicleModel.model}}</p>
+                </div>    
+                <div class="form-group">
+                    <label><strong>Loại xe</strong></label>
+                    <p>{{vehicleModel.type}}</p>
+                </div>
+                <div class="form-group">
+                    <label><strong>Hãng sản xuất</strong></label>
+                    <p>{{vehicleModel.manufacturer}}</p>
+                </div>
+                <div class="form-group">
+                    <label><strong>Loại nhiên liệu</strong></label>
+                    <p>{{vehicleModel.fuelType}}</p>
+                </div>
+                <div class="form-group">
+                    <label><strong>Cỡ lốp sử dụng</strong></label>
+                    <p>{{vehicleModel.tireSize}}</p>
+                </div>
+                <div class="form-group">
+                    <label><strong>Kiểu động cơ</strong></label>
+                    <p>{{vehicleModel.engineType}}</p>
+                </div>
+                <div class="form-group">
+                    <label><strong>Loại hộp số</strong></label>
+                    <p>{{vehicleModel.gearboxType}}</p>
+                </div>
+                <div class="form-group">
+                    <label><strong>Định mức nhiên liệu</strong></label>
+                    <p>{{vehicleModel.fuelNorms}}</p>
+                </div>
+                <div class="form-group">
+                    <label><strong>Thể tích động cơ</strong></label>
+                    <p>{{vehicleModel.engineVolume}}</p>
+                </div>
+                <div class="form-group">
+                    <label><strong>Chiều dài</strong></label>
+                    <p>{{vehicleModel.length}}</p>
+                </div>
+                <div class="form-group">
+                    <label><strong>Chiều cao</strong></label>
+                    <p>{{vehicleModel.height}}</p>
+                </div>
+                <div class="form-group">
+                    <label><strong>Chiều ngang</strong></label>
+                    <p>{{vehicleModel.horizontalLength}}</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button [disabled]="saving" type="button" class="btn btn-default"
+                    (click)="close()">{{l("Cancel")}}</button>
+                <button type="submit" class="btn btn-primary" [buttonBusy]="saving"
+                    [busyText]="l('SavingWithThreeDot')"><i class="fa fa-save"></i>
+                    <span>{{l("Save")}}</span></button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -27,6 +27,12 @@ namespace GWebsite.AbpZeroTemplate.Application.Controllers
             return vehicleAppService.GetVehicleForEdit(id);
         }
 
+        [HttpGet]
+        public VehicleInput GetVehicleByAssetForEdit(string assetId)
+        {
+            return vehicleAppService.GetVehicleByAssetForEdit(assetId);
+        }
+
         [HttpPost]
         public void CreateOrEditVehicle([FromBody] VehicleInput input)
         {

@@ -25,6 +25,15 @@ namespace GWebsite.AbpZeroTemplate.EntityFrameworkCore
         public virtual DbSet<DemoModel> DemoModels { get; set; }
         public virtual DbSet<Customer> Customers { get; set; }
         public virtual DbSet<Vehicle> Vehicles { get; set; }
+        public virtual DbSet<Asset> Assets { get; set; }
+        public virtual DbSet<AttachedDevice> AttachedDevices { get; set; }
+        public virtual DbSet<VehicleOperation> VehicleOperations { get; set; }
+        public virtual DbSet<RoadCharges> RoadCharges { get; set; }
+        public virtual DbSet<VehicleRegistry> VehicleRegistries { get; set; }
+        public virtual DbSet<VehicleInsurrance> VehicleInsurrances { get; set; }
+        public virtual DbSet<VehicleMaintenance> VehicleMaintenances { get; set; }
+        public virtual DbSet<VehicleRepair> VehicleRepairs { get; set; }
+        public virtual DbSet<VehicleModel> VehicleModels { get; set; }
         /// <summary>
         /// GPermissions dùng cho bên Gwebsite
         /// </summary>

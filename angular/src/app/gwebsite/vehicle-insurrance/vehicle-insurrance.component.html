@@ -1,0 +1,228 @@
+<div [@routerTransition]>
+
+    <div class="m-subheader ">
+        <div class="d-flex align-items-center">
+            <div class="mr-auto col-xs-6">
+                <h3 class="m-subheader__title m-subheader__title--separator">
+                    <span>{{l("Vehicle")}}</span>
+                </h3>
+                <span class="m-section__sub">
+                    {{l("VehicleInfo")}}
+                </span>
+            </div>
+            <div class="col-xs-6 text-right">
+                <button type="submit" class="btn btn-primary" [buttonBusy]="saving"
+                    (click)="save()" [busyText]="l('SavingWithThreeDot')">
+                    <i class="fa fa-save"></i>
+                    {{l("Save")}}
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="m-content">
+        <div class="m-portlet m-portlet--mobile">
+            <div class="m-portlet__body">
+                <form autocomplete="off">
+                    <div class="m-form m-form--label-align-right" id="TextsFilterForm">
+                        <div class="row align-items-center m--margin-bottom-10">
+                            <div class="col-sm-12">
+                                <div class="row align-items-center m--margin-bottom-10">
+                                    <div class="col-xs-12 col-12 col-md-6 form-group">
+                                        <div class="d-flex align-items-center">
+                                            <div class="mr-auto col-xs-6">
+                                                <label>Số xe</label>
+                                            </div>
+                                            <div class="col-xs-6 text-right">
+                                                <button type="button" class="btn btn-default"
+                                                    (click)="selectVehicle()">{{l("...")}}
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <span title="{{vehicleInsurrance.plateNumber}}" class="form-control">{{vehicleInsurrance.plateNumber}}</span>
+                                    </div>
+                                </div>
+                                <div class="row align-items-center m--margin-bottom-20">
+                                    <h3>
+                                        <span>{{l("Thông tin bảo hiểm")}}</span>
+                                    </h3>
+                                </div>
+                                <div class="row align-items-center m--margin-bottom-20">                        
+                                    <div class="col-xs-12 col-12 col-md-6 form-group">
+                                        <label>Ngày bảo hiểm</label>
+                                        <input #typeInput="ngModel" class="form-control" type="date" name="date"
+                                            [(ngModel)]="vehicleInsurrance.date" required maxlength="64">
+                                        <validation-messages [formCtrl]="typeInput"></validation-messages>
+                                    </div>
+                                    <div class="col-xs-12 col-12 col-md-6 form-group">
+                                        <label>Loại bảo hiểm</label>
+                                        <select  #typeInput="ngModel" class="form-control" name="type"
+                                        [(ngModel)]="vehicleInsurrance.type" required maxlength="64">
+                                        <option value="loại S">loại S</option>
+                                        <option value="loại K">loại K</option>
+                                        <option value="loại M">loại M</option>
+                                        <option value="loại N">loại N</option>
+                                    </select>
+                                    <validation-messages [formCtrl]="typeInput"></validation-messages>
+                                    </div>
+                                    <div class="col-xs-12 col-12 col-md-6 form-group">
+                                        <label>Thời hạn bảo hiểm</label>
+                                        <input #typeInput="ngModel" class="form-control" type="number" name="insurranceDuration"
+                                            [(ngModel)]="vehicleInsurrance.insurranceDuration" (input)="onSearchChange($event.target.value)" required maxlength="64">
+                                        <validation-messages [formCtrl]="typeInput"></validation-messages>
+                                    </div>
+                                    <div class="col-xs-12 col-12 col-md-6 form-group">
+                                        <label>Số tiền bảo hiểm</label>
+                                        <input #typeInput="ngModel" class="form-control" type="number" name="moneyAmount"
+                                            [(ngModel)]="vehicleInsurrance.moneyAmount" required maxlength="64">
+                                        <validation-messages [formCtrl]="typeInput"></validation-messages>
+                                    </div>
+                                    <div class="col-xs-12 col-12 col-md-6 form-group">
+                                        <label>Ngày hết hạn</label>
+                                        <span title="{{vehicleInsurrance.expirationDate}}" class="form-control">{{vehicleInsurrance.expirationDate | momentFormat:"DD/MM/YYYY"}}</span>
+                                        <validation-messages [formCtrl]="typeInput"></validation-messages>
+                                    </div>
+                                    <div class="col-xs-12 col-12 col-md-6 form-group">
+                                        <label>Ðơn vị bảo hiểm</label>
+                                        <select #typeInput="ngModel" class="form-control" name="insurranceUnit"
+                                            [(ngModel)]="vehicleInsurrance.insurranceUnit" required maxlength="64">
+                                        <option value="đơn vị K b">đơn vị K b</option>
+                                        <option value="đơn vị K v">đơn vị K v</option>
+                                        <option value="đơn vị K s">đơn vị K s</option>
+                                        <option value="đơn vị K d">đơn vị K d</option>
+                                        </select>
+                                        <validation-messages [formCtrl]="typeInput"></validation-messages>
+                                    </div>
+                                    <div class="col-xs-12 col-12 col-md-6 form-group">
+                                        <label>Ghi chú</label>
+                                        <input #typeInput="ngModel" class="form-control" type="text" name="note"
+                                            [(ngModel)]="vehicleInsurrance.note" required maxlength="64">
+                                        <validation-messages [formCtrl]="typeInput"></validation-messages>
+                                    </div>
+                                </div>   
+
+                                <div class="row align-items-center m--margin-bottom-20">
+                                    <h3>
+                                        <span>{{l("Thông tin bảo hiểm")}}</span>
+                                    </h3>
+                                </div>
+                                <div class="col-xs-6 row align-items-center">
+                                    <!--<Primeng-TurboTable-Start>-->
+                                    <div class="primeng-datatable-container" [busyIf]="primengTableHelper.isLoading">
+                                        <p-table #dataTable (onLazyLoad)="getVehicleInsurrances($event)" [value]="primengTableHelper.records"
+                                            rows="{{primengTableHelper.defaultRecordsCountPerPage}}" [paginator]="false" [lazy]="true"
+                                            [responsive]="primengTableHelper.isResponsive">
+                                            <ng-template pTemplate="header">
+                                                <tr>
+                                                    <th pSortableColumn="date">
+                                                        ngày bh
+                                                        <p-sortIcon field="date"></p-sortIcon>
+                                                    </th>
+                                                    <th pSortableColumn="type">
+                                                        loại bh
+                                                        <p-sortIcon field="type"></p-sortIcon>
+                                                    </th>
+                                                    <th pSortableColumn="insurranceDuration">
+                                                        thời hạn bh
+                                                        <p-sortIcon field="insurranceDuration"></p-sortIcon>
+                                                    </th>
+                                                    <th pSortableColumn="expirationDate">
+                                                        ngày hết hạn
+                                                        <p-sortIcon field="expirationDate"></p-sortIcon>
+                                                    </th>
+                                                    <th pSortableColumn="insurranceNumber">
+                                                        số lan
+                                                        <p-sortIcon field="insurranceNumber"></p-sortIcon>
+                                                    </th>
+                                                    <th pSortableColumn="moneyAmount">
+                                                        số tiền
+                                                        <p-sortIcon field="moneyAmount"></p-sortIcon>
+                                                    </th>
+                                                    <th pSortableColumn="insurranceUnit">
+                                                        đơn vị bh
+                                                        <p-sortIcon field="insurranceUnit"></p-sortIcon>
+                                                    </th>
+                                                  
+                                                    <th pSortableColumn="note">
+                                                        Ghi chú
+                                                        <p-sortIcon field="note"></p-sortIcon>
+                                                    </th>
+                                                    <th>{{l('Edit')}}</th>
+                                                </tr>
+                                            </ng-template>
+                                            <ng-template pTemplate="body" let-record="$implicit">
+                                                <tr>
+                                                    <td>
+                                                        <span class="ui-column-title">Ngày</span>
+                                                        <span title="{{record.date}}">{{record.date | momentFormat:"DD/MM/YYYY"}}</span>
+                                                    </td>
+                                                    <td>
+                                                        <span class="ui-column-title">loai bh</span>
+                                                        <span title="{{record.type}}">{{truncateString(record.type)}}</span>
+                                                    </td>
+                                                    <td>
+                                                        <span class="ui-column-title">thời hạn</span>
+                                                        <span title="{{record.insurranceDuration}}">{{truncateString(record.insurranceDuration)}}</span>
+                                                    </td>
+                                                    <td>
+                                                        <span class="ui-column-title">ngày hết hạn</span>
+                                                        <span title="{{record.expirationDate}}">{{record.expirationDate | momentFormat:"DD/MM/YYYY"}}</span>
+                                                    </td>
+                                                    <td>
+                                                        <span class="ui-column-title">số lần</span>
+                                                        <span title="{{record.insurranceNumber}}">{{truncateString(record.insurranceNumber)}}</span>
+                                                    </td>
+                                                    
+                                                    <td>
+                                                        <span class="ui-column-title">số tiền</span>
+                                                        <span title="{{record.moneyAmount}}">{{truncateString(record.moneyAmount)}}</span>
+                                                    </td>
+                                                   
+                                                    <td>
+                                                        <span class="ui-column-title">đơn vị</span>
+                                                        <span title="{{record.insurranceUnit}}">{{truncateString(record.insurranceUnit)}}</span>
+                                                    </td>
+                                                    <td>
+                                                        <span class="ui-column-title">Ghi chú</span>
+                                                        <span title="{{record.note}}">{{truncateString(record.note)}}</span>
+                                                    </td>
+                                                    <td>
+                                                        <button
+                                                            class="btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill"
+                                                            (click)="GetVehicleInsurranceForEdit(record.id)" title="{{l('Edit')}}">
+                                                            <i class="fa fa-edit" [attr.aria-label]="l('Edit')"></i>
+                                                        </button>
+                                                        <button
+                                                            class="btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill"
+                                                            (click)="deleteVehicleInsurrance(record.id)" title="{{l('Delete')}}">
+                                                            <i class="fa fa-times" [attr.aria-label]="l('Delete')"></i>
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            </ng-template>
+                                        </p-table>
+                                        <div class="primeng-no-data" *ngIf="primengTableHelper.totalRecordsCount == 0">
+                                            {{l('NoData')}}
+                                        </div>
+                                        <div class="primeng-paging-container">
+                                            <p-paginator rows="{{primengTableHelper.defaultRecordsCountPerPage}}" #paginator
+                                                (onPageChange)="getVehicleInsurrances($event)"
+                                                [totalRecords]="primengTableHelper.totalRecordsCount"
+                                                [rowsPerPageOptions]="primengTableHelper.predefinedRecordsCountPerPage">
+                                            </p-paginator>
+                                            <span class="total-records-count">
+                                                {{l('TotalRecordsCount', primengTableHelper.totalRecordsCount)}}
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <!--<Primeng-TurboTable-End>-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <selectVehicleModal #selectVehicleModal (modalSave)="fillSelected()" ></selectVehicleModal>
+</div>

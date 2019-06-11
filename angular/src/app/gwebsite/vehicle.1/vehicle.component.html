@@ -1,0 +1,152 @@
+<div [@routerTransition]>
+
+    <div class="m-subheader ">
+        <div class="d-flex align-items-center">
+            <div class="mr-auto col-xs-6">
+                <h3 class="m-subheader__title m-subheader__title--separator">
+                    <span>{{l("Vehicle")}}</span>
+                </h3>
+                <span class="m-section__sub">
+                    {{l("VehicleInfo")}}
+                </span>
+            </div>
+            <div class="col-xs-6 text-right">
+                <button (click)="createVehicle()" *ngIf="isGranted('Pages.Administration.Vehicle.Create')"
+                    class="btn btn-primary"><i class="fa fa-plus"></i> {{l("CreateNewVehicle")}}</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="m-content">
+        <div class="m-portlet m-portlet--mobile">
+            <div class="m-portlet__body">
+                <form autocomplete="off">
+                    <div class="m-form m-form--label-align-right" id="TextsFilterForm">
+                        <div class="row align-items-center m--margin-bottom-10">
+                            <div class="col-sm-12">
+                                <div class="input-group">
+                                    <input [(ngModel)]="vehicleName" name="vehicleName" autoFocus class="form-control"
+                                        placeholder="Nhập tên khách hàng" type="text">
+                                    <span class="input-group-btn">
+                                        <button (click)="applyFilters()" class="btn btn-primary" type="submit"><i
+                                                class="icon-refresh"></i>
+                                            {{l("Refresh")}}</button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <div class="row align-items-center">
+                    <!--<Primeng-TurboTable-Start>-->
+                    <div class="primeng-datatable-container" [busyIf]="primengTableHelper.isLoading">
+                        <p-table #dataTable (onLazyLoad)="getVehicles($event)" [value]="primengTableHelper.records"
+                            rows="{{primengTableHelper.defaultRecordsCountPerPage}}" [paginator]="false" [lazy]="true"
+                            [responsive]="primengTableHelper.isResponsive">
+                            <ng-template pTemplate="header">
+                                <tr>
+                                    <th pSortableColumn="assetId">
+                                        Mã tài sản
+                                        <p-sortIcon field="assetId"></p-sortIcon>
+                                    </th>
+                                    <th pSortableColumn="plateNumber">
+                                        Số xe
+                                        <p-sortIcon field="plateNumber"></p-sortIcon>
+                                    </th>
+                                    <th pSortableColumn="type">
+                                        Loại xe 
+                                        <p-sortIcon field="type"></p-sortIcon>
+                                    </th>
+                                    <th pSortableColumn="model">
+                                        Model
+                                        <p-sortIcon field="model"></p-sortIcon>
+                                    </th>
+                                    <th pSortableColumn="unitUsed">
+                                        Đơn vị sử dụng 
+                                        <p-sortIcon field="unitUsed"></p-sortIcon>
+                                    </th>
+                                    <th pSortableColumn="registrationDate">
+                                        Ngày đăng ký ban đầu 
+                                        <p-sortIcon field="registrationDate"></p-sortIcon>
+                                    </th>
+                                    <th pSortableColumn="specialVehicle">
+                                        Xe đặc biệt 
+                                        <p-sortIcon field="specialVehicle"></p-sortIcon>
+                                    </th>
+                                    <th>{{l('Edit')}}</th>
+                                </tr>
+                            </ng-template>
+                            <ng-template pTemplate="body" let-record="$implicit">
+                                <tr>
+                                    <td>
+                                        <span class="ui-column-title">Mã tài sản</span>
+                                        <span title="{{record.assetId}}">{{truncateString(record.assetId)}}</span>
+                                    </td>
+                                    <td>
+                                        <span class="ui-column-title">Số xe</span>
+                                        <span title="{{record.plateNumber}}">{{truncateString(record.plateNumber)}}</span>
+                                    </td>
+                                    <td>
+                                        <span class="ui-column-title">Loại xe</span>
+                                        <span title="{{record.type}}">{{truncateString(record.type)}}</span>
+                                    </td>
+                                    <td>
+                                        <span class="ui-column-title">Model</span>
+                                        <span title="{{record.model}}">{{truncateString(record.model)}}</span>
+                                    </td>
+                                    <td>
+                                        <span class="ui-column-title">Đơn vị sử dụng</span>
+                                        <span title="{{record.unitUsed}}">{{truncateString(record.unitUsed)}}</span>
+                                    </td>
+                                    <td>
+                                        <span class="ui-column-title">Ngày đăng ký ban đầu</span>
+                                        <span title="{{record.registrationDate}}">{{truncateString(record.registrationDate)}}</span>
+                                    </td>
+                                    <td>
+                                        <span class="ui-column-title">Xe đặc biệt</span>
+                                        <span title="{{record.specialVehicle}}">{{truncateString(record.specialVehicle)}}</span>
+                                    </td>
+                                    <td>
+                                        <button
+                                            class="btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill"
+                                            (click)="createOrEditModal.show(record.id)" title="{{l('Edit')}}">
+                                            <i class="fa fa-edit" [attr.aria-label]="l('Edit')"></i>
+                                        </button>
+
+                                        <button
+                                            class="btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill"
+                                            (click)="deleteVehicle(record.id)" title="{{l('Delete')}}">
+                                            <i class="fa fa-times" [attr.aria-label]="l('Delete')"></i>
+                                        </button>
+
+                                        <button
+                                            class="btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill"
+                                            (click)="viewVehicleModal.show(record.id)" title="{{l('View')}}">
+                                            <i class="fa fa-eye" [attr.aria-label]="l('View')"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </ng-template>
+                        </p-table>
+                        <div class="primeng-no-data" *ngIf="primengTableHelper.totalRecordsCount == 0">
+                            {{l('NoData')}}
+                        </div>
+                        <div class="primeng-paging-container">
+                            <p-paginator rows="{{primengTableHelper.defaultRecordsCountPerPage}}" #paginator
+                                (onPageChange)="getVehicles($event)"
+                                [totalRecords]="primengTableHelper.totalRecordsCount"
+                                [rowsPerPageOptions]="primengTableHelper.predefinedRecordsCountPerPage">
+                            </p-paginator>
+                            <span class="total-records-count">
+                                {{l('TotalRecordsCount', primengTableHelper.totalRecordsCount)}}
+                            </span>
+                        </div>
+                    </div>
+                    <!--<Primeng-TurboTable-End>-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <createOrEditVehicleModal #createOrEditModal (modalSave)="reloadPage()"></createOrEditVehicleModal>
+    <viewVehicleModal #viewVehicleModal></viewVehicleModal>
+</div>

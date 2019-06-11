@@ -1,0 +1,287 @@
+<div [@routerTransition]>
+
+    <div class="m-subheader ">
+        <div class="d-flex align-items-center">
+            <div class="mr-auto col-xs-6">
+                <h3 class="m-subheader__title m-subheader__title--separator">
+                    <span>{{l("Vehicle")}}</span>
+                </h3>
+                <span class="m-section__sub">
+                    {{l("VehicleInfo")}}
+                </span>
+            </div>
+            <div class="col-xs-6 text-right">
+                <button type="submit" class="btn btn-primary" [buttonBusy]="saving"
+                    (click)="save()" [busyText]="l('SavingWithThreeDot')">
+                    <i class="fa fa-save"></i>
+                    {{l("Save")}}
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="m-content">
+        <div class="m-portlet m-portlet--mobile">
+            <div class="m-portlet__body">
+                <form autocomplete="off">
+                    <div class="m-form m-form--label-align-right" id="TextsFilterForm">
+                        <div class="row align-items-center m--margin-bottom-10">
+                            <div class="col-sm-12">
+                                <div class="row align-items-center m--margin-bottom-10">
+                                    <div class="col-xs-12 col-12 col-md-6 form-group">
+                                        <div class="d-flex align-items-center">
+                                            <div class="mr-auto col-xs-6">
+                                                <label>Mã tài sản</label>
+                                            </div>
+                                            <div class="col-xs-6 text-right">
+                                                <button type="button" class="btn btn-default"
+                                                    (click)="selectAssetId()">{{l("...")}}
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <span title="{{vehicle.assetId}}" class="form-control">{{vehicle.assetId}}</span>
+                                    </div>
+                                    <div class="col-xs-12 col-12 col-md-6 form-group">
+                                        <div class="d-flex align-items-center">
+                                            <div class="mr-auto col-xs-6">
+                                                <label>Model</label>
+                                            </div>
+                                            <div class="col-xs-6 text-right">
+                                                <button type="button" class="btn btn-default"
+                                                    (click)="selectVehicleModel()">{{l("...")}}
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <span title="{{vehicle.model}}" class="form-control">{{vehicle.model}}</span>
+                                        <validation-messages [formCtrl]="typeInput"></validation-messages>
+                                    </div>
+                                </div>
+                                <div class="row align-items-center m--margin-bottom-20">
+                                    <h3>
+                                        <span>{{l("Thông tin xe")}}</span>
+                                    </h3>
+                                </div>
+                                <div class="row align-items-center m--margin-bottom-20">                        
+                                    <div class="col-xs-12 col-12 col-md-6 form-group">
+                                        <label>Số xe</label>
+                                        <input #typeInput="ngModel" class="form-control" type="text" name="PlateNumber"
+                                            [(ngModel)]="vehicle.plateNumber" required maxlength="64">
+                                        <validation-messages [formCtrl]="typeInput"></validation-messages>
+                                    </div>
+                                    
+                                    <div class="col-xs-12 col-12 col-md-6 form-group">
+                                        <label>Nước sản xuất</label>
+                                        <select #typeInput="ngModel" class="form-control" name="CountryOfManufacture"
+                                            [(ngModel)]="vehicle.countryOfManufacture" required>
+                                            <option value="VIET NAM">VIET NAM</option>
+                                            <option value="NHAT BAN">NHAT BAN</option>
+                                            <option value="TRUNG QUOC">TRUNG QUOC</option>
+                                            <option value="MY">MY</option>
+                                            <option value="HAN QUOC">HAN QUOC</option>
+                                            <option value="DUC">DUC</option>
+                                        </select>
+                                        <validation-messages [formCtrl]="typeInput"></validation-messages>
+                                    </div>
+                                    <div class="col-xs-12 col-12 col-md-6 form-group">
+                                        <label>Loại xe</label>
+                                        <span title="{{vehicle.type}}" class="form-control">{{vehicle.type}}</span>
+                                        <validation-messages [formCtrl]="typeInput"></validation-messages>
+                                    </div>
+                                    <div class="col-xs-12 col-12 col-md-6 form-group">
+                                        <label>Hãng sản xuất</label>
+                                        <span title="{{vehicle.manufacturer}}" class="form-control">{{vehicle.manufacturer}}</span>
+                                        <validation-messages [formCtrl]="typeInput"></validation-messages>
+                                    </div>
+                                    <div class="col-xs-12 col-12 col-md-6 form-group">
+                                        <label>Loại nhiên liệu</label>
+                                        <span title="{{vehicle.fuelType}}" class="form-control">{{vehicle.fuelType}}</span>
+                                        <validation-messages [formCtrl]="typeInput"></validation-messages>
+                                    </div>
+                                    <div class="col-xs-12 col-12 col-md-6 form-group">
+                                        <label>Năm sản xuất</label>
+                                        <input #typeInput="ngModel" class="form-control" type="number" name="YearOfManufacture"
+                                            [(ngModel)]="vehicle.yearOfManufacture" required maxlength="64">
+                                        <validation-messages [formCtrl]="typeInput"></validation-messages>
+                                    </div>
+                                    <div class="col-xs-12 col-12 col-md-6 form-group">
+                                        <label>Màu xe</label>
+                                        <input #typeInput="ngModel" class="form-control" type="text" name="Color"
+                                            [(ngModel)]="vehicle.color" required maxlength="64">
+                                        <validation-messages [formCtrl]="typeInput"></validation-messages>
+                                    </div>
+                                    <div class="col-xs-12 col-12 col-md-6 form-group">
+                                        <label>Đơn vị sử dụng</label>
+                                        <input #typeInput="ngModel" class="form-control" type="text" name="UnitUsed"
+                                            [(ngModel)]="vehicle.unitUsed" required maxlength="64">
+                                        <validation-messages [formCtrl]="typeInput"></validation-messages>
+                                    </div>
+                                    <div class="col-xs-12 col-12 col-md-6 form-group">
+                                        <label>Tên chủ phương tiện</label>
+                                        <input #typeInput="ngModel" class="form-control" type="text" name="OwnerName"
+                                            [(ngModel)]="vehicle.ownerName" required maxlength="64">
+                                        <validation-messages [formCtrl]="typeInput"></validation-messages>
+                                    </div>
+                                    <div class="col-xs-12 col-12 col-md-6 form-group">
+                                        <label>Mục đích sử dụng</label>
+                                        <input #typeInput="ngModel" class="form-control" type="text" name="UsePurpose"
+                                            [(ngModel)]="vehicle.usePurpose" required maxlength="64">
+                                        <validation-messages [formCtrl]="typeInput"></validation-messages>
+                                    </div>
+                                    <div class="col-xs-12 col-12 col-md-6 form-group">
+                                        <label>Ngày đăng ký ban đầu</label>
+                                        <input #typeInput="ngModel" class="form-control" type="date" name="registrationDate"
+                                            [(ngModel)]="vehicle.registrationDate" required maxlength="64">
+                                        <validation-messages [formCtrl]="typeInput"></validation-messages>
+                                    </div>
+                                    <div class="col-xs-12 col-12 col-md-6 form-group">
+                                        <label>Số máy</label>
+                                        <input #typeInput="ngModel" class="form-control" type="text" name="engineNumber"
+                                            [(ngModel)]="vehicle.engineNumber" required maxlength="64">
+                                        <validation-messages [formCtrl]="typeInput"></validation-messages>
+                                    </div>
+                                    <div class="col-xs-12 col-12 col-md-6 form-group">
+                                        <label>Số sườn</label>
+                                        <input #typeInput="ngModel" class="form-control" type="text" name="RibNumber"
+                                            [(ngModel)]="vehicle.ribNumber" required maxlength="64">
+                                        <validation-messages [formCtrl]="typeInput"></validation-messages>
+                                    </div>
+                                    <div class="col-xs-12 col-12 col-md-6 form-group">
+                                        <label>Cỡ lốp sử dụng</label>
+                                        <span title="{{vehicle.tireSize}}" class="form-control">{{vehicle.tireSize}}</span>
+                                        <validation-messages [formCtrl]="typeInput"></validation-messages>
+                                    </div>
+                                    <div class="col-xs-12 col-12 col-md-6 form-group">
+                                        <label>Kiểu động cơ</label>
+                                        <span title="{{vehicle.engineType}}" class="form-control">{{vehicle.engineType}}</span>
+                                        <validation-messages [formCtrl]="typeInput"></validation-messages>
+                                    </div>
+                                    <div class="col-xs-12 col-12 col-md-6 form-group">
+                                        <label>Loại hộp số</label>
+                                        <span title="{{vehicle.gearboxType}}" class="form-control">{{vehicle.gearboxType}}</span>
+                                        <validation-messages [formCtrl]="typeInput"></validation-messages>
+                                    </div>
+                                    <div class="col-xs-12 col-12 col-md-6 form-group">
+                                        <label>Định mức nhiên liệu (lít/100km)</label>
+                                        <span title="{{vehicle.fuelNorms}}" class="form-control">{{vehicle.fuelNorms}}</span>
+                                        <validation-messages [formCtrl]="typeInput"></validation-messages>
+                                    </div>
+                                    <div class="col-xs-12 col-12 col-md-6 form-group">
+                                        <label>Thể tích động cơ (lít)</label>
+                                        <span title="{{vehicle.engineVolume}}" class="form-control">{{vehicle.engineVolume}}</span>
+                                        <validation-messages [formCtrl]="typeInput"></validation-messages>
+                                    </div>
+                                    <div class="col-xs-12 col-12 col-md-6 form-group">
+                                        <label>Chiều dài (mm)</label>
+                                        <span title="{{vehicle.length}}" class="form-control">{{vehicle.length}}</span>
+                                        <validation-messages [formCtrl]="typeInput"></validation-messages>
+                                    </div>
+                                    <div class="col-xs-12 col-12 col-md-6 form-group">
+                                        <label>Chiều cao (mm)</label>
+                                        <span title="{{vehicle.height}}" class="form-control">{{vehicle.height}}</span>
+                                        <validation-messages [formCtrl]="typeInput"></validation-messages>
+                                    </div>
+                                    <div class="col-xs-12 col-12 col-md-6 form-group">
+                                        <label>Chiều ngang (mm)</label>
+                                        <span title="{{vehicle.horizontalLength}}" class="form-control">{{vehicle.horizontalLength}}</span>
+                                        <validation-messages [formCtrl]="typeInput"></validation-messages>
+                                    </div>
+                                    <div class="col-xs-12 col-12 col-md-6 form-group">
+                                        <label>Xe đặc biệt</label>
+                                        <input #typeInput="ngModel" class="form-control" type="checkbox" name="SpecialVehicle"
+                                            [(ngModel)]="vehicle.specialVehicle">
+                                        <validation-messages [formCtrl]="typeInput"></validation-messages>
+                                    </div>
+                                </div>   
+                                <div class="row align-items-center m--margin-bottom-20">
+                                    <h3>
+                                        <span>{{l("Thiết bị đi kèm")}}</span>
+                                    </h3>
+                                </div>
+                                <div class="row align-items-center">
+                                    <div class="col-xs-6">
+                                        <button (click)="createOrEditAttachedDevice()"
+                                            class="btn btn-primary"><i class="fa fa-plus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="col-xs-6 row align-items-center">
+                                    <!--<Primeng-TurboTable-Start>-->
+                                    <div class="primeng-datatable-container" [busyIf]="primengTableHelper.isLoading">
+                                        <p-table #dataTable (onLazyLoad)="getAttachedDevices($event)" [value]="primengTableHelper.records"
+                                            rows="{{primengTableHelper.defaultRecordsCountPerPage}}" [paginator]="false" [lazy]="true"
+                                            [responsive]="primengTableHelper.isResponsive">
+                                            <ng-template pTemplate="header">
+                                                <tr>
+                                                    <th pSortableColumn="name">
+                                                        Thiết bị kèm theo
+                                                        <p-sortIcon field="name"></p-sortIcon>
+                                                    </th>
+                                                    <th pSortableColumn="amount">
+                                                        Số lượng
+                                                        <p-sortIcon field="amount"></p-sortIcon>
+                                                    </th>
+                                                    <th pSortableColumn="explain">
+                                                        Diễn giải
+                                                        <p-sortIcon field="explain"></p-sortIcon>
+                                                    </th>
+                                                    <th>{{l('Edit')}}</th>
+                                                </tr>
+                                            </ng-template>
+                                            <ng-template pTemplate="body" let-record="$implicit">
+                                                <tr>
+                                                    <td>
+                                                        <span class="ui-column-title">Thiết bị kèm theo</span>
+                                                        <span title="{{record.name}}">{{truncateString(record.name)}}</span>
+                                                    </td>
+                                                    <td>
+                                                        <span class="ui-column-title">Số lượng</span>
+                                                        <span title="{{record.amount}}">{{truncateString(record.amount)}}</span>
+                                                    </td>
+                                                    <td>
+                                                        <span class="ui-column-title">Diễn giải</span>
+                                                        <span title="{{record.explain}}">{{truncateString(record.explain)}}</span>
+                                                    </td>
+                                                    <td>
+                                                        <button
+                                                            class="btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill"
+                                                            (click)="createOrEditAttachedDevice(record.id)" title="{{l('Edit')}}">
+                                                            <i class="fa fa-edit" [attr.aria-label]="l('Edit')"></i>
+                                                        </button>
+                                                        <button
+                                                            class="btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill"
+                                                            (click)="deleteAttachedDevice(record.id)" title="{{l('Delete')}}">
+                                                            <i class="fa fa-times" [attr.aria-label]="l('Delete')"></i>
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            </ng-template>
+                                        </p-table>
+                                        <div class="primeng-no-data" *ngIf="primengTableHelper.totalRecordsCount == 0">
+                                            {{l('NoData')}}
+                                        </div>
+                                        <div class="primeng-paging-container">
+                                            <p-paginator rows="{{primengTableHelper.defaultRecordsCountPerPage}}" #paginator
+                                                (onPageChange)="getAttachedDevices($event)"
+                                                [totalRecords]="primengTableHelper.totalRecordsCount"
+                                                [rowsPerPageOptions]="primengTableHelper.predefinedRecordsCountPerPage">
+                                            </p-paginator>
+                                            <span class="total-records-count">
+                                                {{l('TotalRecordsCount', primengTableHelper.totalRecordsCount)}}
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <!--<Primeng-TurboTable-End>-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <div class="row align-items-center">
+                </div>
+            </div>
+        </div>
+    </div>
+    <selectAssetIdModal #selectAssetIdModal (modalSave)="fillSelectedAssetId()" ></selectAssetIdModal>
+    <selectVehicleModelModal #selectVehicleModelModal (modalSave)="fillSelectedVehicleModel()" ></selectVehicleModelModal>
+    <createOrEditAttachedDeviceModal #createOrEditAttachedDeviceModal (modalSave)="reloadPage()"></createOrEditAttachedDeviceModal>
+</div>

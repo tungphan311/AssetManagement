@@ -7,6 +7,7 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.Vehicles
     {
         void CreateOrEditVehicle(VehicleInput vehicleInput);
         VehicleInput GetVehicleForEdit(int id);
+        VehicleInput GetVehicleByAssetForEdit(string assetId);
         void DeleteVehicle(int id);
         PagedResultDto<VehicleDto> GetVehicles(VehicleFilter input);
         VehicleForViewDto GetVehicleForView(int id);

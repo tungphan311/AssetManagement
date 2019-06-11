@@ -1,0 +1,126 @@
+<div bsModal #createOrEditModal="bs-modal" class="modal fade" tabindex="-1" role="dialog"
+    aria-labelledby="createOrEditModal" aria-hidden="true" [config]="{backdrop: 'static'}">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <form #editForm="ngForm" novalidate (ngSubmit)="save()">
+                <div class="modal-header">
+                    <h4 class="modal-title">
+                        <span *ngIf="vehicleModel.id">Cập nhật xe: {{vehicleModel.platenumber}}</span>
+                        <span *ngIf="!vehicleModel.id">Tạo mới xe</span>
+                    </h4>
+                    <button type="button" class="close" (click)="close()" [attr.aria-label]="l('Close')">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row align-items-center m--margin-bottom-20">                        
+                        <div class="col-xs-12 col-12 col-md-6 form-group">
+                            <label>Model</label>
+                            <input #typeInput="ngModel" class="form-control" type="text" name="Model"
+                                [(ngModel)]="vehicleModel.model" required maxlength="64">
+                            <validation-messages [formCtrl]="typeInput"></validation-messages>
+                        </div>
+                        <div class="col-xs-12 col-12 col-md-6 form-group">
+                            <label>Loại xe</label>
+                            <select #typeInput="ngModel" class="form-control" name="Type"
+                                [(ngModel)]="vehicleModel.type" required>
+                                <option value="1 cho">1 cho</option>
+                                <option value="2 cho">2 cho</option>
+                                <option value="4 cho">4 cho</option>
+                                <option value="7 cho">7 cho</option>
+                                <option value="9 cho">9 cho</option>
+                                <option value="12 cho">12 cho</option>
+                                <option value="16 cho">16 cho</option>
+                                <option value="45 cho">45 cho</option>
+                            </select>
+                            <validation-messages [formCtrl]="typeInput"></validation-messages>
+                        </div>
+                        <div class="col-xs-12 col-12 col-md-6 form-group">
+                            <label>Hãng sản xuất</label>
+                            <select #typeInput="ngModel" class="form-control" name="Manufacturer"
+                                [(ngModel)]="vehicleModel.manufacturer" required>
+                                <option value="Toyota">Toyota</option>
+                                <option value="Nissan">Nissan</option>
+                                <option value="Honda">Honda</option>
+                                <option value="Suzuki">Suzuki</option>
+                                <option value="Subaru">Subaru</option>
+                                <option value="Mitsubishi">Mitsubishi</option>
+                            </select>
+                            <validation-messages [formCtrl]="typeInput"></validation-messages>
+                        </div>
+                        <div class="col-xs-12 col-12 col-md-6 form-group">
+                            <label>Loại nhiên liệu</label>
+                            <select #typeInput="ngModel" class="form-control" name="FuelType"
+                                [(ngModel)]="vehicleModel.fuelType" required>
+                                <option value="Xang">Xang</option>
+                                <option value="Xang sinh hoc">Xang sinh hoc</option>
+                                <option value="Dien">Dien</option>
+                            </select>
+                            <validation-messages [formCtrl]="typeInput"></validation-messages>
+                        </div>
+                        <div class="col-xs-12 col-12 col-md-6 form-group">
+                            <label>Cỡ lốp sử dụng</label>
+                            <input #typeInput="ngModel" class="form-control" type="text" name="TireSize"
+                                [(ngModel)]="vehicleModel.tireSize" required maxlength="64">
+                            <validation-messages [formCtrl]="typeInput"></validation-messages>
+                        </div>
+                        <div class="col-xs-12 col-12 col-md-6 form-group">
+                            <label>Kiểu động cơ</label>
+                            <input #typeInput="ngModel" class="form-control" type="text" name="EngineType"
+                                [(ngModel)]="vehicleModel.engineType" required maxlength="64">
+                            <validation-messages [formCtrl]="typeInput"></validation-messages>
+                        </div>
+                        <div class="col-xs-12 col-12 col-md-6 form-group">
+                            <label>Loại hộp số</label>
+                            <select #typeInput="ngModel" class="form-control" name="GearboxType"
+                                [(ngModel)]="vehicleModel.gearboxType" required>
+                                <option value="So san">So san</option>
+                                <option value="So tu dong">So tu dong</option>
+                                <option value="So tu dong vo cap CVT">So tu dong vo cap CVT</option>
+                                <option value="So ly hop kep">So ly hop kep</option>
+                            </select>
+                            <validation-messages [formCtrl]="typeInput"></validation-messages>
+                        </div>
+                        <div class="col-xs-12 col-12 col-md-6 form-group">
+                            <label>Định mức nhiên liệu (lít/100km)</label>
+                            <input #typeInput="ngModel" class="form-control" type="number" name="FuelNorms"
+                                [(ngModel)]="vehicleModel.fuelNorms" required maxlength="64">
+                            <validation-messages [formCtrl]="typeInput"></validation-messages>
+                        </div>
+                        <div class="col-xs-12 col-12 col-md-6 form-group">
+                            <label>Thể tích động cơ (lít)</label>
+                            <input #typeInput="ngModel" class="form-control" type="number" name="EngineVolume"
+                                [(ngModel)]="vehicleModel.engineVolume" required maxlength="64">
+                            <validation-messages [formCtrl]="typeInput"></validation-messages>
+                        </div>
+                        <div class="col-xs-12 col-12 col-md-6 form-group">
+                            <label>Chiều dài (mm)</label>
+                            <input #typeInput="ngModel" class="form-control" type="number" name="Length"
+                                [(ngModel)]="vehicleModel.length" required maxlength="64">
+                            <validation-messages [formCtrl]="typeInput"></validation-messages>
+                        </div>
+                        <div class="col-xs-12 col-12 col-md-6 form-group">
+                            <label>Chiều cao (mm)</label>
+                            <input #typeInput="ngModel" class="form-control" type="number" name="Height"
+                                [(ngModel)]="vehicleModel.height" required maxlength="64">
+                            <validation-messages [formCtrl]="typeInput"></validation-messages>
+                        </div>
+                        <div class="col-xs-12 col-12 col-md-6 form-group">
+                            <label>Chiều ngang (mm)</label>
+                            <input #typeInput="ngModel" class="form-control" type="number" name="HorizontalLength"
+                                [(ngModel)]="vehicleModel.horizontalLength" required maxlength="64">
+                            <validation-messages [formCtrl]="typeInput"></validation-messages>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button [disabled]="saving" type="button" class="btn btn-default"
+                        (click)="close()">{{l("Cancel")}}</button>
+                    <button type="submit" class="btn btn-primary" [buttonBusy]="saving"
+                        [busyText]="l('SavingWithThreeDot')"><i class="fa fa-save"></i>
+                        <span>{{l("Save")}}</span></button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
