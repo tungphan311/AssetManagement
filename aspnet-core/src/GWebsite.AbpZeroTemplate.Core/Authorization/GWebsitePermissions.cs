@@ -74,6 +74,17 @@
         public const string Pages_Administration_PO_Edit = "Pages.Administration.PO.Edit";
         public const string Pages_Administration_PO_Delete = "Pages.Administration.PO.Delete";
 
+        public const string Pages_Administration_Retail = "Pages.Administration.Retail";
+        public const string Pages_Administration_Retail_Create = "Pages.Administration.Retail.Create";
+        public const string Pages_Administration_Retail_Edit = "Pages.Administration.Retail.Edit";
+        public const string Pages_Administration_Retail_Delete = "Pages.Administration.Retail.Delete";
+
+        public const string Pages_Administration_RetailPayment = "Pages.Administration.RetailPayment";
+        public const string Pages_Administration_RetailPayment_Create = "Pages.Administration.RetailPayment.Create";
+        public const string Pages_Administration_RetailPayment_Edit = "Pages.Administration.RetailPayment.Edit";
+        public const string Pages_Administration_RetailPayment_Delete = "Pages.Administration.RetailPayment.Delete";
+
+
         public const string Pages_Administration_POMerchandise = "Pages.Administration.POMerchandise";
         public const string Pages_Administration_POMerchandise_Create = "Pages.Administration.POMerchandise.Create";
         public const string Pages_Administration_POMerchandise_Edit = "Pages.Administration.POMerchandise.Edit";

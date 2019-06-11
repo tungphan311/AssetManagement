@@ -16,7 +16,10 @@ using GWebsite.AbpZeroTemplate.Application.Share.AssignmentTables.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.Bids.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.Bidders.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.POs.Dto;
+using GWebsite.AbpZeroTemplate.Application.Share.Retails.Dto;
+using GWebsite.AbpZeroTemplate.Application.Share.RetailPayments.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.POMerchandises.Dto;
+using GWebsite.AbpZeroTemplate.Application.Share.POPayments.Dto;
 
 namespace GWebsite.AbpZeroTemplate.Applications
 {
@@ -112,11 +115,27 @@ namespace GWebsite.AbpZeroTemplate.Applications
             configuration.CreateMap<PO, POInput>();
             configuration.CreateMap<PO, POForViewDto>();
 
+            // Retail
+            configuration.CreateMap<Retail, RetailDto>();
+            configuration.CreateMap<RetailInput, Retail>();
+            configuration.CreateMap<Retail, RetailInput>();
+            configuration.CreateMap<Retail, RetailForViewDto>();
+
+            // Retail Payment
+            configuration.CreateMap<RetailPayment, RetailPaymentDto>();
+            configuration.CreateMap<RetailPaymentInput, RetailPayment>();
+            configuration.CreateMap<RetailPayment, RetailPaymentInput>();
+            configuration.CreateMap<RetailPayment, RetailPaymentForViewDto>();
             // PO
             configuration.CreateMap<POMerchandise, POMerchandiseDto>();
             configuration.CreateMap<POMerchandiseInput, POMerchandise>();
             configuration.CreateMap<POMerchandise, POMerchandiseInput>();
             configuration.CreateMap<POMerchandise, POMerchandiseForViewDto>();
+
+            //POPaymentDetail
+            configuration.CreateMap<POPayment, POPaymentDto>();
+            configuration.CreateMap<POPaymentInput, POPayment>();
+            configuration.CreateMap<POPayment, POPaymentInput>();
         }
     }
 }

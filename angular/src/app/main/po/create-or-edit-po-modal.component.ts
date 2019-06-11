@@ -3,7 +3,7 @@ import { AppComponentBase } from "@shared/common/app-component-base";
 import { ModalDirective } from "ngx-bootstrap";
 import { Table } from "primeng/table";
 import { Paginator } from "primeng/primeng";
-import { POServiceProxy, POInput, ContractServiceProxy, VendorServiceProxy, ContractDetailInput } from "@shared/service-proxies/service-proxies";
+import { POServiceProxy, POInput, ContractServiceProxy, VendorServiceProxy, ContractPaymentDto, ContractPaymentInput, POPaymentInput } from "@shared/service-proxies/service-proxies";
 import { SelectContractModalComponent } from './select-contract-modal.component';
 import { appModuleAnimation } from "@shared/animations/routerTransition";
 import { AddMerchandiseToPOComponent } from "./add-merchandise-to-po.component";
@@ -36,8 +36,9 @@ export class CreateOrEditPOModalComponent extends AppComponentBase {
     vendorCode: string;
     vendorName: string;
     vendorAddress: string;
-
+    listPaymentDetail: POPaymentInput[]=[];
     merchandises = [];
+    paymentIndex: number;
 
     constructor(
         injector: Injector,
@@ -56,6 +57,7 @@ export class CreateOrEditPOModalComponent extends AppComponentBase {
         this.vendorCode = '';
         this.vendorName = '';
         this.vendorAddress = '';
+        this.paymentIndex = 1;
     }
 
     show(id?: number | null | undefined): void {
@@ -63,6 +65,22 @@ export class CreateOrEditPOModalComponent extends AppComponentBase {
         this.emptyAll();
         this._poService.getPOForEdit(id).subscribe(result => {
             this.po = result;
+
+            if (result.payments!=null)
+            {
+                result.payments.forEach(item => {
+                    var momen = require('moment');
+                    var day = momen(item.paymentDate);
+                    var tz = day.utcOffset();
+                    day.add(tz, 'm');
+                    item.paymentDate = day.format('YYYY-MM-DD');
+                });
+
+                this.listPaymentDetail = result.payments;
+
+                this.paymentIndex = result.payments.length + 1;
+            }
+
             this.modal.show();
         })
     }
@@ -101,7 +119,29 @@ export class CreateOrEditPOModalComponent extends AppComponentBase {
     save(): void {
 
     }
-
+    addPaymentDetail(): void{
+            var payment = new POPaymentInput();
+            payment.batch = this.paymentIndex;
+            payment.percent = 0;
+            payment.amount = 0;
+            payment.note = "";
+    
+            var moment3 = require('moment');
+            var date = moment3(payment.paymentDate);
+            var tz = date.utcOffset();
+            date.add(tz, 'm');
+            payment.paymentDate = date.format('YYYY-MM-DD');
+    
+            this.listPaymentDetail.push(payment);
+            this.paymentIndex += 1;
+    }
+    removePaymentDetail():void{
+        if (this.listPaymentDetail.length>0)
+        {
+            this.listPaymentDetail.pop();
+            this.paymentIndex+=-1;
+        }
+    }
     reloadVendor(vendorID:number): void {
         if (vendorID!=0)
         {

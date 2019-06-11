@@ -13,6 +13,7 @@ import { projection } from '@angular/core/src/render3/instructions';
 import { variable } from '@angular/compiler/src/output/output_ast';
 import { bootloader } from '@angularclass/hmr';
 import { observable, of as _observableOf } from 'rxjs';
+import { NgForm } from '@angular/forms';
 
 @Component({
     selector: 'createOrEditBidModal',
@@ -30,6 +31,8 @@ export class CreateOrEditBidModalComponent extends AppComponentBase {
 
     @ViewChild('selectVendorModal') selectVendorModal: SelectVendorModalComponent;
     @ViewChild('selectProjectModal') selectProjectModal: SelectProjectModalComponent;
+
+    @ViewChild('editForm') editForm: NgForm;
 
     /**
      * @Output dùng để public event cho component khác xử lý
@@ -68,7 +71,6 @@ export class CreateOrEditBidModalComponent extends AppComponentBase {
 
     reloadListBidders(event: LazyLoadEvent) {
         
-        const temp = _observableOf(this.bidderList); 
     
             if (this.bidderList.length>0){
             this.primengTableHelper.totalRecordsCount = this.bidderList.length;
@@ -197,13 +199,45 @@ export class CreateOrEditBidModalComponent extends AppComponentBase {
         
         
     }
-    getBidderCode(bidderID:number):string{
-        
-        return "";
+    readImage(event,vendorID) {
+        var myReader = new FileReader();
+        myReader.onloadend = (e) => {
+            for(const item of this.bidderList){
+                if (vendorID == item.bidder.vendorId)
+                {
+                    item.bidder.attachment = myReader.result.toString();
+                }
+            }
+        }
+        myReader.readAsDataURL(event.target.files[0]);
     }
-    getBidderName(bidderID:number):string{
-        
-        return "";
+    readImage1(event) {
+        var myReader = new FileReader();
+        myReader.onloadend = (e) => {       
+                    this.bid.attachment1 = myReader.result.toString();                
+        }
+        myReader.readAsDataURL(event.target.files[0]);
+    }
+    readImage2(event) {
+        var myReader = new FileReader();
+        myReader.onloadend = (e) => {       
+                    this.bid.attachment2 = myReader.result.toString();                
+        }
+        myReader.readAsDataURL(event.target.files[0]);
+    }
+    readImage3(event) {
+        var myReader = new FileReader();
+        myReader.onloadend = (e) => {       
+                    this.bid.attachment3 = myReader.result.toString();                
+        }
+        myReader.readAsDataURL(event.target.files[0]);
+    }
+    readImage4(event) {
+        var myReader = new FileReader();
+        myReader.onloadend = (e) => {       
+                    this.bid.attachment4 = myReader.result.toString();                
+        }
+        myReader.readAsDataURL(event.target.files[0]);
     }
     getProjectCode(projectID:number):string{
         let projectCode = "";
@@ -266,6 +300,7 @@ export class CreateOrEditBidModalComponent extends AppComponentBase {
 
     close(): void {
         this.modal.hide();
+        this.editForm.resetForm();
         this.modalSave.emit(null);
     }
     truncateString(text): string {

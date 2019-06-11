@@ -2141,6 +2141,70 @@ namespace GSoft.AbpZeroTemplate.Migrations
                     b.ToTable("Projects");
                 });
 
+            modelBuilder.Entity("GWebsite.AbpZeroTemplate.Core.Models.Retail", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("BoughtQuantity");
+
+                    b.Property<string>("Code");
+
+                    b.Property<string>("CreatedBy");
+
+                    b.Property<DateTime?>("CreatedDate");
+
+                    b.Property<bool>("IsDelete");
+
+                    b.Property<int>("MerchandiseID");
+
+                    b.Property<double>("Price");
+
+                    b.Property<int>("Quantity");
+
+                    b.Property<double>("Total");
+
+                    b.Property<string>("UpdatedBy");
+
+                    b.Property<DateTime?>("UpdatedDate");
+
+                    b.Property<int>("VendorID");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Retails");
+                });
+
+            modelBuilder.Entity("GWebsite.AbpZeroTemplate.Core.Models.RetailPayment", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("CreatedBy");
+
+                    b.Property<DateTime?>("CreatedDate");
+
+                    b.Property<bool>("IsDelete");
+
+                    b.Property<string>("Note");
+
+                    b.Property<DateTime>("PaymentDate");
+
+                    b.Property<int>("Quantity");
+
+                    b.Property<int>("RetailId");
+
+                    b.Property<string>("UpdatedBy");
+
+                    b.Property<DateTime?>("UpdatedDate");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("RetailPayments");
+                });
+
             modelBuilder.Entity("GWebsite.AbpZeroTemplate.Core.Models.Vendor", b =>
                 {
                     b.Property<int>("Id")

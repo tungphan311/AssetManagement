@@ -36,7 +36,10 @@ namespace GWebsite.AbpZeroTemplate.EntityFrameworkCore
         public virtual DbSet<ContractPayment> ContractPayments { get; set; }
         public virtual DbSet<Project> Projects { get; set; }
         public virtual DbSet<AssignmentTable> AssigmentTables { get; set; }
+        public virtual DbSet<Retail> Retails { get; set; }
+        public virtual DbSet<RetailPayment> RetailPayments { get; set; }
         public virtual DbSet<POMerchandise> POMerchandises { get; set; }
+        public virtual DbSet<POPayment> POPayments { get; set; }
         /// <summary>
         /// GPermissions dùng cho bên Gwebsite
         /// </summary>
