@@ -119,7 +119,7 @@ table {
 
 .custom-table>table td,.custom-table>table th {
     border: solid 1px;
-    padding: 3px;
+    padding: 10px;
 }
 
 
@@ -140,4 +140,10 @@ img.custom-img {
     width: 100%;
     margin-top: 10px;
     margin-bottom: 10px;
+}
+
+.no-data {
+    border: 1px solid #f4f5f8;
+    padding: 10px;
+    text-align: center;
 }

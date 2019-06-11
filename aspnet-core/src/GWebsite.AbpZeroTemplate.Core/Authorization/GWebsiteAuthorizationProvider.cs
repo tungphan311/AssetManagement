@@ -95,6 +95,11 @@ namespace GWebsite.AbpZeroTemplate.Core.Authorization
             PO.CreateChildPermission(GWebsitePermissions.Pages_Administration_PO_Create, L("CreateNewPO"));
             PO.CreateChildPermission(GWebsitePermissions.Pages_Administration_PO_Edit, L("EditingPO"));
             PO.CreateChildPermission(GWebsitePermissions.Pages_Administration_PO_Delete, L("DeletingPO"));
+
+            var POMerchandise = pages.CreateChildPermission(GWebsitePermissions.Pages_Administration_POMerchandise, L("POMerchandisePO"));
+            POMerchandise.CreateChildPermission(GWebsitePermissions.Pages_Administration_POMerchandise_Create, L("CreateNewPOMerchandise"));
+            POMerchandise.CreateChildPermission(GWebsitePermissions.Pages_Administration_POMerchandise_Edit, L("EditingPOMerchandise"));
+            POMerchandise.CreateChildPermission(GWebsitePermissions.Pages_Administration_POMerchandise_Delete, L("DeletingPOMerchandise"));
         }
 
         private static ILocalizableString L(string name)

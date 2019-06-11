@@ -16,6 +16,7 @@ using GWebsite.AbpZeroTemplate.Application.Share.AssignmentTables.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.Bids.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.Bidders.Dto;
 using GWebsite.AbpZeroTemplate.Application.Share.POs.Dto;
+using GWebsite.AbpZeroTemplate.Application.Share.POMerchandises.Dto;
 
 namespace GWebsite.AbpZeroTemplate.Applications
 {
@@ -110,6 +111,12 @@ namespace GWebsite.AbpZeroTemplate.Applications
             configuration.CreateMap<POInput, PO>();
             configuration.CreateMap<PO, POInput>();
             configuration.CreateMap<PO, POForViewDto>();
+
+            // PO
+            configuration.CreateMap<POMerchandise, POMerchandiseDto>();
+            configuration.CreateMap<POMerchandiseInput, POMerchandise>();
+            configuration.CreateMap<POMerchandise, POMerchandiseInput>();
+            configuration.CreateMap<POMerchandise, POMerchandiseForViewDto>();
         }
     }
 }
