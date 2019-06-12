@@ -1,5 +1,6 @@
 ﻿using Abp.Domain.Entities;
 using GWebsite.AbpZeroTemplate.Core.Models;
+using System.Collections.Generic;
 
 namespace GWebsite.AbpZeroTemplate.Application.Share.Vendors.Dto
 {
@@ -27,5 +28,8 @@ namespace GWebsite.AbpZeroTemplate.Application.Share.Vendors.Dto
         public bool IsActive { get; set; }
 
         public string Note { get; set; }
+
+        public List<int> Merchandises { get; set; }
+
     }
 }

@@ -56,18 +56,202 @@
                     </div>
                     <div class="form-group row">
                         <div class="col-xs-4 margin-right-20 margin-left-20">
-                            <label>Số hợp đồng</label>
+                            <label for="ex4">Số hợp đồng</label>
                             <div class="input-group col-xs-4">
-                                <input class="form-control" type="text" name="ContractID" [(ngModel)]="contractID" readonly required>
+                                <input class="form-control" id="ex4" type="text" name="ContractID" [(ngModel)]="contractID" readonly required>
                                 <span class="input-group-btn">
                                     <button class="btn btn-primary" type="button" (click)="selectContractModal.show()">
                                         <i class="fa fa-ellipsis-h"></i>
                                     </button>
                                 </span>
-                            </div>                         
+                            </div>                                           
                         </div>
-                    
+                        <div style="width: 60%">
+                                <label for="ex5">Nội dung hợp đồng</label>
+                                <input class="form-control" id="ex5" type="text" name="ContractNote" [(ngModel)]="contractNote" readonly required>
+                        </div> 
                     </div>
+
+                    <div class="form-group row">
+                        <div class="col-xs-4 margin-right-20 margin-left-20">
+                            <label for="ex6">Mã nhà cung cấp</label>
+                            <div class="input-group col-xs-4">
+                                <input class="form-control" id="ex6" type="text" name="VendorCode" [(ngModel)]="vendorCode" readonly required>
+                                <span class="input-group-btn">
+                                    <button [disabled]="contractID.length>0" class="btn btn-primary" type="button" (click)="addVendorModal.show()">
+                                        <i class="fa fa-ellipsis-h"></i>
+                                    </button>
+                                </span>
+                            </div>                                           
+                        </div>
+                        <div style="width: 60%">
+                                <label for="ex7">Tên nhà cung cấp</label>
+                                <input class="form-control" id="ex7" type="text" name="VendorName" [(ngModel)]="vendorName" readonly required>
+                        </div> 
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="margin-left-20" style="width: 90%">
+                            <label for="ex8">Địa chỉ</label>
+                            <input class="form-control" id="ex8" type="text" name="VendorAddress" [(ngModel)]="vendorAddress" readonly required>
+                        </div>
+                    </div>
+                    
+                    <form class="margin-top-15">
+                        <fieldset style="border: solid; border-width: thin">
+                            <legend visible="true" style="width:auto; margin-left: 10px;">File đính kèm</legend>
+                            <input type="file" class="form-control" name="Attachment1">  
+                            <input type="file" class="form-control" name="Attachment2">
+                            <input type="file" class="form-control" name="Attachment3">
+                            <input type="file" class="form-control" name="Attachment4">                         
+                        </fieldset>
+                    </form>
+
+                    <nav class="navbar navbar-expand-sm navbar-light margin-top-15" style="background-color: #e3f2fd;">
+                        <h4 class="modal-title" style="width: 95%;">
+                            <i class="fa fa-table"></i>
+                            <span> Chi tiết thanh toán</span>
+                        </h4>
+                        <div class="col-xs-6" style="margin-right: 10px; float: right;">
+                            <button [disabled]="saving" type="button" (click)="addMerchandise()"
+                                *ngIf="('Pages.Administration.PO.Create')"
+                                class="btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill">
+                                <i class="fa fa-plus"></i>
+                            </button>
+                        </div>
+                    </nav>
+                    <div class="custom-table">
+                        <table>
+                            <thead>
+                                <th style="width: 5%; text-align: center;">
+                                    <span >
+                                        Đợt
+                                    </span>
+                                </th>
+                                <th style="width: 25%; text-align: center;">
+                                    <span >
+                                        Ngày dự kiến thanh toán
+                                    </span>
+                                </th>
+                                <th style="width: 13%; text-align: center;">
+                                    <span >
+                                        %
+                                    </span>
+                                </th>
+                                <th style="width: 20%; text-align: center;">
+                                    <span >
+                                        Số tiền thanh toán
+                                    </span>
+                                </th>
+                                <th style="width: 37%; text-align: center;">
+                                    <span >
+                                        Diễn giải
+                                    </span>
+                                </th>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let item of merchandises">
+                                    <td>
+                                        <span>{{item.batch}}</span>
+                                    </td>
+                                    <td>
+                                        <input type="date" class="form-control" value={{item.paymentDate}} (change)="item.paymentDate = $event.target.value">
+                                    </td>
+                                    <td>
+                                        <input type="number" class="form-control" value="{{item.percent}}" min="0" max="100" 
+                                            (change)="item.percent = $event.target.value" onkeypress="return event.charCode >= 48;">
+                                    </td>
+                                    <td>
+                                        <span>{{item.percent * contract.totalPrice / 100}}</span>
+                                    </td>
+                                    <td>
+                                        <input type="text" class="form-control" value="{{item.note}}" (change)="item.note = $event.target.value">
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="no-data" style="border: thin solid" *ngIf="merchandises.length == 0">
+                            <label>Không có dữ liệu</label>
+                        </div>
+                    </div>
+
+
+                    <!-- Payment Schedule -->
+                    <nav class="navbar navbar-expand-sm navbar-light margin-top-15" style="background-color: #e3f2fd;">
+                        <h4 class="modal-title" style="width: 95%;">
+                            <i class="fa fa-table"></i>
+                            <span> Chi tiết thanh toán</span>
+                        </h4>
+                        <div class="col-xs-6" style="margin-right: 10px; float: right;">
+                            <button [disabled]="saving" type="button" (click)="addPaymentDetail()"
+                                *ngIf="('Pages.Administration.PO.Create')"
+                                class="btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill">
+                                <i class="fa fa-plus"></i>
+                            </button>
+                        </div>
+                        <div class="col-xs-6" style="margin-right: 10px; float: right;">
+                            <button [disabled]="saving" type="button" (click)="removePaymentDetail()"
+                                *ngIf="('Pages.Administration.PO.Create')"
+                                class="btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                        </div>
+                    </nav>
+                    <div class="custom-table">
+                        <table>
+                            <thead>
+                                <th style="width: 5%; text-align: center;">
+                                    <span >
+                                        Đợt
+                                    </span>
+                                </th>
+                                <th style="width: 25%; text-align: center;">
+                                    <span >
+                                        Ngày dự kiến thanh toán
+                                    </span>
+                                </th>
+                                <th style="width: 13%; text-align: center;">
+                                    <span >
+                                        %
+                                    </span>
+                                </th>
+                                <th style="width: 20%; text-align: center;">
+                                    <span >
+                                        Số tiền thanh toán
+                                    </span>
+                                </th>
+                                <th style="width: 37%; text-align: center;">
+                                    <span >
+                                        Diễn giải
+                                    </span>
+                                </th>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let item of listPaymentDetail">
+                                    <td>
+                                        <span>{{item.batch}}</span>
+                                    </td>
+                                    <td>
+                                        <input type="date" class="form-control" value={{item.paymentDate}} (change)="item.paymentDate = $event.target.value">
+                                    </td>
+                                    <td>
+                                        <input type="number" class="form-control" value="{{item.percent}}" min="0" max="100" 
+                                            (change)="item.percent = $event.target.value" onkeypress="return event.charCode >= 48;">
+                                    </td>
+                                    <td>
+                                        <span>{{item.percent * 10000 / 100}}</span>
+                                    </td>
+                                    <td>
+                                        <input type="text" class="form-control" value="{{item.note}}" (change)="item.note = $event.target.value">
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="no-data" style="border: thin solid" *ngIf="listPaymentDetail.length == 0">
+                            <label>Không có dữ liệu</label>
+                        </div>
+                    </div>
+                    <!-- Payment Schedule End-->
                 </div>
                 <div class="modal-footer">
                     <button [disabled]="saving" type="button" class="btn btn-default" (click)="close()">{{l("Cancel")}}</button>
@@ -81,4 +265,6 @@
     </div>
 </div>
 <selectContractModal #selectContractModal (modalSave)="reloadContract($event)"></selectContractModal>
+<addMerchandiseToPO #addMerchandiseToPO></addMerchandiseToPO>
+<addVendorModal #addVendorModal (modalSave)="reloadVendor($event)"></addVendorModal>
 </div>

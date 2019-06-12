@@ -93,5 +93,10 @@
         public const string Pages_Administration_Vehicle_Create = "Pages.Administration.Vehicle.Create";
         public const string Pages_Administration_Vehicle_Edit = "Pages.Administration.Vehicle.Edit";
         public const string Pages_Administration_Vehicle_Delete = "Pages.Administration.Vehicle.Delete";
+        
+        public const string Pages_Administration_POMerchandise = "Pages.Administration.POMerchandise";
+        public const string Pages_Administration_POMerchandise_Create = "Pages.Administration.POMerchandise.Create";
+        public const string Pages_Administration_POMerchandise_Edit = "Pages.Administration.POMerchandise.Edit";
+        public const string Pages_Administration_POMerchandise_Delete = "Pages.Administration.POMerchandise.Delete";
     }
 }

@@ -2115,6 +2115,41 @@ namespace GSoft.AbpZeroTemplate.Migrations
                     b.ToTable("POs");
                 });
 
+            modelBuilder.Entity("GWebsite.AbpZeroTemplate.Core.Models.POMerchandise", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("CreatedBy");
+
+                    b.Property<DateTime?>("CreatedDate");
+
+                    b.Property<bool>("IsDelete");
+
+                    b.Property<int>("MerchandiseID");
+
+                    b.Property<double>("Price");
+
+                    b.Property<int>("ProjectID");
+
+                    b.Property<int>("Quantity");
+
+                    b.Property<double>("TotalPrice");
+
+                    b.Property<string>("UpdatedBy");
+
+                    b.Property<DateTime?>("UpdatedDate");
+
+                    b.Property<int>("VAT");
+
+                    b.Property<int>("VendorID");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("POMerchandises");
+                });
+
             modelBuilder.Entity("GWebsite.AbpZeroTemplate.Core.Models.Project", b =>
                 {
                     b.Property<int>("Id")

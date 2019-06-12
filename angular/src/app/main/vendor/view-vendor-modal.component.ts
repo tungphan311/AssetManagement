@@ -1,4 +1,4 @@
-import { VendorForViewDto, MerchandiseInput, AssignmentTableServiceProxy, AssignmentTableForViewDto, AssignmentTableInput, VendorInput } from './../../../shared/service-proxies/service-proxies';
+import { VendorForViewDto, MerchandiseInput, AssignmentTableServiceProxy, AssignmentTableForViewDto, AssignmentTableInput, VendorInput, ContractInput, ContractDetailInput, MerchandiseDto } from './../../../shared/service-proxies/service-proxies';
 import { AppComponentBase } from "@shared/common/app-component-base";
 import { AfterViewInit, Injector, Component, ViewChild,OnInit, EventEmitter, Output } from "@angular/core";
 import { VendorServiceProxy, VendorTypeServiceProxy, MerchandiseServiceProxy, MerchandiseTypeServiceProxy } from "@shared/service-proxies/service-proxies";
@@ -8,6 +8,8 @@ import { Paginator } from 'primeng/components/paginator/paginator';
 import { Table } from 'primeng/components/table/table';
 import { CreateMerchandiseModalComponent } from "./create-merchandise-modal.component";
 import { AddContractDetailModalComponent } from '../contract/add-contract-detail-modal-component';
+import { AddMerchandiseModalComponent } from './add-merchandise-modal.component';
+import { containsElement } from '@angular/animations/browser/src/render/shared';
 
 @Component({
     selector: 'viewVendorModal',
@@ -28,14 +30,14 @@ export class ViewVendorModalComponent extends AppComponentBase {
     @ViewChild('dataTable') dataTable: Table;
     @ViewChild('paginator') paginator: Paginator;
 
-    @ViewChild('addContractDetailModal') addContractDetailModal: AddContractDetailModalComponent;
+    @ViewChild('addMerchandiseModal') addMerchandiseModal: AddMerchandiseModalComponent;
 
     @Output() modalSave: EventEmitter<any> = new EventEmitter<any>();
     // list vendortype
     vendortypeList: any[];
     mertypeList: any[];
     asssignmentTableList: any[];
-    //products: ProductInput[] = [];
+    products: ContractDetailInput[] = [];
     listMerchandiseID = [];
     merchlist=[];
 
@@ -51,9 +53,21 @@ export class ViewVendorModalComponent extends AppComponentBase {
     }
 
     show(vendorId?: number | null | undefined): void {
+        this.saving = false;
         this.vendorId = vendorId;
+        this.addMerchandiseModal.listMerID = [];
         this._vendorService.getVendorForView(vendorId).subscribe(result => {
             this.vendor = result;
+            this._assignmentTableService.getAssignmentTablesByFilter(0,vendorId,null,99,0).subscribe(merch=>{
+                for (const item of merch.items){
+                    this._merchandiseService.getMerchandiseForEdit(item.merchID).subscribe(obj=>{
+                        this.addMerchandiseModal.listMerID.push(obj);
+                        console.log(obj.id);
+                        this.getMerchandises();
+                    })
+                }
+            })
+            
             this.modal.show();
         });
         this._vendortypeService.getVendorTypesByFilter(null, null, null, null, 99, 0,
@@ -69,7 +83,6 @@ export class ViewVendorModalComponent extends AppComponentBase {
         this._merchandiseService.getMerchandiseByFilter(null,null,0,0,null,null,99,0).subscribe(result => {
             this.merchlist=result.items
         })
-        this.getMerchandises();
     }
     getMerchandises() {
         if (!this.paginator || !this.dataTable) {
@@ -78,72 +91,28 @@ export class ViewVendorModalComponent extends AppComponentBase {
 
         //show loading trong gridview
         this.primengTableHelper.showLoadingIndicator();
-        this.passToProducts();
-        this.loadListMerchandise();
+        // this.passToProducts();
+        this.reloadListVendorDetail();
     }
 
-    passToProducts() {
-        // this.products.length = 0;
+    // getVendorDetail(event?: LazyLoadEvent) {
+    //     if (!this.paginator || !this.dataTable) {
+    //         return;
+    //     }
 
-        // this.addContractDetailModal.listMerID.forEach(element => {
-        //     let input: ProductInput = new ProductInput();
-        
-        //         input.merchandiseID = element.id;
-        //         input.merCode = element.code;
-        //         input.merName = element.name;
-        //         input.price = element.price;
-        //         input.unit = element.unit;
-        //         input.note = element.note;
-        //         input.info = element.info;
-        //         input.isActive=element.isActive;
-        //         if (this.getAssignState(this.vendorId,element.id) == true)
-        //         {
-        //             this.products.push(input);
-        //             this.listMerchandiseID.push(element.id);
-        //         }
-        // });
-
-        //console.log(this.addContractDetailModal.listMerID)
-        //console.log(this.contract.products);
-    }
-    getVendorDetail(event?: LazyLoadEvent) {
-        if (!this.paginator || !this.dataTable) {
-            return;
-        }
-
-        this.primengTableHelper.showLoadingIndicator();
-
-        this.reloadListVendorDetail(this.vendorId, event);
-    }   
-
-    reloadListVendorDetail(vendorID, event: LazyLoadEvent) {
+    //     this.reloadListVendorDetail();
 
 
-        this._assignmentTableService.getAssignmentTablesByFilter(0,vendorID,
-            this.primengTableHelper.getSorting(this.dataTable),
-            this.primengTableHelper.getMaxResultCount(this.paginator, event),
-            this.primengTableHelper.getSkipCount(this.paginator, event),
-        ).subscribe(result => {
-            this.asssignmentTableList=result.items;
-            });
-        for (const iterator of this.asssignmentTableList) {
-                this._merchandiseService.getMerchandiseByFilter(iterator.merchID,null,0,0,null,
-                    this.primengTableHelper.getSorting(this.dataTable),
-                    this.primengTableHelper.getMaxResultCount(this.paginator, event),
-                    this.primengTableHelper.getSkipCount(this.paginator, event),
-                ).subscribe(result => {
-                    this.primengTableHelper.totalRecordsCount = result.totalCount;
-                    this.primengTableHelper.records = result.items;
-                    this.primengTableHelper.hideLoadingIndicator();
-                });
-            
-    }
-}
+    //     this.primengTableHelper.showLoadingIndicator();
 
-    loadListMerchandise() {
-        // this.primengTableHelper.totalRecordsCount = this.products.length;
-        // this.primengTableHelper.records = this.products;
+    // }   
+
+    reloadListVendorDetail() {
+
+        this.primengTableHelper.totalRecordsCount = this.addMerchandiseModal.listMerID.length;
+        this.primengTableHelper.records = this.addMerchandiseModal.listMerID;
         this.primengTableHelper.hideLoadingIndicator();
+            
     }
 
     reloadPage(): void {
@@ -199,47 +168,30 @@ export class ViewVendorModalComponent extends AppComponentBase {
         }
     }
 
-    addMerchandise() {
-        
-        this.addContractDetailModal.show();
+    addMerchandise() {     
+        this.addMerchandiseModal.show();
         // this.createModal.show(this.vendorId);
     }
     //chỉ sửa typevender của hàng hóa đó lại = 0
     deleteMerchandise(id): void { 
-        this.primengTableHelper.showLoadingIndicator();
-        
-        this._merchandiseService.getMerchandiseForEdit(id).subscribe(result => {
-            var merInput = result;
-            if (merInput.id==null){
-                this.notify.info(this.l('DeletedFailed'));
-                this.primengTableHelper.hideLoadingIndicator();
-                return;
-            }
-            merInput.typeVender=0;
-            this._merchandiseService.createOrEditMerchandise(merInput).subscribe(() => {
-                this.notify.info(this.l('DeletedSuccessfully'));
-                this.primengTableHelper.hideLoadingIndicator();
-                this.getMerchandises();
-            })
-        })
+        this.addMerchandiseModal.listMerID = this.addMerchandiseModal.listMerID.filter(x=>x.id!=id);
+        this.getMerchandises();
         
     }
     save(): void {
 
         this.saving = true;
 
-        this.addContractDetailModal.isSelectAll = false;
-        this.addContractDetailModal.listMerchandises.forEach(item => {
-            item.isAddContract = false;
-                if (!this.getAssignState(this.vendorId,item.id))
-                {
-                    this.addToAssignmentTable(this.vendorId,item.id);
-
-                }
+        this._vendorService.getVendorForEdit(this.vendorId).subscribe(result =>{
+            result.merchandises = [];
+            for (const item of this.addMerchandiseModal.listMerID){
+                result.merchandises.push(item.id);
+            }
+            this._vendorService.createOrEditVendor(result).subscribe(result =>{
                 this.notify.info(this.l('SavedSuccessfully'));
                 this.close();
-
-            });
+            })
+        })
     }
     truncateString(text): string {
         return abp.utils.truncateStringWithPostfix(text, 32, '...');

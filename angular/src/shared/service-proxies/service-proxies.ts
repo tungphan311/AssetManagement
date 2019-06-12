@@ -28658,6 +28658,7 @@ export class VendorDto implements IVendorDto {
     contact!: string | undefined;
     isActive!: boolean | undefined;
     note!: string | undefined;
+    merchandises!: number[] | undefined;
     id!: number | undefined;
 
     constructor(data?: IVendorDto) {
@@ -28681,6 +28682,11 @@ export class VendorDto implements IVendorDto {
             this.contact = data["contact"];
             this.isActive = data["isActive"];
             this.note = data["note"];
+            if (data["merchandises"] && data["merchandises"].constructor === Array) {
+                this.merchandises = [];
+                for (let item of data["merchandises"])
+                    this.merchandises.push(item);
+            }
             this.id = data["id"];
         }
     }
@@ -28704,6 +28710,11 @@ export class VendorDto implements IVendorDto {
         data["contact"] = this.contact;
         data["isActive"] = this.isActive;
         data["note"] = this.note;
+        if (this.merchandises && this.merchandises.constructor === Array) {
+            data["merchandises"] = [];
+            for (let item of this.merchandises)
+                data["merchandises"].push(item);
+        }
         data["id"] = this.id;
         return data; 
     }
@@ -28720,6 +28731,7 @@ export interface IVendorDto {
     contact: string | undefined;
     isActive: boolean | undefined;
     note: string | undefined;
+    merchandises: number[] | undefined;
     id: number | undefined;
 }
 
@@ -28734,6 +28746,7 @@ export class VendorInput implements IVendorInput {
     contact!: string | undefined;
     isActive!: boolean | undefined;
     note!: string | undefined;
+    merchandises!: number[] | undefined;
     id!: number | undefined;
 
     constructor(data?: IVendorInput) {
@@ -28757,6 +28770,11 @@ export class VendorInput implements IVendorInput {
             this.contact = data["contact"];
             this.isActive = data["isActive"];
             this.note = data["note"];
+            if (data["merchandises"] && data["merchandises"].constructor === Array) {
+                this.merchandises = [];
+                for (let item of data["merchandises"])
+                    this.merchandises.push(item);
+            }
             this.id = data["id"];
         }
     }
@@ -28780,6 +28798,11 @@ export class VendorInput implements IVendorInput {
         data["contact"] = this.contact;
         data["isActive"] = this.isActive;
         data["note"] = this.note;
+        if (this.merchandises && this.merchandises.constructor === Array) {
+            data["merchandises"] = [];
+            for (let item of this.merchandises)
+                data["merchandises"].push(item);
+        }
         data["id"] = this.id;
         return data; 
     }
@@ -28796,6 +28819,7 @@ export interface IVendorInput {
     contact: string | undefined;
     isActive: boolean | undefined;
     note: string | undefined;
+    merchandises: number[] | undefined;
     id: number | undefined;
 }
 

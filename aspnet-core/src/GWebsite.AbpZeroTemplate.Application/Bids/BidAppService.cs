@@ -161,7 +161,6 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.Bids
         {
             var entity = ObjectMapper.Map<Bid>(input);
             SetAuditInsert(entity);
-            bidRepository.Insert(entity);
 
             var id = bidRepository.InsertAndGetId(entity);
 

@@ -25,21 +25,21 @@
                     </div>
                     <div class="form-group">
                         <p>
-                            Hoạt động *: 
+                            Hoạt động: 
                             <span>
-                                <input #isActiveInput="ngModel" class="form-control" type="checkbox" name="IsActive" [(ngModel)]="merchandiseType.isActive" required>
+                                <input #isActiveInput="ngModel" class="form-control" type="checkbox" name="IsActive" [(ngModel)]="merchandiseType.isActive">
                             </span>                   
                         </p>
                     </div>
                     <div class="form-group">
-                        <label>Ghi chú *</label>
-                        <input #noteInput="ngModel" class="form-control" type="text" name="Note" [(ngModel)]="merchandiseType.note" required maxlength="255">
+                        <label>Ghi chú</label>
+                        <input #noteInput="ngModel" class="form-control" type="text" name="Note" [(ngModel)]="merchandiseType.note" maxlength="255">
                         <validation-messages [formCtrl]="infoInput"></validation-messages>
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button [disabled]="saving" type="button" class="btn btn-default" (click)="close()">{{l("Cancel")}}</button>
-                    <button type="submit" class="btn btn-primary" [buttonBusy]="saving" [busyText]="l('SavingWithThreeDot')">
+                    <button [disabled]="!editForm.form.valid" type="submit" class="btn btn-primary" [buttonBusy]="saving" [busyText]="l('SavingWithThreeDot')">
                         <i class="fa fa-save"></i>
                         <span>{{l("Save")}}</span>
                     </button>

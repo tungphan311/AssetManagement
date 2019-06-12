@@ -13,6 +13,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Linq.Dynamic.Core;
 using Abp.Linq.Extensions;
+using GWebsite.AbpZeroTemplate.Application.Share.POPayments.Dto;
 
 namespace GWebsite.AbpZeroTemplate.Web.Core.POs
 {
@@ -22,12 +23,15 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.POs
         private readonly IRepository<PO> poRepository;
         private readonly IRepository<Vendor> vendorRepository;
         private readonly IRepository<Contract> contractRepository;
+        private readonly IRepository<POPayment> paymentRepository;
 
-        public POAppService(IRepository<PO> repository, IRepository<Vendor> vendorRepository, IRepository<Contract> contractRepository)
+
+        public POAppService(IRepository<PO> repository, IRepository<Vendor> vendorRepository, IRepository<Contract> contractRepository, IRepository<POPayment> paymentRepository)
         {
             poRepository = repository;
             this.vendorRepository = vendorRepository;
             this.contractRepository = contractRepository;
+            this.paymentRepository = paymentRepository;
         }
 
         #region public method
@@ -52,6 +56,15 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.POs
                 entity.IsDelete = true;
                 poRepository.Update(entity);
                 CurrentUnitOfWork.SaveChanges();
+
+                // xoá contract payment ứng với PO này
+                var paymentList = paymentRepository.GetAll().Where(x => !x.IsDelete && x.POID == id);
+                foreach (var payment in paymentList)
+                {
+                    payment.IsDelete = true;
+                    SetAuditEdit(payment);
+                    paymentRepository.Update(payment);
+                }
             }
         }
 
@@ -62,7 +75,13 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.POs
             {
                 return null;
             }
-            return ObjectMapper.Map<POInput>(entity);
+
+            var poInput = ObjectMapper.Map<POInput>(entity);
+           
+            var paymentList = paymentRepository.GetAll().Where(x => !x.IsDelete && x.POID == id);
+            poInput.Payments = paymentList.Select(x => ObjectMapper.Map<POPaymentInput>(x)).ToList();
+
+            return poInput;
         }
 
         public POForViewDto GetPOForView(int id)
@@ -136,25 +155,56 @@ namespace GWebsite.AbpZeroTemplate.Web.Core.POs
         #region private method
 
         [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient_Create)]
-        private void Create(POInput input)
+        private void Create(POInput poInput)
         {
-            var entity = ObjectMapper.Map<PO>(input);
+            var entity = ObjectMapper.Map<PO>(poInput);
             SetAuditInsert(entity);
-            poRepository.Insert(entity);
+            var id = poRepository.InsertAndGetId(entity);
+
+            foreach (var payment in poInput.Payments)
+            {
+                payment.POID = id;
+                var paymentEntity = ObjectMapper.Map<POPayment>(payment);
+                SetAuditInsert(paymentEntity);
+                paymentRepository.Insert(paymentEntity);
+            }
+
             CurrentUnitOfWork.SaveChanges();
         }
 
         [AbpAuthorize(GWebsitePermissions.Pages_Administration_MenuClient_Edit)]
-        private void Update(POInput input)
+        private void Update(POInput poInput)
         {
-            var entity = poRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.Id == input.Id);
+            var entity = poRepository.GetAll().Where(x => !x.IsDelete).SingleOrDefault(x => x.Id == poInput.Id);
             if (entity == null)
             {
 
             }
-            ObjectMapper.Map(input, entity);
+            ObjectMapper.Map(poInput, entity);
             SetAuditEdit(entity);
             poRepository.Update(entity);
+
+            // xoá hết payment đang có trước 
+            var paymentList = paymentRepository.GetAll().Where(x => !x.IsDelete && x.POID == poInput.Id);
+
+            foreach (var payment in paymentList)
+            {
+                payment.IsDelete = true;
+                SetAuditEdit(payment);
+                paymentRepository.Update(payment);
+            }
+
+            if (poInput.Payments != null)
+            {
+                foreach (var payment in poInput.Payments)
+                {
+                    payment.POID = poInput.Id;
+                    var paymentEntity = ObjectMapper.Map<POPayment>(payment);
+                    SetAuditInsert(paymentEntity);
+                    paymentRepository.Insert(paymentEntity);
+                }
+            }
+
             CurrentUnitOfWork.SaveChanges();
         }
 

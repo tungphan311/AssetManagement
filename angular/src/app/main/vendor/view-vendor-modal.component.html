@@ -88,7 +88,7 @@
                                         </button>
                                     </div>
                                 </div>
-                        <p-table #dataTable (onLazyLoad)="reloadListVendorDetail(vendor.code,$event)" [value]="primengTableHelper.records"
+                        <p-table #dataTable (onLazyLoad)="reloadListVendorDetail()" [value]="primengTableHelper.records"
                             rows="{{primengTableHelper.defaultRecordsCountPerPage}}" [paginator]="false" [lazy]="true"
                             [responsive]="primengTableHelper.isResponsive">
                             <ng-template pTemplate="header" >
@@ -121,9 +121,6 @@
                                         Hoạt động
                                         <p-sortIcon field="isActive"></p-sortIcon>
                                     </th>
-                                    <th pSortableColumn="assigned">
-                                        Đã gán
-                                    </th>
                                     <th pSortableColumn="note">
                                         Ghi chú
                                         <p-sortIcon field="note"></p-sortIcon>
@@ -136,15 +133,15 @@
                                 <tr>
                                     <td>
                                         <span class="ui-column-title">Mã code</span>
-                                        <span title="{{record.code}}">{{truncateString(record.merCode)}}</span>
+                                        <span title="{{record.code}}">{{truncateString(record.code)}}</span>
                                     </td>
                                     <td>
                                         <span class="ui-column-title">Tên hàng hoá</span>
-                                        <span title="{{record.name}}">{{truncateString(record.merName)}}</span>
+                                        <span title="{{record.name}}">{{truncateString(record.name)}}</span>
                                     </td>
                                     <td>
                                         <span class="ui-column-title">Loại hàng hoá</span>
-                                        <span title="{{record.typeID}}" >{{getTypeNames(record.merCode)}}</span>
+                                        <span title="{{record.typeID}}" >{{getTypeNames(record.typeID)}}</span>
                                     </td>                                
                                     <td>
                                         <span class="ui-column-title">Giá</span>
@@ -167,16 +164,7 @@
                                             <input type="checkbox" onclick="return false;">
                                         </span>
                                     </td>
-                                    <td>
-                                        <span class="ui-column-title">Đã gán</span>
-                                        <span title="{{record.isAssigned}}" *ngIf="getAssignState(vendor.code,record.code)">
-                                            <input type="checkbox" checked onclick="return false;">
-                                        </span>
-                                        <span title="{{record.isAssigned}}" *ngIf="!getAssignState(vendor.code,record.code)">
-                                            <!-- <input type="checkbox" (change)="addToAssignmentTable(vendor.code,record.code);"> -->
-                                            <input type="checkbox" unchecked onclick="return false;">
-                                        </span>
-                                    </td>
+                                
                                     <td>
                                         <span class="ui-column-title">Ghi chú</span>
                                         <span title="{{record.note}}">{{truncateString(record.note)}}</span>
@@ -219,5 +207,5 @@
     </div>
 </div>
 <createMerchandiseModal #createModal (modalSave)="reloadPage()"></createMerchandiseModal>
-<addContractDetailModal #addContractDetailModal (modalSave)="reloadPage()" (data)="getListMerchandises($event)"></addContractDetailModal>
+<addMerchandiseModal #addMerchandiseModal (data)="getMerchandises()"></addMerchandiseModal>
 </div>
