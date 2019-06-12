@@ -22162,6 +22162,7 @@ export class POInput implements IPOInput {
     orderName!: string | undefined;
     contractID!: number | undefined;
     vendorID!: number | undefined;
+    payments!: POPaymentInput[] | undefined;
     id!: number | undefined;
 
     constructor(data?: IPOInput) {
@@ -22183,6 +22184,11 @@ export class POInput implements IPOInput {
             this.orderName = data["orderName"];
             this.contractID = data["contractID"];
             this.vendorID = data["vendorID"];
+            if (data["payments"] && data["payments"].constructor === Array) {
+                this.payments = [];
+                for (let item of data["payments"])
+                    this.payments.push(POPaymentInput.fromJS(item));
+            }
             this.id = data["id"];
         }
     }
@@ -22204,6 +22210,11 @@ export class POInput implements IPOInput {
         data["orderName"] = this.orderName;
         data["contractID"] = this.contractID;
         data["vendorID"] = this.vendorID;
+        if (this.payments && this.payments.constructor === Array) {
+            data["payments"] = [];
+            for (let item of this.payments)
+                data["payments"].push(item.toJSON());
+        }
         data["id"] = this.id;
         return data; 
     }
@@ -22218,6 +22229,67 @@ export interface IPOInput {
     orderName: string | undefined;
     contractID: number | undefined;
     vendorID: number | undefined;
+    payments: POPaymentInput[] | undefined;
+    id: number | undefined;
+}
+
+export class POPaymentInput implements IPOPaymentInput {
+    poid!: number | undefined;
+    batch!: number | undefined;
+    paymentDate!: moment.Moment | undefined;
+    percent!: number | undefined;
+    amount!: number | undefined;
+    note!: string | undefined;
+    id!: number | undefined;
+
+    constructor(data?: IPOPaymentInput) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.poid = data["poid"];
+            this.batch = data["batch"];
+            this.paymentDate = data["paymentDate"] ? moment(data["paymentDate"].toString()) : <any>undefined;
+            this.percent = data["percent"];
+            this.amount = data["amount"];
+            this.note = data["note"];
+            this.id = data["id"];
+        }
+    }
+
+    static fromJS(data: any): POPaymentInput {
+        data = typeof data === 'object' ? data : {};
+        let result = new POPaymentInput();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["poid"] = this.poid;
+        data["batch"] = this.batch;
+        data["paymentDate"] = this.paymentDate ? this.paymentDate.toISOString() : <any>undefined;
+        data["percent"] = this.percent;
+        data["amount"] = this.amount;
+        data["note"] = this.note;
+        data["id"] = this.id;
+        return data; 
+    }
+}
+
+export interface IPOPaymentInput {
+    poid: number | undefined;
+    batch: number | undefined;
+    paymentDate: moment.Moment | undefined;
+    percent: number | undefined;
+    amount: number | undefined;
+    note: string | undefined;
     id: number | undefined;
 }
 
@@ -22283,6 +22355,118 @@ export interface IPOForViewDto {
     orderName: string | undefined;
     contractID: number | undefined;
     vendorID: number | undefined;
+}
+
+export class PagedResultDtoOfPOMerchandiseDto implements IPagedResultDtoOfPOMerchandiseDto {
+    totalCount!: number | undefined;
+    items!: POMerchandiseDto[] | undefined;
+
+    constructor(data?: IPagedResultDtoOfPOMerchandiseDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.totalCount = data["totalCount"];
+            if (data["items"] && data["items"].constructor === Array) {
+                this.items = [];
+                for (let item of data["items"])
+                    this.items.push(POMerchandiseDto.fromJS(item));
+            }
+        }
+    }
+
+    static fromJS(data: any): PagedResultDtoOfPOMerchandiseDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new PagedResultDtoOfPOMerchandiseDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["totalCount"] = this.totalCount;
+        if (this.items && this.items.constructor === Array) {
+            data["items"] = [];
+            for (let item of this.items)
+                data["items"].push(item.toJSON());
+        }
+        return data; 
+    }
+}
+
+export interface IPagedResultDtoOfPOMerchandiseDto {
+    totalCount: number | undefined;
+    items: POMerchandiseDto[] | undefined;
+}
+
+export class POMerchandiseDto implements IPOMerchandiseDto {
+    vendorID!: number | undefined;
+    projectID!: number | undefined;
+    merchandiseID!: number | undefined;
+    quantity!: number | undefined;
+    price!: number | undefined;
+    vat!: number | undefined;
+    totalPrice!: number | undefined;
+    id!: number | undefined;
+
+    constructor(data?: IPOMerchandiseDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.vendorID = data["vendorID"];
+            this.projectID = data["projectID"];
+            this.merchandiseID = data["merchandiseID"];
+            this.quantity = data["quantity"];
+            this.price = data["price"];
+            this.vat = data["vat"];
+            this.totalPrice = data["totalPrice"];
+            this.id = data["id"];
+        }
+    }
+
+    static fromJS(data: any): POMerchandiseDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new POMerchandiseDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["vendorID"] = this.vendorID;
+        data["projectID"] = this.projectID;
+        data["merchandiseID"] = this.merchandiseID;
+        data["quantity"] = this.quantity;
+        data["price"] = this.price;
+        data["vat"] = this.vat;
+        data["totalPrice"] = this.totalPrice;
+        data["id"] = this.id;
+        return data; 
+    }
+}
+
+export interface IPOMerchandiseDto {
+    vendorID: number | undefined;
+    projectID: number | undefined;
+    merchandiseID: number | undefined;
+    quantity: number | undefined;
+    price: number | undefined;
+    vat: number | undefined;
+    totalPrice: number | undefined;
+    id: number | undefined;
 }
 
 export class CurrentUserProfileEditDto implements ICurrentUserProfileEditDto {
@@ -22625,128 +22809,9 @@ export interface IChangeUserLanguageDto {
     languageName: string;
 }
 
-export class PagedResultDtoOfPOMerchandiseDto implements IPagedResultDtoOfPOMerchandiseDto {
+export class PagedResultDtoOfProjectDto implements IPagedResultDtoOfProjectDto {
     totalCount!: number | undefined;
-    items!: POMerchandiseDto[] | undefined;
-
-    constructor(data?: IPagedResultDtoOfPOMerchandiseDto) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(data?: any) {
-        if (data) {
-            this.totalCount = data["totalCount"];
-            if (data["items"] && data["items"].constructor === Array) {
-                this.items = [];
-                for (let item of data["items"])
-                    this.items.push(POMerchandiseDto.fromJS(item));
-            }
-        }
-    }
-
-    static fromJS(data: any): PagedResultDtoOfPOMerchandiseDto {
-        data = typeof data === 'object' ? data : {};
-        let result = new PagedResultDtoOfPOMerchandiseDto();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["totalCount"] = this.totalCount;
-        if (this.items && this.items.constructor === Array) {
-            data["items"] = [];
-            for (let item of this.items)
-                data["items"].push(item.toJSON());
-        }
-        return data; 
-    }
-}
-
-export interface IPagedResultDtoOfPOMerchandiseDto {
-    totalCount: number | undefined;
-    items: POMerchandiseDto[] | undefined;
-}
-
-export class POMerchandiseDto implements IPOMerchandiseDto {
-    vendorID!: number | undefined;
-    projectID!: number | undefined;
-    merchandiseID!: number | undefined;
-    quantity!: number | undefined;
-    price!: number | undefined;
-    vat!: number | undefined;
-    totalPrice!: number | undefined;
-    id!: number | undefined;
-
-    constructor(data?: IPOMerchandiseDto) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(data?: any) {
-        if (data) {
-            this.vendorID = data["vendorID"];
-            this.projectID = data["projectID"];
-            this.merchandiseID = data["merchandiseID"];
-            this.quantity = data["quantity"];
-            this.price = data["price"];
-            this.vat = data["vat"];
-            this.totalPrice = data["totalPrice"];
-            this.id = data["id"];
-        }
-    }
-
-    static fromJS(data: any): POMerchandiseDto {
-        data = typeof data === 'object' ? data : {};
-        let result = new POMerchandiseDto();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["vendorID"] = this.vendorID;
-        data["projectID"] = this.projectID;
-        data["merchandiseID"] = this.merchandiseID;
-        data["quantity"] = this.quantity;
-        data["price"] = this.price;
-        data["vat"] = this.vat;
-        data["totalPrice"] = this.totalPrice;
-        data["id"] = this.id;
-        return data; 
-    }
-}
-
-export interface IPOMerchandiseDto {
-    vendorID: number | undefined;
-    projectID: number | undefined;
-    merchandiseID: number | undefined;
-    quantity: number | undefined;
-    price: number | undefined;
-    vat: number | undefined;
-    totalPrice: number | undefined;
-    id: number | undefined;
-}
-
-export class CurrentUserProfileEditDto implements ICurrentUserProfileEditDto {
-    name!: string;
-    surname!: string;
-    userName!: string;
-    emailAddress!: string;
-    phoneNumber!: string | undefined;
-    isPhoneNumberConfirmed!: boolean | undefined;
-    timezone!: string | undefined;
-    qrCodeSetupImageUrl!: string | undefined;
-    isGoogleAuthenticatorEnabled!: boolean | undefined;
+    items!: ProjectDto[] | undefined;
 
     constructor(data?: IPagedResultDtoOfProjectDto) {
         if (data) {

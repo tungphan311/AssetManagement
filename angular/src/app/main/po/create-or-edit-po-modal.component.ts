@@ -112,7 +112,7 @@ export class CreateOrEditPOModalComponent extends AppComponentBase {
         this.addMerchandiseToPO.show();
     }
 
-    reloadMerchandise(listCD:ContractDetailInput[]):void{
+    reloadMerchandise():void{
 
     }
 
