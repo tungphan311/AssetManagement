@@ -23886,6 +23886,7 @@ export class POInput implements IPOInput {
     orderName!: string | undefined;
     contractID!: number | undefined;
     vendorID!: number | undefined;
+    payments!: POPaymentInput[] | undefined;
     id!: number | undefined;
 
     constructor(data?: IPOInput) {
@@ -23907,6 +23908,11 @@ export class POInput implements IPOInput {
             this.orderName = data["orderName"];
             this.contractID = data["contractID"];
             this.vendorID = data["vendorID"];
+            if (data["payments"] && data["payments"].constructor === Array) {
+                this.payments = [];
+                for (let item of data["payments"])
+                    this.payments.push(POPaymentInput.fromJS(item));
+            }
             this.id = data["id"];
         }
     }
@@ -23928,6 +23934,11 @@ export class POInput implements IPOInput {
         data["orderName"] = this.orderName;
         data["contractID"] = this.contractID;
         data["vendorID"] = this.vendorID;
+        if (this.payments && this.payments.constructor === Array) {
+            data["payments"] = [];
+            for (let item of this.payments)
+                data["payments"].push(item.toJSON());
+        }
         data["id"] = this.id;
         return data; 
     }
@@ -23942,6 +23953,67 @@ export interface IPOInput {
     orderName: string | undefined;
     contractID: number | undefined;
     vendorID: number | undefined;
+    payments: POPaymentInput[] | undefined;
+    id: number | undefined;
+}
+
+export class POPaymentInput implements IPOPaymentInput {
+    poid!: number | undefined;
+    batch!: number | undefined;
+    paymentDate!: moment.Moment | undefined;
+    percent!: number | undefined;
+    amount!: number | undefined;
+    note!: string | undefined;
+    id!: number | undefined;
+
+    constructor(data?: IPOPaymentInput) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.poid = data["poid"];
+            this.batch = data["batch"];
+            this.paymentDate = data["paymentDate"] ? moment(data["paymentDate"].toString()) : <any>undefined;
+            this.percent = data["percent"];
+            this.amount = data["amount"];
+            this.note = data["note"];
+            this.id = data["id"];
+        }
+    }
+
+    static fromJS(data: any): POPaymentInput {
+        data = typeof data === 'object' ? data : {};
+        let result = new POPaymentInput();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["poid"] = this.poid;
+        data["batch"] = this.batch;
+        data["paymentDate"] = this.paymentDate ? this.paymentDate.toISOString() : <any>undefined;
+        data["percent"] = this.percent;
+        data["amount"] = this.amount;
+        data["note"] = this.note;
+        data["id"] = this.id;
+        return data; 
+    }
+}
+
+export interface IPOPaymentInput {
+    poid: number | undefined;
+    batch: number | undefined;
+    paymentDate: moment.Moment | undefined;
+    percent: number | undefined;
+    amount: number | undefined;
+    note: string | undefined;
     id: number | undefined;
 }
 

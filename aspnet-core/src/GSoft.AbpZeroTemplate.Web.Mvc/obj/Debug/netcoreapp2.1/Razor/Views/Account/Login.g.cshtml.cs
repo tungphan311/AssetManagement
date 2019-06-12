@@ -82,7 +82,7 @@ using Microsoft.AspNetCore.Identity;
                 WriteLiteral("\r\n    ");
                 EndContext();
                 BeginContext(284, 92, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "60182391df244a94a1ffbd8d3e53537b", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "3faacee527b648c38fe46ad6649c5a82", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_TagHelpers_ScriptTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.TagHelpers.ScriptTagHelper>();
@@ -151,7 +151,7 @@ __Microsoft_AspNetCore_Mvc_TagHelpers_ScriptTagHelper.AppendVersion = true;
             WriteLiteral("\r\n        </h3>\r\n    </div>\r\n    ");
             EndContext();
             BeginContext(874, 1542, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c1dabb0a416c4bd291057b69d455728a", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "12330ab558b14331b81d098f83781be4", async() => {
                 BeginContext(953, 47, true);
                 WriteLiteral("\r\n        <input type=\"hidden\" name=\"returnUrl\"");
                 EndContext();
@@ -311,7 +311,7 @@ WriteAttributeValue("", 2066, Url.Action("ForgotPassword", "Account"), 2066, 40,
             WriteLiteral("</h4>\r\n        <ul class=\"social-icons\">\r\n            ");
             EndContext();
             BeginContext(3019, 715, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0447e957299e4d6a9770cf4637675000", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "142e990b7e214dbb928fcb31315dea6e", async() => {
                 BeginContext(3066, 55, true);
                 WriteLiteral("\r\n                <input type=\"hidden\" name=\"returnUrl\"");
                 EndContext();

@@ -63,7 +63,7 @@ using Abp.Authorization.Users;
                 WriteLiteral("\r\n    ");
                 EndContext();
                 BeginContext(57, 101, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5636a7eac86e4e7a8a228516f8be9e5c", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b9825446f06d458fa2c2d122ff6a6d69", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_TagHelpers_ScriptTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.TagHelpers.ScriptTagHelper>();
@@ -105,7 +105,7 @@ __Microsoft_AspNetCore_Mvc_TagHelpers_ScriptTagHelper.AppendVersion = true;
             WriteLiteral("\r\n        </h3>\r\n    </div>\r\n    ");
             EndContext();
             BeginContext(329, 801, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b9fcf891a2074f20aac8810fc986dc6b", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "851b678f95634f9dbbfd808fc33eda32", async() => {
                 BeginContext(425, 27, true);
                 WriteLiteral("\r\n        <p>\r\n            ");
                 EndContext();
@@ -140,7 +140,7 @@ WriteAttributeValue("", 719, AbpUserBase.MaxEmailAddressLength, 719, 34, false);
                 WriteLiteral(" />\r\n        </div>\r\n        <div class=\"m-login__form-action\">\r\n            ");
                 EndContext();
                 BeginContext(831, 146, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e14ceb4bb0de4f23ab69c52ce54f1da7", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d83ed877380c43afa0e1dcf4ed4c3649", async() => {
                     BeginContext(853, 101, true);
                     WriteLiteral("<button type=\"button\" id=\"back-btn\" class=\"btn btn-outline-primary  m-btn m-btn--pill m-btn--custom\">");
                     EndContext();

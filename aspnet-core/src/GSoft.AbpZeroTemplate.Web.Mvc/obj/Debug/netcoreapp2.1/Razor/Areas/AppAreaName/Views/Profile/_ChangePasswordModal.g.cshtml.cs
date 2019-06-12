@@ -63,7 +63,7 @@ Write(Html.Partial("~/Areas/AppAreaName/Views/Common/Modals/_ModalHeader.cshtml"
             WriteLiteral("\r\n\r\n<div class=\"modal-body\">\r\n    ");
             EndContext();
             BeginContext(230, 1123, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8f666a3c8d1d4ad9a8056130a2c1aa6b", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c0e2ca09dee24db78986706fc61eacca", async() => {
                 BeginContext(282, 77, true);
                 WriteLiteral("\r\n        <div class=\"form-group\">\r\n            <label for=\"CurrentPassword\">");
                 EndContext();

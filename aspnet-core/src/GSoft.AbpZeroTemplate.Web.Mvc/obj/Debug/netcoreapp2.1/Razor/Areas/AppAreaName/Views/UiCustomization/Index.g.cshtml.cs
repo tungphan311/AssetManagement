@@ -68,7 +68,7 @@ using GSoft.AbpZeroTemplate.Web.Areas.AppAreaName.Startup;
                 WriteLiteral("\r\n    ");
                 EndContext();
                 BeginContext(272, 118, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5873008124304e0a8a5d3b7a17edefe0", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f4e4b6e0ffeb465f8e5fdec286306d32", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_TagHelpers_ScriptTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.TagHelpers.ScriptTagHelper>();
@@ -228,7 +228,7 @@ __Microsoft_AspNetCore_Mvc_TagHelpers_ScriptTagHelper.AppendVersion = true;
             WriteLiteral("\r\n                        </a>\r\n                    </li>\r\n                </ul>\r\n                <div class=\"tab-content\">\r\n                    <div id=\"Layout\" class=\"tab-pane active\">\r\n                        ");
             EndContext();
             BeginContext(2873, 3766, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e3256ae93684408a973ae547b737df3b", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1ea4950b7300423b978d75e218147f25", async() => {
                 BeginContext(2903, 117, true);
                 WriteLiteral("\r\n                            <div class=\"m-radio-list m--margin-bottom-20\">\r\n                                <label>");
                 EndContext();
@@ -431,7 +431,7 @@ __Microsoft_AspNetCore_Mvc_TagHelpers_ScriptTagHelper.AppendVersion = true;
             WriteLiteral("\r\n                    </div>\r\n                    <div id=\"Header\" class=\"tab-pane\">\r\n                        ");
             EndContext();
             BeginContext(6749, 3294, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "bf691c7662a2466d8f728c6158cd578e", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "cc248f150f7a4e0aad9895d0c28d4732", async() => {
                 BeginContext(6779, 59, true);
                 WriteLiteral("\r\n                            <h5 class=\"margin-bottom-20\">");
                 EndContext();
@@ -591,7 +591,7 @@ __Microsoft_AspNetCore_Mvc_TagHelpers_ScriptTagHelper.AppendVersion = true;
             WriteLiteral("\r\n                    </div>\r\n                    <div id=\"Menu\" class=\"tab-pane\">\r\n                        ");
             EndContext();
             BeginContext(10151, 6262, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d5384ea7d4424c35b7f1ceef011906eb", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "ba990472e36f4592bddbef819ff9b5c8", async() => {
                 BeginContext(10179, 124, true);
                 WriteLiteral("\r\n                            <div class=\"form-group m-form__group\">\r\n                                <label for=\"Position\">");
                 EndContext();
@@ -868,7 +868,7 @@ __Microsoft_AspNetCore_Mvc_TagHelpers_ScriptTagHelper.AppendVersion = true;
             WriteLiteral("\r\n                    </div>\r\n                    <div id=\"Footer\" class=\"tab-pane\">\r\n                        ");
             EndContext();
             BeginContext(16523, 560, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "4eabfb770574422180e8e67898944bc3", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "78e2a431122d41519289d7418703074b", async() => {
                 BeginContext(16553, 231, true);
                 WriteLiteral("\r\n                            <div class=\"form-group m-form__group\">\r\n                                <label class=\"m-checkbox col-lg-12\">\r\n                                    <input type=\"checkbox\" name=\"FixedFooter\" value=\"true\" ");
                 EndContext();

@@ -56,7 +56,7 @@ using Abp.Localization;
                 WriteLiteral("\r\n    ");
                 EndContext();
                 BeginContext(102, 105, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "ae6005eeafeb44f7a055b1ca0d6521e5", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "da6680ab0c054e428daa11e79fdea237", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_TagHelpers_ScriptTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.TagHelpers.ScriptTagHelper>();
@@ -98,7 +98,7 @@ __Microsoft_AspNetCore_Mvc_TagHelpers_ScriptTagHelper.AppendVersion = true;
             WriteLiteral("\r\n        </h3>\r\n    </div>\r\n    ");
             EndContext();
             BeginContext(382, 1096, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b456381f8bb94d6bbeb369fef884bcd1", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "137f9cb2c508489cb8b3cd214bb9981c", async() => {
                 BeginContext(489, 13, true);
                 WriteLiteral("\r\n        <p>");
                 EndContext();
